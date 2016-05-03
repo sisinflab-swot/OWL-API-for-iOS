@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D71CD5F9FA009E6792 /* libxml2.tbd */; };
+		CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D91CD5FA01009E6792 /* libxslt.tbd */; };
+		CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */; };
+		CC52207C1CD61A4700490D42 /* OWLOntologyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */; };
+		CC52207E1CD61A4700490D42 /* MicroReasoner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */; };
+		CC52208E1CD61BE700490D42 /* building.owl in Resources */ = {isa = PBXBuildFile; fileRef = CC52208D1CD61BE700490D42 /* building.owl */; };
+		CC57965E1CD606A9008F3E72 /* OWLOntology.h in Headers */ = {isa = PBXBuildFile; fileRef = CC57965C1CD606A9008F3E72 /* OWLOntology.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC57965F1CD606A9008F3E72 /* OWLOntology.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57965D1CD606A9008F3E72 /* OWLOntology.m */; };
+		CC5796641CD60ECA008F3E72 /* OWLClass.h in Headers */ = {isa = PBXBuildFile; fileRef = CC5796621CD60ECA008F3E72 /* OWLClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC5796651CD60ECA008F3E72 /* OWLClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5796631CD60ECA008F3E72 /* OWLClass.m */; };
+		CC6BF4261CD67B9E00DEA3B1 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6BF4211CD67B4D00DEA3B1 /* libredland-ios.a */; };
+		CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC52207F1CD61A4700490D42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCD2FC351CD5F7B3003F8CC8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCD2FC3D1CD5F7B3003F8CC8;
+			remoteInfo = MicroReasoner;
+		};
+		CC6BF41E1CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = Redland;
+		};
+		CC6BF4201CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EEE7B44E15C84978004D5A68;
+			remoteInfo = "redland-ios";
+		};
+		CC6BF4221CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CCF6966D1C6274AB00CF65AF;
+			remoteInfo = Tests;
+		};
+		CC6BF4241CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CCF6964B1C62701F00CF65AF;
+			remoteInfo = "iOS-Tests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CC2747D71CD5F9FA009E6792 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		CC2747D91CD5FA01009E6792 /* libxslt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxslt.tbd; path = usr/lib/libxslt.tbd; sourceTree = SDKROOT; };
+		CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CC5220791CD61A4700490D42 /* MicroReasonerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroReasonerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyTests.m; sourceTree = "<group>"; };
+		CC52207D1CD61A4700490D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC52208D1CD61BE700490D42 /* building.owl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building.owl; sourceTree = "<group>"; };
+		CC57965C1CD606A9008F3E72 /* OWLOntology.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntology.h; sourceTree = "<group>"; };
+		CC57965D1CD606A9008F3E72 /* OWLOntology.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntology.m; sourceTree = "<group>"; };
+		CC5796621CD60ECA008F3E72 /* OWLClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClass.h; sourceTree = "<group>"; };
+		CC5796631CD60ECA008F3E72 /* OWLClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLClass.m; sourceTree = "<group>"; };
+		CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MicroReasoner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroReasoner.h; sourceTree = "<group>"; };
+		CCD2FC431CD5F7B3003F8CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC5220761CD61A4700490D42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC52207E1CD61A4700490D42 /* MicroReasoner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCD2FC3A1CD5F7B3003F8CC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC6BF4261CD67B9E00DEA3B1 /* libredland-ios.a in Frameworks */,
+				CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */,
+				CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */,
+				CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CC2747C11CD5F8E0009E6792 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */,
+				CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */,
+				CC2747D91CD5FA01009E6792 /* libxslt.tbd */,
+				CC2747D71CD5F9FA009E6792 /* libxml2.tbd */,
+			);
+			name = Dependencies;
+			path = External;
+			sourceTree = "<group>";
+		};
+		CC52207A1CD61A4700490D42 /* MicroReasonerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CC52208C1CD61BE700490D42 /* Dataset */,
+				CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */,
+				CC52207D1CD61A4700490D42 /* Info.plist */,
+			);
+			path = MicroReasonerTests;
+			sourceTree = "<group>";
+		};
+		CC52208C1CD61BE700490D42 /* Dataset */ = {
+			isa = PBXGroup;
+			children = (
+				CC52208D1CD61BE700490D42 /* building.owl */,
+			);
+			path = Dataset;
+			sourceTree = "<group>";
+		};
+		CC6BF4141CD67B4D00DEA3B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC6BF41F1CD67B4D00DEA3B1 /* Redland.framework */,
+				CC6BF4211CD67B4D00DEA3B1 /* libredland-ios.a */,
+				CC6BF4231CD67B4D00DEA3B1 /* Tests.xctest */,
+				CC6BF4251CD67B4D00DEA3B1 /* iOS-Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCD2FC341CD5F7B3003F8CC8 = {
+			isa = PBXGroup;
+			children = (
+				CCD2FC401CD5F7B3003F8CC8 /* MicroReasoner */,
+				CC52207A1CD61A4700490D42 /* MicroReasonerTests */,
+				CC2747C11CD5F8E0009E6792 /* Dependencies */,
+				CCD2FC3F1CD5F7B3003F8CC8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CCD2FC3F1CD5F7B3003F8CC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */,
+				CC5220791CD61A4700490D42 /* MicroReasonerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CCD2FC401CD5F7B3003F8CC8 /* MicroReasoner */ = {
+			isa = PBXGroup;
+			children = (
+				CC57965C1CD606A9008F3E72 /* OWLOntology.h */,
+				CC57965D1CD606A9008F3E72 /* OWLOntology.m */,
+				CC5796621CD60ECA008F3E72 /* OWLClass.h */,
+				CC5796631CD60ECA008F3E72 /* OWLClass.m */,
+				CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */,
+				CCD2FC431CD5F7B3003F8CC8 /* Info.plist */,
+			);
+			path = MicroReasoner;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CCD2FC3B1CD5F7B3003F8CC8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */,
+				CC5796641CD60ECA008F3E72 /* OWLClass.h in Headers */,
+				CC57965E1CD606A9008F3E72 /* OWLOntology.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CC5220781CD61A4700490D42 /* MicroReasonerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC52208B1CD61A4700490D42 /* Build configuration list for PBXNativeTarget "MicroReasonerTests" */;
+			buildPhases = (
+				CC5220751CD61A4700490D42 /* Sources */,
+				CC5220761CD61A4700490D42 /* Frameworks */,
+				CC5220771CD61A4700490D42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC5220801CD61A4700490D42 /* PBXTargetDependency */,
+			);
+			name = MicroReasonerTests;
+			productName = MicroReasonerTests;
+			productReference = CC5220791CD61A4700490D42 /* MicroReasonerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CCD2FC3D1CD5F7B3003F8CC8 /* MicroReasoner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCD2FC461CD5F7B3003F8CC8 /* Build configuration list for PBXNativeTarget "MicroReasoner" */;
+			buildPhases = (
+				CCD2FC391CD5F7B3003F8CC8 /* Sources */,
+				CCD2FC3A1CD5F7B3003F8CC8 /* Frameworks */,
+				CCD2FC3B1CD5F7B3003F8CC8 /* Headers */,
+				CCD2FC3C1CD5F7B3003F8CC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MicroReasoner;
+			productName = MicroReasoner;
+			productReference = CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CCD2FC351CD5F7B3003F8CC8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "SisInf Lab";
+				TargetAttributes = {
+					CC5220781CD61A4700490D42 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = L4J5Y5B6JJ;
+					};
+					CCD2FC3D1CD5F7B3003F8CC8 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = L4J5Y5B6JJ;
+					};
+				};
+			};
+			buildConfigurationList = CCD2FC381CD5F7B3003F8CC8 /* Build configuration list for PBXProject "MicroReasoner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CCD2FC341CD5F7B3003F8CC8;
+			productRefGroup = CCD2FC3F1CD5F7B3003F8CC8 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CC6BF4141CD67B4D00DEA3B1 /* Products */;
+					ProjectRef = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				CCD2FC3D1CD5F7B3003F8CC8 /* MicroReasoner */,
+				CC5220781CD61A4700490D42 /* MicroReasonerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CC6BF41F1CD67B4D00DEA3B1 /* Redland.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Redland.framework;
+			remoteRef = CC6BF41E1CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CC6BF4211CD67B4D00DEA3B1 /* libredland-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libredland-ios.a";
+			remoteRef = CC6BF4201CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CC6BF4231CD67B4D00DEA3B1 /* Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.xctest;
+			remoteRef = CC6BF4221CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CC6BF4251CD67B4D00DEA3B1 /* iOS-Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "iOS-Tests.xctest";
+			remoteRef = CC6BF4241CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC5220771CD61A4700490D42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC52208E1CD61BE700490D42 /* building.owl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCD2FC3C1CD5F7B3003F8CC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC5220751CD61A4700490D42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC52207C1CD61A4700490D42 /* OWLOntologyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCD2FC391CD5F7B3003F8CC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC57965F1CD606A9008F3E72 /* OWLOntology.m in Sources */,
+				CC5796651CD60ECA008F3E72 /* OWLClass.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC5220801CD61A4700490D42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCD2FC3D1CD5F7B3003F8CC8 /* MicroReasoner */;
+			targetProxy = CC52207F1CD61A4700490D42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CC5220811CD61A4700490D42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MicroReasonerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = it.poliba.sisinflab.owl.MicroReasonerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CC5220821CD61A4700490D42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MicroReasonerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = it.poliba.sisinflab.owl.MicroReasonerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CCD2FC441CD5F7B3003F8CC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Debug;
+		};
+		CCD2FC451CD5F7B3003F8CC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
+			};
+			name = Release;
+		};
+		CCD2FC471CD5F7B3003F8CC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MicroReasoner/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.poliba.sisinflab.owl.MicroReasoner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CCD2FC481CD5F7B3003F8CC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MicroReasoner/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = it.poliba.sisinflab.owl.MicroReasoner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC52208B1CD61A4700490D42 /* Build configuration list for PBXNativeTarget "MicroReasonerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC5220811CD61A4700490D42 /* Debug */,
+				CC5220821CD61A4700490D42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCD2FC381CD5F7B3003F8CC8 /* Build configuration list for PBXProject "MicroReasoner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCD2FC441CD5F7B3003F8CC8 /* Debug */,
+				CCD2FC451CD5F7B3003F8CC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCD2FC461CD5F7B3003F8CC8 /* Build configuration list for PBXNativeTarget "MicroReasoner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCD2FC471CD5F7B3003F8CC8 /* Debug */,
+				CCD2FC481CD5F7B3003F8CC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CCD2FC351CD5F7B3003F8CC8 /* Project object */;
+}
