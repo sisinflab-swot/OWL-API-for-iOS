@@ -7,9 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "OWLOntology.h"
+#import "Microreasoner/MicroReasoner.h"
 
-static OWLOntology *ontology = nil;
+static id<OWLOntology> ontology = nil;
 
 
 @interface MicroReasonerTests : XCTestCase
@@ -23,7 +23,7 @@ static OWLOntology *ontology = nil;
 {
     if (self == [MicroReasonerTests class]) {
         NSURL *ontoURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"building" withExtension:@"owl"];
-        ontology = [[OWLOntology alloc] initWithContentsOfURL:ontoURL];
+        ontology = [[OWLManager createOWLOntologyManager] loadOntologyFromDocumentAtURL:ontoURL error:NULL];
     }
 }
 
@@ -39,14 +39,14 @@ static OWLOntology *ontology = nil;
 
 - (void)testStatements
 {
-    NSArray *statements = [ontology allStatements];
+    NSArray *statements = [(NSObject *)ontology valueForKeyPath:@"internals.allStatements"];
     NSLog(@"Statements (%lu):\n-----------\n%@", statements.count, statements);
     XCTAssertTrue(statements.count > 0);
 }
 
 - (void)testClasses
 {
-    NSArray *classes = [ontology.classesInSignature allValues];
+    NSArray *classes = [[ontology getClassesInSignature] allObjects];
     NSLog(@"Classes (%lu):\n--------\n%@", classes.count, classes);
     XCTAssertTrue(classes.count > 0);
 }

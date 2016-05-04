@@ -10,15 +10,33 @@
 		CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D71CD5F9FA009E6792 /* libxml2.tbd */; };
 		CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D91CD5FA01009E6792 /* libxslt.tbd */; };
 		CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */; };
+		CC49E3711CDA0B3700D18736 /* OWLOntologyID.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */; };
+		CC49E37E1CDA106500D18736 /* OWLClassImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E37C1CDA106500D18736 /* OWLClassImpl.h */; };
+		CC49E37F1CDA106500D18736 /* OWLClassImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E37D1CDA106500D18736 /* OWLClassImpl.m */; };
+		CC49E3821CDA10C800D18736 /* OWLOntologyImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E3801CDA10C800D18736 /* OWLOntologyImpl.h */; };
+		CC49E3831CDA10C800D18736 /* OWLOntologyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3811CDA10C800D18736 /* OWLOntologyImpl.m */; };
+		CC49E3861CDA11F000D18736 /* OWLOntologyManagerImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E3841CDA11F000D18736 /* OWLOntologyManagerImpl.h */; };
+		CC49E3871CDA11F000D18736 /* OWLOntologyManagerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3851CDA11F000D18736 /* OWLOntologyManagerImpl.m */; };
+		CC49E38A1CDA140C00D18736 /* OWLOntologyInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E3881CDA140C00D18736 /* OWLOntologyInternals.h */; };
+		CC49E38B1CDA140C00D18736 /* OWLOntologyInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */; };
+		CC49E38E1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E38C1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h */; };
+		CC49E38F1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E38D1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m */; };
+		CC49E3921CDA4F3000D18736 /* OWLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3901CDA4F3000D18736 /* OWLManager.m */; };
+		CC49E3931CDA4F3000D18736 /* OWLOntologyID.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */; };
 		CC52207C1CD61A4700490D42 /* OWLOntologyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */; };
 		CC52207E1CD61A4700490D42 /* MicroReasoner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */; };
 		CC52208E1CD61BE700490D42 /* building.owl in Resources */ = {isa = PBXBuildFile; fileRef = CC52208D1CD61BE700490D42 /* building.owl */; };
-		CC57965E1CD606A9008F3E72 /* OWLOntology.h in Headers */ = {isa = PBXBuildFile; fileRef = CC57965C1CD606A9008F3E72 /* OWLOntology.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC57965F1CD606A9008F3E72 /* OWLOntology.m in Sources */ = {isa = PBXBuildFile; fileRef = CC57965D1CD606A9008F3E72 /* OWLOntology.m */; };
-		CC5796641CD60ECA008F3E72 /* OWLClass.h in Headers */ = {isa = PBXBuildFile; fileRef = CC5796621CD60ECA008F3E72 /* OWLClass.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CC5796651CD60ECA008F3E72 /* OWLClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5796631CD60ECA008F3E72 /* OWLClass.m */; };
-		CC6BF4261CD67B9E00DEA3B1 /* libredland-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6BF4211CD67B4D00DEA3B1 /* libredland-ios.a */; };
+		CC6BF4261CD67B9E00DEA3B1 /* libRedland-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */; };
 		CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCEF46751CD8E7AC008C3D88 /* OWLClass.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF46711CD8E7AC008C3D88 /* OWLClass.h */; };
+		CCEF46771CD8E7AC008C3D88 /* OWLOntology.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF46731CD8E7AC008C3D88 /* OWLOntology.h */; };
+		CCEF467E1CD8EEFD008C3D88 /* OWLObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF467D1CD8EEFD008C3D88 /* OWLObject.h */; };
+		CCEF46801CD8EF3C008C3D88 /* OWLNamedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF467F1CD8EF3C008C3D88 /* OWLNamedObject.h */; };
+		CCEF46821CD8F0BC008C3D88 /* OWLEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF46811CD8F0BC008C3D88 /* OWLEntity.h */; };
+		CCEF46841CD8F0CB008C3D88 /* OWLClassExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF46831CD8F0CB008C3D88 /* OWLClassExpression.h */; };
+		CCEF46861CD8F373008C3D88 /* OWLLogicalEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF46851CD8F373008C3D88 /* OWLLogicalEntity.h */; };
+		CCEF46881CD90579008C3D88 /* OWLOntologyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF46871CD90579008C3D88 /* OWLOntologyManager.h */; };
+		CCEF468D1CD9077D008C3D88 /* OWLManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CCEF468B1CD9077D008C3D88 /* OWLManager.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,18 +81,36 @@
 		CC2747D71CD5F9FA009E6792 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		CC2747D91CD5FA01009E6792 /* libxslt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxslt.tbd; path = usr/lib/libxslt.tbd; sourceTree = SDKROOT; };
 		CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyID.h; sourceTree = "<group>"; };
+		CC49E37C1CDA106500D18736 /* OWLClassImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassImpl.h; sourceTree = "<group>"; };
+		CC49E37D1CDA106500D18736 /* OWLClassImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLClassImpl.m; sourceTree = "<group>"; };
+		CC49E3801CDA10C800D18736 /* OWLOntologyImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyImpl.h; sourceTree = "<group>"; };
+		CC49E3811CDA10C800D18736 /* OWLOntologyImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyImpl.m; sourceTree = "<group>"; };
+		CC49E3841CDA11F000D18736 /* OWLOntologyManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyManagerImpl.h; sourceTree = "<group>"; };
+		CC49E3851CDA11F000D18736 /* OWLOntologyManagerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyManagerImpl.m; sourceTree = "<group>"; };
+		CC49E3881CDA140C00D18736 /* OWLOntologyInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyInternals.h; sourceTree = "<group>"; };
+		CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyInternals.m; sourceTree = "<group>"; };
+		CC49E38C1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RedlandNamespace+OWLAdditions.h"; sourceTree = "<group>"; };
+		CC49E38D1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RedlandNamespace+OWLAdditions.m"; sourceTree = "<group>"; };
+		CC49E3901CDA4F3000D18736 /* OWLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLManager.m; sourceTree = "<group>"; };
+		CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyID.m; sourceTree = "<group>"; };
 		CC5220791CD61A4700490D42 /* MicroReasonerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroReasonerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyTests.m; sourceTree = "<group>"; };
 		CC52207D1CD61A4700490D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC52208D1CD61BE700490D42 /* building.owl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building.owl; sourceTree = "<group>"; };
-		CC57965C1CD606A9008F3E72 /* OWLOntology.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntology.h; sourceTree = "<group>"; };
-		CC57965D1CD606A9008F3E72 /* OWLOntology.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntology.m; sourceTree = "<group>"; };
-		CC5796621CD60ECA008F3E72 /* OWLClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClass.h; sourceTree = "<group>"; };
-		CC5796631CD60ECA008F3E72 /* OWLClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLClass.m; sourceTree = "<group>"; };
 		CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MicroReasoner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroReasoner.h; sourceTree = "<group>"; };
 		CCD2FC431CD5F7B3003F8CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCEF46711CD8E7AC008C3D88 /* OWLClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClass.h; sourceTree = "<group>"; };
+		CCEF46731CD8E7AC008C3D88 /* OWLOntology.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntology.h; sourceTree = "<group>"; };
+		CCEF467D1CD8EEFD008C3D88 /* OWLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObject.h; sourceTree = "<group>"; };
+		CCEF467F1CD8EF3C008C3D88 /* OWLNamedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLNamedObject.h; sourceTree = "<group>"; };
+		CCEF46811CD8F0BC008C3D88 /* OWLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLEntity.h; sourceTree = "<group>"; };
+		CCEF46831CD8F0CB008C3D88 /* OWLClassExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassExpression.h; sourceTree = "<group>"; };
+		CCEF46851CD8F373008C3D88 /* OWLLogicalEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLogicalEntity.h; sourceTree = "<group>"; };
+		CCEF46871CD90579008C3D88 /* OWLOntologyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyManager.h; sourceTree = "<group>"; };
+		CCEF468B1CD9077D008C3D88 /* OWLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC6BF4261CD67B9E00DEA3B1 /* libredland-ios.a in Frameworks */,
+				CC6BF4261CD67B9E00DEA3B1 /* libRedland-iOS.a in Frameworks */,
 				CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */,
 				CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */,
 				CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */,
@@ -110,6 +146,25 @@
 			);
 			name = Dependencies;
 			path = External;
+			sourceTree = "<group>";
+		};
+		CC49E37B1CDA104C00D18736 /* impl */ = {
+			isa = PBXGroup;
+			children = (
+				CC49E38C1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h */,
+				CC49E38D1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m */,
+				CC49E37C1CDA106500D18736 /* OWLClassImpl.h */,
+				CC49E37D1CDA106500D18736 /* OWLClassImpl.m */,
+				CC49E3801CDA10C800D18736 /* OWLOntologyImpl.h */,
+				CC49E3811CDA10C800D18736 /* OWLOntologyImpl.m */,
+				CC49E3881CDA140C00D18736 /* OWLOntologyInternals.h */,
+				CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */,
+				CC49E3841CDA11F000D18736 /* OWLOntologyManagerImpl.h */,
+				CC49E3851CDA11F000D18736 /* OWLOntologyManagerImpl.m */,
+				CC49E3901CDA4F3000D18736 /* OWLManager.m */,
+				CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */,
+			);
+			path = impl;
 			sourceTree = "<group>";
 		};
 		CC52207A1CD61A4700490D42 /* MicroReasonerTests */ = {
@@ -134,9 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				CC6BF41F1CD67B4D00DEA3B1 /* Redland.framework */,
-				CC6BF4211CD67B4D00DEA3B1 /* libredland-ios.a */,
-				CC6BF4231CD67B4D00DEA3B1 /* Tests.xctest */,
-				CC6BF4251CD67B4D00DEA3B1 /* iOS-Tests.xctest */,
+				CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */,
+				CC6BF4231CD67B4D00DEA3B1 /* Redland-Mac-Tests.xctest */,
+				CC6BF4251CD67B4D00DEA3B1 /* Redland-iOS-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,14 +218,29 @@
 		CCD2FC401CD5F7B3003F8CC8 /* MicroReasoner */ = {
 			isa = PBXGroup;
 			children = (
-				CC57965C1CD606A9008F3E72 /* OWLOntology.h */,
-				CC57965D1CD606A9008F3E72 /* OWLOntology.m */,
-				CC5796621CD60ECA008F3E72 /* OWLClass.h */,
-				CC5796631CD60ECA008F3E72 /* OWLClass.m */,
+				CCEF46701CD8E7AC008C3D88 /* owlapi */,
 				CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */,
 				CCD2FC431CD5F7B3003F8CC8 /* Info.plist */,
 			);
 			path = MicroReasoner;
+			sourceTree = "<group>";
+		};
+		CCEF46701CD8E7AC008C3D88 /* owlapi */ = {
+			isa = PBXGroup;
+			children = (
+				CC49E37B1CDA104C00D18736 /* impl */,
+				CCEF46711CD8E7AC008C3D88 /* OWLClass.h */,
+				CCEF46831CD8F0CB008C3D88 /* OWLClassExpression.h */,
+				CCEF46811CD8F0BC008C3D88 /* OWLEntity.h */,
+				CCEF46851CD8F373008C3D88 /* OWLLogicalEntity.h */,
+				CCEF468B1CD9077D008C3D88 /* OWLManager.h */,
+				CCEF467F1CD8EF3C008C3D88 /* OWLNamedObject.h */,
+				CCEF467D1CD8EEFD008C3D88 /* OWLObject.h */,
+				CCEF46731CD8E7AC008C3D88 /* OWLOntology.h */,
+				CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */,
+				CCEF46871CD90579008C3D88 /* OWLOntologyManager.h */,
+			);
+			path = owlapi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +250,22 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCEF46771CD8E7AC008C3D88 /* OWLOntology.h in Headers */,
+				CCEF46751CD8E7AC008C3D88 /* OWLClass.h in Headers */,
+				CCEF46841CD8F0CB008C3D88 /* OWLClassExpression.h in Headers */,
+				CCEF467E1CD8EEFD008C3D88 /* OWLObject.h in Headers */,
+				CCEF46881CD90579008C3D88 /* OWLOntologyManager.h in Headers */,
+				CC49E38E1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h in Headers */,
 				CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */,
-				CC5796641CD60ECA008F3E72 /* OWLClass.h in Headers */,
-				CC57965E1CD606A9008F3E72 /* OWLOntology.h in Headers */,
+				CC49E37E1CDA106500D18736 /* OWLClassImpl.h in Headers */,
+				CCEF468D1CD9077D008C3D88 /* OWLManager.h in Headers */,
+				CC49E3861CDA11F000D18736 /* OWLOntologyManagerImpl.h in Headers */,
+				CC49E38A1CDA140C00D18736 /* OWLOntologyInternals.h in Headers */,
+				CC49E3821CDA10C800D18736 /* OWLOntologyImpl.h in Headers */,
+				CC49E3711CDA0B3700D18736 /* OWLOntologyID.h in Headers */,
+				CCEF46801CD8EF3C008C3D88 /* OWLNamedObject.h in Headers */,
+				CCEF46821CD8F0BC008C3D88 /* OWLEntity.h in Headers */,
+				CCEF46861CD8F373008C3D88 /* OWLLogicalEntity.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,24 +359,24 @@
 			remoteRef = CC6BF41E1CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CC6BF4211CD67B4D00DEA3B1 /* libredland-ios.a */ = {
+		CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libredland-ios.a";
+			path = "libRedland-iOS.a";
 			remoteRef = CC6BF4201CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CC6BF4231CD67B4D00DEA3B1 /* Tests.xctest */ = {
+		CC6BF4231CD67B4D00DEA3B1 /* Redland-Mac-Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = Tests.xctest;
+			path = "Redland-Mac-Tests.xctest";
 			remoteRef = CC6BF4221CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CC6BF4251CD67B4D00DEA3B1 /* iOS-Tests.xctest */ = {
+		CC6BF4251CD67B4D00DEA3B1 /* Redland-iOS-Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "iOS-Tests.xctest";
+			path = "Redland-iOS-Tests.xctest";
 			remoteRef = CC6BF4241CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -330,8 +413,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC57965F1CD606A9008F3E72 /* OWLOntology.m in Sources */,
-				CC5796651CD60ECA008F3E72 /* OWLClass.m in Sources */,
+				CC49E3921CDA4F3000D18736 /* OWLManager.m in Sources */,
+				CC49E37F1CDA106500D18736 /* OWLClassImpl.m in Sources */,
+				CC49E3871CDA11F000D18736 /* OWLOntologyManagerImpl.m in Sources */,
+				CC49E3931CDA4F3000D18736 /* OWLOntologyID.m in Sources */,
+				CC49E38B1CDA140C00D18736 /* OWLOntologyInternals.m in Sources */,
+				CC49E38F1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m in Sources */,
+				CC49E3831CDA10C800D18736 /* OWLOntologyImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

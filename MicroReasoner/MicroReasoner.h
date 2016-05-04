@@ -17,4 +17,6 @@ FOUNDATION_EXPORT const unsigned char MicroReasonerVersionString[];
 
 #import <Redland-ObjC.h>
 #import <OWLClass.h>
+#import <OWLManager.h>
 #import <OWLOntology.h>
+#import <OWLOntologyManager.h>
