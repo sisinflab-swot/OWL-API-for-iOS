@@ -12,8 +12,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Provides a point of convenience for creating an OWLOntologyManager.
 @interface OWLManager : NSObject
 
+/**
+ * Creates an OWL ontology manager with default configuration.
+ *
+ * @return The new ontology manager.
+ */
 + (id<OWLOntologyManager>)createOWLOntologyManager;
 
 @end
