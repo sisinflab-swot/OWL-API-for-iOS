@@ -19,12 +19,16 @@ static id<OWLOntology> ontology = nil;
 
 @implementation MicroReasonerTests
 
-+ (void)initialize
-{
-    if (self == [MicroReasonerTests class]) {
-        NSURL *ontoURL = [[NSBundle bundleForClass:[self class]] URLForResource:@"building" withExtension:@"owl"];
-        ontology = [[OWLManager createOWLOntologyManager] loadOntologyFromDocumentAtURL:ontoURL error:NULL];
+static void loadOntology() {
+    if (!ontology) {
+        loadOntologyNoCache();
     }
+}
+
+static void loadOntologyNoCache() {
+    Class testsClass = [MicroReasonerTests class];
+    NSURL *ontoURL = [[NSBundle bundleForClass:testsClass] URLForResource:@"building" withExtension:@"owl"];
+    ontology = [[OWLManager createOWLOntologyManager] loadOntologyFromDocumentAtURL:ontoURL error:NULL];
 }
 
 - (void)setUp
@@ -37,17 +41,29 @@ static id<OWLOntology> ontology = nil;
     [super tearDown];
 }
 
-- (void)testStatements
+- (void)testLoadOntology
 {
+    [self measureBlock:^{
+        loadOntologyNoCache();
+    }];
+    XCTAssertNotNil(ontology);
+}
+
+- (void)testAllStatements
+{
+    loadOntology();
+    
     NSArray *statements = [(NSObject *)ontology valueForKeyPath:@"internals.allStatements"];
-    NSLog(@"Statements (%lu):\n-----------\n%@", statements.count, statements);
+    NSLog(@"Statements (%lu):\n-----------\n%@", (unsigned long)statements.count, statements);
     XCTAssertTrue(statements.count > 0);
 }
 
-- (void)testClasses
+- (void)testGetClassesInSignature
 {
+    loadOntology();
+    
     NSArray *classes = [[ontology getClassesInSignature] allObjects];
-    NSLog(@"Classes (%lu):\n--------\n%@", classes.count, classes);
+    NSLog(@"Classes (%lu):\n--------\n%@", (unsigned long)classes.count, classes);
     XCTAssertTrue(classes.count > 0);
 }
 
