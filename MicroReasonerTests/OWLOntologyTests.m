@@ -62,7 +62,7 @@ static void loadOntologyNoCache() {
 {
     loadOntology();
     
-    NSArray *classes = [[ontology getClassesInSignature] allObjects];
+    NSArray *classes = [[ontology classesInSignature] allObjects];
     NSLog(@"Classes (%lu):\n--------\n%@", (unsigned long)classes.count, classes);
     XCTAssertTrue(classes.count > 0);
 }

@@ -7,14 +7,45 @@
 //
 
 #import "OWLClassImpl.h"
+#import "OWLOntology.h"
+#import "OWLSubClassOfAxiom.h"
 
 @implementation OWLClassImpl
 
-#pragma mark Properties
+#pragma mark OWLObject
+
+- (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; }
+
+#pragma mark OWLNamedObject
 
 @synthesize IRI = _IRI;
 
-#pragma mark Public methods
+#pragma mark OWLEntity
+
+- (BOOL)isOWLClass { return YES; }
+
+#pragma mark OWLClassExpression
+
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeClass; }
+
+- (BOOL)anonymous { return NO; }
+
+- (id<OWLClass>)asOwlClass { return self; }
+
+#pragma mark OWLClass
+
+- (NSSet<id<OWLClassExpression>> *)getSuperClassesInOntology:(id<OWLOntology>)ontology
+{
+    NSMutableSet *returnSet = [[NSMutableSet alloc] init];
+    
+    for (id<OWLSubClassOfAxiom> axiom in [ontology subClassAxiomsForSubClass:self]) {
+        [returnSet addObject:axiom.superClass];
+    }
+    
+    return returnSet;
+}
+
+#pragma mark Other public methods
 
 - (instancetype)initWithIRI:(NSURL *)IRI
 {
@@ -24,31 +55,6 @@
     return self;
 }
 
-- (BOOL)anonymous
-{
-    return NO;
-}
-
-- (id<OWLClass>)asOwlClass
-{
-    return self;
-}
-
-- (NSSet<id<OWLClass>> *)getClassesInSignature
-{
-    return [NSSet setWithObject:self];
-}
-
-- (NSSet<id<OWLClassExpression>> *)getSuperClassesInOntology:(id<OWLOntology>)ontology
-{
-    // TODO: implement
-    NSParameterAssert(ontology);
-    return [NSSet set];
-}
-
-- (NSString *)description
-{
-    return [self.IRI absoluteString];
-}
+- (NSString *)description { return [self.IRI absoluteString]; }
 
 @end

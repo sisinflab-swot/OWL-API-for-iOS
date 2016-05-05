@@ -23,7 +23,28 @@
 @synthesize internals = _internals;
 @synthesize ontologyID = _ontologyID;
 
-#pragma mark Public methods
+#pragma mark OWLObject
+
+- (NSSet<id<OWLEntity>> *)signature
+{
+    // TODO: finish implementing
+    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:self.classesInSignature];
+    return signature;
+}
+
+- (NSSet<id<OWLClass>> *)classesInSignature
+{
+    return [NSSet setWithArray:[self.internals.classesByIRI allValues]];
+}
+
+#pragma mark OWLOntology
+
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
+{
+    return [self.internals subClassAxiomsForSubClass:cls];
+}
+
+#pragma mark Other public methods
 
 - (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals
 {
@@ -34,11 +55,6 @@
         _internals = internals;
     }
     return self;
-}
-
-- (NSSet<id<OWLClass>> *)getClassesInSignature
-{
-    return [NSSet setWithArray:self.internals.classesByIRI.allValues];
 }
 
 @end

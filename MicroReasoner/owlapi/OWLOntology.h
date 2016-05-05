@@ -9,6 +9,7 @@
 #import "OWLObject.h"
 
 @class OWLOntologyID;
+@protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The identity of this ontology.
 @property (nonatomic, copy, readonly) OWLOntologyID *ontologyID;
+
+/**
+ * Gets all of the subclass axioms where the left hand side (the subclass)
+ * is equal to the specified class.
+ *
+ * @param cls The class.
+ *
+ * @return SubClass axioms where the LHS is cls.
+ */
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id <OWLClass>)cls;
 
 @end
 

@@ -6,6 +6,7 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
+#import "OWLObjectImpl.h"
 #import "OWLOntology.h"
 
 @class OWLOntologyID;
@@ -13,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWLOntologyImpl : NSObject <OWLOntology>
+@interface OWLOntologyImpl : OWLObjectImpl <OWLOntology>
 
 - (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals;
 

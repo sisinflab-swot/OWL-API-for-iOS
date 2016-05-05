@@ -8,6 +8,4 @@
 
 #import "OWLOntologyManager.h"
 
-@interface OWLOntologyManagerImpl : NSObject <OWLOntologyManager>
-
-@end
+@interface OWLOntologyManagerImpl : NSObject <OWLOntologyManager> @end

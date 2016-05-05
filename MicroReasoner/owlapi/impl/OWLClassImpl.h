@@ -6,10 +6,15 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
+#import "OWLObjectImpl.h"
 #import "OWLClass.h"
 
-@interface OWLClassImpl : NSObject <OWLClass>
+NS_ASSUME_NONNULL_BEGIN
+
+@interface OWLClassImpl : OWLObjectImpl <OWLClass>
 
 - (instancetype)initWithIRI:(NSURL *)IRI;
 
 @end
+
+NS_ASSUME_NONNULL_END

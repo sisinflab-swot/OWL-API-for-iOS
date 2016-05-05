@@ -34,4 +34,23 @@
     return _classesByIRI;
 }
 
+// subClassOfAxiomsBySubClass
+@synthesize subClassAxiomsBySubClass = _subClassAxiomsBySubClass;
+
+- (NSMutableDictionary<id<OWLClass>,NSSet<id<OWLSubClassOfAxiom>> *> *)subClassOfAxiomsBySubClass
+{
+    if (!_subClassAxiomsBySubClass) {
+        _subClassAxiomsBySubClass = [[NSMutableDictionary alloc] init];
+    }
+    return _subClassAxiomsBySubClass;
+}
+
+#pragma mark Public methods
+
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
+{
+    NSSet *returnSet = [self.subClassAxiomsBySubClass objectForKey:cls];
+    return returnSet ?: [NSSet set];
+}
+
 @end

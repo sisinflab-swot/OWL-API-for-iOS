@@ -7,6 +7,7 @@
 //
 
 #import "OWLObject.h"
+#import "OWLClassExpressionType.h"
 
 @protocol OWLClass;
 
@@ -17,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
  * This protocol covers named and anonymous classes.
  */
 @protocol OWLClassExpression <OWLObject>
+
+/// The class expression type for this class expression.
+@property (nonatomic, readonly) OWLClassExpressionType classExpressionType;
 
 /// Determines whether or not this expression represents an anonymous class expression.
 @property (nonatomic, readonly) BOOL anonymous;
