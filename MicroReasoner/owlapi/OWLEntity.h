@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents Entities in the OWL 2 Specification.
-@protocol OWLEntity <OWLObject, OWLNamedObject>
+@protocol OWLEntity <OWLNamedObject>
 
 /// Determines if this entity is an OWLClass.
 @property (nonatomic, readonly) BOOL isOWLClass;

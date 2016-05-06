@@ -10,7 +10,6 @@
 #import "OWLLogicalEntity.h"
 #import "OWLNamedObject.h"
 
-@protocol OWLClassExpression;
 @protocol OWLOntology;
 
 NS_ASSUME_NONNULL_BEGIN

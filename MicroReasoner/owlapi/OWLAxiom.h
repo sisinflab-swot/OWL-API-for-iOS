@@ -8,6 +8,4 @@
 
 #import "OWLObject.h"
 
-@protocol OWLAxiom <OWLObject>
-
-@end
+@protocol OWLAxiom <OWLObject> @end

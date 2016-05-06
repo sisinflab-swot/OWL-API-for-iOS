@@ -8,5 +8,11 @@
 
 #import "OWLObject.h"
 
-/// Abstract class that implements part of the OWLObject protocol.
-@interface OWLObjectImpl : NSObject <OWLObject_Concrete> @end
+/// Abstract class that informally implements part of the OWLObject protocol.
+@interface OWLObjectImpl : NSObject
+
+#pragma mark OWLObject
+
+- (NSSet<id<OWLClass>> *)classesInSignature;
+
+@end

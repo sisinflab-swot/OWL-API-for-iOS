@@ -8,6 +8,4 @@
 
 #import "OWLEntity.h"
 
-@protocol OWLLogicalEntity <OWLEntity>
-
-@end
+@protocol OWLLogicalEntity <OWLEntity> @end

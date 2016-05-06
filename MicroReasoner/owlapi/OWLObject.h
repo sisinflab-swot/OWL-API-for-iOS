@@ -10,12 +10,11 @@
 
 @protocol OWLClass;
 @protocol OWLEntity;
-@protocol OWLObject_Concrete;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents a generic OWL object.
-@protocol OWLObject <OWLObject_Concrete>
+@protocol OWLObject <NSObject>
 
 /**
  * Gets the signature of this object.
@@ -23,12 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @return A set of entities that correspond to the signature of this object.
  */
 - (NSSet<id<OWLEntity>> *)signature;
-
-@end
-
-
-/// Internal protocol, do not use.
-@protocol OWLObject_Concrete <NSObject>
 
 /**
  * A convenience method that obtains the classes that are in the signature of this object.

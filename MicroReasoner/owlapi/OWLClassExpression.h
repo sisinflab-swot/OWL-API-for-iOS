@@ -7,6 +7,7 @@
 //
 
 #import "OWLObject.h"
+#import "OWLPropertyRange.h"
 #import "OWLClassExpressionType.h"
 
 @protocol OWLClass;
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Represents Class Expressions in the OWL 2 specification.
  * This protocol covers named and anonymous classes.
  */
-@protocol OWLClassExpression <OWLObject>
+@protocol OWLClassExpression <OWLObject, OWLPropertyRange>
 
 /// The class expression type for this class expression.
 @property (nonatomic, readonly) OWLClassExpressionType classExpressionType;

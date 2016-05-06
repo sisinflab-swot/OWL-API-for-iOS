@@ -8,6 +8,4 @@
 
 #import "OWLAxiom.h"
 
-@protocol OWLLogicalAxiom <OWLAxiom>
-
-@end
+@protocol OWLLogicalAxiom <OWLAxiom> @end

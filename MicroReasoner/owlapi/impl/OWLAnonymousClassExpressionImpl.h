@@ -1,0 +1,24 @@
+//
+//  OWLAnonymousClassExpressionImpl.h
+//  MicroReasoner
+//
+//  Created by Ivano Bilenchi on 06/05/16.
+//  Copyright © 2016 SisInf Lab. All rights reserved.
+//
+
+#import "OWLObjectImpl.h"
+#import "OWLAnonymousClassExpression.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+/// Abstract class that implements part of the OWLAnonymousClassExpression protocol.
+@interface OWLAnonymousClassExpressionImpl : OWLObjectImpl
+
+#pragma mark OWLClassExpression
+
+- (BOOL)anonymous;
+- (nullable id<OWLClass>)asOwlClass;
+
+@end
+
+NS_ASSUME_NONNULL_END
