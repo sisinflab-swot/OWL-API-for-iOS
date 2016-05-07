@@ -14,6 +14,10 @@
 
 - (BOOL)anonymous { return YES; }
 
+- (BOOL)isOWLThing { return NO; }
+
+- (BOOL)isOWLNothing { return NO; }
+
 - (id<OWLClass>)asOwlClass { return nil; }
 
 @end

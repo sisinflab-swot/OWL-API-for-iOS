@@ -26,6 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Determines whether or not this expression represents an anonymous class expression.
 @property (nonatomic, readonly) BOOL anonymous;
 
+/// Determines if this expression is the built in class owl:Thing.
+@property (nonatomic, readonly) BOOL isOWLThing;
+
+/// Determines if this expression is the built in class owl:Nothing.
+@property (nonatomic, readonly) BOOL isOWLNothing;
+
 /**
  * If this class expression is in fact a named class then this method may be used
  * to obtain the expression as an OWLClass without the need for casting.

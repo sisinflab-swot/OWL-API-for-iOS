@@ -16,7 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark OWLClassExpression
 
-- (BOOL)anonymous;
+@property (nonatomic, readonly) BOOL anonymous;
+@property (nonatomic, readonly) BOOL isOWLThing;
+@property (nonatomic, readonly) BOOL isOWLNothing;
+
 - (nullable id<OWLClass>)asOwlClass;
 
 @end

@@ -30,6 +30,18 @@
 
 - (BOOL)anonymous { return NO; }
 
+- (BOOL)isOWLThing
+{
+    // TODO: implement
+    return NO;
+}
+
+- (BOOL)isOWLNothing
+{
+    // TODO: implement
+    return NO;
+}
+
 - (id<OWLClass>)asOwlClass { return self; }
 
 #pragma mark OWLClass
