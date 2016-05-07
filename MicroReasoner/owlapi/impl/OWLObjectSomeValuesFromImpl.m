@@ -1,15 +1,15 @@
 //
-//  OWLObjectAllValuesFromImpl.m
+//  OWLObjectSomeValuesFromImpl.m
 //  MicroReasoner
 //
-//  Created by Ivano Bilenchi on 06/05/16.
+//  Created by Ivano Bilenchi on 07/05/16.
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "OWLObjectAllValuesFromImpl.h"
+#import "OWLObjectSomeValuesFromImpl.h"
 #import "OWLPropertyExpression.h"
 
-@implementation OWLObjectAllValuesFromImpl
+@implementation OWLObjectSomeValuesFromImpl
 
 #pragma mark OWLObject
 
@@ -24,10 +24,10 @@
 
 - (BOOL)isObjectRestriction { return YES; }
 
-- (BOOL)isDataRestriction { return NO; }
+- (BOOL)isDataRestriction { return YES; }
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeDataAllValuesFrom; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectSomeValuesFrom; }
 
 @end

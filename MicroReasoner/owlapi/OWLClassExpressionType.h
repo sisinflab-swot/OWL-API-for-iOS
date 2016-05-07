@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /// Represents the different types of OWL 2 class expressions.
-typedef NS_ENUM(NSUInteger, OWLClassExpressionType) {
+typedef NS_ENUM(NSInteger, OWLClassExpressionType) {
     OWLClassExpTypeClass,
     OWLClassExpTypeObjectSomeValuesFrom,
     OWLClassExpTypeObjectAllValuesFrom,

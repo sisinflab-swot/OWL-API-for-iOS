@@ -27,6 +27,9 @@
 		CC52207E1CD61A4700490D42 /* MicroReasoner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */; };
 		CC52208E1CD61BE700490D42 /* building.owl in Resources */ = {isa = PBXBuildFile; fileRef = CC52208D1CD61BE700490D42 /* building.owl */; };
 		CC6BF4261CD67B9E00DEA3B1 /* libRedland-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */; };
+		CC7AAF581CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC7AAF571CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h */; };
+		CC7AAF631CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CC7AAF611CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h */; };
+		CC7AAF641CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC7AAF621CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.m */; };
 		CC8778671CDD1A040058F677 /* OWLAnonymousClassExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CC8778661CDD1A040058F677 /* OWLAnonymousClassExpression.h */; };
 		CC8778711CDD1CA20058F677 /* OWLRestriction.h in Headers */ = {isa = PBXBuildFile; fileRef = CC8778701CDD1CA20058F677 /* OWLRestriction.h */; };
 		CC8778731CDD1ED70058F677 /* OWLPropertyExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CC8778721CDD1ED70058F677 /* OWLPropertyExpression.h */; };
@@ -123,6 +126,9 @@
 		CC52207D1CD61A4700490D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC52208D1CD61BE700490D42 /* building.owl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building.owl; sourceTree = "<group>"; };
 		CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		CC7AAF571CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectSomeValuesFrom.h; sourceTree = "<group>"; };
+		CC7AAF611CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectSomeValuesFromImpl.h; sourceTree = "<group>"; };
+		CC7AAF621CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLObjectSomeValuesFromImpl.m; sourceTree = "<group>"; };
 		CC8778661CDD1A040058F677 /* OWLAnonymousClassExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLAnonymousClassExpression.h; sourceTree = "<group>"; };
 		CC8778701CDD1CA20058F677 /* OWLRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLRestriction.h; sourceTree = "<group>"; };
 		CC8778721CDD1ED70058F677 /* OWLPropertyExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLPropertyExpression.h; sourceTree = "<group>"; };
@@ -209,6 +215,8 @@
 				CC8778851CDD3D470058F677 /* OWLObjectAllValuesFromImpl.m */,
 				CCDC44771CDB401600854918 /* OWLObjectImpl.h */,
 				CCDC44781CDB401600854918 /* OWLObjectImpl.m */,
+				CC7AAF611CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h */,
+				CC7AAF621CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.m */,
 				CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */,
 				CC49E3801CDA10C800D18736 /* OWLOntologyImpl.h */,
 				CC49E3811CDA10C800D18736 /* OWLOntologyImpl.m */,
@@ -304,6 +312,7 @@
 				CCEF467F1CD8EF3C008C3D88 /* OWLNamedObject.h */,
 				CCEF467D1CD8EEFD008C3D88 /* OWLObject.h */,
 				CC87787C1CDD29FD0058F677 /* OWLObjectAllValuesFrom.h */,
+				CC7AAF571CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h */,
 				CCEF46731CD8E7AC008C3D88 /* OWLOntology.h */,
 				CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */,
 				CCEF46871CD90579008C3D88 /* OWLOntologyManager.h */,
@@ -345,6 +354,8 @@
 				CC8778671CDD1A040058F677 /* OWLAnonymousClassExpression.h in Headers */,
 				CC8778791CDD28D90058F677 /* OWLQuantifiedRestriction.h in Headers */,
 				CCDC448C1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.h in Headers */,
+				CC7AAF581CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h in Headers */,
+				CC7AAF631CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h in Headers */,
 				CCEF468D1CD9077D008C3D88 /* OWLManager.h in Headers */,
 				CC49E3861CDA11F000D18736 /* OWLOntologyManagerImpl.h in Headers */,
 				CC8778761CDD24820058F677 /* OWLAnonymousClassExpressionImpl.h in Headers */,
@@ -506,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC49E3921CDA4F3000D18736 /* OWLManager.m in Sources */,
+				CC7AAF641CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.m in Sources */,
 				CC8778771CDD24820058F677 /* OWLAnonymousClassExpressionImpl.m in Sources */,
 				CC49E37F1CDA106500D18736 /* OWLClassImpl.m in Sources */,
 				CC49E3871CDA11F000D18736 /* OWLOntologyManagerImpl.m in Sources */,
