@@ -10,6 +10,8 @@
 		CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D71CD5F9FA009E6792 /* libxml2.tbd */; };
 		CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D91CD5FA01009E6792 /* libxslt.tbd */; };
 		CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */; };
+		CC2933231CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CC2933211CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.h */; };
+		CC2933241CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2933221CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.m */; };
 		CC49E3711CDA0B3700D18736 /* OWLOntologyID.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */; };
 		CC49E37E1CDA106500D18736 /* OWLClassImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E37C1CDA106500D18736 /* OWLClassImpl.h */; };
 		CC49E37F1CDA106500D18736 /* OWLClassImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E37D1CDA106500D18736 /* OWLClassImpl.m */; };
@@ -108,6 +110,8 @@
 		CC2747D71CD5F9FA009E6792 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		CC2747D91CD5FA01009E6792 /* libxslt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxslt.tbd; path = usr/lib/libxslt.tbd; sourceTree = SDKROOT; };
 		CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		CC2933211CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLQuantifiedObjectRestrictionImpl.h; sourceTree = "<group>"; };
+		CC2933221CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLQuantifiedObjectRestrictionImpl.m; sourceTree = "<group>"; };
 		CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyID.h; sourceTree = "<group>"; };
 		CC49E37C1CDA106500D18736 /* OWLClassImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassImpl.h; sourceTree = "<group>"; };
 		CC49E37D1CDA106500D18736 /* OWLClassImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLClassImpl.m; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */,
 				CC49E3841CDA11F000D18736 /* OWLOntologyManagerImpl.h */,
 				CC49E3851CDA11F000D18736 /* OWLOntologyManagerImpl.m */,
+				CC2933211CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.h */,
+				CC2933221CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.m */,
 				CC87788A1CDD4F220058F677 /* OWLQuantifiedRestrictionImpl.h */,
 				CC87788B1CDD4F220058F677 /* OWLQuantifiedRestrictionImpl.m */,
 				CC8778801CDD2B820058F677 /* OWLRestrictionImpl.h */,
@@ -359,6 +365,7 @@
 				CCEF468D1CD9077D008C3D88 /* OWLManager.h in Headers */,
 				CC49E3861CDA11F000D18736 /* OWLOntologyManagerImpl.h in Headers */,
 				CC8778761CDD24820058F677 /* OWLAnonymousClassExpressionImpl.h in Headers */,
+				CC2933231CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.h in Headers */,
 				CC49E38A1CDA140C00D18736 /* OWLOntologyInternals.h in Headers */,
 				CCDC44791CDB401600854918 /* OWLObjectImpl.h in Headers */,
 				CC49E3821CDA10C800D18736 /* OWLOntologyImpl.h in Headers */,
@@ -529,6 +536,7 @@
 				CC49E3831CDA10C800D18736 /* OWLOntologyImpl.m in Sources */,
 				CCDC448D1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.m in Sources */,
 				CC8778871CDD3D470058F677 /* OWLObjectAllValuesFromImpl.m in Sources */,
+				CC2933241CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.m in Sources */,
 				CC87788D1CDD4F220058F677 /* OWLQuantifiedRestrictionImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

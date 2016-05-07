@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// Abstract class that informally implements part of the OWLQuantifiedRestriction protocol.
 @interface OWLQuantifiedRestrictionImpl : OWLRestrictionImpl
 
+#pragma mark OWLObject
+
+- (NSSet<id<OWLEntity>> *)signature;
+
 #pragma mark OWLQuantifiedRestriction
 
 @property (nonatomic, strong, readonly) id<OWLPropertyRange> filler;

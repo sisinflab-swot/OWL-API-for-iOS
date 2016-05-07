@@ -7,8 +7,18 @@
 //
 
 #import "OWLQuantifiedRestrictionImpl.h"
+#import "OWLPropertyExpression.h"
 
 @implementation OWLQuantifiedRestrictionImpl
+
+#pragma mark OWLObject
+
+- (NSSet<id<OWLEntity>> *)signature
+{
+    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[self.property signature]];
+    [signature unionSet:[self.filler signature]];
+    return signature;
+}
 
 #pragma mark OWLQuantifiedRestriction
 

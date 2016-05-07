@@ -8,4 +8,12 @@
 
 #import "OWLQuantifiedRestriction.h"
 
-@protocol OWLQuantifiedObjectRestriction <OWLQuantifiedRestriction> @end
+NS_ASSUME_NONNULL_BEGIN
+
+@protocol OWLQuantifiedObjectRestriction <OWLQuantifiedRestriction>
+
+@property (nonatomic, strong, readonly) id<OWLClassExpression> filler;
+
+@end
+
+NS_ASSUME_NONNULL_END

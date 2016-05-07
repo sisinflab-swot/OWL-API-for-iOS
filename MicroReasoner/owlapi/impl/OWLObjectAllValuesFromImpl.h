@@ -6,7 +6,7 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "OWLQuantifiedRestrictionImpl.h"
+#import "OWLQuantifiedObjectRestrictionImpl.h"
 #import "OWLObjectAllValuesFrom.h"
 
-@interface OWLObjectAllValuesFromImpl : OWLQuantifiedRestrictionImpl <OWLObjectAllValuesFrom> @end
+@interface OWLObjectAllValuesFromImpl : OWLQuantifiedObjectRestrictionImpl <OWLObjectAllValuesFrom> @end
