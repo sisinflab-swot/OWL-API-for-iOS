@@ -60,7 +60,14 @@
 		CCB6481D1CDE6A0D00C2A761 /* OWLObjectExactCardinality.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB6481C1CDE6A0D00C2A761 /* OWLObjectExactCardinality.h */; };
 		CCB648201CDE6A5000C2A761 /* OWLObjectExactCardinalityImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB6481E1CDE6A5000C2A761 /* OWLObjectExactCardinalityImpl.h */; };
 		CCB648211CDE6A5000C2A761 /* OWLObjectExactCardinalityImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CCB6481F1CDE6A5000C2A761 /* OWLObjectExactCardinalityImpl.m */; };
+		CCB648231CDE715C00C2A761 /* OWLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648221CDE715C00C2A761 /* OWLProperty.h */; };
+		CCB648251CDE74C800C2A761 /* OWLObjectPropertyExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */; };
+		CCB648271CDE751700C2A761 /* OWLObjectProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648261CDE751700C2A761 /* OWLObjectProperty.h */; };
 		CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCD838611CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD8385F1CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h */; };
+		CCD838621CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD838601CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m */; };
+		CCD8386D1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD8386B1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h */; };
+		CCD8386E1CDF3F4B00C6398C /* OWLObjectPropertyImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD8386C1CDF3F4B00C6398C /* OWLObjectPropertyImpl.m */; };
 		CCDC44681CDB398B00854918 /* OWLAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDC44671CDB398B00854918 /* OWLAxiom.h */; };
 		CCDC44721CDB39B000854918 /* OWLLogicalAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDC44711CDB39B000854918 /* OWLLogicalAxiom.h */; };
 		CCDC44741CDB39EA00854918 /* OWLClassAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CCDC44731CDB39EA00854918 /* OWLClassAxiom.h */; };
@@ -183,9 +190,16 @@
 		CCB6481C1CDE6A0D00C2A761 /* OWLObjectExactCardinality.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectExactCardinality.h; sourceTree = "<group>"; };
 		CCB6481E1CDE6A5000C2A761 /* OWLObjectExactCardinalityImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectExactCardinalityImpl.h; sourceTree = "<group>"; };
 		CCB6481F1CDE6A5000C2A761 /* OWLObjectExactCardinalityImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLObjectExactCardinalityImpl.m; sourceTree = "<group>"; };
+		CCB648221CDE715C00C2A761 /* OWLProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLProperty.h; sourceTree = "<group>"; };
+		CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyExpression.h; sourceTree = "<group>"; };
+		CCB648261CDE751700C2A761 /* OWLObjectProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectProperty.h; sourceTree = "<group>"; };
 		CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MicroReasoner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroReasoner.h; sourceTree = "<group>"; };
 		CCD2FC431CD5F7B3003F8CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCD8385F1CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyExpressionImpl.h; sourceTree = "<group>"; };
+		CCD838601CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLObjectPropertyExpressionImpl.m; sourceTree = "<group>"; };
+		CCD8386B1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyImpl.h; sourceTree = "<group>"; };
+		CCD8386C1CDF3F4B00C6398C /* OWLObjectPropertyImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLObjectPropertyImpl.m; sourceTree = "<group>"; };
 		CCDC44671CDB398B00854918 /* OWLAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLAxiom.h; sourceTree = "<group>"; };
 		CCDC44711CDB39B000854918 /* OWLLogicalAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLogicalAxiom.h; sourceTree = "<group>"; };
 		CCDC44731CDB39EA00854918 /* OWLClassAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassAxiom.h; sourceTree = "<group>"; };
@@ -277,6 +291,10 @@
 				CCDE42E61CDE3BCD00232E83 /* OWLObjectMaxCardinalityImpl.m */,
 				CCB648181CDE696500C2A761 /* OWLObjectMinCardinalityImpl.h */,
 				CCB648191CDE696500C2A761 /* OWLObjectMinCardinalityImpl.m */,
+				CCD8385F1CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h */,
+				CCD838601CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m */,
+				CCD8386B1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h */,
+				CCD8386C1CDF3F4B00C6398C /* OWLObjectPropertyImpl.m */,
 				CC7AAF611CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h */,
 				CC7AAF621CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.m */,
 				CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */,
@@ -384,10 +402,13 @@
 				CC29332F1CDE285500315B3A /* OWLObjectIntersectionOf.h */,
 				CCDE42E31CDE3B6800232E83 /* OWLObjectMaxCardinality.h */,
 				CCB648161CDE68DB00C2A761 /* OWLObjectMinCardinality.h */,
+				CCB648261CDE751700C2A761 /* OWLObjectProperty.h */,
+				CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */,
 				CC7AAF571CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h */,
 				CCEF46731CD8E7AC008C3D88 /* OWLOntology.h */,
 				CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */,
 				CCEF46871CD90579008C3D88 /* OWLOntologyManager.h */,
+				CCB648221CDE715C00C2A761 /* OWLProperty.h */,
 				CC8778721CDD1ED70058F677 /* OWLPropertyExpression.h */,
 				CC8778881CDD4DC80058F677 /* OWLPropertyRange.h */,
 				CC87787A1CDD29100058F677 /* OWLQuantifiedObjectRestriction.h */,
@@ -420,9 +441,11 @@
 				CCB648171CDE68DB00C2A761 /* OWLObjectMinCardinality.h in Headers */,
 				CCEF46881CD90579008C3D88 /* OWLOntologyManager.h in Headers */,
 				CC49E38E1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h in Headers */,
+				CCB648231CDE715C00C2A761 /* OWLProperty.h in Headers */,
 				CCB6481A1CDE696500C2A761 /* OWLObjectMinCardinalityImpl.h in Headers */,
 				CCDC44741CDB39EA00854918 /* OWLClassAxiom.h in Headers */,
 				CC8778861CDD3D470058F677 /* OWLObjectAllValuesFromImpl.h in Headers */,
+				CCB648251CDE74C800C2A761 /* OWLObjectPropertyExpression.h in Headers */,
 				CCDE42E41CDE3B6800232E83 /* OWLObjectMaxCardinality.h in Headers */,
 				CC87787B1CDD29100058F677 /* OWLQuantifiedObjectRestriction.h in Headers */,
 				CCDC44721CDB39B000854918 /* OWLLogicalAxiom.h in Headers */,
@@ -432,8 +455,10 @@
 				CC87788C1CDD4F220058F677 /* OWLQuantifiedRestrictionImpl.h in Headers */,
 				CC8778711CDD1CA20058F677 /* OWLRestriction.h in Headers */,
 				CC8778671CDD1A040058F677 /* OWLAnonymousClassExpression.h in Headers */,
+				CCD838611CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h in Headers */,
 				CC2933291CDE284A00315B3A /* OWLNAryBooleanClassExpressionImpl.h in Headers */,
 				CC8778791CDD28D90058F677 /* OWLQuantifiedRestriction.h in Headers */,
+				CCB648271CDE751700C2A761 /* OWLObjectProperty.h in Headers */,
 				CCDE42D81CDE3ACB00232E83 /* OWLCardinalityRestriction.h in Headers */,
 				CCDC448C1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.h in Headers */,
 				CC7AAF581CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h in Headers */,
@@ -444,6 +469,7 @@
 				CCDE42EF1CDE4D0500232E83 /* OWLObjectCardinalityRestrictionImpl.h in Headers */,
 				CCDE42E71CDE3BCD00232E83 /* OWLObjectMaxCardinalityImpl.h in Headers */,
 				CC8778761CDD24820058F677 /* OWLAnonymousClassExpressionImpl.h in Headers */,
+				CCD8386D1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h in Headers */,
 				CC2933231CDE079700315B3A /* OWLQuantifiedObjectRestrictionImpl.h in Headers */,
 				CC49E38A1CDA140C00D18736 /* OWLOntologyInternals.h in Headers */,
 				CCDC44791CDB401600854918 /* OWLObjectImpl.h in Headers */,
@@ -614,9 +640,11 @@
 				CC8778831CDD2B820058F677 /* OWLRestrictionImpl.m in Sources */,
 				CCDE42EC1CDE3DAC00232E83 /* OWLCardinalityRestrictionImpl.m in Sources */,
 				CC49E3931CDA4F3000D18736 /* OWLOntologyID.m in Sources */,
+				CCD8386E1CDF3F4B00C6398C /* OWLObjectPropertyImpl.m in Sources */,
 				CC49E38B1CDA140C00D18736 /* OWLOntologyInternals.m in Sources */,
 				CCDC447A1CDB401600854918 /* OWLObjectImpl.m in Sources */,
 				CC49E38F1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m in Sources */,
+				CCD838621CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m in Sources */,
 				CCB6481B1CDE696500C2A761 /* OWLObjectMinCardinalityImpl.m in Sources */,
 				CC49E3831CDA10C800D18736 /* OWLOntologyImpl.m in Sources */,
 				CCDE42F01CDE4D0500232E83 /* OWLObjectCardinalityRestrictionImpl.m in Sources */,
