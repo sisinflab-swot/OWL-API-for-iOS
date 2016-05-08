@@ -7,11 +7,13 @@
 //
 
 #import "OWLQuantifiedRestriction.h"
+#import "OWLObjectPropertyExpression.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol OWLQuantifiedObjectRestriction <OWLQuantifiedRestriction>
 
+@property (nonatomic, strong, readonly) id<OWLObjectPropertyExpression> property;
 @property (nonatomic, strong, readonly) id<OWLClassExpression> filler;
 
 @end

@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isObjectRestriction;
 @property (nonatomic, readonly) BOOL isDataRestriction;
 
+#pragma mark Other public methods
+
+- (instancetype)initWithProperty:(id<OWLObjectPropertyExpression>)property filler:(id<OWLClassExpression>)filler cardinality:(NSUInteger)cardinality;
+
 @end
 
 NS_ASSUME_NONNULL_END

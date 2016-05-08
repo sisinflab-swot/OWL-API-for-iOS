@@ -7,11 +7,21 @@
 //
 
 #import "OWLQuantifiedObjectRestrictionImpl.h"
+#import "OWLObjectPropertyExpression.h"
 
 @implementation OWLQuantifiedObjectRestrictionImpl
+
+#pragma mark OWLRestriction
 
 - (BOOL)isObjectRestriction { return YES; }
 
 - (BOOL)isDataRestriction { return NO; }
+
+#pragma mark Other public methods
+
+- (instancetype)initWithProperty:(id<OWLObjectPropertyExpression>)property filler:(id<OWLClassExpression>)filler
+{
+    return [super initWithProperty:property filler:filler];
+}
 
 @end

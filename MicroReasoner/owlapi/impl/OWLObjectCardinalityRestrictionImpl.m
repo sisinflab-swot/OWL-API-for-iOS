@@ -28,4 +28,11 @@
 
 - (BOOL)isDataRestriction { return NO; }
 
+#pragma mark Other public methods
+
+- (instancetype)initWithProperty:(id<OWLObjectPropertyExpression>)property filler:(id<OWLClassExpression>)filler cardinality:(NSUInteger)cardinality
+{
+    return [super initWithProperty:property filler:filler cardinality:cardinality];
+}
+
 @end
