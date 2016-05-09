@@ -7,6 +7,7 @@
 //
 
 #import "OWLClassImpl.h"
+#import "OWLDisjointClassesAxiom.h"
 #import "OWLOntology.h"
 #import "OWLSubClassOfAxiom.h"
 
@@ -46,15 +47,26 @@
 
 #pragma mark OWLClass
 
-- (NSSet<id<OWLClassExpression>> *)getSuperClassesInOntology:(id<OWLOntology>)ontology
+- (NSSet<id<OWLClassExpression>> *)disjointClassesInOntology:(id<OWLOntology>)ontology
 {
-    NSMutableSet *returnSet = [[NSMutableSet alloc] init];
+    NSMutableSet *disjointClasses = [[NSMutableSet alloc] init];
     
-    for (id<OWLSubClassOfAxiom> axiom in [ontology subClassAxiomsForSubClass:self]) {
-        [returnSet addObject:axiom.superClass];
+    for (id<OWLDisjointClassesAxiom> axiom in [ontology disjointClassesAxiomsForClass:self]) {
+        [disjointClasses unionSet:axiom.classExpressions];
     }
     
-    return returnSet;
+    return disjointClasses;
+}
+
+- (NSSet<id<OWLClassExpression>> *)superClassesInOntology:(id<OWLOntology>)ontology
+{
+    NSMutableSet *superClasses = [[NSMutableSet alloc] init];
+    
+    for (id<OWLSubClassOfAxiom> axiom in [ontology subClassAxiomsForSubClass:self]) {
+        [superClasses addObject:axiom.superClass];
+    }
+    
+    return superClasses;
 }
 
 #pragma mark Other public methods

@@ -39,6 +39,11 @@
 
 #pragma mark OWLOntology
 
+- (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
+{
+    return [self.internals disjointClassesAxiomsForClass:cls];
+}
+
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
     return [self.internals subClassAxiomsForSubClass:cls];

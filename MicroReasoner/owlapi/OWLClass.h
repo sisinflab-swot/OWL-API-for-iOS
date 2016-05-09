@@ -18,13 +18,22 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OWLClass <OWLClassExpression, OWLLogicalEntity, OWLNamedObject>
 
 /**
- * A convenience method that examines the axioms in the specified ontology
- * and returns the class expressions corresponding to super classes of this class.
+ * Gets the class expressions corresponding to disjoint classes of this class.
  *
  * @param ontology The ontology to be examined.
+ *
+ * @return Disjoint classes of this class.
+ */
+- (NSSet<id<OWLClassExpression>> *)disjointClassesInOntology:(id<OWLOntology>)ontology;
+
+/**
+ * Gets the class expressions corresponding to super classes of this class.
+ *
+ * @param ontology The ontology to be examined.
+ *
  * @return Super classes of this class.
  */
-- (NSSet<id<OWLClassExpression>> *)getSuperClassesInOntology:(id<OWLOntology>)ontology;
+- (NSSet<id<OWLClassExpression>> *)superClassesInOntology:(id<OWLOntology>)ontology;
 
 @end
 

@@ -9,6 +9,8 @@
 #import "OWLObject.h"
 
 @class OWLOntologyID;
+
+@protocol OWLDisjointClassesAxiom;
 @protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -20,14 +22,23 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) OWLOntologyID *ontologyID;
 
 /**
+ * Gets the set of disjoint class axioms that contain the specified class as an operand.
+ *
+ * @param cls The class.
+ *
+ * @return The set of disjoint axioms that contain the specified class.
+ */
+- (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
+
+/**
  * Gets all of the subclass axioms where the left hand side (the subclass)
  * is equal to the specified class.
  *
  * @param cls The class.
  *
- * @return SubClass axioms where the LHS is cls.
+ * @return The set of subclass axioms where the LHS is the specified class.
  */
-- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id <OWLClass>)cls;
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls;
 
 @end
 

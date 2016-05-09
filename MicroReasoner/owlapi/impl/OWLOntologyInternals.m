@@ -34,6 +34,17 @@
     return _classesByIRI;
 }
 
+// disjointClassesAxiomsByClass
+@synthesize disjointClassesAxiomsByClass = _disjointClassesAxiomsByClass;
+
+- (NSMutableDictionary<id<OWLClass>,NSSet<id<OWLDisjointClassesAxiom>> *> *)disjointClassesAxiomsByClass
+{
+    if (!_disjointClassesAxiomsByClass) {
+        _disjointClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
+    }
+    return _disjointClassesAxiomsByClass;
+}
+
 // subClassOfAxiomsBySubClass
 @synthesize subClassAxiomsBySubClass = _subClassAxiomsBySubClass;
 
@@ -47,9 +58,15 @@
 
 #pragma mark Public methods
 
+- (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
+{
+    NSSet *returnSet = self.disjointClassesAxiomsByClass[cls];
+    return returnSet ?: [NSSet set];
+}
+
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
-    NSSet *returnSet = [self.subClassAxiomsBySubClass objectForKey:cls];
+    NSSet *returnSet = self.subClassAxiomsBySubClass[cls];
     return returnSet ?: [NSSet set];
 }
 
