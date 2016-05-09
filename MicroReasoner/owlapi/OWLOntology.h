@@ -11,6 +11,7 @@
 @class OWLOntologyID;
 
 @protocol OWLDisjointClassesAxiom;
+@protocol OWLEquivalentClassesAxiom;
 @protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,9 +27,18 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param cls The class.
  *
- * @return The set of disjoint axioms that contain the specified class.
+ * @return The set of disjoint class axioms that contain the specified class.
  */
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
+
+/**
+ * Gets the set of equivalent class axioms that contain the specified class as an operand.
+ *
+ * @param cls The class.
+ *
+ * @return The set of equivalent class axioms that contain the specified class.
+ */
+- (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;
 
 /**
  * Gets all of the subclass axioms where the left hand side (the subclass)

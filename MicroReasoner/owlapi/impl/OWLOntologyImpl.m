@@ -44,6 +44,11 @@
     return [self.internals disjointClassesAxiomsForClass:cls];
 }
 
+- (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
+{
+    return [self.internals equivalentClassesAxiomsForClass:cls];
+}
+
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
     return [self.internals subClassAxiomsForSubClass:cls];

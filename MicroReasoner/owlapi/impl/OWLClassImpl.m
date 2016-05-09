@@ -8,6 +8,7 @@
 
 #import "OWLClassImpl.h"
 #import "OWLDisjointClassesAxiom.h"
+#import "OWLEquivalentClassesAxiom.h"
 #import "OWLOntology.h"
 #import "OWLSubClassOfAxiom.h"
 
@@ -56,6 +57,17 @@
     }
     
     return disjointClasses;
+}
+
+- (NSSet<id<OWLClassExpression>> *)equivalentClassesInOntology:(id<OWLOntology>)ontology
+{
+    NSMutableSet *equivalentClasses = [[NSMutableSet alloc] init];
+    
+    for (id<OWLEquivalentClassesAxiom> axiom in [ontology equivalentClassesAxiomsForClass:self]) {
+        [equivalentClasses unionSet:axiom.classExpressions];
+    }
+    
+    return equivalentClasses;
 }
 
 - (NSSet<id<OWLClassExpression>> *)superClassesInOntology:(id<OWLOntology>)ontology

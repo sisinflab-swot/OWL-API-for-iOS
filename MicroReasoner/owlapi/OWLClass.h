@@ -27,6 +27,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSSet<id<OWLClassExpression>> *)disjointClassesInOntology:(id<OWLOntology>)ontology;
 
 /**
+ * Gets the class expressions corresponding to equivalent classes of this class.
+ *
+ * @param ontology The ontology to be examined.
+ *
+ * @return Equivalent classes of this class.
+ */
+- (NSSet<id<OWLClassExpression>> *)equivalentClassesInOntology:(id<OWLOntology>)ontology;
+
+/**
  * Gets the class expressions corresponding to super classes of this class.
  *
  * @param ontology The ontology to be examined.

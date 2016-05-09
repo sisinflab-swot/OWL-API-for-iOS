@@ -45,6 +45,17 @@
     return _disjointClassesAxiomsByClass;
 }
 
+// equivalentClassesAxiomeByClass
+@synthesize equivalentClassesAxiomsByClass = _equivalentClassesAxiomsByClass;
+
+- (NSMutableDictionary<id<OWLClass>,NSSet<id<OWLEquivalentClassesAxiom>> *> *)equivalentClassesAxiomsByClass
+{
+    if (!_equivalentClassesAxiomsByClass) {
+        _equivalentClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
+    }
+    return _equivalentClassesAxiomsByClass;
+}
+
 // subClassOfAxiomsBySubClass
 @synthesize subClassAxiomsBySubClass = _subClassAxiomsBySubClass;
 
@@ -61,6 +72,12 @@
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
 {
     NSSet *returnSet = self.disjointClassesAxiomsByClass[cls];
+    return returnSet ?: [NSSet set];
+}
+
+- (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
+{
+    NSSet *returnSet = self.equivalentClassesAxiomsByClass[cls];
     return returnSet ?: [NSSet set];
 }
 
