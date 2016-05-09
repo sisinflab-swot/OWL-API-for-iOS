@@ -18,6 +18,8 @@
 
 - (BOOL)isOWLNothing { return NO; }
 
+- (NSSet<id<OWLClassExpression>> *)asConjunctSet { return [NSSet setWithObject:self]; }
+
 - (id<OWLClass>)asOwlClass { return nil; }
 
 @end

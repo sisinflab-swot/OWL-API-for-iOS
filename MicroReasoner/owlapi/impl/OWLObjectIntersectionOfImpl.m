@@ -14,4 +14,15 @@
 
 - (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectIntersectionOf; }
 
+- (NSSet<id<OWLClassExpression>> *)asConjunctSet
+{
+    NSMutableSet *conjunctSet = [[NSMutableSet alloc] init];
+    
+    for (id<OWLClassExpression> operand in self.operands) {
+        [conjunctSet unionSet:[operand asConjunctSet]];
+    }
+    
+    return conjunctSet;
+}
+
 @end

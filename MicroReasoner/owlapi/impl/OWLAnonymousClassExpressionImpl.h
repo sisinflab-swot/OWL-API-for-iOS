@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isOWLThing;
 @property (nonatomic, readonly) BOOL isOWLNothing;
 
+- (NSSet<id<OWLClassExpression>> *)asConjunctSet;
 - (nullable id<OWLClass>)asOwlClass;
 
 @end

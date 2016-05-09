@@ -32,6 +32,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// Determines if this expression is the built in class owl:Nothing.
 @property (nonatomic, readonly) BOOL isOWLNothing;
 
+
+/**
+ * Interprets this expression as a conjunction and returns the conjuncts.
+ *
+ * @return The conjucts of this expression if it is a conjunction (object intersection of),
+ * or otherwise a set containing this expression.
+ */
+- (NSSet<id<OWLClassExpression>> *)asConjunctSet;
+
 /**
  * If this class expression is in fact a named class then this method may be used
  * to obtain the expression as an OWLClass without the need for casting.
