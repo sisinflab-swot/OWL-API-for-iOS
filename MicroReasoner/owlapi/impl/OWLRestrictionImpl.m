@@ -7,8 +7,31 @@
 //
 
 #import "OWLRestrictionImpl.h"
+#import "OWLObjectPropertyExpression.h"
 
 @implementation OWLRestrictionImpl
+
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([super isEqual:object]) {
+        id objProperty = [object property];
+        id selfProperty = self.property;
+        
+        equal = (objProperty == selfProperty || [objProperty isEqual:selfProperty]);
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash { return [self.property hash]; }
 
 #pragma mark OWLRestriction
 

@@ -7,6 +7,7 @@
 //
 
 #import "OWLQuantifiedRestrictionImpl.h"
+#import "OWLObjectPropertyExpression.h"
 
 @protocol OWLObjectPropertyExpression;
 
@@ -15,7 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// Abstract class that informally implements part of the OWLQuantifiedObjectRestriction protocol.
 @interface OWLQuantifiedObjectRestrictionImpl : OWLQuantifiedRestrictionImpl
 
+#pragma mark OWLObjectCardinalityRestriction
+
+@property (nonatomic, strong, readonly) id<OWLClassExpression> filler;
+
 #pragma mark OWLRestriction
+
+@property (nonatomic, strong, readonly) id<OWLObjectPropertyExpression> property;
 
 @property (nonatomic, readonly) BOOL isObjectRestriction;
 @property (nonatomic, readonly) BOOL isDataRestriction;

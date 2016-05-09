@@ -7,8 +7,28 @@
 //
 
 #import "OWLCardinalityRestrictionImpl.h"
+#import "OWLPropertyExpression.h"
 
 @implementation OWLCardinalityRestrictionImpl
+
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equals = NO;
+    
+    if ([super isEqual:object]) {
+        equals = ([object cardinality] == self.cardinality);
+    }
+    
+    return equals;
+}
+
+- (NSUInteger)hash { return [self.property hash] ^ [self.filler hash] ^ self.cardinality; };
 
 #pragma mark OWLCardinalityRestriction
 

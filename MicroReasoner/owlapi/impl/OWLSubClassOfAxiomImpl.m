@@ -11,6 +11,33 @@
 
 @implementation OWLSubClassOfAxiomImpl
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equals = NO;
+    
+    if ([super isEqual:object]) {
+        id objCls = [object superClass];
+        id selfCls = self.class;
+        BOOL sameSuperClass = (objCls == selfCls || [objCls isEqual:selfCls]);
+        
+        objCls = [object subClass];
+        selfCls = self.subClass;
+        BOOL sameSubClass = (objCls == selfCls || [objCls isEqual:selfCls]);
+        
+        equals = (sameSuperClass && sameSubClass);
+    }
+    
+    return equals;
+}
+
+- (NSUInteger)hash { return [self.superClass hash] ^ [self.subClass hash]; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

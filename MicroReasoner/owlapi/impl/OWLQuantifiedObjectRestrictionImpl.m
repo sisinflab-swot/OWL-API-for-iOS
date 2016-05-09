@@ -11,7 +11,13 @@
 
 @implementation OWLQuantifiedObjectRestrictionImpl
 
+#pragma mark OWLObjectCardinalityRestriction
+
+@dynamic filler;
+
 #pragma mark OWLRestriction
+
+@dynamic property;
 
 - (BOOL)isObjectRestriction { return YES; }
 

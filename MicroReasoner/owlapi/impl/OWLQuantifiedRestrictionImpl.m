@@ -11,6 +11,28 @@
 
 @implementation OWLQuantifiedRestrictionImpl
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([super isEqual:object]) {
+        id objFiller = [object filler];
+        id selfFiller = self.filler;
+        
+        equal = (objFiller == selfFiller || [objFiller isEqual:selfFiller]);
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash { return [self.property hash] ^ [self.filler hash]; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

@@ -11,6 +11,28 @@
 
 @implementation OWLNAryClassAxiomImpl
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([super isEqual:object]) {
+        NSSet *objCE = [object classExpressions];
+        NSSet *selfCE = self.classExpressions;
+        
+        equal = (objCE == selfCE || [objCE isEqualToSet:selfCE]);
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash { return self.classExpressions.hash; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

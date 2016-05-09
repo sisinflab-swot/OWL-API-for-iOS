@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark OWLRestriction
 
+@property (nonatomic, strong, readonly) id<OWLObjectPropertyExpression> property;
+
 @property (nonatomic, readonly) BOOL isObjectRestriction;
 @property (nonatomic, readonly) BOOL isDataRestriction;
 

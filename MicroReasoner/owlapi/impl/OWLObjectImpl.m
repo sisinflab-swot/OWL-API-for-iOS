@@ -12,6 +12,17 @@
 
 @implementation OWLObjectImpl
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object { return object == self || [object isKindOfClass:[self class]]; }
+
+- (NSUInteger)hash { return 0; }
+
+#pragma mark NSCopying
+
+// This object is immutable.
+- (id)copyWithZone:(__unused NSZone *)zone { return self; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLClass>> *)classesInSignature

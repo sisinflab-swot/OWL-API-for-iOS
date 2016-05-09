@@ -14,7 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents a generic OWL object.
-@protocol OWLObject <NSObject>
+@protocol OWLObject <NSObject, NSCopying>
 
 /**
  * Gets the signature of this object.

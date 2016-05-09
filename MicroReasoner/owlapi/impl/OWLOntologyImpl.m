@@ -23,6 +23,26 @@
 @synthesize internals = _internals;
 @synthesize ontologyID = _ontologyID;
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([super isEqual:object]) {
+        id objID = [object ontologyID];
+        id selfID = self.ontologyID;
+        
+        equal = (objID == selfID || [objID isEqual:selfID]);
+    }
+    
+    return equal;
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

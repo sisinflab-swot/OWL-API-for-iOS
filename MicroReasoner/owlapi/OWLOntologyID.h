@@ -22,12 +22,23 @@ NS_ASSUME_NONNULL_BEGIN
 /// The ontology IRI, or nil if there is no ontology IRI.
 @property (nonatomic, copy, readonly, nullable) NSURL *ontologyIRI;
 
+/// The version IRI of this ontology, or nil if there is no version IRI.
+@property (nonatomic, copy, readonly, nullable) NSURL *versionIRI;
+
 /**
  * Constructs an ontology identifier specifying the ontology IRI.
  *
  * @param ontologyIRI The IRI of the ontology document.
  */
 - (instancetype)initWithOntologyIRI:(nullable NSURL *)ontologyIRI;
+
+/**
+ * Constructs an ontology identifier specifying the ontology IRI.
+ *
+ * @param ontologyIRI The IRI of the ontology document.
+ * @param versionIRI The version IRI of the ontology document.
+ */
+- (instancetype)initWithOntologyIRI:(nullable NSURL *)ontologyIRI versionIRI:(nullable NSURL *)versionIRI;
 
 @end
 

@@ -10,6 +10,28 @@
 
 @implementation OWLNAryBooleanClassExpressionImpl
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([super isEqual:object]) {
+        NSSet *objOperands = [object operands];
+        NSSet *selfOperands = self.operands;
+        
+        equal = (objOperands == selfOperands || [objOperands isEqualToSet:selfOperands]);
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash { return self.operands.hash; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

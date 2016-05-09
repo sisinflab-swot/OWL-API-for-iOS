@@ -24,6 +24,8 @@
 
 #pragma mark OWLRestriction
 
+@dynamic property;
+
 - (BOOL)isObjectRestriction { return YES; }
 
 - (BOOL)isDataRestriction { return NO; }
