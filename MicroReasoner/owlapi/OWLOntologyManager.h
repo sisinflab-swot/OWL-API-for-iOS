@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @return The ontology that was parsed from the file, or nil on error.
  */
-- (nullable id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *__autoreleasing _Nullable *)error;
+- (nullable id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error;
 
 @end
 

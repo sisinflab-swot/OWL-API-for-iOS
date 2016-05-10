@@ -12,8 +12,9 @@
 // Pseudo-abstract class convenience macros.
 
 #define ABSTRACT_METHOD {\
-[self doesNotRecognizeSelector:_cmd]; \
-__builtin_unreachable(); \
+@throw [NSException exceptionWithName:NSInternalInconsistencyException \
+reason:@"This method should be overridden in a subclass." \
+userInfo:nil]; \
 }
 
 #endif /* SMRPreprocessor_h */

@@ -13,29 +13,28 @@
 #import "OWLOntologyInternals.h"
 
 #import "RedlandNamespace+OWLAdditions.h"
-#import <Redland-ObjC.h>
 
 @implementation OWLOntologyManagerImpl
 
 #pragma mark Public methods
 
-- (id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *__autoreleasing _Nullable *)error
+- (id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
 {
     NSParameterAssert(URL);
-    
+
     NSError *localError = nil;
     id <OWLOntology> onto = [self _parseFileAtURL:URL error:&localError];
-    
+
     if (error) {
         *error = localError;
     }
-    
+
     return localError ? nil : onto;
 }
 
 #pragma mark Private methods
 
-- (OWLOntologyImpl *)_parseFileAtURL:(NSURL *)URL error:(NSError *__autoreleasing _Nullable *)error
+- (OWLOntologyImpl *)_parseFileAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
 {
     NSParameterAssert(URL);
     
@@ -86,7 +85,7 @@
                 
                 if (iri) {
                     OWLClassImpl *owlClass = [[OWLClassImpl alloc] initWithIRI:iri];
-                    [internals.classesByIRI setObject:owlClass forKey:iri];
+                    internals.classesByIRI[iri] = owlClass;
                 }
             }
         }

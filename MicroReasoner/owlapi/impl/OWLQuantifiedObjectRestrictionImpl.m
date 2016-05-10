@@ -27,7 +27,7 @@
 
 - (instancetype)initWithProperty:(id<OWLObjectPropertyExpression>)property filler:(id<OWLClassExpression>)filler
 {
-    return [super initWithProperty:property filler:filler];
+    return ((self = [super initWithProperty:property filler:filler]));
 }
 
 @end

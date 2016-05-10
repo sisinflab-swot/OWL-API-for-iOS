@@ -34,7 +34,7 @@
 
 - (instancetype)initWithProperty:(id<OWLObjectPropertyExpression>)property filler:(id<OWLClassExpression>)filler cardinality:(NSUInteger)cardinality
 {
-    return [super initWithProperty:property filler:filler cardinality:cardinality];
+    return ((self = [super initWithProperty:property filler:filler cardinality:cardinality]));
 }
 
 @end
