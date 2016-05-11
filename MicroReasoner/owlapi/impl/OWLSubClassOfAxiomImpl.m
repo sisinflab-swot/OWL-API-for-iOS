@@ -49,6 +49,10 @@
     return signature;
 }
 
+#pragma mark OWLAxiom
+
+- (OWLAxiomType)axiomType { return OWLAxiomTypeSubClassOf; }
+
 #pragma mark OWLSubClassOfAxiom
 
 @synthesize superClass = _superClass;

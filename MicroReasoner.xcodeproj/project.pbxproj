@@ -34,6 +34,7 @@
 		CC49E38B1CDA140C00D18736 /* OWLOntologyInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */; };
 		CC49E3921CDA4F3000D18736 /* OWLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3901CDA4F3000D18736 /* OWLManager.m */; };
 		CC49E3931CDA4F3000D18736 /* OWLOntologyID.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */; };
+		CC4D5B671CE3CF14005F7ADB /* OWLAxiomType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC4D5B661CE3CF14005F7ADB /* OWLAxiomType.h */; };
 		CC52207C1CD61A4700490D42 /* OWLOntologyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */; };
 		CC52207E1CD61A4700490D42 /* MicroReasoner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */; };
 		CC52208E1CD61BE700490D42 /* building.owl in Resources */ = {isa = PBXBuildFile; fileRef = CC52208D1CD61BE700490D42 /* building.owl */; };
@@ -177,6 +178,7 @@
 		CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyInternals.m; sourceTree = "<group>"; };
 		CC49E3901CDA4F3000D18736 /* OWLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLManager.m; sourceTree = "<group>"; };
 		CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyID.m; sourceTree = "<group>"; };
+		CC4D5B661CE3CF14005F7ADB /* OWLAxiomType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLAxiomType.h; sourceTree = "<group>"; };
 		CC5220791CD61A4700490D42 /* MicroReasonerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroReasonerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyTests.m; sourceTree = "<group>"; };
 		CC52207D1CD61A4700490D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				CC49E37B1CDA104C00D18736 /* impl */,
 				CC8778661CDD1A040058F677 /* OWLAnonymousClassExpression.h */,
 				CCDC44671CDB398B00854918 /* OWLAxiom.h */,
+				CC4D5B661CE3CF14005F7ADB /* OWLAxiomType.h */,
 				CC29332D1CDE285500315B3A /* OWLBooleanClassExpression.h */,
 				CCDE42D71CDE3ACB00232E83 /* OWLCardinalityRestriction.h */,
 				CCEF46711CD8E7AC008C3D88 /* OWLClass.h */,
@@ -505,6 +508,7 @@
 				CC7CD09D1CE0AAD40001B228 /* OWLEquivalentClassesAxiomImpl.h in Headers */,
 				CCB648271CDE751700C2A761 /* OWLObjectProperty.h in Headers */,
 				CCDE42D81CDE3ACB00232E83 /* OWLCardinalityRestriction.h in Headers */,
+				CC4D5B671CE3CF14005F7ADB /* OWLAxiomType.h in Headers */,
 				CCDC448C1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.h in Headers */,
 				CC7AAF581CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h in Headers */,
 				CC7AAF631CDDE8D700A6D41B /* OWLObjectSomeValuesFromImpl.h in Headers */,

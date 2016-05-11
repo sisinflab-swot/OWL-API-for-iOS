@@ -10,4 +10,8 @@
 
 @implementation OWLDisjointClassesAxiomImpl
 
+#pragma mark OWLAxiom
+
+- (OWLAxiomType)axiomType { return OWLAxiomTypeDisjointClasses; }
+
 @end

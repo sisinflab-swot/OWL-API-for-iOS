@@ -7,5 +7,11 @@
 //
 
 #import "OWLObject.h"
+#import "OWLAxiomType.h"
 
-@protocol OWLAxiom <OWLObject> @end
+@protocol OWLAxiom <OWLObject>
+
+/// The axiom type for this axiom.
+@property (nonatomic, readonly) OWLAxiomType axiomType;
+
+@end

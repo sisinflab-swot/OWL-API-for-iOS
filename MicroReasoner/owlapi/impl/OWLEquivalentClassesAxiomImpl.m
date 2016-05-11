@@ -10,4 +10,8 @@
 
 @implementation OWLEquivalentClassesAxiomImpl
 
+#pragma mark OWLAxiom
+
+- (OWLAxiomType)axiomType { return OWLAxiomTypeEquivalentClasses; }
+
 @end
