@@ -6,12 +6,12 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "OWLObjectImpl.h"
+#import "OWLLogicalAxiomImpl.h"
 #import "OWLSubClassOfAxiom.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWLSubClassOfAxiomImpl : OWLObjectImpl <OWLSubClassOfAxiom>
+@interface OWLSubClassOfAxiomImpl : OWLLogicalAxiomImpl <OWLSubClassOfAxiom>
 
 - (instancetype)initWithSuperClass:(id<OWLClassExpression>)superClass subClass:(id<OWLClassExpression>)subClass;
 

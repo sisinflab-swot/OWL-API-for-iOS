@@ -6,13 +6,13 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "OWLObjectImpl.h"
+#import "OWLLogicalAxiomImpl.h"
 #import "OWLNAryClassAxiom.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Abstract class that informally implements part of the OWLNAryClassAxiom protocol.
-@interface OWLNAryClassAxiomImpl : OWLObjectImpl
+@interface OWLNAryClassAxiomImpl : OWLLogicalAxiomImpl
 
 #pragma mark OWLObject
 
