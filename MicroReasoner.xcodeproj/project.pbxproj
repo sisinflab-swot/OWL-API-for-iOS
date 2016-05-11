@@ -32,8 +32,6 @@
 		CC49E3871CDA11F000D18736 /* OWLOntologyManagerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3851CDA11F000D18736 /* OWLOntologyManagerImpl.m */; };
 		CC49E38A1CDA140C00D18736 /* OWLOntologyInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E3881CDA140C00D18736 /* OWLOntologyInternals.h */; };
 		CC49E38B1CDA140C00D18736 /* OWLOntologyInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */; };
-		CC49E38E1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E38C1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h */; };
-		CC49E38F1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E38D1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m */; };
 		CC49E3921CDA4F3000D18736 /* OWLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3901CDA4F3000D18736 /* OWLManager.m */; };
 		CC49E3931CDA4F3000D18736 /* OWLOntologyID.m in Sources */ = {isa = PBXBuildFile; fileRef = CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */; };
 		CC52207C1CD61A4700490D42 /* OWLOntologyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */; };
@@ -175,8 +173,6 @@
 		CC49E3851CDA11F000D18736 /* OWLOntologyManagerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyManagerImpl.m; sourceTree = "<group>"; };
 		CC49E3881CDA140C00D18736 /* OWLOntologyInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyInternals.h; sourceTree = "<group>"; };
 		CC49E3891CDA140C00D18736 /* OWLOntologyInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyInternals.m; sourceTree = "<group>"; };
-		CC49E38C1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RedlandNamespace+OWLAdditions.h"; sourceTree = "<group>"; };
-		CC49E38D1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RedlandNamespace+OWLAdditions.m"; sourceTree = "<group>"; };
 		CC49E3901CDA4F3000D18736 /* OWLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLManager.m; sourceTree = "<group>"; };
 		CC49E3911CDA4F3000D18736 /* OWLOntologyID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyID.m; sourceTree = "<group>"; };
 		CC5220791CD61A4700490D42 /* MicroReasonerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MicroReasonerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -348,8 +344,6 @@
 				CC8778811CDD2B820058F677 /* OWLRestrictionImpl.m */,
 				CCDC448A1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.h */,
 				CCDC448B1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.m */,
-				CC49E38C1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h */,
-				CC49E38D1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m */,
 			);
 			path = impl;
 			sourceTree = "<group>";
@@ -482,7 +476,6 @@
 				CCEF467E1CD8EEFD008C3D88 /* OWLObject.h in Headers */,
 				CCB648171CDE68DB00C2A761 /* OWLObjectMinCardinality.h in Headers */,
 				CCEF46881CD90579008C3D88 /* OWLOntologyManager.h in Headers */,
-				CC49E38E1CDA173200D18736 /* RedlandNamespace+OWLAdditions.h in Headers */,
 				CCB648231CDE715C00C2A761 /* OWLProperty.h in Headers */,
 				CCB6481A1CDE696500C2A761 /* OWLObjectMinCardinalityImpl.h in Headers */,
 				CCDC44741CDB39EA00854918 /* OWLClassAxiom.h in Headers */,
@@ -698,7 +691,6 @@
 				CC49E38B1CDA140C00D18736 /* OWLOntologyInternals.m in Sources */,
 				CCDC447A1CDB401600854918 /* OWLObjectImpl.m in Sources */,
 				CC399EFD1CE25835001A7F19 /* OWLRDFVocabulary.m in Sources */,
-				CC49E38F1CDA173200D18736 /* RedlandNamespace+OWLAdditions.m in Sources */,
 				CCD838621CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m in Sources */,
 				CCB6481B1CDE696500C2A761 /* OWLObjectMinCardinalityImpl.m in Sources */,
 				CC49E3831CDA10C800D18736 /* OWLOntologyImpl.m in Sources */,

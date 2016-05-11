@@ -13,11 +13,15 @@
 static NSString *const OWLNSPrefix = @"http://www.w3.org/2002/07/owl#";
 static NSString *const OWLNSShort = @"owl";
 
+static NSString *const RDFSyntaxNSPrefix = @"http://www.w3.org/1999/02/22-rdf-syntax-ns#";
+static NSString *const RDFSyntaxNSShort = @"rdf";
+
 static NSString *const RDFSchemaNSPrefix = @"http://www.w3.org/2000/01/rdf-schema#";
 static NSString *const RDFSchemaNSShort = @"rdfs";
 
 OWLNamespace *OWLNamespaceOWL = nil;
-OWLNamespace *OWLNamespaceRDFS = nil;
+OWLNamespace *OWLNamespaceRDFSyntax = nil;
+OWLNamespace *OWLNamespaceRDFSchema = nil;
 
 
 @implementation OWLNamespace
@@ -33,7 +37,8 @@ OWLNamespace *OWLNamespaceRDFS = nil;
 {
     if (self == [OWLNamespace class]) {
         OWLNamespaceOWL = [[OWLNamespace alloc] initWithPrefix:OWLNSPrefix shortName:OWLNSShort];
-        OWLNamespaceRDFS = [[OWLNamespace alloc] initWithPrefix:RDFSchemaNSPrefix shortName:RDFSchemaNSShort];
+        OWLNamespaceRDFSyntax = [[OWLNamespace alloc] initWithPrefix:RDFSyntaxNSPrefix shortName:RDFSyntaxNSShort];
+        OWLNamespaceRDFSchema = [[OWLNamespace alloc] initWithPrefix:RDFSchemaNSPrefix shortName:RDFSchemaNSShort];
     }
 }
 
