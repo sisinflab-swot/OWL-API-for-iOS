@@ -33,14 +33,47 @@ OWLNamespace *OWLNamespaceRDFSchema = nil;
 
 #pragma mark Class methods
 
-+ (void)initialize
++ (void)load
 {
-    if (self == [OWLNamespace class]) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         OWLNamespaceOWL = [[OWLNamespace alloc] initWithPrefix:OWLNSPrefix shortName:OWLNSShort];
         OWLNamespaceRDFSyntax = [[OWLNamespace alloc] initWithPrefix:RDFSyntaxNSPrefix shortName:RDFSyntaxNSShort];
         OWLNamespaceRDFSchema = [[OWLNamespace alloc] initWithPrefix:RDFSchemaNSPrefix shortName:RDFSchemaNSShort];
-    }
+    });
 }
+
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([object isKindOfClass:[self class]]) {
+        NSString *objStr = [object prefix];
+        NSString *selfStr = self.prefix;
+        BOOL samePrefix = (objStr == selfStr || [objStr isEqualToString:selfStr]);
+        
+        objStr = [object shortName];
+        selfStr = self.shortName;
+        BOOL sameShortName = (objStr == selfStr || [objStr isEqualToString:selfStr]);
+        
+        equal = (samePrefix && sameShortName);
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash { return self.prefix.hash ^ self.shortName.hash; }
+
+#pragma mark NSCopying
+
+// This object is immutable.
+- (id)copyWithZone:(__unused NSZone *)zone { return self; }
 
 #pragma mark Public instance methods
 

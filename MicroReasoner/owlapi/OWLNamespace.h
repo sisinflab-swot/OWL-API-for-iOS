@@ -18,7 +18,7 @@ extern OWLNamespace *OWLNamespaceRDFSchema;         /// RDF Schema namespace.
 
 
 /// Represents OWL/RDF namespaces.
-@interface OWLNamespace : NSObject
+@interface OWLNamespace : NSObject <NSCopying>
 
 /// The prefix of this namespace.
 @property (nonatomic, copy, readonly) NSString *prefix;
