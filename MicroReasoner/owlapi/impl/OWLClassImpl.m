@@ -10,6 +10,7 @@
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEquivalentClassesAxiom.h"
 #import "OWLOntology.h"
+#import "OWLRDFVocabulary.h"
 #import "OWLSubClassOfAxiom.h"
 
 @implementation OWLClassImpl
@@ -54,17 +55,9 @@
 
 - (BOOL)anonymous { return NO; }
 
-- (BOOL)isOWLThing
-{
-    // TODO: implement
-    return NO;
-}
+- (BOOL)isOWLThing { return [self.IRI isEqual:[OWLRDFVocabulary OWLThing].IRI]; }
 
-- (BOOL)isOWLNothing
-{
-    // TODO: implement
-    return NO;
-}
+- (BOOL)isOWLNothing { return [self.IRI isEqual:[OWLRDFVocabulary OWLNothing].IRI]; }
 
 - (NSSet<id<OWLClassExpression>> *)asConjunctSet { return [NSSet setWithObject:self]; }
 
