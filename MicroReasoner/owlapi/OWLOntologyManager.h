@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The loaded ontology will be assigned a document IRI that corresponds to the file IRI.
  *
  * @param URL URL of the ontology document to load.
- * @param error NSError out parameter.
+ * @param error Error out parameter.
  *
  * @return The ontology that was parsed from the file, or nil on error.
  */

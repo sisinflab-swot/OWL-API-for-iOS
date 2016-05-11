@@ -27,14 +27,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// The designated initializer.
 - (instancetype)initWithNameSpace:(OWLNamespace *)nameSpace shortName:(NSString *)shortName;
 
+/**
+ * Returns the concatenation of the namespace and short name of this term.
+ *
+ * @return The string representation of this term.
+ */
+- (NSString *)stringValue;
+
 @end
 
 
 /// Represents the OWL RDF vocabulary.
 @interface OWLRDFVocabulary : NSObject
 
-+ (OWLRDFTerm *)thing;
-+ (OWLRDFTerm *)nothing;
++ (OWLRDFTerm *)RDFType;
+
++ (OWLRDFTerm *)OWLClass;
++ (OWLRDFTerm *)OWLThing;
++ (OWLRDFTerm *)OWLNothing;
 
 @end
 

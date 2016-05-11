@@ -18,11 +18,17 @@ return var; \
 
 #pragma mark Constants
 
+static NSString *const RDFTermStringType = @"type";
+
+static NSString *const OWLTermStringClass = @"Class";
 static NSString *const OWLTermStringThing = @"Thing";
 static NSString *const OWLTermStringNothing = @"Nothing";
 
 #pragma mark Static globals
 
+static OWLRDFTerm *RDFTermType = nil;
+
+static OWLRDFTerm *OWLTermClass = nil;
 static OWLRDFTerm *OWLTermThing = nil;
 static OWLRDFTerm *OWLTermNothing = nil;
 
@@ -58,12 +64,17 @@ static OWLRDFTerm *OWLTermNothing = nil;
     return self;
 }
 
+- (NSString *)stringValue { return [self.nameSpace.prefix stringByAppendingString:self.shortName]; }
+
 @end
 
 
 @implementation OWLRDFVocabulary
 
-+ (OWLRDFTerm *)thing LAZY_TERM(OWLTermThing, OWLNamespaceOWL, OWLTermStringThing)
-+ (OWLRDFTerm *)nothing LAZY_TERM(OWLTermNothing, OWLNamespaceOWL, OWLTermStringNothing)
++ (OWLRDFTerm *)RDFType LAZY_TERM(RDFTermType, OWLNamespaceRDFSyntax, RDFTermStringType)
+
++ (OWLRDFTerm *)OWLClass LAZY_TERM(OWLTermClass, OWLNamespaceOWL, OWLTermStringClass)
++ (OWLRDFTerm *)OWLThing LAZY_TERM(OWLTermThing, OWLNamespaceOWL, OWLTermStringThing)
++ (OWLRDFTerm *)OWLNothing LAZY_TERM(OWLTermNothing, OWLNamespaceOWL, OWLTermStringNothing)
 
 @end
