@@ -9,8 +9,6 @@
 #import "OWLPropertyDomainAxiomImpl.h"
 #import "OWLObjectPropertyDomainAxiom.h"
 
-@protocol OWLObjectPropertyExpression;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLObjectPropertyDomainAxiomImpl : OWLPropertyDomainAxiomImpl <OWLObjectPropertyDomainAxiom>
