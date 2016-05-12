@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark OWLUnaryPropertyAxiom
 
+/// The object property expression that this axiom describes.
 @property (nonatomic, copy, readonly) id<OWLObjectPropertyExpression> property;
 
 @end

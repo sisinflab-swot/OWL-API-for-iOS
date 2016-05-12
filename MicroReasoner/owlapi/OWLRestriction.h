@@ -18,10 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @protocol OWLRestriction <OWLAnonymousClassExpression>
 
-/**
- * Gets the property/properties that the restriction acts along depending on R
- * being a scalar or collection type.
- */
+/// The property/properties that the restriction acts along.
 @property (nonatomic, strong, readonly) id<OWLPropertyExpression> property;
 
 /// Determines if this is an object restriction.

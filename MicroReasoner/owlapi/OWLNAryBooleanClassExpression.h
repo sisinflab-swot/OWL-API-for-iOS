@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OWLNAryBooleanClassExpression <OWLBooleanClassExpression>
 
+/// The operands of this class expression.
 @property (nonatomic, copy, readonly) NSSet<id<OWLClassExpression>> *operands;
 
 @end

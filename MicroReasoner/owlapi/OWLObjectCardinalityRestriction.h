@@ -13,7 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OWLObjectCardinalityRestriction <OWLCardinalityRestriction>
 
+#pragma mark OWLRestriction
+
+/// The property/properties that the restriction acts along.
 @property (nonatomic, strong, readonly) id<OWLObjectPropertyExpression> property;
+
+#pragma mark OWLQuantifiedRestriction
+
+/// The filler of this restriction.
 @property (nonatomic, strong, readonly) id<OWLClassExpression> filler;
 
 @end

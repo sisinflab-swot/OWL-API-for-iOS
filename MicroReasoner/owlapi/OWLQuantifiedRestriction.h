@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OWLQuantifiedRestriction <OWLRestriction>
 
+/// The filler of this restriction.
 @property (nonatomic, strong, readonly) id<OWLPropertyRange> filler;
 
 @end
