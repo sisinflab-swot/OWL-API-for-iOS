@@ -7,6 +7,7 @@
 //
 
 #import "OWLRDFXMLParser.h"
+#import "OWLEntityType.h"
 #import "OWLNamespace.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLRDFVocabulary.h"
@@ -62,26 +63,36 @@
             if (object.isResource)
             {
                 NSString *objectURIString = object.URIStringValue;
-                BOOL isClassDeclaration = NO;
-                BOOL isObjPropDeclaration = NO;
+                
+                BOOL isDeclaration = NO;
+                OWLEntityType declaredEntityType = OWLEntityTypeClass;
                 
                 if ([objectURIString isEqualToString:owlClassURIString]) {
                     // OWL Class declaration
-                    isClassDeclaration = YES;
+                    isDeclaration = YES;
+                    declaredEntityType = OWLEntityTypeClass;
                 } else if ([objectURIString isEqualToString:owlObjectPropertyURIString]) {
                     // OWL Object Property declaration
-                    isObjPropDeclaration = YES;
+                    isDeclaration = YES;
+                    declaredEntityType = OWLEntityTypeObjectProperty;
                 }
                 
-                if (isClassDeclaration || isObjPropDeclaration) {
+                if (isDeclaration) {
                     RedlandNode *subject = stmt.subject;
                     NSURL *IRI = subject.isResource ? subject.URIValue.URLValue : nil;
                     
                     if (IRI) {
-                        if (isClassDeclaration) {
-                            [builder addClassDeclarationAxiomForIRI:IRI];
-                        } else {
-                            [builder addObjectPropertyDeclarationAxiomForIRI:IRI];
+                        switch (declaredEntityType) {
+                            case OWLEntityTypeClass:
+                                [builder addClassDeclarationAxiomForIRI:IRI];
+                                break;
+                                
+                            case OWLEntityTypeObjectProperty:
+                                [builder addObjectPropertyDeclarationAxiomForIRI:IRI];
+                                break;
+                                
+                            default:
+                                break;
                         }
                     }
                 }

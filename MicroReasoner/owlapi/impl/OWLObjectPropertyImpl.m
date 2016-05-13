@@ -44,6 +44,8 @@
 
 #pragma mark OWLEntity
 
+- (OWLEntityType)entityType { return OWLEntityTypeObjectProperty; }
+
 - (BOOL)isOWLClass { return NO; }
 
 - (BOOL)isOWLObjectProperty { return YES; }

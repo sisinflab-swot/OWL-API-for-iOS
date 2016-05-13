@@ -25,28 +25,23 @@
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLClass>> *)classesInSignature
-{
-    NSMutableSet<id<OWLClass>> *classes = [[NSMutableSet alloc] init];
-    for (id<OWLEntity> entity in self.signature) {
-        if (entity.isOWLClass) {
-            [classes addObject:(id<OWLClass>)entity];
-        }
-    }
-    return classes;
-}
+- (NSSet<id<OWLClass>> *)classesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeClass]; }
 
-- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature
-{
-    NSMutableSet<id<OWLObjectProperty>> *properties = [[NSMutableSet alloc] init];
-    for (id<OWLEntity> entity in self.signature) {
-        if (entity.isOWLObjectProperty) {
-            [properties addObject:(id<OWLObjectProperty>)entity];
-        }
-    }
-    return properties;
-}
+- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeObjectProperty]; }
 
 - (NSSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;
+
+#pragma mark Private methods
+
+- (NSSet *)entitiesInSignatureOfType:(OWLEntityType)type
+{
+    NSMutableSet *entities = [[NSMutableSet alloc] init];
+    for (id<OWLEntity> entity in self.signature) {
+        if (entity.entityType == type) {
+            [entities addObject:entity];
+        }
+    }
+    return entities;
+}
 
 @end

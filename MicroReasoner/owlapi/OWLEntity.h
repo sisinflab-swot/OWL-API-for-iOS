@@ -7,11 +7,15 @@
 //
 
 #import "OWLNamedObject.h"
+#import "OWLEntityType.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents Entities in the OWL 2 Specification.
 @protocol OWLEntity <OWLNamedObject>
+
+/// The entity type for this entity.
+@property (nonatomic, readonly) OWLEntityType entityType;
 
 /// Determines if this entity is an OWLClass.
 @property (nonatomic, readonly) BOOL isOWLClass;
