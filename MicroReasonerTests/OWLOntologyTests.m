@@ -58,13 +58,22 @@ static void loadOntologyNoCache() {
     XCTAssertTrue(statements.count > 0);
 }
 
-- (void)testGetClassesInSignature
+- (void)testClassesInSignature
 {
     loadOntology();
     
-    NSArray *classes = [[ontology classesInSignature] allObjects];
+    NSSet *classes = [ontology classesInSignature];
     NSLog(@"Classes (%lu):\n--------\n%@", (unsigned long)classes.count, classes);
     XCTAssertTrue(classes.count > 0);
+}
+
+- (void)testObjectPropertiesInSignature
+{
+    loadOntology();
+    
+    NSSet *properties = [ontology objectPropertiesInSignature];
+    NSLog(@"Object properties (%lu):\n-----------------\n%@", (unsigned long)properties.count, properties);
+    XCTAssertTrue(properties.count > 0);
 }
 
 @end
