@@ -20,5 +20,6 @@
 #pragma mark OWLObject
 
 - (NSSet<id<OWLClass>> *)classesInSignature;
+- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature;
 
 @end

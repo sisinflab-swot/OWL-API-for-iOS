@@ -47,15 +47,14 @@
 
 - (NSSet<id<OWLEntity>> *)signature
 {
-    // TODO: finish implementing
     NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:self.classesInSignature];
+    [signature unionSet:self.objectPropertiesInSignature];
     return signature;
 }
 
-- (NSSet<id<OWLClass>> *)classesInSignature
-{
-    return [NSSet setWithArray:[self.internals.classesByIRI allValues]];
-}
+- (NSSet<id<OWLClass>> *)classesInSignature { return [self.internals allClasses]; }
+
+- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self.internals allObjectProperties]; }
 
 #pragma mark OWLOntology
 

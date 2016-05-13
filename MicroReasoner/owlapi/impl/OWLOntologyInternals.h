@@ -7,24 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OWLAxiomType.h"
 
-@class RedlandStatement;
+@class RedlandStatement; // TODO: remove
 
+@protocol OWLAxiom;
 @protocol OWLClass;
 @protocol OWLClassExpression;
 @protocol OWLDisjointClassesAxiom;
 @protocol OWLEquivalentClassesAxiom;
+@protocol OWLObjectProperty;
 @protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyInternals : NSObject
 
-@property (nonatomic, strong) NSMutableArray<RedlandStatement*> *allStatements;
-@property (nonatomic, strong) NSMutableDictionary<NSURL*,id<OWLClass>> *classesByIRI;
-@property (nonatomic, strong) NSMutableDictionary<id<OWLClass>,NSSet<id<OWLDisjointClassesAxiom>> *> *disjointClassesAxiomsByClass;
-@property (nonatomic, strong) NSMutableDictionary<id<OWLClass>,NSSet<id<OWLEquivalentClassesAxiom>> *> *equivalentClassesAxiomsByClass;
-@property (nonatomic, strong) NSMutableDictionary<id<OWLClass>,NSSet<id<OWLSubClassOfAxiom>> *> *subClassAxiomsBySubClass;
+@property (nonatomic, strong) NSMutableArray<RedlandStatement*> *allStatements; // TODO: remove
+
+#pragma mark Mutation methods
+
+- (void)addAxiom:(id<OWLAxiom>)axiom ofType:(OWLAxiomType)type;
+- (void)addAxiom:(id<OWLAxiom>)axiom forClass:(id<OWLClass>)cls;
+- (void)addAxiom:(id<OWLAxiom>)axiom forObjectProperty:(id<OWLObjectProperty>)property;
+
+#pragma mark Getter methods
+
+- (NSSet<id<OWLClass>> *)allClasses;
+- (NSSet<id<OWLObjectProperty>> *)allObjectProperties;
 
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;

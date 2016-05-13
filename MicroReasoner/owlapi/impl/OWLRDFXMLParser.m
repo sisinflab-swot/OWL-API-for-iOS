@@ -7,11 +7,8 @@
 //
 
 #import "OWLRDFXMLParser.h"
-#import "OWLClassImpl.h"
 #import "OWLNamespace.h"
-#import "OWLOntologyID.h"
-#import "OWLOntologyImpl.h"
-#import "OWLOntologyInternals.h"
+#import "OWLOntologyBuilder.h"
 #import "OWLRDFVocabulary.h"
 #import <Redland-ObjC.h>
 
@@ -23,29 +20,10 @@
 {
     NSParameterAssert(URL);
     
-    NSError *localError = nil;
-    OWLOntologyImpl *ontology = nil;
-    
-    OWLOntologyInternals *internals = [self _parseFileAtURL:URL error:&localError];
-    
-    if (error) {
-        *error = localError;
-    }
-    
-    if (internals) {
-        OWLOntologyID *ID = [[OWLOntologyID alloc] initWithOntologyIRI:URL];
-        ontology = [[OWLOntologyImpl alloc] initWithID:ID internals:internals];
-    }
-    
-    return ontology;
-}
-
-#pragma mark Private methods
-
-- (OWLOntologyInternals *)_parseFileAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
-{
     // Return vars
-    OWLOntologyInternals *internals = [[OWLOntologyInternals alloc] init];
+    OWLOntologyBuilder *builder = [[OWLOntologyBuilder alloc] init];
+    builder.ontologyIRI = URL;
+    
     NSError *localError = nil;
     
     // Work vars
@@ -56,12 +34,12 @@
     // OWL vocabulary strings
     NSString *rdfTypeURIString = [OWLRDFVocabulary RDFType].stringValue;
     NSString *owlClassURIString = [OWLRDFVocabulary OWLClass].stringValue;
+    NSString *owlObjectPropertyURIString = [OWLRDFVocabulary OWLObjectProperty].stringValue;
     
     // Load file into string
     NSString *ontoString = [[NSString alloc] initWithContentsOfURL:URL
                                                       usedEncoding:NULL
                                                              error:&localError];
-    
     if (!ontoString) {
         goto err;
     }
@@ -75,75 +53,51 @@
     
     for (RedlandStatement *stmt in stream.statementEnumerator) {
         
-        // Parse classes
+        // Parse declarations
         RedlandNode *predicate = stmt.predicate;
         
         if (predicate.isResource && [predicate.URIStringValue isEqualToString:rdfTypeURIString]) {
             RedlandNode *object = stmt.object;
             
-            if (object.isResource && [object.URIStringValue isEqualToString:owlClassURIString]) {
-                RedlandNode *subject = stmt.subject;
-                NSURL *iri = subject.isResource ? subject.URIValue.URLValue : nil;
+            if (object.isResource)
+            {
+                NSString *objectURIString = object.URIStringValue;
+                BOOL isClassDeclaration = NO;
+                BOOL isObjPropDeclaration = NO;
                 
-                if (iri) {
-                    OWLClassImpl *owlClass = [[OWLClassImpl alloc] initWithIRI:iri];
-                    internals.classesByIRI[iri] = owlClass;
+                if ([objectURIString isEqualToString:owlClassURIString]) {
+                    // OWL Class declaration
+                    isClassDeclaration = YES;
+                } else if ([objectURIString isEqualToString:owlObjectPropertyURIString]) {
+                    // OWL Object Property declaration
+                    isObjPropDeclaration = YES;
+                }
+                
+                if (isClassDeclaration || isObjPropDeclaration) {
+                    RedlandNode *subject = stmt.subject;
+                    NSURL *IRI = subject.isResource ? subject.URIValue.URLValue : nil;
+                    
+                    if (IRI) {
+                        if (isClassDeclaration) {
+                            [builder addClassDeclarationAxiomForIRI:IRI];
+                        } else {
+                            [builder addObjectPropertyDeclarationAxiomForIRI:IRI];
+                        }
+                    }
                 }
             }
         }
         
         // Add to 'allStatements' array
-        [internals.allStatements addObject:stmt];
+        [builder addStatement:stmt];
     }
-    
-    //    // Hash table implementation, probably faster for the final parser
-    //    // Parser directives
-    //    void (^parseClass)(RedlandNode *) = ^(RedlandNode *node) {
-    //        NSURL *iri = node.isResource ? node.URIValue.URLValue : nil;
-    //
-    //        if (iri) {
-    //            OWLClass *owlClass = [[OWLClass alloc] initWithIRI:iri];
-    //            [self.pClassesInSignature setObject:owlClass forKey:iri];
-    //        }
-    //    };
-    //
-    //    // Parser hash table
-    //    NSString *const separator = @"|#|";
-    //    NSDictionary<NSString *, void (^)(RedlandNode*)> *parserTable = [[NSDictionary alloc] initWithObjectsAndKeys:
-    //                                                                     [parseClass copy], [NSString stringWithFormat:@"%@%@%@", rdfTypeURIString, separator, owlClassURIString],
-    //                                                                     nil];
-    //
-    //    // Parse loop
-    //    RedlandStream *stream = [parser parseString:ontoString asStreamWithBaseURI:baseUri error:NULL];
-    //    if (stream) {
-    //        for (RedlandStatement *stmt in stream.statementEnumerator) {
-    //
-    //            // Parse classes
-    //            RedlandNode *predicate = stmt.predicate;
-    //            RedlandNode *object = stmt.object;
-    //
-    //            if (predicate.isResource && object.isResource) {
-    //                NSMutableString *key = [[NSMutableString alloc] initWithString:predicate.URIStringValue];
-    //                [key appendString:separator];
-    //                [key appendString:object.URIStringValue];
-    //
-    //                void (^parserBlock)(RedlandNode *) = [parserTable objectForKey:key];
-    //                if (parserBlock) {
-    //                    parserBlock(stmt.subject);
-    //                }
-    //            }
-    //
-    //            // Add to 'allStatements' array
-    //            [self.pAllStatements addObject:stmt];
-    //        }
-    //    }
     
 err:
     if (error) {
         *error = localError;
     }
     
-    return localError ? nil : internals;
+    return localError ? nil : [builder buildOWLOntology];
 }
 
 @end

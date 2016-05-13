@@ -37,6 +37,8 @@
 
 - (NSUInteger)hash { return [self.IRI hash]; }
 
+- (NSString *)description { return [self.IRI absoluteString]; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; }
@@ -48,6 +50,8 @@
 #pragma mark OWLEntity
 
 - (BOOL)isOWLClass { return YES; }
+
+- (BOOL)isOWLObjectProperty { return NO; }
 
 #pragma mark OWLClassExpression
 
@@ -107,7 +111,5 @@
     }
     return self;
 }
-
-- (NSString *)description { return [self.IRI absoluteString]; }
 
 @end

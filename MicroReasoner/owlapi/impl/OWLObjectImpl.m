@@ -36,6 +36,17 @@
     return classes;
 }
 
+- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature
+{
+    NSMutableSet<id<OWLObjectProperty>> *properties = [[NSMutableSet alloc] init];
+    for (id<OWLEntity> entity in self.signature) {
+        if (entity.isOWLObjectProperty) {
+            [properties addObject:(id<OWLObjectProperty>)entity];
+        }
+    }
+    return properties;
+}
+
 - (NSSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;
 
 @end

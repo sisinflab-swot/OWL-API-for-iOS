@@ -10,6 +10,7 @@
 
 @protocol OWLClass;
 @protocol OWLEntity;
+@protocol OWLObjectProperty;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -29,6 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
  * @return A set containing the classes that are in the signature of this object.
  */
 - (NSSet<id<OWLClass>> *)classesInSignature;
+
+/**
+ * A convenience method that obtains the object properties that are in the signature of this object.
+ *
+ * @return A set containing the object properties that are in the signature of this object.
+ */
+- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature;
 
 @end
 

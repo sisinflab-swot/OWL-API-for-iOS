@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)RDFType;
 
 + (OWLRDFTerm *)OWLClass;
++ (OWLRDFTerm *)OWLObjectProperty;
 + (OWLRDFTerm *)OWLThing;
 + (OWLRDFTerm *)OWLNothing;
 

@@ -9,28 +9,12 @@
 #import "OWLRDFVocabulary.h"
 #import "OWLNamespace.h"
 
-#define LAZY_TERM(var, ns, sn) { \
-if (!var) { \
-    var = [[OWLRDFTerm alloc] initWithNameSpace:ns shortName:sn]; \
-} \
-return var; \
+#define LAZY_STATIC_TERM(name, namespace, shortname) \
+static OWLRDFTerm *name##Term; \
++ (OWLRDFTerm *)name { \
+if (!name##Term) { name##Term = [[OWLRDFTerm alloc] initWithNameSpace:namespace shortName:shortname]; } \
+return name##Term; \
 }
-
-#pragma mark Constants
-
-static NSString *const RDFTermStringType = @"type";
-
-static NSString *const OWLTermStringClass = @"Class";
-static NSString *const OWLTermStringThing = @"Thing";
-static NSString *const OWLTermStringNothing = @"Nothing";
-
-#pragma mark Static globals
-
-static OWLRDFTerm *RDFTermType = nil;
-
-static OWLRDFTerm *OWLTermClass = nil;
-static OWLRDFTerm *OWLTermThing = nil;
-static OWLRDFTerm *OWLTermNothing = nil;
 
 @implementation OWLRDFTerm
 
@@ -71,10 +55,11 @@ static OWLRDFTerm *OWLTermNothing = nil;
 
 @implementation OWLRDFVocabulary
 
-+ (OWLRDFTerm *)RDFType LAZY_TERM(RDFTermType, OWLNamespaceRDFSyntax, RDFTermStringType)
+LAZY_STATIC_TERM(RDFType, OWLNamespaceRDFSyntax, @"type");
 
-+ (OWLRDFTerm *)OWLClass LAZY_TERM(OWLTermClass, OWLNamespaceOWL, OWLTermStringClass)
-+ (OWLRDFTerm *)OWLThing LAZY_TERM(OWLTermThing, OWLNamespaceOWL, OWLTermStringThing)
-+ (OWLRDFTerm *)OWLNothing LAZY_TERM(OWLTermNothing, OWLNamespaceOWL, OWLTermStringNothing)
+LAZY_STATIC_TERM(OWLClass, OWLNamespaceOWL, @"Class");
+LAZY_STATIC_TERM(OWLObjectProperty, OWLNamespaceOWL, @"ObjectProperty");
+LAZY_STATIC_TERM(OWLThing, OWLNamespaceOWL, @"Thing");
+LAZY_STATIC_TERM(OWLNothing, OWLNamespaceOWL, @"Nothing");
 
 @end

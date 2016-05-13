@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Determines if this entity is an OWLClass.
 @property (nonatomic, readonly) BOOL isOWLClass;
 
+/// Determines if this entity is an OWLObjectProperty.
+@property (nonatomic, readonly) BOOL isOWLObjectProperty;
+
 @end
 
 NS_ASSUME_NONNULL_END

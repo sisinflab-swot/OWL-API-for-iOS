@@ -10,6 +10,30 @@
 
 @implementation OWLObjectPropertyImpl
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == self) {
+        return YES;
+    }
+    
+    BOOL equal = NO;
+    
+    if ([super isEqual:object]) {
+        NSURL *objIRI = [object IRI];
+        NSURL *selfIRI = self.IRI;
+        
+        equal = (objIRI == selfIRI || [objIRI isEqual:selfIRI]);
+    }
+    
+    return equal;
+}
+
+- (NSUInteger)hash { return [self.IRI hash]; }
+
+- (NSString *)description { return [self.IRI absoluteString]; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; };
@@ -21,6 +45,8 @@
 #pragma mark OWLEntity
 
 - (BOOL)isOWLClass { return NO; }
+
+- (BOOL)isOWLObjectProperty { return YES; }
 
 #pragma mark OWLPropertyExpression
 

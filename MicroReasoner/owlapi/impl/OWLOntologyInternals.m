@@ -7,84 +7,89 @@
 //
 
 #import "OWLOntologyInternals.h"
+#import "SMRPreprocessor.h"
+
+@interface OWLOntologyInternals ()
+
+@property (nonatomic, strong, readonly) NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLAxiom>> *> *axiomsByClass;
+@property (nonatomic, strong, readonly) NSMutableDictionary<id<OWLObjectProperty>,NSMutableSet<id<OWLAxiom>> *> *axiomsByObjectProperty;
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSNumber *,NSMutableSet<id<OWLAxiom>> *> *axiomsByType;
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLDisjointClassesAxiom>> *> *disjointClassesAxiomsByClass;
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLEquivalentClassesAxiom>> *> *equivalentClassesAxiomsByClass;
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLSubClassOfAxiom>> *> *subClassAxiomsBySubClass;
+
+@end
+
 
 @implementation OWLOntologyInternals
 
 #pragma mark Properties
 
-// allStatements
-@synthesize allStatements = _allStatements;
+SYNTHESIZE_LAZY_INIT(NSMutableArray, allStatements); // TODO: remove
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByClass);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByObjectProperty);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByType);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, disjointClassesAxiomsByClass);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, equivalentClassesAxiomsByClass);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, subClassAxiomsBySubClass);
 
-- (NSMutableArray<RedlandStatement *> *)allStatements
-{
-    if (!_allStatements) {
-        _allStatements = [[NSMutableArray alloc] init];
+#pragma mark Public mutation methods
+
+NS_INLINE void addObjectToSetInDictionary(NSMutableDictionary *dict, id key, id obj) {
+    
+    NSMutableSet *objectsForKey = dict[key];
+    
+    if (objectsForKey) {
+        [objectsForKey addObject:obj];
+    } else {
+        objectsForKey = [NSMutableSet setWithObject:obj];
+        dict[key] = objectsForKey;
     }
-    return _allStatements;
 }
 
-// classesByIRI
-@synthesize classesByIRI = _classesByIRI;
-
-- (NSMutableDictionary<NSURL *,id<OWLClass>> *)classesByIRI
-{
-    if (!_classesByIRI) {
-        _classesByIRI = [[NSMutableDictionary alloc] init];
-    }
-    return _classesByIRI;
+NS_INLINE NSSet * nonNilSet(NSSet *set) {
+    return set ? [set copy] : [[NSSet alloc] init];
 }
 
-// disjointClassesAxiomsByClass
-@synthesize disjointClassesAxiomsByClass = _disjointClassesAxiomsByClass;
-
-- (NSMutableDictionary<id<OWLClass>,NSSet<id<OWLDisjointClassesAxiom>> *> *)disjointClassesAxiomsByClass
+- (void)addAxiom:(id<OWLAxiom>)axiom ofType:(OWLAxiomType)type
 {
-    if (!_disjointClassesAxiomsByClass) {
-        _disjointClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
-    }
-    return _disjointClassesAxiomsByClass;
+    addObjectToSetInDictionary(self.axiomsByType, [NSNumber numberWithInteger:type], axiom);
 }
 
-// equivalentClassesAxiomeByClass
-@synthesize equivalentClassesAxiomsByClass = _equivalentClassesAxiomsByClass;
-
-- (NSMutableDictionary<id<OWLClass>,NSSet<id<OWLEquivalentClassesAxiom>> *> *)equivalentClassesAxiomsByClass
+- (void)addAxiom:(id<OWLAxiom>)axiom forClass:(id<OWLClass>)cls
 {
-    if (!_equivalentClassesAxiomsByClass) {
-        _equivalentClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
-    }
-    return _equivalentClassesAxiomsByClass;
+    addObjectToSetInDictionary(self.axiomsByClass, cls, axiom);
 }
 
-// subClassOfAxiomsBySubClass
-@synthesize subClassAxiomsBySubClass = _subClassAxiomsBySubClass;
-
-- (NSMutableDictionary<id<OWLClass>,NSSet<id<OWLSubClassOfAxiom>> *> *)subClassOfAxiomsBySubClass
+- (void)addAxiom:(id<OWLAxiom>)axiom forObjectProperty:(id<OWLObjectProperty>)property
 {
-    if (!_subClassAxiomsBySubClass) {
-        _subClassAxiomsBySubClass = [[NSMutableDictionary alloc] init];
-    }
-    return _subClassAxiomsBySubClass;
+    addObjectToSetInDictionary(self.axiomsByObjectProperty, property, axiom);
 }
 
-#pragma mark Public methods
+#pragma mark Public getter methods
+
+- (NSSet<id<OWLClass>> *)allClasses { return [NSSet setWithArray:[self.axiomsByClass allKeys]]; }
+- (NSSet<id<OWLObjectProperty>> *)allObjectProperties { return [NSSet setWithArray:[self.axiomsByObjectProperty allKeys]]; }
 
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
 {
-    NSSet *returnSet = self.disjointClassesAxiomsByClass[cls];
-    return returnSet ?: [NSSet set];
+    return nonNilSet(self.disjointClassesAxiomsByClass[cls]);
 }
 
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
 {
-    NSSet *returnSet = self.equivalentClassesAxiomsByClass[cls];
-    return returnSet ?: [NSSet set];
+    return nonNilSet(self.equivalentClassesAxiomsByClass[cls]);
 }
 
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
-    NSSet *returnSet = self.subClassAxiomsBySubClass[cls];
-    return returnSet ?: [NSSet set];
+    return nonNilSet(self.subClassAxiomsBySubClass[cls]);
 }
 
 @end
