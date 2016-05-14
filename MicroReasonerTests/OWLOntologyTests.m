@@ -12,12 +12,17 @@
 static id<OWLOntology> ontology = nil;
 
 
-@interface MicroReasonerTests : XCTestCase
-
-@end
-
+@interface MicroReasonerTests : XCTestCase @end
 
 @implementation MicroReasonerTests
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        loadOntology();
+    });
+}
 
 static void loadOntology() {
     if (!ontology) {
@@ -31,16 +36,6 @@ static void loadOntologyNoCache() {
     ontology = [[OWLManager createOWLOntologyManager] loadOntologyFromDocumentAtURL:ontoURL error:NULL];
 }
 
-- (void)setUp
-{
-    [super setUp];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
-}
-
 - (void)testLoadOntology
 {
     [self measureBlock:^{
@@ -49,19 +44,8 @@ static void loadOntologyNoCache() {
     XCTAssertNotNil(ontology);
 }
 
-- (void)testAllStatements
-{
-    loadOntology();
-    
-    NSArray *statements = [(NSObject *)ontology valueForKeyPath:@"internals.allStatements"];
-    NSLog(@"Statements (%lu):\n-----------\n%@", (unsigned long)statements.count, statements);
-    XCTAssertTrue(statements.count > 0);
-}
-
 - (void)testClassesInSignature
 {
-    loadOntology();
-    
     NSSet *classes = [ontology classesInSignature];
     NSLog(@"Classes (%lu):\n--------\n%@", (unsigned long)classes.count, classes);
     XCTAssertTrue(classes.count > 0);
@@ -69,8 +53,6 @@ static void loadOntologyNoCache() {
 
 - (void)testObjectPropertiesInSignature
 {
-    loadOntology();
-    
     NSSet *properties = [ontology objectPropertiesInSignature];
     NSLog(@"Object properties (%lu):\n-----------------\n%@", (unsigned long)properties.count, properties);
     XCTAssertTrue(properties.count > 0);
