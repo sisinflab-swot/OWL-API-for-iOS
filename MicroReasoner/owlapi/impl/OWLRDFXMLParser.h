@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @return OWLOntology representation of the parsed document, or nil on error.
  */
-- (id<OWLOntology>)parseOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error;
+- (nullable id<OWLOntology>)parseOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error;
 
 @end
 
