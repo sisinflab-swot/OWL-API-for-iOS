@@ -11,9 +11,22 @@
 #import "OWLNamespace.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLRDFVocabulary.h"
+#import "SMRPreprocessor.h"
 #import <Redland-ObjC.h>
 
+@interface OWLRDFXMLParser ()
+
+/// IRI -> NSNumber enclosing OWLEntityType
+@property (nonatomic, strong, readonly) NSMutableDictionary<NSURL*,NSNumber*> *declarations;
+
+@end
+
+
 @implementation OWLRDFXMLParser
+
+#pragma mark Properties
+
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, declarations);
 
 #pragma mark Public methods
 
@@ -21,10 +34,25 @@
 {
     NSParameterAssert(URL);
     
-    // Return vars
-    OWLOntologyBuilder *builder = [[OWLOntologyBuilder alloc] init];
-    builder.ontologyIRI = URL;
+    NSError *localError = nil;
+    id<OWLOntology> ontology = nil;
     
+    if ([self _parseOntologyAtURL:URL error:&localError]) {
+        ontology = [self _parsedOntologyWithURL:URL];
+    }
+    
+    if (error) {
+        *error = localError;
+    }
+    
+    return localError ? nil : ontology;
+}
+
+#pragma mark Private methods
+
+- (BOOL)_parseOntologyAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
+{
+    // Return vars
     NSError *localError = nil;
     
     // Work vars
@@ -82,25 +110,11 @@
                     NSURL *IRI = subject.isResource ? subject.URIValue.URLValue : nil;
                     
                     if (IRI) {
-                        switch (declaredEntityType) {
-                            case OWLEntityTypeClass:
-                                [builder addClassDeclarationAxiomForIRI:IRI];
-                                break;
-                                
-                            case OWLEntityTypeObjectProperty:
-                                [builder addObjectPropertyDeclarationAxiomForIRI:IRI];
-                                break;
-                                
-                            default:
-                                break;
-                        }
+                        self.declarations[IRI] = [NSNumber numberWithInteger:declaredEntityType];
                     }
                 }
             }
         }
-        
-        // Add to 'allStatements' array
-        [builder addStatement:stmt];
     }
     
 err:
@@ -108,7 +122,20 @@ err:
         *error = localError;
     }
     
-    return localError ? nil : [builder buildOWLOntology];
+    return !localError;
+}
+
+- (id <OWLOntology>)_parsedOntologyWithURL:(NSURL *)URL
+{
+    OWLOntologyBuilder *builder = [[OWLOntologyBuilder alloc] init];
+    builder.ontologyIRI = URL;
+    
+    // Declarations
+    [self.declarations enumerateKeysAndObjectsUsingBlock:^(NSURL * _Nonnull key, NSNumber * _Nonnull obj, __unused BOOL * _Nonnull stop) {
+        [builder addDeclarationOfType:[obj integerValue] withIRI:key];
+    }];
+    
+    return [builder buildOWLOntology];
 }
 
 @end

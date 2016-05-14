@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "OWLAxiomType.h"
 
-@class RedlandStatement; // TODO: remove
-
 @protocol OWLAxiom;
 @protocol OWLClass;
 @protocol OWLClassExpression;
@@ -22,8 +20,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyInternals : NSObject
-
-@property (nonatomic, strong) NSMutableArray<RedlandStatement*> *allStatements; // TODO: remove
 
 #pragma mark Mutation methods
 

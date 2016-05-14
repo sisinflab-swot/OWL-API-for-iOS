@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OWLEntityType.h"
 
-@class RedlandStatement; // TODO: remove
 @class OWLOntologyID;
-
 @protocol OWLOntology;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,9 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id<OWLOntology>)buildOWLOntology;
 
-- (void)addStatement:(RedlandStatement *)statement; // TODO: remove
-- (void)addClassDeclarationAxiomForIRI:(NSURL *)IRI;
-- (void)addObjectPropertyDeclarationAxiomForIRI:(NSURL *)IRI;
+- (void)addDeclarationOfType:(OWLEntityType)type withIRI:(NSURL *)IRI;
 
 @end
 

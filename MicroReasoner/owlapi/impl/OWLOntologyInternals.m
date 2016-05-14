@@ -31,7 +31,6 @@ NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLSubClassOfAxiom>> *> *subCla
 
 #pragma mark Properties
 
-SYNTHESIZE_LAZY_INIT(NSMutableArray, allStatements); // TODO: remove
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByClass);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByObjectProperty);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByType);

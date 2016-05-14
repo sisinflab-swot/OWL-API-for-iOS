@@ -35,34 +35,35 @@ SYNTHESIZE_LAZY_INIT(OWLOntologyInternals, internals);
     return [[OWLOntologyImpl alloc] initWithID:ontologyID internals:self.internals];
 }
 
-- (void)addStatement:(RedlandStatement *)statement
-{
-    NSParameterAssert(statement);
-    [self.internals.allStatements addObject:statement];
-}
-
-- (void)addClassDeclarationAxiomForIRI:(NSURL *)IRI
+- (void)addDeclarationOfType:(OWLEntityType)type withIRI:(NSURL *)IRI
 {
     NSParameterAssert(IRI);
     
-    OWLClassImpl *class = [[OWLClassImpl alloc] initWithIRI:IRI];
-    OWLDeclarationAxiomImpl *axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:class];
-    
     OWLOntologyInternals *internals = self.internals;
-    [internals addAxiom:axiom ofType:OWLAxiomTypeDeclaration];
-    [internals addAxiom:axiom forClass:class];
-}
-
-- (void)addObjectPropertyDeclarationAxiomForIRI:(NSURL *)IRI
-{
-    NSParameterAssert(IRI);
+    id<OWLAxiom> axiom = nil;
     
-    OWLObjectPropertyImpl *property = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
-    OWLDeclarationAxiomImpl *axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:property];
+    switch (type) {
+        case OWLEntityTypeClass:
+        {
+            OWLClassImpl *class = [[OWLClassImpl alloc] initWithIRI:IRI];
+            axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:class];
+            [internals addAxiom:axiom forClass:class];
+            break;
+        }
+        case OWLEntityTypeObjectProperty:
+        {
+            OWLObjectPropertyImpl *property = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
+            axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:property];
+            [internals addAxiom:axiom forObjectProperty:property];
+            break;
+        }
+        default:
+            break;
+    }
     
-    OWLOntologyInternals *internals = self.internals;
-    [internals addAxiom:axiom ofType:OWLAxiomTypeDeclaration];
-    [internals addAxiom:axiom forObjectProperty:property];
+    if (axiom) {
+        [internals addAxiom:axiom ofType:OWLAxiomTypeDeclaration];
+    }
 }
 
 @end
