@@ -104,6 +104,8 @@
 		CCCED4C91CE317F000F0A178 /* OWLRDFXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCED4C71CE317F000F0A178 /* OWLRDFXMLParser.h */; };
 		CCCED4CA1CE317F000F0A178 /* OWLRDFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCED4C81CE317F000F0A178 /* OWLRDFXMLParser.m */; };
 		CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCD5BC8E1CE76F3E00B3A9D7 /* OWLError.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD5BC8C1CE76F3E00B3A9D7 /* OWLError.h */; };
+		CCD5BC8F1CE76F3E00B3A9D7 /* OWLError.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD5BC8D1CE76F3E00B3A9D7 /* OWLError.m */; };
 		CCD838611CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD8385F1CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h */; };
 		CCD838621CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD838601CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m */; };
 		CCD8386D1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD8386B1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h */; };
@@ -276,6 +278,8 @@
 		CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MicroReasoner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroReasoner.h; sourceTree = "<group>"; };
 		CCD2FC431CD5F7B3003F8CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCD5BC8C1CE76F3E00B3A9D7 /* OWLError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLError.h; sourceTree = "<group>"; };
+		CCD5BC8D1CE76F3E00B3A9D7 /* OWLError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLError.m; sourceTree = "<group>"; };
 		CCD8385F1CDF351800C6398C /* OWLObjectPropertyExpressionImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyExpressionImpl.h; sourceTree = "<group>"; };
 		CCD838601CDF351800C6398C /* OWLObjectPropertyExpressionImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLObjectPropertyExpressionImpl.m; sourceTree = "<group>"; };
 		CCD8386B1CDF3F4B00C6398C /* OWLObjectPropertyImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyImpl.h; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 				CC7CD0961CE098670001B228 /* OWLDisjointClassesAxiomImpl.m */,
 				CC7CD09B1CE0AAD40001B228 /* OWLEquivalentClassesAxiomImpl.h */,
 				CC7CD09C1CE0AAD40001B228 /* OWLEquivalentClassesAxiomImpl.m */,
+				CCD5BC8C1CE76F3E00B3A9D7 /* OWLError.h */,
+				CCD5BC8D1CE76F3E00B3A9D7 /* OWLError.m */,
 				CC4D5B721CE3D3AA005F7ADB /* OWLLogicalAxiomImpl.h */,
 				CC4D5B731CE3D3AA005F7ADB /* OWLLogicalAxiomImpl.m */,
 				CC49E3901CDA4F3000D18736 /* OWLManager.m */,
@@ -551,6 +557,7 @@
 				CC29332B1CDE284A00315B3A /* OWLObjectIntersectionOfImpl.h in Headers */,
 				CCEF46751CD8E7AC008C3D88 /* OWLClass.h in Headers */,
 				CCDC44891CDBAD2C00854918 /* OWLClassExpressionType.h in Headers */,
+				CCD5BC8E1CE76F3E00B3A9D7 /* OWLError.h in Headers */,
 				CC2933311CDE285500315B3A /* OWLNAryBooleanClassExpression.h in Headers */,
 				CCEF46841CD8F0CB008C3D88 /* OWLClassExpression.h in Headers */,
 				CC8778891CDD4DC80058F677 /* OWLPropertyRange.h in Headers */,
@@ -808,6 +815,7 @@
 				CC7CD0941CE0964D0001B228 /* OWLNAryClassAxiomImpl.m in Sources */,
 				CCDE42F01CDE4D0500232E83 /* OWLObjectCardinalityRestrictionImpl.m in Sources */,
 				CCCED4CA1CE317F000F0A178 /* OWLRDFXMLParser.m in Sources */,
+				CCD5BC8F1CE76F3E00B3A9D7 /* OWLError.m in Sources */,
 				CC29332C1CDE284A00315B3A /* OWLObjectIntersectionOfImpl.m in Sources */,
 				CCDC448D1CDBB79A00854918 /* OWLSubClassOfAxiomImpl.m in Sources */,
 				CC8778871CDD3D470058F677 /* OWLObjectAllValuesFromImpl.m in Sources */,
