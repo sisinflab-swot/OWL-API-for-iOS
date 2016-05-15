@@ -41,11 +41,33 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OWLRDFVocabulary : NSObject
 
 + (OWLRDFTerm *)RDFType;
++ (OWLRDFTerm *)RDFSDatatype;
 
++ (OWLRDFTerm *)OWLAllDifferent;
++ (OWLRDFTerm *)OWLAllDisjointClasses;
++ (OWLRDFTerm *)OWLAllDisjointProperties;
++ (OWLRDFTerm *)OWLAnnotation;
++ (OWLRDFTerm *)OWLAnnotationProperty;
++ (OWLRDFTerm *)OWLAsymmetricProperty;
++ (OWLRDFTerm *)OWLAxiom;
 + (OWLRDFTerm *)OWLClass;
-+ (OWLRDFTerm *)OWLObjectProperty;
-+ (OWLRDFTerm *)OWLThing;
++ (OWLRDFTerm *)OWLDatatypeProperty;
++ (OWLRDFTerm *)OWLDeprecatedClass;
++ (OWLRDFTerm *)OWLDeprecatedProperty;
++ (OWLRDFTerm *)OWLFunctionalProperty;
++ (OWLRDFTerm *)OWLInverseFunctionalProperty;
++ (OWLRDFTerm *)OWLIrreflexiveProperty;
++ (OWLRDFTerm *)OWLNamedIndividual;
++ (OWLRDFTerm *)OWLNegativePropertyAssertion;
 + (OWLRDFTerm *)OWLNothing;
++ (OWLRDFTerm *)OWLObjectProperty;
++ (OWLRDFTerm *)OWLOntology;
++ (OWLRDFTerm *)OWLOntologyProperty;
++ (OWLRDFTerm *)OWLReflexiveProperty;
++ (OWLRDFTerm *)OWLRestriction;
++ (OWLRDFTerm *)OWLSymmetricProperty;
++ (OWLRDFTerm *)OWLThing;
++ (OWLRDFTerm *)OWLTransitiveProperty;
 
 @end
 

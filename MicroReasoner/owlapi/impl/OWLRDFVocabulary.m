@@ -56,10 +56,32 @@ return name##Term; \
 @implementation OWLRDFVocabulary
 
 LAZY_STATIC_TERM(RDFType, OWLNamespaceRDFSyntax, @"type");
+LAZY_STATIC_TERM(RDFSDatatype, OWLNamespaceRDFSchema, @"datatype");
 
+LAZY_STATIC_TERM(OWLAllDifferent, OWLNamespaceOWL, @"AllDifferent");
+LAZY_STATIC_TERM(OWLAllDisjointClasses, OWLNamespaceOWL, @"AllDisjointClasses");
+LAZY_STATIC_TERM(OWLAllDisjointProperties, OWLNamespaceOWL, @"AllDisjointProperties");
+LAZY_STATIC_TERM(OWLAnnotation, OWLNamespaceOWL, @"Annotation");
+LAZY_STATIC_TERM(OWLAnnotationProperty, OWLNamespaceOWL, @"AnnotationProperty");
+LAZY_STATIC_TERM(OWLAsymmetricProperty, OWLNamespaceOWL, @"AsymmetricProperty");
+LAZY_STATIC_TERM(OWLAxiom, OWLNamespaceOWL, @"Axiom");
 LAZY_STATIC_TERM(OWLClass, OWLNamespaceOWL, @"Class");
-LAZY_STATIC_TERM(OWLObjectProperty, OWLNamespaceOWL, @"ObjectProperty");
-LAZY_STATIC_TERM(OWLThing, OWLNamespaceOWL, @"Thing");
+LAZY_STATIC_TERM(OWLDatatypeProperty, OWLNamespaceOWL, @"DatatypeProperty");
+LAZY_STATIC_TERM(OWLDeprecatedClass, OWLNamespaceOWL, @"DeprecatedClass");
+LAZY_STATIC_TERM(OWLDeprecatedProperty, OWLNamespaceOWL, @"DeprecatedProperty");
+LAZY_STATIC_TERM(OWLFunctionalProperty, OWLNamespaceOWL, @"FunctionalProperty");
+LAZY_STATIC_TERM(OWLInverseFunctionalProperty, OWLNamespaceOWL, @"InverseFunctionalProperty");
+LAZY_STATIC_TERM(OWLIrreflexiveProperty, OWLNamespaceOWL, @"IrreflexiveProperty");
+LAZY_STATIC_TERM(OWLNamedIndividual, OWLNamespaceOWL, @"NamedIndividual");
+LAZY_STATIC_TERM(OWLNegativePropertyAssertion, OWLNamespaceOWL, @"NegativePropertyAssertion");
 LAZY_STATIC_TERM(OWLNothing, OWLNamespaceOWL, @"Nothing");
+LAZY_STATIC_TERM(OWLObjectProperty, OWLNamespaceOWL, @"ObjectProperty");
+LAZY_STATIC_TERM(OWLOntology, OWLNamespaceOWL, @"Ontology");
+LAZY_STATIC_TERM(OWLOntologyProperty, OWLNamespaceOWL, @"OntologyProperty");
+LAZY_STATIC_TERM(OWLReflexiveProperty, OWLNamespaceOWL, @"ReflexiveProperty");
+LAZY_STATIC_TERM(OWLRestriction, OWLNamespaceOWL, @"Restriction");
+LAZY_STATIC_TERM(OWLSymmetricProperty, OWLNamespaceOWL, @"SymmetricProperty");
+LAZY_STATIC_TERM(OWLThing, OWLNamespaceOWL, @"Thing");
+LAZY_STATIC_TERM(OWLTransitiveProperty, OWLNamespaceOWL, @"TransitiveProperty");
 
 @end
