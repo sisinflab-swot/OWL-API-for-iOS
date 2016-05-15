@@ -48,14 +48,21 @@ static void loadOntologyNoCache() {
 {
     NSSet *classes = [ontology classesInSignature];
     NSLog(@"Classes (%lu):\n--------\n%@", (unsigned long)classes.count, classes);
-    XCTAssertTrue(classes.count > 0);
+    XCTAssertNotNil(classes);
+}
+
+- (void)testNamedIndividualsInSignature
+{
+    NSSet *individuals = [ontology namedIndividualsInSignature];
+    NSLog(@"Individuals (%lu):\n-----------\n%@", (unsigned long)individuals.count, individuals);
+    XCTAssertNotNil(individuals);
 }
 
 - (void)testObjectPropertiesInSignature
 {
     NSSet *properties = [ontology objectPropertiesInSignature];
     NSLog(@"Object properties (%lu):\n-----------------\n%@", (unsigned long)properties.count, properties);
-    XCTAssertTrue(properties.count > 0);
+    XCTAssertNotNil(properties);
 }
 
 @end
