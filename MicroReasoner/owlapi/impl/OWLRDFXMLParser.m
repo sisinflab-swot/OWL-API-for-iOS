@@ -15,7 +15,7 @@
 #import "SMRPreprocessor.h"
 #import <Redland-ObjC.h>
 
-#pragma mark Constants & definitions
+#pragma mark Definitions
 
 typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLRDFXMLParser *_Nonnull, NSError *_Nullable __autoreleasing *);
 
@@ -40,7 +40,7 @@ typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLRDFXMLParser 
 #pragma mark Statement handlers
 
 /// rdf:type predicate handler
-OWLStatementHandler rdfTypeHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
+OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RedlandNode *object = statement.object;
@@ -76,7 +76,7 @@ err:
 };
 
 /// Class declaration handler
-OWLStatementHandler classHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, __unused NSError *__autoreleasing *error)
+OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, __unused NSError *__autoreleasing *error)
 {
     RedlandNode *subject = statement.subject;
     
@@ -92,7 +92,7 @@ OWLStatementHandler classHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLP
 };
 
 /// Object property declaration handler
-OWLStatementHandler objectPropertyHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
+OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
 {
     NSError *localError = nil;
     RedlandNode *subject = statement.subject;
@@ -125,6 +125,16 @@ err:
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, declarations);
 SYNTHESIZE_LAZY_INIT(NSMutableArray, errors);
 
+#pragma mark Statement handler maps
+
+#define handlerNotImplemented(name) \
+key = [OWLRDFVocabulary name].stringValue; \
+map[key] = [^BOOL( \
+__unused RedlandStatement *s, \
+__unused OWLRDFXMLParser *p, \
+__unused NSError *__autoreleasing *e) \
+{ return YES; } copy]
+
 SYNTHESIZE_LAZY(NSDictionary, objectHandlerMap)
 {
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
@@ -132,11 +142,34 @@ SYNTHESIZE_LAZY(NSDictionary, objectHandlerMap)
     
     // Class declaration handler
     key = [OWLRDFVocabulary OWLClass].stringValue;
-    map[key] = [classHandler copy];
+    map[key] = [oClassHandler copy];
     
     // Object property declaration handler
     key = [OWLRDFVocabulary OWLObjectProperty].stringValue;
-    map[key] = [objectPropertyHandler copy];
+    map[key] = [oObjectPropertyHandler copy];
+    
+    // Not implemented handlers
+    handlerNotImplemented(OWLAllDifferent);
+    handlerNotImplemented(OWLAllDisjointClasses);
+    handlerNotImplemented(OWLAllDisjointProperties);
+    handlerNotImplemented(OWLAnnotation);
+    handlerNotImplemented(OWLAnnotationProperty);
+    handlerNotImplemented(OWLAsymmetricProperty);
+    handlerNotImplemented(OWLAxiom);
+    handlerNotImplemented(OWLDatatypeProperty);
+    handlerNotImplemented(OWLDeprecatedClass);
+    handlerNotImplemented(OWLDeprecatedProperty);
+    handlerNotImplemented(OWLFunctionalProperty);
+    handlerNotImplemented(OWLInverseFunctionalProperty);
+    handlerNotImplemented(OWLIrreflexiveProperty);
+    handlerNotImplemented(OWLNamedIndividual);
+    handlerNotImplemented(OWLNegativePropertyAssertion);
+    handlerNotImplemented(OWLOntology);
+    handlerNotImplemented(OWLOntologyProperty);
+    handlerNotImplemented(OWLReflexiveProperty);
+    handlerNotImplemented(OWLRestriction);
+    handlerNotImplemented(OWLSymmetricProperty);
+    handlerNotImplemented(OWLTransitiveProperty);
     
     return map;
 }
@@ -146,9 +179,9 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
     NSString *key = nil;
     
-    // rdf:type
+    // rdf:type handler
     key = [OWLRDFVocabulary RDFType].stringValue;
-    map[key] = [rdfTypeHandler copy];
+    map[key] = [pRDFTypeHandler copy];
     
     return map;
 }
@@ -211,7 +244,7 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     for (RedlandStatement *statement in stream.statementEnumerator) {
         NSError *__autoreleasing statementError = nil;
         
-        if (![self _handleStatement:statement error:&statementError]) {
+        if (![self _handleStatement:statement error:&statementError] && statementError) {
             [self.errors addObject:statementError];
         }
     }
