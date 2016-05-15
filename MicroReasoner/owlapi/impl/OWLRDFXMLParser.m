@@ -91,6 +91,31 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLRDFXML
     return YES;
 };
 
+/// Named individual declaration handler
+OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
+{
+    NSError *localError = nil;
+    RedlandNode *subject = statement.subject;
+    
+    if (subject.isResource) {
+        // Named individual declaration
+        parser.declarations[subject.URLValue] = [NSNumber numberWithInteger:OWLEntityTypeNamedIndividual];
+    } else {
+        // Error: named individual declaration statements must have resource-type subject nodes
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                          localizedDescription:@"Named individual declaration statements must have resource-type subject nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
 /// Object property declaration handler
 OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
 {
@@ -128,8 +153,7 @@ SYNTHESIZE_LAZY_INIT(NSMutableArray, errors);
 #pragma mark Statement handler maps
 
 #define handlerNotImplemented(name) \
-key = [OWLRDFVocabulary name].stringValue; \
-map[key] = [^BOOL( \
+map[[OWLRDFVocabulary name].stringValue] = [^BOOL( \
 __unused RedlandStatement *s, \
 __unused OWLRDFXMLParser *p, \
 __unused NSError *__autoreleasing *e) \
@@ -138,15 +162,10 @@ __unused NSError *__autoreleasing *e) \
 SYNTHESIZE_LAZY(NSDictionary, objectHandlerMap)
 {
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
-    NSString *key = nil;
     
-    // Class declaration handler
-    key = [OWLRDFVocabulary OWLClass].stringValue;
-    map[key] = [oClassHandler copy];
-    
-    // Object property declaration handler
-    key = [OWLRDFVocabulary OWLObjectProperty].stringValue;
-    map[key] = [oObjectPropertyHandler copy];
+    map[[OWLRDFVocabulary OWLClass].stringValue] = [oClassHandler copy];
+    map[[OWLRDFVocabulary OWLNamedIndividual].stringValue] = [oNamedIndividualHandler copy];
+    map[[OWLRDFVocabulary OWLObjectProperty].stringValue] = [oObjectPropertyHandler copy];
     
     // Not implemented handlers
     handlerNotImplemented(OWLAllDifferent);
@@ -162,7 +181,6 @@ SYNTHESIZE_LAZY(NSDictionary, objectHandlerMap)
     handlerNotImplemented(OWLFunctionalProperty);
     handlerNotImplemented(OWLInverseFunctionalProperty);
     handlerNotImplemented(OWLIrreflexiveProperty);
-    handlerNotImplemented(OWLNamedIndividual);
     handlerNotImplemented(OWLNegativePropertyAssertion);
     handlerNotImplemented(OWLOntology);
     handlerNotImplemented(OWLOntologyProperty);
@@ -177,11 +195,8 @@ SYNTHESIZE_LAZY(NSDictionary, objectHandlerMap)
 SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
 {
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
-    NSString *key = nil;
     
-    // rdf:type handler
-    key = [OWLRDFVocabulary RDFType].stringValue;
-    map[key] = [pRDFTypeHandler copy];
+    map[[OWLRDFVocabulary RDFType].stringValue] = [pRDFTypeHandler copy];
     
     return map;
 }
