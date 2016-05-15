@@ -16,6 +16,7 @@
 
 @end
 
+
 @implementation OWLOntologyImpl
 
 #pragma mark Properties
@@ -43,12 +44,15 @@
     return equal;
 }
 
+- (NSUInteger)hash { return self.ontologyID.hash; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature
 {
     NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:self.classesInSignature];
     [signature unionSet:self.objectPropertiesInSignature];
+    [signature unionSet:self.namedIndividualsInSignature];
     return signature;
 }
 
