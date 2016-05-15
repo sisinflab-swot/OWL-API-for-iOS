@@ -27,6 +27,8 @@
 
 - (NSSet<id<OWLClass>> *)classesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeClass]; }
 
+- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeNamedIndividual]; }
+
 - (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeObjectProperty]; }
 
 - (NSSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;

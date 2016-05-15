@@ -53,6 +53,8 @@
 
 - (BOOL)isOWLClass { return YES; }
 
+- (BOOL)isOWLNamedIndividual { return NO; }
+
 - (BOOL)isOWLObjectProperty { return NO; }
 
 #pragma mark OWLClassExpression

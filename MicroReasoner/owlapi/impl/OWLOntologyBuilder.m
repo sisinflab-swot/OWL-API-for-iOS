@@ -9,6 +9,7 @@
 #import "OWLOntologyBuilder.h"
 #import "OWLClassImpl.h"
 #import "OWLDeclarationAxiomImpl.h"
+#import "OWLNamedIndividualImpl.h"
 #import "OWLObjectPropertyImpl.h"
 #import "OWLOntologyID.h"
 #import "OWLOntologyImpl.h"
@@ -49,6 +50,12 @@ SYNTHESIZE_LAZY_INIT(OWLOntologyInternals, internals);
             axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:class];
             [internals addAxiom:axiom forClass:class];
             break;
+        }
+        case OWLEntityTypeNamedIndividual:
+        {
+            OWLNamedIndividualImpl *individual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
+            axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:individual];
+            [internals addAxiom:axiom forNamedIndividual:individual];
         }
         case OWLEntityTypeObjectProperty:
         {

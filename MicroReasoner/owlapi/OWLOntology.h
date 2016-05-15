@@ -10,8 +10,10 @@
 
 @class OWLOntologyID;
 
+@protocol OWLClassAssertionAxiom;
 @protocol OWLDisjointClassesAxiom;
 @protocol OWLEquivalentClassesAxiom;
+@protocol OWLIndividual;
 @protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -21,6 +23,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The identity of this ontology.
 @property (nonatomic, copy, readonly) OWLOntologyID *ontologyID;
+
+/**
+ * Gets the OWLClassAssertionAxioms contained in this ontology that make the specified
+ * individual an instance of some class expression.
+ *
+ * @param individual The individual.
+ *
+ * @return The set of class assertion axioms that reference the specified individual.
+ */
+- (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
 
 /**
  * Gets the set of disjoint class axioms that contain the specified class as an operand.

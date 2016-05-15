@@ -11,9 +11,12 @@
 
 @protocol OWLAxiom;
 @protocol OWLClass;
+@protocol OWLClassAssertionAxiom;
 @protocol OWLClassExpression;
 @protocol OWLDisjointClassesAxiom;
 @protocol OWLEquivalentClassesAxiom;
+@protocol OWLIndividual;
+@protocol OWLNamedIndividual;
 @protocol OWLObjectProperty;
 @protocol OWLSubClassOfAxiom;
 
@@ -25,13 +28,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addAxiom:(id<OWLAxiom>)axiom ofType:(OWLAxiomType)type;
 - (void)addAxiom:(id<OWLAxiom>)axiom forClass:(id<OWLClass>)cls;
+- (void)addAxiom:(id<OWLAxiom>)axiom forNamedIndividual:(id<OWLNamedIndividual>)individual;
 - (void)addAxiom:(id<OWLAxiom>)axiom forObjectProperty:(id<OWLObjectProperty>)property;
 
 #pragma mark Getter methods
 
 - (NSSet<id<OWLClass>> *)allClasses;
+- (NSSet<id<OWLNamedIndividual>> *)allNamedIndividuals;
 - (NSSet<id<OWLObjectProperty>> *)allObjectProperties;
 
+- (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls;

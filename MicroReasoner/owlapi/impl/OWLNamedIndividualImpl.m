@@ -1,14 +1,14 @@
 //
-//  OWLObjectPropertyImpl.m
+//  OWLNamedIndividualImpl.m
 //  MicroReasoner
 //
-//  Created by Ivano Bilenchi on 08/05/16.
+//  Created by Ivano Bilenchi on 15/05/16.
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "OWLObjectPropertyImpl.h"
+#import "OWLNamedIndividualImpl.h"
 
-@implementation OWLObjectPropertyImpl
+@implementation OWLNamedIndividualImpl
 
 #pragma mark NSObject
 
@@ -30,13 +30,11 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.IRI hash]; }
-
-- (NSString *)description { return [self.IRI absoluteString]; }
+- (NSUInteger)hash { return self.IRI.hash; }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; };
+- (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; }
 
 #pragma mark OWLNamedObject
 
@@ -44,21 +42,21 @@
 
 #pragma mark OWLEntity
 
-- (OWLEntityType)entityType { return OWLEntityTypeObjectProperty; }
+- (OWLEntityType)entityType { return OWLEntityTypeNamedIndividual; }
 
 - (BOOL)isOWLClass { return NO; }
 
-- (BOOL)isOWLNamedIndividual { return NO; }
+- (BOOL)isOWLNamedIndividual { return YES; }
 
-- (BOOL)isOWLObjectProperty { return YES; }
+- (BOOL)isOWLObjectProperty { return NO; }
 
-#pragma mark OWLPropertyExpression
+#pragma mark OWLIndividual
 
 - (BOOL)anonymous { return NO; }
 
-#pragma mark OWLObjectPropertyExpression
+- (BOOL)named { return YES; }
 
-- (id<OWLObjectProperty>)asOWLObjectProperty { return self; }
+- (id<OWLNamedIndividual>)asOWLNamedIndividual { return self; }
 
 #pragma mark Other public methods
 
@@ -69,6 +67,7 @@
     if ((self = [super init])) {
         _IRI = [IRI copy];
     }
+    
     return self;
 }
 

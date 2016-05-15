@@ -54,9 +54,16 @@
 
 - (NSSet<id<OWLClass>> *)classesInSignature { return [self.internals allClasses]; }
 
+- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature { return [self.internals allNamedIndividuals]; }
+
 - (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self.internals allObjectProperties]; }
 
 #pragma mark OWLOntology
+
+- (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
+{
+    return [self.internals classAssertionAxiomsForIndividual:individual];
+}
 
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
 {
