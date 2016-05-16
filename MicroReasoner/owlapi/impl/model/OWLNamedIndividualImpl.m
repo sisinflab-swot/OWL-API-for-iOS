@@ -32,6 +32,11 @@
 
 - (NSUInteger)hash { return self.IRI.hash; }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Individual(<%@>)", [self.IRI absoluteString]];
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; }

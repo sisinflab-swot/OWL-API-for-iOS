@@ -32,7 +32,10 @@
 
 - (NSUInteger)hash { return [self.IRI hash]; }
 
-- (NSString *)description { return [self.IRI absoluteString]; }
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ObjectProperty(<%@>)", [self.IRI absoluteString]];
+}
 
 #pragma mark OWLObject
 
