@@ -6,22 +6,40 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "OWLEntityType.h"
+#import "OWLAbstractBuilder.h"
 
-@class OWLOntologyID;
 @protocol OWLOntology;
+
+@class OWLAxiomBuilder;
+@class OWLClassExpressionBuilder;
+@class OWLIndividualBuilder;
+@class OWLPropertyBuilder;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWLOntologyBuilder : NSObject
+@interface OWLOntologyBuilder : NSObject <OWLAbstractBuilder>
 
-@property (nonatomic, copy) NSURL *ontologyIRI;
-@property (nonatomic, copy) NSURL *versionIRI;
+#pragma mark Properties
 
-- (id<OWLOntology>)buildOWLOntology;
+/// Blank node ID -> OWLAxiomBuilder.
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLAxiomBuilder *> *axiomBuilders;
 
-- (void)addDeclarationOfType:(OWLEntityType)type withIRI:(NSURL *)IRI;
+/// Blank node ID || IRI string -> OWLClassExpressionBuilder.
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLClassExpressionBuilder *> *classExpressionBuilders;
+
+/// Blank node ID || IRI string -> OWLIndividualBuilder.
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLIndividualBuilder *> *individualBuilders;
+
+/// Blank node ID || IRI string -> OWLPropertyBuilder
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLPropertyBuilder *> *propertyBuilders;
+
+#pragma mark OWLAbstractBuilder
+
+- (id<OWLOntology>)build;
 
 @end
 

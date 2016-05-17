@@ -7,69 +7,75 @@
 //
 
 #import "OWLOntologyBuilder.h"
-#import "OWLClassImpl.h"
-#import "OWLDeclarationAxiomImpl.h"
-#import "OWLNamedIndividualImpl.h"
-#import "OWLObjectPropertyImpl.h"
+#import "OWLAxiom.h"
+#import "OWLAxiomBuilder.h"
+#import "OWLDeclarationAxiom.h"
+#import "OWLEntity.h"
+#import "OWLNamedIndividual.h"
 #import "OWLOntologyID.h"
 #import "OWLOntologyImpl.h"
 #import "OWLOntologyInternals.h"
 #import "SMRPreprocessor.h"
 
-@interface OWLOntologyBuilder ()
-
-@property (nonatomic, strong, readonly) OWLOntologyInternals *internals;
-
-@end
-
-
 @implementation OWLOntologyBuilder
 
-SYNTHESIZE_LAZY_INIT(OWLOntologyInternals, internals);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomBuilders);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, classExpressionBuilders);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, individualBuilders);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, propertyBuilders);
 
-@synthesize ontologyIRI = _ontologyIRI;
-@synthesize versionIRI = _versionIRI;
+#pragma mark OWLAbstractBuilder
 
-- (id<OWLOntology>)buildOWLOntology
+- (id<OWLOntology>)build
 {
-    OWLOntologyID *ontologyID = [[OWLOntologyID alloc] initWithOntologyIRI:self.ontologyIRI versionIRI:self.versionIRI];
-    return [[OWLOntologyImpl alloc] initWithID:ontologyID internals:self.internals];
+    OWLOntologyID *ontologyID = [[OWLOntologyID alloc] initWithOntologyIRI:nil versionIRI:nil];
+    OWLOntologyInternals *internals = [[OWLOntologyInternals alloc] init];
+    
+    // Axioms
+    [self.axiomBuilders enumerateKeysAndObjectsUsingBlock:^(__unused NSString * _Nonnull key, OWLAxiomBuilder * _Nonnull builder, __unused BOOL * _Nonnull stop) {
+        
+        id<OWLAxiom> axiom = [builder build];
+        
+        if (axiom) {
+            OWLAxiomType axiomType = axiom.axiomType;
+            [internals addAxiom:axiom ofType:axiomType];
+            
+            switch (axiomType) {
+                case OWLAxiomTypeDeclaration:
+                {
+                    id<OWLEntity> declaredEntity = [(id<OWLDeclarationAxiom>)axiom entity];
+                    [self _addAxiom:axiom forEntity:declaredEntity toInternals:internals];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+        }
+    }];
+    
+    return [[OWLOntologyImpl alloc] initWithID:ontologyID internals:internals];
 }
 
-- (void)addDeclarationOfType:(OWLEntityType)type withIRI:(NSURL *)IRI
+#pragma mark Private methods
+
+- (void)_addAxiom:(id<OWLAxiom>)axiom forEntity:(id<OWLEntity>)entity toInternals:(OWLOntologyInternals *)internals
 {
-    NSParameterAssert(IRI);
-    
-    OWLOntologyInternals *internals = self.internals;
-    id<OWLAxiom> axiom = nil;
-    
-    switch (type) {
+    switch (entity.entityType) {
         case OWLEntityTypeClass:
-        {
-            OWLClassImpl *class = [[OWLClassImpl alloc] initWithIRI:IRI];
-            axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:class];
-            [internals addAxiom:axiom forClass:class];
+            [internals addAxiom:axiom forClass:(id<OWLClass>)entity];
             break;
-        }
+            
         case OWLEntityTypeNamedIndividual:
-        {
-            OWLNamedIndividualImpl *individual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
-            axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:individual];
-            [internals addAxiom:axiom forNamedIndividual:individual];
-        }
-        case OWLEntityTypeObjectProperty:
-        {
-            OWLObjectPropertyImpl *property = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
-            axiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:property];
-            [internals addAxiom:axiom forObjectProperty:property];
+            [internals addAxiom:axiom forNamedIndividual:(id<OWLNamedIndividual>)entity];
             break;
-        }
+            
+        case OWLEntityTypeObjectProperty:
+            [internals addAxiom:axiom forObjectProperty:(id<OWLObjectProperty>)entity];
+            break;
+            
         default:
             break;
-    }
-    
-    if (axiom) {
-        [internals addAxiom:axiom ofType:OWLAxiomTypeDeclaration];
     }
 }
 

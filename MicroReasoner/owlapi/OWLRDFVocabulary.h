@@ -61,10 +61,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLNegativePropertyAssertion;
 + (OWLRDFTerm *)OWLNothing;
 + (OWLRDFTerm *)OWLObjectProperty;
++ (OWLRDFTerm *)OWLOnProperty;
 + (OWLRDFTerm *)OWLOntology;
 + (OWLRDFTerm *)OWLOntologyProperty;
 + (OWLRDFTerm *)OWLReflexiveProperty;
 + (OWLRDFTerm *)OWLRestriction;
++ (OWLRDFTerm *)OWLSomeValuesFrom;
 + (OWLRDFTerm *)OWLSymmetricProperty;
 + (OWLRDFTerm *)OWLThing;
 + (OWLRDFTerm *)OWLTransitiveProperty;

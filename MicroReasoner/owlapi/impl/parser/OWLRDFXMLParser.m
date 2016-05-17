@@ -7,139 +7,29 @@
 //
 
 #import "OWLRDFXMLParser.h"
-#import "OWLEntityType.h"
 #import "OWLError.h"
 #import "OWLNamespace.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLRDFVocabulary.h"
+#import "OWLStatementHandler.h"
 #import "SMRPreprocessor.h"
 #import <Redland-ObjC.h>
-
-#pragma mark Definitions
-
-typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLRDFXMLParser *_Nonnull, NSError *_Nullable __autoreleasing *);
 
 #pragma mark Extension
 
 @interface OWLRDFXMLParser ()
 
-/// Maps predicates to their respective handlers.
-@property (nonatomic, strong, readonly) NSDictionary<NSString *, OWLStatementHandler> *predicateHandlerMap;
-
-/// Maps objects to their respective handlers.
-@property (nonatomic, strong, readonly) NSDictionary<NSString *, OWLStatementHandler> *objectHandlerMap;
-
-/// IRI -> NSNumber enclosing OWLEntityType.
-@property (nonatomic, strong, readonly) NSMutableDictionary<NSURL*,NSNumber*> *declarations;
+/// The ontology builder.
+@property (nonatomic, strong) OWLOntologyBuilder *ontologyBuilder;
 
 /// Errors accumulated during the parsing process.
-@property (nonatomic, strong, readonly) NSMutableArray<NSError *> *errors;
+@property (nonatomic, strong) NSMutableArray<NSError *> *errors;
+
+/// Maps predicates to their respective handlers.
+@property (nonatomic, strong, readonly)
+NSDictionary<NSString *, OWLStatementHandler> *predicateHandlerMap;
 
 @end
-
-#pragma mark Statement handlers
-
-/// rdf:type predicate handler
-OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
-{
-    NSError *__autoreleasing localError = nil;
-    RedlandNode *object = statement.object;
-    
-    if (object.isResource) {
-        // Declaration of named entity
-        // Class expression declaration
-        // Individual named class assertion
-        NSString *objectURIString = object.URIStringValue;
-        OWLStatementHandler handler = parser.objectHandlerMap[objectURIString];
-        
-        if (handler) {
-            // Declaration of named entity
-            // Class expression declaration
-            if (!handler(statement, parser, &localError)) {
-                goto err;
-            }
-        } else {
-            // Individual named class assertion
-            // TODO: implement
-        }
-    } else {
-        // Individual unnamed class assertion
-        // TODO: implement
-    }
-    
-err:
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
-};
-
-/// Class declaration handler
-OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, __unused NSError *__autoreleasing *error)
-{
-    RedlandNode *subject = statement.subject;
-    
-    if (subject.isResource) {
-        // Class declaration
-        parser.declarations[subject.URLValue] = [NSNumber numberWithInteger:OWLEntityTypeClass];
-    } else {
-        // Class expression declaration
-        // TODO: implement
-    }
-    
-    return YES;
-};
-
-/// Named individual declaration handler
-OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
-{
-    NSError *localError = nil;
-    RedlandNode *subject = statement.subject;
-    
-    if (subject.isResource) {
-        // Named individual declaration
-        parser.declarations[subject.URLValue] = [NSNumber numberWithInteger:OWLEntityTypeNamedIndividual];
-    } else {
-        // Error: named individual declaration statements must have resource-type subject nodes
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                          localizedDescription:@"Named individual declaration statements must have resource-type subject nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-err:
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
-};
-
-/// Object property declaration handler
-OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, OWLRDFXMLParser *parser, NSError *__autoreleasing *error)
-{
-    NSError *localError = nil;
-    RedlandNode *subject = statement.subject;
-    
-    if (subject.isResource) {
-        // Object property declaration
-        parser.declarations[subject.URLValue] = [NSNumber numberWithInteger:OWLEntityTypeObjectProperty];
-    } else {
-        // Error: object property declaration statements must have resource-type subject nodes
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                          localizedDescription:@"Object property declaration statements must have resource-type subject nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-err:
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
-};
 
 #pragma mark Implementation
 
@@ -147,56 +37,16 @@ err:
 
 #pragma mark Properties
 
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, declarations);
 SYNTHESIZE_LAZY_INIT(NSMutableArray, errors);
-
-#pragma mark Statement handler maps
-
-#define handlerNotImplemented(name) \
-map[[OWLRDFVocabulary name].stringValue] = [^BOOL( \
-__unused RedlandStatement *s, \
-__unused OWLRDFXMLParser *p, \
-__unused NSError *__autoreleasing *e) \
-{ return YES; } copy]
-
-SYNTHESIZE_LAZY(NSDictionary, objectHandlerMap)
-{
-    NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
-    
-    map[[OWLRDFVocabulary OWLClass].stringValue] = [oClassHandler copy];
-    map[[OWLRDFVocabulary OWLNamedIndividual].stringValue] = [oNamedIndividualHandler copy];
-    map[[OWLRDFVocabulary OWLObjectProperty].stringValue] = [oObjectPropertyHandler copy];
-    
-    // Not implemented handlers
-    handlerNotImplemented(OWLAllDifferent);
-    handlerNotImplemented(OWLAllDisjointClasses);
-    handlerNotImplemented(OWLAllDisjointProperties);
-    handlerNotImplemented(OWLAnnotation);
-    handlerNotImplemented(OWLAnnotationProperty);
-    handlerNotImplemented(OWLAsymmetricProperty);
-    handlerNotImplemented(OWLAxiom);
-    handlerNotImplemented(OWLDatatypeProperty);
-    handlerNotImplemented(OWLDeprecatedClass);
-    handlerNotImplemented(OWLDeprecatedProperty);
-    handlerNotImplemented(OWLFunctionalProperty);
-    handlerNotImplemented(OWLInverseFunctionalProperty);
-    handlerNotImplemented(OWLIrreflexiveProperty);
-    handlerNotImplemented(OWLNegativePropertyAssertion);
-    handlerNotImplemented(OWLOntology);
-    handlerNotImplemented(OWLOntologyProperty);
-    handlerNotImplemented(OWLReflexiveProperty);
-    handlerNotImplemented(OWLRestriction);
-    handlerNotImplemented(OWLSymmetricProperty);
-    handlerNotImplemented(OWLTransitiveProperty);
-    
-    return map;
-}
+SYNTHESIZE_LAZY_INIT(OWLOntologyBuilder, ontologyBuilder);
 
 SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
 {
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
     
     map[[OWLRDFVocabulary RDFType].stringValue] = [pRDFTypeHandler copy];
+    map[[OWLRDFVocabulary OWLOnProperty].stringValue] = [pOnPropertyHandler copy];
+    map[[OWLRDFVocabulary OWLSomeValuesFrom].stringValue] = [pSomeValuesFromHandler copy];
     
     return map;
 }
@@ -211,7 +61,7 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     id<OWLOntology> ontology = nil;
     
     if ([self _parseOntologyAtURL:URL error:&localError]) {
-        ontology = [self _parsedOntologyWithURL:URL];
+        ontology = [self.ontologyBuilder build];
     }
     
     if (error) {
@@ -225,8 +75,8 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
 
 - (void)initializeDataStructures
 {
-    [self.declarations removeAllObjects];
-    [self.errors removeAllObjects];
+    self.errors = nil;
+    self.ontologyBuilder = nil;
 }
 
 - (BOOL)_parseOntologyAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
@@ -286,12 +136,12 @@ err:
     
     if (predicate.isResource) {
         OWLStatementHandler handler = self.predicateHandlerMap[predicate.URIStringValue];
-        if (handler && !handler(statement, weakSelf, &localError)) {
+        if (handler && !handler(statement, weakSelf.ontologyBuilder, &localError)) {
             goto err;
         }
     } else {
         // Error: OWL predicates must be resource nodes
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                           localizedDescription:@"OWL statements' predicates must be resource nodes."
                                       userInfo:@{@"statement": statement}];
         goto err;
@@ -303,19 +153,6 @@ err:
     }
     
     return !localError;
-}
-
-- (id <OWLOntology>)_parsedOntologyWithURL:(NSURL *)URL
-{
-    OWLOntologyBuilder *builder = [[OWLOntologyBuilder alloc] init];
-    builder.ontologyIRI = URL;
-    
-    // Declarations
-    [self.declarations enumerateKeysAndObjectsUsingBlock:^(NSURL * _Nonnull key, NSNumber * _Nonnull obj, __unused BOOL * _Nonnull stop) {
-        [builder addDeclarationOfType:[obj integerValue] withIRI:key];
-    }];
-    
-    return [builder buildOWLOntology];
 }
 
 @end

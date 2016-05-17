@@ -12,12 +12,12 @@ NSString *const OWLErrorDomain = @"it.poliba.sisinflab.owl.error";
 
 @implementation NSError (OWLError)
 
-+ (NSError *)OWLErrorWithCode:(NSInteger)code localizedDescription:(NSString *)description
++ (NSError *)OWLErrorWithCode:(OWLErrorCode)code localizedDescription:(NSString *)description
 {
     return [self OWLErrorWithCode:code localizedDescription:description userInfo:nil];
 }
 
-+ (NSError *)OWLErrorWithCode:(NSInteger)code localizedDescription:(NSString *)description userInfo:(NSDictionary *)userInfo
++ (NSError *)OWLErrorWithCode:(OWLErrorCode)code localizedDescription:(NSString *)description userInfo:(NSDictionary *)userInfo
 {
     NSMutableDictionary *localUserInfo = nil;
     

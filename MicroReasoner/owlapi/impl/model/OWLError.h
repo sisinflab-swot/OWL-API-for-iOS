@@ -15,14 +15,15 @@ extern NSString *const OWLErrorDomain;
 typedef NS_ENUM(NSInteger, OWLErrorCode) {
     OWLErrorCodeGeneric,
     OWLErrorCodeCumulative,
-    OWLErrorCodeParse
+    OWLErrorCodeParse,
+    OWLErrorCodeSyntax
 };
 
 /// NSError convenience category.
 @interface NSError (OWLError)
 
-+ (NSError *)OWLErrorWithCode:(NSInteger)code localizedDescription:(nullable NSString *)description;
-+ (NSError *)OWLErrorWithCode:(NSInteger)code localizedDescription:(nullable NSString *)description userInfo:(nullable NSDictionary *)userInfo;
++ (NSError *)OWLErrorWithCode:(OWLErrorCode)code localizedDescription:(nullable NSString *)description;
++ (NSError *)OWLErrorWithCode:(OWLErrorCode)code localizedDescription:(nullable NSString *)description userInfo:(nullable NSDictionary *)userInfo;
 
 @end
 
