@@ -41,29 +41,19 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    switch(self.type) {
+    switch (self.type) {
         case OWLABTypeDeclaration:
         {
-            OWLOntologyBuilder *builder = self.ontologyBuilder;
             NSString *entityID = self.entityID;
-            id<OWLEntity> entity = nil;
             
             if (entityID) {
-                NSArray *maps = @[builder.classExpressionBuilders,
-                                  builder.propertyBuilders,
-                                  builder.individualBuilders];
+                id<OWLEntity> entity = [[self.ontologyBuilder entityBuilderForID:entityID] build];
                 
-                for (NSDictionary *map in maps) {
-                    entity = [(id<OWLAbstractBuilder>)map[entityID] build];
-                    if (entity) {
-                        break;
-                    }
+                if (entity) {
+                    builtAxiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:entity];
                 }
             }
             
-            if (entity) {
-                builtAxiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:entity];
-            }
             break;
         }
             

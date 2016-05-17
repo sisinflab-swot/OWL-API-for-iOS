@@ -114,24 +114,24 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLO
         NSString *IRIString = object.URIStringValue;
         
         // Add object property builder
-        OWLPropertyBuilder *pb = builder.propertyBuilders[IRIString];
+        OWLPropertyBuilder *pb = [builder propertyBuilderForID:IRIString];
         
         if (!pb) {
             pb = [[OWLPropertyBuilder alloc] init];
             [pb setType:OWLPBTypeObjectProperty error:NULL];
             [pb setNamedPropertyID:IRIString error:NULL];
-            builder.propertyBuilders[IRIString] = pb;
+            [builder setPropertyBuilder:pb forID:IRIString];
         }
         
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
             NSString *blankID = subject.blankID;
-            OWLClassExpressionBuilder *ceb = builder.classExpressionBuilders[blankID];
+            OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:blankID];
             
             if (!ceb) {
                 ceb = [[OWLClassExpressionBuilder alloc] init];
-                builder.classExpressionBuilders[blankID] = ceb;
+                [builder setClassExpressionBuilder:ceb forID:blankID];
             }
             
             if (![ceb setPropertyID:IRIString error:&localError]) {
@@ -168,22 +168,22 @@ OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, 
         // Add class expression if missing
         NSString *objectURIString = object.URIStringValue;
         
-        if(!builder.classExpressionBuilders[objectURIString]) {
+        if(![builder classExpressionBuilderForID:objectURIString]) {
             OWLClassExpressionBuilder *ceb = [[OWLClassExpressionBuilder alloc] init];
             [ceb setType:OWLCEBTypeClass error:NULL];
             [ceb setClassID:objectURIString error:NULL];
-            builder.classExpressionBuilders[objectURIString] = ceb;
+            [builder setClassExpressionBuilder:ceb forID:objectURIString];
         }
         
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
             NSString *blankID = subject.blankID;
-            OWLClassExpressionBuilder *ceb = builder.classExpressionBuilders[blankID];
+            OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:blankID];
             
             if (!ceb) {
                 ceb = [[OWLClassExpressionBuilder alloc] init];
-                builder.classExpressionBuilders[blankID] = ceb;
+                [builder setClassExpressionBuilder:ceb forID:blankID];
             }
             
             if (![ceb setRestrictionType:OWLCEBRestrictionTypeSomeValuesFrom error:&localError]) {
@@ -223,11 +223,11 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
         NSString *IRIString = subject.URIStringValue;
         
         // Add class builder
-        OWLClassExpressionBuilder *ceb = builder.classExpressionBuilders[IRIString];
+        OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:IRIString];
         
         if (!ceb) {
             ceb = [[OWLClassExpressionBuilder alloc] init];
-            builder.classExpressionBuilders[IRIString] = ceb;
+            [builder setClassExpressionBuilder:ceb forID:IRIString];
         }
         
         if (![ceb setType:OWLCEBTypeClass error:&localError]) {
@@ -238,12 +238,12 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
             goto err;
         }
         
-        // Add axiom builder
-        OWLAxiomBuilder *ab = builder.axiomBuilders[IRIString];
+        // Add declaration axiom builder
+        OWLAxiomBuilder *ab = [builder declarationAxiomBuilderForID:IRIString];
         
         if (!ab) {
             ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
-            builder.axiomBuilders[IRIString] = ab;
+            [builder setDeclarationAxiomBuilder:ab forID:IRIString];
         }
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
@@ -277,23 +277,23 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement,
         NSString *IRIString = subject.URIStringValue;
         
         // Add individual builder
-        OWLIndividualBuilder *ib = builder.individualBuilders[IRIString];
+        OWLIndividualBuilder *ib = [builder individualBuilderForID:IRIString];
         
         if (!ib) {
             ib = [[OWLIndividualBuilder alloc] init];
-            builder.individualBuilders[IRIString] = ib;
+            [builder setIndividualBuilder:ib forID:IRIString];
         }
         
         if (![ib setNamedIndividualID:IRIString error:&localError]) {
             goto err;
         }
         
-        // Add axiom builder
-        OWLAxiomBuilder *ab = builder.axiomBuilders[IRIString];
+        // Add declaration axiom builder
+        OWLAxiomBuilder *ab = [builder declarationAxiomBuilderForID:IRIString];
         
         if (!ab) {
             ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
-            builder.axiomBuilders[IRIString] = ab;
+            [builder setDeclarationAxiomBuilder:ab forID:IRIString];
         }
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
@@ -329,11 +329,11 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
         NSString *IRIString = subject.URIStringValue;
         
         // Add object property builder
-        OWLPropertyBuilder *pb = builder.propertyBuilders[IRIString];
+        OWLPropertyBuilder *pb = [builder propertyBuilderForID:IRIString];
         
         if (!pb) {
             pb = [[OWLPropertyBuilder alloc] init];
-            builder.propertyBuilders[IRIString] = pb;
+            [builder setPropertyBuilder:pb forID:IRIString];
         }
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
@@ -344,12 +344,12 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
             goto err;
         }
         
-        // Add axiom builder
-        OWLAxiomBuilder *ab = builder.axiomBuilders[IRIString];
+        // Add declaration axiom builder
+        OWLAxiomBuilder *ab = [builder declarationAxiomBuilderForID:IRIString];
         
         if (!ab) {
             ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
-            builder.axiomBuilders[IRIString] = ab;
+            [builder setDeclarationAxiomBuilder:ab forID:IRIString];
         }
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
@@ -385,10 +385,10 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWL
         NSString *blankID = subject.blankID;
         
         // Add class expression builder
-        OWLClassExpressionBuilder *ceb = builder.classExpressionBuilders[blankID];
+        OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:blankID];
         if (!ceb) {
             ceb = [[OWLClassExpressionBuilder alloc] init];
-            builder.classExpressionBuilders[blankID] = ceb;
+            [builder setClassExpressionBuilder:ceb forID:blankID];
         }
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {

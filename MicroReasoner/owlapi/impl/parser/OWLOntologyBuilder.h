@@ -19,23 +19,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyBuilder : NSObject <OWLAbstractBuilder>
 
-#pragma mark Properties
+#pragma mark Entity builders accessor methods
 
-/// Blank node ID -> OWLAxiomBuilder.
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<NSString *, OWLAxiomBuilder *> *axiomBuilders;
+// OWL DL entities should have a unique ID (blank node or IRI), therefore these
+// setters return NO if a named entity with the specified ID already exists.
 
-/// Blank node ID || IRI string -> OWLClassExpressionBuilder.
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<NSString *, OWLClassExpressionBuilder *> *classExpressionBuilders;
+- (nullable id<OWLAbstractBuilder>)entityBuilderForID:(NSString *)ID;
 
-/// Blank node ID || IRI string -> OWLIndividualBuilder.
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<NSString *, OWLIndividualBuilder *> *individualBuilders;
+- (nullable OWLClassExpressionBuilder *)classExpressionBuilderForID:(NSString *)ID;
+- (BOOL)setClassExpressionBuilder:(OWLClassExpressionBuilder *)builder forID:(NSString *)ID;
 
-/// Blank node ID || IRI string -> OWLPropertyBuilder
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<NSString *, OWLPropertyBuilder *> *propertyBuilders;
+- (nullable OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID;
+- (BOOL)setIndividualBuilder:(OWLIndividualBuilder *)builder forID:(NSString *)ID;
+
+- (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
+- (BOOL)setPropertyBuilder:(OWLPropertyBuilder *)builder forID:(NSString *)ID;
+
+#pragma mark Axiom builders accessor methods
+
+- (nullable OWLAxiomBuilder *)declarationAxiomBuilderForID:(NSString *)ID;
+- (void)setDeclarationAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID;
 
 #pragma mark OWLAbstractBuilder
 
