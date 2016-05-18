@@ -13,7 +13,8 @@
 
 typedef NS_ENUM(NSInteger, OWLABType) {
     OWLABTypeUnknown,
-    OWLABTypeDeclaration
+    OWLABTypeDeclaration,
+    OWLABTypeSubClassOf
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -34,11 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The type of the built axiom.
 @property (nonatomic, readonly) OWLABType type;
 
-/**
- * Sets the type of the built axiom.
- *
- * @return NO if the type was already set, YES otherwise.
- */
+/// Sets the type of the built axiom.
 - (BOOL)setType:(OWLABType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Declaration axioms
@@ -46,12 +43,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// The string representation of the entity IRI.
 @property (nonatomic, copy, readonly) NSString *entityID;
 
-/**
- * Sets the string representation of the entity IRI.
- *
- * @return NO if the ID was already set, YES otherwise.
- */
+/// Sets the string representation of the entity IRI.
 - (BOOL)setEntityID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
+#pragma mark SubClassOf axioms
+
+/// The ID of the superclass.
+@property (nonatomic, copy, readonly) NSString *superClassID;
+
+/// Sets the ID of the superclass.
+- (BOOL)setSuperClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
+/// The ID of the subclass.
+@property (nonatomic, copy, readonly) NSString *subClassID;
+
+/// Sets the ID of the subclass.
+- (BOOL)setSubClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 NS_ASSUME_NONNULL_END
 

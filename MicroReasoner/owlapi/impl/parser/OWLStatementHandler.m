@@ -57,9 +57,8 @@ NS_INLINE NSDictionary *objectHandlerMapInit() {
     return map;
 }
 
-#pragma mark Handlers
+#pragma mark rdf:type predicate handler
 
-/// rdf:type predicate handler
 OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     static NSDictionary<NSString *, OWLStatementHandler> *objectHandlerMap;
@@ -102,7 +101,8 @@ err:
     return !localError;
 };
 
-/// owl:onProperty predicate handler
+#pragma mark owl:onProperty predicate handler
+
 OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError;
@@ -126,13 +126,7 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLO
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
-            NSString *blankID = subject.blankID;
-            OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:blankID];
-            
-            if (!ceb) {
-                ceb = [[OWLClassExpressionBuilder alloc] init];
-                [builder setClassExpressionBuilder:ceb forID:blankID];
-            }
+            OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
             
             if (![ceb setPropertyID:IRIString error:&localError]) {
                 goto err;
@@ -156,7 +150,8 @@ err:
     return !localError;
 };
 
-/// owl:someValuesFrom predicate handler
+#pragma mark owl:someValuesFrom predicate handler
+
 OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError;
@@ -178,13 +173,7 @@ OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, 
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
-            NSString *blankID = subject.blankID;
-            OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:blankID];
-            
-            if (!ceb) {
-                ceb = [[OWLClassExpressionBuilder alloc] init];
-                [builder setClassExpressionBuilder:ceb forID:blankID];
-            }
+            OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
             
             if (![ceb setRestrictionType:OWLCEBRestrictionTypeSomeValuesFrom error:&localError]) {
                 goto err;
@@ -212,7 +201,81 @@ err:
     return !localError;
 };
 
-/// Class declaration handler
+#pragma mark rdfs:subClassOf predicate handler
+
+OWLStatementHandler pSubClassOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (subject.isLiteral || object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject or object of subclass statement is a literal."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    // The braces are required to restrict the scope of the declared variables.
+    // The compiler isn't very pleased about goto labels and var declarations in the same scope.
+    {
+        // Subclass
+        NSString *subClassID = nil;
+        OWLCEBType type = OWLCEBTypeUnknown;
+        
+        if (subject.isResource) {
+            // Named subclass
+            subClassID = subject.URIStringValue;
+            type = OWLCEBTypeClass;
+        } else {
+            // Blank node, unnamed subclass
+            subClassID = subject.blankID;
+        }
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subClassID];
+        
+        if (![ceb setType:type error:&localError]) {
+            goto err;
+        }
+        
+        // Superclass
+        NSString * superClassID = nil;
+        type = OWLCEBTypeUnknown;
+        
+        if (object.isResource) {
+            // Named superclass
+            superClassID = object.URIStringValue;
+            type = OWLCEBTypeClass;
+        } else {
+            // Blank node, unnamed superclass
+            superClassID = object.blankID;
+        }
+        
+        ceb = [builder ensureClassExpressionBuilderForID:superClassID];
+        
+        if (![ceb setType:type error:&localError]) {
+            goto err;
+        }
+        
+        // Axiom
+        OWLAxiomBuilder *ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
+        [ab setType:OWLABTypeSubClassOf error:NULL];
+        [ab setSuperClassID:superClassID error:NULL];
+        [ab setSubClassID:subClassID error:NULL];
+        
+        [builder addSingleStatementAxiomBuilder:ab forID:subClassID unique:NO];
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
+#pragma mark Class declaration handler
+
 OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
@@ -223,12 +286,7 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
         NSString *IRIString = subject.URIStringValue;
         
         // Add class builder
-        OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:IRIString];
-        
-        if (!ceb) {
-            ceb = [[OWLClassExpressionBuilder alloc] init];
-            [builder setClassExpressionBuilder:ceb forID:IRIString];
-        }
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:IRIString];
         
         if (![ceb setType:OWLCEBTypeClass error:&localError]) {
             goto err;
@@ -239,12 +297,7 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
         }
         
         // Add declaration axiom builder
-        OWLAxiomBuilder *ab = [builder declarationAxiomBuilderForID:IRIString];
-        
-        if (!ab) {
-            ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
-            [builder setDeclarationAxiomBuilder:ab forID:IRIString];
-        }
+        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
             goto err;
@@ -266,7 +319,8 @@ err:
     return !localError;
 };
 
-/// Named individual declaration handler
+#pragma mark Named individual declaration handler
+
 OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
@@ -277,24 +331,14 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement,
         NSString *IRIString = subject.URIStringValue;
         
         // Add individual builder
-        OWLIndividualBuilder *ib = [builder individualBuilderForID:IRIString];
-        
-        if (!ib) {
-            ib = [[OWLIndividualBuilder alloc] init];
-            [builder setIndividualBuilder:ib forID:IRIString];
-        }
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString];
         
         if (![ib setNamedIndividualID:IRIString error:&localError]) {
             goto err;
         }
         
         // Add declaration axiom builder
-        OWLAxiomBuilder *ab = [builder declarationAxiomBuilderForID:IRIString];
-        
-        if (!ab) {
-            ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
-            [builder setDeclarationAxiomBuilder:ab forID:IRIString];
-        }
+        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
             goto err;
@@ -318,7 +362,8 @@ err:
     return !localError;
 };
 
-/// Object property declaration handler
+#pragma mark Object property declaration handler
+
 OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
@@ -329,12 +374,7 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
         NSString *IRIString = subject.URIStringValue;
         
         // Add object property builder
-        OWLPropertyBuilder *pb = [builder propertyBuilderForID:IRIString];
-        
-        if (!pb) {
-            pb = [[OWLPropertyBuilder alloc] init];
-            [builder setPropertyBuilder:pb forID:IRIString];
-        }
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -345,12 +385,7 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
         }
         
         // Add declaration axiom builder
-        OWLAxiomBuilder *ab = [builder declarationAxiomBuilderForID:IRIString];
-        
-        if (!ab) {
-            ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
-            [builder setDeclarationAxiomBuilder:ab forID:IRIString];
-        }
+        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
             goto err;
@@ -374,7 +409,8 @@ err:
     return !localError;
 };
 
-/// Restriction declaration handler
+#pragma mark Restriction declaration handler
+
 OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
@@ -382,14 +418,9 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWL
     
     if (subject.isBlank) {
         // Restriction declaration
-        NSString *blankID = subject.blankID;
         
         // Add class expression builder
-        OWLClassExpressionBuilder *ceb = [builder classExpressionBuilderForID:blankID];
-        if (!ceb) {
-            ceb = [[OWLClassExpressionBuilder alloc] init];
-            [builder setClassExpressionBuilder:ceb forID:blankID];
-        }
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
             goto err;

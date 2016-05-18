@@ -7,6 +7,10 @@
 //
 
 #import "OWLOntologyInternals.h"
+#import "OWLClassExpression.h"
+#import "OWLDeclarationAxiom.h"
+#import "OWLEntity.h"
+#import "OWLSubClassOfAxiom.h"
 #import "SMRPreprocessor.h"
 
 @interface OWLOntologyInternals ()
@@ -69,24 +73,39 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
     return set ? [set copy] : [[NSSet alloc] init];
 }
 
-- (void)addAxiom:(id<OWLAxiom>)axiom ofType:(OWLAxiomType)type
+- (void)addAxiom:(id<OWLAxiom>)axiom
 {
+    OWLAxiomType type = axiom.axiomType;
     addObjectToSetInDictionary(self.axiomsByType, [NSNumber numberWithInteger:type], axiom);
-}
-
-- (void)addAxiom:(id<OWLAxiom>)axiom forClass:(id<OWLClass>)cls
-{
-    addObjectToSetInDictionary(self.axiomsByClass, cls, axiom);
-}
-
-- (void)addAxiom:(id<OWLAxiom>)axiom forNamedIndividual:(id<OWLNamedIndividual>)individual
-{
-    addObjectToSetInDictionary(self.axiomsByNamedIndividual, individual, axiom);
-}
-
-- (void)addAxiom:(id<OWLAxiom>)axiom forObjectProperty:(id<OWLObjectProperty>)property
-{
-    addObjectToSetInDictionary(self.axiomsByObjectProperty, property, axiom);
+    
+    switch (type) {
+            
+        case OWLAxiomTypeDeclaration: {
+            id<OWLEntity> declaredEntity = [(id<OWLDeclarationAxiom>)axiom entity];
+            [self _addAxiom:axiom forEntity:declaredEntity];
+            break;
+        }
+            
+        case OWLAxiomTypeSubClassOf: {
+            id<OWLSubClassOfAxiom> subClassOfAxiom = (id<OWLSubClassOfAxiom>)axiom;
+            id<OWLClassExpression> subClass = subClassOfAxiom.subClass;
+            id<OWLClassExpression> superClass = subClassOfAxiom.superClass;
+            
+            if (!subClass.anonymous) {
+                id<OWLClass> cls = [subClass asOwlClass];
+                addObjectToSetInDictionary(self.axiomsByClass, cls, subClassOfAxiom);
+                addObjectToSetInDictionary(self.subClassAxiomsBySubClass, cls, subClassOfAxiom);
+            }
+            
+            if (!superClass.anonymous) {
+                id<OWLClass> cls = [superClass asOwlClass];
+                addObjectToSetInDictionary(self.axiomsByClass, cls, subClassOfAxiom);
+            }
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark Public getter methods
@@ -124,6 +143,28 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
     return nonNilSet(self.subClassAxiomsBySubClass[cls]);
+}
+
+#pragma mark Private methods
+
+- (void)_addAxiom:(id<OWLAxiom>)axiom forEntity:(id<OWLEntity>)entity
+{
+    switch (entity.entityType) {
+        case OWLEntityTypeClass:
+            addObjectToSetInDictionary(self.axiomsByClass, entity, axiom);
+            break;
+            
+        case OWLEntityTypeNamedIndividual:
+            addObjectToSetInDictionary(self.axiomsByNamedIndividual, entity, axiom);
+            break;
+            
+        case OWLEntityTypeObjectProperty:
+            addObjectToSetInDictionary(self.axiomsByObjectProperty, entity, axiom);
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

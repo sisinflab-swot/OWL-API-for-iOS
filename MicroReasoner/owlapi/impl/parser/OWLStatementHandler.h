@@ -23,5 +23,6 @@ extern OWLStatementHandler oRestrictionHandler;
 extern OWLStatementHandler pOnPropertyHandler;
 extern OWLStatementHandler pRDFTypeHandler;
 extern OWLStatementHandler pSomeValuesFromHandler;
+extern OWLStatementHandler pSubClassOfHandler;
 
 NS_ASSUME_NONNULL_END

@@ -57,6 +57,7 @@ return name##Term; \
 
 LAZY_STATIC_TERM(RDFType, OWLNamespaceRDFSyntax, @"type");
 LAZY_STATIC_TERM(RDFSDatatype, OWLNamespaceRDFSchema, @"datatype");
+LAZY_STATIC_TERM(RDFSSubClassOf, OWLNamespaceRDFSchema, @"subClassOf");
 
 LAZY_STATIC_TERM(OWLAllDifferent, OWLNamespaceOWL, @"AllDifferent");
 LAZY_STATIC_TERM(OWLAllDisjointClasses, OWLNamespaceOWL, @"AllDisjointClasses");

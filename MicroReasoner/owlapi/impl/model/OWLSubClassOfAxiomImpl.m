@@ -38,6 +38,11 @@
 
 - (NSUInteger)hash { return [self.superClass hash] ^ [self.subClass hash]; }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"SubClassOf(%@ %@)", self.subClass, self.superClass];
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

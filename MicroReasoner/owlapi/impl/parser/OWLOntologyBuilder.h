@@ -26,19 +26,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable id<OWLAbstractBuilder>)entityBuilderForID:(NSString *)ID;
 
+- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID;
 - (nullable OWLClassExpressionBuilder *)classExpressionBuilderForID:(NSString *)ID;
 - (BOOL)setClassExpressionBuilder:(OWLClassExpressionBuilder *)builder forID:(NSString *)ID;
 
+- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID;
 - (nullable OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID;
 - (BOOL)setIndividualBuilder:(OWLIndividualBuilder *)builder forID:(NSString *)ID;
 
+- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID;
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
 - (BOOL)setPropertyBuilder:(OWLPropertyBuilder *)builder forID:(NSString *)ID;
 
 #pragma mark Axiom builders accessor methods
 
+- (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID;
 - (nullable OWLAxiomBuilder *)declarationAxiomBuilderForID:(NSString *)ID;
 - (void)setDeclarationAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID;
+
+- (BOOL)addSingleStatementAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID unique:(BOOL)unique;
 
 #pragma mark OWLAbstractBuilder
 

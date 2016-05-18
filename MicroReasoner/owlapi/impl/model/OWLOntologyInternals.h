@@ -26,10 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Mutation methods
 
-- (void)addAxiom:(id<OWLAxiom>)axiom ofType:(OWLAxiomType)type;
-- (void)addAxiom:(id<OWLAxiom>)axiom forClass:(id<OWLClass>)cls;
-- (void)addAxiom:(id<OWLAxiom>)axiom forNamedIndividual:(id<OWLNamedIndividual>)individual;
-- (void)addAxiom:(id<OWLAxiom>)axiom forObjectProperty:(id<OWLObjectProperty>)property;
+- (void)addAxiom:(id<OWLAxiom>)axiom;
 
 #pragma mark Getter methods
 

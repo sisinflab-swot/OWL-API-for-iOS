@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * If this class expression is in fact a named class then this method may be used
  * to obtain the expression as an OWLClass without the need for casting.
- * The general pattern of use is to use 'isAnonymous' to first check.
+ * The general pattern of use is to use 'anonymous' to first check.
  *
  * @return This class expression as an OWLClass, or nil on error.
  */
