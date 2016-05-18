@@ -65,4 +65,19 @@ static void loadOntologyNoCache() {
     XCTAssertNotNil(properties);
 }
 
+- (void)testSubClassAxiomsForSubClass
+{
+    NSMutableArray *subClassAxioms = [[NSMutableArray alloc] init];
+    NSSet *classesInSignature = [ontology classesInSignature];
+    XCTAssertNotNil(classesInSignature);
+    
+    for (id<OWLClass> cls in classesInSignature) {
+        NSSet *axiomsForClass = [ontology subClassAxiomsForSubClass:cls];
+        XCTAssertNotNil(axiomsForClass);
+        [subClassAxioms addObjectsFromArray:[axiomsForClass allObjects]];
+    }
+    
+    NSLog(@"SubClassOf axioms (%lu):\n-----------------\n%@", (unsigned long)subClassAxioms.count, subClassAxioms);
+}
+
 @end
