@@ -62,6 +62,7 @@ LAZY_STATIC_TERM(RDFSSubClassOf, OWLNamespaceRDFSchema, @"subClassOf");
 LAZY_STATIC_TERM(OWLAllDifferent, OWLNamespaceOWL, @"AllDifferent");
 LAZY_STATIC_TERM(OWLAllDisjointClasses, OWLNamespaceOWL, @"AllDisjointClasses");
 LAZY_STATIC_TERM(OWLAllDisjointProperties, OWLNamespaceOWL, @"AllDisjointProperties");
+LAZY_STATIC_TERM(OWLAllValuesFrom, OWLNamespaceOWL, @"allValuesFrom");
 LAZY_STATIC_TERM(OWLAnnotation, OWLNamespaceOWL, @"Annotation");
 LAZY_STATIC_TERM(OWLAnnotationProperty, OWLNamespaceOWL, @"AnnotationProperty");
 LAZY_STATIC_TERM(OWLAsymmetricProperty, OWLNamespaceOWL, @"AsymmetricProperty");

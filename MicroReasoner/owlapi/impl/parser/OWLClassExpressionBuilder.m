@@ -9,6 +9,7 @@
 #import "OWLClassExpressionBuilder.h"
 #import "OWLClassImpl.h"
 #import "OWLError.h"
+#import "OWLObjectAllValuesFromImpl.h"
 #import "OWLObjectPropertyExpression.h"
 #import "OWLObjectSomeValuesFromImpl.h"
 #import "OWLOntologyBuilder.h"
@@ -82,25 +83,29 @@
     id<OWLRestriction> restr = nil;
     OWLOntologyBuilder *ontologyBuilder = self.ontologyBuilder;
     
-    switch (type)
-    {
-        case OWLCEBRestrictionTypeSomeValuesFrom:
+    OWLPropertyBuilder *propertyBuilder = [ontologyBuilder propertyBuilderForID:propertyID];
+    OWLClassExpressionBuilder *fillerBuilder = [ontologyBuilder classExpressionBuilderForID:fillerID];
+    
+    id<OWLPropertyExpression> property = [propertyBuilder build];
+    id<OWLClassExpression> filler = [fillerBuilder build];
+    
+    // TODO: currently only supports object properties
+    if (property && [property isObjectPropertyExpression] && filler) {
+        id<OWLObjectPropertyExpression> objectPropertyExpr = (id<OWLObjectPropertyExpression>)property;
+        
+        switch (type)
         {
-            OWLPropertyBuilder *propertyBuilder = [ontologyBuilder propertyBuilderForID:propertyID];
-            OWLClassExpressionBuilder *fillerBuilder = [ontologyBuilder classExpressionBuilderForID:fillerID];
-            
-            id<OWLPropertyExpression> property = [propertyBuilder build];
-            id<OWLClassExpression> filler = [fillerBuilder build];
-            
-            if (property && [property isObjectPropertyExpression] && filler) {
-                id<OWLObjectPropertyExpression> objectPropertyExpr = (id<OWLObjectPropertyExpression>)property;
+            case OWLCEBRestrictionTypeSomeValuesFrom:
                 restr = [[OWLObjectSomeValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
-            }
-            break;
+                break;
+                
+            case OWLCEBRestrictionTypeAllValuesFrom:
+                restr = [[OWLObjectAllValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
+                break;
+                
+            default:
+                break;
         }
-            
-        default:
-            break;
     }
     
     return restr;

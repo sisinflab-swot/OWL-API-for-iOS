@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLAllDifferent;
 + (OWLRDFTerm *)OWLAllDisjointClasses;
 + (OWLRDFTerm *)OWLAllDisjointProperties;
++ (OWLRDFTerm *)OWLAllValuesFrom;
 + (OWLRDFTerm *)OWLAnnotation;
 + (OWLRDFTerm *)OWLAnnotationProperty;
 + (OWLRDFTerm *)OWLAsymmetricProperty;

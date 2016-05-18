@@ -15,14 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLOntologyBuilder *_Nonnull, NSError *_Nullable __autoreleasing *);
 
-extern OWLStatementHandler oClassHandler;
-extern OWLStatementHandler oNamedIndividualHandler;
-extern OWLStatementHandler oObjectPropertyHandler;
-extern OWLStatementHandler oRestrictionHandler;
-
+extern OWLStatementHandler pAllValuesFromHandler;
 extern OWLStatementHandler pOnPropertyHandler;
 extern OWLStatementHandler pRDFTypeHandler;
 extern OWLStatementHandler pSomeValuesFromHandler;
 extern OWLStatementHandler pSubClassOfHandler;
+
+extern OWLStatementHandler oClassHandler;
+extern OWLStatementHandler oNamedIndividualHandler;
+extern OWLStatementHandler oObjectPropertyHandler;
+extern OWLStatementHandler oRestrictionHandler;
 
 NS_ASSUME_NONNULL_END

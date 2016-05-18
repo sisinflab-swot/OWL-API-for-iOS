@@ -57,6 +57,66 @@ NS_INLINE NSDictionary *objectHandlerMapInit() {
     return map;
 }
 
+#pragma mark owl:allValuesFrom predicate handler
+
+OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Object of 'allValuesFrom' statement is a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject of 'allValuesFrom' statement is not a blank node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add restriction
+        NSString *subjectID = subject.blankID;
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        
+        if (![ceb setRestrictionType:OWLCEBRestrictionTypeAllValuesFrom error:&localError]) {
+            goto err;
+        }
+        
+        // Add filler class expression
+        NSString *fillerID = nil;
+        OWLCEBType fillerType = OWLCEBTypeUnknown;
+        
+        if (object.isResource) {
+            // Named class/datatype filler
+            fillerID = object.URIStringValue;
+            fillerType = OWLCEBTypeClass;
+        } else {
+            // Anonymous class/datatype filler
+            fillerID = object.blankID;
+        }
+        
+        ceb = [builder ensureClassExpressionBuilderForID:fillerID];
+        
+        if (![ceb setType:fillerType error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
 #pragma mark rdf:type predicate handler
 
 OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
