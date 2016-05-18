@@ -13,6 +13,9 @@
 		CC11C1891CE88F2E0090A07C /* OWLNamedIndividual.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11C1881CE88F2E0090A07C /* OWLNamedIndividual.h */; };
 		CC11C18B1CE890050090A07C /* OWLIndividualAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11C18A1CE890050090A07C /* OWLIndividualAxiom.h */; };
 		CC11C18D1CE890340090A07C /* OWLClassAssertionAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11C18C1CE890340090A07C /* OWLClassAssertionAxiom.h */; };
+		CC1417B01CECC28E00165477 /* OWLAxiomBuilderType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1417AF1CECC28E00165477 /* OWLAxiomBuilderType.h */; };
+		CC1417BA1CECC2C800165477 /* OWLClassExpressionBuilderType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1417B91CECC2C800165477 /* OWLClassExpressionBuilderType.h */; };
+		CC1417BC1CECC33200165477 /* OWLPropertyBuilderType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1417BB1CECC33200165477 /* OWLPropertyBuilderType.h */; };
 		CC15C3631CE4B1BC009A4EFF /* OWLPropertyRangeAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15C3621CE4B1BC009A4EFF /* OWLPropertyRangeAxiom.h */; };
 		CC15C3711CE4B512009A4EFF /* OWLObjectPropertyRangeAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15C3701CE4B512009A4EFF /* OWLObjectPropertyRangeAxiom.h */; };
 		CC15C3771CE4BF67009A4EFF /* OWLDeclarationAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15C3761CE4BF67009A4EFF /* OWLDeclarationAxiom.h */; };
@@ -206,6 +209,9 @@
 		CC11C1881CE88F2E0090A07C /* OWLNamedIndividual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLNamedIndividual.h; sourceTree = "<group>"; };
 		CC11C18A1CE890050090A07C /* OWLIndividualAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLIndividualAxiom.h; sourceTree = "<group>"; };
 		CC11C18C1CE890340090A07C /* OWLClassAssertionAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassAssertionAxiom.h; sourceTree = "<group>"; };
+		CC1417AF1CECC28E00165477 /* OWLAxiomBuilderType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLAxiomBuilderType.h; sourceTree = "<group>"; };
+		CC1417B91CECC2C800165477 /* OWLClassExpressionBuilderType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassExpressionBuilderType.h; sourceTree = "<group>"; };
+		CC1417BB1CECC33200165477 /* OWLPropertyBuilderType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLPropertyBuilderType.h; sourceTree = "<group>"; };
 		CC15C3621CE4B1BC009A4EFF /* OWLPropertyRangeAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLPropertyRangeAxiom.h; sourceTree = "<group>"; };
 		CC15C3701CE4B512009A4EFF /* OWLObjectPropertyRangeAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyRangeAxiom.h; sourceTree = "<group>"; };
 		CC15C3761CE4BF67009A4EFF /* OWLDeclarationAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLDeclarationAxiom.h; sourceTree = "<group>"; };
@@ -507,14 +513,17 @@
 				CC5E322F1CEB37440024D175 /* OWLAbstractBuilder.h */,
 				CC5E32231CEB16970024D175 /* OWLAxiomBuilder.h */,
 				CC5E32241CEB16970024D175 /* OWLAxiomBuilder.m */,
+				CC1417AF1CECC28E00165477 /* OWLAxiomBuilderType.h */,
 				CC8578B61CE9C32E001A9413 /* OWLClassExpressionBuilder.h */,
 				CC8578B71CE9C32E001A9413 /* OWLClassExpressionBuilder.m */,
+				CC1417B91CECC2C800165477 /* OWLClassExpressionBuilderType.h */,
 				CC5E32271CEB17480024D175 /* OWLIndividualBuilder.h */,
 				CC5E32281CEB17480024D175 /* OWLIndividualBuilder.m */,
 				CC6BA8F01CE8EA31002ECC26 /* OWLOntologyBuilder.h */,
 				CC6BA8F11CE8EA31002ECC26 /* OWLOntologyBuilder.m */,
 				CC5E322B1CEB28160024D175 /* OWLPropertyBuilder.h */,
 				CC5E322C1CEB28160024D175 /* OWLPropertyBuilder.m */,
+				CC1417BB1CECC33200165477 /* OWLPropertyBuilderType.h */,
 				CC6BA8F21CE8EA31002ECC26 /* OWLRDFXMLParser.h */,
 				CC6BA8F31CE8EA31002ECC26 /* OWLRDFXMLParser.m */,
 				CC5E32331CEB50D40024D175 /* OWLStatementHandler.h */,
@@ -642,6 +651,7 @@
 				CC6BA9101CE8EA31002ECC26 /* OWLObjectAllValuesFromImpl.h in Headers */,
 				CCEF46751CD8E7AC008C3D88 /* OWLClass.h in Headers */,
 				CC6BA91C1CE8EA31002ECC26 /* OWLObjectMinCardinalityImpl.h in Headers */,
+				CC1417B01CECC28E00165477 /* OWLAxiomBuilderType.h in Headers */,
 				CCDC44891CDBAD2C00854918 /* OWLClassExpressionType.h in Headers */,
 				CC2933311CDE285500315B3A /* OWLNAryBooleanClassExpression.h in Headers */,
 				CC6BA9311CE8EA31002ECC26 /* OWLPropertyRangeAxiomImpl.h in Headers */,
@@ -662,6 +672,7 @@
 				CC6BA92D1CE8EA31002ECC26 /* OWLOntologyManagerImpl.h in Headers */,
 				CC6BA8F81CE8EA31002ECC26 /* OWLClassAssertionAxiomImpl.h in Headers */,
 				CC11C18D1CE890340090A07C /* OWLClassAssertionAxiom.h in Headers */,
+				CC1417BA1CECC2C800165477 /* OWLClassExpressionBuilderType.h in Headers */,
 				CC6BA93A1CE8EA31002ECC26 /* OWLSubClassOfAxiomImpl.h in Headers */,
 				CC7CD09A1CE0AA8A0001B228 /* OWLEquivalentClassesAxiom.h in Headers */,
 				CCB648251CDE74C800C2A761 /* OWLObjectPropertyExpression.h in Headers */,
@@ -728,6 +739,7 @@
 				CC7CD08E1CE0938E0001B228 /* OWLNAryClassAxiom.h in Headers */,
 				CCEF46821CD8F0BC008C3D88 /* OWLEntity.h in Headers */,
 				CC6BA9201CE8EA31002ECC26 /* OWLObjectPropertyExpressionImpl.h in Headers */,
+				CC1417BC1CECC33200165477 /* OWLPropertyBuilderType.h in Headers */,
 				CC6BA9381CE8EA31002ECC26 /* OWLRestrictionImpl.h in Headers */,
 				CCEF46861CD8F373008C3D88 /* OWLLogicalEntity.h in Headers */,
 				CC87787D1CDD29FD0058F677 /* OWLObjectAllValuesFrom.h in Headers */,

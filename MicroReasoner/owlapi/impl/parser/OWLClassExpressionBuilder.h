@@ -7,26 +7,19 @@
 //
 
 #import "OWLAbstractBuilder.h"
+#import "OWLClassExpressionBuilderType.h"
 
+@class OWLOntologyBuilder;
 @protocol OWLClassExpression;
-
-typedef NS_ENUM(NSInteger, OWLCEBType) {
-    OWLCEBTypeUnknown,
-    OWLCEBTypeClass,
-    OWLCEBTypeBoolean,
-    OWLCEBTypeRestriction
-};
-
-typedef NS_ENUM(NSInteger, OWLCEBRestrictionType) {
-    OWLCEBRestrictionTypeUnknown,
-    OWLCEBRestrictionTypeAllValuesFrom,
-    OWLCEBRestrictionTypeSomeValuesFrom
-};
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Class expression builder class.
 @interface OWLClassExpressionBuilder : NSObject <OWLAbstractBuilder>
+
+#pragma mark Lifecycle
+
+- (instancetype)initWithOntologyBuilder:(OWLOntologyBuilder *)ontologyBuilder;
 
 #pragma mark OWLAbstractBuilder
 

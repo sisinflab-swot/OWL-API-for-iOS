@@ -7,19 +7,9 @@
 //
 
 #import "OWLAbstractBuilder.h"
+#import "OWLPropertyBuilderType.h"
 
-@protocol OWLProperty;
-
-typedef NS_ENUM(NSInteger, OWLPBType) {
-    OWLPBTypeUnknown,
-    OWLPBTypeObjectProperty
-};
-
-typedef NS_ENUM(NSInteger, OWLPBNamed) {
-    OWLPBNamedUnknown,
-    OWLPBNamedYes,
-    OWLPBNamedNo
-};
+@protocol OWLPropertyExpression;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark OWLAbstractBuilder
 
-- (nullable id<OWLProperty>)build;
+- (nullable id<OWLPropertyExpression>)build;
 
 #pragma mark General
 

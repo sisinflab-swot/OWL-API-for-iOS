@@ -7,15 +7,10 @@
 //
 
 #import "OWLAbstractBuilder.h"
+#import "OWLAxiomBuilderType.h"
 
 @protocol OWLAxiom;
 @class OWLOntologyBuilder;
-
-typedef NS_ENUM(NSInteger, OWLABType) {
-    OWLABTypeUnknown,
-    OWLABTypeDeclaration,
-    OWLABTypeSubClassOf
-};
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -9,8 +9,35 @@
 #import "OWLClassExpressionBuilder.h"
 #import "OWLClassImpl.h"
 #import "OWLError.h"
+#import "OWLObjectPropertyExpression.h"
+#import "OWLObjectSomeValuesFromImpl.h"
+#import "OWLOntologyBuilder.h"
+#import "OWLPropertyBuilder.h"
+
+@interface OWLClassExpressionBuilder ()
+
+@property (nonatomic, weak, readonly) OWLOntologyBuilder *ontologyBuilder;
+
+@end
+
 
 @implementation OWLClassExpressionBuilder
+
+@synthesize ontologyBuilder = _ontologyBuilder;
+
+#pragma mark Lifecycle
+
+- (instancetype)initWithOntologyBuilder:(OWLOntologyBuilder *)ontologyBuilder
+{
+    NSParameterAssert(ontologyBuilder);
+    
+    if ((self = [super init])) {
+        _ontologyBuilder = ontologyBuilder;
+        _type = OWLCEBTypeUnknown;
+        _restrictionType = OWLCEBRestrictionTypeUnknown;
+    }
+    return self;
+}
 
 #pragma mark OWLAbstractBuilder
 
@@ -18,7 +45,8 @@
 {
     id<OWLClassExpression> builtClassExpression = nil;
     
-    switch(self.type) {
+    switch(self.type)
+    {
         case OWLCEBTypeClass:
         {
             NSString *classID = self.classID;
@@ -31,11 +59,51 @@
             break;
         }
             
+        case OWLCEBTypeRestriction:
+        {
+            OWLCEBRestrictionType type = self.restrictionType;
+            NSString *propertyID = self.propertyID;
+            NSString *fillerID = self.fillerID;
+            
+            if (type != OWLCEBRestrictionTypeUnknown && propertyID && fillerID) {
+                builtClassExpression = [self buildRestrictionOfType:type withPropertyID:propertyID fillerID:fillerID];
+            }
+        }
+            
         default:
             break;
     }
     
     return builtClassExpression;
+}
+
+- (id<OWLRestriction>)buildRestrictionOfType:(OWLCEBRestrictionType)type withPropertyID:(NSString *)propertyID fillerID:(NSString *)fillerID
+{
+    id<OWLRestriction> restr = nil;
+    OWLOntologyBuilder *ontologyBuilder = self.ontologyBuilder;
+    
+    switch (type)
+    {
+        case OWLCEBRestrictionTypeSomeValuesFrom:
+        {
+            OWLPropertyBuilder *propertyBuilder = [ontologyBuilder propertyBuilderForID:propertyID];
+            OWLClassExpressionBuilder *fillerBuilder = [ontologyBuilder classExpressionBuilderForID:fillerID];
+            
+            id<OWLPropertyExpression> property = [propertyBuilder build];
+            id<OWLClassExpression> filler = [fillerBuilder build];
+            
+            if (property && [property isObjectPropertyExpression] && filler) {
+                id<OWLObjectPropertyExpression> objectPropertyExpr = (id<OWLObjectPropertyExpression>)property;
+                restr = [[OWLObjectSomeValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
+            }
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    return restr;
 }
 
 #pragma mark General
@@ -157,17 +225,6 @@
     }
     
     return success;
-}
-
-#pragma mark Lifecycle
-
-- (instancetype)init
-{
-    if ((self = [super init])) {
-        _type = OWLCEBTypeUnknown;
-        _restrictionType = OWLCEBRestrictionTypeUnknown;
-    }
-    return self;
 }
 
 @end

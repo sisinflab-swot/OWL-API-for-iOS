@@ -114,13 +114,16 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLO
         NSString *IRIString = object.URIStringValue;
         
         // Add object property builder
-        OWLPropertyBuilder *pb = [builder propertyBuilderForID:IRIString];
+        // We assume it's an object property since it's
+        // the only supported property expression type.
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString];
         
-        if (!pb) {
-            pb = [[OWLPropertyBuilder alloc] init];
-            [pb setType:OWLPBTypeObjectProperty error:NULL];
-            [pb setNamedPropertyID:IRIString error:NULL];
-            [builder setPropertyBuilder:pb forID:IRIString];
+        if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
+            goto err;
+        }
+        
+        if (![pb setNamedPropertyID:IRIString error:NULL]) {
+            goto err;
         }
         
         RedlandNode *subject = statement.subject;
@@ -159,27 +162,31 @@ OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, 
     
     if (object.isResource) {
         // owl:someValuesFrom with named class/datatype filler
+        NSString *objectIRIString = object.URIStringValue;
         
-        // Add class expression if missing
-        NSString *objectURIString = object.URIStringValue;
+        // Add filler class expression if missing
+        // We assume it's a named class since owl:thing
+        // is the only filler we need to support.
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectIRIString];
         
-        if(![builder classExpressionBuilderForID:objectURIString]) {
-            OWLClassExpressionBuilder *ceb = [[OWLClassExpressionBuilder alloc] init];
-            [ceb setType:OWLCEBTypeClass error:NULL];
-            [ceb setClassID:objectURIString error:NULL];
-            [builder setClassExpressionBuilder:ceb forID:objectURIString];
+        if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+            goto err;
+        }
+        
+        if (![ceb setClassID:objectIRIString error:&localError]) {
+            goto err;
         }
         
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
-            OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
+            ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
             
             if (![ceb setRestrictionType:OWLCEBRestrictionTypeSomeValuesFrom error:&localError]) {
                 goto err;
             }
             
-            if (![ceb setFillerID:objectURIString error:&localError]) {
+            if (![ceb setFillerID:objectIRIString error:&localError]) {
                 goto err;
             }
         } else {
@@ -258,12 +265,12 @@ OWLStatementHandler pSubClassOfHandler = ^BOOL(RedlandStatement *statement, OWLO
         }
         
         // Axiom
-        OWLAxiomBuilder *ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:builder];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subClassID];
+        
+        // No need to check for errors, since they will be new objects.
         [ab setType:OWLABTypeSubClassOf error:NULL];
         [ab setSuperClassID:superClassID error:NULL];
         [ab setSubClassID:subClassID error:NULL];
-        
-        [builder addSingleStatementAxiomBuilder:ab forID:subClassID unique:NO];
     }
     
 err:

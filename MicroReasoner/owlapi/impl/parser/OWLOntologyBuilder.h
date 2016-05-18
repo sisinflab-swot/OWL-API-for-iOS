@@ -7,6 +7,7 @@
 //
 
 #import "OWLAbstractBuilder.h"
+#import "OWLAxiomBuilderType.h"
 
 @protocol OWLOntology;
 
@@ -19,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyBuilder : NSObject <OWLAbstractBuilder>
 
-#pragma mark Entity builders accessor methods
+#pragma mark Entity builders
 
 // OWL DL entities should have a unique ID (blank node or IRI), therefore these
 // setters return NO if a named entity with the specified ID already exists.
@@ -38,13 +39,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
 - (BOOL)setPropertyBuilder:(OWLPropertyBuilder *)builder forID:(NSString *)ID;
 
-#pragma mark Axiom builders accessor methods
+#pragma mark Axiom builders
 
 - (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID;
 - (nullable OWLAxiomBuilder *)declarationAxiomBuilderForID:(NSString *)ID;
 - (void)setDeclarationAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID;
 
-- (BOOL)addSingleStatementAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID unique:(BOOL)unique;
+- (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID;
+- (nullable OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID ensureUniqueType:(OWLABType)type;
 
 #pragma mark OWLAbstractBuilder
 

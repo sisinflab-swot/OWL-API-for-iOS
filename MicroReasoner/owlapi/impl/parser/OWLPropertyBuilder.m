@@ -14,11 +14,12 @@
 
 #pragma mark OWLAbstractBuilder
 
-- (id<OWLProperty>)build
+- (id<OWLPropertyExpression>)build
 {
-    id<OWLProperty> builtProperty = nil;
+    id<OWLPropertyExpression> builtProperty = nil;
     
-    switch(self.type) {
+    switch(self.type)
+    {
         case OWLPBTypeObjectProperty:
         {
             NSString *ID = self.namedPropertyID;

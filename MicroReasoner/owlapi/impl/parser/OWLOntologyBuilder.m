@@ -78,7 +78,6 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
     // Single statement axioms
     [self.singleStatementAxiomBuilders enumerateKeysAndObjectsUsingBlock:^(__unused NSString * _Nonnull key, NSMutableArray<OWLAxiomBuilder *> * _Nonnull axiomBuilders, __unused BOOL * _Nonnull stop)
     {
-        
         for (OWLAxiomBuilder *builder in axiomBuilders) {
             
             id<OWLAxiom> axiom = [builder build];
@@ -116,7 +115,7 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     OWLClassExpressionBuilder *ceb = classExpressionBuilders[ID];
     
     if (!ceb) {
-        ceb = [[OWLClassExpressionBuilder alloc] init];
+        ceb = [[OWLClassExpressionBuilder alloc] initWithOntologyBuilder:self];
         setEntityBuilder(self.allEntityBuilders, classExpressionBuilders, ID, ceb);
     }
     
@@ -204,7 +203,13 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     self.declarationAxiomBuilders[ID] = builder;
 }
 
-- (BOOL)addSingleStatementAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID unique:(BOOL)unique
+- (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID
+{
+    OWLAxiomBuilder *ab = [self addSingleStatementAxiomBuilderForID:ID ensureUniqueType:OWLABTypeUnknown];
+    return ab;
+}
+
+- (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID ensureUniqueType:(OWLABType)uniqueType
 {
     NSMutableDictionary *singleStatementAxiomBuilders = self.singleStatementAxiomBuilders;
     NSMutableArray *axiomBuilders = singleStatementAxiomBuilders[ID];
@@ -216,21 +221,28 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     
     BOOL insert = YES;
     
-    if (unique) {
-        OWLABType type = builder.type;
+    if (uniqueType != OWLABTypeUnknown) {
         for (OWLAxiomBuilder *ab in axiomBuilders) {
-            if (ab.type == type) {
+            if (ab.type == uniqueType) {
                 insert = NO;
                 break;
             }
         }
     }
     
+    OWLAxiomBuilder *ab = nil;
+    
     if (insert) {
-        [axiomBuilders addObject:builder];
+        ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:self];
+        
+        if (uniqueType != OWLABTypeUnknown) {
+            [ab setType:uniqueType error:NULL];
+        }
+        
+        [axiomBuilders addObject:ab];
     }
     
-    return insert;
+    return ab;
 }
 
 @end
