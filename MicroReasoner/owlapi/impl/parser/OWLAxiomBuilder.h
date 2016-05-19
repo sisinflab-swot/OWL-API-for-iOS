@@ -41,19 +41,22 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the string representation of the entity IRI.
 - (BOOL)setEntityID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
-#pragma mark SubClassOf axioms
+#pragma mark Binary class expression axioms
 
-/// The ID of the superclass.
-@property (nonatomic, copy, readonly) NSString *superClassID;
+// Used in binary class expression axioms, such as:
+// subclass, disjoint classes, equivalent classes
 
-/// Sets the ID of the superclass.
-- (BOOL)setSuperClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+/// The ID of the left-hand-side class expression.
+@property (nonatomic, copy, readonly) NSString *LHSClassID;
 
-/// The ID of the subclass.
-@property (nonatomic, copy, readonly) NSString *subClassID;
+/// Sets the ID of the left-hand-side class expression.
+- (BOOL)setLHSClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
-/// Sets the ID of the subclass.
-- (BOOL)setSubClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+/// The ID of the right-hand-side class expression.
+@property (nonatomic, copy, readonly) NSString *RHSClassID;
+
+/// Sets the ID of the right-hand-side class expression.
+- (BOOL)setRHSClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 NS_ASSUME_NONNULL_END
 

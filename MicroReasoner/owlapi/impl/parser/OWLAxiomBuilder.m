@@ -10,6 +10,8 @@
 #import "OWLClassExpression.h"
 #import "OWLClassExpressionBuilder.h"
 #import "OWLDeclarationAxiomImpl.h"
+#import "OWLDisjointClassesAxiomImpl.h"
+#import "OWLEquivalentClassesAxiomImpl.h"
 #import "OWLError.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLSubClassOfAxiomImpl.h"
@@ -52,8 +54,7 @@
     
     switch (self.type)
     {
-        case OWLABTypeDeclaration:
-        {
+        case OWLABTypeDeclaration: {
             NSString *entityID = self.entityID;
             
             if (entityID) {
@@ -67,28 +68,53 @@
             break;
         }
             
-        case OWLABTypeSubClassOf:
-        {
-            NSString *superClassID = self.superClassID;
-            NSString *subClassID = self.subClassID;
+        case OWLABTypeDisjointClasses:
+            builtAxiom = [self buildBinaryClassExpressionAxiomWithInitBlock:
+                          ^id<OWLAxiom>(id<OWLClassExpression> LHS, id<OWLClassExpression> RHS) {
+                              return [[OWLDisjointClassesAxiomImpl alloc] initWithClassExpressions:[NSSet setWithObjects:LHS, RHS, nil]];
+                          }];
+            break;
             
-            if (superClassID && subClassID) {
-                OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
-                
-                id<OWLClassExpression> superClassCE = [[ontoBuilder classExpressionBuilderForID:superClassID] build];
-                id<OWLClassExpression> subClassCE = [[ontoBuilder classExpressionBuilderForID:subClassID] build];
-                
-                if (superClassCE && subClassCE) {
-                    builtAxiom = [[OWLSubClassOfAxiomImpl alloc] initWithSuperClass:superClassCE subClass:subClassCE];
-                }
-            }
-        }
+        case OWLABTypeEquivalentClasses:
+            builtAxiom = [self buildBinaryClassExpressionAxiomWithInitBlock:
+                          ^id<OWLAxiom>(id<OWLClassExpression> LHS, id<OWLClassExpression> RHS) {
+                              return [[OWLEquivalentClassesAxiomImpl alloc] initWithClassExpressions:[NSSet setWithObjects:LHS, RHS, nil]];
+                          }];
+            break;
+            
+        case OWLABTypeSubClassOf:
+            builtAxiom = [self buildBinaryClassExpressionAxiomWithInitBlock:
+                          ^id<OWLAxiom>(id<OWLClassExpression> LHS, id<OWLClassExpression> RHS) {
+                              return [[OWLSubClassOfAxiomImpl alloc] initWithSuperClass:RHS subClass:LHS];
+                          }];
+            break;
             
         default:
             break;
     }
     
     self.builtAxiom = builtAxiom;
+    return builtAxiom;
+}
+
+- (id<OWLAxiom>)buildBinaryClassExpressionAxiomWithInitBlock:(id<OWLAxiom>(^)(id<OWLClassExpression>LHS, id<OWLClassExpression>RHS))block
+{
+    id<OWLAxiom> builtAxiom = nil;
+    
+    NSString *RHSClassID = self.RHSClassID;
+    NSString *LHSClassID = self.LHSClassID;
+    
+    if (RHSClassID && LHSClassID) {
+        OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+        
+        id<OWLClassExpression> RHSClassExpression = [[ontoBuilder classExpressionBuilderForID:RHSClassID] build];
+        id<OWLClassExpression> LHSClassExpression = [[ontoBuilder classExpressionBuilderForID:LHSClassID] build];
+        
+        if (RHSClassExpression && LHSClassExpression) {
+            builtAxiom = block(LHSClassExpression, RHSClassExpression);
+        }
+    }
+    
     return builtAxiom;
 }
 
@@ -142,49 +168,49 @@
     return success;
 }
 
-#pragma mark SubClassOf axioms
+#pragma mark Binary class expression axioms
 
 // superClassID
-@synthesize superClassID = _superClassID;
+@synthesize LHSClassID = _LHSClassID;
 
-- (BOOL)setSuperClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
+- (BOOL)setLHSClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
-    if (_superClassID == ID || [_superClassID isEqualToString:ID]) {
+    if (_LHSClassID == ID || [_LHSClassID isEqualToString:ID]) {
         return YES;
     }
     
     BOOL success = NO;
     
-    if (!_superClassID) {
-        _superClassID = [ID copy];
+    if (!_LHSClassID) {
+        _LHSClassID = [ID copy];
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple superclass IDs for same subclass axiom."
-                                  userInfo:@{@"IDs": @[_superClassID, ID]}];
+                      localizedDescription:@"Multiple left-hand-side IDs for same binary class expression axiom."
+                                  userInfo:@{@"IDs": @[_LHSClassID, ID]}];
     }
     
     return success;
 }
 
 // subClassID
-@synthesize subClassID = _subClassID;
+@synthesize RHSClassID = _RHSClassID;
 
-- (BOOL)setSubClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
+- (BOOL)setRHSClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
-    if (_subClassID == ID || [_subClassID isEqualToString:ID]) {
+    if (_RHSClassID == ID || [_RHSClassID isEqualToString:ID]) {
         return YES;
     }
     
     BOOL success = NO;
     
-    if (!_subClassID) {
-        _subClassID = [ID copy];
+    if (!_RHSClassID) {
+        _RHSClassID = [ID copy];
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple subclass IDs for same subclass axiom."
-                                  userInfo:@{@"IDs": @[_subClassID, ID]}];
+                      localizedDescription:@"Multiple right-hand-side IDs for same binary class expression axiom."
+                                  userInfo:@{@"IDs": @[_RHSClassID, ID]}];
     }
     
     return success;

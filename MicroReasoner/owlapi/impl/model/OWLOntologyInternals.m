@@ -9,7 +9,9 @@
 #import "OWLOntologyInternals.h"
 #import "OWLClassExpression.h"
 #import "OWLDeclarationAxiom.h"
+#import "OWLDisjointClassesAxiom.h"
 #import "OWLEntity.h"
+#import "OWLEquivalentClassesAxiom.h"
 #import "OWLSubClassOfAxiom.h"
 #import "SMRPreprocessor.h"
 
@@ -78,11 +80,35 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
     OWLAxiomType type = axiom.axiomType;
     addObjectToSetInDictionary(self.axiomsByType, [NSNumber numberWithInteger:type], axiom);
     
-    switch (type) {
-            
+    switch (type)
+    {
         case OWLAxiomTypeDeclaration: {
             id<OWLEntity> declaredEntity = [(id<OWLDeclarationAxiom>)axiom entity];
             [self _addAxiom:axiom forEntity:declaredEntity];
+            break;
+        }
+            
+        case OWLAxiomTypeDisjointClasses: {
+            id<OWLDisjointClassesAxiom> disjClsAxiom = (id<OWLDisjointClassesAxiom>)axiom;
+            for (id<OWLClassExpression> ce in [disjClsAxiom classExpressions]) {
+                if (!ce.anonymous) {
+                    id<OWLClass> cls = [ce asOwlClass];
+                    addObjectToSetInDictionary(self.axiomsByClass, cls, disjClsAxiom);
+                    addObjectToSetInDictionary(self.disjointClassesAxiomsByClass, cls, disjClsAxiom);
+                }
+            }
+            break;
+        }
+            
+        case OWLAxiomTypeEquivalentClasses: {
+            id<OWLEquivalentClassesAxiom> eqClsAxiom = (id<OWLEquivalentClassesAxiom>)axiom;
+            for (id<OWLClassExpression> ce in [eqClsAxiom classExpressions]) {
+                if (!ce.anonymous) {
+                    id<OWLClass> cls = [ce asOwlClass];
+                    addObjectToSetInDictionary(self.axiomsByClass, cls, eqClsAxiom);
+                    addObjectToSetInDictionary(self.equivalentClassesAxiomsByClass, cls, eqClsAxiom);
+                }
+            }
             break;
         }
             

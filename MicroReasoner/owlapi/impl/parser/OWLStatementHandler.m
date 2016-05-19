@@ -287,6 +287,93 @@ OWLStatementHandler pMaxCardinalityHandler = ^BOOL(RedlandStatement *statement, 
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMaxCardinality, error);
 };
 
+#pragma mark owl:disjointWith, owl:equivalentClass and rdfs:subClassOf predicate handlers
+
+NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, OWLABType axiomType, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (subject.isLiteral || object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject or object of 'owl:disjointWith' statement is a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // LHS class expression
+        NSString *LHSClassID = nil;
+        OWLCEBType type = OWLCEBTypeUnknown;
+        
+        if (subject.isResource) {
+            // Named LHS class
+            LHSClassID = subject.URIStringValue;
+            type = OWLCEBTypeClass;
+        } else {
+            // Anonymous LHS class expression
+            LHSClassID = subject.blankID;
+        }
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID];
+        
+        if (![ceb setType:type error:&localError]) {
+            goto err;
+        }
+        
+        // RHS class expression
+        NSString *RHSClassID = nil;
+        type = OWLCEBTypeUnknown;
+        
+        if (object.isResource) {
+            // Named RHS class
+            RHSClassID = object.URIStringValue;
+            type = OWLCEBTypeClass;
+        } else {
+            // Anonymous RHS class expression
+            RHSClassID = object.blankID;
+        }
+        
+        ceb = [builder ensureClassExpressionBuilderForID:RHSClassID];
+        
+        if (![ceb setType:type error:&localError]) {
+            goto err;
+        }
+        
+        // Axiom
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:LHSClassID];
+        
+        // No need to check for errors, since they will be new objects.
+        [ab setType:axiomType error:NULL];
+        [ab setRHSClassID:RHSClassID error:NULL];
+        [ab setLHSClassID:LHSClassID error:NULL];
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+}
+
+OWLStatementHandler pDisjointWithHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeDisjointClasses, error);
+};
+
+OWLStatementHandler pEquivalentClassHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeEquivalentClasses, error);
+};
+
+OWLStatementHandler pSubClassOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeSubClassOf, error);
+};
+
 #pragma mark owl:intersectionOf predicate handler
 
 OWLStatementHandler pIntersectionOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
@@ -424,79 +511,6 @@ OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, 
     } else {
         // owl:someValuesFrom with anonymous class/datatype filler
         // TODO: currently unsupported
-    }
-    
-err:
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
-};
-
-#pragma mark rdfs:subClassOf predicate handler
-
-OWLStatementHandler pSubClassOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
-{
-    NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
-    
-    if (subject.isLiteral || object.isLiteral) {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Subject or object of subclass statement is a literal."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-    // The braces are required to restrict the scope of the declared variables.
-    // The compiler isn't very pleased about goto labels and var declarations in the same scope.
-    {
-        // Subclass
-        NSString *subClassID = nil;
-        OWLCEBType type = OWLCEBTypeUnknown;
-        
-        if (subject.isResource) {
-            // Named subclass
-            subClassID = subject.URIStringValue;
-            type = OWLCEBTypeClass;
-        } else {
-            // Blank node, unnamed subclass
-            subClassID = subject.blankID;
-        }
-        
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subClassID];
-        
-        if (![ceb setType:type error:&localError]) {
-            goto err;
-        }
-        
-        // Superclass
-        NSString * superClassID = nil;
-        type = OWLCEBTypeUnknown;
-        
-        if (object.isResource) {
-            // Named superclass
-            superClassID = object.URIStringValue;
-            type = OWLCEBTypeClass;
-        } else {
-            // Blank node, unnamed superclass
-            superClassID = object.blankID;
-        }
-        
-        ceb = [builder ensureClassExpressionBuilderForID:superClassID];
-        
-        if (![ceb setType:type error:&localError]) {
-            goto err;
-        }
-        
-        // Axiom
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subClassID];
-        
-        // No need to check for errors, since they will be new objects.
-        [ab setType:OWLABTypeSubClassOf error:NULL];
-        [ab setSuperClassID:superClassID error:NULL];
-        [ab setSubClassID:subClassID error:NULL];
     }
     
 err:
