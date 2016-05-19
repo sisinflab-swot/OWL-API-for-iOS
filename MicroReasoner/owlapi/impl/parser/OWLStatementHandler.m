@@ -287,6 +287,46 @@ OWLStatementHandler pMaxCardinalityHandler = ^BOOL(RedlandStatement *statement, 
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMaxCardinality, error);
 };
 
+#pragma mark owl:intersectionOf predicate handler
+
+OWLStatementHandler pIntersectionOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (!(subject.isBlank && object.isBlank)) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject or object of 'owl:intersectionOf' statement is not a blank node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add class expression
+        NSString *subjectID = subject.blankID;
+        NSString *objectID = object.blankID;
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        
+        if (![ceb setBooleanType:OWLCEBBooleanTypeIntersection error:&localError]) {
+            goto err;
+        }
+        
+        if (![ceb setListID:objectID error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
 #pragma mark owl:onProperty predicate handler
 
 OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
@@ -474,34 +514,46 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
     NSError *__autoreleasing localError = nil;
     RedlandNode *subject = statement.subject;
     
-    if (subject.isResource) {
-        // Class declaration
-        NSString *IRIString = subject.URIStringValue;
+    if (subject.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject of class declaration statement is a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        NSString *subjectID = nil;
         
-        // Add class builder
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:IRIString];
+        if (subject.isResource) {
+            subjectID = subject.URIStringValue;
+        } else {
+            subjectID = subject.blankID;
+        }
+        
+        // Add class expression builder
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setType:OWLCEBTypeClass error:&localError]) {
             goto err;
         }
         
-        if (![ceb setClassID:IRIString error:&localError]) {
-            goto err;
+        if (subject.isResource) {
+            // Named class declaration
+            if (![ceb setClassID:subjectID error:&localError]) {
+                goto err;
+            }
+            
+            // Add declaration axiom builder
+            OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:subjectID];
+            
+            if (![ab setType:OWLABTypeDeclaration error:&localError]) {
+                goto err;
+            }
+            
+            if (![ab setEntityID:subjectID error:&localError]) {
+                goto err;
+            }
         }
-        
-        // Add declaration axiom builder
-        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
-        
-        if (![ab setType:OWLABTypeDeclaration error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setEntityID:IRIString error:&localError]) {
-            goto err;
-        }
-    } else {
-        // Class expression declaration
-        // TODO: implement
     }
     
 err:

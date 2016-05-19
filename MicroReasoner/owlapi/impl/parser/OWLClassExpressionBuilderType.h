@@ -11,8 +11,12 @@
 typedef NS_ENUM(NSInteger, OWLCEBType) {
     OWLCEBTypeUnknown,
     OWLCEBTypeClass,
-    OWLCEBTypeBoolean,
     OWLCEBTypeRestriction
+};
+
+typedef NS_ENUM(NSInteger, OWLCEBBooleanType) {
+    OWLCEBBooleanTypeUnknown,
+    OWLCEBBooleanTypeIntersection
 };
 
 typedef NS_ENUM(NSInteger, OWLCEBRestrictionType) {

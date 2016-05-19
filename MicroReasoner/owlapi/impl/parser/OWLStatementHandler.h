@@ -17,6 +17,7 @@ typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLOntologyBuild
 
 extern OWLStatementHandler pAllValuesFromHandler;
 extern OWLStatementHandler pCardinalityHandler;
+extern OWLStatementHandler pIntersectionOfHandler;
 extern OWLStatementHandler pMaxCardinalityHandler;
 extern OWLStatementHandler pMinCardinalityHandler;
 extern OWLStatementHandler pOnPropertyHandler;

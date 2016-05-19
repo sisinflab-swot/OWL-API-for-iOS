@@ -11,6 +11,7 @@
 #import "OWLError.h"
 #import "OWLObjectAllValuesFromImpl.h"
 #import "OWLObjectExactCardinalityImpl.h"
+#import "OWLObjectIntersectionOfImpl.h"
 #import "OWLObjectMaxCardinalityImpl.h"
 #import "OWLObjectMinCardinalityImpl.h"
 #import "OWLObjectPropertyExpression.h"
@@ -54,7 +55,7 @@
     switch(self.type)
     {
         case OWLCEBTypeClass:
-            builtClassExpression = [self buildClass];
+            builtClassExpression = [self buildClassExpression];
             break;
             
         case OWLCEBTypeRestriction:
@@ -68,19 +69,48 @@
     return builtClassExpression;
 }
 
-- (id<OWLClass>)buildClass
+- (id<OWLClassExpression>)buildClassExpression
 {
-    id<OWLClass> cls = nil;
+    id<OWLClassExpression> classExpression = nil;
     NSString *classID = self.classID;
     
     if (classID) {
+        // Named class
         NSURL *IRI = [[NSURL alloc] initWithString:classID];
         if (IRI) {
-            cls = [[OWLClassImpl alloc] initWithIRI:IRI];
+            classExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
+        }
+    } else {
+        OWLCEBBooleanType type = self.booleanType;
+        NSString *listID = self.listID;
+        
+        if (type != OWLCEBBooleanTypeUnknown && listID) {
+            // Boolean class expression
+            switch (type)
+            {
+                case OWLCEBBooleanTypeIntersection:
+                {
+                    NSMutableSet *operands = [[NSMutableSet alloc] init];
+                    OWLOntologyBuilder *ontologyBuilder = self.ontologyBuilder;
+                    
+                    for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
+                        id<OWLClassExpression> ce = [[ontologyBuilder classExpressionBuilderForID:ID] build];
+                        if (ce) {
+                            [operands addObject:ce];
+                        }
+                    }
+                    
+                    classExpression = [[OWLObjectIntersectionOfImpl alloc] initWithOperands:operands];
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
         }
     }
     
-    return cls;
+    return classExpression;
 }
 
 - (id<OWLRestriction>)buildRestriction
@@ -217,6 +247,54 @@
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple IRIs for class."
                                   userInfo:@{@"IRIs": @[_classID, ID]}];
+    }
+    
+    return success;
+}
+
+#pragma mark Boolean
+
+// booleanType
+@synthesize booleanType = _booleanType;
+
+- (BOOL)setBooleanType:(OWLCEBBooleanType)type error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_booleanType == type) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (_booleanType == OWLCEBBooleanTypeUnknown) {
+        _booleanType = type;
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple boolean types for class expression."
+                                  userInfo:@{@"types": @[@(_booleanType), @(type)]}];
+    }
+    
+    return success;
+}
+
+// listID
+@synthesize listID = _listID;
+
+- (BOOL)setListID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_listID == ID || [_listID isEqualToString:ID]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_listID) {
+        _listID = [ID copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple list IDs for boolean class expression."
+                                  userInfo:@{@"IDs": @[_listID, ID]}];
     }
     
     return success;

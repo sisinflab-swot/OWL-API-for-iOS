@@ -41,6 +41,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the string representation of the class IRI.
 - (BOOL)setClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
+#pragma mark Boolean
+
+/// The boolean type of this expression.
+@property (nonatomic, readonly) OWLCEBBooleanType booleanType;
+
+/// Sets the boolean type of this expression.
+- (BOOL)setBooleanType:(OWLCEBBooleanType)type error:(NSError *_Nullable __autoreleasing *)error;
+
+/// The list identifier of this boolean expression.
+@property (nonatomic, copy, readonly) NSString *listID;
+
+// Sets the list identifier of this boolean expression.
+- (BOOL)setListID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
 #pragma mark Restriction
 
 /// The type of the built restriction.
@@ -66,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Cardinality
 
 /// The cardinality of the restriction.
-@property (nonatomic, readonly) NSString *cardinality;
+@property (nonatomic, copy, readonly) NSString *cardinality;
 
 /// Sets the cardinality of the restriction.
 - (BOOL)setCardinality:(NSString *)cardinality error:(NSError *_Nullable __autoreleasing *)error;

@@ -249,4 +249,24 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     return self.listItems[ID];
 }
 
+- (NSArray *)firstItemsForListID:(NSString *)ID
+{
+    NSDictionary *listItems = self.listItems;
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    NSString *restID = ID;
+    
+    do {
+        OWLListItem *item = listItems[restID];
+        NSString *firstID = item.first;
+        
+        if (firstID) {
+            [items addObject:firstID];
+        }
+        
+        restID = item.rest;
+    } while (restID);
+    
+    return items;
+}
+
 @end

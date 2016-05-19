@@ -49,6 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (OWLListItem *)ensureListItemForID:(NSString *)ID;
 - (nullable OWLListItem *)listItemForID:(NSString *)ID;
+- (NSArray *)firstItemsForListID:(NSString *)ID;
 
 #pragma mark OWLAbstractBuilder
 
