@@ -10,6 +10,13 @@
 
 @implementation OWLObjectIntersectionOfImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ObjectIntersectionOf(%@)", [[self.operands allObjects] componentsJoinedByString:@" "]];
+}
+
 #pragma mark OWLClassExpression
 
 - (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectIntersectionOf; }
