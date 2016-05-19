@@ -75,6 +75,8 @@ LAZY_STATIC_TERM(OWLClass, OWLNamespaceOWL, @"Class");
 LAZY_STATIC_TERM(OWLDatatypeProperty, OWLNamespaceOWL, @"DatatypeProperty");
 LAZY_STATIC_TERM(OWLDeprecatedClass, OWLNamespaceOWL, @"DeprecatedClass");
 LAZY_STATIC_TERM(OWLDeprecatedProperty, OWLNamespaceOWL, @"DeprecatedProperty");
+LAZY_STATIC_TERM(OWLDisjointWith, OWLNamespaceOWL, @"disjointWith");
+LAZY_STATIC_TERM(OWLEquivalentClass, OWLNamespaceOWL, @"equivalentClass");
 LAZY_STATIC_TERM(OWLFunctionalProperty, OWLNamespaceOWL, @"FunctionalProperty");
 LAZY_STATIC_TERM(OWLIntersectionOf, OWLNamespaceOWL, @"intersectionOf");
 LAZY_STATIC_TERM(OWLInverseFunctionalProperty, OWLNamespaceOWL, @"InverseFunctionalProperty");

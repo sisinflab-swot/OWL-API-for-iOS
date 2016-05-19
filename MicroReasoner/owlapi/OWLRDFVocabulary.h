@@ -60,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLDatatypeProperty;
 + (OWLRDFTerm *)OWLDeprecatedClass;
 + (OWLRDFTerm *)OWLDeprecatedProperty;
++ (OWLRDFTerm *)OWLDisjointWith;
++ (OWLRDFTerm *)OWLEquivalentClass;
 + (OWLRDFTerm *)OWLFunctionalProperty;
 + (OWLRDFTerm *)OWLIntersectionOf;
 + (OWLRDFTerm *)OWLInverseFunctionalProperty;
