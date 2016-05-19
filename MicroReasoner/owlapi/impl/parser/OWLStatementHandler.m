@@ -298,7 +298,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
     
     if (subject.isLiteral || object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Subject or object of 'owl:disjointWith' statement is a literal node."
+                          localizedDescription:@"Subject or object of binary class expression axiom statement is a literal node."
                                       userInfo:@{@"statement": statement}];
         goto err;
     }
@@ -464,6 +464,93 @@ err:
     }
     
     return !localError;
+};
+
+#pragma mark rdfs:domain and rdfs:range predicate handlers
+
+NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL domain, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (subject.isLiteral || object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Illegal subject/object literal node for statement."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // TODO: only supports object properties
+        // Add object property builder
+        // We assume it's an object property since it's
+        // the only supported property expression type.
+        NSString *subjectID = nil;
+        
+        if (subject.isResource) {
+            subjectID = subject.URIStringValue;
+        } else {
+            subjectID = subject.blankID;
+        }
+        
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
+        
+        if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
+            goto err;
+        }
+        
+        if (![pb setNamedPropertyID:subjectID error:&localError]) {
+            goto err;
+        }
+        
+        // Add class expression builder
+        NSString *objectID = nil;
+        
+        if (object.isResource) {
+            objectID = object.URIStringValue;
+        } else {
+            objectID = object.blankID;
+        }
+        
+        [builder ensureClassExpressionBuilderForID:objectID];
+        
+        // Add axiom
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID
+                                                          ensureUniqueType:(domain ? OWLABTypeDomain : OWLABTypeRange)];
+        if (ab) {
+            if (![ab setPropertyID:subjectID error:&localError]) {
+                goto err;
+            }
+            
+            if (![ab setDomainRangeID:objectID error:&localError]) {
+                goto err;
+            }
+        } else {
+            localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                              localizedDescription:@"Multiple domain/range axioms for same property expression."
+                                          userInfo:@{@"statement": statement}];
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+}
+
+OWLStatementHandler pDomainHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleDomainRangeStatement(statement, builder, YES, error);
+};
+
+OWLStatementHandler pRangeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleDomainRangeStatement(statement, builder, NO, error);
 };
 
 #pragma mark owl:someValuesFrom predicate handler

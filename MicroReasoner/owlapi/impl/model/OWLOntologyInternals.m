@@ -12,6 +12,8 @@
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEntity.h"
 #import "OWLEquivalentClassesAxiom.h"
+#import "OWLObjectPropertyDomainAxiom.h"
+#import "OWLObjectPropertyRangeAxiom.h"
 #import "OWLSubClassOfAxiom.h"
 #import "SMRPreprocessor.h"
 
@@ -127,6 +129,41 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
                 id<OWLClass> cls = [superClass asOwlClass];
                 addObjectToSetInDictionary(self.axiomsByClass, cls, subClassOfAxiom);
             }
+            break;
+        }
+            
+        case OWLAxiomTypeObjectPropertyDomain: {
+            id<OWLObjectPropertyDomainAxiom> domainAxiom = (id<OWLObjectPropertyDomainAxiom>)axiom;
+            
+            id<OWLObjectProperty> objectProperty = [domainAxiom.property asOWLObjectProperty];
+            if (objectProperty) {
+                addObjectToSetInDictionary(self.axiomsByObjectProperty, objectProperty, domainAxiom);
+            }
+            
+            id<OWLClassExpression> classExpr = domainAxiom.domain;
+            if (!classExpr.anonymous) {
+                id<OWLClass> cls = [classExpr asOwlClass];
+                addObjectToSetInDictionary(self.axiomsByClass, cls, domainAxiom);
+            }
+            
+            break;
+        }
+            
+        case OWLAxiomTypeObjectPropertyRange: {
+            id<OWLObjectPropertyRangeAxiom> rangeAxiom = (id<OWLObjectPropertyRangeAxiom>)axiom;
+            
+            id<OWLObjectProperty> objectProperty = [rangeAxiom.property asOWLObjectProperty];
+            if (objectProperty) {
+                addObjectToSetInDictionary(self.axiomsByObjectProperty, objectProperty, rangeAxiom);
+            }
+            
+            id<OWLClassExpression> classExpr = rangeAxiom.range;
+            if (!classExpr.anonymous) {
+                id<OWLClass> cls = [classExpr asOwlClass];
+                addObjectToSetInDictionary(self.axiomsByClass, cls, rangeAxiom);
+            }
+            
+            break;
         }
             
         default:
@@ -185,7 +222,7 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             break;
             
         case OWLEntityTypeObjectProperty:
-            addObjectToSetInDictionary(self.axiomsByObjectProperty, entity, axiom);
+            //addObjectToSetInDictionary(self.axiomsByObjectProperty, entity, axiom);
             break;
             
         default:

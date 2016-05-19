@@ -18,11 +18,13 @@ typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLOntologyBuild
 extern OWLStatementHandler pAllValuesFromHandler;
 extern OWLStatementHandler pCardinalityHandler;
 extern OWLStatementHandler pDisjointWithHandler;
+extern OWLStatementHandler pDomainHandler;
 extern OWLStatementHandler pEquivalentClassHandler;
 extern OWLStatementHandler pIntersectionOfHandler;
 extern OWLStatementHandler pMaxCardinalityHandler;
 extern OWLStatementHandler pMinCardinalityHandler;
 extern OWLStatementHandler pOnPropertyHandler;
+extern OWLStatementHandler pRangeHandler;
 extern OWLStatementHandler pRDFFirstHandler;
 extern OWLStatementHandler pRDFRestHandler;
 extern OWLStatementHandler pRDFTypeHandler;

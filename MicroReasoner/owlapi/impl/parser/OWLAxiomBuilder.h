@@ -58,6 +58,20 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the ID of the right-hand-side class expression.
 - (BOOL)setRHSClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
+#pragma mark Property domain and range
+
+/// The ID of the property expression this axiom is about.
+@property (nonatomic, copy, readonly) NSString *propertyID;
+
+/// Sets the ID of the property expression this axiom is about.
+- (BOOL)setPropertyID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
+/// The ID of the class expression that acts as domain/range.
+@property (nonatomic, copy, readonly) NSString *domainRangeID;
+
+/// Sets the ID of the class expression that acts as domain/range.
+- (BOOL)setDomainRangeID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
 NS_ASSUME_NONNULL_END
 
 @end

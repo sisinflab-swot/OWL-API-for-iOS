@@ -12,6 +12,8 @@ typedef NS_ENUM(NSInteger, OWLABType) {
     OWLABTypeUnknown,
     OWLABTypeDeclaration,
     OWLABTypeDisjointClasses,
+    OWLABTypeDomain,
     OWLABTypeEquivalentClasses,
+    OWLABTypeRange,
     OWLABTypeSubClassOf
 };

@@ -13,7 +13,10 @@
 #import "OWLDisjointClassesAxiomImpl.h"
 #import "OWLEquivalentClassesAxiomImpl.h"
 #import "OWLError.h"
+#import "OWLObjectPropertyDomainAxiomImpl.h"
+#import "OWLObjectPropertyRangeAxiomImpl.h"
 #import "OWLOntologyBuilder.h"
+#import "OWLPropertyBuilder.h"
 #import "OWLSubClassOfAxiomImpl.h"
 
 @interface OWLAxiomBuilder ()
@@ -89,6 +92,20 @@
                           }];
             break;
             
+        case OWLABTypeDomain:
+            builtAxiom = [self buildDomainRangeAxiomWithInitBlock:
+                          ^id<OWLAxiom>(id<OWLObjectPropertyExpression> OPE, id<OWLClassExpression> CE) {
+                              return [[OWLObjectPropertyDomainAxiomImpl alloc] initWithProperty:OPE domain:CE];
+                          }];
+            break;
+            
+        case OWLABTypeRange:
+            builtAxiom = [self buildDomainRangeAxiomWithInitBlock:
+                          ^id<OWLAxiom>(id<OWLObjectPropertyExpression> OPE, id<OWLClassExpression> CE) {
+                              return [[OWLObjectPropertyRangeAxiomImpl alloc] initWithProperty:OPE range:CE];
+                          }];
+            break;
+            
         default:
             break;
     }
@@ -112,6 +129,32 @@
         
         if (RHSClassExpression && LHSClassExpression) {
             builtAxiom = block(LHSClassExpression, RHSClassExpression);
+        }
+    }
+    
+    return builtAxiom;
+}
+
+- (id<OWLAxiom>)buildDomainRangeAxiomWithInitBlock:(id<OWLAxiom>(^)(id<OWLObjectPropertyExpression>OPE, id<OWLClassExpression>CE))block
+{
+    id<OWLAxiom> builtAxiom = nil;
+    
+    NSString *propertyID = self.propertyID;
+    NSString *domainRangeID = self.domainRangeID;
+    
+    if (propertyID && domainRangeID) {
+        OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+        
+        id<OWLPropertyExpression> propertyExpr = [[ontoBuilder propertyBuilderForID:propertyID] build];
+        
+        // TODO: only supports object property expressions
+        if (propertyExpr.isObjectPropertyExpression) {
+            id<OWLObjectPropertyExpression> objPropExpr = (id<OWLObjectPropertyExpression>)propertyExpr;
+            
+            id<OWLClassExpression> domainRangeCE = [[ontoBuilder classExpressionBuilderForID:domainRangeID] build];
+            if (domainRangeCE) {
+                builtAxiom = block(objPropExpr, domainRangeCE);
+            }
         }
     }
     
@@ -161,7 +204,7 @@
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple entities for same declaration axiom."
+                      localizedDescription:@"Multiple entities for declaration axiom."
                                   userInfo:@{@"entities": @[_entityID, ID]}];
     }
     
@@ -186,7 +229,7 @@
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple left-hand-side IDs for same binary class expression axiom."
+                      localizedDescription:@"Multiple left-hand-side IDs for binary class expression axiom."
                                   userInfo:@{@"IDs": @[_LHSClassID, ID]}];
     }
     
@@ -209,8 +252,56 @@
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple right-hand-side IDs for same binary class expression axiom."
+                      localizedDescription:@"Multiple right-hand-side IDs for binary class expression axiom."
                                   userInfo:@{@"IDs": @[_RHSClassID, ID]}];
+    }
+    
+    return success;
+}
+
+#pragma mark Property domain and range
+
+// propertyID
+@synthesize propertyID = _propertyID;
+
+- (BOOL)setPropertyID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_propertyID == ID || [_propertyID isEqualToString:ID]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_propertyID) {
+        _propertyID = [ID copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                      localizedDescription:@"Multiple property IDs for domain or range axiom."
+                                  userInfo:@{@"IDs": @[_propertyID, ID]}];
+    }
+    
+    return success;
+}
+
+// domainRangeID
+@synthesize domainRangeID = _domainRangeID;
+
+- (BOOL)setDomainRangeID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_domainRangeID == ID || [_domainRangeID isEqualToString:ID]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_domainRangeID) {
+        _domainRangeID = [ID copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                      localizedDescription:@"Multiple class expression IDs for domain or range axiom."
+                                  userInfo:@{@"IDs": @[_domainRangeID, ID]}];
     }
     
     return success;

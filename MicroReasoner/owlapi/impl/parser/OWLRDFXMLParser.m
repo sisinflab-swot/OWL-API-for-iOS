@@ -47,6 +47,9 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     map[[OWLRDFVocabulary RDFFirst].stringValue] = [pRDFFirstHandler copy];
     map[[OWLRDFVocabulary RDFRest].stringValue] = [pRDFRestHandler copy];
     map[[OWLRDFVocabulary RDFType].stringValue] = [pRDFTypeHandler copy];
+    map[[OWLRDFVocabulary RDFSDomain].stringValue] = [pDomainHandler copy];
+    map[[OWLRDFVocabulary RDFSRange].stringValue] = [pRangeHandler copy];
+    map[[OWLRDFVocabulary RDFSSubClassOf].stringValue] = [pSubClassOfHandler copy];
     map[[OWLRDFVocabulary OWLAllValuesFrom].stringValue] = [pAllValuesFromHandler copy];
     map[[OWLRDFVocabulary OWLCardinality].stringValue] = [pCardinalityHandler copy];
     map[[OWLRDFVocabulary OWLDisjointWith].stringValue] = [pDisjointWithHandler copy];
@@ -56,7 +59,6 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     map[[OWLRDFVocabulary OWLMinCardinality].stringValue] = [pMinCardinalityHandler copy];
     map[[OWLRDFVocabulary OWLOnProperty].stringValue] = [pOnPropertyHandler copy];
     map[[OWLRDFVocabulary OWLSomeValuesFrom].stringValue] = [pSomeValuesFromHandler copy];
-    map[[OWLRDFVocabulary RDFSSubClassOf].stringValue] = [pSubClassOfHandler copy];
     
     return map;
 }
