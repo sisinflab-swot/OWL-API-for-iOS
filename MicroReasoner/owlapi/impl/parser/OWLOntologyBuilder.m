@@ -14,6 +14,7 @@
 #import "OWLDeclarationAxiom.h"
 #import "OWLEntity.h"
 #import "OWLIndividualBuilder.h"
+#import "OWLListItem.h"
 #import "OWLNamedIndividual.h"
 #import "OWLOntologyID.h"
 #import "OWLOntologyImpl.h"
@@ -24,23 +25,25 @@
 
 @interface OWLOntologyBuilder ()
 
-/// Ensures uniqueness of entity identifiers.
+// The keys of these dictionaries are either blank node IDs or IRIs,
+// matching the subject node of the statement that triggered the
+// creation of the builder/item.
+
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, id<OWLAbstractBuilder>> *allEntityBuilders;
 
-/// Blank node ID || IRI string -> OWLClassExpressionBuilder.
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, OWLClassExpressionBuilder *> *classExpressionBuilders;
 
-/// Blank node ID || IRI string -> OWLAxiomBuilder.
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, OWLAxiomBuilder *> *declarationAxiomBuilders;
 
-/// Blank node ID || IRI string -> OWLIndividualBuilder.
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, OWLIndividualBuilder *> *individualBuilders;
 
-/// Blank node ID || IRI string -> OWLPropertyBuilder
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLListItem *> *listItems;
+
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, OWLPropertyBuilder *> *propertyBuilders;
 
@@ -56,6 +59,7 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, allEntityBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, classExpressionBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, declarationAxiomBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, individualBuilders);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, listItems);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, propertyBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
 
@@ -127,11 +131,6 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     return self.classExpressionBuilders[ID];
 }
 
-- (BOOL)setClassExpressionBuilder:(OWLClassExpressionBuilder *)builder forID:(NSString *)ID
-{
-    return setEntityBuilder(self.allEntityBuilders, self.classExpressionBuilders, ID, builder);
-}
-
 - (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID
 {
     NSMutableDictionary *individualBuilders = self.individualBuilders;
@@ -148,11 +147,6 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
 - (OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID
 {
     return self.individualBuilders[ID];
-}
-
-- (BOOL)setIndividualBuilder:(OWLIndividualBuilder *)builder forID:(NSString *)ID
-{
-    return setEntityBuilder(self.allEntityBuilders, self.individualBuilders, ID, builder);
 }
 
 - (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID
@@ -173,11 +167,6 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     return self.propertyBuilders[ID];
 }
 
-- (BOOL)setPropertyBuilder:(OWLPropertyBuilder *)builder forID:(NSString *)ID
-{
-    return setEntityBuilder(self.allEntityBuilders, self.propertyBuilders, ID, builder);
-}
-
 #pragma mark Axiom builder accessor methods
 
 - (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID
@@ -196,11 +185,6 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
 - (OWLAxiomBuilder *)declarationAxiomBuilderForID:(NSString *)ID
 {
     return self.declarationAxiomBuilders[ID];
-}
-
-- (void)setDeclarationAxiomBuilder:(OWLAxiomBuilder *)builder forID:(NSString *)ID
-{
-    self.declarationAxiomBuilders[ID] = builder;
 }
 
 - (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID
@@ -243,6 +227,26 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     }
     
     return ab;
+}
+
+#pragma mark Lists
+
+- (OWLListItem *)ensureListItemForID:(NSString *)ID
+{
+    NSMutableDictionary *listItems = self.listItems;
+    OWLListItem *item = listItems[ID];
+    
+    if (!item) {
+        item = [[OWLListItem alloc] init];
+        listItems[ID] = item;
+    }
+    
+    return item;
+}
+
+- (OWLListItem *)listItemForID:(NSString *)ID
+{
+    return self.listItems[ID];
 }
 
 @end

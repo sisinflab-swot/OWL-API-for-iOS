@@ -11,6 +11,7 @@
 #import "OWLClassExpressionBuilder.h"
 #import "OWLError.h"
 #import "OWLIndividualBuilder.h"
+#import "OWLListItem.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLPropertyBuilder.h"
 #import "OWLRDFVocabulary.h"
@@ -101,6 +102,67 @@ err:
     return !localError;
 };
 
+#pragma mark rdf:first and rdf:rest predicate handlers
+
+NS_INLINE BOOL handleListStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL first, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject of list statement is not a blank node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Object of list statement is a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add list item
+        NSString *subjectID = subject.blankID;
+        NSString *objectID = nil;
+        
+        if (object.isResource) {
+            objectID = object.URIStringValue;
+        } else {
+            objectID = object.blankID;
+        }
+        
+        OWLListItem *item = [builder ensureListItemForID:subjectID];
+        
+        if (first) {
+            item.first = objectID;
+        } else {
+            item.rest = objectID;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+}
+
+OWLStatementHandler pRDFFirstHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleListStatement(statement, builder, YES, error);
+};
+
+OWLStatementHandler pRDFRestHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleListStatement(statement, builder, NO, error);
+};
+
 #pragma mark owl:allValuesFrom predicate handler
 
 OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
@@ -176,14 +238,14 @@ NS_INLINE BOOL handleCardinalityStatement(RedlandStatement *statement, OWLOntolo
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Subject of 'minCardinality' statement is not a blank node."
+                          localizedDescription:@"Subject of cardinality statement is not a blank node."
                                       userInfo:@{@"statement": statement}];
         goto err;
     }
     
     if (!object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Object of 'minCardinality' statement is not a literal node."
+                          localizedDescription:@"Object of cardinality statement is not a literal node."
                                       userInfo:@{@"statement": statement}];
         goto err;
     }

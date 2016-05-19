@@ -20,6 +20,8 @@ extern OWLStatementHandler pCardinalityHandler;
 extern OWLStatementHandler pMaxCardinalityHandler;
 extern OWLStatementHandler pMinCardinalityHandler;
 extern OWLStatementHandler pOnPropertyHandler;
+extern OWLStatementHandler pRDFFirstHandler;
+extern OWLStatementHandler pRDFRestHandler;
 extern OWLStatementHandler pRDFTypeHandler;
 extern OWLStatementHandler pSomeValuesFromHandler;
 extern OWLStatementHandler pSubClassOfHandler;

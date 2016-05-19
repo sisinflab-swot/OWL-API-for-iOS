@@ -44,6 +44,8 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
 {
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
     
+    map[[OWLRDFVocabulary RDFFirst].stringValue] = [pRDFFirstHandler copy];
+    map[[OWLRDFVocabulary RDFRest].stringValue] = [pRDFRestHandler copy];
     map[[OWLRDFVocabulary RDFType].stringValue] = [pRDFTypeHandler copy];
     map[[OWLRDFVocabulary OWLAllValuesFrom].stringValue] = [pAllValuesFromHandler copy];
     map[[OWLRDFVocabulary OWLCardinality].stringValue] = [pCardinalityHandler copy];
