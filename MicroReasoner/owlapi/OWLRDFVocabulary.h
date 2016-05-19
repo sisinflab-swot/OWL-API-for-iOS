@@ -45,6 +45,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)RDFRest;
 + (OWLRDFTerm *)RDFType;
 + (OWLRDFTerm *)RDFSDatatype;
++ (OWLRDFTerm *)RDFSDomain;
++ (OWLRDFTerm *)RDFSRange;
 + (OWLRDFTerm *)RDFSSubClassOf;
 
 + (OWLRDFTerm *)OWLAllDifferent;

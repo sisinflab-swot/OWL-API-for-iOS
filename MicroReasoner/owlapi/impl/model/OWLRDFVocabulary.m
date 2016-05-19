@@ -60,6 +60,8 @@ LAZY_STATIC_TERM(RDFNil, OWLNamespaceRDFSyntax, @"nil");
 LAZY_STATIC_TERM(RDFRest, OWLNamespaceRDFSyntax, @"rest");
 LAZY_STATIC_TERM(RDFType, OWLNamespaceRDFSyntax, @"type");
 LAZY_STATIC_TERM(RDFSDatatype, OWLNamespaceRDFSchema, @"datatype");
+LAZY_STATIC_TERM(RDFSDomain, OWLNamespaceRDFSchema, @"domain");
+LAZY_STATIC_TERM(RDFSRange, OWLNamespaceRDFSchema, @"range");
 LAZY_STATIC_TERM(RDFSSubClassOf, OWLNamespaceRDFSchema, @"subClassOf");
 
 LAZY_STATIC_TERM(OWLAllDifferent, OWLNamespaceOWL, @"AllDifferent");
