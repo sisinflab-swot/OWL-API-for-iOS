@@ -10,6 +10,8 @@
 #import "OWLClassImpl.h"
 #import "OWLError.h"
 #import "OWLObjectAllValuesFromImpl.h"
+#import "OWLObjectExactCardinalityImpl.h"
+#import "OWLObjectMaxCardinalityImpl.h"
 #import "OWLObjectMinCardinalityImpl.h"
 #import "OWLObjectPropertyExpression.h"
 #import "OWLObjectSomeValuesFromImpl.h"
@@ -119,26 +121,52 @@
                 }
                 break;
                 
-            case OWLCEBRestrictionTypeMinCardinality:
-            {
-                NSInteger cardinality;
-                
-                if ([self.cardinality smr_hasIntegerValue:&cardinality] && cardinality >= 0) {
-                    
-                    if (!filler) {
-                        filler = [[OWLClassImpl alloc] initWithIRI:[OWLRDFVocabulary OWLThing].IRI];
-                    }
-                    
-                    restr = [[OWLObjectMinCardinalityImpl alloc] initWithProperty:objectPropertyExpr
-                                                                           filler:filler
-                                                                      cardinality:(NSUInteger)cardinality];
-                }
+            case OWLCEBRestrictionTypeCardinality:
+                restr = [self buildCardinalityRestrictionOfClass:[OWLObjectExactCardinalityImpl class]
+                                                 withCardinality:self.cardinality
+                                                        property:objectPropertyExpr
+                                                          filler:filler];
                 break;
-            }
+                
+            case OWLCEBRestrictionTypeMaxCardinality:
+                restr = [self buildCardinalityRestrictionOfClass:[OWLObjectMaxCardinalityImpl class]
+                                                 withCardinality:self.cardinality
+                                                        property:objectPropertyExpr
+                                                          filler:filler];
+                break;
+                
+            case OWLCEBRestrictionTypeMinCardinality:
+                restr = [self buildCardinalityRestrictionOfClass:[OWLObjectMinCardinalityImpl class]
+                                                 withCardinality:self.cardinality
+                                                        property:objectPropertyExpr
+                                                          filler:filler];
+                break;
                 
             default:
                 break;
         }
+    }
+    
+    return restr;
+}
+
+- (id<OWLRestriction>)buildCardinalityRestrictionOfClass:(Class)cls
+                                         withCardinality:(NSString *)cardString
+                                                property:(id<OWLObjectPropertyExpression>)property
+                                                  filler:(id<OWLClassExpression>)filler
+{
+    NSInteger cardinality;
+    id restr = nil;
+    
+    if ([cardString smr_hasIntegerValue:&cardinality] && cardinality >= 0) {
+        
+        if (!filler) {
+            filler = [[OWLClassImpl alloc] initWithIRI:[OWLRDFVocabulary OWLThing].IRI];
+        }
+        
+        restr = [(OWLObjectCardinalityRestrictionImpl *)[cls alloc] initWithProperty:property
+                                                                              filler:filler
+                                                                         cardinality:(NSUInteger)cardinality];
     }
     
     return restr;

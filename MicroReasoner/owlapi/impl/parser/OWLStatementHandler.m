@@ -165,9 +165,9 @@ err:
     return !localError;
 };
 
-#pragma mark owl:minCardinality predicate handler
+#pragma mark owl:cardinality, owl:minCardinality and owl:maxCardinality predicate handlers
 
-OWLStatementHandler pMinCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleCardinalityStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, OWLCEBRestrictionType restrType, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -192,7 +192,7 @@ OWLStatementHandler pMinCardinalityHandler = ^BOOL(RedlandStatement *statement, 
         // Add restriction
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
         
-        if (![ceb setRestrictionType:OWLCEBRestrictionTypeMinCardinality error:&localError]) {
+        if (![ceb setRestrictionType:restrType error:&localError]) {
             goto err;
         }
         
@@ -207,6 +207,22 @@ err:
     }
     
     return !localError;
+    
+}
+
+OWLStatementHandler pCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeCardinality, error);
+};
+
+OWLStatementHandler pMinCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMinCardinality, error);
+};
+
+OWLStatementHandler pMaxCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMaxCardinality, error);
 };
 
 #pragma mark owl:onProperty predicate handler

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef BOOL (^OWLStatementHandler)(RedlandStatement *_Nonnull, OWLOntologyBuilder *_Nonnull, NSError *_Nullable __autoreleasing *);
 
 extern OWLStatementHandler pAllValuesFromHandler;
+extern OWLStatementHandler pCardinalityHandler;
+extern OWLStatementHandler pMaxCardinalityHandler;
 extern OWLStatementHandler pMinCardinalityHandler;
 extern OWLStatementHandler pOnPropertyHandler;
 extern OWLStatementHandler pRDFTypeHandler;
