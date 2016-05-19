@@ -30,11 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The type of the built class expression.
 @property (nonatomic, readonly) OWLCEBType type;
 
-/**
- * Sets the type of the built class expression.
- *
- * @return NO if the type was already set, YES otherwise.
- */
+/// Sets the type of the built class expression.
 - (BOOL)setType:(OWLCEBType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Class
@@ -42,11 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The string representation of the class IRI.
 @property (nonatomic, copy, readonly) NSString *classID;
 
-/**
- * Sets the string representation of the class IRI.
- *
- * @return NO if the ID was already set, YES otherwise.
- */
+/// Sets the string representation of the class IRI.
 - (BOOL)setClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Restriction
@@ -54,32 +46,30 @@ NS_ASSUME_NONNULL_BEGIN
 /// The type of the built restriction.
 @property (nonatomic, readonly) OWLCEBRestrictionType restrictionType;
 
-/**
- * Sets the type of the built restriction.
- *
- * @return NO if the type was already set, YES otherwise.
- */
+/// Sets the type of the built restriction.
 - (BOOL)setRestrictionType:(OWLCEBRestrictionType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 /// Identifier of the property this restriction is about.
 @property (nonatomic, copy, readonly) NSString *propertyID;
 
-/**
- * Sets the the property the restriction is about.
- *
- * @return NO if the ID was already set, YES otherwise.
- */
+/// Sets the the property the restriction is about.
 - (BOOL)setPropertyID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
+#pragma mark AllValuesFrom/SomeValuesFrom
 
 /// The filler of this restriction.
 @property (nonatomic, copy, readonly) NSString *fillerID;
 
-/**
- * Sets the the filler of the restriction.
- *
- * @return NO if the ID was already set, YES otherwise.
- */
+/// Sets the the filler of the restriction.
 - (BOOL)setFillerID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
+#pragma mark Cardinality
+
+/// The cardinality of the restriction.
+@property (nonatomic, readonly) NSString *cardinality;
+
+/// Sets the cardinality of the restriction.
+- (BOOL)setCardinality:(NSString *)cardinality error:(NSError *_Nullable __autoreleasing *)error;
 
 @end
 

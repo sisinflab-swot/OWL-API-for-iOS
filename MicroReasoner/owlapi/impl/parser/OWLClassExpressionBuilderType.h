@@ -18,5 +18,8 @@ typedef NS_ENUM(NSInteger, OWLCEBType) {
 typedef NS_ENUM(NSInteger, OWLCEBRestrictionType) {
     OWLCEBRestrictionTypeUnknown,
     OWLCEBRestrictionTypeAllValuesFrom,
-    OWLCEBRestrictionTypeSomeValuesFrom
+    OWLCEBRestrictionTypeSomeValuesFrom,
+    OWLCEBRestrictionTypeCardinality,
+    OWLCEBRestrictionTypeMaxCardinality,
+    OWLCEBRestrictionTypeMinCardinality
 };

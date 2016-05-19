@@ -57,66 +57,6 @@ NS_INLINE NSDictionary *objectHandlerMapInit() {
     return map;
 }
 
-#pragma mark owl:allValuesFrom predicate handler
-
-OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
-{
-    NSError *__autoreleasing localError = nil;
-    
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
-    
-    if (object.isLiteral) {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Object of 'allValuesFrom' statement is a literal node."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-    if (!subject.isBlank) {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Subject of 'allValuesFrom' statement is not a blank node."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-    {
-        // Add restriction
-        NSString *subjectID = subject.blankID;
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
-        
-        if (![ceb setRestrictionType:OWLCEBRestrictionTypeAllValuesFrom error:&localError]) {
-            goto err;
-        }
-        
-        // Add filler class expression
-        NSString *fillerID = nil;
-        OWLCEBType fillerType = OWLCEBTypeUnknown;
-        
-        if (object.isResource) {
-            // Named class/datatype filler
-            fillerID = object.URIStringValue;
-            fillerType = OWLCEBTypeClass;
-        } else {
-            // Anonymous class/datatype filler
-            fillerID = object.blankID;
-        }
-        
-        ceb = [builder ensureClassExpressionBuilderForID:fillerID];
-        
-        if (![ceb setType:fillerType error:&localError]) {
-            goto err;
-        }
-    }
-    
-err:
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
-};
-
 #pragma mark rdf:type predicate handler
 
 OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
@@ -161,11 +101,119 @@ err:
     return !localError;
 };
 
+#pragma mark owl:allValuesFrom predicate handler
+
+OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject of 'allValuesFrom' statement is not a blank node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Object of 'allValuesFrom' statement is a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add filler class expression
+        NSString *fillerID = nil;
+        OWLCEBType fillerType = OWLCEBTypeUnknown;
+        
+        if (object.isResource) {
+            // Named class/datatype filler
+            fillerID = object.URIStringValue;
+            fillerType = OWLCEBTypeClass;
+        } else {
+            // Anonymous class/datatype filler
+            fillerID = object.blankID;
+        }
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID];
+        
+        if (![ceb setType:fillerType error:&localError]) {
+            goto err;
+        }
+        
+        // Add restriction
+        NSString *subjectID = subject.blankID;
+        ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        
+        if (![ceb setRestrictionType:OWLCEBRestrictionTypeAllValuesFrom error:&localError]) {
+            goto err;
+        }
+        
+        if (![ceb setFillerID:fillerID error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
+#pragma mark owl:minCardinality predicate handler
+
+OWLStatementHandler pMinCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject of 'minCardinality' statement is not a blank node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (!object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Object of 'minCardinality' statement is not a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add restriction
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
+        
+        if (![ceb setRestrictionType:OWLCEBRestrictionTypeMinCardinality error:&localError]) {
+            goto err;
+        }
+        
+        if (![ceb setCardinality:object.literalValue error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
 #pragma mark owl:onProperty predicate handler
 
 OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
-    NSError *__autoreleasing localError;
+    NSError *__autoreleasing localError = nil;
     RedlandNode *object = statement.object;
     
     if (object.isResource) {
@@ -217,7 +265,7 @@ err:
 
 OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
-    NSError *__autoreleasing localError;
+    NSError *__autoreleasing localError = nil;
     RedlandNode *object = statement.object;
     
     if (object.isResource) {

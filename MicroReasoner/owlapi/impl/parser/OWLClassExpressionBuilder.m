@@ -10,10 +10,13 @@
 #import "OWLClassImpl.h"
 #import "OWLError.h"
 #import "OWLObjectAllValuesFromImpl.h"
+#import "OWLObjectMinCardinalityImpl.h"
 #import "OWLObjectPropertyExpression.h"
 #import "OWLObjectSomeValuesFromImpl.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLPropertyBuilder.h"
+#import "OWLRDFVocabulary.h"
+#import "NSString+SMRStringUtils.h"
 
 @interface OWLClassExpressionBuilder ()
 
@@ -49,27 +52,12 @@
     switch(self.type)
     {
         case OWLCEBTypeClass:
-        {
-            NSString *classID = self.classID;
-            if (classID) {
-                NSURL *IRI = [[NSURL alloc] initWithString:classID];
-                if (IRI) {
-                    builtClassExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
-                }
-            }
+            builtClassExpression = [self buildClass];
             break;
-        }
             
         case OWLCEBTypeRestriction:
-        {
-            OWLCEBRestrictionType type = self.restrictionType;
-            NSString *propertyID = self.propertyID;
-            NSString *fillerID = self.fillerID;
-            
-            if (type != OWLCEBRestrictionTypeUnknown && propertyID && fillerID) {
-                builtClassExpression = [self buildRestrictionOfType:type withPropertyID:propertyID fillerID:fillerID];
-            }
-        }
+            builtClassExpression = [self buildRestriction];
+            break;
             
         default:
             break;
@@ -78,30 +66,75 @@
     return builtClassExpression;
 }
 
-- (id<OWLRestriction>)buildRestrictionOfType:(OWLCEBRestrictionType)type withPropertyID:(NSString *)propertyID fillerID:(NSString *)fillerID
+- (id<OWLClass>)buildClass
 {
+    id<OWLClass> cls = nil;
+    NSString *classID = self.classID;
+    
+    if (classID) {
+        NSURL *IRI = [[NSURL alloc] initWithString:classID];
+        if (IRI) {
+            cls = [[OWLClassImpl alloc] initWithIRI:IRI];
+        }
+    }
+    
+    return cls;
+}
+
+- (id<OWLRestriction>)buildRestriction
+{
+    OWLCEBRestrictionType type = self.restrictionType;
+    NSString *propertyID = self.propertyID;
+    
+    if (type == OWLCEBRestrictionTypeUnknown || !propertyID) {
+        return nil;
+    }
+    
     id<OWLRestriction> restr = nil;
     OWLOntologyBuilder *ontologyBuilder = self.ontologyBuilder;
     
-    OWLPropertyBuilder *propertyBuilder = [ontologyBuilder propertyBuilderForID:propertyID];
-    OWLClassExpressionBuilder *fillerBuilder = [ontologyBuilder classExpressionBuilderForID:fillerID];
+    id<OWLPropertyExpression> property = [[ontologyBuilder propertyBuilderForID:propertyID] build];
     
-    id<OWLPropertyExpression> property = [propertyBuilder build];
-    id<OWLClassExpression> filler = [fillerBuilder build];
+    NSString *fillerID = self.fillerID;
+    id<OWLClassExpression> filler = nil;
+    if (fillerID) {
+        filler = [[ontologyBuilder classExpressionBuilderForID:fillerID] build];
+    }
     
     // TODO: currently only supports object properties
-    if (property && [property isObjectPropertyExpression] && filler) {
+    if (property && [property isObjectPropertyExpression]) {
         id<OWLObjectPropertyExpression> objectPropertyExpr = (id<OWLObjectPropertyExpression>)property;
         
         switch (type)
         {
             case OWLCEBRestrictionTypeSomeValuesFrom:
-                restr = [[OWLObjectSomeValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
+                if (filler) {
+                    restr = [[OWLObjectSomeValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
+                }
                 break;
                 
             case OWLCEBRestrictionTypeAllValuesFrom:
-                restr = [[OWLObjectAllValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
+                if (filler) {
+                    restr = [[OWLObjectAllValuesFromImpl alloc] initWithProperty:objectPropertyExpr filler:filler];
+                }
                 break;
+                
+            case OWLCEBRestrictionTypeMinCardinality:
+            {
+                NSInteger cardinality;
+                
+                if ([self.cardinality smr_hasIntegerValue:&cardinality] && cardinality >= 0) {
+                    
+                    if (!filler) {
+                        filler = [[OWLClassImpl alloc] initWithIRI:[OWLRDFVocabulary OWLThing].IRI];
+                    }
+                    
+                    restr = [[OWLObjectMinCardinalityImpl alloc] initWithProperty:objectPropertyExpr
+                                                                           filler:filler
+                                                                      cardinality:(NSUInteger)cardinality];
+                }
+                break;
+            }
                 
             default:
                 break;
@@ -209,6 +242,8 @@
     return success;
 }
 
+#pragma mark SomeValuesFrom/AllValuesFrom
+
 // fillerID
 @synthesize fillerID = _fillerID;
 
@@ -227,6 +262,31 @@
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple fillers for restriction."
                                   userInfo:@{@"fillerIDs": @[_fillerID, ID]}];
+    }
+    
+    return success;
+}
+
+#pragma mark Cardinality
+
+// cardinality
+@synthesize cardinality = _cardinality;
+
+- (BOOL)setCardinality:(NSString *)cardinality error:(NSError *__autoreleasing *)error
+{
+    if (_cardinality == cardinality || [_cardinality isEqualToString:cardinality]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_cardinality) {
+        _cardinality = [cardinality copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple cardinalities for restriction."
+                                  userInfo:@{@"cardinalities": @[_cardinality, cardinality]}];
     }
     
     return success;
