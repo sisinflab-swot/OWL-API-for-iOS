@@ -80,4 +80,34 @@ static void loadOntologyNoCache() {
     NSLog(@"SubClassOf axioms (%lu):\n-----------------\n%@", (unsigned long)subClassAxioms.count, subClassAxioms);
 }
 
+- (void)testDisjointClassAxiomsForClass
+{
+    NSMutableArray *disjointClassAxioms = [[NSMutableArray alloc] init];
+    NSSet *classesInSignature = [ontology classesInSignature];
+    XCTAssertNotNil(classesInSignature);
+    
+    for (id<OWLClass> cls in classesInSignature) {
+        NSSet *axiomsForClass = [ontology disjointClassesAxiomsForClass:cls];
+        XCTAssertNotNil(axiomsForClass);
+        [disjointClassAxioms addObjectsFromArray:[axiomsForClass allObjects]];
+    }
+    
+    NSLog(@"DisjointClass axioms (%lu):\n--------------------\n%@", (unsigned long)disjointClassAxioms.count, disjointClassAxioms);
+}
+
+- (void)testEquivalentClassAxiomsForClass
+{
+    NSMutableArray *equivalentClassAxioms = [[NSMutableArray alloc] init];
+    NSSet *classesInSignature = [ontology classesInSignature];
+    XCTAssertNotNil(classesInSignature);
+    
+    for (id<OWLClass> cls in classesInSignature) {
+        NSSet *axiomsForClass = [ontology equivalentClassesAxiomsForClass:cls];
+        XCTAssertNotNil(axiomsForClass);
+        [equivalentClassAxioms addObjectsFromArray:[axiomsForClass allObjects]];
+    }
+    
+    NSLog(@"EquivalentClass axioms (%lu):\n----------------------\n%@", (unsigned long)equivalentClassAxioms.count, equivalentClassAxioms);
+}
+
 @end
