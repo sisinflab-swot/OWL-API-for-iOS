@@ -10,13 +10,26 @@
 #import "OWLError.h"
 #import "OWLNamedIndividualImpl.h"
 
+@interface OWLIndividualBuilder ()
+
+@property (nonatomic, strong) id<OWLIndividual> builtIndividual;
+
+@end
+
+
 @implementation OWLIndividualBuilder
+
+@synthesize builtIndividual = _builtIndividual;
 
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLIndividual>)build
 {
-    id<OWLIndividual> builtIndividual = nil;
+    id<OWLIndividual> builtIndividual = self.builtIndividual;
+    
+    if (builtIndividual) {
+        return builtIndividual;
+    }
     
     NSString *ID = self.namedIndividualID;
     if (ID) {
@@ -26,6 +39,7 @@
         }
     }
     
+    self.builtIndividual = builtIndividual;
     return builtIndividual;
 }
 

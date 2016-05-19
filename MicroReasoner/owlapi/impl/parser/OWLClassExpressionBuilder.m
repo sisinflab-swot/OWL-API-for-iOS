@@ -23,6 +23,7 @@
 
 @interface OWLClassExpressionBuilder ()
 
+@property (nonatomic, strong) id<OWLClassExpression> builtClassExpression;
 @property (nonatomic, weak, readonly) OWLOntologyBuilder *ontologyBuilder;
 
 @end
@@ -30,6 +31,7 @@
 
 @implementation OWLClassExpressionBuilder
 
+@synthesize builtClassExpression = _builtClassExpression;
 @synthesize ontologyBuilder = _ontologyBuilder;
 
 #pragma mark Lifecycle
@@ -50,7 +52,11 @@
 
 - (id<OWLClassExpression>)build
 {
-    id<OWLClassExpression> builtClassExpression = nil;
+    id<OWLClassExpression> builtClassExpression = self.builtClassExpression;
+    
+    if (builtClassExpression) {
+        return builtClassExpression;
+    }
     
     switch(self.type)
     {
@@ -66,6 +72,7 @@
             break;
     }
     
+    self.builtClassExpression = builtClassExpression;
     return builtClassExpression;
 }
 

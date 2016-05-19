@@ -10,13 +10,26 @@
 #import "OWLError.h"
 #import "OWLObjectPropertyImpl.h"
 
+@interface OWLPropertyBuilder ()
+
+@property (nonatomic, strong) id<OWLPropertyExpression> builtProperty;
+
+@end
+
+
 @implementation OWLPropertyBuilder
+
+@synthesize builtProperty = _builtProperty;
 
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLPropertyExpression>)build
 {
-    id<OWLPropertyExpression> builtProperty = nil;
+    id<OWLPropertyExpression> builtProperty = self.builtProperty;
+    
+    if (builtProperty) {
+        return builtProperty;
+    }
     
     switch(self.type)
     {
@@ -36,6 +49,7 @@
             break;
     }
     
+    self.builtProperty = builtProperty;
     return builtProperty;
 }
 

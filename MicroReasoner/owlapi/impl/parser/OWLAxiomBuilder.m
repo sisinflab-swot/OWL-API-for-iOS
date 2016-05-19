@@ -16,6 +16,7 @@
 
 @interface OWLAxiomBuilder ()
 
+@property (nonatomic, strong) id<OWLAxiom> builtAxiom;
 @property (nonatomic, weak, readonly) OWLOntologyBuilder *ontologyBuilder;
 
 @end
@@ -23,6 +24,7 @@
 
 @implementation OWLAxiomBuilder
 
+@synthesize builtAxiom = _builtAxiom;
 @synthesize ontologyBuilder = _ontologyBuilder;
 
 #pragma mark Lifecycle
@@ -42,7 +44,11 @@
 
 - (id<OWLAxiom>)build
 {
-    id<OWLAxiom> builtAxiom = nil;
+    id<OWLAxiom> builtAxiom = self.builtAxiom;
+    
+    if (builtAxiom) {
+        return builtAxiom;
+    }
     
     switch (self.type)
     {
@@ -82,6 +88,7 @@
             break;
     }
     
+    self.builtAxiom = builtAxiom;
     return builtAxiom;
 }
 

@@ -116,9 +116,10 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     
     for (RedlandStatement *statement in stream.statementEnumerator) {
         NSError *__autoreleasing statementError = nil;
-        
-        if (![self _handleStatement:statement error:&statementError] && statementError) {
-            [self.errors addObject:statementError];
+        @autoreleasepool {
+            if (![self _handleStatement:statement error:&statementError] && statementError) {
+                [self.errors addObject:statementError];
+            }
         }
     }
     

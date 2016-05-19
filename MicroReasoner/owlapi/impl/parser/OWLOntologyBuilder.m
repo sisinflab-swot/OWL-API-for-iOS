@@ -73,20 +73,24 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
     // Declaration axioms
     [self.declarationAxiomBuilders enumerateKeysAndObjectsUsingBlock:^(__unused NSString * _Nonnull key, OWLAxiomBuilder * _Nonnull builder, __unused BOOL * _Nonnull stop)
     {
-        id<OWLAxiom> axiom = [builder build];
-        if (axiom && axiom.axiomType == OWLAxiomTypeDeclaration) {
-            [internals addAxiom:axiom];
+        @autoreleasepool {
+            id<OWLAxiom> axiom = [builder build];
+            if (axiom && axiom.axiomType == OWLAxiomTypeDeclaration) {
+                [internals addAxiom:axiom];
+            }
         }
     }];
     
     // Single statement axioms
     [self.singleStatementAxiomBuilders enumerateKeysAndObjectsUsingBlock:^(__unused NSString * _Nonnull key, NSMutableArray<OWLAxiomBuilder *> * _Nonnull axiomBuilders, __unused BOOL * _Nonnull stop)
     {
-        for (OWLAxiomBuilder *builder in axiomBuilders) {
-            
-            id<OWLAxiom> axiom = [builder build];
-            if (axiom) {
-                [internals addAxiom:axiom];
+        @autoreleasepool {
+            for (OWLAxiomBuilder *builder in axiomBuilders) {
+                
+                id<OWLAxiom> axiom = [builder build];
+                if (axiom) {
+                    [internals addAxiom:axiom];
+                }
             }
         }
     }];
