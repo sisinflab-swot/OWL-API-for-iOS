@@ -10,6 +10,13 @@
 
 @implementation OWLEquivalentClassesAxiomImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"EquivalentClasses(%@)", [[self.classExpressions allObjects] componentsJoinedByString:@" "]];
+}
+
 #pragma mark OWLAxiom
 
 - (OWLAxiomType)axiomType { return OWLAxiomTypeEquivalentClasses; }

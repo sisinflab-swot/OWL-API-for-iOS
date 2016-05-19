@@ -10,6 +10,13 @@
 
 @implementation OWLDisjointClassesAxiomImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"DisjointClasses(%@)", [[self.classExpressions allObjects] componentsJoinedByString:@" "]];
+}
+
 #pragma mark OWLAxiom
 
 - (OWLAxiomType)axiomType { return OWLAxiomTypeDisjointClasses; }
