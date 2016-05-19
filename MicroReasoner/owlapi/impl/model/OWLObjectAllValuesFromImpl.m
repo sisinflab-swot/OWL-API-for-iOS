@@ -11,6 +11,13 @@
 
 @implementation OWLObjectAllValuesFromImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ObjectAllValuesFrom(%@ %@)", self.property, self.filler];
+}
+
 #pragma mark OWLClassExpression
 
 - (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeDataAllValuesFrom; }
