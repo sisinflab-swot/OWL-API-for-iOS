@@ -10,6 +10,13 @@
 
 @implementation OWLObjectPropertyRangeAxiomImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ObjectPropertyRange(%@ %@)", self.property, self.range];
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature

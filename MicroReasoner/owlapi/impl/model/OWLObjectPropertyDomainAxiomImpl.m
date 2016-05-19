@@ -11,6 +11,13 @@
 
 @implementation OWLObjectPropertyDomainAxiomImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ObjectPropertyDomain(%@ %@)", self.property, self.domain];
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature
