@@ -55,6 +55,9 @@ return name##Term; \
 
 @implementation OWLRDFVocabulary
 
+LAZY_STATIC_TERM(RDFFirst, OWLNamespaceRDFSyntax, @"first");
+LAZY_STATIC_TERM(RDFNil, OWLNamespaceRDFSyntax, @"nil");
+LAZY_STATIC_TERM(RDFRest, OWLNamespaceRDFSyntax, @"rest");
 LAZY_STATIC_TERM(RDFType, OWLNamespaceRDFSyntax, @"type");
 LAZY_STATIC_TERM(RDFSDatatype, OWLNamespaceRDFSchema, @"datatype");
 LAZY_STATIC_TERM(RDFSSubClassOf, OWLNamespaceRDFSchema, @"subClassOf");

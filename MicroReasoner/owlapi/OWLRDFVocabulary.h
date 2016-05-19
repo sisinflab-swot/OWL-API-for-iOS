@@ -40,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// Represents the OWL RDF vocabulary.
 @interface OWLRDFVocabulary : NSObject
 
++ (OWLRDFTerm *)RDFFirst;
++ (OWLRDFTerm *)RDFNil;
++ (OWLRDFTerm *)RDFRest;
 + (OWLRDFTerm *)RDFType;
 + (OWLRDFTerm *)RDFSDatatype;
 + (OWLRDFTerm *)RDFSSubClassOf;
