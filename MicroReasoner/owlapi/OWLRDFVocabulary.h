@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLAnnotationProperty;
 + (OWLRDFTerm *)OWLAsymmetricProperty;
 + (OWLRDFTerm *)OWLAxiom;
++ (OWLRDFTerm *)OWLCardinality;
 + (OWLRDFTerm *)OWLClass;
 + (OWLRDFTerm *)OWLDatatypeProperty;
 + (OWLRDFTerm *)OWLDeprecatedClass;
@@ -59,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLFunctionalProperty;
 + (OWLRDFTerm *)OWLInverseFunctionalProperty;
 + (OWLRDFTerm *)OWLIrreflexiveProperty;
++ (OWLRDFTerm *)OWLMaxCardinality;
++ (OWLRDFTerm *)OWLMinCardinality;
 + (OWLRDFTerm *)OWLNamedIndividual;
 + (OWLRDFTerm *)OWLNegativePropertyAssertion;
 + (OWLRDFTerm *)OWLNothing;
