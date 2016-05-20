@@ -145,19 +145,28 @@ err:
     NSError *__autoreleasing localError = nil;
     OWLRDFXMLParser *__weak weakSelf = self;
     
+    RedlandNode *subject = statement.subject;
     RedlandNode *predicate = statement.predicate;
     
-    if (predicate.isResource) {
+    if (!predicate.isResource) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Predicates of OWL statements must be resource nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (subject.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subjects of OWL statements must not be literal nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
         OWLStatementHandler handler = self.predicateHandlerMap[predicate.URIStringValue];
         if (handler && !handler(statement, weakSelf.ontologyBuilder, &localError)) {
             goto err;
         }
-    } else {
-        // Error: OWL predicates must be resource nodes
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"OWL statements' predicates must be resource nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
     }
     
 err:
