@@ -231,9 +231,9 @@ OWLStatementHandler pRDFRestHandler = ^BOOL(RedlandStatement *statement, OWLOnto
     return handleListStatement(statement, builder, NO, error);
 };
 
-#pragma mark owl:allValuesFrom predicate handler
+#pragma mark owl:allValuesFrom and owl:someValuesFrom predicate handlers
 
-OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleQuantificationStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL universal, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -242,14 +242,14 @@ OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, O
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Subject of 'allValuesFrom' statement is not a blank node."
+                          localizedDescription:@"Subject of quantified restriction statement is not a blank node."
                                       userInfo:@{@"statement": statement}];
         goto err;
     }
     
     if (object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Object of 'allValuesFrom' statement is a literal node."
+                          localizedDescription:@"Object of quantified restriction statement is a literal node."
                                       userInfo:@{@"statement": statement}];
         goto err;
     }
@@ -257,12 +257,11 @@ OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, O
     {
         // Add filler class expression
         NSString *fillerID = nil;
-        OWLCEBType fillerType = OWLCEBTypeUnknown;
+        BOOL objectIsResource = object.isResource;
         
-        if (object.isResource) {
+        if (objectIsResource) {
             // Named class/datatype filler
             fillerID = object.URIStringValue;
-            fillerType = OWLCEBTypeClass;
         } else {
             // Anonymous class/datatype filler
             fillerID = object.blankID;
@@ -270,15 +269,27 @@ OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, O
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID error:&localError];
         
-        if (![ceb setType:fillerType error:&localError]) {
+        if (!ceb) {
             goto err;
         }
+        
+        if (objectIsResource) {
+            if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+                goto err;
+            }
+            
+            if (![ceb setClassID:fillerID error:&localError]) {
+                goto err;
+            }
+        }
+        
         
         // Add restriction
         NSString *subjectID = subject.blankID;
         ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
-        if (![ceb setRestrictionType:OWLCEBRestrictionTypeAllValuesFrom error:&localError]) {
+        OWLCEBRestrictionType restrictionType = (universal ? OWLCEBRestrictionTypeAllValuesFrom : OWLCEBRestrictionTypeSomeValuesFrom);
+        if (![ceb setRestrictionType:restrictionType error:&localError]) {
             goto err;
         }
         
@@ -293,6 +304,16 @@ err:
     }
     
     return !localError;
+}
+
+OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleQuantificationStatement(statement, builder, YES, error);
+};
+
+OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    return handleQuantificationStatement(statement, builder, NO, error);
 };
 
 #pragma mark owl:cardinality, owl:minCardinality and owl:maxCardinality predicate handlers
@@ -623,61 +644,6 @@ OWLStatementHandler pDomainHandler = ^BOOL(RedlandStatement *statement, OWLOntol
 OWLStatementHandler pRangeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleDomainRangeStatement(statement, builder, NO, error);
-};
-
-#pragma mark owl:someValuesFrom predicate handler
-
-OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
-{
-    NSError *__autoreleasing localError = nil;
-    RedlandNode *object = statement.object;
-    
-    if (object.isResource) {
-        // owl:someValuesFrom with named class/datatype filler
-        NSString *objectIRIString = object.URIStringValue;
-        
-        // Add filler class expression if missing
-        // We assume it's a named class since owl:thing
-        // is the only filler we need to support.
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectIRIString error:&localError];
-        
-        if (![ceb setType:OWLCEBTypeClass error:&localError]) {
-            goto err;
-        }
-        
-        if (![ceb setClassID:objectIRIString error:&localError]) {
-            goto err;
-        }
-        
-        RedlandNode *subject = statement.subject;
-        
-        if (subject.isBlank) {
-            ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
-            
-            if (![ceb setRestrictionType:OWLCEBRestrictionTypeSomeValuesFrom error:&localError]) {
-                goto err;
-            }
-            
-            if (![ceb setFillerID:objectIRIString error:&localError]) {
-                goto err;
-            }
-        } else {
-            localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                              localizedDescription:@"SomeValuesFrom statements must have blank subject nodes."
-                                          userInfo:@{@"statement": statement}];
-            goto err;
-        }
-    } else {
-        // owl:someValuesFrom with anonymous class/datatype filler
-        // TODO: currently unsupported
-    }
-    
-err:
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
 };
 
 #pragma mark Class declaration handler
