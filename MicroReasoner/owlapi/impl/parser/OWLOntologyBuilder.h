@@ -28,13 +28,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable id<OWLAbstractBuilder>)entityBuilderForID:(NSString *)ID;
 
-- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID;
+- (nullable OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 - (nullable OWLClassExpressionBuilder *)classExpressionBuilderForID:(NSString *)ID;
 
-- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID;
+- (nullable OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 - (nullable OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID;
 
-- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID;
+- (nullable OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
 
 #pragma mark Axiom builders

@@ -13,6 +13,7 @@
 #import "OWLClassExpressionBuilder.h"
 #import "OWLDeclarationAxiom.h"
 #import "OWLEntity.h"
+#import "OWLError.h"
 #import "OWLIndividualBuilder.h"
 #import "OWLListItem.h"
 #import "OWLNamedIndividual.h"
@@ -100,31 +101,27 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
 
 #pragma mark Entity builder accessor methods
 
-NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutableDictionary *dict, NSString *ID, id entityBuilder)
-{
-    BOOL success = NO;
-    
-    if (!allEntityBuilders[ID]) {
-        NSString *localID = [ID copy];
-        dict[localID] = entityBuilder;
-        allEntityBuilders[localID] = entityBuilder;
-        
-        success = YES;
-    }
-    
-    return success;
-}
-
 - (id<OWLAbstractBuilder>)entityBuilderForID:(NSString *)ID { return self.allEntityBuilders[ID]; }
 
-- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID
+- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
     NSMutableDictionary *classExpressionBuilders = self.classExpressionBuilders;
     OWLClassExpressionBuilder *ceb = classExpressionBuilders[ID];
     
     if (!ceb) {
-        ceb = [[OWLClassExpressionBuilder alloc] initWithOntologyBuilder:self];
-        setEntityBuilder(self.allEntityBuilders, classExpressionBuilders, ID, ceb);
+        NSMutableDictionary *allEntityBuilders = self.allEntityBuilders;
+        
+        if (!allEntityBuilders[ID]) {
+            ceb = [[OWLClassExpressionBuilder alloc] initWithOntologyBuilder:self];
+            
+            NSString *localID = [ID copy];
+            classExpressionBuilders[localID] = ceb;
+            allEntityBuilders[localID] = ceb;
+        } else if (error) {
+            *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Multiple entity builders for same ID."
+                                      userInfo:@{@"ID": ID}];
+        }
     }
     
     return ceb;
@@ -135,14 +132,25 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     return self.classExpressionBuilders[ID];
 }
 
-- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID
+- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
     NSMutableDictionary *individualBuilders = self.individualBuilders;
     OWLIndividualBuilder *ib = individualBuilders[ID];
     
     if (!ib) {
-        ib = [[OWLIndividualBuilder alloc] init];
-        setEntityBuilder(self.allEntityBuilders, individualBuilders, ID, ib);
+        NSMutableDictionary *allEntityBuilders = self.allEntityBuilders;
+        
+        if (!allEntityBuilders[ID]) {
+            ib = [[OWLIndividualBuilder alloc] init];
+            
+            NSString *localID = [ID copy];
+            individualBuilders[localID] = ib;
+            allEntityBuilders[localID] = ib;
+        } else if (error) {
+            *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Multiple entity builders for same ID."
+                                      userInfo:@{@"ID": ID}];
+        }
     }
     
     return ib;
@@ -153,14 +161,25 @@ NS_INLINE BOOL setEntityBuilder(NSMutableDictionary *allEntityBuilders, NSMutabl
     return self.individualBuilders[ID];
 }
 
-- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID
+- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
     NSMutableDictionary *propertyBuilders = self.propertyBuilders;
     OWLPropertyBuilder *pb = propertyBuilders[ID];
     
     if (!pb) {
-        pb = [[OWLPropertyBuilder alloc] init];
-        setEntityBuilder(self.allEntityBuilders, propertyBuilders, ID, pb);
+        NSMutableDictionary *allEntityBuilders = self.allEntityBuilders;
+        
+        if (!allEntityBuilders[ID]) {
+            pb = [[OWLPropertyBuilder alloc] init];
+            
+            NSString *localID = [ID copy];
+            propertyBuilders[localID] = pb;
+            allEntityBuilders[localID] = pb;
+        } else if (error) {
+            *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Multiple entity builders for same ID."
+                                      userInfo:@{@"ID": ID}];
+        }
     }
     
     return pb;

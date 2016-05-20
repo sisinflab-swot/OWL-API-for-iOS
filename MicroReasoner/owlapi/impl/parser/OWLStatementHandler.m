@@ -200,7 +200,7 @@ OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, O
             fillerID = object.blankID;
         }
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID error:&localError];
         
         if (![ceb setType:fillerType error:&localError]) {
             goto err;
@@ -208,7 +208,7 @@ OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, O
         
         // Add restriction
         NSString *subjectID = subject.blankID;
-        ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setRestrictionType:OWLCEBRestrictionTypeAllValuesFrom error:&localError]) {
             goto err;
@@ -252,7 +252,7 @@ NS_INLINE BOOL handleCardinalityStatement(RedlandStatement *statement, OWLOntolo
     
     {
         // Add restriction
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
         
         if (![ceb setRestrictionType:restrType error:&localError]) {
             goto err;
@@ -317,7 +317,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
             LHSClassID = subject.blankID;
         }
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID error:&localError];
         
         if (![ceb setType:type error:&localError]) {
             goto err;
@@ -336,7 +336,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
             RHSClassID = object.blankID;
         }
         
-        ceb = [builder ensureClassExpressionBuilderForID:RHSClassID];
+        ceb = [builder ensureClassExpressionBuilderForID:RHSClassID error:&localError];
         
         if (![ceb setType:type error:&localError]) {
             goto err;
@@ -395,7 +395,7 @@ OWLStatementHandler pIntersectionOfHandler = ^BOOL(RedlandStatement *statement, 
         NSString *subjectID = subject.blankID;
         NSString *objectID = object.blankID;
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setBooleanType:OWLCEBBooleanTypeIntersection error:&localError]) {
             goto err;
@@ -429,7 +429,7 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLO
         // Add object property builder
         // We assume it's an object property since it's
         // the only supported property expression type.
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString];
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString error:&localError];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -442,7 +442,7 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLO
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
-            OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
+            OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
             
             if (![ceb setPropertyID:IRIString error:&localError]) {
                 goto err;
@@ -495,7 +495,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
             subjectID = subject.blankID;
         }
         
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID error:&localError];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -514,7 +514,11 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
             objectID = object.blankID;
         }
         
-        [builder ensureClassExpressionBuilderForID:objectID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID error:&localError];
+        
+        if (!ceb) {
+            goto err;
+        }
         
         // Add axiom
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID
@@ -567,7 +571,7 @@ OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, 
         // Add filler class expression if missing
         // We assume it's a named class since owl:thing
         // is the only filler we need to support.
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectIRIString];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectIRIString error:&localError];
         
         if (![ceb setType:OWLCEBTypeClass error:&localError]) {
             goto err;
@@ -580,7 +584,7 @@ OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, 
         RedlandNode *subject = statement.subject;
         
         if (subject.isBlank) {
-            ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
+            ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
             
             if (![ceb setRestrictionType:OWLCEBRestrictionTypeSomeValuesFrom error:&localError]) {
                 goto err;
@@ -632,7 +636,7 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
         }
         
         // Add class expression builder
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setType:OWLCEBTypeClass error:&localError]) {
             goto err;
@@ -677,7 +681,7 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement,
         NSString *IRIString = subject.URIStringValue;
         
         // Add individual builder
-        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString];
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString error:&localError];
         
         if (![ib setNamedIndividualID:IRIString error:&localError]) {
             goto err;
@@ -720,7 +724,7 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
         NSString *IRIString = subject.URIStringValue;
         
         // Add object property builder
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString];
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString error:&localError];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -766,7 +770,7 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWL
         // Restriction declaration
         
         // Add class expression builder
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
             goto err;
