@@ -7,11 +7,13 @@
 //
 
 #import "OWLOntologyInternals.h"
+#import "OWLClassAssertionAxiom.h"
 #import "OWLClassExpression.h"
 #import "OWLDeclarationAxiom.h"
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEntity.h"
 #import "OWLEquivalentClassesAxiom.h"
+#import "OWLIndividual.h"
 #import "OWLObjectPropertyDomainAxiom.h"
 #import "OWLObjectPropertyRangeAxiom.h"
 #import "OWLSubClassOfAxiom.h"
@@ -90,13 +92,30 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             break;
         }
             
+        case OWLAxiomTypeClassAssertion: {
+            id<OWLClassAssertionAxiom> classAssertionAxiom = (id<OWLClassAssertionAxiom>)axiom;
+            id<OWLIndividual> individual = classAssertionAxiom.individual;
+            
+            addObjectToSetInDictionary(self.classAssertionAxiomsByIndividual, individual, classAssertionAxiom);
+            
+            if (!individual.anonymous) {
+                addObjectToSetInDictionary(self.axiomsByNamedIndividual, individual, classAssertionAxiom);
+            }
+            
+            id<OWLClassExpression> ce = classAssertionAxiom.classExpression;
+            if (!ce.anonymous) {
+                addObjectToSetInDictionary(self.axiomsByClass, ce, classAssertionAxiom);
+            }
+            
+            break;
+        }
+            
         case OWLAxiomTypeDisjointClasses: {
             id<OWLDisjointClassesAxiom> disjClsAxiom = (id<OWLDisjointClassesAxiom>)axiom;
             for (id<OWLClassExpression> ce in [disjClsAxiom classExpressions]) {
                 if (!ce.anonymous) {
-                    id<OWLClass> cls = [ce asOwlClass];
-                    addObjectToSetInDictionary(self.axiomsByClass, cls, disjClsAxiom);
-                    addObjectToSetInDictionary(self.disjointClassesAxiomsByClass, cls, disjClsAxiom);
+                    addObjectToSetInDictionary(self.axiomsByClass, ce, disjClsAxiom);
+                    addObjectToSetInDictionary(self.disjointClassesAxiomsByClass, ce, disjClsAxiom);
                 }
             }
             break;
@@ -106,9 +125,8 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             id<OWLEquivalentClassesAxiom> eqClsAxiom = (id<OWLEquivalentClassesAxiom>)axiom;
             for (id<OWLClassExpression> ce in [eqClsAxiom classExpressions]) {
                 if (!ce.anonymous) {
-                    id<OWLClass> cls = [ce asOwlClass];
-                    addObjectToSetInDictionary(self.axiomsByClass, cls, eqClsAxiom);
-                    addObjectToSetInDictionary(self.equivalentClassesAxiomsByClass, cls, eqClsAxiom);
+                    addObjectToSetInDictionary(self.axiomsByClass, ce, eqClsAxiom);
+                    addObjectToSetInDictionary(self.equivalentClassesAxiomsByClass, ce, eqClsAxiom);
                 }
             }
             break;
@@ -140,10 +158,9 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
                 addObjectToSetInDictionary(self.axiomsByObjectProperty, objectProperty, domainAxiom);
             }
             
-            id<OWLClassExpression> classExpr = domainAxiom.domain;
-            if (!classExpr.anonymous) {
-                id<OWLClass> cls = [classExpr asOwlClass];
-                addObjectToSetInDictionary(self.axiomsByClass, cls, domainAxiom);
+            id<OWLClassExpression> ce = domainAxiom.domain;
+            if (!ce.anonymous) {
+                addObjectToSetInDictionary(self.axiomsByClass, ce, domainAxiom);
             }
             
             break;
@@ -157,12 +174,10 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
                 addObjectToSetInDictionary(self.axiomsByObjectProperty, objectProperty, rangeAxiom);
             }
             
-            id<OWLClassExpression> classExpr = rangeAxiom.range;
-            if (!classExpr.anonymous) {
-                id<OWLClass> cls = [classExpr asOwlClass];
-                addObjectToSetInDictionary(self.axiomsByClass, cls, rangeAxiom);
+            id<OWLClassExpression> ce = rangeAxiom.range;
+            if (!ce.anonymous) {
+                addObjectToSetInDictionary(self.axiomsByClass, ce, rangeAxiom);
             }
-            
             break;
         }
             

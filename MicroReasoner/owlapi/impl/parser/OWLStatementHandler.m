@@ -60,6 +60,72 @@ NS_INLINE NSDictionary *objectHandlerMapInit() {
 
 #pragma mark rdf:type predicate handler
 
+NS_INLINE BOOL handleClassAssertionStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL named, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    RedlandNode *subject = statement.subject;
+    
+    if (!subject.isResource) {
+        // TODO: anonymous individuals are currently unsupported
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Anonymous individuals are not supported."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add individual
+        NSString *subjectID = subject.URIStringValue;
+        
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID error:&localError];
+        
+        if (![ib setNamedIndividualID:subjectID error:&localError]) {
+            goto err;
+        }
+        
+        // Add class expression
+        NSString *objectID = (named ? statement.object.URIStringValue : statement.object.blankID);
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID error:&localError];
+        
+        if (!ceb) {
+            goto err;
+        }
+        
+        if (named) {
+            if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+                goto err;
+            }
+            
+            if (![ceb setClassID:objectID error:&localError]) {
+                goto err;
+            }
+        }
+        
+        // Add class assertion axiom
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        
+        if (![ab setType:OWLABTypeClassAssertion error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setLHSID:subjectID error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setRHSID:objectID error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+}
+
 OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     static NSDictionary<NSString *, OWLStatementHandler> *objectHandlerMap;
@@ -73,9 +139,7 @@ OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOnto
     RedlandNode *object = statement.object;
     
     if (object.isResource) {
-        // Declaration of named entity
-        // Class expression declaration
-        // Individual named class assertion
+        
         NSString *objectURIString = object.URIStringValue;
         OWLStatementHandler handler = objectHandlerMap[objectURIString];
         
@@ -87,11 +151,15 @@ OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOnto
             }
         } else {
             // Individual named class assertion
-            // TODO: implement
+            if (!handleClassAssertionStatement(statement, builder, YES, &localError)) {
+                goto err;
+            }
         }
     } else {
         // Individual unnamed class assertion
-        // TODO: implement
+        if (!handleClassAssertionStatement(statement, builder, NO, &localError)) {
+            goto err;
+        }
     }
     
 err:

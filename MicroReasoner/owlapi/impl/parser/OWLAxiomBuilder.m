@@ -7,12 +7,16 @@
 //
 
 #import "OWLAxiomBuilder.h"
+#import "OWLClassAssertionAxiomImpl.h"
 #import "OWLClassExpression.h"
 #import "OWLClassExpressionBuilder.h"
 #import "OWLDeclarationAxiomImpl.h"
 #import "OWLDisjointClassesAxiomImpl.h"
 #import "OWLEquivalentClassesAxiomImpl.h"
 #import "OWLError.h"
+#import "OWLIndividual.h"
+#import "OWLIndividualBuilder.h"
+#import "OWLNamedIndividual.h"
 #import "OWLObjectPropertyDomainAxiomImpl.h"
 #import "OWLObjectPropertyRangeAxiomImpl.h"
 #import "OWLOntologyBuilder.h"
@@ -68,6 +72,23 @@
                 }
             }
             
+            break;
+        }
+            
+        case OWLABTypeClassAssertion: {
+            NSString *individualID = self.LHSID;
+            NSString *classID = self.RHSID;
+            
+            if (individualID && classID) {
+                OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+                
+                id<OWLIndividual> individual = [[ontoBuilder individualBuilderForID:individualID] build];
+                id<OWLClassExpression> class = [[ontoBuilder classExpressionBuilderForID:classID] build];
+                
+                if (individual && class) {
+                    builtAxiom = [[OWLClassAssertionAxiomImpl alloc] initWithIndividual:individual classExpression:class];
+                }
+            }
             break;
         }
             
