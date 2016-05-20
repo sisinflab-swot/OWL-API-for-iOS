@@ -58,7 +58,7 @@
     switch (self.type)
     {
         case OWLABTypeDeclaration: {
-            NSString *entityID = self.entityID;
+            NSString *entityID = self.LHSID;
             
             if (entityID) {
                 id<OWLEntity> entity = [[self.ontologyBuilder entityBuilderForID:entityID] build];
@@ -118,8 +118,8 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    NSString *RHSClassID = self.RHSClassID;
-    NSString *LHSClassID = self.LHSClassID;
+    NSString *RHSClassID = self.RHSID;
+    NSString *LHSClassID = self.LHSID;
     
     if (RHSClassID && LHSClassID) {
         OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
@@ -139,8 +139,8 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    NSString *propertyID = self.propertyID;
-    NSString *domainRangeID = self.domainRangeID;
+    NSString *propertyID = self.LHSID;
+    NSString *domainRangeID = self.RHSID;
     
     if (propertyID && domainRangeID) {
         OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
@@ -186,122 +186,49 @@
     return success;
 }
 
-#pragma mark Declaration axioms
+#pragma mark Single statement axioms
 
-// entityID
-@synthesize entityID = _entityID;
+// LHSID
+@synthesize LHSID = _LHSID;
 
-- (BOOL)setEntityID:(NSString *)ID error:(NSError *__autoreleasing *)error
+- (BOOL)setLHSID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
 {
-    if (_entityID == ID || [_entityID isEqualToString:ID]) {
+    if (_LHSID == ID || [_LHSID isEqualToString:ID]) {
         return YES;
     }
     
     BOOL success = NO;
     
-    if (!_entityID) {
-        _entityID = [ID copy];
+    if (!_LHSID) {
+        _LHSID = [ID copy];
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple entities for declaration axiom."
-                                  userInfo:@{@"entities": @[_entityID, ID]}];
+                      localizedDescription:@"Multiple left-hand-side IDs for same axiom."
+                                  userInfo:@{@"entities": @[_LHSID, ID]}];
     }
     
     return success;
 }
 
-#pragma mark Binary class expression axioms
+// RHSID
+@synthesize RHSID = _RHSID;
 
-// superClassID
-@synthesize LHSClassID = _LHSClassID;
-
-- (BOOL)setLHSClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
+- (BOOL)setRHSID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
 {
-    if (_LHSClassID == ID || [_LHSClassID isEqualToString:ID]) {
+    if (_RHSID == ID || [_RHSID isEqualToString:ID]) {
         return YES;
     }
     
     BOOL success = NO;
     
-    if (!_LHSClassID) {
-        _LHSClassID = [ID copy];
+    if (!_RHSID) {
+        _RHSID = [ID copy];
         success = YES;
     } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple left-hand-side IDs for binary class expression axiom."
-                                  userInfo:@{@"IDs": @[_LHSClassID, ID]}];
-    }
-    
-    return success;
-}
-
-// subClassID
-@synthesize RHSClassID = _RHSClassID;
-
-- (BOOL)setRHSClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_RHSClassID == ID || [_RHSClassID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_RHSClassID) {
-        _RHSClassID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple right-hand-side IDs for binary class expression axiom."
-                                  userInfo:@{@"IDs": @[_RHSClassID, ID]}];
-    }
-    
-    return success;
-}
-
-#pragma mark Property domain and range
-
-// propertyID
-@synthesize propertyID = _propertyID;
-
-- (BOOL)setPropertyID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_propertyID == ID || [_propertyID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_propertyID) {
-        _propertyID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple property IDs for domain or range axiom."
-                                  userInfo:@{@"IDs": @[_propertyID, ID]}];
-    }
-    
-    return success;
-}
-
-// domainRangeID
-@synthesize domainRangeID = _domainRangeID;
-
-- (BOOL)setDomainRangeID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_domainRangeID == ID || [_domainRangeID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_domainRangeID) {
-        _domainRangeID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                      localizedDescription:@"Multiple class expression IDs for domain or range axiom."
-                                  userInfo:@{@"IDs": @[_domainRangeID, ID]}];
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple right-hand-side IDs for same axiom."
+                                  userInfo:@{@"entities": @[_RHSID, ID]}];
     }
     
     return success;

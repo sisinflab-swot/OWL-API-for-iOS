@@ -222,7 +222,7 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             break;
             
         case OWLEntityTypeObjectProperty:
-            //addObjectToSetInDictionary(self.axiomsByObjectProperty, entity, axiom);
+            addObjectToSetInDictionary(self.axiomsByObjectProperty, entity, axiom);
             break;
             
         default:

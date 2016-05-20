@@ -33,44 +33,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the type of the built axiom.
 - (BOOL)setType:(OWLABType)type error:(NSError *_Nullable __autoreleasing *)error;
 
-#pragma mark Declaration axioms
+#pragma mark Single statement axioms
 
-/// The string representation of the entity IRI.
-@property (nonatomic, copy, readonly) NSString *entityID;
+/// The ID of the left-hand-side of the axiom.
+@property (nonatomic, copy, readonly) NSString *LHSID;
 
-/// Sets the string representation of the entity IRI.
-- (BOOL)setEntityID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+/// Sets the ID of the left-hand-side of the axiom.
+- (BOOL)setLHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
-#pragma mark Binary class expression axioms
+/// The ID of the right-hand-side of the axiom.
+@property (nonatomic, copy, readonly) NSString *RHSID;
 
-// Used in binary class expression axioms, such as:
-// subclass, disjoint classes, equivalent classes
-
-/// The ID of the left-hand-side class expression.
-@property (nonatomic, copy, readonly) NSString *LHSClassID;
-
-/// Sets the ID of the left-hand-side class expression.
-- (BOOL)setLHSClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
-
-/// The ID of the right-hand-side class expression.
-@property (nonatomic, copy, readonly) NSString *RHSClassID;
-
-/// Sets the ID of the right-hand-side class expression.
-- (BOOL)setRHSClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
-
-#pragma mark Property domain and range
-
-/// The ID of the property expression this axiom is about.
-@property (nonatomic, copy, readonly) NSString *propertyID;
-
-/// Sets the ID of the property expression this axiom is about.
-- (BOOL)setPropertyID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
-
-/// The ID of the class expression that acts as domain/range.
-@property (nonatomic, copy, readonly) NSString *domainRangeID;
-
-/// Sets the ID of the class expression that acts as domain/range.
-- (BOOL)setDomainRangeID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+/// Sets the ID of the right-hand-side of the axiom.
+- (BOOL)setRHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 NS_ASSUME_NONNULL_END
 

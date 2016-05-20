@@ -345,10 +345,10 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
         // Axiom
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:LHSClassID];
         
-        // No need to check for errors, since they will be new objects.
+        // No need to check for errors, since it will be a new object.
         [ab setType:axiomType error:NULL];
-        [ab setRHSClassID:RHSClassID error:NULL];
-        [ab setLHSClassID:LHSClassID error:NULL];
+        [ab setRHSID:RHSClassID error:NULL];
+        [ab setLHSID:LHSClassID error:NULL];
     }
     
 err:
@@ -520,11 +520,11 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID
                                                           ensureUniqueType:(domain ? OWLABTypeDomain : OWLABTypeRange)];
         if (ab) {
-            if (![ab setPropertyID:subjectID error:&localError]) {
+            if (![ab setLHSID:subjectID error:&localError]) {
                 goto err;
             }
             
-            if (![ab setDomainRangeID:objectID error:&localError]) {
+            if (![ab setRHSID:objectID error:&localError]) {
                 goto err;
             }
         } else {
@@ -651,7 +651,7 @@ OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
                 goto err;
             }
             
-            if (![ab setEntityID:subjectID error:&localError]) {
+            if (![ab setLHSID:subjectID error:&localError]) {
                 goto err;
             }
         }
@@ -690,7 +690,7 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement,
             goto err;
         }
         
-        if (![ab setEntityID:IRIString error:&localError]) {
+        if (![ab setLHSID:IRIString error:&localError]) {
             goto err;
         }
     } else {
@@ -737,7 +737,7 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
             goto err;
         }
         
-        if (![ab setEntityID:IRIString error:&localError]) {
+        if (![ab setLHSID:IRIString error:&localError]) {
             goto err;
         }
     } else {
