@@ -95,24 +95,12 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
 {
     [self initializeDataStructures];
     
-    // Return vars
     NSError *__autoreleasing localError = nil;
     
-    // Work vars
     RedlandParser *parser = [[RedlandParser alloc] initWithName:RedlandRDFXMLParserName];
     RedlandURI *baseURI = [RedlandURI URIWithString:OWLNamespaceRDFSyntax.prefix];
-    RedlandStream *stream = nil;
     
-    // Load file into string
-    NSString *ontoString = [[NSString alloc] initWithContentsOfURL:URL
-                                                      usedEncoding:NULL
-                                                             error:&localError];
-    if (!ontoString) {
-        goto err;
-    }
-    
-    // Parse string
-    stream = [parser parseString:ontoString asStreamWithBaseURI:baseURI error:&localError];
+    RedlandStream *stream = [parser parseFileAtPath:URL.path asStreamWithBaseURI:baseURI error:&localError];
     
     if (!stream) {
         goto err;
