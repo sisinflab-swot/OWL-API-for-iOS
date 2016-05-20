@@ -395,40 +395,46 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
     {
         // LHS class expression
         NSString *LHSClassID = nil;
-        OWLCEBType type = OWLCEBTypeUnknown;
+        BOOL isResource = subject.isResource;
         
-        if (subject.isResource) {
-            // Named LHS class
+        if (isResource) {
             LHSClassID = subject.URIStringValue;
-            type = OWLCEBTypeClass;
         } else {
-            // Anonymous LHS class expression
             LHSClassID = subject.blankID;
         }
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID error:&localError];
         
-        if (![ceb setType:type error:&localError]) {
-            goto err;
+        if (isResource) {
+            if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+                goto err;
+            }
+            
+            if (![ceb setClassID:LHSClassID error:&localError]) {
+                goto err;
+            }
         }
         
         // RHS class expression
         NSString *RHSClassID = nil;
-        type = OWLCEBTypeUnknown;
+        isResource = object.isResource;
         
-        if (object.isResource) {
-            // Named RHS class
+        if (isResource) {
             RHSClassID = object.URIStringValue;
-            type = OWLCEBTypeClass;
         } else {
-            // Anonymous RHS class expression
             RHSClassID = object.blankID;
         }
         
         ceb = [builder ensureClassExpressionBuilderForID:RHSClassID error:&localError];
         
-        if (![ceb setType:type error:&localError]) {
-            goto err;
+        if (isResource) {
+            if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+                goto err;
+            }
+            
+            if (![ceb setClassID:RHSClassID error:&localError]) {
+                goto err;
+            }
         }
         
         // Axiom
