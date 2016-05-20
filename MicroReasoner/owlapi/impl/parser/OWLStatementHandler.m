@@ -596,8 +596,9 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
         
         // Add class expression builder
         NSString *objectID = nil;
+        BOOL objectIsResource = object.isResource;
         
-        if (object.isResource) {
+        if (objectIsResource) {
             objectID = object.URIStringValue;
         } else {
             objectID = object.blankID;
@@ -607,6 +608,16 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
         
         if (!ceb) {
             goto err;
+        }
+        
+        if (objectIsResource) {
+            if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+                goto err;
+            }
+            
+            if (![ceb setClassID:objectID error:&localError]) {
+                goto err;
+            }
         }
         
         // Add axiom
