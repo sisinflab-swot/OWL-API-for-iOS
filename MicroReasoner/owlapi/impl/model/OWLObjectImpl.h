@@ -11,9 +11,14 @@
 /**
  * Abstract class that informally implements part of the OWLObject protocol.
  *
- * Subclassing note: concrete subclasses must override 'isEqual:' and 'hash'.
- * Furthermore, subclasses are expected to be immutable. If, however, a
- * mutable subclass is required, the user must also override 'copyWithZone:'.
+ * Subclassing notes:
+ * ------------------
+ * OWLObject assumes its subclasses to be immutable in order to perform some
+ * optimizations (e.g. hash caching and retain on copy).
+ * Therefore, the following rules must be followed when subclassing:
+ * 
+ * Immutable concrete subclasses must override 'isEqual:' and 'computeHash'.
+ * Mutable concrete subclasses must override: 'isEqual:', 'hash' and 'copyWithZone:'.
  */
 @interface OWLObjectImpl : NSObject <NSCopying>
 
@@ -22,5 +27,9 @@
 - (NSSet<id<OWLClass>> *)classesInSignature;
 - (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature;
 - (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature;
+
+#pragma mark Other abstract methods
+
+- (NSUInteger)computeHash;
 
 @end

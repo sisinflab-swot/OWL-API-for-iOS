@@ -28,7 +28,7 @@
     return equals;
 }
 
-- (NSUInteger)hash { return [self.property hash] ^ [self.filler hash] ^ self.cardinality; };
+- (NSUInteger)computeHash { return [self.property hash] ^ [self.filler hash] ^ self.cardinality; };
 
 #pragma mark OWLCardinalityRestriction
 

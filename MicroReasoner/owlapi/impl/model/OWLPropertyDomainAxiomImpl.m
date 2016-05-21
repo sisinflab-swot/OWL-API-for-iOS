@@ -32,7 +32,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.property hash] ^ [self.domain hash]; }
+- (NSUInteger)computeHash { return [self.property hash] ^ [self.domain hash]; }
 
 #pragma mark OWLPropertyDomainAxiom
 

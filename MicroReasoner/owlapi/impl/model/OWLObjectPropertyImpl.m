@@ -30,7 +30,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.IRI hash]; }
+- (NSUInteger)computeHash { return [self.IRI hash]; }
 
 - (NSString *)description
 {

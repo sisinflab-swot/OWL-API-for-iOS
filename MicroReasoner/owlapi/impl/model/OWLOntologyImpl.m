@@ -44,7 +44,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return self.ontologyID.hash; }
+- (NSUInteger)computeHash { return self.ontologyID.hash; }
 
 #pragma mark OWLObject
 

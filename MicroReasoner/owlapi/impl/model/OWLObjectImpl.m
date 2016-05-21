@@ -10,13 +10,28 @@
 #import "OWLEntity.h"
 #import "SMRPreprocessor.h"
 
+@interface OWLObjectImpl ()
+{
+    BOOL _hasCachedHash;
+    NSUInteger _cachedHash;
+}
+@end
+
+
 @implementation OWLObjectImpl
 
 #pragma mark NSObject
 
 - (BOOL)isEqual:(id)object { return object == self || [object isKindOfClass:[self class]]; }
 
-- (NSUInteger)hash { return 0; }
+- (NSUInteger)hash
+{
+    if (!_hasCachedHash) {
+        _cachedHash = [self computeHash];
+        _hasCachedHash = YES;
+    }
+    return _cachedHash;
+}
 
 #pragma mark NSCopying
 
@@ -32,6 +47,10 @@
 - (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeObjectProperty]; }
 
 - (NSSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;
+
+#pragma mark Other abstract methods
+
+- (NSUInteger)computeHash ABSTRACT_METHOD;
 
 #pragma mark Private methods
 

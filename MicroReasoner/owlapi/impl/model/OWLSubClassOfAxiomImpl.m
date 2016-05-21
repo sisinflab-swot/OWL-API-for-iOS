@@ -36,7 +36,7 @@
     return equals;
 }
 
-- (NSUInteger)hash { return [self.superClass hash] ^ [self.subClass hash]; }
+- (NSUInteger)computeHash { return [self.superClass hash] ^ [self.subClass hash]; }
 
 - (NSString *)description
 {

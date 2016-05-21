@@ -31,7 +31,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.entity hash]; }
+- (NSUInteger)computeHash { return [self.entity hash]; }
 
 #pragma mark OWLObject
 

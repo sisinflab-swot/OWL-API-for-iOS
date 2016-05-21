@@ -31,7 +31,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.property hash]; }
+- (NSUInteger)computeHash { return [self.property hash]; }
 
 #pragma mark OWLRestriction
 

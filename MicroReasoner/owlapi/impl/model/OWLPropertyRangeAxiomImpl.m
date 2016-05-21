@@ -32,7 +32,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.property hash] ^ [self.range hash]; }
+- (NSUInteger)computeHash { return [self.property hash] ^ [self.range hash]; }
 
 #pragma mark OWLPropertyRangeAxiom
 
