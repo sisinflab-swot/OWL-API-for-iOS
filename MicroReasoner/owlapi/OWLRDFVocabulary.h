@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLSymmetricProperty;
 + (OWLRDFTerm *)OWLThing;
 + (OWLRDFTerm *)OWLTransitiveProperty;
++ (OWLRDFTerm *)OWLVersionIRI;
 
 @end
 

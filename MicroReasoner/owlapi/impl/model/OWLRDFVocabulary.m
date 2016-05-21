@@ -98,5 +98,6 @@ LAZY_STATIC_TERM(OWLSomeValuesFrom, OWLNamespaceOWL, @"someValuesFrom");
 LAZY_STATIC_TERM(OWLSymmetricProperty, OWLNamespaceOWL, @"SymmetricProperty");
 LAZY_STATIC_TERM(OWLThing, OWLNamespaceOWL, @"Thing");
 LAZY_STATIC_TERM(OWLTransitiveProperty, OWLNamespaceOWL, @"TransitiveProperty");
+LAZY_STATIC_TERM(OWLVersionIRI, OWLNamespaceOWL, @"versionIRI");
 
 @end
