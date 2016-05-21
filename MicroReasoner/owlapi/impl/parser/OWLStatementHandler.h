@@ -30,10 +30,12 @@ extern OWLStatementHandler pRDFRestHandler;
 extern OWLStatementHandler pRDFTypeHandler;
 extern OWLStatementHandler pSomeValuesFromHandler;
 extern OWLStatementHandler pSubClassOfHandler;
+extern OWLStatementHandler pVersionIRIHandler;
 
 extern OWLStatementHandler oClassHandler;
 extern OWLStatementHandler oNamedIndividualHandler;
 extern OWLStatementHandler oObjectPropertyHandler;
+extern OWLStatementHandler oOntologyIRIHandler;
 extern OWLStatementHandler oRestrictionHandler;
 
 NS_ASSUME_NONNULL_END

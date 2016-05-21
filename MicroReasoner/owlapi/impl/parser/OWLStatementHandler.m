@@ -32,6 +32,7 @@ NS_INLINE NSDictionary *objectHandlerMapInit() {
     map[[OWLRDFVocabulary OWLClass].stringValue] = [oClassHandler copy];
     map[[OWLRDFVocabulary OWLNamedIndividual].stringValue] = [oNamedIndividualHandler copy];
     map[[OWLRDFVocabulary OWLObjectProperty].stringValue] = [oObjectPropertyHandler copy];
+    map[[OWLRDFVocabulary OWLOntology].stringValue] = [oOntologyIRIHandler copy];
     map[[OWLRDFVocabulary OWLRestriction].stringValue] = [oRestrictionHandler copy];
     
     // Not implemented handlers
@@ -49,7 +50,6 @@ NS_INLINE NSDictionary *objectHandlerMapInit() {
     handlerNotImplemented(OWLInverseFunctionalProperty);
     handlerNotImplemented(OWLIrreflexiveProperty);
     handlerNotImplemented(OWLNegativePropertyAssertion);
-    handlerNotImplemented(OWLOntology);
     handlerNotImplemented(OWLOntologyProperty);
     handlerNotImplemented(OWLReflexiveProperty);
     handlerNotImplemented(OWLSymmetricProperty);
@@ -663,6 +663,38 @@ OWLStatementHandler pRangeHandler = ^BOOL(RedlandStatement *statement, OWLOntolo
     return handleDomainRangeStatement(statement, builder, NO, error);
 };
 
+#pragma mark Ontology version IRI handler
+
+OWLStatementHandler pVersionIRIHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *object = statement.object;
+    
+    if (!(subject.isResource && object.isResource)) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject and object of version IRI statement must be resource nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (![builder setOntologyIRI:subject.URIStringValue error:&localError]) {
+        goto err;
+    }
+    
+    if (![builder setVersionIRI:object.URIStringValue error:&localError]) {
+        goto err;
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
 #pragma mark Class declaration handler
 
 OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
@@ -799,6 +831,32 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                           localizedDescription:@"Object property declaration statements must have resource-type subject nodes."
                                       userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
+#pragma mark Ontology IRI declaration handler
+
+OWLStatementHandler oOntologyIRIHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    RedlandNode *subject = statement.subject;
+    
+    if (!subject.isResource) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Ontology ID statements must have resource-type subject nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (![builder setOntologyIRI:subject.URIStringValue error:&localError]) {
         goto err;
     }
     

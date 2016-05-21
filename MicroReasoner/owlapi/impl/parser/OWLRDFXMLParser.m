@@ -59,6 +59,7 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     map[[OWLRDFVocabulary OWLMinCardinality].stringValue] = [pMinCardinalityHandler copy];
     map[[OWLRDFVocabulary OWLOnProperty].stringValue] = [pOnPropertyHandler copy];
     map[[OWLRDFVocabulary OWLSomeValuesFrom].stringValue] = [pSomeValuesFromHandler copy];
+    map[[OWLRDFVocabulary OWLVersionIRI].stringValue] = [pVersionIRIHandler copy];
     
     return map;
 }

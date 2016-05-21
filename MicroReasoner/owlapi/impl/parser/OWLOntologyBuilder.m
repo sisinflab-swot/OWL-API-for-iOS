@@ -26,6 +26,9 @@
 
 @interface OWLOntologyBuilder ()
 
+@property (nonatomic, copy, readonly) NSString *ontologyIRI;
+@property (nonatomic, copy, readonly) NSString *versionIRI;
+
 // The keys of these dictionaries are either blank node IDs or IRIs,
 // matching the subject node of the statement that triggered the
 // creation of the builder/item.
@@ -56,6 +59,9 @@ NSMutableDictionary<NSString *,NSMutableArray<OWLAxiomBuilder *> *> *singleState
 
 @implementation OWLOntologyBuilder
 
+@synthesize ontologyIRI = _ontologyIRI;
+@synthesize versionIRI = _versionIRI;
+
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, allEntityBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, classExpressionBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, declarationAxiomBuilders);
@@ -68,7 +74,6 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
 
 - (id<OWLOntology>)build
 {
-    OWLOntologyID *ontologyID = [[OWLOntologyID alloc] initWithOntologyIRI:nil versionIRI:nil];
     OWLOntologyInternals *internals = [[OWLOntologyInternals alloc] init];
     
     // Declaration axioms
@@ -96,10 +101,71 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
         }
     }];
     
-    return [[OWLOntologyImpl alloc] initWithID:ontologyID internals:internals];
+    return [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
 }
 
-#pragma mark Entity builder accessor methods
+- (OWLOntologyID *)buildOntologyID
+{
+    NSURL *ontologyIRI = nil;
+    NSString *IRIString = self.ontologyIRI;
+    
+    if (IRIString) {
+        ontologyIRI = [[NSURL alloc] initWithString:IRIString];
+    }
+    
+    NSURL *versionIRI = nil;
+    IRIString = self.versionIRI;
+    
+    if (IRIString) {
+        versionIRI = [[NSURL alloc] initWithString:IRIString];
+    }
+    
+    return [[OWLOntologyID alloc] initWithOntologyIRI:ontologyIRI versionIRI:versionIRI];
+}
+
+#pragma mark Ontology header
+
+- (BOOL)setOntologyIRI:(NSString *)IRI error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_ontologyIRI == IRI || [_ontologyIRI isEqualToString:IRI]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_ontologyIRI) {
+        _ontologyIRI = [IRI copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple ontology IRIs for ontology."
+                                  userInfo:@{@"IRIs": @[_ontologyIRI, IRI]}];
+    }
+    
+    return success;
+}
+
+- (BOOL)setVersionIRI:(NSString *)IRI error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_versionIRI == IRI || [_versionIRI isEqualToString:IRI]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_versionIRI) {
+        _versionIRI = [IRI copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple version IRIs for ontology."
+                                  userInfo:@{@"IRIs": @[_versionIRI, IRI]}];
+    }
+    
+    return success;
+}
+
+#pragma mark Entity builders
 
 - (id<OWLAbstractBuilder>)entityBuilderForID:(NSString *)ID { return self.allEntityBuilders[ID]; }
 
@@ -190,7 +256,7 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
     return self.propertyBuilders[ID];
 }
 
-#pragma mark Axiom builder accessor methods
+#pragma mark Axiom builders
 
 - (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID
 {

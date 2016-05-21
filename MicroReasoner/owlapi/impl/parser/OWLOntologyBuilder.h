@@ -21,6 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyBuilder : NSObject <OWLAbstractBuilder>
 
+#pragma mark Ontology header
+
+/// Sets the ontology IRI of the built ontology.
+- (BOOL)setOntologyIRI:(NSString *)IRI error:(NSError *_Nullable __autoreleasing *)error;
+
+/// Sets the version IRI of the built ontology.
+- (BOOL)setVersionIRI:(NSString *)IRI error:(NSError *_Nullable __autoreleasing *)error;
+
 #pragma mark Entity builders
 
 // OWL DL entities should have a unique ID (blank node or IRI), therefore these
