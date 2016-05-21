@@ -14,7 +14,6 @@ extern NSString *const OWLErrorDomain;
 
 typedef NS_ENUM(NSInteger, OWLErrorCode) {
     OWLErrorCodeGeneric,
-    OWLErrorCodeCumulative,
     OWLErrorCodeParse,
     OWLErrorCodeSyntax
 };

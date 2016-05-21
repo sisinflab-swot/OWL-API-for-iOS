@@ -73,7 +73,7 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     NSError *__autoreleasing localError = nil;
     id<OWLOntology> ontology = nil;
     
-    if ([self _parseOntologyAtURL:URL error:&localError]) {
+    if ([self parseOntologyAtURL:URL error:&localError]) {
         ontology = [self.ontologyBuilder build];
     }
     
@@ -92,7 +92,7 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     self.ontologyBuilder = nil;
 }
 
-- (BOOL)_parseOntologyAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
+- (BOOL)parseOntologyAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
 {
     [self initializeDataStructures];
     
@@ -110,7 +110,7 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     for (RedlandStatement *statement in stream.statementEnumerator) {
         NSError *__autoreleasing statementError = nil;
         @autoreleasepool {
-            if (![self _handleStatement:statement error:&statementError] && statementError) {
+            if (![self handleStatement:statement error:&statementError] && statementError) {
                 [self.errors addObject:statementError];
             }
         }
@@ -118,18 +118,13 @@ SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
     
 err:
     if (error) {
-        if (!localError && self.errors.count) {
-            localError = [NSError OWLErrorWithCode:OWLErrorCodeCumulative
-                                 localizedDescription:@"Error(s) during the ontology parsing process."
-                                             userInfo:@{@"errors": self.errors}];
-        }
         *error = localError;
     }
     
     return !localError;
 }
 
-- (BOOL)_handleStatement:(RedlandStatement *)statement error:(NSError *_Nullable __autoreleasing *)error
+- (BOOL)handleStatement:(RedlandStatement *)statement error:(NSError *_Nullable __autoreleasing *)error
 {
     NSError *__autoreleasing localError = nil;
     OWLRDFXMLParser *__weak weakSelf = self;
