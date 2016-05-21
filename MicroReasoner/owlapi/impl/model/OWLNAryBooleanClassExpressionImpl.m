@@ -22,15 +22,14 @@
     
     if ([super isEqual:object]) {
         NSSet *objOperands = [object operands];
-        NSSet *selfOperands = self.operands;
         
-        equal = (objOperands == selfOperands || [objOperands isEqualToSet:selfOperands]);
+        equal = (objOperands == _operands || [objOperands isEqualToSet:_operands]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return self.operands.hash; }
+- (NSUInteger)computeHash { return _operands.hash; }
 
 #pragma mark OWLObject
 
@@ -38,7 +37,7 @@
 {
     NSMutableSet *signature = [[NSMutableSet alloc] init];
     
-    for (id<OWLClassExpression> op in self.operands) {
+    for (id<OWLClassExpression> op in _operands) {
         [signature unionSet:[op signature]];
     }
     

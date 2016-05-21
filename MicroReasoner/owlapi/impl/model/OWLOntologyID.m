@@ -43,12 +43,10 @@
     
     if ([object isKindOfClass:[self class]]) {
         NSURL *objIRI = [object ontologyIRI];
-        NSURL *selfIRI = self.ontologyIRI;
-        BOOL sameOntoIRI = (objIRI == selfIRI || [objIRI isEqual:selfIRI]);
+        BOOL sameOntoIRI = (objIRI == _ontologyIRI || [objIRI isEqual:_ontologyIRI]);
         
         objIRI = [object versionIRI];
-        selfIRI = self.versionIRI;
-        BOOL sameVerIRI = (objIRI == selfIRI || [objIRI isEqual:selfIRI]);
+        BOOL sameVerIRI = (objIRI == _versionIRI || [objIRI isEqual:_versionIRI]);
         
         equal = (sameOntoIRI && sameVerIRI);
     }
@@ -56,7 +54,7 @@
     return equal;
 }
 
-- (NSUInteger)hash { return [self.ontologyIRI hash] ^ [self.versionIRI hash]; }
+- (NSUInteger)hash { return [_ontologyIRI hash] ^ [_versionIRI hash]; }
 
 #pragma mark NSCopying
 

@@ -55,12 +55,10 @@ OWLNamespace *OWLNamespaceRDFSchema = nil;
     
     if ([object isKindOfClass:[self class]]) {
         NSString *objStr = [object prefix];
-        NSString *selfStr = self.prefix;
-        BOOL samePrefix = (objStr == selfStr || [objStr isEqualToString:selfStr]);
+        BOOL samePrefix = (objStr == _prefix || [objStr isEqualToString:_prefix]);
         
         objStr = [object shortName];
-        selfStr = self.shortName;
-        BOOL sameShortName = (objStr == selfStr || [objStr isEqualToString:selfStr]);
+        BOOL sameShortName = (objStr == _shortName || [objStr isEqualToString:_shortName]);
         
         equal = (samePrefix && sameShortName);
     }
@@ -68,7 +66,7 @@ OWLNamespace *OWLNamespaceRDFSchema = nil;
     return equal;
 }
 
-- (NSUInteger)hash { return self.prefix.hash ^ self.shortName.hash; }
+- (NSUInteger)hash { return _prefix.hash ^ _shortName.hash; }
 
 #pragma mark NSCopying
 

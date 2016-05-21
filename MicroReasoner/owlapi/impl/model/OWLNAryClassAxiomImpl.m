@@ -23,15 +23,14 @@
     
     if ([super isEqual:object]) {
         NSSet *objCE = [object classExpressions];
-        NSSet *selfCE = self.classExpressions;
         
-        equal = (objCE == selfCE || [objCE isEqualToSet:selfCE]);
+        equal = (objCE == _classExpressions || [objCE isEqualToSet:_classExpressions]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return self.classExpressions.hash; }
+- (NSUInteger)computeHash { return _classExpressions.hash; }
 
 #pragma mark OWLObject
 
@@ -39,7 +38,7 @@
 {
     NSMutableSet *signature = [[NSMutableSet alloc] init];
     
-    for (id<OWLClassExpression> ce in self.classExpressions) {
+    for (id<OWLClassExpression> ce in _classExpressions) {
         [signature unionSet:ce.signature];
     }
     

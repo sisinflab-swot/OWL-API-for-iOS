@@ -36,15 +36,14 @@
     
     if ([super isEqual:object]) {
         id objID = [object ontologyID];
-        id selfID = self.ontologyID;
         
-        equal = (objID == selfID || [objID isEqual:selfID]);
+        equal = (objID == _ontologyID || [objID isEqual:_ontologyID]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return self.ontologyID.hash; }
+- (NSUInteger)computeHash { return _ontologyID.hash; }
 
 #pragma mark OWLObject
 
@@ -56,32 +55,32 @@
     return signature;
 }
 
-- (NSSet<id<OWLClass>> *)classesInSignature { return [self.internals allClasses]; }
+- (NSSet<id<OWLClass>> *)classesInSignature { return [_internals allClasses]; }
 
-- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature { return [self.internals allNamedIndividuals]; }
+- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature { return [_internals allNamedIndividuals]; }
 
-- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self.internals allObjectProperties]; }
+- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [_internals allObjectProperties]; }
 
 #pragma mark OWLOntology
 
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
 {
-    return [self.internals classAssertionAxiomsForIndividual:individual];
+    return [_internals classAssertionAxiomsForIndividual:individual];
 }
 
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
 {
-    return [self.internals disjointClassesAxiomsForClass:cls];
+    return [_internals disjointClassesAxiomsForClass:cls];
 }
 
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
 {
-    return [self.internals equivalentClassesAxiomsForClass:cls];
+    return [_internals equivalentClassesAxiomsForClass:cls];
 }
 
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
-    return [self.internals subClassAxiomsForSubClass:cls];
+    return [_internals subClassAxiomsForSubClass:cls];
 }
 
 #pragma mark Other public methods

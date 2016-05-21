@@ -23,22 +23,21 @@
     
     if ([super isEqual:object]) {
         id objFiller = [object filler];
-        id selfFiller = self.filler;
         
-        equal = (objFiller == selfFiller || [objFiller isEqual:selfFiller]);
+        equal = (objFiller == _filler || [objFiller isEqual:_filler]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.property hash] ^ [self.filler hash]; }
+- (NSUInteger)computeHash { return [super computeHash] ^ [_filler hash]; }
 
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature
 {
     NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[self.property signature]];
-    [signature unionSet:[self.filler signature]];
+    [signature unionSet:[_filler signature]];
     return signature;
 }
 

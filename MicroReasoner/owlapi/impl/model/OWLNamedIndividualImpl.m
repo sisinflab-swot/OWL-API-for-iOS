@@ -22,19 +22,18 @@
     
     if ([super isEqual:object]) {
         NSURL *objIRI = [object IRI];
-        NSURL *selfIRI = self.IRI;
         
-        equal = (objIRI == selfIRI || [objIRI isEqual:selfIRI]);
+        equal = (objIRI == _IRI || [objIRI isEqual:_IRI]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return self.IRI.hash; }
+- (NSUInteger)computeHash { return _IRI.hash; }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Individual(<%@>)", [self.IRI absoluteString]];
+    return [NSString stringWithFormat:@"Individual(<%@>)", [_IRI absoluteString]];
 }
 
 #pragma mark OWLObject

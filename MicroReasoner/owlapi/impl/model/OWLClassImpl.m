@@ -27,19 +27,18 @@
     
     if ([super isEqual:object]) {
         NSURL *objIRI = [object IRI];
-        NSURL *selfIRI = self.IRI;
         
-        equal = (objIRI == selfIRI || [objIRI isEqual:selfIRI]);
+        equal = (objIRI == _IRI || [objIRI isEqual:_IRI]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.IRI hash]; }
+- (NSUInteger)computeHash { return [_IRI hash]; }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Class(<%@>)", [self.IRI absoluteString]];
+    return [NSString stringWithFormat:@"Class(<%@>)", [_IRI absoluteString]];
 }
 
 #pragma mark OWLObject
@@ -66,9 +65,9 @@
 
 - (BOOL)anonymous { return NO; }
 
-- (BOOL)isOWLThing { return [self.IRI isEqual:[OWLRDFVocabulary OWLThing].IRI]; }
+- (BOOL)isOWLThing { return [_IRI isEqual:[OWLRDFVocabulary OWLThing].IRI]; }
 
-- (BOOL)isOWLNothing { return [self.IRI isEqual:[OWLRDFVocabulary OWLNothing].IRI]; }
+- (BOOL)isOWLNothing { return [_IRI isEqual:[OWLRDFVocabulary OWLNothing].IRI]; }
 
 - (NSSet<id<OWLClassExpression>> *)asConjunctSet { return [NSSet setWithObject:self]; }
 

@@ -20,30 +20,16 @@
 #import "SMRPreprocessor.h"
 
 @interface OWLOntologyInternals ()
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLAxiom>> *> *axiomsByClass;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLNamedIndividual>,NSMutableSet<id<OWLAxiom>> *> *axiomsByNamedIndividual;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLObjectProperty>,NSMutableSet<id<OWLAxiom>> *> *axiomsByObjectProperty;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<NSNumber *,NSMutableSet<id<OWLAxiom>> *> *axiomsByType;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLIndividual>,NSMutableSet<id<OWLClassAssertionAxiom>> *> *classAssertionAxiomsByIndividual;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLDisjointClassesAxiom>> *> *disjointClassesAxiomsByClass;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLEquivalentClassesAxiom>> *> *equivalentClassesAxiomsByClass;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLSubClassOfAxiom>> *> *subClassAxiomsBySubClass;
+{
+    NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLAxiom>> *> *_axiomsByClass;
+    NSMutableDictionary<id<OWLNamedIndividual>,NSMutableSet<id<OWLAxiom>> *> *_axiomsByNamedIndividual;
+    NSMutableDictionary<id<OWLObjectProperty>,NSMutableSet<id<OWLAxiom>> *> *_axiomsByObjectProperty;
+    NSMutableDictionary<NSNumber *,NSMutableSet<id<OWLAxiom>> *> *_axiomsByType;
+    NSMutableDictionary<id<OWLIndividual>,NSMutableSet<id<OWLClassAssertionAxiom>> *> *_classAssertionAxiomsByIndividual;
+    NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLDisjointClassesAxiom>> *> *_disjointClassesAxiomsByClass;
+    NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLEquivalentClassesAxiom>> *> *_equivalentClassesAxiomsByClass;
+    NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLSubClassOfAxiom>> *> *_subClassAxiomsBySubClass;
+}
 
 @end
 
@@ -52,14 +38,20 @@ NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLSubClassOfAxiom>> *> *subCla
 
 #pragma mark Properties
 
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByClass);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByObjectProperty);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByNamedIndividual);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, axiomsByType);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, classAssertionAxiomsByIndividual);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, disjointClassesAxiomsByClass);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, equivalentClassesAxiomsByClass);
-SYNTHESIZE_LAZY_INIT(NSMutableDictionary, subClassAxiomsBySubClass);
+- (instancetype)init
+{
+    if ((self = [super init])) {
+        _axiomsByClass = [[NSMutableDictionary alloc] init];
+        _axiomsByNamedIndividual = [[NSMutableDictionary alloc] init];
+        _axiomsByObjectProperty = [[NSMutableDictionary alloc] init];
+        _axiomsByType = [[NSMutableDictionary alloc] init];
+        _classAssertionAxiomsByIndividual = [[NSMutableDictionary alloc] init];
+        _disjointClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
+        _equivalentClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
+        _subClassAxiomsBySubClass = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
 
 #pragma mark Public mutation methods
 
@@ -82,7 +74,7 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 - (void)addAxiom:(id<OWLAxiom>)axiom
 {
     OWLAxiomType type = axiom.axiomType;
-    addObjectToSetInDictionary(self.axiomsByType, [NSNumber numberWithInteger:type], axiom);
+    addObjectToSetInDictionary(_axiomsByType, [NSNumber numberWithInteger:type], axiom);
     
     switch (type)
     {
@@ -96,15 +88,15 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             id<OWLClassAssertionAxiom> classAssertionAxiom = (id<OWLClassAssertionAxiom>)axiom;
             id<OWLIndividual> individual = classAssertionAxiom.individual;
             
-            addObjectToSetInDictionary(self.classAssertionAxiomsByIndividual, individual, classAssertionAxiom);
+            addObjectToSetInDictionary(_classAssertionAxiomsByIndividual, individual, classAssertionAxiom);
             
             if (!individual.anonymous) {
-                addObjectToSetInDictionary(self.axiomsByNamedIndividual, individual, classAssertionAxiom);
+                addObjectToSetInDictionary(_axiomsByNamedIndividual, individual, classAssertionAxiom);
             }
             
             id<OWLClassExpression> ce = classAssertionAxiom.classExpression;
             if (!ce.anonymous) {
-                addObjectToSetInDictionary(self.axiomsByClass, ce, classAssertionAxiom);
+                addObjectToSetInDictionary(_axiomsByClass, ce, classAssertionAxiom);
             }
             
             break;
@@ -114,8 +106,8 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             id<OWLDisjointClassesAxiom> disjClsAxiom = (id<OWLDisjointClassesAxiom>)axiom;
             for (id<OWLClassExpression> ce in [disjClsAxiom classExpressions]) {
                 if (!ce.anonymous) {
-                    addObjectToSetInDictionary(self.axiomsByClass, ce, disjClsAxiom);
-                    addObjectToSetInDictionary(self.disjointClassesAxiomsByClass, ce, disjClsAxiom);
+                    addObjectToSetInDictionary(_axiomsByClass, ce, disjClsAxiom);
+                    addObjectToSetInDictionary(_disjointClassesAxiomsByClass, ce, disjClsAxiom);
                 }
             }
             break;
@@ -125,8 +117,8 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             id<OWLEquivalentClassesAxiom> eqClsAxiom = (id<OWLEquivalentClassesAxiom>)axiom;
             for (id<OWLClassExpression> ce in [eqClsAxiom classExpressions]) {
                 if (!ce.anonymous) {
-                    addObjectToSetInDictionary(self.axiomsByClass, ce, eqClsAxiom);
-                    addObjectToSetInDictionary(self.equivalentClassesAxiomsByClass, ce, eqClsAxiom);
+                    addObjectToSetInDictionary(_axiomsByClass, ce, eqClsAxiom);
+                    addObjectToSetInDictionary(_equivalentClassesAxiomsByClass, ce, eqClsAxiom);
                 }
             }
             break;
@@ -139,13 +131,13 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             
             if (!subClass.anonymous) {
                 id<OWLClass> cls = [subClass asOwlClass];
-                addObjectToSetInDictionary(self.axiomsByClass, cls, subClassOfAxiom);
-                addObjectToSetInDictionary(self.subClassAxiomsBySubClass, cls, subClassOfAxiom);
+                addObjectToSetInDictionary(_axiomsByClass, cls, subClassOfAxiom);
+                addObjectToSetInDictionary(_subClassAxiomsBySubClass, cls, subClassOfAxiom);
             }
             
             if (!superClass.anonymous) {
                 id<OWLClass> cls = [superClass asOwlClass];
-                addObjectToSetInDictionary(self.axiomsByClass, cls, subClassOfAxiom);
+                addObjectToSetInDictionary(_axiomsByClass, cls, subClassOfAxiom);
             }
             break;
         }
@@ -155,12 +147,12 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             
             id<OWLObjectProperty> objectProperty = [domainAxiom.property asOWLObjectProperty];
             if (objectProperty) {
-                addObjectToSetInDictionary(self.axiomsByObjectProperty, objectProperty, domainAxiom);
+                addObjectToSetInDictionary(_axiomsByObjectProperty, objectProperty, domainAxiom);
             }
             
             id<OWLClassExpression> ce = domainAxiom.domain;
             if (!ce.anonymous) {
-                addObjectToSetInDictionary(self.axiomsByClass, ce, domainAxiom);
+                addObjectToSetInDictionary(_axiomsByClass, ce, domainAxiom);
             }
             
             break;
@@ -171,12 +163,12 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             
             id<OWLObjectProperty> objectProperty = [rangeAxiom.property asOWLObjectProperty];
             if (objectProperty) {
-                addObjectToSetInDictionary(self.axiomsByObjectProperty, objectProperty, rangeAxiom);
+                addObjectToSetInDictionary(_axiomsByObjectProperty, objectProperty, rangeAxiom);
             }
             
             id<OWLClassExpression> ce = rangeAxiom.range;
             if (!ce.anonymous) {
-                addObjectToSetInDictionary(self.axiomsByClass, ce, rangeAxiom);
+                addObjectToSetInDictionary(_axiomsByClass, ce, rangeAxiom);
             }
             break;
         }
@@ -190,37 +182,37 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 
 - (NSSet<id<OWLClass>> *)allClasses
 {
-    return [NSSet setWithArray:[self.axiomsByClass allKeys]];
+    return [NSSet setWithArray:[_axiomsByClass allKeys]];
 }
 
 - (NSSet<id<OWLObjectProperty>> *)allObjectProperties
 {
-    return [NSSet setWithArray:[self.axiomsByObjectProperty allKeys]];
+    return [NSSet setWithArray:[_axiomsByObjectProperty allKeys]];
 }
 
 - (NSSet<id<OWLNamedIndividual>> *)allNamedIndividuals
 {
-    return [NSSet setWithArray:[self.axiomsByNamedIndividual allKeys]];
+    return [NSSet setWithArray:[_axiomsByNamedIndividual allKeys]];
 }
 
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
 {
-    return nonNilSet(self.classAssertionAxiomsByIndividual[individual]);
+    return nonNilSet(_classAssertionAxiomsByIndividual[individual]);
 }
 
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
 {
-    return nonNilSet(self.disjointClassesAxiomsByClass[cls]);
+    return nonNilSet(_disjointClassesAxiomsByClass[cls]);
 }
 
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
 {
-    return nonNilSet(self.equivalentClassesAxiomsByClass[cls]);
+    return nonNilSet(_equivalentClassesAxiomsByClass[cls]);
 }
 
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
 {
-    return nonNilSet(self.subClassAxiomsBySubClass[cls]);
+    return nonNilSet(_subClassAxiomsBySubClass[cls]);
 }
 
 #pragma mark Private methods
@@ -229,15 +221,15 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 {
     switch (entity.entityType) {
         case OWLEntityTypeClass:
-            addObjectToSetInDictionary(self.axiomsByClass, entity, axiom);
+            addObjectToSetInDictionary(_axiomsByClass, entity, axiom);
             break;
             
         case OWLEntityTypeNamedIndividual:
-            addObjectToSetInDictionary(self.axiomsByNamedIndividual, entity, axiom);
+            addObjectToSetInDictionary(_axiomsByNamedIndividual, entity, axiom);
             break;
             
         case OWLEntityTypeObjectProperty:
-            addObjectToSetInDictionary(self.axiomsByObjectProperty, entity, axiom);
+            addObjectToSetInDictionary(_axiomsByObjectProperty, entity, axiom);
             break;
             
         default:

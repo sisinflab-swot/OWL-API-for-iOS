@@ -23,15 +23,14 @@
     
     if ([super isEqual:object]) {
         id objProperty = [object property];
-        id selfProperty = self.property;
         
-        equal = (objProperty == selfProperty || [objProperty isEqual:selfProperty]);
+        equal = (objProperty == _property || [objProperty isEqual:_property]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.property hash]; }
+- (NSUInteger)computeHash { return [_property hash]; }
 
 #pragma mark OWLRestriction
 

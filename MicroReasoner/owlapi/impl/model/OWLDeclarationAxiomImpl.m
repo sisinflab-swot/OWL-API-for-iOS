@@ -23,19 +23,18 @@
     
     if ([super isEqual:object]) {
         id objEntity = [object entity];
-        id selfEntity = self.entity;
         
-        equal = (objEntity == selfEntity || [objEntity isEqual:selfEntity]);
+        equal = (objEntity == _entity || [objEntity isEqual:_entity]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.entity hash]; }
+- (NSUInteger)computeHash { return [_entity hash]; }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [self.entity signature]; }
+- (NSSet<id<OWLEntity>> *)signature { return [_entity signature]; }
 
 #pragma mark OWLAxiom
 

@@ -23,12 +23,10 @@
     
     if ([super isEqual:object]) {
         id objCls = [object superClass];
-        id selfCls = self.class;
-        BOOL sameSuperClass = (objCls == selfCls || [objCls isEqual:selfCls]);
+        BOOL sameSuperClass = (objCls == _superClass || [objCls isEqual:_superClass]);
         
         objCls = [object subClass];
-        selfCls = self.subClass;
-        BOOL sameSubClass = (objCls == selfCls || [objCls isEqual:selfCls]);
+        BOOL sameSubClass = (objCls == _subClass || [objCls isEqual:_subClass]);
         
         equals = (sameSuperClass && sameSubClass);
     }
@@ -36,11 +34,11 @@
     return equals;
 }
 
-- (NSUInteger)computeHash { return [self.superClass hash] ^ [self.subClass hash]; }
+- (NSUInteger)computeHash { return [_superClass hash] ^ [_subClass hash]; }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"SubClassOf(%@ %@)", self.subClass, self.superClass];
+    return [NSString stringWithFormat:@"SubClassOf(%@ %@)", _subClass, _superClass];
 }
 
 #pragma mark OWLObject
@@ -49,8 +47,8 @@
 {
     // Annotations are not supported right now, so we can just return
     // a set with the signatures of both the superClass and the subClass.
-    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[self.superClass signature]];
-    [signature unionSet:[self.subClass signature]];
+    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[_superClass signature]];
+    [signature unionSet:[_subClass signature]];
     return signature;
 }
 

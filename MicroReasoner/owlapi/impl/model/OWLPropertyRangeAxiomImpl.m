@@ -24,15 +24,14 @@
     
     if ([super isEqual:object]) {
         id objRange = [(id<OWLPropertyRangeAxiom>)object range];
-        id selfRange = self.range;
         
-        equal = (objRange == selfRange || [objRange isEqual:selfRange]);
+        equal = (objRange == _range || [objRange isEqual:_range]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.property hash] ^ [self.range hash]; }
+- (NSUInteger)computeHash { return [super computeHash] ^ [_range hash]; }
 
 #pragma mark OWLPropertyRangeAxiom
 

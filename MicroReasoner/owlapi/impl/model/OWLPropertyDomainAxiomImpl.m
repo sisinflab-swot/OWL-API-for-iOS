@@ -24,15 +24,14 @@
     
     if ([super isEqual:object]) {
         id objDomain = [(id<OWLPropertyDomainAxiom>)object domain];
-        id selfDomain = self.domain;
         
-        equal = (objDomain == selfDomain || [objDomain isEqual:selfDomain]);
+        equal = (objDomain == _domain || [objDomain isEqual:_domain]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.property hash] ^ [self.domain hash]; }
+- (NSUInteger)computeHash { return [super computeHash] ^ [_domain hash]; }
 
 #pragma mark OWLPropertyDomainAxiom
 

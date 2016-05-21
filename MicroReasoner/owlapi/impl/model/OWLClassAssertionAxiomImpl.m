@@ -24,12 +24,10 @@
     
     if ([super isEqual:object]) {
         id objProp = [object individual];
-        id selfProp = self.individual;
-        BOOL sameIndividual = (objProp == selfProp || [objProp isEqual:selfProp]);
+        BOOL sameIndividual = (objProp == _individual || [objProp isEqual:_individual]);
         
         objProp = [object classExpression];
-        selfProp = self.classExpression;
-        BOOL sameClass = (objProp == selfProp || [objProp isEqual:selfProp]);
+        BOOL sameClass = (objProp == _classExpression || [objProp isEqual:_classExpression]);
         
         equal = sameIndividual && sameClass;
     }
@@ -37,14 +35,14 @@
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.individual hash] ^ [self.classExpression hash]; }
+- (NSUInteger)computeHash { return [_individual hash] ^ [_classExpression hash]; }
 
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature
 {
-    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[self.individual signature]];
-    [signature unionSet:[self.classExpression signature]];
+    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[_individual signature]];
+    [signature unionSet:[_classExpression signature]];
     return signature;
 }
 

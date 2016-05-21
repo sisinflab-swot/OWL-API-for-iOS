@@ -22,13 +22,13 @@
     BOOL equals = NO;
     
     if ([super isEqual:object]) {
-        equals = ([object cardinality] == self.cardinality);
+        equals = ([object cardinality] == _cardinality);
     }
     
     return equals;
 }
 
-- (NSUInteger)computeHash { return [self.property hash] ^ [self.filler hash] ^ self.cardinality; };
+- (NSUInteger)computeHash { return [super computeHash] ^ _cardinality; };
 
 #pragma mark OWLCardinalityRestriction
 

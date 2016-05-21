@@ -23,15 +23,14 @@
     
     if ([super isEqual:object]) {
         id objProperty = [object property];
-        id selfProperty = self.property;
         
-        equal = (objProperty == selfProperty || [object isEqual:selfProperty]);
+        equal = (objProperty == _property || [object isEqual:_property]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return [self.property hash]; }
+- (NSUInteger)computeHash { return [_property hash]; }
 
 #pragma mark OWLUnaryPropertyAxiom
 
