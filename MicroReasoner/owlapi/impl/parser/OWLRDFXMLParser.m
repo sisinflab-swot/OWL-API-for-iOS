@@ -10,8 +10,8 @@
 #import "OWLError.h"
 #import "OWLNamespace.h"
 #import "OWLOntologyBuilder.h"
+#import "OWLPredicateHandlerMap.h"
 #import "OWLRDFVocabulary.h"
-#import "OWLStatementHandler.h"
 #import "SMRPreprocessor.h"
 #import <Redland-ObjC.h>
 
@@ -26,8 +26,7 @@
 @property (nonatomic, strong) NSMutableArray<NSError *> *errors;
 
 /// Maps predicates to their respective handlers.
-@property (nonatomic, strong, readonly)
-NSDictionary<NSString *, OWLStatementHandler> *predicateHandlerMap;
+@property (nonatomic, strong, readonly) id<OWLStatementHandlerMap> predicateHandlerMap;
 
 @end
 
@@ -39,30 +38,7 @@ NSDictionary<NSString *, OWLStatementHandler> *predicateHandlerMap;
 
 SYNTHESIZE_LAZY_INIT(NSMutableArray, errors);
 SYNTHESIZE_LAZY_INIT(OWLOntologyBuilder, ontologyBuilder);
-
-SYNTHESIZE_LAZY(NSDictionary, predicateHandlerMap)
-{
-    NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
-    
-    map[[OWLRDFVocabulary RDFFirst].stringValue] = [pRDFFirstHandler copy];
-    map[[OWLRDFVocabulary RDFRest].stringValue] = [pRDFRestHandler copy];
-    map[[OWLRDFVocabulary RDFType].stringValue] = [pRDFTypeHandler copy];
-    map[[OWLRDFVocabulary RDFSDomain].stringValue] = [pDomainHandler copy];
-    map[[OWLRDFVocabulary RDFSRange].stringValue] = [pRangeHandler copy];
-    map[[OWLRDFVocabulary RDFSSubClassOf].stringValue] = [pSubClassOfHandler copy];
-    map[[OWLRDFVocabulary OWLAllValuesFrom].stringValue] = [pAllValuesFromHandler copy];
-    map[[OWLRDFVocabulary OWLCardinality].stringValue] = [pCardinalityHandler copy];
-    map[[OWLRDFVocabulary OWLDisjointWith].stringValue] = [pDisjointWithHandler copy];
-    map[[OWLRDFVocabulary OWLEquivalentClass].stringValue] = [pEquivalentClassHandler copy];
-    map[[OWLRDFVocabulary OWLIntersectionOf].stringValue] = [pIntersectionOfHandler copy];
-    map[[OWLRDFVocabulary OWLMaxCardinality].stringValue] = [pMaxCardinalityHandler copy];
-    map[[OWLRDFVocabulary OWLMinCardinality].stringValue] = [pMinCardinalityHandler copy];
-    map[[OWLRDFVocabulary OWLOnProperty].stringValue] = [pOnPropertyHandler copy];
-    map[[OWLRDFVocabulary OWLSomeValuesFrom].stringValue] = [pSomeValuesFromHandler copy];
-    map[[OWLRDFVocabulary OWLVersionIRI].stringValue] = [pVersionIRIHandler copy];
-    
-    return map;
-}
+SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
 
 #pragma mark Public methods
 
@@ -147,7 +123,7 @@ err:
     }
     
     {
-        OWLStatementHandler handler = self.predicateHandlerMap[predicate.URIStringValue];
+        OWLStatementHandler handler = [self.predicateHandlerMap handlerForSignature:predicate.URIStringValue];
         if (handler && !handler(statement, weakSelf.ontologyBuilder, &localError)) {
             goto err;
         }
