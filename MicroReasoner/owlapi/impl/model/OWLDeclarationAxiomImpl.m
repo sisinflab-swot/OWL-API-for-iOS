@@ -32,6 +32,11 @@
 
 - (NSUInteger)computeHash { return [_entity hash]; }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Declaration(%@)", _entity];
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature { return [_entity signature]; }
