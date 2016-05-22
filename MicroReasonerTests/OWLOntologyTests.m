@@ -44,6 +44,13 @@ static void loadOntologyNoCache() {
     XCTAssertNotNil(ontology);
 }
 
+- (void)testAxiomsForType
+{
+    NSSet *decl = [ontology axiomsForType:OWLAxiomTypeDeclaration];
+    NSLog(@"Declaration axioms (%lu):\n------------------\n%@", (unsigned long)decl.count, decl);
+    XCTAssertNotNil(decl);
+}
+
 - (void)testClassesInSignature
 {
     NSSet *classes = [ontology classesInSignature];
