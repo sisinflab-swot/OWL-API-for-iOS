@@ -63,6 +63,11 @@
 
 #pragma mark OWLOntology
 
+- (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type
+{
+    return [_internals axiomsForType:type];
+}
+
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
 {
     return [_internals classAssertionAxiomsForIndividual:individual];

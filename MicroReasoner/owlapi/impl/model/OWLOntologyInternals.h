@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSSet<id<OWLNamedIndividual>> *)allNamedIndividuals;
 - (NSSet<id<OWLObjectProperty>> *)allObjectProperties;
 
+- (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type;
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;

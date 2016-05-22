@@ -7,9 +7,11 @@
 //
 
 #import "OWLObject.h"
+#import "OWLAxiomType.h"
 
 @class OWLOntologyID;
 
+@protocol OWLAxiom;
 @protocol OWLClassAssertionAxiom;
 @protocol OWLDisjointClassesAxiom;
 @protocol OWLEquivalentClassesAxiom;
@@ -23,6 +25,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The identity of this ontology.
 @property (nonatomic, copy, readonly) OWLOntologyID *ontologyID;
+
+/**
+ * Gets the axioms which are of the specified type.
+ *
+ * @param type The type of axioms to be retrieved.
+ *
+ * @return A set containing the axioms of the specified type.
+ */
+- (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type;
 
 /**
  * Gets the OWLClassAssertionAxioms contained in this ontology that make the specified

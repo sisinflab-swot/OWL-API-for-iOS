@@ -221,6 +221,11 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
     return [NSSet setWithArray:[_axiomsByNamedIndividual allKeys]];
 }
 
+- (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type
+{
+    return nonNilSet(_axiomsByType[@(type)]);
+}
+
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
 {
     return nonNilSet(_classAssertionAxiomsByIndividual[individual]);
