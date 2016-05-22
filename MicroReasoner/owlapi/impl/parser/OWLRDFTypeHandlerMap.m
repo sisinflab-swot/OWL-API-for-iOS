@@ -26,13 +26,6 @@
 
 @implementation OWLRDFTypeHandlerMap
 
-#define handlerNotImplemented(name) \
-map[[OWLRDFVocabulary name].stringValue] = [^BOOL( \
-__unused RedlandStatement *s, \
-__unused OWLOntologyBuilder *b, \
-__unused NSError *__autoreleasing *e) \
-{ return YES; } copy]
-
 NS_INLINE NSDictionary * initHandlers()
 {
     NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
@@ -42,6 +35,11 @@ NS_INLINE NSDictionary * initHandlers()
     map[[OWLRDFVocabulary OWLObjectProperty].stringValue] = [oObjectPropertyHandler copy];
     map[[OWLRDFVocabulary OWLOntology].stringValue] = [oOntologyIRIHandler copy];
     map[[OWLRDFVocabulary OWLRestriction].stringValue] = [oRestrictionHandler copy];
+    
+    OWLStatementHandler notImplemented = [oNotImplementedHandler copy];
+    
+#define handlerNotImplemented(name) \
+map[[OWLRDFVocabulary name].stringValue] = notImplemented
     
     // Not implemented handlers
     handlerNotImplemented(OWLAllDifferent);
@@ -80,6 +78,18 @@ NS_INLINE NSDictionary * initHandlers()
 {
     return _handlers[signature];
 }
+
+#pragma mark Not implemented handler
+
+OWLStatementHandler oNotImplementedHandler = ^BOOL(RedlandStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Unsupported object in rdf:type statement."
+                                  userInfo:@{@"statement": statement}];
+    }
+    return NO;
+};
 
 #pragma mark Class declaration handler
 

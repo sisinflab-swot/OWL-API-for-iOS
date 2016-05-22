@@ -73,6 +73,7 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
     [self initializeDataStructures];
     
     NSError *__autoreleasing localError = nil;
+    NSMutableArray<NSError *> *errors = self.errors;
     
     RedlandParser *parser = [[RedlandParser alloc] initWithName:RedlandRDFXMLParserName];
     RedlandURI *baseURI = [RedlandURI URIWithString:OWLNamespaceRDFSyntax.prefix];
@@ -87,7 +88,7 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
         NSError *__autoreleasing statementError = nil;
         @autoreleasepool {
             if (![self handleStatement:statement error:&statementError] && statementError) {
-                [self.errors addObject:statementError];
+                [errors addObject:statementError];
             }
         }
     }
