@@ -49,6 +49,47 @@ NS_INLINE NSDictionary * initHandlers()
     map[[OWLRDFVocabulary OWLSomeValuesFrom].stringValue] = [pSomeValuesFromHandler copy];
     map[[OWLRDFVocabulary OWLVersionIRI].stringValue] = [pVersionIRIHandler copy];
     
+    OWLStatementHandler notImplemented = [pUnsupportedPredicateHandler copy];
+    
+#define handlerNotImplemented(name) \
+map[[OWLRDFVocabulary name].stringValue] = notImplemented
+    
+    // Not implemented handlers
+    handlerNotImplemented(RDFSComment);
+    handlerNotImplemented(RDFSSubPropertyOf);
+    handlerNotImplemented(OWLAnnotatedProperty);
+    handlerNotImplemented(OWLAnnotatedSource);
+    handlerNotImplemented(OWLAnnotatedTarget);
+    handlerNotImplemented(OWLAssertionProperty);
+    handlerNotImplemented(OWLComplementOf);
+    handlerNotImplemented(OWLDatatypeComplementOf);
+    handlerNotImplemented(OWLDifferentFrom);
+    handlerNotImplemented(OWLDisjointUnionOf);
+    handlerNotImplemented(OWLDistinctMembers);
+    handlerNotImplemented(OWLEquivalentProperty);
+    handlerNotImplemented(OWLHasKey);
+    handlerNotImplemented(OWLHasValue);
+    handlerNotImplemented(OWLHasSelf);
+    handlerNotImplemented(OWLImports);
+    handlerNotImplemented(OWLInverseOf);
+    handlerNotImplemented(OWLMaxQualifiedCardinality);
+    handlerNotImplemented(OWLMembers);
+    handlerNotImplemented(OWLMinQualifiedCardinality);
+    handlerNotImplemented(OWLOnDatatype);
+    handlerNotImplemented(OWLOnClass);
+    handlerNotImplemented(OWLOnDataRange);
+    handlerNotImplemented(OWLOneOf);
+    handlerNotImplemented(OWLOnProperties);
+    handlerNotImplemented(OWLOneOf);
+    handlerNotImplemented(OWLPropertyChainAxiom);
+    handlerNotImplemented(OWLPropertyDisjointWith);
+    handlerNotImplemented(OWLQualifiedCardinality);
+    handlerNotImplemented(OWLSameAs);
+    handlerNotImplemented(OWLSourceIndividual);
+    handlerNotImplemented(OWLTargetValue);
+    handlerNotImplemented(OWLUnionOf);
+    handlerNotImplemented(OWLWithRestrictions);
+    
     return map;
 }
 
@@ -66,6 +107,18 @@ NS_INLINE NSDictionary * initHandlers()
 {
     return _handlers[signature];
 }
+
+#pragma mark Unsupported predicate handler
+
+OWLStatementHandler pUnsupportedPredicateHandler = ^BOOL(RedlandStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Unsupported predicate in statement."
+                                  userInfo:@{@"statement": statement}];
+    }
+    return NO;
+};
 
 #pragma mark rdf:type predicate handler
 
