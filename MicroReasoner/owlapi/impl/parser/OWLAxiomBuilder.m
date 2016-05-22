@@ -17,6 +17,7 @@
 #import "OWLIndividual.h"
 #import "OWLIndividualBuilder.h"
 #import "OWLNamedIndividual.h"
+#import "OWLObjectPropertyAssertionAxiomImpl.h"
 #import "OWLObjectPropertyDomainAxiomImpl.h"
 #import "OWLObjectPropertyRangeAxiomImpl.h"
 #import "OWLOntologyBuilder.h"
@@ -87,6 +88,30 @@
                 
                 if (individual && class) {
                     builtAxiom = [[OWLClassAssertionAxiomImpl alloc] initWithIndividual:individual classExpression:class];
+                }
+            }
+            break;
+        }
+            
+        case OWLABTypePropertyAssertion: {
+            NSString *subjectID = self.LHSID;
+            NSString *propertyID = self.MID;
+            NSString *objectID = self.RHSID;
+            
+            if (subjectID && propertyID && objectID) {
+                OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+                
+                id<OWLIndividual> subject = [[ontoBuilder individualBuilderForID:subjectID] build];
+                id<OWLPropertyExpression> property = [[ontoBuilder propertyBuilderForID:propertyID] build];
+                
+                // TODO: only supports object property assertion axioms
+                if (subject && property.isObjectPropertyExpression) {
+                    id<OWLObjectPropertyExpression> objProp = (id<OWLObjectPropertyExpression>)property;
+                    id<OWLIndividual> object = [[ontoBuilder individualBuilderForID:objectID] build];
+                    
+                    if (object) {
+                        builtAxiom = [[OWLObjectPropertyAssertionAxiomImpl alloc] initWithSubject:subject property:objProp object:object];
+                    }
                 }
             }
             break;
@@ -212,7 +237,7 @@
 // LHSID
 @synthesize LHSID = _LHSID;
 
-- (BOOL)setLHSID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
+- (BOOL)setLHSID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
     if (_LHSID == ID || [_LHSID isEqualToString:ID]) {
         return YES;
@@ -226,7 +251,30 @@
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple left-hand-side IDs for same axiom."
-                                  userInfo:@{@"entities": @[_LHSID, ID]}];
+                                  userInfo:@{@"IDs": @[_LHSID, ID]}];
+    }
+    
+    return success;
+}
+
+// MID
+@synthesize MID = _MID;
+
+- (BOOL)setMID:(NSString *)ID error:(NSError *__autoreleasing *)error
+{
+    if (_MID == ID || [_MID isEqualToString:ID]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_MID) {
+        _MID = [ID copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple middle IDs for same axiom."
+                                  userInfo:@{@"IDs": @[_MID, ID]}];
     }
     
     return success;
@@ -235,7 +283,7 @@
 // RHSID
 @synthesize RHSID = _RHSID;
 
-- (BOOL)setRHSID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
+- (BOOL)setRHSID:(NSString *)ID error:(NSError *__autoreleasing *)error
 {
     if (_RHSID == ID || [_RHSID isEqualToString:ID]) {
         return YES;
@@ -249,7 +297,7 @@
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple right-hand-side IDs for same axiom."
-                                  userInfo:@{@"entities": @[_RHSID, ID]}];
+                                  userInfo:@{@"IDs": @[_RHSID, ID]}];
     }
     
     return success;

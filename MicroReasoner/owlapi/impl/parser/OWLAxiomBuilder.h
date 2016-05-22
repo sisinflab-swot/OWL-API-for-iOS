@@ -41,6 +41,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the ID of the left-hand-side of the axiom.
 - (BOOL)setLHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
+/// The ID of the middle of the axiom.
+@property (nonatomic, copy, readonly) NSString *MID;
+
+/// Sets the ID of the middle of the axiom.
+- (BOOL)setMID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
 /// The ID of the right-hand-side of the axiom.
 @property (nonatomic, copy, readonly) NSString *RHSID;
 

@@ -14,6 +14,7 @@
 #import "OWLEntity.h"
 #import "OWLEquivalentClassesAxiom.h"
 #import "OWLIndividual.h"
+#import "OWLObjectPropertyAssertionAxiom.h"
 #import "OWLObjectPropertyDomainAxiom.h"
 #import "OWLObjectPropertyRangeAxiom.h"
 #import "OWLSubClassOfAxiom.h"
@@ -28,6 +29,7 @@
     NSMutableDictionary<id<OWLIndividual>,NSMutableSet<id<OWLClassAssertionAxiom>> *> *_classAssertionAxiomsByIndividual;
     NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLDisjointClassesAxiom>> *> *_disjointClassesAxiomsByClass;
     NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLEquivalentClassesAxiom>> *> *_equivalentClassesAxiomsByClass;
+    NSMutableDictionary<id<OWLIndividual>,NSMutableSet<id<OWLObjectPropertyAssertionAxiom>> *> *_objectPropertyAssertionAxiomsBySubject;
     NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLSubClassOfAxiom>> *> *_subClassAxiomsBySubClass;
 }
 
@@ -48,6 +50,7 @@
         _classAssertionAxiomsByIndividual = [[NSMutableDictionary alloc] init];
         _disjointClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
         _equivalentClassesAxiomsByClass = [[NSMutableDictionary alloc] init];
+        _objectPropertyAssertionAxiomsBySubject = [[NSMutableDictionary alloc] init];
         _subClassAxiomsBySubClass = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -142,6 +145,29 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
             break;
         }
             
+        case OWLAxiomTypeObjectPropertyAssertion: {
+            id<OWLObjectPropertyAssertionAxiom> assertionAxiom = (id<OWLObjectPropertyAssertionAxiom>)axiom;
+            id<OWLIndividual> subject = assertionAxiom.subject;
+            id<OWLIndividual> object = assertionAxiom.object;
+            
+            addObjectToSetInDictionary(_objectPropertyAssertionAxiomsBySubject, subject, assertionAxiom);
+            
+            if (!subject.anonymous) {
+                addObjectToSetInDictionary(_axiomsByNamedIndividual, subject, assertionAxiom);
+            }
+            
+            if (!object.anonymous) {
+                addObjectToSetInDictionary(_axiomsByNamedIndividual, object, assertionAxiom);
+            }
+            
+            id<OWLObjectProperty> property = [assertionAxiom.property asOWLObjectProperty];
+            if (property) {
+                addObjectToSetInDictionary(_axiomsByObjectProperty, property, assertionAxiom);
+            }
+            
+            break;
+        }
+            
         case OWLAxiomTypeObjectPropertyDomain: {
             id<OWLObjectPropertyDomainAxiom> domainAxiom = (id<OWLObjectPropertyDomainAxiom>)axiom;
             
@@ -208,6 +234,11 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
 {
     return nonNilSet(_equivalentClassesAxiomsByClass[cls]);
+}
+
+- (NSSet<id<OWLObjectPropertyAssertionAxiom>> *)objectPropertyAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
+{
+    return nonNilSet(_objectPropertyAssertionAxiomsBySubject[individual]);
 }
 
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls

@@ -18,6 +18,7 @@
 @protocol OWLIndividual;
 @protocol OWLNamedIndividual;
 @protocol OWLObjectProperty;
+@protocol OWLObjectPropertyAssertionAxiom;
 @protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -37,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
 - (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;
+- (NSSet<id<OWLObjectPropertyAssertionAxiom>> *)objectPropertyAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls;
 
 @end

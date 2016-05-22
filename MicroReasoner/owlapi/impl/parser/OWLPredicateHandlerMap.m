@@ -105,7 +105,15 @@ map[[OWLRDFVocabulary name].stringValue] = notImplemented
 
 - (OWLStatementHandler)handlerForSignature:(NSString *)signature
 {
-    return _handlers[signature];
+    OWLStatementHandler handler = _handlers[signature];
+    
+    if (!handler) {
+        // If there's no handler for this predicate, it's a property assertion
+        // or an annotation, though annotations are currently unsupported.
+        handler = pPropertyAssertionHandler;
+    }
+    
+    return handler;
 }
 
 #pragma mark Unsupported predicate handler
@@ -218,6 +226,55 @@ OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOnto
     } else {
         // Individual unnamed class assertion
         if (!handleClassAssertionStatement(statement, builder, NO, &localError)) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
+#pragma mark Property assertion handler
+
+OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
+    RedlandNode *predicate = statement.predicate;
+    RedlandNode *object = statement.object;
+    
+    if (object.isResource) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Data property assertions and annotations are not supported."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        NSString *subjectID = subject.isResource ? subject.URIStringValue : subject.blankID;
+        NSString *predicateID = predicate.URIStringValue;
+        NSString *objectID = object.isResource ? object.URIStringValue : object.blankID;
+        
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        
+        if (![ab setType:OWLABTypePropertyAssertion error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setLHSID:subjectID error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setMID:predicateID error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setRHSID:objectID error:&localError]) {
             goto err;
         }
     }
