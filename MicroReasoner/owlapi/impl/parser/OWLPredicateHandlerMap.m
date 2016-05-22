@@ -249,7 +249,7 @@ OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RedlandStatement *statemen
     RedlandNode *predicate = statement.predicate;
     RedlandNode *object = statement.object;
     
-    if (object.isResource) {
+    if (object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                           localizedDescription:@"Data property assertions and annotations are not supported."
                                       userInfo:@{@"statement": statement}];
@@ -314,13 +314,7 @@ NS_INLINE BOOL handleListStatement(RedlandStatement *statement, OWLOntologyBuild
     {
         // Add list item
         NSString *subjectID = subject.blankID;
-        NSString *objectID = nil;
-        
-        if (object.isResource) {
-            objectID = object.URIStringValue;
-        } else {
-            objectID = object.blankID;
-        }
+        NSString *objectID = object.isResource ? object.URIStringValue : object.blankID;
         
         OWLListItem *item = [builder ensureListItemForID:subjectID];
         
@@ -374,16 +368,8 @@ NS_INLINE BOOL handleQuantificationStatement(RedlandStatement *statement, OWLOnt
     
     {
         // Add filler class expression
-        NSString *fillerID = nil;
         BOOL objectIsResource = object.isResource;
-        
-        if (objectIsResource) {
-            // Named class/datatype filler
-            fillerID = object.URIStringValue;
-        } else {
-            // Anonymous class/datatype filler
-            fillerID = object.blankID;
-        }
+        NSString *fillerID = objectIsResource ? object.URIStringValue : object.blankID;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID error:&localError];
         
@@ -400,7 +386,6 @@ NS_INLINE BOOL handleQuantificationStatement(RedlandStatement *statement, OWLOnt
                 goto err;
             }
         }
-        
         
         // Add restriction
         NSString *subjectID = subject.blankID;
@@ -512,14 +497,8 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
     
     {
         // LHS class expression
-        NSString *LHSClassID = nil;
         BOOL isResource = subject.isResource;
-        
-        if (isResource) {
-            LHSClassID = subject.URIStringValue;
-        } else {
-            LHSClassID = subject.blankID;
-        }
+        NSString *LHSClassID = isResource ? subject.URIStringValue : subject.blankID;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID error:&localError];
         
@@ -534,14 +513,8 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOnto
         }
         
         // RHS class expression
-        NSString *RHSClassID = nil;
         isResource = object.isResource;
-        
-        if (isResource) {
-            RHSClassID = object.URIStringValue;
-        } else {
-            RHSClassID = object.blankID;
-        }
+        NSString *RHSClassID = isResource ? object.URIStringValue : object.blankID;
         
         ceb = [builder ensureClassExpressionBuilderForID:RHSClassID error:&localError];
         
@@ -605,16 +578,13 @@ OWLStatementHandler pIntersectionOfHandler = ^BOOL(RedlandStatement *statement, 
     
     {
         // Add class expression
-        NSString *subjectID = subject.blankID;
-        NSString *objectID = object.blankID;
-        
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
         
         if (![ceb setBooleanType:OWLCEBBooleanTypeIntersection error:&localError]) {
             goto err;
         }
         
-        if (![ceb setListID:objectID error:&localError]) {
+        if (![ceb setListID:object.blankID error:&localError]) {
             goto err;
         }
     }
@@ -632,43 +602,48 @@ err:
 OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
+    
+    RedlandNode *subject = statement.subject;
     RedlandNode *object = statement.object;
     
-    if (object.isResource) {
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"onProperty statements must have blank subject nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (!object.isResource) {
+        // onProperty statements may also have blank object nodes, though
+        // in that case they would be anonymous properties (e.g. owl:inverseOf),
+        // which are currently unsupported.
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"onProperty statements must have resource object nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
         // owl:onProperty with named object/datatype property
-        // Note: currently only supports object properties.
-        NSString *IRIString = object.URIStringValue;
-        
-        // Add object property builder
-        // We assume it's an object property since it's
-        // the only supported property expression type.
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString error:&localError];
+        // Note: currently only supports object properties, so
+        // we assume the property is such.
+        NSString *objectID = object.URIStringValue;
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:objectID error:&localError];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
         }
         
-        if (![pb setNamedPropertyID:IRIString error:NULL]) {
+        if (![pb setNamedPropertyID:objectID error:NULL]) {
             goto err;
         }
         
-        RedlandNode *subject = statement.subject;
+        // Add class expression builder
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
         
-        if (subject.isBlank) {
-            OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
-            
-            if (![ceb setPropertyID:IRIString error:&localError]) {
-                goto err;
-            }
-        } else {
-            localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                              localizedDescription:@"onProperty statements must have blank subject nodes."
-                                          userInfo:@{@"statement": statement}];
+        if (![ceb setPropertyID:objectID error:&localError]) {
             goto err;
         }
-    } else {
-        // owl:onProperty with anonymous property
-        // TODO: currently unsupported
     }
     
 err:
@@ -696,18 +671,10 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
     }
     
     {
-        // TODO: only supports object properties
         // Add object property builder
         // We assume it's an object property since it's
         // the only supported property expression type.
-        NSString *subjectID = nil;
-        
-        if (subject.isResource) {
-            subjectID = subject.URIStringValue;
-        } else {
-            subjectID = subject.blankID;
-        }
-        
+        NSString *subjectID = subject.isResource ? subject.URIStringValue : subject.blankID;
         OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID error:&localError];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
@@ -719,14 +686,8 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
         }
         
         // Add class expression builder
-        NSString *objectID = nil;
         BOOL objectIsResource = object.isResource;
-        
-        if (objectIsResource) {
-            objectID = object.URIStringValue;
-        } else {
-            objectID = object.blankID;
-        }
+        NSString *objectID = objectIsResource ? object.URIStringValue : object.blankID;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID error:&localError];
         
@@ -747,18 +708,18 @@ NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntolo
         // Add axiom
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID
                                                           ensureUniqueType:(domain ? OWLABTypeDomain : OWLABTypeRange)];
-        if (ab) {
-            if (![ab setLHSID:subjectID error:&localError]) {
-                goto err;
-            }
-            
-            if (![ab setRHSID:objectID error:&localError]) {
-                goto err;
-            }
-        } else {
+        if (!ab) {
             localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                               localizedDescription:@"Multiple domain/range axioms for same property expression."
                                           userInfo:@{@"statement": statement}];
+            goto err;
+        }
+        
+        if (![ab setLHSID:subjectID error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setRHSID:objectID error:&localError]) {
             goto err;
         }
     }

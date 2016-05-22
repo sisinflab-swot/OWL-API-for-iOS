@@ -155,11 +155,16 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement,
     NSError *__autoreleasing localError = nil;
     RedlandNode *subject = statement.subject;
     
-    if (subject.isResource) {
+    if (!subject.isResource) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Named individual declaration statements must have resource-type subject nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
         // Named individual declaration
         NSString *IRIString = subject.URIStringValue;
-        
-        // Add individual builder
         OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString error:&localError];
         
         if (![ib setNamedIndividualID:IRIString error:&localError]) {
@@ -176,11 +181,6 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement,
         if (![ab setLHSID:IRIString error:&localError]) {
             goto err;
         }
-    } else {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Named individual declaration statements must have resource-type subject nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
     }
     
 err:
@@ -198,11 +198,16 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
     NSError *__autoreleasing localError = nil;
     RedlandNode *subject = statement.subject;
     
-    if (subject.isResource) {
+    if (!subject.isResource) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Object property declaration statements must have resource-type subject nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
         // Object property declaration
         NSString *IRIString = subject.URIStringValue;
-        
-        // Add object property builder
         OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString error:&localError];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
@@ -223,11 +228,6 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, 
         if (![ab setLHSID:IRIString error:&localError]) {
             goto err;
         }
-    } else {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Object property declaration statements must have resource-type subject nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
     }
     
 err:
@@ -271,20 +271,20 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWL
     NSError *__autoreleasing localError = nil;
     RedlandNode *subject = statement.subject;
     
-    if (subject.isBlank) {
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Restriction declaration statements must have blank subject nodes."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
         // Restriction declaration
-        
-        // Add class expression builder
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
             goto err;
         }
-    } else {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Restriction declaration statements must have blank subject nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
     }
     
 err:
