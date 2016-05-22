@@ -110,6 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (OWLRDFTerm *)OWLSomeValuesFrom;
 + (OWLRDFTerm *)OWLSourceIndividual;
 + (OWLRDFTerm *)OWLSymmetricProperty;
++ (OWLRDFTerm *)OWLTargetIndividual;
 + (OWLRDFTerm *)OWLTargetValue;
 + (OWLRDFTerm *)OWLThing;
 + (OWLRDFTerm *)OWLTransitiveProperty;

@@ -127,6 +127,7 @@ LAZY_STATIC_TERM(OWLSameAs, OWLNamespaceOWL, @"sameAs");
 LAZY_STATIC_TERM(OWLSomeValuesFrom, OWLNamespaceOWL, @"someValuesFrom");
 LAZY_STATIC_TERM(OWLSourceIndividual, OWLNamespaceOWL, @"sourceIndividual");
 LAZY_STATIC_TERM(OWLSymmetricProperty, OWLNamespaceOWL, @"SymmetricProperty");
+LAZY_STATIC_TERM(OWLTargetIndividual, OWLNamespaceOWL, @"targetIndividual");
 LAZY_STATIC_TERM(OWLTargetValue, OWLNamespaceOWL, @"targetValue");
 LAZY_STATIC_TERM(OWLThing, OWLNamespaceOWL, @"Thing");
 LAZY_STATIC_TERM(OWLTransitiveProperty, OWLNamespaceOWL, @"TransitiveProperty");
