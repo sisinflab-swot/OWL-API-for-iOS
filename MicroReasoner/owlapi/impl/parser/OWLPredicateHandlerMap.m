@@ -86,6 +86,7 @@ map[[OWLRDFVocabulary name].stringValue] = notImplemented
     handlerNotImplemented(OWLQualifiedCardinality);
     handlerNotImplemented(OWLSameAs);
     handlerNotImplemented(OWLSourceIndividual);
+    handlerNotImplemented(OWLTargetIndividual);
     handlerNotImplemented(OWLTargetValue);
     handlerNotImplemented(OWLUnionOf);
     handlerNotImplemented(OWLWithRestrictions);
