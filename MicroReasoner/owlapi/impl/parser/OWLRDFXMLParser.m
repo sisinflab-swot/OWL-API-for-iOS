@@ -92,31 +92,35 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
         goto err;
     }
     
-    {
-        stream = librdf_parser_parse_as_stream(parser, uri, uri);
-        
-        if (stream == NULL) {
-            localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                              localizedDescription:@"Failed to parse file."
-                                          userInfo:@{@"URL": URL}];
-        }
-        
-        BOOL hasNext = NO;
-        
-        do {
-            @autoreleasepool {
-                librdf_statement *statement = librdf_stream_get_object(stream);
-                RDFStatement *stmt = [[RDFStatement alloc] initWithWrappedObject:statement owner:NO];
-                
-                NSError *__autoreleasing statementError = nil;
-                if (![self handleStatement:stmt error:&statementError]) {
-                    [errors addObject:statementError];
-                }
-                
-                hasNext = (librdf_stream_next(stream) == 0);
-            }
-        } while (hasNext);
+    stream = librdf_parser_parse_as_stream(parser, uri, uri);
+    
+    if (stream == NULL) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                          localizedDescription:@"Failed to parse file."
+                                      userInfo:@{@"URL": URL}];
     }
+    
+    do {
+        @autoreleasepool
+        {
+            NSError *__autoreleasing statementError = nil;
+            librdf_statement *triple = librdf_stream_get_object(stream);
+            
+            if (!triple) {
+                statementError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                                      localizedDescription:@"Error while parsing file."
+                                                  userInfo:@{@"URL": URL}];
+                [errors addObject:statementError];
+                continue;
+            }
+            
+            RDFStatement *statement = [[RDFStatement alloc] initWithWrappedObject:triple owner:NO];
+            
+            if (![self handleStatement:statement error:&statementError]) {
+                [errors addObject:statementError];
+            }
+        }
+    } while (librdf_stream_next(stream) == 0);
     
 err:
     librdf_free_uri(uri);
