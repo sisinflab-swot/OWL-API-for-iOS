@@ -14,8 +14,9 @@
 #import "OWLOntologyBuilder.h"
 #import "OWLPropertyBuilder.h"
 #import "OWLRDFVocabulary.h"
+#import "RDFNode.h"
+#import "RDFStatement.h"
 #import "SMRPreprocessor.h"
-#import <Redland-ObjC.h>
 
 @interface OWLRDFTypeHandlerMap ()
 {
@@ -81,7 +82,7 @@ map[[OWLRDFVocabulary name].stringValue] = notImplemented
 
 #pragma mark Not implemented handler
 
-OWLStatementHandler oNotImplementedHandler = ^BOOL(RedlandStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler oNotImplementedHandler = ^BOOL(RDFStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -93,10 +94,10 @@ OWLStatementHandler oNotImplementedHandler = ^BOOL(RedlandStatement *statement, 
 
 #pragma mark Class declaration handler
 
-OWLStatementHandler oClassHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler oClassHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
+    RDFNode *subject = statement.subject;
     
     if (subject.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -150,10 +151,10 @@ err:
 
 #pragma mark Named individual declaration handler
 
-OWLStatementHandler oNamedIndividualHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler oNamedIndividualHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
+    RDFNode *subject = statement.subject;
     
     if (!subject.isResource) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -193,10 +194,10 @@ err:
 
 #pragma mark Object property declaration handler
 
-OWLStatementHandler oObjectPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler oObjectPropertyHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
+    RDFNode *subject = statement.subject;
     
     if (!subject.isResource) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -240,10 +241,10 @@ err:
 
 #pragma mark Ontology IRI declaration handler
 
-OWLStatementHandler oOntologyIRIHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler oOntologyIRIHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
+    RDFNode *subject = statement.subject;
     
     if (!subject.isResource) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -252,8 +253,11 @@ OWLStatementHandler oOntologyIRIHandler = ^BOOL(RedlandStatement *statement, OWL
         goto err;
     }
     
-    if (![builder setOntologyIRI:subject.URIStringValue error:&localError]) {
-        goto err;
+    {
+        NSString *subjectIRI = subject.URIStringValue;
+        if (![builder setOntologyIRI:subjectIRI error:&localError]) {
+            goto err;
+        }
     }
     
 err:
@@ -266,10 +270,10 @@ err:
 
 #pragma mark Restriction declaration handler
 
-OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler oRestrictionHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
+    RDFNode *subject = statement.subject;
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -280,7 +284,8 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RedlandStatement *statement, OWL
     
     {
         // Restriction declaration
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
+        NSString *subjectID = subject.blankID;
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
             goto err;

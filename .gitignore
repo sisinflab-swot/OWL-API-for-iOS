@@ -79,3 +79,7 @@ xcuserdata
 
 ### AppCode ###
 .idea/
+
+
+### Project specific ###
+librdf/build

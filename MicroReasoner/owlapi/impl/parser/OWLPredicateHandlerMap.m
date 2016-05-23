@@ -16,8 +16,9 @@
 #import "OWLPropertyBuilder.h"
 #import "OWLRDFTypeHandlerMap.h"
 #import "OWLRDFVocabulary.h"
+#import "RDFNode.h"
+#import "RDFStatement.h"
 #import "SMRPreprocessor.h"
-#import <Redland-ObjC.h>
 
 @interface OWLPredicateHandlerMap ()
 {
@@ -119,7 +120,7 @@ map[[OWLRDFVocabulary name].stringValue] = notImplemented
 
 #pragma mark Unsupported predicate handler
 
-OWLStatementHandler pUnsupportedPredicateHandler = ^BOOL(RedlandStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pUnsupportedPredicateHandler = ^BOOL(RDFStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -131,10 +132,10 @@ OWLStatementHandler pUnsupportedPredicateHandler = ^BOOL(RedlandStatement *state
 
 #pragma mark rdf:type predicate handler
 
-NS_INLINE BOOL handleClassAssertionStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL named, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntologyBuilder *builder, BOOL named, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
-    RedlandNode *subject = statement.subject;
+    RDFNode *subject = statement.subject;
     
     if (!subject.isResource) {
         // TODO: anonymous individuals are currently unsupported
@@ -197,7 +198,7 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pRDFTypeHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     static id<OWLStatementHandlerMap> objectHandlerMap;
     static dispatch_once_t onceToken;
@@ -206,11 +207,12 @@ OWLStatementHandler pRDFTypeHandler = ^BOOL(RedlandStatement *statement, OWLOnto
     });
     
     NSError *__autoreleasing localError = nil;
-    RedlandNode *object = statement.object;
+    RDFNode *object = statement.object;
     
     if (object.isResource) {
         
-        OWLStatementHandler handler = [objectHandlerMap handlerForSignature:object.URIStringValue];
+        NSString *objectID = object.URIStringValue;
+        OWLStatementHandler handler = [objectHandlerMap handlerForSignature:objectID];
         
         if (handler) {
             // Declaration of named entity
@@ -241,13 +243,13 @@ err:
 
 #pragma mark Property assertion handler
 
-OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *predicate = statement.predicate;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *predicate = statement.predicate;
+    RDFNode *object = statement.object;
     
     if (object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -290,12 +292,12 @@ err:
 
 #pragma mark rdf:first and rdf:rest predicate handlers
 
-NS_INLINE BOOL handleListStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL first, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleListStatement(RDFStatement *statement, OWLOntologyBuilder *builder, BOOL first, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -333,24 +335,24 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pRDFFirstHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pRDFFirstHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleListStatement(statement, builder, YES, error);
 };
 
-OWLStatementHandler pRDFRestHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pRDFRestHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleListStatement(statement, builder, NO, error);
 };
 
 #pragma mark owl:allValuesFrom and owl:someValuesFrom predicate handlers
 
-NS_INLINE BOOL handleQuantificationStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL universal, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleQuantificationStatement(RDFStatement *statement, OWLOntologyBuilder *builder, BOOL universal, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -409,24 +411,24 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pAllValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pAllValuesFromHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleQuantificationStatement(statement, builder, YES, error);
 };
 
-OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleQuantificationStatement(statement, builder, NO, error);
 };
 
 #pragma mark owl:cardinality, owl:minCardinality and owl:maxCardinality predicate handlers
 
-NS_INLINE BOOL handleCardinalityStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, OWLCEBRestrictionType restrType, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleCardinalityStatement(RDFStatement *statement, OWLOntologyBuilder *builder, OWLCEBRestrictionType restrType, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -444,13 +446,16 @@ NS_INLINE BOOL handleCardinalityStatement(RedlandStatement *statement, OWLOntolo
     
     {
         // Add restriction
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
+        NSString *subjectID = subject.blankID;
+        NSString *objectValue = object.literalValue;
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setRestrictionType:restrType error:&localError]) {
             goto err;
         }
         
-        if (![ceb setCardinality:object.literalValue error:&localError]) {
+        if (![ceb setCardinality:objectValue error:&localError]) {
             goto err;
         }
     }
@@ -464,29 +469,29 @@ err:
     
 }
 
-OWLStatementHandler pCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pCardinalityHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeCardinality, error);
 };
 
-OWLStatementHandler pMinCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pMinCardinalityHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMinCardinality, error);
 };
 
-OWLStatementHandler pMaxCardinalityHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pMaxCardinalityHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMaxCardinality, error);
 };
 
 #pragma mark owl:disjointWith, owl:equivalentClass and rdfs:subClassOf predicate handlers
 
-NS_INLINE BOOL handleBinaryCEAxiomStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, OWLABType axiomType, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntologyBuilder *builder, OWLABType axiomType, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (subject.isLiteral || object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -545,29 +550,29 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pDisjointWithHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pDisjointWithHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeDisjointClasses, error);
 };
 
-OWLStatementHandler pEquivalentClassHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pEquivalentClassHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeEquivalentClasses, error);
 };
 
-OWLStatementHandler pSubClassOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pSubClassOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeSubClassOf, error);
 };
 
 #pragma mark owl:intersectionOf predicate handler
 
-OWLStatementHandler pIntersectionOfHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pIntersectionOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (!(subject.isBlank && object.isBlank)) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -578,13 +583,16 @@ OWLStatementHandler pIntersectionOfHandler = ^BOOL(RedlandStatement *statement, 
     
     {
         // Add class expression
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
+        NSString *subjectID = subject.blankID;
+        NSString *objectID = object.blankID;
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setBooleanType:OWLCEBBooleanTypeIntersection error:&localError]) {
             goto err;
         }
         
-        if (![ceb setListID:object.blankID error:&localError]) {
+        if (![ceb setListID:objectID error:&localError]) {
             goto err;
         }
     }
@@ -599,12 +607,12 @@ err:
 
 #pragma mark owl:onProperty predicate handler
 
-OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pOnPropertyHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (!subject.isBlank) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -639,7 +647,8 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RedlandStatement *statement, OWLO
         }
         
         // Add class expression builder
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subject.blankID error:&localError];
+        NSString *subjectID = subject.blankID;
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
         
         if (![ceb setPropertyID:objectID error:&localError]) {
             goto err;
@@ -656,12 +665,12 @@ err:
 
 #pragma mark rdfs:domain and rdfs:range predicate handlers
 
-NS_INLINE BOOL handleDomainRangeStatement(RedlandStatement *statement, OWLOntologyBuilder *builder, BOOL domain, NSError *__autoreleasing *error)
+NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBuilder *builder, BOOL domain, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (subject.isLiteral || object.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -732,24 +741,24 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pDomainHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pDomainHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleDomainRangeStatement(statement, builder, YES, error);
 };
 
-OWLStatementHandler pRangeHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pRangeHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleDomainRangeStatement(statement, builder, NO, error);
 };
 
 #pragma mark Ontology version IRI handler
 
-OWLStatementHandler pVersionIRIHandler = ^BOOL(RedlandStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+OWLStatementHandler pVersionIRIHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *object = statement.object;
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
     
     if (!(subject.isResource && object.isResource)) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -758,12 +767,17 @@ OWLStatementHandler pVersionIRIHandler = ^BOOL(RedlandStatement *statement, OWLO
         goto err;
     }
     
-    if (![builder setOntologyIRI:subject.URIStringValue error:&localError]) {
-        goto err;
-    }
-    
-    if (![builder setVersionIRI:object.URIStringValue error:&localError]) {
-        goto err;
+    {
+        NSString *subjectIRI = subject.URIStringValue;
+        NSString *objectIRI = object.URIStringValue;
+        
+        if (![builder setOntologyIRI:subjectIRI error:&localError]) {
+            goto err;
+        }
+        
+        if (![builder setVersionIRI:objectIRI error:&localError]) {
+            goto err;
+        }
     }
     
 err:

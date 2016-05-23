@@ -12,8 +12,10 @@
 #import "OWLOntologyBuilder.h"
 #import "OWLPredicateHandlerMap.h"
 #import "OWLRDFVocabulary.h"
+#import "RDFNode.h"
+#import "RDFStatement.h"
 #import "SMRPreprocessor.h"
-#import <Redland-ObjC.h>
+#import "redland.h"
 
 #pragma mark Extension
 
@@ -75,25 +77,53 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
     NSError *__autoreleasing localError = nil;
     NSMutableArray<NSError *> *errors = self.errors;
     
-    RedlandParser *parser = [[RedlandParser alloc] initWithName:RedlandRDFXMLParserName];
-    RedlandURI *baseURI = [RedlandURI URIWithString:OWLNamespaceRDFSyntax.prefix];
+    librdf_world *world = librdf_new_world();
+    librdf_world_open(world);
     
-    RedlandStream *stream = [parser parseFileAtPath:URL.path asStreamWithBaseURI:baseURI error:&localError];
+    librdf_parser *parser = librdf_new_parser(world, "rdfxml", NULL, NULL);
+    librdf_stream *stream = NULL;
     
-    if (!stream) {
+    librdf_uri *uri = librdf_new_uri_from_filename(world, [URL.path UTF8String]);
+    
+    if (uri == NULL) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                          localizedDescription:@"librdf_new_uri_from_filename failed."
+                                      userInfo:@{@"URL": URL}];
         goto err;
     }
     
-    for (RedlandStatement *statement in stream.statementEnumerator) {
-        NSError *__autoreleasing statementError = nil;
-        @autoreleasepool {
-            if (![self handleStatement:statement error:&statementError] && statementError) {
-                [errors addObject:statementError];
-            }
+    {
+        stream = librdf_parser_parse_as_stream(parser, uri, uri);
+        
+        if (stream == NULL) {
+            localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                              localizedDescription:@"Failed to parse file."
+                                          userInfo:@{@"URL": URL}];
         }
+        
+        BOOL hasNext = NO;
+        
+        do {
+            @autoreleasepool {
+                librdf_statement *statement = librdf_stream_get_object(stream);
+                RDFStatement *stmt = [[RDFStatement alloc] initWithWrappedObject:statement owner:NO];
+                
+                NSError *__autoreleasing statementError = nil;
+                if (![self handleStatement:stmt error:&statementError]) {
+                    [errors addObject:statementError];
+                }
+                
+                hasNext = (librdf_stream_next(stream) == 0);
+            }
+        } while (hasNext);
     }
     
 err:
+    librdf_free_uri(uri);
+    librdf_free_stream(stream);
+    librdf_free_parser(parser);
+    librdf_free_world(world);
+    
     if (error) {
         *error = localError;
     }
@@ -101,13 +131,13 @@ err:
     return !localError;
 }
 
-- (BOOL)handleStatement:(RedlandStatement *)statement error:(NSError *_Nullable __autoreleasing *)error
+- (BOOL)handleStatement:(RDFStatement *)statement error:(NSError *_Nullable __autoreleasing *)error
 {
     NSError *__autoreleasing localError = nil;
     OWLRDFXMLParser *__weak weakSelf = self;
     
-    RedlandNode *subject = statement.subject;
-    RedlandNode *predicate = statement.predicate;
+    RDFNode *subject = statement.subject;
+    RDFNode *predicate = statement.predicate;
     
     if (!predicate.isResource) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -124,7 +154,8 @@ err:
     }
     
     {
-        OWLStatementHandler handler = [self.predicateHandlerMap handlerForSignature:predicate.URIStringValue];
+        NSString *signature = predicate.URIStringValue;
+        OWLStatementHandler handler = [self.predicateHandlerMap handlerForSignature:signature];
         if (handler && !handler(statement, weakSelf.ontologyBuilder, &localError)) {
             goto err;
         }

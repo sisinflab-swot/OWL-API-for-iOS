@@ -123,7 +123,6 @@
 		CC6BA93F1CE8EA31002ECC26 /* OWLOntologyBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA8F11CE8EA31002ECC26 /* OWLOntologyBuilder.m */; };
 		CC6BA9401CE8EA31002ECC26 /* OWLRDFXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = CC6BA8F21CE8EA31002ECC26 /* OWLRDFXMLParser.h */; };
 		CC6BA9411CE8EA31002ECC26 /* OWLRDFXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CC6BA8F31CE8EA31002ECC26 /* OWLRDFXMLParser.m */; };
-		CC6BF4261CD67B9E00DEA3B1 /* libRedland-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */; };
 		CC73929C1CE62614000D4076 /* OWLEntityType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC73929B1CE62614000D4076 /* OWLEntityType.h */; };
 		CC7AAF581CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC7AAF571CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h */; };
 		CC7CD0841CE093540001B228 /* OWLNAryAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC7CD0831CE093540001B228 /* OWLNAryAxiom.h */; };
@@ -152,6 +151,39 @@
 		CCB648231CDE715C00C2A761 /* OWLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648221CDE715C00C2A761 /* OWLProperty.h */; };
 		CCB648251CDE74C800C2A761 /* OWLObjectPropertyExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */; };
 		CCB648271CDE751700C2A761 /* OWLObjectProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648261CDE751700C2A761 /* OWLObjectProperty.h */; };
+		CCCE04871CF2FA9300037488 /* RDFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04851CF2FA9300037488 /* RDFObject.h */; };
+		CCCE04881CF2FA9300037488 /* RDFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCE04861CF2FA9300037488 /* RDFObject.m */; };
+		CCCE048B1CF2FBE500037488 /* RDFNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04891CF2FBE500037488 /* RDFNode.h */; };
+		CCCE048C1CF2FBE500037488 /* RDFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCE048A1CF2FBE500037488 /* RDFNode.m */; };
+		CCCE04A91CF3016E00037488 /* librdf.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE048F1CF3016E00037488 /* librdf.h */; };
+		CCCE04AA1CF3016E00037488 /* raptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04911CF3016E00037488 /* raptor.h */; };
+		CCCE04AB1CF3016E00037488 /* raptor2.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04921CF3016E00037488 /* raptor2.h */; };
+		CCCE04AC1CF3016E00037488 /* rasqal.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04941CF3016E00037488 /* rasqal.h */; };
+		CCCE04AD1CF3016E00037488 /* rdf_concepts.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04951CF3016E00037488 /* rdf_concepts.h */; };
+		CCCE04AE1CF3016E00037488 /* rdf_digest.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04961CF3016E00037488 /* rdf_digest.h */; };
+		CCCE04AF1CF3016E00037488 /* rdf_hash.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04971CF3016E00037488 /* rdf_hash.h */; };
+		CCCE04B01CF3016E00037488 /* rdf_init.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04981CF3016E00037488 /* rdf_init.h */; };
+		CCCE04B11CF3016E00037488 /* rdf_iterator.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04991CF3016E00037488 /* rdf_iterator.h */; };
+		CCCE04B21CF3016E00037488 /* rdf_list.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE049A1CF3016E00037488 /* rdf_list.h */; };
+		CCCE04B31CF3016E00037488 /* rdf_log.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE049B1CF3016E00037488 /* rdf_log.h */; };
+		CCCE04B41CF3016E00037488 /* rdf_model.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE049C1CF3016E00037488 /* rdf_model.h */; };
+		CCCE04B51CF3016E00037488 /* rdf_node.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE049D1CF3016E00037488 /* rdf_node.h */; };
+		CCCE04B61CF3016E00037488 /* rdf_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE049E1CF3016E00037488 /* rdf_parser.h */; };
+		CCCE04B71CF3016E00037488 /* rdf_query.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE049F1CF3016E00037488 /* rdf_query.h */; };
+		CCCE04B81CF3016E00037488 /* rdf_raptor.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A01CF3016E00037488 /* rdf_raptor.h */; };
+		CCCE04B91CF3016E00037488 /* rdf_serializer.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A11CF3016E00037488 /* rdf_serializer.h */; };
+		CCCE04BA1CF3016E00037488 /* rdf_statement.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A21CF3016E00037488 /* rdf_statement.h */; };
+		CCCE04BB1CF3016E00037488 /* rdf_storage.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A31CF3016E00037488 /* rdf_storage.h */; };
+		CCCE04BC1CF3016E00037488 /* rdf_storage_module.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A41CF3016E00037488 /* rdf_storage_module.h */; };
+		CCCE04BD1CF3016E00037488 /* rdf_stream.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A51CF3016E00037488 /* rdf_stream.h */; };
+		CCCE04BE1CF3016E00037488 /* rdf_uri.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A61CF3016E00037488 /* rdf_uri.h */; };
+		CCCE04BF1CF3016E00037488 /* rdf_utf8.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A71CF3016E00037488 /* rdf_utf8.h */; };
+		CCCE04C01CF3016E00037488 /* redland.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04A81CF3016E00037488 /* redland.h */; };
+		CCCE04C31CF3045100037488 /* RDFStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04C11CF3045100037488 /* RDFStatement.h */; };
+		CCCE04C41CF3045100037488 /* RDFStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCE04C21CF3045100037488 /* RDFStatement.m */; };
+		CCCE04C61CF3121300037488 /* libraptor2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE04C51CF3121300037488 /* libraptor2.a */; };
+		CCCE04C81CF3122500037488 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE04C71CF3122500037488 /* librasqal.a */; };
+		CCCE04CA1CF3123300037488 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE04C91CF3123300037488 /* librdf.a */; };
 		CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCD596831CF0553100EC2F33 /* OWLPredicateHandlerMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD596811CF0553100EC2F33 /* OWLPredicateHandlerMap.h */; };
 		CCD596841CF0553100EC2F33 /* OWLPredicateHandlerMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD596821CF0553100EC2F33 /* OWLPredicateHandlerMap.m */; };
@@ -184,34 +216,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = CCD2FC3D1CD5F7B3003F8CC8;
 			remoteInfo = MicroReasoner;
-		};
-		CC6BF41E1CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = Redland;
-		};
-		CC6BF4201CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEE7B44E15C84978004D5A68;
-			remoteInfo = "redland-ios";
-		};
-		CC6BF4221CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CCF6966D1C6274AB00CF65AF;
-			remoteInfo = Tests;
-		};
-		CC6BF4241CD67B4D00DEA3B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CCF6964B1C62701F00CF65AF;
-			remoteInfo = "iOS-Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -333,7 +337,6 @@
 		CC6BA8F11CE8EA31002ECC26 /* OWLOntologyBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyBuilder.m; sourceTree = "<group>"; };
 		CC6BA8F21CE8EA31002ECC26 /* OWLRDFXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLRDFXMLParser.h; sourceTree = "<group>"; };
 		CC6BA8F31CE8EA31002ECC26 /* OWLRDFXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLRDFXMLParser.m; sourceTree = "<group>"; };
-		CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Redland.xcodeproj; path = "Redland-ObjC/Redland.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		CC73929B1CE62614000D4076 /* OWLEntityType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLEntityType.h; sourceTree = "<group>"; };
 		CC7AAF571CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectSomeValuesFrom.h; sourceTree = "<group>"; };
 		CC7CD0831CE093540001B228 /* OWLNAryAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLNAryAxiom.h; sourceTree = "<group>"; };
@@ -362,6 +365,39 @@
 		CCB648221CDE715C00C2A761 /* OWLProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLProperty.h; sourceTree = "<group>"; };
 		CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyExpression.h; sourceTree = "<group>"; };
 		CCB648261CDE751700C2A761 /* OWLObjectProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectProperty.h; sourceTree = "<group>"; };
+		CCCE04851CF2FA9300037488 /* RDFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFObject.h; sourceTree = "<group>"; };
+		CCCE04861CF2FA9300037488 /* RDFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDFObject.m; sourceTree = "<group>"; };
+		CCCE04891CF2FBE500037488 /* RDFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFNode.h; sourceTree = "<group>"; };
+		CCCE048A1CF2FBE500037488 /* RDFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDFNode.m; sourceTree = "<group>"; };
+		CCCE048F1CF3016E00037488 /* librdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = librdf.h; sourceTree = "<group>"; };
+		CCCE04911CF3016E00037488 /* raptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = raptor.h; sourceTree = "<group>"; };
+		CCCE04921CF3016E00037488 /* raptor2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = raptor2.h; sourceTree = "<group>"; };
+		CCCE04941CF3016E00037488 /* rasqal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rasqal.h; sourceTree = "<group>"; };
+		CCCE04951CF3016E00037488 /* rdf_concepts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_concepts.h; sourceTree = "<group>"; };
+		CCCE04961CF3016E00037488 /* rdf_digest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_digest.h; sourceTree = "<group>"; };
+		CCCE04971CF3016E00037488 /* rdf_hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_hash.h; sourceTree = "<group>"; };
+		CCCE04981CF3016E00037488 /* rdf_init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_init.h; sourceTree = "<group>"; };
+		CCCE04991CF3016E00037488 /* rdf_iterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_iterator.h; sourceTree = "<group>"; };
+		CCCE049A1CF3016E00037488 /* rdf_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_list.h; sourceTree = "<group>"; };
+		CCCE049B1CF3016E00037488 /* rdf_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_log.h; sourceTree = "<group>"; };
+		CCCE049C1CF3016E00037488 /* rdf_model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_model.h; sourceTree = "<group>"; };
+		CCCE049D1CF3016E00037488 /* rdf_node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_node.h; sourceTree = "<group>"; };
+		CCCE049E1CF3016E00037488 /* rdf_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_parser.h; sourceTree = "<group>"; };
+		CCCE049F1CF3016E00037488 /* rdf_query.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_query.h; sourceTree = "<group>"; };
+		CCCE04A01CF3016E00037488 /* rdf_raptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_raptor.h; sourceTree = "<group>"; };
+		CCCE04A11CF3016E00037488 /* rdf_serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_serializer.h; sourceTree = "<group>"; };
+		CCCE04A21CF3016E00037488 /* rdf_statement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_statement.h; sourceTree = "<group>"; };
+		CCCE04A31CF3016E00037488 /* rdf_storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_storage.h; sourceTree = "<group>"; };
+		CCCE04A41CF3016E00037488 /* rdf_storage_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_storage_module.h; sourceTree = "<group>"; };
+		CCCE04A51CF3016E00037488 /* rdf_stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_stream.h; sourceTree = "<group>"; };
+		CCCE04A61CF3016E00037488 /* rdf_uri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_uri.h; sourceTree = "<group>"; };
+		CCCE04A71CF3016E00037488 /* rdf_utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdf_utf8.h; sourceTree = "<group>"; };
+		CCCE04A81CF3016E00037488 /* redland.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = redland.h; sourceTree = "<group>"; };
+		CCCE04C11CF3045100037488 /* RDFStatement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFStatement.h; sourceTree = "<group>"; };
+		CCCE04C21CF3045100037488 /* RDFStatement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDFStatement.m; sourceTree = "<group>"; };
+		CCCE04C51CF3121300037488 /* libraptor2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraptor2.a; path = "build/Universal-iOS-Sim/libraptor2.a"; sourceTree = "<group>"; };
+		CCCE04C71CF3122500037488 /* librasqal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librasqal.a; path = "build/Universal-iOS-Sim/librasqal.a"; sourceTree = "<group>"; };
+		CCCE04C91CF3123300037488 /* librdf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librdf.a; path = "build/Universal-iOS-Sim/librdf.a"; sourceTree = "<group>"; };
 		CCD2FC3E1CD5F7B3003F8CC8 /* MicroReasoner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MicroReasoner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicroReasoner.h; sourceTree = "<group>"; };
 		CCD2FC431CD5F7B3003F8CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -403,7 +439,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC6BF4261CD67B9E00DEA3B1 /* libRedland-iOS.a in Frameworks */,
+				CCCE04CA1CF3123300037488 /* librdf.a in Frameworks */,
+				CCCE04C61CF3121300037488 /* libraptor2.a in Frameworks */,
+				CCCE04C81CF3122500037488 /* librasqal.a in Frameworks */,
 				CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */,
 				CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */,
 				CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */,
@@ -425,7 +463,7 @@
 		CC2747C11CD5F8E0009E6792 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */,
+				CCCE048D1CF3016E00037488 /* librdf */,
 				CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */,
 				CC2747D91CD5FA01009E6792 /* libxslt.tbd */,
 				CC2747D71CD5F9FA009E6792 /* libxml2.tbd */,
@@ -576,15 +614,75 @@
 			path = parser;
 			sourceTree = "<group>";
 		};
-		CC6BF4141CD67B4D00DEA3B1 /* Products */ = {
+		CCCE047C1CF2FA4C00037488 /* rdf */ = {
 			isa = PBXGroup;
 			children = (
-				CC6BF41F1CD67B4D00DEA3B1 /* Redland.framework */,
-				CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */,
-				CC6BF4231CD67B4D00DEA3B1 /* Redland-Mac-Tests.xctest */,
-				CC6BF4251CD67B4D00DEA3B1 /* Redland-iOS-Tests.xctest */,
+				CCCE04891CF2FBE500037488 /* RDFNode.h */,
+				CCCE048A1CF2FBE500037488 /* RDFNode.m */,
+				CCCE04851CF2FA9300037488 /* RDFObject.h */,
+				CCCE04861CF2FA9300037488 /* RDFObject.m */,
+				CCCE04C11CF3045100037488 /* RDFStatement.h */,
+				CCCE04C21CF3045100037488 /* RDFStatement.m */,
 			);
-			name = Products;
+			path = rdf;
+			sourceTree = "<group>";
+		};
+		CCCE048D1CF3016E00037488 /* librdf */ = {
+			isa = PBXGroup;
+			children = (
+				CCCE048E1CF3016E00037488 /* include */,
+				CCCE04C91CF3123300037488 /* librdf.a */,
+				CCCE04C71CF3122500037488 /* librasqal.a */,
+				CCCE04C51CF3121300037488 /* libraptor2.a */,
+			);
+			path = librdf;
+			sourceTree = SOURCE_ROOT;
+		};
+		CCCE048E1CF3016E00037488 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				CCCE048F1CF3016E00037488 /* librdf.h */,
+				CCCE04901CF3016E00037488 /* raptor2 */,
+				CCCE04931CF3016E00037488 /* rasqal */,
+				CCCE04951CF3016E00037488 /* rdf_concepts.h */,
+				CCCE04961CF3016E00037488 /* rdf_digest.h */,
+				CCCE04971CF3016E00037488 /* rdf_hash.h */,
+				CCCE04981CF3016E00037488 /* rdf_init.h */,
+				CCCE04991CF3016E00037488 /* rdf_iterator.h */,
+				CCCE049A1CF3016E00037488 /* rdf_list.h */,
+				CCCE049B1CF3016E00037488 /* rdf_log.h */,
+				CCCE049C1CF3016E00037488 /* rdf_model.h */,
+				CCCE049D1CF3016E00037488 /* rdf_node.h */,
+				CCCE049E1CF3016E00037488 /* rdf_parser.h */,
+				CCCE049F1CF3016E00037488 /* rdf_query.h */,
+				CCCE04A01CF3016E00037488 /* rdf_raptor.h */,
+				CCCE04A11CF3016E00037488 /* rdf_serializer.h */,
+				CCCE04A21CF3016E00037488 /* rdf_statement.h */,
+				CCCE04A31CF3016E00037488 /* rdf_storage.h */,
+				CCCE04A41CF3016E00037488 /* rdf_storage_module.h */,
+				CCCE04A51CF3016E00037488 /* rdf_stream.h */,
+				CCCE04A61CF3016E00037488 /* rdf_uri.h */,
+				CCCE04A71CF3016E00037488 /* rdf_utf8.h */,
+				CCCE04A81CF3016E00037488 /* redland.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		CCCE04901CF3016E00037488 /* raptor2 */ = {
+			isa = PBXGroup;
+			children = (
+				CCCE04911CF3016E00037488 /* raptor.h */,
+				CCCE04921CF3016E00037488 /* raptor2.h */,
+			);
+			path = raptor2;
+			sourceTree = "<group>";
+		};
+		CCCE04931CF3016E00037488 /* rasqal */ = {
+			isa = PBXGroup;
+			children = (
+				CCCE04941CF3016E00037488 /* rasqal.h */,
+			);
+			path = rasqal;
 			sourceTree = "<group>";
 		};
 		CCD2FC341CD5F7B3003F8CC8 = {
@@ -610,6 +708,7 @@
 			isa = PBXGroup;
 			children = (
 				CC1417BD1CED240300165477 /* categories */,
+				CCCE047C1CF2FA4C00037488 /* rdf */,
 				CCEF46701CD8E7AC008C3D88 /* owlapi */,
 				CCDC44851CDB83AF00854918 /* SMRPreprocessor.h */,
 				CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */,
@@ -696,23 +795,30 @@
 				CCEF46771CD8E7AC008C3D88 /* OWLOntology.h in Headers */,
 				CC2933301CDE285500315B3A /* OWLBooleanClassExpression.h in Headers */,
 				CC6BA9101CE8EA31002ECC26 /* OWLObjectAllValuesFromImpl.h in Headers */,
+				CCCE04BB1CF3016E00037488 /* rdf_storage.h in Headers */,
 				CCEF46751CD8E7AC008C3D88 /* OWLClass.h in Headers */,
 				CC6BA91C1CE8EA31002ECC26 /* OWLObjectMinCardinalityImpl.h in Headers */,
 				CC1417B01CECC28E00165477 /* OWLAxiomBuilderType.h in Headers */,
 				CCDC44891CDBAD2C00854918 /* OWLClassExpressionType.h in Headers */,
 				CC2933311CDE285500315B3A /* OWLNAryBooleanClassExpression.h in Headers */,
 				CC6BA9311CE8EA31002ECC26 /* OWLPropertyRangeAxiomImpl.h in Headers */,
+				CCCE04B71CF3016E00037488 /* rdf_query.h in Headers */,
 				CC5E32301CEB37440024D175 /* OWLAbstractBuilder.h in Headers */,
 				CCA21A351CF1C1B000FA9BCA /* OWLObjectPropertyAssertionAxiom.h in Headers */,
 				CCEF46841CD8F0CB008C3D88 /* OWLClassExpression.h in Headers */,
 				CC6BA8FC1CE8EA31002ECC26 /* OWLDeclarationAxiomImpl.h in Headers */,
+				CCCE04BE1CF3016E00037488 /* rdf_uri.h in Headers */,
 				CC8778891CDD4DC80058F677 /* OWLPropertyRange.h in Headers */,
+				CCCE048B1CF2FBE500037488 /* RDFNode.h in Headers */,
 				CCB6481D1CDE6A0D00C2A761 /* OWLObjectExactCardinality.h in Headers */,
 				CCDC44761CDB3A1F00854918 /* OWLSubClassOfAxiom.h in Headers */,
 				CCEF467E1CD8EEFD008C3D88 /* OWLObject.h in Headers */,
+				CCCE04C31CF3045100037488 /* RDFStatement.h in Headers */,
+				CCCE04AD1CF3016E00037488 /* rdf_concepts.h in Headers */,
 				CCD5968E1CF05EA700EC2F33 /* OWLStatementHandlerMap.h in Headers */,
 				CC6BA9351CE8EA31002ECC26 /* OWLQuantifiedRestrictionImpl.h in Headers */,
 				CC6BA93C1CE8EA31002ECC26 /* OWLUnaryPropertyAxiomImpl.h in Headers */,
+				CCCE04BD1CF3016E00037488 /* rdf_stream.h in Headers */,
 				CCA21A2B1CF1C0C900FA9BCA /* OWLPropertyAssertionAxiom.h in Headers */,
 				CC6BA91A1CE8EA31002ECC26 /* OWLObjectMaxCardinalityImpl.h in Headers */,
 				CCB648171CDE68DB00C2A761 /* OWLObjectMinCardinality.h in Headers */,
@@ -721,12 +827,15 @@
 				CCDC44741CDB39EA00854918 /* OWLClassAxiom.h in Headers */,
 				CC6BA92D1CE8EA31002ECC26 /* OWLOntologyManagerImpl.h in Headers */,
 				CC6BA8F81CE8EA31002ECC26 /* OWLClassAssertionAxiomImpl.h in Headers */,
+				CCCE04871CF2FA9300037488 /* RDFObject.h in Headers */,
 				CC11C18D1CE890340090A07C /* OWLClassAssertionAxiom.h in Headers */,
 				CC1417BA1CECC2C800165477 /* OWLClassExpressionBuilderType.h in Headers */,
 				CC6BA93A1CE8EA31002ECC26 /* OWLSubClassOfAxiomImpl.h in Headers */,
+				CCCE04C01CF3016E00037488 /* redland.h in Headers */,
 				CC7CD09A1CE0AA8A0001B228 /* OWLEquivalentClassesAxiom.h in Headers */,
 				CCB648251CDE74C800C2A761 /* OWLObjectPropertyExpression.h in Headers */,
 				CCDE42E41CDE3B6800232E83 /* OWLObjectMaxCardinality.h in Headers */,
+				CCCE04B31CF3016E00037488 /* rdf_log.h in Headers */,
 				CC6BA9121CE8EA31002ECC26 /* OWLObjectCardinalityRestrictionImpl.h in Headers */,
 				CC8578B81CE9C32E001A9413 /* OWLClassExpressionBuilder.h in Headers */,
 				CC87787B1CDD29100058F677 /* OWLQuantifiedObjectRestriction.h in Headers */,
@@ -736,6 +845,7 @@
 				CC6BA9001CE8EA31002ECC26 /* OWLEquivalentClassesAxiomImpl.h in Headers */,
 				CC6BA8F61CE8EA31002ECC26 /* OWLCardinalityRestrictionImpl.h in Headers */,
 				CC11C1891CE88F2E0090A07C /* OWLNamedIndividual.h in Headers */,
+				CCCE04AB1CF3016E00037488 /* raptor2.h in Headers */,
 				CCDC44721CDB39B000854918 /* OWLLogicalAxiom.h in Headers */,
 				CC6BA93E1CE8EA31002ECC26 /* OWLOntologyBuilder.h in Headers */,
 				CC6BA90E1CE8EA31002ECC26 /* OWLNAryClassAxiomImpl.h in Headers */,
@@ -747,9 +857,11 @@
 				CC6BA8F41CE8EA31002ECC26 /* OWLAnonymousClassExpressionImpl.h in Headers */,
 				CC6BA92F1CE8EA31002ECC26 /* OWLPropertyDomainAxiomImpl.h in Headers */,
 				CC6BA9331CE8EA31002ECC26 /* OWLQuantifiedObjectRestrictionImpl.h in Headers */,
+				CCCE04AE1CF3016E00037488 /* rdf_digest.h in Headers */,
 				CC8778711CDD1CA20058F677 /* OWLRestriction.h in Headers */,
 				CC6BA8FE1CE8EA31002ECC26 /* OWLDisjointClassesAxiomImpl.h in Headers */,
 				CC73929C1CE62614000D4076 /* OWLEntityType.h in Headers */,
+				CCCE04B61CF3016E00037488 /* rdf_parser.h in Headers */,
 				CC6BA90C1CE8EA31002ECC26 /* OWLNAryBooleanClassExpressionImpl.h in Headers */,
 				CCA21A3C1CF1E72900FA9BCA /* OWLObjectPropertyAssertionAxiomImpl.h in Headers */,
 				CC8778671CDD1A040058F677 /* OWLAnonymousClassExpression.h in Headers */,
@@ -761,15 +873,19 @@
 				CC6BA91E1CE8EA31002ECC26 /* OWLObjectPropertyDomainAxiomImpl.h in Headers */,
 				CC15C3631CE4B1BC009A4EFF /* OWLPropertyRangeAxiom.h in Headers */,
 				CCDE42D81CDE3ACB00232E83 /* OWLCardinalityRestriction.h in Headers */,
+				CCCE04B91CF3016E00037488 /* rdf_serializer.h in Headers */,
 				CC6BA9181CE8EA31002ECC26 /* OWLObjectIntersectionOfImpl.h in Headers */,
 				CC4D5B671CE3CF14005F7ADB /* OWLAxiomType.h in Headers */,
 				CC4D5B7D1CE3E054005F7ADB /* OWLObjectPropertyAxiom.h in Headers */,
 				CC6BA9401CE8EA31002ECC26 /* OWLRDFXMLParser.h in Headers */,
 				CC6BA9161CE8EA31002ECC26 /* OWLObjectImpl.h in Headers */,
+				CCCE04AA1CF3016E00037488 /* raptor.h in Headers */,
+				CCCE04B81CF3016E00037488 /* rdf_raptor.h in Headers */,
 				CC7AAF581CDDE81300A6D41B /* OWLObjectSomeValuesFrom.h in Headers */,
 				CC11C18B1CE890050090A07C /* OWLIndividualAxiom.h in Headers */,
 				CC399F001CE280AB001A7F19 /* OWLNamespace.h in Headers */,
 				CCEF468D1CD9077D008C3D88 /* OWLManager.h in Headers */,
+				CCCE04B11CF3016E00037488 /* rdf_iterator.h in Headers */,
 				CC2933321CDE285500315B3A /* OWLObjectIntersectionOf.h in Headers */,
 				CC11C17D1CE88E410090A07C /* OWLPropertyAssertionObject.h in Headers */,
 				CC6BA9091CE8EA31002ECC26 /* OWLNamedIndividualImpl.h in Headers */,
@@ -779,6 +895,9 @@
 				CC11C1871CE88E840090A07C /* OWLIndividual.h in Headers */,
 				CC5E32291CEB17480024D175 /* OWLIndividualBuilder.h in Headers */,
 				CC4D5B7F1CE3E0DC005F7ADB /* OWLPropertyDomainAxiom.h in Headers */,
+				CCCE04AF1CF3016E00037488 /* rdf_hash.h in Headers */,
+				CCCE04BC1CF3016E00037488 /* rdf_storage_module.h in Headers */,
+				CCCE04B21CF3016E00037488 /* rdf_list.h in Headers */,
 				CC5E32251CEB16970024D175 /* OWLAxiomBuilder.h in Headers */,
 				CC6BA9261CE8EA31002ECC26 /* OWLObjectSomeValuesFromImpl.h in Headers */,
 				CC8778731CDD1ED70058F677 /* OWLPropertyExpression.h in Headers */,
@@ -793,9 +912,16 @@
 				CC6BA9201CE8EA31002ECC26 /* OWLObjectPropertyExpressionImpl.h in Headers */,
 				CCB2824A1CEDB7D9003AAC3B /* OWLListItem.h in Headers */,
 				CC1417BC1CECC33200165477 /* OWLPropertyBuilderType.h in Headers */,
+				CCCE04B41CF3016E00037488 /* rdf_model.h in Headers */,
 				CC6BA9381CE8EA31002ECC26 /* OWLRestrictionImpl.h in Headers */,
+				CCCE04B01CF3016E00037488 /* rdf_init.h in Headers */,
+				CCCE04B51CF3016E00037488 /* rdf_node.h in Headers */,
+				CCCE04BA1CF3016E00037488 /* rdf_statement.h in Headers */,
+				CCCE04BF1CF3016E00037488 /* rdf_utf8.h in Headers */,
 				CCD596831CF0553100EC2F33 /* OWLPredicateHandlerMap.h in Headers */,
 				CCEF46861CD8F373008C3D88 /* OWLLogicalEntity.h in Headers */,
+				CCCE04AC1CF3016E00037488 /* rasqal.h in Headers */,
+				CCCE04A91CF3016E00037488 /* librdf.h in Headers */,
 				CC1417C01CED244F00165477 /* NSString+SMRStringUtils.h in Headers */,
 				CC87787D1CDD29FD0058F677 /* OWLObjectAllValuesFrom.h in Headers */,
 				CCDC44681CDB398B00854918 /* OWLAxiom.h in Headers */,
@@ -871,12 +997,6 @@
 			mainGroup = CCD2FC341CD5F7B3003F8CC8;
 			productRefGroup = CCD2FC3F1CD5F7B3003F8CC8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CC6BF4141CD67B4D00DEA3B1 /* Products */;
-					ProjectRef = CC6BF4131CD67B4D00DEA3B1 /* Redland.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CCD2FC3D1CD5F7B3003F8CC8 /* MicroReasoner */,
@@ -884,37 +1004,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		CC6BF41F1CD67B4D00DEA3B1 /* Redland.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Redland.framework;
-			remoteRef = CC6BF41E1CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CC6BF4211CD67B4D00DEA3B1 /* libRedland-iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRedland-iOS.a";
-			remoteRef = CC6BF4201CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CC6BF4231CD67B4D00DEA3B1 /* Redland-Mac-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Redland-Mac-Tests.xctest";
-			remoteRef = CC6BF4221CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CC6BF4251CD67B4D00DEA3B1 /* Redland-iOS-Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Redland-iOS-Tests.xctest";
-			remoteRef = CC6BF4241CD67B4D00DEA3B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CC5220771CD61A4700490D42 /* Resources */ = {
@@ -964,6 +1053,8 @@
 				CC6BA9071CE8EA31002ECC26 /* OWLLogicalAxiomImpl.m in Sources */,
 				CC6BA91D1CE8EA31002ECC26 /* OWLObjectMinCardinalityImpl.m in Sources */,
 				CC1417C11CED244F00165477 /* NSString+SMRStringUtils.m in Sources */,
+				CCCE04881CF2FA9300037488 /* RDFObject.m in Sources */,
+				CCCE04C41CF3045100037488 /* RDFStatement.m in Sources */,
 				CC6BA8F71CE8EA31002ECC26 /* OWLCardinalityRestrictionImpl.m in Sources */,
 				CC6BA9171CE8EA31002ECC26 /* OWLObjectImpl.m in Sources */,
 				CCA21A391CF1C2D500FA9BCA /* OWLIndividualRelationshipAxiomImpl.m in Sources */,
@@ -981,6 +1072,7 @@
 				CC5E322E1CEB28160024D175 /* OWLPropertyBuilder.m in Sources */,
 				CC6BA9011CE8EA31002ECC26 /* OWLEquivalentClassesAxiomImpl.m in Sources */,
 				CC6BA8F91CE8EA31002ECC26 /* OWLClassAssertionAxiomImpl.m in Sources */,
+				CCCE048C1CF2FBE500037488 /* RDFNode.m in Sources */,
 				CCD596841CF0553100EC2F33 /* OWLPredicateHandlerMap.m in Sources */,
 				CC6BA9371CE8EA31002ECC26 /* OWLRDFVocabulary.m in Sources */,
 				CC6BA93F1CE8EA31002ECC26 /* OWLOntologyBuilder.m in Sources */,
@@ -1098,7 +1190,10 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/**";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/librdf/include/**",
+					"${PROJECT_DIR}/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1171,7 +1266,10 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/**";
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/librdf/include/**",
+					"${PROJECT_DIR}/**",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -1195,6 +1293,10 @@
 				INFOPLIST_FILE = MicroReasoner/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/librdf/build/Universal-iOS-Sim",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = it.poliba.sisinflab.owl.MicroReasoner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1210,6 +1312,10 @@
 				INFOPLIST_FILE = MicroReasoner/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/librdf/build/Universal-iOS-Sim",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = it.poliba.sisinflab.owl.MicroReasoner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

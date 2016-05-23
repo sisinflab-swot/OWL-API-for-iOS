@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class RedlandStatement;
+@class RDFStatement;
 @class OWLOntologyBuilder;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents the handler of a RDF triple.
-typedef BOOL (^OWLStatementHandler)(RedlandStatement *, OWLOntologyBuilder *, NSError *_Nullable __autoreleasing *);
+typedef BOOL (^OWLStatementHandler)(RDFStatement *, OWLOntologyBuilder *, NSError *_Nullable __autoreleasing *);
 
 /// Maps statement signatures to their respective handlers.
 @protocol OWLStatementHandlerMap <NSObject>
