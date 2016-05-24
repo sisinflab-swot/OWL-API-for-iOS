@@ -17,24 +17,9 @@
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object
-{
-    if (object == self) {
-        return YES;
-    }
-    
-    BOOL equal = NO;
-    
-    if ([super isEqual:object]) {
-        NSURL *objIRI = [object IRI];
-        
-        equal = (objIRI == _IRI || [objIRI isEqual:_IRI]);
-    }
-    
-    return equal;
-}
+- (BOOL)isEqual:(id)object { return object == self; }
 
-- (NSUInteger)computeHash { return [_IRI hash]; }
+- (NSUInteger)hash { return (NSUInteger)self; }
 
 - (NSString *)description
 {
@@ -110,12 +95,33 @@
 
 #pragma mark Other public methods
 
+static NSMapTable *instanceCache = nil;
+
++ (void)initialize
+{
+    if (self == [OWLClassImpl class]) {
+        instanceCache = [NSMapTable strongToWeakObjectsMapTable];
+    }
+}
+
 - (instancetype)initWithIRI:(NSURL *)IRI
 {
-    if ((self = [super init])) {
-        _IRI = [IRI copy];
+    NSParameterAssert(IRI);
+    
+    id cachedInstance = [instanceCache objectForKey:IRI];
+    
+    if (cachedInstance) {
+        self = cachedInstance;
+    } else {
+        if ((self = [super init])) {
+            _IRI = [IRI copy];
+        }
+        [instanceCache setObject:self forKey:_IRI];
     }
+    
     return self;
 }
+
+- (void)dealloc { [instanceCache removeObjectForKey:_IRI]; }
 
 @end
