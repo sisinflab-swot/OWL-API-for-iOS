@@ -23,6 +23,7 @@
 #import "OWLPropertyBuilder.h"
 #import "OWLSubClassOfAxiom.h"
 #import "SMRPreprocessor.h"
+#import "NSMutableDictionary+SMRMutableDictionaryUtils.h"
 
 @interface OWLOntologyBuilder ()
 
@@ -77,29 +78,29 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
     OWLOntologyInternals *internals = [[OWLOntologyInternals alloc] init];
     
     // Declaration axioms
-    [self.declarationAxiomBuilders enumerateKeysAndObjectsUsingBlock:^(__unused NSString * _Nonnull key, OWLAxiomBuilder * _Nonnull builder, __unused BOOL * _Nonnull stop)
+    [self.declarationAxiomBuilders smr_enumerateAndRemoveKeysAndObjectsUsingBlock:^(__unused id _Nonnull key, OWLAxiomBuilder * _Nonnull builder)
     {
-        @autoreleasepool {
+        id<OWLAxiom> axiom = [builder build];
+        if (axiom && axiom.axiomType == OWLAxiomTypeDeclaration) {
+            [internals addAxiom:axiom];
+        }
+    }];
+    
+    _declarationAxiomBuilders = nil;
+    
+    // Single statement axioms
+    [self.singleStatementAxiomBuilders smr_enumerateAndRemoveKeysAndObjectsUsingBlock:^(__unused id _Nonnull key, NSMutableArray<OWLAxiomBuilder *> * _Nonnull axiomBuilders)
+    {
+        for (OWLAxiomBuilder *builder in axiomBuilders) {
+            
             id<OWLAxiom> axiom = [builder build];
-            if (axiom && axiom.axiomType == OWLAxiomTypeDeclaration) {
+            if (axiom) {
                 [internals addAxiom:axiom];
             }
         }
     }];
     
-    // Single statement axioms
-    [self.singleStatementAxiomBuilders enumerateKeysAndObjectsUsingBlock:^(__unused NSString * _Nonnull key, NSMutableArray<OWLAxiomBuilder *> * _Nonnull axiomBuilders, __unused BOOL * _Nonnull stop)
-    {
-        @autoreleasepool {
-            for (OWLAxiomBuilder *builder in axiomBuilders) {
-                
-                id<OWLAxiom> axiom = [builder build];
-                if (axiom) {
-                    [internals addAxiom:axiom];
-                }
-            }
-        }
-    }];
+    _singleStatementAxiomBuilders = nil;
     
     return [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
 }
