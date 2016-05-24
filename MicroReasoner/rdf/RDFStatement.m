@@ -12,38 +12,23 @@
 
 @implementation RDFStatement
 
-- (void)dealloc
-{
-    if (_owner) {
-        librdf_free_statement(_wrappedObject);
-    }
-}
+@synthesize subject = _subject;
+@synthesize predicate = _predicate;
+@synthesize object = _object;
 
-- (RDFNode *)subject
+- (instancetype)initWithLibRdfStatement:(void *)statement
 {
-    librdf_node *node = librdf_statement_get_subject(_wrappedObject);
-    if (_owner && node) {
-        node = librdf_new_node_from_node(node);
+    if ((self = [super init])) {
+        librdf_node *node = librdf_statement_get_subject(statement);
+        _subject = [[RDFNode alloc] initWithLibRdfNode:node];
+        
+        node = librdf_statement_get_predicate(statement);
+        _predicate = [[RDFNode alloc] initWithLibRdfNode:node];
+        
+        node = librdf_statement_get_object(statement);
+        _object = [[RDFNode alloc] initWithLibRdfNode:node];
     }
-    return [[RDFNode alloc] initWithWrappedObject:node owner:_owner];
-}
-
-- (RDFNode *)predicate
-{
-    librdf_node *node = librdf_statement_get_predicate(_wrappedObject);
-    if (_owner && node) {
-        node = librdf_new_node_from_node(node);
-    }
-    return [[RDFNode alloc] initWithWrappedObject:node owner:_owner];
-}
-
-- (RDFNode *)object
-{
-    librdf_node *node = librdf_statement_get_object(_wrappedObject);
-    if (_owner && node) {
-        node = librdf_new_node_from_node(node);
-    }
-    return [[RDFNode alloc] initWithWrappedObject:node owner:_owner];
+    return self;
 }
 
 @end

@@ -6,14 +6,14 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "RDFObject.h"
+#import <Foundation/Foundation.h>
 
 @class RDFNode;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents RDF statements (triples).
-@interface RDFStatement : RDFObject
+@interface RDFStatement : NSObject
 
 /// The subject of this statement.
 @property (nonatomic, strong, readonly) RDFNode *subject;
@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The object of this statement.
 @property (nonatomic, strong, readonly) RDFNode *object;
+
+- (instancetype)initWithLibRdfStatement:(void *)statement;
 
 @end
 

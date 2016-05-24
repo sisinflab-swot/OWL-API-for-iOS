@@ -501,6 +501,9 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
     }
     
     {
+        if (object.isBlank && !object.blankID) {
+            
+        }
         // LHS class expression
         BOOL isResource = subject.isResource;
         NSString *LHSClassID = isResource ? subject.URIStringValue : subject.blankID;

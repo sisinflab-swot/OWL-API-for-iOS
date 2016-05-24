@@ -151,8 +151,6 @@
 		CCB648231CDE715C00C2A761 /* OWLProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648221CDE715C00C2A761 /* OWLProperty.h */; };
 		CCB648251CDE74C800C2A761 /* OWLObjectPropertyExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */; };
 		CCB648271CDE751700C2A761 /* OWLObjectProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = CCB648261CDE751700C2A761 /* OWLObjectProperty.h */; };
-		CCCE04871CF2FA9300037488 /* RDFObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04851CF2FA9300037488 /* RDFObject.h */; };
-		CCCE04881CF2FA9300037488 /* RDFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCE04861CF2FA9300037488 /* RDFObject.m */; };
 		CCCE048B1CF2FBE500037488 /* RDFNode.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04891CF2FBE500037488 /* RDFNode.h */; };
 		CCCE048C1CF2FBE500037488 /* RDFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCE048A1CF2FBE500037488 /* RDFNode.m */; };
 		CCCE04A91CF3016E00037488 /* librdf.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE048F1CF3016E00037488 /* librdf.h */; };
@@ -365,8 +363,6 @@
 		CCB648221CDE715C00C2A761 /* OWLProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLProperty.h; sourceTree = "<group>"; };
 		CCB648241CDE74C800C2A761 /* OWLObjectPropertyExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectPropertyExpression.h; sourceTree = "<group>"; };
 		CCB648261CDE751700C2A761 /* OWLObjectProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectProperty.h; sourceTree = "<group>"; };
-		CCCE04851CF2FA9300037488 /* RDFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFObject.h; sourceTree = "<group>"; };
-		CCCE04861CF2FA9300037488 /* RDFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDFObject.m; sourceTree = "<group>"; };
 		CCCE04891CF2FBE500037488 /* RDFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RDFNode.h; sourceTree = "<group>"; };
 		CCCE048A1CF2FBE500037488 /* RDFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RDFNode.m; sourceTree = "<group>"; };
 		CCCE048F1CF3016E00037488 /* librdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = librdf.h; sourceTree = "<group>"; };
@@ -619,8 +615,6 @@
 			children = (
 				CCCE04891CF2FBE500037488 /* RDFNode.h */,
 				CCCE048A1CF2FBE500037488 /* RDFNode.m */,
-				CCCE04851CF2FA9300037488 /* RDFObject.h */,
-				CCCE04861CF2FA9300037488 /* RDFObject.m */,
 				CCCE04C11CF3045100037488 /* RDFStatement.h */,
 				CCCE04C21CF3045100037488 /* RDFStatement.m */,
 			);
@@ -827,7 +821,6 @@
 				CCDC44741CDB39EA00854918 /* OWLClassAxiom.h in Headers */,
 				CC6BA92D1CE8EA31002ECC26 /* OWLOntologyManagerImpl.h in Headers */,
 				CC6BA8F81CE8EA31002ECC26 /* OWLClassAssertionAxiomImpl.h in Headers */,
-				CCCE04871CF2FA9300037488 /* RDFObject.h in Headers */,
 				CC11C18D1CE890340090A07C /* OWLClassAssertionAxiom.h in Headers */,
 				CC1417BA1CECC2C800165477 /* OWLClassExpressionBuilderType.h in Headers */,
 				CC6BA93A1CE8EA31002ECC26 /* OWLSubClassOfAxiomImpl.h in Headers */,
@@ -1053,7 +1046,6 @@
 				CC6BA9071CE8EA31002ECC26 /* OWLLogicalAxiomImpl.m in Sources */,
 				CC6BA91D1CE8EA31002ECC26 /* OWLObjectMinCardinalityImpl.m in Sources */,
 				CC1417C11CED244F00165477 /* NSString+SMRStringUtils.m in Sources */,
-				CCCE04881CF2FA9300037488 /* RDFObject.m in Sources */,
 				CCCE04C41CF3045100037488 /* RDFStatement.m in Sources */,
 				CC6BA8F71CE8EA31002ECC26 /* OWLCardinalityRestrictionImpl.m in Sources */,
 				CC6BA9171CE8EA31002ECC26 /* OWLObjectImpl.m in Sources */,

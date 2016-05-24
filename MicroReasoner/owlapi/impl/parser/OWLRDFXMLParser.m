@@ -114,7 +114,7 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
                 continue;
             }
             
-            RDFStatement *statement = [[RDFStatement alloc] initWithWrappedObject:triple owner:NO];
+            RDFStatement *statement = [[RDFStatement alloc] initWithLibRdfStatement:triple];
             
             if (![self handleStatement:statement error:&statementError]) {
                 [errors addObject:statementError];

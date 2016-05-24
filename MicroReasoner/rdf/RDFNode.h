@@ -6,7 +6,7 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "RDFObject.h"
+#import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, RDFNodeType) {
     RDFNodeTypeUnknown,
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, RDFNodeType) {
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents nodes of the RDF graph.
-@interface RDFNode : RDFObject
+@interface RDFNode : NSObject
 
 /// The type of this node.
 @property (nonatomic, readonly) RDFNodeType type;
@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The literal value of this node if it is a literal node, nil otherwise.
 @property (nonatomic, copy, readonly, nullable) NSString *literalValue;
+
+- (instancetype)initWithLibRdfNode:(void *)node;
 
 @end
 

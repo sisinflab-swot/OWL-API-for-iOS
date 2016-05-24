@@ -11,59 +11,58 @@
 
 @implementation RDFNode
 
-- (void)dealloc
+@synthesize type = _type;
+@synthesize URIStringValue = _URIStringValue;
+@synthesize blankID = _blankID;
+@synthesize literalValue = _literalValue;
+
+- (BOOL)isResource { return _type == RDFNodeTypeResource; }
+
+- (BOOL)isBlank { return _type == RDFNodeTypeBlank; }
+
+- (BOOL)isLiteral { return _type == RDFNodeTypeLiteral; }
+
+- (instancetype)initWithLibRdfNode:(void *)node
 {
-    if (_owner) {
-        librdf_free_node(_wrappedObject);
+    if ((self = [super init])) {
+        switch (librdf_node_get_type(node))
+        {
+            case LIBRDF_NODE_TYPE_RESOURCE: {
+                _type = RDFNodeTypeResource;
+                
+                librdf_uri *uri = librdf_node_get_uri(node);
+                
+                if (uri) {
+                    size_t length;
+                    unsigned char *string_value = librdf_uri_as_counted_string(uri, &length);
+                    _URIStringValue = [[NSString alloc] initWithBytes:string_value length:length encoding:NSUTF8StringEncoding];
+                }
+                break;
+            }
+                
+            case LIBRDF_NODE_TYPE_BLANK: {
+                _type = RDFNodeTypeBlank;
+                
+                size_t length;
+                unsigned char *blank_id = librdf_node_get_counted_blank_identifier(node, &length);
+                _blankID = [[NSString alloc] initWithBytes:blank_id length:length encoding:NSUTF8StringEncoding];
+                break;
+            }
+                
+            case LIBRDF_NODE_TYPE_LITERAL: {
+                _type = RDFNodeTypeLiteral;
+                
+                size_t length;
+                unsigned char *literal_value = librdf_node_get_literal_value_as_counted_string(node, &length);
+                _literalValue = [[NSString alloc] initWithBytes:literal_value length:length encoding:NSUTF8StringEncoding];
+                break;
+            }
+                
+            default:
+                break;
+        }
     }
-}
-
-- (RDFNodeType)type
-{
-    return (RDFNodeType)librdf_node_get_type(_wrappedObject);
-}
-
-- (BOOL)isResource
-{
-    return librdf_node_is_resource(_wrappedObject) != 0;
-}
-
-- (BOOL)isBlank
-{
-    return librdf_node_is_blank(_wrappedObject) != 0;
-}
-
-- (BOOL)isLiteral
-{
-    return librdf_node_is_literal(_wrappedObject) != 0;
-}
-
-- (NSString *)URIStringValue
-{
-    NSString *stringValue = nil;
-    librdf_uri *uri = librdf_node_get_uri(_wrappedObject);
-    
-    if (uri) {
-        size_t length;
-        unsigned char *string_value = librdf_uri_as_counted_string(uri, &length);
-        stringValue = [[NSString alloc] initWithBytes:string_value length:length encoding:NSUTF8StringEncoding];
-    }
-    return stringValue;
-}
-
-- (NSString *)blankID
-{
-    char *blank_id = (char *)librdf_node_get_blank_identifier(_wrappedObject);
-    return [[NSString alloc] initWithUTF8String:blank_id];
-}
-
-- (NSString *)literalValue
-{
-    size_t length;
-    unsigned char *literal_value;
-    
-    literal_value = librdf_node_get_literal_value_as_counted_string(_wrappedObject, &length);
-    return [[NSString alloc] initWithBytes:literal_value length:length encoding:NSUTF8StringEncoding];
+    return self;
 }
 
 @end
