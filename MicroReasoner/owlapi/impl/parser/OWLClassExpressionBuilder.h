@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Class
 
 /// The string representation of the class IRI.
-@property (nonatomic, copy, readonly) NSString *classID;
+@property (nonatomic, copy, readonly, nullable) NSString *classID;
 
 /// Sets the string representation of the class IRI.
 - (BOOL)setClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)setBooleanType:(OWLCEBBooleanType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 /// The list identifier of this boolean expression.
-@property (nonatomic, copy, readonly) NSString *listID;
+@property (nonatomic, copy, readonly, nullable) NSString *listID;
 
 // Sets the list identifier of this boolean expression.
 - (BOOL)setListID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)setRestrictionType:(OWLCEBRestrictionType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 /// Identifier of the property this restriction is about.
-@property (nonatomic, copy, readonly) NSString *propertyID;
+@property (nonatomic, copy, readonly, nullable) NSString *propertyID;
 
 /// Sets the the property the restriction is about.
 - (BOOL)setPropertyID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
@@ -72,7 +72,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark AllValuesFrom/SomeValuesFrom
 
 /// The filler of this restriction.
-@property (nonatomic, copy, readonly) NSString *fillerID;
+@property (nonatomic, copy, readonly, nullable) NSString *fillerID;
 
 /// Sets the the filler of the restriction.
 - (BOOL)setFillerID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Cardinality
 
 /// The cardinality of the restriction.
-@property (nonatomic, copy, readonly) NSString *cardinality;
+@property (nonatomic, copy, readonly, nullable) NSString *cardinality;
 
 /// Sets the cardinality of the restriction.
 - (BOOL)setCardinality:(NSString *)cardinality error:(NSError *_Nullable __autoreleasing *)error;

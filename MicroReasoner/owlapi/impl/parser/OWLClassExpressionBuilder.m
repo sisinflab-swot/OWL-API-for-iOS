@@ -22,17 +22,14 @@
 #import "NSString+SMRStringUtils.h"
 
 @interface OWLClassExpressionBuilder ()
-
-@property (nonatomic, strong) id<OWLClassExpression> builtClassExpression;
-@property (nonatomic, weak, readonly) OWLOntologyBuilder *ontologyBuilder;
-
+{
+    __weak OWLOntologyBuilder *_ontologyBuilder;
+    id<OWLClassExpression> _builtClassExpression;
+}
 @end
 
 
 @implementation OWLClassExpressionBuilder
-
-@synthesize builtClassExpression = _builtClassExpression;
-@synthesize ontologyBuilder = _ontologyBuilder;
 
 #pragma mark Lifecycle
 
@@ -52,13 +49,13 @@
 
 - (id<OWLClassExpression>)build
 {
-    id<OWLClassExpression> builtClassExpression = self.builtClassExpression;
-    
-    if (builtClassExpression) {
-        return builtClassExpression;
+    if (_builtClassExpression) {
+        return _builtClassExpression;
     }
     
-    switch(self.type)
+    id<OWLClassExpression> builtClassExpression = nil;
+    
+    switch(_type)
     {
         case OWLCEBTypeClass:
             builtClassExpression = [self buildClassExpression];
@@ -72,14 +69,21 @@
             break;
     }
     
-    self.builtClassExpression = builtClassExpression;
+    if (builtClassExpression) {
+        _builtClassExpression = builtClassExpression;
+        _classID = nil;
+        _listID = nil;
+        _propertyID = nil;
+        _fillerID = nil;
+        _cardinality = nil;
+    }
     return builtClassExpression;
 }
 
 - (id<OWLClassExpression>)buildClassExpression
 {
     id<OWLClassExpression> classExpression = nil;
-    NSString *classID = self.classID;
+    NSString *classID = _classID;
     
     if (classID) {
         // Named class
@@ -88,8 +92,8 @@
             classExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
         }
     } else {
-        OWLCEBBooleanType type = self.booleanType;
-        NSString *listID = self.listID;
+        OWLCEBBooleanType type = _booleanType;
+        NSString *listID = _listID;
         
         if (type != OWLCEBBooleanTypeUnknown && listID) {
             // Boolean class expression
@@ -98,7 +102,7 @@
                 case OWLCEBBooleanTypeIntersection:
                 {
                     NSMutableSet *operands = [[NSMutableSet alloc] init];
-                    OWLOntologyBuilder *ontologyBuilder = self.ontologyBuilder;
+                    OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
                     
                     for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
                         id<OWLClassExpression> ce = [[ontologyBuilder classExpressionBuilderForID:ID] build];
@@ -122,19 +126,18 @@
 
 - (id<OWLRestriction>)buildRestriction
 {
-    OWLCEBRestrictionType type = self.restrictionType;
-    NSString *propertyID = self.propertyID;
+    OWLCEBRestrictionType type = _restrictionType;
+    NSString *propertyID = _propertyID;
     
     if (type == OWLCEBRestrictionTypeUnknown || !propertyID) {
         return nil;
     }
     
     id<OWLRestriction> restr = nil;
-    OWLOntologyBuilder *ontologyBuilder = self.ontologyBuilder;
-    
+    OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
     id<OWLPropertyExpression> property = [[ontologyBuilder propertyBuilderForID:propertyID] build];
     
-    NSString *fillerID = self.fillerID;
+    NSString *fillerID = _fillerID;
     id<OWLClassExpression> filler = nil;
     if (fillerID) {
         filler = [[ontologyBuilder classExpressionBuilderForID:fillerID] build];
@@ -160,21 +163,21 @@
                 
             case OWLCEBRestrictionTypeCardinality:
                 restr = [self buildCardinalityRestrictionOfClass:[OWLObjectExactCardinalityImpl class]
-                                                 withCardinality:self.cardinality
+                                                 withCardinality:_cardinality
                                                         property:objectPropertyExpr
                                                           filler:filler];
                 break;
                 
             case OWLCEBRestrictionTypeMaxCardinality:
                 restr = [self buildCardinalityRestrictionOfClass:[OWLObjectMaxCardinalityImpl class]
-                                                 withCardinality:self.cardinality
+                                                 withCardinality:_cardinality
                                                         property:objectPropertyExpr
                                                           filler:filler];
                 break;
                 
             case OWLCEBRestrictionTypeMinCardinality:
                 restr = [self buildCardinalityRestrictionOfClass:[OWLObjectMinCardinalityImpl class]
-                                                 withCardinality:self.cardinality
+                                                 withCardinality:_cardinality
                                                         property:objectPropertyExpr
                                                           filler:filler];
                 break;

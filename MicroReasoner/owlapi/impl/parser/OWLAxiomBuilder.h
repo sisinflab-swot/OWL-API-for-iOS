@@ -36,19 +36,19 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Single statement axioms
 
 /// The ID of the left-hand-side of the axiom.
-@property (nonatomic, copy, readonly) NSString *LHSID;
+@property (nonatomic, copy, readonly, nullable) NSString *LHSID;
 
 /// Sets the ID of the left-hand-side of the axiom.
 - (BOOL)setLHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 /// The ID of the middle of the axiom.
-@property (nonatomic, copy, readonly) NSString *MID;
+@property (nonatomic, copy, readonly, nullable) NSString *MID;
 
 /// Sets the ID of the middle of the axiom.
 - (BOOL)setMID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 /// The ID of the right-hand-side of the axiom.
-@property (nonatomic, copy, readonly) NSString *RHSID;
+@property (nonatomic, copy, readonly, nullable) NSString *RHSID;
 
 /// Sets the ID of the right-hand-side of the axiom.
 - (BOOL)setRHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;

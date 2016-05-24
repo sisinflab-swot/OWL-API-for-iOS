@@ -11,31 +11,29 @@
 #import "OWLObjectPropertyImpl.h"
 
 @interface OWLPropertyBuilder ()
-
-@property (nonatomic, strong) id<OWLPropertyExpression> builtProperty;
-
+{
+    id<OWLPropertyExpression> _builtProperty;
+}
 @end
 
 
 @implementation OWLPropertyBuilder
 
-@synthesize builtProperty = _builtProperty;
-
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLPropertyExpression>)build
 {
-    id<OWLPropertyExpression> builtProperty = self.builtProperty;
-    
-    if (builtProperty) {
-        return builtProperty;
+    if (_builtProperty) {
+        return _builtProperty;
     }
     
-    switch(self.type)
+    id<OWLPropertyExpression> builtProperty = nil;
+    
+    switch(_type)
     {
         case OWLPBTypeObjectProperty:
         {
-            NSString *ID = self.namedPropertyID;
+            NSString *ID = _namedPropertyID;
             if (ID) {
                 NSURL *IRI = [[NSURL alloc] initWithString:ID];
                 if (IRI) {
@@ -49,7 +47,10 @@
             break;
     }
     
-    self.builtProperty = builtProperty;
+    if (builtProperty) {
+        _builtProperty = builtProperty;
+        _namedPropertyID = nil;
+    }
     return builtProperty;
 }
 

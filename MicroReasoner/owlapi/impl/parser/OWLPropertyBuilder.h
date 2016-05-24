@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Named properties
 
 /// The string representation of the property IRI.
-@property (nonatomic, readonly) NSString *namedPropertyID;
+@property (nonatomic, copy, readonly, nullable) NSString *namedPropertyID;
 
 /**
  * Sets the string representation of the property IRI.

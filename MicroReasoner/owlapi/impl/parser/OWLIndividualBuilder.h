@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Named individual
 
 /// The string representation of the individual IRI.
-@property (nonatomic, strong, readonly) NSString *namedIndividualID;
+@property (nonatomic, strong, readonly, nullable) NSString *namedIndividualID;
 
 /**
  * Sets the string representation of the individual IRI.

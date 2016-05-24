@@ -25,17 +25,14 @@
 #import "OWLSubClassOfAxiomImpl.h"
 
 @interface OWLAxiomBuilder ()
-
-@property (nonatomic, strong) id<OWLAxiom> builtAxiom;
-@property (nonatomic, weak, readonly) OWLOntologyBuilder *ontologyBuilder;
-
+{
+    __weak OWLOntologyBuilder *_ontologyBuilder;
+    id<OWLAxiom> _builtAxiom;
+}
 @end
 
 
 @implementation OWLAxiomBuilder
-
-@synthesize builtAxiom = _builtAxiom;
-@synthesize ontologyBuilder = _ontologyBuilder;
 
 #pragma mark Lifecycle
 
@@ -54,19 +51,19 @@
 
 - (id<OWLAxiom>)build
 {
-    id<OWLAxiom> builtAxiom = self.builtAxiom;
-    
-    if (builtAxiom) {
-        return builtAxiom;
+    if (_builtAxiom) {
+        return _builtAxiom;
     }
     
-    switch (self.type)
+    id<OWLAxiom> builtAxiom = nil;
+    
+    switch (_type)
     {
         case OWLABTypeDeclaration: {
-            NSString *entityID = self.LHSID;
+            NSString *entityID = _LHSID;
             
             if (entityID) {
-                id<OWLEntity> entity = [[self.ontologyBuilder entityBuilderForID:entityID] build];
+                id<OWLEntity> entity = [[_ontologyBuilder entityBuilderForID:entityID] build];
                 
                 if (entity) {
                     builtAxiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:entity];
@@ -77,11 +74,11 @@
         }
             
         case OWLABTypeClassAssertion: {
-            NSString *individualID = self.LHSID;
-            NSString *classID = self.RHSID;
+            NSString *individualID = _LHSID;
+            NSString *classID = _RHSID;
             
             if (individualID && classID) {
-                OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+                OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
                 
                 id<OWLIndividual> individual = [[ontoBuilder individualBuilderForID:individualID] build];
                 id<OWLClassExpression> class = [[ontoBuilder classExpressionBuilderForID:classID] build];
@@ -94,12 +91,12 @@
         }
             
         case OWLABTypePropertyAssertion: {
-            NSString *subjectID = self.LHSID;
-            NSString *propertyID = self.MID;
-            NSString *objectID = self.RHSID;
+            NSString *subjectID = _LHSID;
+            NSString *propertyID = _MID;
+            NSString *objectID = _RHSID;
             
             if (subjectID && propertyID && objectID) {
-                OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+                OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
                 
                 id<OWLIndividual> subject = [[ontoBuilder individualBuilderForID:subjectID] build];
                 id<OWLPropertyExpression> property = [[ontoBuilder propertyBuilderForID:propertyID] build];
@@ -156,7 +153,12 @@
             break;
     }
     
-    self.builtAxiom = builtAxiom;
+    if (builtAxiom) {
+        _builtAxiom = builtAxiom;
+        _LHSID = nil;
+        _MID = nil;
+        _RHSID = nil;
+    }
     return builtAxiom;
 }
 
@@ -164,11 +166,11 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    NSString *RHSClassID = self.RHSID;
-    NSString *LHSClassID = self.LHSID;
+    NSString *RHSClassID = _RHSID;
+    NSString *LHSClassID = _LHSID;
     
     if (RHSClassID && LHSClassID) {
-        OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+        OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
         
         id<OWLClassExpression> RHSClassExpression = [[ontoBuilder classExpressionBuilderForID:RHSClassID] build];
         id<OWLClassExpression> LHSClassExpression = [[ontoBuilder classExpressionBuilderForID:LHSClassID] build];
@@ -185,11 +187,11 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    NSString *propertyID = self.LHSID;
-    NSString *domainRangeID = self.RHSID;
+    NSString *propertyID = _LHSID;
+    NSString *domainRangeID = _RHSID;
     
     if (propertyID && domainRangeID) {
-        OWLOntologyBuilder *ontoBuilder = self.ontologyBuilder;
+        OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
         
         id<OWLPropertyExpression> propertyExpr = [[ontoBuilder propertyBuilderForID:propertyID] build];
         
