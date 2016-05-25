@@ -69,8 +69,8 @@ static NSMapTable *instanceCache = nil;
     } else {
         if ((self = [super init])) {
             _IRI = [IRI copy];
+            [instanceCache setObject:self forKey:_IRI];
         }
-        [instanceCache setObject:self forKey:_IRI];
     }
     
     return self;
