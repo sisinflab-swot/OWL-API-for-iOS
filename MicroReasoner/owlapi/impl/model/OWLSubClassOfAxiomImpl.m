@@ -8,33 +8,15 @@
 
 #import "OWLSubClassOfAxiomImpl.h"
 #import "OWLClassExpression.h"
+#import "NSMapTable+SMRObjectCache.h"
 
 @implementation OWLSubClassOfAxiomImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object
-{
-    if (object == self) {
-        return YES;
-    }
-    
-    BOOL equals = NO;
-    
-    if ([super isEqual:object]) {
-        id objCls = [object superClass];
-        BOOL sameSuperClass = (objCls == _superClass || [objCls isEqual:_superClass]);
-        
-        objCls = [object subClass];
-        BOOL sameSubClass = (objCls == _subClass || [objCls isEqual:_subClass]);
-        
-        equals = (sameSuperClass && sameSubClass);
-    }
-    
-    return equals;
-}
+- (BOOL)isEqual:(id)object { return object == self; }
 
-- (NSUInteger)computeHash { return [_superClass hash] ^ [_subClass hash]; }
+- (NSUInteger)hash { return (NSUInteger)self; }
 
 - (NSString *)description
 {
@@ -63,15 +45,31 @@
 
 #pragma mark Other public methods
 
+static NSMapTable *instanceCache = nil;
+
++ (void)initialize
+{
+    if (self == [OWLSubClassOfAxiomImpl class]) {
+        instanceCache = [NSMapTable smr_objCache];
+    }
+}
+
 - (instancetype)initWithSuperClass:(id<OWLClassExpression>)superClass subClass:(id<OWLClassExpression>)subClass
 {
     NSParameterAssert(superClass && subClass);
     
-    if ((self = [super init])) {
+    id cachedInstance = [instanceCache smr_objCacheGetForKey1:superClass key2:subClass];
+    
+    if (cachedInstance) {
+        self = cachedInstance;
+    } else if ((self = [super init])) {
         _superClass = superClass;
         _subClass = subClass;
+        [instanceCache smr_objCacheSet:self forKey1:_superClass key2:_subClass];
     }
     return self;
 }
+
+- (void)dealloc { [instanceCache smr_objCacheRemoveForKey1:_superClass key2:_subClass]; }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "OWLNamedIndividualImpl.h"
+#import "NSMapTable+SMRObjectCache.h"
 
 @implementation OWLNamedIndividualImpl
 
@@ -54,7 +55,7 @@ static NSMapTable *instanceCache = nil;
 + (void)initialize
 {
     if (self == [OWLNamedIndividualImpl class]) {
-        instanceCache = [NSMapTable strongToWeakObjectsMapTable];
+        instanceCache = [NSMapTable smr_objCache];
     }
 }
 

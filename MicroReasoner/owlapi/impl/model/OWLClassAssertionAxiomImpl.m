@@ -9,33 +9,15 @@
 #import "OWLClassAssertionAxiomImpl.h"
 #import "OWLClassExpression.h"
 #import "OWLIndividual.h"
+#import "NSMapTable+SMRObjectCache.h"
 
 @implementation OWLClassAssertionAxiomImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object
-{
-    if (object == self) {
-        return YES;
-    }
-    
-    BOOL equal = NO;
-    
-    if ([super isEqual:object]) {
-        id objProp = [object individual];
-        BOOL sameIndividual = (objProp == _individual || [objProp isEqual:_individual]);
-        
-        objProp = [object classExpression];
-        BOOL sameClass = (objProp == _classExpression || [objProp isEqual:_classExpression]);
-        
-        equal = sameIndividual && sameClass;
-    }
-    
-    return equal;
-}
+- (BOOL)isEqual:(id)object { return object == self; }
 
-- (NSUInteger)computeHash { return [_individual hash] ^ [_classExpression hash]; }
+- (NSUInteger)hash { return (NSUInteger)self; }
 
 - (NSString *)description
 {
@@ -62,15 +44,32 @@
 
 #pragma mark Other public methods
 
+static NSMapTable *instanceCache = nil;
+
++ (void)initialize
+{
+    if (self == [OWLClassAssertionAxiomImpl class]) {
+        instanceCache = [NSMapTable smr_objCache];
+    }
+}
+
 - (instancetype)initWithIndividual:(id<OWLIndividual>)individual classExpression:(id<OWLClassExpression>)classExpression
 {
     NSParameterAssert(individual && classExpression);
     
-    if ((self = [super init])) {
+    id cachedInstance = [instanceCache smr_objCacheGetForKey1:individual key2:classExpression];
+    
+    if (cachedInstance) {
+        self = cachedInstance;
+    } else if ((self = [super init])) {
         _individual = [(id)individual copy];
         _classExpression = [(id)classExpression copy];
+        
+        [instanceCache smr_objCacheSet:self forKey1:_individual key2:_classExpression];
     }
     return self;
 }
+
+- (void)dealloc { [instanceCache smr_objCacheRemoveForKey1:_individual key2:_classExpression]; }
 
 @end

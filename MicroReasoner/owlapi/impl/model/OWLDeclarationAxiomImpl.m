@@ -8,29 +8,15 @@
 
 #import "OWLDeclarationAxiomImpl.h"
 #import "OWLEntity.h"
+#import "NSMapTable+SMRObjectCache.h"
 
 @implementation OWLDeclarationAxiomImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object
-{
-    if (object == self) {
-        return YES;
-    }
-    
-    BOOL equal = NO;
-    
-    if ([super isEqual:object]) {
-        id objEntity = [object entity];
-        
-        equal = (objEntity == _entity || [objEntity isEqual:_entity]);
-    }
-    
-    return equal;
-}
+- (BOOL)isEqual:(id)object { return object == self; }
 
-- (NSUInteger)computeHash { return [_entity hash]; }
+- (NSUInteger)hash { return (NSUInteger)self; }
 
 - (NSString *)description
 {
@@ -55,15 +41,30 @@
 
 #pragma mark Other public methods
 
+static NSMapTable *instanceCache = nil;
+
++ (void)initialize
+{
+    if (self == [OWLDeclarationAxiomImpl class]) {
+        instanceCache = [NSMapTable smr_objCache];
+    }
+}
+
 - (instancetype)initWithEntity:(id<OWLEntity>)entity
 {
     NSParameterAssert(entity);
     
-    if ((self = [super init])) {
-        _entity = [(id)entity copy];
-    }
+    id cachedInstance = [instanceCache objectForKey:entity];
     
+    if (cachedInstance) {
+        self = cachedInstance;
+    } else if ((self = [super init])) {
+        _entity = [(id)entity copy];
+        [instanceCache setObject:self forKey:_entity];
+    }
     return self;
 }
+
+- (void)dealloc { [instanceCache removeObjectForKey:_entity]; }
 
 @end

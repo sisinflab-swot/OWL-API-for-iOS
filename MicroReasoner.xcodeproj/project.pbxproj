@@ -144,6 +144,8 @@
 		CC87787B1CDD29100058F677 /* OWLQuantifiedObjectRestriction.h in Headers */ = {isa = PBXBuildFile; fileRef = CC87787A1CDD29100058F677 /* OWLQuantifiedObjectRestriction.h */; };
 		CC87787D1CDD29FD0058F677 /* OWLObjectAllValuesFrom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC87787C1CDD29FD0058F677 /* OWLObjectAllValuesFrom.h */; };
 		CC8778891CDD4DC80058F677 /* OWLPropertyRange.h in Headers */ = {isa = PBXBuildFile; fileRef = CC8778881CDD4DC80058F677 /* OWLPropertyRange.h */; };
+		CC94A71E1CF616F800F7B158 /* NSMapTable+SMRObjectCache.h in Headers */ = {isa = PBXBuildFile; fileRef = CC94A71C1CF616F800F7B158 /* NSMapTable+SMRObjectCache.h */; };
+		CC94A71F1CF616F800F7B158 /* NSMapTable+SMRObjectCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CC94A71D1CF616F800F7B158 /* NSMapTable+SMRObjectCache.m */; };
 		CC9AE12B1CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = CC9AE1291CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.h */; };
 		CC9AE12C1CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE12A1CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.m */; };
 		CCA21A2B1CF1C0C900FA9BCA /* OWLPropertyAssertionAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CCA21A2A1CF1C0C900FA9BCA /* OWLPropertyAssertionAxiom.h */; };
@@ -364,6 +366,8 @@
 		CC87787A1CDD29100058F677 /* OWLQuantifiedObjectRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLQuantifiedObjectRestriction.h; sourceTree = "<group>"; };
 		CC87787C1CDD29FD0058F677 /* OWLObjectAllValuesFrom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectAllValuesFrom.h; sourceTree = "<group>"; };
 		CC8778881CDD4DC80058F677 /* OWLPropertyRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLPropertyRange.h; sourceTree = "<group>"; };
+		CC94A71C1CF616F800F7B158 /* NSMapTable+SMRObjectCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMapTable+SMRObjectCache.h"; sourceTree = "<group>"; };
+		CC94A71D1CF616F800F7B158 /* NSMapTable+SMRObjectCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMapTable+SMRObjectCache.m"; sourceTree = "<group>"; };
 		CC9AE1291CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SMRMutableDictionaryUtils.h"; sourceTree = "<group>"; };
 		CC9AE12A1CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SMRMutableDictionaryUtils.m"; sourceTree = "<group>"; };
 		CCA21A2A1CF1C0C900FA9BCA /* OWLPropertyAssertionAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLPropertyAssertionAxiom.h; sourceTree = "<group>"; };
@@ -466,10 +470,12 @@
 		CC1417BD1CED240300165477 /* categories */ = {
 			isa = PBXGroup;
 			children = (
-				CC1417BE1CED244F00165477 /* NSString+SMRStringUtils.h */,
-				CC1417BF1CED244F00165477 /* NSString+SMRStringUtils.m */,
+				CC94A71C1CF616F800F7B158 /* NSMapTable+SMRObjectCache.h */,
+				CC94A71D1CF616F800F7B158 /* NSMapTable+SMRObjectCache.m */,
 				CC9AE1291CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.h */,
 				CC9AE12A1CF497AA00AEF37C /* NSMutableDictionary+SMRMutableDictionaryUtils.m */,
+				CC1417BE1CED244F00165477 /* NSString+SMRStringUtils.h */,
+				CC1417BF1CED244F00165477 /* NSString+SMRStringUtils.m */,
 			);
 			path = categories;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 				CCDC44891CDBAD2C00854918 /* OWLClassExpressionType.h in Headers */,
 				CC2933311CDE285500315B3A /* OWLNAryBooleanClassExpression.h in Headers */,
 				CC6BA9311CE8EA31002ECC26 /* OWLPropertyRangeAxiomImpl.h in Headers */,
+				CC94A71E1CF616F800F7B158 /* NSMapTable+SMRObjectCache.h in Headers */,
 				CCCE04B71CF3016E00037488 /* rdf_query.h in Headers */,
 				CC5E32301CEB37440024D175 /* OWLAbstractBuilder.h in Headers */,
 				CCA21A351CF1C1B000FA9BCA /* OWLObjectPropertyAssertionAxiom.h in Headers */,
@@ -1104,6 +1111,7 @@
 				CC6BA9301CE8EA31002ECC26 /* OWLPropertyDomainAxiomImpl.m in Sources */,
 				CC6BA8F51CE8EA31002ECC26 /* OWLAnonymousClassExpressionImpl.m in Sources */,
 				CCB2824B1CEDB7D9003AAC3B /* OWLListItem.m in Sources */,
+				CC94A71F1CF616F800F7B158 /* NSMapTable+SMRObjectCache.m in Sources */,
 				CC6BA9361CE8EA31002ECC26 /* OWLQuantifiedRestrictionImpl.m in Sources */,
 				CC6BA9081CE8EA31002ECC26 /* OWLManager.m in Sources */,
 				CC5E32261CEB16970024D175 /* OWLAxiomBuilder.m in Sources */,

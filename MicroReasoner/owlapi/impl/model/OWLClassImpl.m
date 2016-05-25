@@ -12,6 +12,7 @@
 #import "OWLOntology.h"
 #import "OWLRDFVocabulary.h"
 #import "OWLSubClassOfAxiom.h"
+#import "NSMapTable+SMRObjectCache.h"
 
 @implementation OWLClassImpl
 
@@ -100,7 +101,7 @@ static NSMapTable *instanceCache = nil;
 + (void)initialize
 {
     if (self == [OWLClassImpl class]) {
-        instanceCache = [NSMapTable strongToWeakObjectsMapTable];
+        instanceCache = [NSMapTable smr_objCache];
     }
 }
 
