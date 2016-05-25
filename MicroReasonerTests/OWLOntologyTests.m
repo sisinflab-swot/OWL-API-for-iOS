@@ -38,9 +38,7 @@ static void loadOntologyNoCache() {
 
 - (void)testLoadOntology
 {
-    [self measureBlock:^{
-        loadOntologyNoCache();
-    }];
+    loadOntologyNoCache();
     XCTAssertNotNil(ontology);
 }
 
@@ -48,6 +46,10 @@ static void loadOntologyNoCache() {
 {
     NSSet *decl = [ontology axiomsForType:OWLAxiomTypeDeclaration];
     NSLog(@"Declaration axioms (%lu):\n------------------\n%@", (unsigned long)decl.count, decl);
+    
+    decl = [ontology axiomsForType:OWLAxiomTypeClassAssertion];
+    NSLog(@"Class assertion axioms (%lu):\n----------------------\n%@", (unsigned long)decl.count, decl);
+    
     XCTAssertNotNil(decl);
 }
 
