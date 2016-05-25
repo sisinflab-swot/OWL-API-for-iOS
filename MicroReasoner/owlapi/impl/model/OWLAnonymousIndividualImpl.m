@@ -23,6 +23,8 @@
 
 - (NSUInteger)hash { return (NSUInteger)_ID; }
 
+- (NSString *)description { return [NSString stringWithFormat:@"Individual(%@)", OWLNodeID_toString(_ID)]; }
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature { return [NSSet set]; }

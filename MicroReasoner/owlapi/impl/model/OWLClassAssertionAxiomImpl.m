@@ -37,6 +37,11 @@
 
 - (NSUInteger)computeHash { return [_individual hash] ^ [_classExpression hash]; }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ClassAssertion(%@ %@)", _classExpression, _individual];
+}
+
 #pragma mark OWLObject
 
 - (NSSet<id<OWLEntity>> *)signature
