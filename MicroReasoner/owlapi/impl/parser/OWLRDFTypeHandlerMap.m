@@ -168,7 +168,11 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RDFStatement *statement, OWL
         NSString *IRIString = subject.URIStringValue;
         OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString error:&localError];
         
-        if (![ib setNamedIndividualID:IRIString error:&localError]) {
+        if (![ib setType:OWLIBTypeNamed error:&localError]) {
+            goto err;
+        }
+        
+        if (![ib setID:IRIString error:&localError]) {
             goto err;
         }
         

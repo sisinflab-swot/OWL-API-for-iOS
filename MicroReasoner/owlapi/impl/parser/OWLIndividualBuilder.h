@@ -7,6 +7,7 @@
 //
 
 #import "OWLAbstractBuilder.h"
+#import "OWLIndividualBuilderType.h"
 
 @protocol OWLIndividual;
 
@@ -19,17 +20,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable id<OWLIndividual>)build;
 
-#pragma mark Named individual
+#pragma mark General
 
-/// The string representation of the individual IRI.
-@property (nonatomic, strong, readonly, nullable) NSString *namedIndividualID;
+/// The type of the individual to build.
+@property (nonatomic, readonly) OWLIBType type;
 
-/**
- * Sets the string representation of the individual IRI.
- *
- * @return NO if the ID was already set, YES otherwise.
- */
-- (BOOL)setNamedIndividualID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+/// Sets the type of the individual to build.
+- (BOOL)setType:(OWLIBType)type error:(NSError *_Nullable __autoreleasing *)error;
+
+/// The ID of the individual to build.
+@property (nonatomic, strong, readonly, nullable) NSString *ID;
+
+/// Sets the ID of the individual to build.
+- (BOOL)setID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 @end
 

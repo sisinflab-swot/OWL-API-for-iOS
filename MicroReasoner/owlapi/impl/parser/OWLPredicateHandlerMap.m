@@ -137,21 +137,25 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
     
-    if (!subject.isResource) {
-        // TODO: anonymous individuals are currently unsupported
+    if (subject.isLiteral) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Anonymous individuals are not supported."
+                          localizedDescription:@"Illegal literal subject node in class assertion statement."
                                       userInfo:@{@"statement": statement}];
         goto err;
     }
     
     {
         // Add individual
-        NSString *subjectID = subject.URIStringValue;
+        BOOL namedIndividual = subject.isResource;
+        NSString *subjectID = namedIndividual ? subject.URIStringValue : subject.blankID;
         
         OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID error:&localError];
         
-        if (![ib setNamedIndividualID:subjectID error:&localError]) {
+        if (![ib setType:(namedIndividual ? OWLIBTypeNamed : OWLIBTypeAnonymous) error:&localError]) {
+            goto err;
+        }
+        
+        if (![ib setID:subjectID error:&localError]) {
             goto err;
         }
         

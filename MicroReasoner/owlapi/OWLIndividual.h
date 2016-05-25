@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @return The individual as a named individual, or nil if it is not named. 
  */
-- (id<OWLNamedIndividual>)asOWLNamedIndividual;
+- (nullable id<OWLNamedIndividual>)asOWLNamedIndividual;
 
 /**
  * Convenience method which gets the types of this individual that correspond

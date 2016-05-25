@@ -7,8 +7,10 @@
 //
 
 #import "OWLIndividualBuilder.h"
+#import "OWLAnonymousIndividualImpl.h"
 #import "OWLError.h"
 #import "OWLNamedIndividualImpl.h"
+#import "OWLNodeID.h"
 
 @interface OWLIndividualBuilder ()
 {
@@ -28,42 +30,79 @@
     }
     
     id<OWLIndividual> builtIndividual = nil;
+    NSString *ID = _ID;
     
-    NSString *ID = _namedIndividualID;
     if (ID) {
-        NSURL *IRI = [[NSURL alloc] initWithString:ID];
-        if (IRI) {
-            builtIndividual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
+        switch (_type)
+        {
+            case OWLIBTypeNamed: {
+                NSURL *IRI = [[NSURL alloc] initWithString:ID];
+                if (IRI) {
+                    builtIndividual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
+                }
+                break;
+            }
+                
+            case OWLIBTypeAnonymous: {
+                builtIndividual = [[OWLAnonymousIndividualImpl alloc] initWithNodeID:OWLNodeID_new()];
+                break;
+            }
+                
+            default:
+                break;
         }
     }
     
     if (builtIndividual) {
         _builtIndividual = builtIndividual;
-        _namedIndividualID = nil;
+        _ID = nil;
     }
     return builtIndividual;
 }
 
-#pragma mark Named individual
+#pragma mark General
 
-// namedIndividualID
-@synthesize namedIndividualID = _namedIndividualID;
+// type
+@synthesize type = _type;
 
-- (BOOL)setNamedIndividualID:(NSString *)ID error:(NSError *__autoreleasing *)error
+- (BOOL)setType:(OWLIBType)type error:(NSError *__autoreleasing *)error
 {
-    if (_namedIndividualID == ID || [_namedIndividualID isEqualToString:ID]) {
+    if (_type == type) {
         return YES;
     }
     
     BOOL success = NO;
     
-    if (!_namedIndividualID) {
-        _namedIndividualID = [ID copy];
+    if (_type == OWLIBTypeUnknown) {
+        _type = type;
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple types for individual."
+                                  userInfo:@{@"types": @[@(_type), @(type)]}];
+    }
+    
+    return success;
+}
+
+// ID
+@synthesize ID = _ID;
+
+- (BOOL)setID:(NSString *)ID error:(NSError *__autoreleasing *)error
+{
+    if (_ID == ID || [_ID isEqualToString:ID]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_ID) {
+        _ID = [ID copy];
         success = YES;
     } else if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple IRIs for individual."
-                                  userInfo:@{@"individualIDs": @[_namedIndividualID, ID]}];
+                                  userInfo:@{@"individualIDs": @[_ID, ID]}];
     }
     
     return success;
