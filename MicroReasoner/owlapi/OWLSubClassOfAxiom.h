@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OWLSubClassOfAxiom <OWLClassAxiom>
 
 /// The subclass in this axiom.
-@property (nonatomic, strong, readonly) id<OWLClassExpression> subClass;
+@property (nonatomic, copy, readonly) id<OWLClassExpression> subClass;
 
 /// The superclass in this axiom.
-@property (nonatomic, strong, readonly) id<OWLClassExpression> superClass;
+@property (nonatomic, copy, readonly) id<OWLClassExpression> superClass;
 
 @end
 

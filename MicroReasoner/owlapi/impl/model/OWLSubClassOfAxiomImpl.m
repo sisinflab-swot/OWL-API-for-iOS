@@ -61,8 +61,8 @@ static NSMapTable *instanceCache = nil;
     if (cachedInstance) {
         self = cachedInstance;
     } else if ((self = [super init])) {
-        _superClass = superClass;
-        _subClass = subClass;
+        _superClass = [(id)superClass copy];
+        _subClass = [(id)subClass copy];
         [instanceCache smr_objCacheSet:self forKey1:_superClass key2:_subClass];
     }
     return self;
