@@ -135,6 +135,10 @@ OWLStatementHandler oClassHandler = ^BOOL(RDFStatement *statement, OWLOntologyBu
                 goto err;
             }
             
+            if (![ab setDeclType:OWLABDeclTypeClass error:&localError]) {
+                goto err;
+            }
+            
             if (![ab setLHSID:subjectID error:&localError]) {
                 goto err;
             }
@@ -183,6 +187,10 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RDFStatement *statement, OWL
             goto err;
         }
         
+        if (![ab setDeclType:OWLABDeclTypeNamedIndividual error:&localError]) {
+            goto err;
+        }
+        
         if (![ab setLHSID:IRIString error:&localError]) {
             goto err;
         }
@@ -227,6 +235,10 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RDFStatement *statement, OWLO
         OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setDeclType:OWLABDeclTypeObjectProperty error:&localError]) {
             goto err;
         }
         

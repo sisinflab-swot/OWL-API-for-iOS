@@ -9,7 +9,10 @@
 #import "OWLAbstractBuilder.h"
 #import "OWLAxiomBuilderType.h"
 
+@protocol OWLClassExpression;
+@protocol OWLIndividual;
 @protocol OWLOntology;
+@protocol OWLPropertyExpression;
 
 @class OWLAxiomBuilder;
 @class OWLClassExpressionBuilder;
@@ -44,6 +47,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
+
+#pragma mark Built entities
+
+- (nullable id<OWLClassExpression>)classExpressionForID:(NSString *)ID;
+- (nullable id<OWLIndividual>)individualForID:(NSString *)ID;
+- (nullable id<OWLPropertyExpression>)propertyForID:(NSString *)ID;
 
 #pragma mark Axiom builders
 

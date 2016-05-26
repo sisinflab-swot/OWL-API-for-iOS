@@ -105,12 +105,11 @@
                     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
                     
                     for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
-                        id<OWLClassExpression> ce = [[ontologyBuilder classExpressionBuilderForID:ID] build];
+                        id<OWLClassExpression> ce = [ontologyBuilder classExpressionForID:ID];
                         if (ce) {
                             [operands addObject:ce];
                         }
                     }
-                    
                     classExpression = [[OWLObjectIntersectionOfImpl alloc] initWithOperands:operands];
                     break;
                 }
@@ -135,12 +134,12 @@
     
     id<OWLRestriction> restr = nil;
     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
-    id<OWLPropertyExpression> property = [[ontologyBuilder propertyBuilderForID:propertyID] build];
+    id<OWLPropertyExpression> property = [ontologyBuilder propertyForID:propertyID];
     
     NSString *fillerID = _fillerID;
     id<OWLClassExpression> filler = nil;
     if (fillerID) {
-        filler = [[ontologyBuilder classExpressionBuilderForID:fillerID] build];
+        filler = [ontologyBuilder classExpressionForID:fillerID];
     }
     
     // TODO: currently only supports object properties

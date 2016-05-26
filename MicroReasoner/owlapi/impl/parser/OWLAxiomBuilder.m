@@ -7,6 +7,7 @@
 //
 
 #import "OWLAxiomBuilder.h"
+#import "OWLClass.h"
 #import "OWLClassAssertionAxiomImpl.h"
 #import "OWLClassExpression.h"
 #import "OWLClassExpressionBuilder.h"
@@ -17,6 +18,7 @@
 #import "OWLIndividual.h"
 #import "OWLIndividualBuilder.h"
 #import "OWLNamedIndividual.h"
+#import "OWLObjectProperty.h"
 #import "OWLObjectPropertyAssertionAxiomImpl.h"
 #import "OWLObjectPropertyDomainAxiomImpl.h"
 #import "OWLObjectPropertyRangeAxiomImpl.h"
@@ -60,28 +62,54 @@
     switch (_type)
     {
         case OWLABTypeDeclaration: {
+            OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
             NSString *entityID = _LHSID;
+            id<OWLEntity> entity = nil;
             
-            if (entityID) {
-                id<OWLEntity> entity = [[_ontologyBuilder entityBuilderForID:entityID] build];
-                
-                if (entity) {
-                    builtAxiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:entity];
+            switch (_declType)
+            {
+                case OWLABDeclTypeClass: {
+                    id<OWLClassExpression> ce = [ontoBuilder classExpressionForID:entityID];
+                    entity = [ce asOwlClass];
+                    break;
                 }
+                    
+                case OWLABDeclTypeObjectProperty: {
+                    id<OWLPropertyExpression> pe = [ontoBuilder propertyForID:entityID];
+                    if ([pe isObjectPropertyExpression]) {
+                        entity = [(id<OWLObjectPropertyExpression>)pe asOWLObjectProperty];
+                    }
+                    break;
+                }
+                    
+                case OWLABDeclTypeNamedIndividual: {
+                    id<OWLIndividual> ind = [ontoBuilder individualForID:entityID];
+                    if (ind.named) {
+                        entity = (id<OWLNamedIndividual>)ind;
+                    }
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+            
+            if (entity) {
+                builtAxiom = [[OWLDeclarationAxiomImpl alloc] initWithEntity:entity];
             }
             
             break;
         }
             
         case OWLABTypeClassAssertion: {
+            OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
+            
             NSString *individualID = _LHSID;
             NSString *classID = _RHSID;
             
             if (individualID && classID) {
-                OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
-                
-                id<OWLIndividual> individual = [[ontoBuilder individualBuilderForID:individualID] build];
-                id<OWLClassExpression> class = [[ontoBuilder classExpressionBuilderForID:classID] build];
+                id<OWLIndividual> individual = [ontoBuilder individualForID:individualID];
+                id<OWLClassExpression> class = [ontoBuilder classExpressionForID:classID];
                 
                 if (individual && class) {
                     builtAxiom = [[OWLClassAssertionAxiomImpl alloc] initWithIndividual:individual classExpression:class];
@@ -91,20 +119,20 @@
         }
             
         case OWLABTypePropertyAssertion: {
+            OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
+            
             NSString *subjectID = _LHSID;
             NSString *propertyID = _MID;
             NSString *objectID = _RHSID;
             
             if (subjectID && propertyID && objectID) {
-                OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
-                
-                id<OWLIndividual> subject = [[ontoBuilder individualBuilderForID:subjectID] build];
-                id<OWLPropertyExpression> property = [[ontoBuilder propertyBuilderForID:propertyID] build];
+                id<OWLIndividual> subject = [ontoBuilder individualForID:subjectID];
+                id<OWLPropertyExpression> property = [ontoBuilder propertyForID:propertyID];
                 
                 // TODO: only supports object property assertion axioms
                 if (subject && property.isObjectPropertyExpression) {
                     id<OWLObjectPropertyExpression> objProp = (id<OWLObjectPropertyExpression>)property;
-                    id<OWLIndividual> object = [[ontoBuilder individualBuilderForID:objectID] build];
+                    id<OWLIndividual> object = [ontoBuilder individualForID:objectID];
                     
                     if (object) {
                         builtAxiom = [[OWLObjectPropertyAssertionAxiomImpl alloc] initWithSubject:subject property:objProp object:object];
@@ -172,8 +200,8 @@
     if (RHSClassID && LHSClassID) {
         OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
         
-        id<OWLClassExpression> RHSClassExpression = [[ontoBuilder classExpressionBuilderForID:RHSClassID] build];
-        id<OWLClassExpression> LHSClassExpression = [[ontoBuilder classExpressionBuilderForID:LHSClassID] build];
+        id<OWLClassExpression> RHSClassExpression = [ontoBuilder classExpressionForID:RHSClassID];
+        id<OWLClassExpression> LHSClassExpression = [ontoBuilder classExpressionForID:LHSClassID];
         
         if (RHSClassExpression && LHSClassExpression) {
             builtAxiom = block(LHSClassExpression, RHSClassExpression);
@@ -193,13 +221,13 @@
     if (propertyID && domainRangeID) {
         OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
         
-        id<OWLPropertyExpression> propertyExpr = [[ontoBuilder propertyBuilderForID:propertyID] build];
+        id<OWLPropertyExpression> propertyExpr = [ontoBuilder propertyForID:propertyID];
         
         // TODO: only supports object property expressions
         if (propertyExpr.isObjectPropertyExpression) {
             id<OWLObjectPropertyExpression> objPropExpr = (id<OWLObjectPropertyExpression>)propertyExpr;
             
-            id<OWLClassExpression> domainRangeCE = [[ontoBuilder classExpressionBuilderForID:domainRangeID] build];
+            id<OWLClassExpression> domainRangeCE = [ontoBuilder classExpressionForID:domainRangeID];
             if (domainRangeCE) {
                 builtAxiom = block(objPropExpr, domainRangeCE);
             }
@@ -229,6 +257,31 @@
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple axiom types for same axiom."
                                   userInfo:@{@"types": @[@(_type), @(type)]}];
+    }
+    
+    return success;
+}
+
+#pragma mark Declaration axioms
+
+// declType
+@synthesize declType = _declType;
+
+- (BOOL)setDeclType:(OWLABDeclType)type error:(NSError *__autoreleasing *)error
+{
+    if (_declType == type) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (_declType == OWLABDeclTypeUnknown) {
+        _declType = type;
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple declaration axiom types for same axiom."
+                                  userInfo:@{@"types": @[@(_declType), @(type)]}];
     }
     
     return success;

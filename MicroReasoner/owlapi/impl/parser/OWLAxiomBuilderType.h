@@ -19,3 +19,10 @@ typedef NS_ENUM(NSInteger, OWLABType) {
     OWLABTypeRange,
     OWLABTypeSubClassOf
 };
+
+typedef NS_ENUM(NSInteger, OWLABDeclType) {
+    OWLABDeclTypeUnknown,
+    OWLABDeclTypeClass,
+    OWLABDeclTypeObjectProperty,
+    OWLABDeclTypeNamedIndividual
+};

@@ -33,6 +33,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the type of the built axiom.
 - (BOOL)setType:(OWLABType)type error:(NSError *_Nullable __autoreleasing *)error;
 
+#pragma mark Declarations
+
+/// The type of the declaration axiom to build.
+@property (nonatomic, readonly) OWLABDeclType declType;
+
+/// Sets the type of the declaration axiom to build.
+- (BOOL)setDeclType:(OWLABDeclType)type error:(NSError *_Nullable __autoreleasing *)error;
+
 #pragma mark Single statement axioms
 
 /// The ID of the left-hand-side of the axiom.

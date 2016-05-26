@@ -15,7 +15,7 @@
     while (self.count) {
         @autoreleasepool {
             NSMutableArray *keysToRemove = [[NSMutableArray alloc] init];
-            NSUInteger const batchSize = 100;
+            NSUInteger const batchSize = 1000;
             __block NSUInteger currentCount = 0;
             
             [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {

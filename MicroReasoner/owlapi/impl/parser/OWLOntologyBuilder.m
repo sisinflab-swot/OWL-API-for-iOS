@@ -26,6 +26,9 @@
 #import "NSMutableDictionary+SMRMutableDictionaryUtils.h"
 
 @interface OWLOntologyBuilder ()
+{
+    id<OWLOntology> _builtOntology;
+}
 
 @property (nonatomic, copy, readonly) NSString *ontologyIRI;
 @property (nonatomic, copy, readonly) NSString *versionIRI;
@@ -34,6 +37,8 @@
 // matching the subject node of the statement that triggered the
 // creation of the builder/item.
 
+// Entity builders
+
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, id<OWLAbstractBuilder>> *allEntityBuilders;
 
@@ -41,19 +46,34 @@ NSMutableDictionary<NSString *, id<OWLAbstractBuilder>> *allEntityBuilders;
 NSMutableDictionary<NSString *, OWLClassExpressionBuilder *> *classExpressionBuilders;
 
 @property (nonatomic, strong, readonly)
-NSMutableDictionary<NSString *, OWLAxiomBuilder *> *declarationAxiomBuilders;
-
-@property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, OWLIndividualBuilder *> *individualBuilders;
-
-@property (nonatomic, strong, readonly)
-NSMutableDictionary<NSString *, OWLListItem *> *listItems;
 
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *, OWLPropertyBuilder *> *propertyBuilders;
 
+// Built entities
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, id<OWLClassExpression>> *builtClassExpressions;
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, id<OWLIndividual>> *builtIndividuals;
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, id<OWLPropertyExpression>> *builtProperties;
+
+// Axiom builders
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLAxiomBuilder *> *declarationAxiomBuilders;
+
 @property (nonatomic, strong, readonly)
 NSMutableDictionary<NSString *,NSMutableArray<OWLAxiomBuilder *> *> *singleStatementAxiomBuilders;
+
+// Other
+
+@property (nonatomic, strong, readonly)
+NSMutableDictionary<NSString *, OWLListItem *> *listItems;
 
 @end
 
@@ -64,6 +84,9 @@ NSMutableDictionary<NSString *,NSMutableArray<OWLAxiomBuilder *> *> *singleState
 @synthesize versionIRI = _versionIRI;
 
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, allEntityBuilders);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, builtClassExpressions);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, builtIndividuals);
+SYNTHESIZE_LAZY_INIT(NSMutableDictionary, builtProperties);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, classExpressionBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, declarationAxiomBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, individualBuilders);
@@ -71,10 +94,24 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, listItems);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, propertyBuilders);
 SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
 
+#pragma mark Lifecycle
+
+- (instancetype)init
+{
+    if ((self = [super init])) {
+        
+    }
+    return self;
+}
+
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLOntology>)build
 {
+    if (_builtOntology) {
+        return _builtOntology;
+    }
+    
     OWLOntologyInternals *internals = [[OWLOntologyInternals alloc] init];
     
     // Declaration axioms
@@ -85,8 +122,6 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
             [internals addAxiom:axiom];
         }
     }];
-    
-    _declarationAxiomBuilders = nil;
     
     // Single statement axioms
     [self.singleStatementAxiomBuilders smr_enumerateAndRemoveKeysAndObjectsUsingBlock:^(__unused id _Nonnull key, NSMutableArray<OWLAxiomBuilder *> * _Nonnull axiomBuilders)
@@ -100,9 +135,10 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
         }
     }];
     
-    _singleStatementAxiomBuilders = nil;
+    id<OWLOntology> onto = [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
     
-    return [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
+    _builtOntology = onto;
+    return onto;
 }
 
 - (OWLOntologyID *)buildOntologyID
@@ -255,6 +291,59 @@ SYNTHESIZE_LAZY_INIT(NSMutableDictionary, singleStatementAxiomBuilders);
 - (OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID
 {
     return self.propertyBuilders[ID];
+}
+
+#pragma mark Built entities
+
+- (id<OWLClassExpression>)classExpressionForID:(NSString *)ID
+{
+    NSMutableDictionary *builtClassExpressions = self.builtClassExpressions;
+    id<OWLClassExpression> ce = builtClassExpressions[ID];
+    
+    if (!ce) {
+        NSMutableDictionary *classExpressionBuilders = self.classExpressionBuilders;
+        ce = [(OWLClassExpressionBuilder *)classExpressionBuilders[ID] build];
+        if (ce) {
+            builtClassExpressions[ID] = ce;
+            [classExpressionBuilders removeObjectForKey:ID];
+        }
+    }
+    
+    return ce;
+}
+
+- (id<OWLIndividual>)individualForID:(NSString *)ID
+{
+    NSMutableDictionary *builtIndividuals = self.builtIndividuals;
+    id<OWLIndividual> ind = builtIndividuals[ID];
+    
+    if (!ind) {
+        NSMutableDictionary *individualBuilders = self.individualBuilders;
+        ind = [(OWLIndividualBuilder *)individualBuilders[ID] build];
+        if (ind) {
+            builtIndividuals[ID] = ind;
+            [individualBuilders removeObjectForKey:ID];
+        }
+    }
+    
+    return ind;
+}
+
+- (id<OWLPropertyExpression>)propertyForID:(NSString *)ID
+{
+    NSMutableDictionary *builtProperties = self.builtProperties;
+    id<OWLPropertyExpression> pro = builtProperties[ID];
+    
+    if (!pro) {
+        NSMutableDictionary *propertyBuilders = self.propertyBuilders;
+        pro = [(OWLPropertyBuilder *)propertyBuilders[ID] build];
+        if (pro) {
+            builtProperties[ID] = pro;
+            [propertyBuilders removeObjectForKey:ID];
+        }
+    }
+    
+    return pro;
 }
 
 #pragma mark Axiom builders
