@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @return A set of entities that correspond to the signature of this object.
  */
-- (NSSet<id<OWLEntity>> *)signature;
+- (NSMutableSet<id<OWLEntity>> *)signature;
 
 /**
  * A convenience method that obtains the classes that are in the signature of this object.

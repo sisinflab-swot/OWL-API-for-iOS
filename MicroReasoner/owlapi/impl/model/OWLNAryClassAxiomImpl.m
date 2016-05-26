@@ -34,15 +34,19 @@
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
+- (NSMutableSet<id<OWLEntity>> *)signature
 {
-    NSMutableSet *signature = [[NSMutableSet alloc] init];
+    NSMutableSet *signature = nil;
     
     for (id<OWLClassExpression> ce in _classExpressions) {
-        [signature unionSet:ce.signature];
+        if (!signature) {
+            signature = [ce signature];
+        } else {
+            [signature unionSet:[ce signature]];
+        }
     }
     
-    return signature;
+    return signature ?: [NSMutableSet set];
 }
 
 #pragma mark OWLNAryClassAxiom

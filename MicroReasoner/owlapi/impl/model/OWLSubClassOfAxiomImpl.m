@@ -25,11 +25,9 @@
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
+- (NSMutableSet<id<OWLEntity>> *)signature
 {
-    // Annotations are not supported right now, so we can just return
-    // a set with the signatures of both the superClass and the subClass.
-    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[_superClass signature]];
+    NSMutableSet *signature = [_superClass signature];
     [signature unionSet:[_subClass signature]];
     return signature;
 }

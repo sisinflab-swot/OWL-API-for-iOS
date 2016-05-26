@@ -46,7 +46,7 @@
 
 - (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeObjectProperty]; }
 
-- (NSSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;
+- (NSMutableSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;
 
 #pragma mark Other abstract methods
 

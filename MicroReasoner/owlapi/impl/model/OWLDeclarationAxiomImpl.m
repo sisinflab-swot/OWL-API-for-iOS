@@ -25,7 +25,7 @@
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [_entity signature]; }
+- (NSMutableSet<id<OWLEntity>> *)signature { return [_entity signature]; }
 
 #pragma mark OWLAxiom
 

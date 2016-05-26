@@ -12,9 +12,9 @@
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
+- (NSMutableSet<id<OWLEntity>> *)signature
 {
-    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:[self.subject signature]];
+    NSMutableSet *signature = [self.subject signature];
     [signature unionSet:[self.property signature]];
     [signature unionSet:[self.object signature]];
     return signature;

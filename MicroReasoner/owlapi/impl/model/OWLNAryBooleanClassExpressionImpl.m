@@ -33,15 +33,19 @@
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
+- (NSMutableSet<id<OWLEntity>> *)signature
 {
-    NSMutableSet *signature = [[NSMutableSet alloc] init];
+    NSMutableSet *signature = nil;
     
     for (id<OWLClassExpression> op in _operands) {
-        [signature unionSet:[op signature]];
+        if (!signature) {
+            signature = [op signature];
+        } else {
+            [signature unionSet:[op signature]];
+        }
     }
     
-    return signature;
+    return signature ?: [NSMutableSet set];
 }
 
 #pragma mark OWLNAryBooleanClassExpression

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature;
+- (NSMutableSet<id<OWLEntity>> *)signature;
 
 #pragma mark OWLQuantifiedRestriction
 
