@@ -20,27 +20,26 @@
 #pragma mark Extension
 
 @interface OWLRDFXMLParser ()
-
-/// The ontology builder.
-@property (nonatomic, strong) OWLOntologyBuilder *ontologyBuilder;
-
-/// Errors accumulated during the parsing process.
-@property (nonatomic, strong) NSMutableArray<NSError *> *errors;
-
-/// Maps predicates to their respective handlers.
-@property (nonatomic, strong, readonly) id<OWLStatementHandlerMap> predicateHandlerMap;
-
+{
+    OWLOntologyBuilder *_ontologyBuilder;
+    NSMutableArray *_errors;
+    id<OWLStatementHandlerMap> _predicateHandlerMap;
+}
 @end
 
 #pragma mark Implementation
 
 @implementation OWLRDFXMLParser
 
-#pragma mark Properties
+#pragma mark Lifecycle
 
-SYNTHESIZE_LAZY_INIT(NSMutableArray, errors);
-SYNTHESIZE_LAZY_INIT(OWLOntologyBuilder, ontologyBuilder);
-SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
+- (instancetype)init
+{
+    if ((self = [super init])) {
+        _predicateHandlerMap = [[OWLPredicateHandlerMap alloc] init];
+    }
+    return self;
+}
 
 #pragma mark Public methods
 
@@ -52,7 +51,7 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
     id<OWLOntology> ontology = nil;
     
     if ([self parseOntologyAtURL:URL error:&localError]) {
-        ontology = [self.ontologyBuilder build];
+        ontology = [_ontologyBuilder build];
     }
     
     if (error) {
@@ -66,8 +65,8 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
 
 - (void)initializeDataStructures
 {
-    self.errors = nil;
-    self.ontologyBuilder = nil;
+    _errors = [[NSMutableArray alloc] init];
+    _ontologyBuilder = [[OWLOntologyBuilder alloc] init];
 }
 
 - (BOOL)parseOntologyAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
@@ -75,7 +74,7 @@ SYNTHESIZE_LAZY_INIT(OWLPredicateHandlerMap, predicateHandlerMap);
     [self initializeDataStructures];
     
     NSError *__autoreleasing localError = nil;
-    NSMutableArray<NSError *> *errors = self.errors;
+    NSMutableArray<NSError *> *errors = _errors;
     
     librdf_world *world = librdf_new_world();
     librdf_world_open(world);
@@ -138,7 +137,6 @@ err:
 - (BOOL)handleStatement:(RDFStatement *)statement error:(NSError *_Nullable __autoreleasing *)error
 {
     NSError *__autoreleasing localError = nil;
-    OWLRDFXMLParser *__weak weakSelf = self;
     
     RDFNode *subject = statement.subject;
     RDFNode *predicate = statement.predicate;
@@ -159,8 +157,8 @@ err:
     
     {
         NSString *signature = predicate.URIStringValue;
-        OWLStatementHandler handler = [self.predicateHandlerMap handlerForSignature:signature];
-        if (handler && !handler(statement, weakSelf.ontologyBuilder, &localError)) {
+        OWLStatementHandler handler = [_predicateHandlerMap handlerForSignature:signature];
+        if (handler && !handler(statement, _ontologyBuilder, &localError)) {
             goto err;
         }
     }

@@ -37,15 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
 // OWL DL entities should have a unique ID (blank node or IRI), therefore these
 // setters return NO if a named entity with the specified ID already exists.
 
-- (nullable id<OWLAbstractBuilder>)entityBuilderForID:(NSString *)ID;
-
-- (nullable OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID;
 - (nullable OWLClassExpressionBuilder *)classExpressionBuilderForID:(NSString *)ID;
 
-- (nullable OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID;
 - (nullable OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID;
 
-- (nullable OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID;
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
 
 #pragma mark Built entities

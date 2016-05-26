@@ -116,7 +116,7 @@ OWLStatementHandler oClassHandler = ^BOOL(RDFStatement *statement, OWLOntologyBu
         }
         
         // Add class expression builder
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setType:OWLCEBTypeClass error:&localError]) {
             goto err;
@@ -170,7 +170,7 @@ OWLStatementHandler oNamedIndividualHandler = ^BOOL(RDFStatement *statement, OWL
     {
         // Named individual declaration
         NSString *IRIString = subject.URIStringValue;
-        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString error:&localError];
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString];
         
         if (![ib setType:OWLIBTypeNamed error:&localError]) {
             goto err;
@@ -221,7 +221,7 @@ OWLStatementHandler oObjectPropertyHandler = ^BOOL(RDFStatement *statement, OWLO
     {
         // Object property declaration
         NSString *IRIString = subject.URIStringValue;
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString error:&localError];
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -301,7 +301,7 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RDFStatement *statement, OWLOnto
     {
         // Restriction declaration
         NSString *subjectID = subject.blankID;
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
             goto err;

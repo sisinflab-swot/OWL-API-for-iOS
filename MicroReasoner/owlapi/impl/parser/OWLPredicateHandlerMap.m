@@ -149,7 +149,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
         BOOL namedIndividual = subject.isResource;
         NSString *subjectID = namedIndividual ? subject.URIStringValue : subject.blankID;
         
-        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID error:&localError];
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID];
         
         if (![ib setType:(namedIndividual ? OWLIBTypeNamed : OWLIBTypeAnonymous) error:&localError]) {
             goto err;
@@ -162,11 +162,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
         // Add class expression
         NSString *objectID = (named ? statement.object.URIStringValue : statement.object.blankID);
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID error:&localError];
-        
-        if (!ceb) {
-            goto err;
-        }
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID];
         
         if (named) {
             if (![ceb setType:OWLCEBTypeClass error:&localError]) {
@@ -377,11 +373,7 @@ NS_INLINE BOOL handleQuantificationStatement(RDFStatement *statement, OWLOntolog
         BOOL objectIsResource = object.isResource;
         NSString *fillerID = objectIsResource ? object.URIStringValue : object.blankID;
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID error:&localError];
-        
-        if (!ceb) {
-            goto err;
-        }
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID];
         
         if (objectIsResource) {
             if (![ceb setType:OWLCEBTypeClass error:&localError]) {
@@ -395,7 +387,7 @@ NS_INLINE BOOL handleQuantificationStatement(RDFStatement *statement, OWLOntolog
         
         // Add restriction
         NSString *subjectID = subject.blankID;
-        ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         OWLCEBRestrictionType restrictionType = (universal ? OWLCEBRestrictionTypeAllValuesFrom : OWLCEBRestrictionTypeSomeValuesFrom);
         if (![ceb setRestrictionType:restrictionType error:&localError]) {
@@ -453,7 +445,7 @@ NS_INLINE BOOL handleCardinalityStatement(RDFStatement *statement, OWLOntologyBu
         NSString *subjectID = subject.blankID;
         NSString *objectValue = object.literalValue;
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setRestrictionType:restrType error:&localError]) {
             goto err;
@@ -512,7 +504,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
         BOOL isResource = subject.isResource;
         NSString *LHSClassID = isResource ? subject.URIStringValue : subject.blankID;
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID];
         
         if (isResource) {
             if (![ceb setType:OWLCEBTypeClass error:&localError]) {
@@ -528,7 +520,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
         isResource = object.isResource;
         NSString *RHSClassID = isResource ? object.URIStringValue : object.blankID;
         
-        ceb = [builder ensureClassExpressionBuilderForID:RHSClassID error:&localError];
+        ceb = [builder ensureClassExpressionBuilderForID:RHSClassID];
         
         if (isResource) {
             if (![ceb setType:OWLCEBTypeClass error:&localError]) {
@@ -593,7 +585,7 @@ OWLStatementHandler pIntersectionOfHandler = ^BOOL(RDFStatement *statement, OWLO
         NSString *subjectID = subject.blankID;
         NSString *objectID = object.blankID;
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setBooleanType:OWLCEBBooleanTypeIntersection error:&localError]) {
             goto err;
@@ -643,7 +635,7 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RDFStatement *statement, OWLOntol
         // Note: currently only supports object properties, so
         // we assume the property is such.
         NSString *objectID = object.URIStringValue;
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:objectID error:&localError];
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:objectID];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -655,7 +647,7 @@ OWLStatementHandler pOnPropertyHandler = ^BOOL(RDFStatement *statement, OWLOntol
         
         // Add class expression builder
         NSString *subjectID = subject.blankID;
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID error:&localError];
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setPropertyID:objectID error:&localError]) {
             goto err;
@@ -691,7 +683,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
         // We assume it's an object property since it's
         // the only supported property expression type.
         NSString *subjectID = subject.isResource ? subject.URIStringValue : subject.blankID;
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID error:&localError];
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
@@ -705,11 +697,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
         BOOL objectIsResource = object.isResource;
         NSString *objectID = objectIsResource ? object.URIStringValue : object.blankID;
         
-        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID error:&localError];
-        
-        if (!ceb) {
-            goto err;
-        }
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID];
         
         if (objectIsResource) {
             if (![ceb setType:OWLCEBTypeClass error:&localError]) {
