@@ -33,6 +33,11 @@
 
 - (NSUInteger)computeHash { return [super computeHash] ^ [_range hash]; }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Range(%@ %@)", self.property, _range];
+}
+
 #pragma mark OWLPropertyRangeAxiom
 
 @synthesize range = _range;

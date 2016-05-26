@@ -33,6 +33,11 @@
 
 - (NSUInteger)computeHash { return [super computeHash] ^ [_domain hash]; }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"Domain(%@ %@)", self.property, _domain];
+}
+
 #pragma mark OWLPropertyDomainAxiom
 
 @synthesize domain = _domain;
