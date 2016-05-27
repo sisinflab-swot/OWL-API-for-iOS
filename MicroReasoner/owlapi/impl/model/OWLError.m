@@ -7,6 +7,7 @@
 //
 
 #import "OWLError.h"
+#import "SMRDebug.h"
 
 NSString *const OWLErrorDomain = @"it.poliba.sisinflab.owl.error";
 
@@ -28,6 +29,8 @@ NSString *const OWLErrorDomain = @"it.poliba.sisinflab.owl.error";
             [localUserInfo setObject:description forKey:NSLocalizedDescriptionKey];
         }
     }
+    
+    SMRDebugLog(@"Error (Code %ld):\n%@", (long)code, localUserInfo);
     
     return [[NSError alloc] initWithDomain:OWLErrorDomain code:code userInfo:localUserInfo];
 }

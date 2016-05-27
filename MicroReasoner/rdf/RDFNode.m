@@ -65,4 +65,29 @@
     return self;
 }
 
+- (NSString *)description
+{
+    NSString *description = nil;
+    
+    switch (_type)
+    {
+        case RDFNodeTypeResource:
+            description = self.URIStringValue;
+            break;
+            
+        case RDFNodeTypeBlank:
+            description = self.blankID;
+            break;
+            
+        case RDFNodeTypeLiteral:
+            description = self.literalValue;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return description;
+}
+
 @end

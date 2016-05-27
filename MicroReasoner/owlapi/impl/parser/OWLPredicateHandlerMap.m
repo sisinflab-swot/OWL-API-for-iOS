@@ -18,7 +18,6 @@
 #import "OWLRDFVocabulary.h"
 #import "RDFNode.h"
 #import "RDFStatement.h"
-#import "SMRPreprocessor.h"
 
 @interface OWLPredicateHandlerMap ()
 {

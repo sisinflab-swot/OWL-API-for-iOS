@@ -27,6 +27,8 @@
 		CC2933301CDE285500315B3A /* OWLBooleanClassExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29332D1CDE285500315B3A /* OWLBooleanClassExpression.h */; };
 		CC2933311CDE285500315B3A /* OWLNAryBooleanClassExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29332E1CDE285500315B3A /* OWLNAryBooleanClassExpression.h */; };
 		CC2933321CDE285500315B3A /* OWLObjectIntersectionOf.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29332F1CDE285500315B3A /* OWLObjectIntersectionOf.h */; };
+		CC2D32841CF8454F00679DF8 /* SMRClassUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = CC2D32811CF8454F00679DF8 /* SMRClassUtils.h */; };
+		CC2D32851CF8454F00679DF8 /* SMRDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = CC2D32821CF8454F00679DF8 /* SMRDebug.h */; };
 		CC399F001CE280AB001A7F19 /* OWLNamespace.h in Headers */ = {isa = PBXBuildFile; fileRef = CC399EFE1CE280AB001A7F19 /* OWLNamespace.h */; };
 		CC49E3711CDA0B3700D18736 /* OWLOntologyID.h in Headers */ = {isa = PBXBuildFile; fileRef = CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */; };
 		CC4D5B671CE3CF14005F7ADB /* OWLAxiomType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC4D5B661CE3CF14005F7ADB /* OWLAxiomType.h */; };
@@ -248,6 +250,8 @@
 		CC29332D1CDE285500315B3A /* OWLBooleanClassExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLBooleanClassExpression.h; sourceTree = "<group>"; };
 		CC29332E1CDE285500315B3A /* OWLNAryBooleanClassExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLNAryBooleanClassExpression.h; sourceTree = "<group>"; };
 		CC29332F1CDE285500315B3A /* OWLObjectIntersectionOf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectIntersectionOf.h; sourceTree = "<group>"; };
+		CC2D32811CF8454F00679DF8 /* SMRClassUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRClassUtils.h; sourceTree = "<group>"; };
+		CC2D32821CF8454F00679DF8 /* SMRDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMRDebug.h; sourceTree = "<group>"; };
 		CC399EFE1CE280AB001A7F19 /* OWLNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLNamespace.h; sourceTree = "<group>"; };
 		CC49E36F1CDA0B3700D18736 /* OWLOntologyID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLOntologyID.h; sourceTree = "<group>"; };
 		CC4D5B661CE3CF14005F7ADB /* OWLAxiomType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLAxiomType.h; sourceTree = "<group>"; };
@@ -426,7 +430,6 @@
 		CCDC44711CDB39B000854918 /* OWLLogicalAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLLogicalAxiom.h; sourceTree = "<group>"; };
 		CCDC44731CDB39EA00854918 /* OWLClassAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassAxiom.h; sourceTree = "<group>"; };
 		CCDC44751CDB3A1F00854918 /* OWLSubClassOfAxiom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLSubClassOfAxiom.h; sourceTree = "<group>"; };
-		CCDC44851CDB83AF00854918 /* SMRPreprocessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMRPreprocessor.h; sourceTree = "<group>"; };
 		CCDC44881CDBAD2C00854918 /* OWLClassExpressionType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLClassExpressionType.h; sourceTree = "<group>"; };
 		CCDE42D71CDE3ACB00232E83 /* OWLCardinalityRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLCardinalityRestriction.h; sourceTree = "<group>"; };
 		CCDE42E11CDE3B0800232E83 /* OWLObjectCardinalityRestriction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLObjectCardinalityRestriction.h; sourceTree = "<group>"; };
@@ -490,6 +493,15 @@
 			);
 			name = Dependencies;
 			path = External;
+			sourceTree = "<group>";
+		};
+		CC2D32801CF8454F00679DF8 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				CC2D32811CF8454F00679DF8 /* SMRClassUtils.h */,
+				CC2D32821CF8454F00679DF8 /* SMRDebug.h */,
+			);
+			path = other;
 			sourceTree = "<group>";
 		};
 		CC49E37B1CDA104C00D18736 /* impl */ = {
@@ -732,7 +744,7 @@
 				CC1417BD1CED240300165477 /* categories */,
 				CCCE047C1CF2FA4C00037488 /* rdf */,
 				CCEF46701CD8E7AC008C3D88 /* owlapi */,
-				CCDC44851CDB83AF00854918 /* SMRPreprocessor.h */,
+				CC2D32801CF8454F00679DF8 /* other */,
 				CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */,
 				CCD2FC431CD5F7B3003F8CC8 /* Info.plist */,
 			);
@@ -886,6 +898,7 @@
 				CC6BA9331CE8EA31002ECC26 /* OWLQuantifiedObjectRestrictionImpl.h in Headers */,
 				CCCE04AE1CF3016E00037488 /* rdf_digest.h in Headers */,
 				CC8778711CDD1CA20058F677 /* OWLRestriction.h in Headers */,
+				CC2D32851CF8454F00679DF8 /* SMRDebug.h in Headers */,
 				CC6BA8FE1CE8EA31002ECC26 /* OWLDisjointClassesAxiomImpl.h in Headers */,
 				CC73929C1CE62614000D4076 /* OWLEntityType.h in Headers */,
 				CCCE04B61CF3016E00037488 /* rdf_parser.h in Headers */,
@@ -945,6 +958,7 @@
 				CC6BA9381CE8EA31002ECC26 /* OWLRestrictionImpl.h in Headers */,
 				CCCE04B01CF3016E00037488 /* rdf_init.h in Headers */,
 				CCCE04B51CF3016E00037488 /* rdf_node.h in Headers */,
+				CC2D32841CF8454F00679DF8 /* SMRClassUtils.h in Headers */,
 				CCCE04BA1CF3016E00037488 /* rdf_statement.h in Headers */,
 				CCCE04BF1CF3016E00037488 /* rdf_utf8.h in Headers */,
 				CCD596831CF0553100EC2F33 /* OWLPredicateHandlerMap.h in Headers */,

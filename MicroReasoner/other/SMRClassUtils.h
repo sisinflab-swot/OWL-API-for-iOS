@@ -1,13 +1,10 @@
 //
-//  SMRPreprocessor.h
+//  SMRClassUtils.h
 //  MicroReasoner
 //
 //  Created by Ivano Bilenchi on 05/05/16.
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
-
-#ifndef SMRPreprocessor_h
-#define SMRPreprocessor_h
 
 /**
  * Use this directive to mark method implementations that should be overridden
@@ -52,5 +49,3 @@ return _##name; \
 if (_##name == nil) { _##name = [[type alloc] init]; } \
 return _##name; \
 }
-
-#endif /* SMRPreprocessor_h */

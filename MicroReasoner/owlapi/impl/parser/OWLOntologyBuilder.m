@@ -22,7 +22,6 @@
 #import "OWLOntologyInternals.h"
 #import "OWLPropertyBuilder.h"
 #import "OWLSubClassOfAxiom.h"
-#import "SMRPreprocessor.h"
 #import "NSMutableDictionary+SMRMutableDictionaryUtils.h"
 
 @interface OWLOntologyBuilder ()

@@ -16,7 +16,7 @@
 #import "OWLRDFVocabulary.h"
 #import "RDFNode.h"
 #import "RDFStatement.h"
-#import "SMRPreprocessor.h"
+#import "SMRClassUtils.h"
 
 @interface OWLRDFTypeHandlerMap ()
 {

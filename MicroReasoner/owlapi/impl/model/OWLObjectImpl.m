@@ -8,7 +8,7 @@
 
 #import "OWLObjectImpl.h"
 #import "OWLEntity.h"
-#import "SMRPreprocessor.h"
+#import "SMRClassUtils.h"
 
 @interface OWLObjectImpl ()
 {

@@ -31,4 +31,9 @@
     return self;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"RDFStatement('%@' '%@' '%@')", _subject, _predicate, _object];
+}
+
 @end
