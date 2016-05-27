@@ -56,6 +56,21 @@
 
 - (NSUInteger)hash { return [_ontologyIRI hash] ^ [_versionIRI hash]; }
 
+- (NSString *)description
+{
+    NSMutableArray *components = [[NSMutableArray alloc] init];
+    
+    if (_ontologyIRI) {
+        [components addObject:[NSString stringWithFormat:@"<%@>", _ontologyIRI]];
+    }
+    
+    if (_versionIRI) {
+        [components addObject:[NSString stringWithFormat:@"Version: <%@>", _versionIRI]];
+    }
+    
+    return [components componentsJoinedByString:@" "];
+}
+
 #pragma mark NSCopying
 
 // This object is immutable.
