@@ -36,6 +36,7 @@ NS_INLINE NSDictionary * initHandlers()
     map[[OWLRDFVocabulary OWLObjectProperty].stringValue] = [oObjectPropertyHandler copy];
     map[[OWLRDFVocabulary OWLOntology].stringValue] = [oOntologyIRIHandler copy];
     map[[OWLRDFVocabulary OWLRestriction].stringValue] = [oRestrictionHandler copy];
+    map[[OWLRDFVocabulary OWLTransitiveProperty].stringValue] = [oTransitivePropertyHandler copy];
     
     OWLStatementHandler notImplemented = [oNotImplementedHandler copy];
     
@@ -60,7 +61,6 @@ map[[OWLRDFVocabulary name].stringValue] = notImplemented
     handlerNotImplemented(OWLOntologyProperty);
     handlerNotImplemented(OWLReflexiveProperty);
     handlerNotImplemented(OWLSymmetricProperty);
-    handlerNotImplemented(OWLTransitiveProperty);
     
     return map;
 }
@@ -304,6 +304,58 @@ OWLStatementHandler oRestrictionHandler = ^BOOL(RDFStatement *statement, OWLOnto
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
+};
+
+#pragma mark Transitive property handler
+
+OWLStatementHandler oTransitivePropertyHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    RDFNode *subject = statement.subject;
+    
+    if (subject.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Illegal literal subject node in transitive property statement."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Subject is surely an object property expression
+        BOOL subjectIsResource = subject.isResource;
+        NSString *subjectID = subjectIsResource ? subject.URIStringValue : subject.blankID;
+        
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
+        
+        if (subjectIsResource) {
+            // Object property
+            if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
+                goto err;
+            }
+            
+            if (![pb setNamedPropertyID:subjectID error:&localError]) {
+                goto err;
+            }
+        }
+        
+        // Add axiom
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        
+        if (![ab setType:OWLABTypeTransitiveProperty error:&localError]) {
+            goto err;
+        }
+        
+        if (![ab setLHSID:subjectID error:&localError]) {
             goto err;
         }
     }

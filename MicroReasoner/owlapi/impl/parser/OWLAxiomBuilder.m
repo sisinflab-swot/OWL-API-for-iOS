@@ -25,6 +25,7 @@
 #import "OWLOntologyBuilder.h"
 #import "OWLPropertyBuilder.h"
 #import "OWLSubClassOfAxiomImpl.h"
+#import "OWLTransitiveObjectPropertyAxiomImpl.h"
 
 @interface OWLAxiomBuilder ()
 {
@@ -176,6 +177,20 @@
                               return [[OWLObjectPropertyRangeAxiomImpl alloc] initWithProperty:OPE range:CE];
                           }];
             break;
+            
+        case OWLABTypeTransitiveProperty: {
+            OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
+            NSString *propertyID = _LHSID;
+            
+            if (propertyID) {
+                id<OWLPropertyExpression> property = [ontoBuilder propertyForID:propertyID];
+                if (property && property.isObjectPropertyExpression) {
+                    id<OWLObjectPropertyExpression> objProp = (id<OWLObjectPropertyExpression>)property;
+                    builtAxiom = [[OWLTransitiveObjectPropertyAxiomImpl alloc] initWithProperty:objProp];
+                }
+            }
+            break;
+        }
             
         default:
             break;
