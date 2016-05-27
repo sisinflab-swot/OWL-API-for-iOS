@@ -307,12 +307,6 @@
 
 - (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID
 {
-    OWLAxiomBuilder *ab = [self addSingleStatementAxiomBuilderForID:ID ensureUniqueType:OWLABTypeUnknown];
-    return ab;
-}
-
-- (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID ensureUniqueType:(OWLABType)uniqueType
-{
     NSMutableDictionary *singleStatementAxiomBuilders = _singleStatementAxiomBuilders;
     NSMutableArray *axiomBuilders = singleStatementAxiomBuilders[ID];
     
@@ -321,28 +315,8 @@
         singleStatementAxiomBuilders[ID] = axiomBuilders;
     }
     
-    BOOL insert = YES;
-    
-    if (uniqueType != OWLABTypeUnknown) {
-        for (OWLAxiomBuilder *ab in axiomBuilders) {
-            if (ab.type == uniqueType) {
-                insert = NO;
-                break;
-            }
-        }
-    }
-    
-    OWLAxiomBuilder *ab = nil;
-    
-    if (insert) {
-        ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:self];
-        
-        if (uniqueType != OWLABTypeUnknown) {
-            [ab setType:uniqueType error:NULL];
-        }
-        
-        [axiomBuilders addObject:ab];
-    }
+    OWLAxiomBuilder *ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:self];
+    [axiomBuilders addObject:ab];
     
     return ab;
 }

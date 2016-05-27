@@ -709,12 +709,9 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
         }
         
         // Add axiom
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID
-                                                          ensureUniqueType:(domain ? OWLABTypeDomain : OWLABTypeRange)];
-        if (!ab) {
-            localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                              localizedDescription:@"Multiple domain/range axioms for same property expression."
-                                          userInfo:@{@"statement": statement}];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        
+        if (![ab setType:(domain ? OWLABTypeDomain : OWLABTypeRange) error:&localError]) {
             goto err;
         }
         
