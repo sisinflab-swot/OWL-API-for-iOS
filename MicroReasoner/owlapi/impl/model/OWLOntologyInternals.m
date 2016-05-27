@@ -155,6 +155,17 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 
 #pragma mark Public getter methods
 
+- (NSSet<id<OWLAxiom>> *)allAxioms
+{
+    NSMutableSet *allAxioms = [[NSMutableSet alloc] init];
+    
+    [_axiomsByType enumerateKeysAndObjectsUsingBlock:^(__unused NSNumber * _Nonnull key, NSMutableSet<id<OWLAxiom>> * _Nonnull obj, __unused BOOL * _Nonnull stop) {
+        [allAxioms unionSet:obj];
+    }];
+    
+    return allAxioms;
+}
+
 - (NSSet<id<OWLClass>> *)allClasses
 {
     return [NSSet setWithArray:[_classRefs allKeys]];

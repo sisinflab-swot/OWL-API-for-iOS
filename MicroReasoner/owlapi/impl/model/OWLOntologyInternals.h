@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark Getter methods
 
+- (NSSet<id<OWLAxiom>> *)allAxioms;
 - (NSSet<id<OWLClass>> *)allClasses;
 - (NSSet<id<OWLNamedIndividual>> *)allNamedIndividuals;
 - (NSSet<id<OWLObjectProperty>> *)allObjectProperties;

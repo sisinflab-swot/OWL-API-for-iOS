@@ -27,6 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) OWLOntologyID *ontologyID;
 
 /**
+ * Retrieves all of the axioms in this ontology.
+ *
+ * @return All the axioms in this ontology.
+ */
+- (NSSet<id<OWLAxiom>> *)allAxioms;
+
+/**
  * Gets the axioms which are of the specified type.
  *
  * @param type The type of axioms to be retrieved.
