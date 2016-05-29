@@ -10,7 +10,7 @@
 
 @implementation NSMapTable (SMRObjectCache)
 
-+ (NSMapTable *)smr_objCache { return [NSMapTable strongToWeakObjectsMapTable]; }
++ (NSMapTable *)smr_objCache { return [NSMapTable weakToWeakObjectsMapTable]; }
 
 #pragma mark Double level object cache
 
