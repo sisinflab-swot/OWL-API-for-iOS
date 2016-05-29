@@ -14,7 +14,7 @@
 #import "OWLRDFVocabulary.h"
 #import "RDFNode.h"
 #import "RDFStatement.h"
-#import "redland.h"
+#import "raptor.h"
 
 #pragma mark Extension
 
@@ -68,63 +68,84 @@
     _ontologyBuilder = [[OWLOntologyBuilder alloc] init];
 }
 
+static void raptorStatementHandler(void *parser_arg, raptor_statement *triple) {
+    @autoreleasepool
+    {
+        OWLRDFXMLParser *parser = (__bridge OWLRDFXMLParser *)parser_arg;
+        NSError *__autoreleasing statementError = nil;
+        
+        if (!triple) {
+            statementError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                                  localizedDescription:@"Error while parsing file."];
+            [parser->_errors addObject:statementError];
+            return;
+        }
+        
+        RDFStatement *statement = [[RDFStatement alloc] initWithRaptorStatement:triple];
+        
+        if (![parser handleStatement:statement error:&statementError]) {
+            [parser->_errors addObject:statementError];
+        }
+    }
+}
+
 - (BOOL)parseOntologyAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
 {
     [self initializeDataStructures];
     
     NSError *__autoreleasing localError = nil;
-    NSMutableArray<NSError *> *errors = _errors;
     
-    librdf_world *world = librdf_new_world();
-    librdf_world_open(world);
+    raptor_world *world = NULL;
+    raptor_parser* rdf_parser = NULL;
+    unsigned char *uri_string = NULL;
+    raptor_uri *uri = NULL;
+    raptor_uri *base_uri = NULL;
     
-    librdf_parser *parser = librdf_new_parser(world, "rdfxml", NULL, NULL);
-    librdf_stream *stream = NULL;
+    world = raptor_new_world();
     
-    librdf_uri *uri = librdf_new_uri_from_filename(world, [URL.path UTF8String]);
-    
-    if (uri == NULL) {
+    if (!world) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                          localizedDescription:@"librdf_new_uri_from_filename failed."
+                          localizedDescription:@"Could not create raptor world."
                                       userInfo:@{@"URL": URL}];
         goto err;
     }
     
-    stream = librdf_parser_parse_as_stream(parser, uri, uri);
+    raptor_world_open(world);
+    rdf_parser = raptor_new_parser(world, "rdfxml");
     
-    if (stream == NULL) {
+    if (!rdf_parser) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                          localizedDescription:@"Failed to parse file."
+                          localizedDescription:@"Could not create raptor parser."
                                       userInfo:@{@"URL": URL}];
+        goto err;
     }
     
-    do {
-        @autoreleasepool
-        {
-            NSError *__autoreleasing statementError = nil;
-            librdf_statement *triple = librdf_stream_get_object(stream);
-            
-            if (!triple) {
-                statementError = [NSError OWLErrorWithCode:OWLErrorCodeParse
-                                      localizedDescription:@"Error while parsing file."
-                                                  userInfo:@{@"URL": URL}];
-                [errors addObject:statementError];
-                continue;
-            }
-            
-            RDFStatement *statement = [[RDFStatement alloc] initWithLibRdfStatement:triple];
-            
-            if (![self handleStatement:statement error:&statementError]) {
-                [errors addObject:statementError];
-            }
-        }
-    } while (librdf_stream_next(stream) == 0);
+    uri_string = raptor_uri_filename_to_uri_string([[URL path] UTF8String]);
+    
+    if (!uri_string) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                          localizedDescription:@"Invalid URL."
+                                      userInfo:@{@"URL": URL}];
+        goto err;
+    }
+    uri = raptor_new_uri(world, uri_string);
+    base_uri = raptor_uri_copy(uri);
+    
+    raptor_parser_set_statement_handler(rdf_parser, (__bridge void *)(self), raptorStatementHandler);
+    
+    if (raptor_parser_parse_file(rdf_parser, uri, base_uri)) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+                          localizedDescription:@"Error(s) while parsing file."
+                                      userInfo:@{@"URL": URL}];
+        goto err;
+    }
     
 err:
-    librdf_free_uri(uri);
-    librdf_free_stream(stream);
-    librdf_free_parser(parser);
-    librdf_free_world(world);
+    raptor_free_uri(base_uri);
+    raptor_free_uri(uri);
+    raptor_free_memory(uri_string);
+    raptor_free_parser(rdf_parser);
+    raptor_free_world(world);
     
     if (error) {
         *error = localError;

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "raptor.h"
 
 @class RDFNode;
 
@@ -24,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The object of this statement.
 @property (nonatomic, strong, readonly) RDFNode *object;
 
-- (instancetype)initWithLibRdfStatement:(void *)statement;
+- (instancetype)initWithRaptorStatement:(raptor_statement *)statement;
 
 @end
 

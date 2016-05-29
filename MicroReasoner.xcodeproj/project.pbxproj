@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5FEC11D4DC8B69AAD41300E1 /* OWLRDFVocabulary.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FEC1AE1E2326A0F2DA12CC3 /* OWLRDFVocabulary.h */; };
+		CC0333A61CFAE62600CFBC78 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D71CD5F9FA009E6792 /* libxml2.tbd */; };
 		CC11C17D1CE88E410090A07C /* OWLPropertyAssertionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11C17C1CE88E410090A07C /* OWLPropertyAssertionObject.h */; };
 		CC11C1871CE88E840090A07C /* OWLIndividual.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11C1861CE88E840090A07C /* OWLIndividual.h */; };
 		CC11C1891CE88F2E0090A07C /* OWLNamedIndividual.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11C1881CE88F2E0090A07C /* OWLNamedIndividual.h */; };
@@ -21,9 +22,6 @@
 		CC15C3631CE4B1BC009A4EFF /* OWLPropertyRangeAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15C3621CE4B1BC009A4EFF /* OWLPropertyRangeAxiom.h */; };
 		CC15C3711CE4B512009A4EFF /* OWLObjectPropertyRangeAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15C3701CE4B512009A4EFF /* OWLObjectPropertyRangeAxiom.h */; };
 		CC15C3771CE4BF67009A4EFF /* OWLDeclarationAxiom.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15C3761CE4BF67009A4EFF /* OWLDeclarationAxiom.h */; };
-		CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D71CD5F9FA009E6792 /* libxml2.tbd */; };
-		CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747D91CD5FA01009E6792 /* libxslt.tbd */; };
-		CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2747DB1CD5FA06009E6792 /* libsqlite3.tbd */; };
 		CC2933301CDE285500315B3A /* OWLBooleanClassExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29332D1CDE285500315B3A /* OWLBooleanClassExpression.h */; };
 		CC2933311CDE285500315B3A /* OWLNAryBooleanClassExpression.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29332E1CDE285500315B3A /* OWLNAryBooleanClassExpression.h */; };
 		CC2933321CDE285500315B3A /* OWLObjectIntersectionOf.h in Headers */ = {isa = PBXBuildFile; fileRef = CC29332F1CDE285500315B3A /* OWLObjectIntersectionOf.h */; };
@@ -198,8 +196,6 @@
 		CCCE04C31CF3045100037488 /* RDFStatement.h in Headers */ = {isa = PBXBuildFile; fileRef = CCCE04C11CF3045100037488 /* RDFStatement.h */; };
 		CCCE04C41CF3045100037488 /* RDFStatement.m in Sources */ = {isa = PBXBuildFile; fileRef = CCCE04C21CF3045100037488 /* RDFStatement.m */; };
 		CCCE04C61CF3121300037488 /* libraptor2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE04C51CF3121300037488 /* libraptor2.a */; };
-		CCCE04C81CF3122500037488 /* librasqal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE04C71CF3122500037488 /* librasqal.a */; };
-		CCCE04CA1CF3123300037488 /* librdf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCCE04C91CF3123300037488 /* librdf.a */; };
 		CCD2FC421CD5F7B3003F8CC8 /* MicroReasoner.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD2FC411CD5F7B3003F8CC8 /* MicroReasoner.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCD596831CF0553100EC2F33 /* OWLPredicateHandlerMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CCD596811CF0553100EC2F33 /* OWLPredicateHandlerMap.h */; };
 		CCD596841CF0553100EC2F33 /* OWLPredicateHandlerMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD596821CF0553100EC2F33 /* OWLPredicateHandlerMap.m */; };
@@ -470,12 +466,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCCE04CA1CF3123300037488 /* librdf.a in Frameworks */,
 				CCCE04C61CF3121300037488 /* libraptor2.a in Frameworks */,
-				CCCE04C81CF3122500037488 /* librasqal.a in Frameworks */,
-				CC2747D81CD5F9FA009E6792 /* libxml2.tbd in Frameworks */,
-				CC2747DA1CD5FA01009E6792 /* libxslt.tbd in Frameworks */,
-				CC2747DC1CD5FA06009E6792 /* libsqlite3.tbd in Frameworks */,
+				CC0333A61CFAE62600CFBC78 /* libxml2.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

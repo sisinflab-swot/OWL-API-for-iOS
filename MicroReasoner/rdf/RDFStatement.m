@@ -8,7 +8,6 @@
 
 #import "RDFStatement.h"
 #import "RDFNode.h"
-#import "redland.h"
 
 @implementation RDFStatement
 
@@ -16,17 +15,27 @@
 @synthesize predicate = _predicate;
 @synthesize object = _object;
 
-- (instancetype)initWithLibRdfStatement:(void *)statement
+- (instancetype)initWithRaptorStatement:(raptor_statement *)statement
 {
     if ((self = [super init])) {
-        librdf_node *node = librdf_statement_get_subject(statement);
-        _subject = [[RDFNode alloc] initWithLibRdfNode:node];
         
-        node = librdf_statement_get_predicate(statement);
-        _predicate = [[RDFNode alloc] initWithLibRdfNode:node];
+        raptor_term *term = statement->subject;
+        if (!term) {
+            return nil;
+        }
+        _subject = [[RDFNode alloc] initWithRaptorTerm:term];
         
-        node = librdf_statement_get_object(statement);
-        _object = [[RDFNode alloc] initWithLibRdfNode:node];
+        term = statement->predicate;
+        if (!term) {
+            return nil;
+        }
+        _predicate = [[RDFNode alloc] initWithRaptorTerm:term];
+        
+        term = statement->object;
+        if (!term) {
+            return nil;
+        }
+        _object = [[RDFNode alloc] initWithRaptorTerm:term];
     }
     return self;
 }

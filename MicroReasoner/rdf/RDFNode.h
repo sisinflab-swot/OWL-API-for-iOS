@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "raptor.h"
 
 typedef NS_ENUM(NSInteger, RDFNodeType) {
     RDFNodeTypeUnknown,
@@ -41,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// The literal value of this node if it is a literal node, nil otherwise.
 @property (nonatomic, copy, readonly, nullable) NSString *literalValue;
 
-- (instancetype)initWithLibRdfNode:(void *)node;
+- (instancetype)initWithRaptorTerm:(raptor_term *)term;
 
 @end
 
