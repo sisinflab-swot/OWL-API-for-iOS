@@ -10,6 +10,13 @@
 
 @implementation OWLObjectPropertyAssertionAxiomImpl
 
+#pragma mark NSObject
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ObjectPropertyAssertion(%@ %@ %@)", self.subject, self.property, self.object];
+}
+
 #pragma mark OWLObject
 
 - (NSMutableSet<id<OWLEntity>> *)signature
