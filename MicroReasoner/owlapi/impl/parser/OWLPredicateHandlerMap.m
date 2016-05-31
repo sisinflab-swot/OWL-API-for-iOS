@@ -258,10 +258,40 @@ OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RDFStatement *statement, O
     }
     
     {
-        NSString *subjectID = subject.isResource ? subject.URIStringValue : subject.blankID;
-        NSString *predicateID = predicate.URIStringValue;
-        NSString *objectID = object.isResource ? object.URIStringValue : object.blankID;
+        BOOL subjectIsResource = subject.isResource;
+        BOOL objectIsResource = object.isResource;
         
+        NSString *subjectID = subjectIsResource ? subject.URIStringValue : subject.blankID;
+        NSString *predicateID = predicate.URIStringValue;
+        NSString *objectID = objectIsResource ? object.URIStringValue : object.blankID;
+        
+        // Add subject individual builder
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID];
+        
+        if (subjectIsResource) {
+            if (![ib setType:OWLIBTypeNamed error:&localError]) {
+                goto err;
+            }
+        }
+        
+        if (![ib setID:subjectID error:&localError]) {
+            goto err;
+        }
+        
+        // Add object individual builder
+        ib = [builder ensureIndividualBuilderForID:objectID];
+        
+        if (objectIsResource) {
+            if (![ib setType:OWLIBTypeNamed error:&localError]) {
+                goto err;
+            }
+        }
+        
+        if (![ib setID:objectID error:&localError]) {
+            goto err;
+        }
+        
+        // Add axiom builder
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
         
         if (![ab setType:OWLABTypePropertyAssertion error:&localError]) {
