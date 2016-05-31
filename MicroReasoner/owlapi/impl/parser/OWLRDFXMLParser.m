@@ -68,23 +68,49 @@
     _ontologyBuilder = [[OWLOntologyBuilder alloc] init];
 }
 
-static void raptorStatementHandler(void *parser_arg, raptor_statement *triple) {
+static void statementHandler(void *parser_arg, raptor_statement *triple) {
     @autoreleasepool
     {
         OWLRDFXMLParser *parser = (__bridge OWLRDFXMLParser *)parser_arg;
-        NSError *__autoreleasing statementError = nil;
+        NSError *__autoreleasing error = nil;
         
         if (!triple) {
-            statementError = [NSError OWLErrorWithCode:OWLErrorCodeParse
+            error = [NSError OWLErrorWithCode:OWLErrorCodeParse
                                   localizedDescription:@"Error while parsing file."];
-            [parser->_errors addObject:statementError];
-            return;
+            goto err;
         }
         
-        RDFStatement *statement = [[RDFStatement alloc] initWithRaptorStatement:triple];
+        {
+            RDFStatement *statement = [[RDFStatement alloc] initWithRaptorStatement:triple];
+            RDFNode *subject = statement.subject;
+            RDFNode *predicate = statement.predicate;
+            
+            if (!predicate.isResource) {
+                error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                             localizedDescription:@"Predicates of OWL statements must be resource nodes."
+                                         userInfo:@{@"statement": statement}];
+                goto err;
+            }
+            
+            if (subject.isLiteral) {
+                error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                             localizedDescription:@"Subjects of OWL statements must not be literal nodes."
+                                         userInfo:@{@"statement": statement}];
+                goto err;
+            }
+            
+            {
+                NSString *signature = predicate.URIStringValue;
+                OWLStatementHandler handler = [parser->_predicateHandlerMap handlerForSignature:signature];
+                if (handler && !handler(statement, parser->_ontologyBuilder, &error)) {
+                    goto err;
+                }
+            }
+        }
         
-        if (![parser handleStatement:statement error:&statementError]) {
-            [parser->_errors addObject:statementError];
+    err:
+        if (error) {
+            [parser->_errors addObject:error];
         }
     }
 }
@@ -131,7 +157,7 @@ static void raptorStatementHandler(void *parser_arg, raptor_statement *triple) {
     uri = raptor_new_uri(world, uri_string);
     base_uri = raptor_uri_copy(uri);
     
-    raptor_parser_set_statement_handler(rdf_parser, (__bridge void *)(self), raptorStatementHandler);
+    raptor_parser_set_statement_handler(rdf_parser, (__bridge void *)(self), statementHandler);
     
     if (raptor_parser_parse_file(rdf_parser, uri, base_uri)) {
         localError = [NSError OWLErrorWithCode:OWLErrorCodeParse
@@ -147,43 +173,6 @@ err:
     raptor_free_parser(rdf_parser);
     raptor_free_world(world);
     
-    if (error) {
-        *error = localError;
-    }
-    
-    return !localError;
-}
-
-- (BOOL)handleStatement:(RDFStatement *)statement error:(NSError *_Nullable __autoreleasing *)error
-{
-    NSError *__autoreleasing localError = nil;
-    
-    RDFNode *subject = statement.subject;
-    RDFNode *predicate = statement.predicate;
-    
-    if (!predicate.isResource) {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Predicates of OWL statements must be resource nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-    if (subject.isLiteral) {
-        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                          localizedDescription:@"Subjects of OWL statements must not be literal nodes."
-                                      userInfo:@{@"statement": statement}];
-        goto err;
-    }
-    
-    {
-        NSString *signature = predicate.URIStringValue;
-        OWLStatementHandler handler = [_predicateHandlerMap handlerForSignature:signature];
-        if (handler && !handler(statement, _ontologyBuilder, &localError)) {
-            goto err;
-        }
-    }
-    
-err:
     if (error) {
         *error = localError;
     }
