@@ -82,4 +82,8 @@ xcuserdata
 
 
 ### Project specific ###
-librdf/build
+!librdf/build/
+librdf/build/downloads
+librdf/build/build*/
+librdf/build/product*/
+librdf/build/Universal*/
