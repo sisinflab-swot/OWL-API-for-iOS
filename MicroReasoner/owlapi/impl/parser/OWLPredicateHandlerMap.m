@@ -40,6 +40,7 @@ NS_INLINE NSDictionary * initHandlers()
     map[[OWLRDFVocabulary RDFSSubClassOf].stringValue] = [pSubClassOfHandler copy];
     map[[OWLRDFVocabulary OWLAllValuesFrom].stringValue] = [pAllValuesFromHandler copy];
     map[[OWLRDFVocabulary OWLCardinality].stringValue] = [pCardinalityHandler copy];
+    map[[OWLRDFVocabulary OWLComplementOf].stringValue] = [pComplementOfHandler copy];
     map[[OWLRDFVocabulary OWLDisjointWith].stringValue] = [pDisjointWithHandler copy];
     map[[OWLRDFVocabulary OWLEquivalentClass].stringValue] = [pEquivalentClassHandler copy];
     map[[OWLRDFVocabulary OWLIntersectionOf].stringValue] = [pIntersectionOfHandler copy];
@@ -61,7 +62,6 @@ map[[OWLRDFVocabulary name].stringValue] = notImplemented
     handlerNotImplemented(OWLAnnotatedSource);
     handlerNotImplemented(OWLAnnotatedTarget);
     handlerNotImplemented(OWLAssertionProperty);
-    handlerNotImplemented(OWLComplementOf);
     handlerNotImplemented(OWLDatatypeComplementOf);
     handlerNotImplemented(OWLDifferentFrom);
     handlerNotImplemented(OWLDisjointUnionOf);
@@ -591,6 +591,67 @@ OWLStatementHandler pEquivalentClassHandler = ^BOOL(RDFStatement *statement, OWL
 OWLStatementHandler pSubClassOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeSubClassOf, error);
+};
+
+#pragma mark owl:complementOf predicate handler
+
+OWLStatementHandler pComplementOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+{
+    NSError *__autoreleasing localError = nil;
+    
+    RDFNode *subject = statement.subject;
+    RDFNode *object = statement.object;
+    
+    if (!subject.isBlank) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Subject of complement statement is not a blank node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    if (object.isLiteral) {
+        localError = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                          localizedDescription:@"Object of complement statement is a literal node."
+                                      userInfo:@{@"statement": statement}];
+        goto err;
+    }
+    
+    {
+        // Add operand class expression
+        BOOL objectIsResource = object.isResource;
+        NSString *operandID = objectIsResource ? object.URIStringValue : object.blankID;
+        
+        OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:operandID];
+        
+        if (objectIsResource) {
+            if (![ceb setType:OWLCEBTypeClass error:&localError]) {
+                goto err;
+            }
+            
+            if (![ceb setClassID:operandID error:&localError]) {
+                goto err;
+            }
+        }
+        
+        // Add class expression
+        NSString *subjectID = subject.blankID;
+        ceb = [builder ensureClassExpressionBuilderForID:subjectID];
+        
+        if (![ceb setBooleanType:OWLCEBBooleanTypeComplement error:&localError]) {
+            goto err;
+        }
+        
+        if (![ceb setOperandID:operandID error:&localError]) {
+            goto err;
+        }
+    }
+    
+err:
+    if (error) {
+        *error = localError;
+    }
+    
+    return !localError;
 };
 
 #pragma mark owl:intersectionOf predicate handler

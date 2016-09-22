@@ -49,10 +49,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// Sets the boolean type of this expression.
 - (BOOL)setBooleanType:(OWLCEBBooleanType)type error:(NSError *_Nullable __autoreleasing *)error;
 
-/// The list identifier of this boolean expression.
+/// The operand of this boolean expression (complement).
+@property (nonatomic, copy, readonly, nullable) NSString *operandID;
+
+/// Sets the operand of this boolean expression (complement).
+- (BOOL)setOperandID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+
+/// The list identifier of this boolean expression (intersection).
 @property (nonatomic, copy, readonly, nullable) NSString *listID;
 
-// Sets the list identifier of this boolean expression.
+// Sets the list identifier of this boolean expression (union or intersection).
 - (BOOL)setListID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Restriction

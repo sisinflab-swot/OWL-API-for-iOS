@@ -10,6 +10,7 @@
 #import "OWLClassImpl.h"
 #import "OWLError.h"
 #import "OWLObjectAllValuesFromImpl.h"
+#import "OWLObjectComplementOfImpl.h"
 #import "OWLObjectExactCardinalityImpl.h"
 #import "OWLObjectIntersectionOfImpl.h"
 #import "OWLObjectMaxCardinalityImpl.h"
@@ -73,6 +74,7 @@
         _builtClassExpression = builtClassExpression;
         _classID = nil;
         _listID = nil;
+        _operandID = nil;
         _propertyID = nil;
         _fillerID = nil;
         _cardinality = nil;
@@ -93,24 +95,35 @@
         }
     } else {
         OWLCEBBooleanType type = _booleanType;
-        NSString *listID = _listID;
         
-        if (type != OWLCEBBooleanTypeUnknown && listID) {
+        if (type != OWLCEBBooleanTypeUnknown) {
             // Boolean class expression
             switch (type)
             {
-                case OWLCEBBooleanTypeIntersection:
-                {
+                case OWLCEBBooleanTypeComplement: {
+                    OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
+                    NSString *operandID = _operandID;
+                    
+                    if (operandID) {
+                        id<OWLClassExpression> operand = [ontologyBuilder classExpressionForID:operandID];
+                        classExpression = [[OWLObjectComplementOfImpl alloc] initWithOperand:operand];
+                    }
+                    
+                }
+                case OWLCEBBooleanTypeIntersection: {
                     NSMutableSet *operands = [[NSMutableSet alloc] init];
                     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
+                    NSString *listID = _listID;
                     
-                    for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
-                        id<OWLClassExpression> ce = [ontologyBuilder classExpressionForID:ID];
-                        if (ce) {
-                            [operands addObject:ce];
+                    if (listID) {
+                        for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
+                            id<OWLClassExpression> ce = [ontologyBuilder classExpressionForID:ID];
+                            if (ce) {
+                                [operands addObject:ce];
+                            }
                         }
+                        classExpression = [[OWLObjectIntersectionOfImpl alloc] initWithOperands:operands];
                     }
-                    classExpression = [[OWLObjectIntersectionOfImpl alloc] initWithOperands:operands];
                     break;
                 }
                     
@@ -281,6 +294,29 @@
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
                       localizedDescription:@"Multiple boolean types for class expression."
                                   userInfo:@{@"types": @[@(_booleanType), @(type)]}];
+    }
+    
+    return success;
+}
+
+// operandID
+@synthesize operandID = _operandID;
+
+- (BOOL)setOperandID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
+{
+    if (_operandID == ID || [_operandID isEqualToString:ID]) {
+        return YES;
+    }
+    
+    BOOL success = NO;
+    
+    if (!_operandID) {
+        _operandID = [ID copy];
+        success = YES;
+    } else if (error) {
+        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
+                      localizedDescription:@"Multiple operand IDs for complement boolean class expression."
+                                  userInfo:@{@"IDs": @[_operandID, ID]}];
     }
     
     return success;
