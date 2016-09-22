@@ -2863,6 +2863,13 @@
       </owl:Class>
     </rdf:type>
   </rdf:Description>
+  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotLightningPlayDVD">
+    <rdf:type>
+      <owl:Class>
+        <owl:complementOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LightningPlayDVD"/>
+      </owl:Class>
+    </rdf:type>
+  </rdf:Description>
 </rdf:RDF>
 
 <!--_Created_with_OwlEd2 for OWL DL (2.1)  http://www.doom-srl.com -->
