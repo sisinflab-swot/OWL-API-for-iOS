@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export MACOSX_DEPLOYMENT_TARGET="10.6"
+export MACOSX_DEPLOYMENT_TARGET="10.11"
 
 # extract ARCH and PREFIX
 archs=()

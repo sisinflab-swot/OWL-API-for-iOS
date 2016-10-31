@@ -5,8 +5,8 @@
 SOURCES = [
 	# 'http://xmlsoft.org/sources/libxml2-2.9.1.tar.gz',
 	'http://download.librdf.org/source/raptor2-2.0.15.tar.gz',
-	'http://download.librdf.org/source/rasqal-0.9.33.tar.gz',
-	'http://download.librdf.org/source/redland-1.0.17.tar.gz',
+	# 'http://download.librdf.org/source/rasqal-0.9.33.tar.gz',
+	# 'http://download.librdf.org/source/redland-1.0.17.tar.gz',
 ]
 
 ARCHS = {
@@ -27,4 +27,4 @@ FLAGS = {
 	},
 }
 
-MAKE_UNIVERSAL = ['libraptor2', 'librasqal', 'librdf']
+MAKE_UNIVERSAL = ['libraptor2'] #, 'librasqal', 'librdf']

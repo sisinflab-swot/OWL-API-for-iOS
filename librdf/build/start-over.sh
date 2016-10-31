@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm -r build-*
-rm -r product-*
-rm -r Universal*
+rm -rf ./build-*
+rm -rf ./product-*
+rm -rf ./Universal*

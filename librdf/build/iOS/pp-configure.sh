@@ -15,7 +15,7 @@
 #	libraries may compile just fine if you specify multiple archs.
 #
 
-export IPHONEOS_DEPLOYMENT_TARGET="6.0"
+export IPHONEOS_DEPLOYMENT_TARGET="8.0"
 
 # extract command line arguments
 archs=()

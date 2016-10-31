@@ -1,9 +1,16 @@
 #!/bin/bash
 
-# check for pkg-config and brew, if needed and possible
+# Set exit on error
+set -o pipefail
+set -o errtrace
+set -o nounset
+set -o errexit
+
+# Check for pkg-config and brew, if needed and possible
 if [ 'x' == $(which pkg-config)'x' ]; then
+    echo "pkg-config is required in order to compile librdf."
 	if [ 'x' == $(which brew)'x' ]; then
-		echo "Must install pkg-config first, but Homebrew is not installed, please follow instructions on https://github.com/p2/Redland-ObjC"
+		echo "Attempted to install pkg-config via Homebrew, but it is not installed. Please install pkg-config or Homebrew."
 		exit 1
 	fi
 	
@@ -11,7 +18,7 @@ if [ 'x' == $(which pkg-config)'x' ]; then
 	brew install pkg-config
 fi
 
-# cross compile
+# Cross compile
 python cross-compile.py
 
-exit $?
+exit 0
