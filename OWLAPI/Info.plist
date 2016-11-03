@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
@@ -24,5 +24,11 @@
 	<string>Copyright © 2016 SisInf Lab. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
+	<key>Author</key>
+	<string>SisInf Lab</string>
+	<key>AuthorURL</key>
+	<string>http://sisinflab.poliba.it</string>
+	<key>SourceURL</key>
+	<string>https://github.com/sisinflab-swot/OWL-API-for-iOS</string>
 </dict>
 </plist>
