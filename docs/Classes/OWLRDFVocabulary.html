@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OWLRDFVocabulary Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/OWLRDFVocabulary" class="dashAnchor"></a>
+    <a title="OWLRDFVocabulary Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">OWLAPI Docs</a> (45% documented)</p>
+        <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">OWLAPI Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        OWLRDFVocabulary Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/OWLManager.html">OWLManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OWLNamespace.html">OWLNamespace</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OWLOntologyID.html">OWLOntologyID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OWLRDFTerm.html">OWLRDFTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OWLRDFVocabulary.html">OWLRDFVocabulary</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OWLAPIVersionNumber">OWLAPIVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OWLAPIVersionString">OWLAPIVersionString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OWLNamespaceOWL">OWLNamespaceOWL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OWLNamespaceRDFSchema">OWLNamespaceRDFSchema</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OWLNamespaceRDFSyntax">OWLNamespaceRDFSyntax</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/OWLAxiomType.html">OWLAxiomType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OWLClassExpressionType.html">OWLClassExpressionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OWLEntityType.html">OWLEntityType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLAnonymousClassExpression">OWLAnonymousClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLAxiom.html">OWLAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLBooleanClassExpression">OWLBooleanClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLClass.html">OWLClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLClassAxiom">OWLClassAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLEntity.html">OWLEntity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLIndividual.html">OWLIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLLogicalAxiom">OWLLogicalAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLNAryAxiom">OWLNAryAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLNAryBooleanClassExpression.html">OWLNAryBooleanClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLNamedObject.html">OWLNamedObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObject.html">OWLObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectAllValuesFrom">OWLObjectAllValuesFrom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectComplementOf.html">OWLObjectComplementOf</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectIntersectionOf">OWLObjectIntersectionOf</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectPropertyAssertionAxiom.html">OWLObjectPropertyAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectPropertyCharacteristicAxiom.html">OWLObjectPropertyCharacteristicAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectPropertyDomainAxiom.html">OWLObjectPropertyDomainAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLObjectPropertyRangeAxiom.html">OWLObjectPropertyRangeAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLObjectSomeValuesFrom">OWLObjectSomeValuesFrom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLOntology.html">OWLOntology</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLOntologyManager.html">OWLOntologyManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLPropertyAssertionAxiom.html">OWLPropertyAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLPropertyAssertionObject">OWLPropertyAssertionObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLPropertyAxiom">OWLPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLPropertyDomainAxiom.html">OWLPropertyDomainAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLPropertyExpression.html">OWLPropertyExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLPropertyRange">OWLPropertyRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLPropertyRangeAxiom.html">OWLPropertyRangeAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLQuantifiedRestriction.html">OWLQuantifiedRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLRestriction.html">OWLRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OWLTransitiveObjectPropertyAxiom">OWLTransitiveObjectPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLUnaryPropertyAxiom.html">OWLUnaryPropertyAxiom</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@OWLNodeID_new">OWLNodeID_new</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@OWLNodeID_toString">OWLNodeID_toString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>OWLRDFVocabulary</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents the OWL RDF vocabulary.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFFirst"></a>
+                    <a name="//apple_ref/objc/Method/+RDFFirst" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFFirst">+RDFFirst</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFNil"></a>
+                    <a name="//apple_ref/objc/Method/+RDFNil" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFNil">+RDFNil</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFRest"></a>
+                    <a name="//apple_ref/objc/Method/+RDFRest" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFRest">+RDFRest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFType"></a>
+                    <a name="//apple_ref/objc/Method/+RDFType" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFType">+RDFType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFSComment"></a>
+                    <a name="//apple_ref/objc/Method/+RDFSComment" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFSComment">+RDFSComment</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFSDatatype"></a>
+                    <a name="//apple_ref/objc/Method/+RDFSDatatype" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFSDatatype">+RDFSDatatype</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFSDomain"></a>
+                    <a name="//apple_ref/objc/Method/+RDFSDomain" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFSDomain">+RDFSDomain</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFSRange"></a>
+                    <a name="//apple_ref/objc/Method/+RDFSRange" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFSRange">+RDFSRange</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFSSubClassOf"></a>
+                    <a name="//apple_ref/objc/Method/+RDFSSubClassOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFSSubClassOf">+RDFSSubClassOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)RDFSSubPropertyOf"></a>
+                    <a name="//apple_ref/objc/Method/+RDFSSubPropertyOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)RDFSSubPropertyOf">+RDFSSubPropertyOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAllDifferent"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAllDifferent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAllDifferent">+OWLAllDifferent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAllDisjointClasses"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAllDisjointClasses" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAllDisjointClasses">+OWLAllDisjointClasses</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAllDisjointProperties"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAllDisjointProperties" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAllDisjointProperties">+OWLAllDisjointProperties</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAllValuesFrom"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAllValuesFrom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAllValuesFrom">+OWLAllValuesFrom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotatedProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAnnotatedProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotatedProperty">+OWLAnnotatedProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotatedSource"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAnnotatedSource" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotatedSource">+OWLAnnotatedSource</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotatedTarget"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAnnotatedTarget" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotatedTarget">+OWLAnnotatedTarget</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotation"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAnnotation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotation">+OWLAnnotation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotationProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAnnotationProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAnnotationProperty">+OWLAnnotationProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAssertionProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAssertionProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAssertionProperty">+OWLAssertionProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAsymmetricProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAsymmetricProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAsymmetricProperty">+OWLAsymmetricProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLAxiom"></a>
+                    <a name="//apple_ref/objc/Method/+OWLAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLAxiom">+OWLAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLCardinality"></a>
+                    <a name="//apple_ref/objc/Method/+OWLCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLCardinality">+OWLCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLClass"></a>
+                    <a name="//apple_ref/objc/Method/+OWLClass" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLClass">+OWLClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLComplementOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLComplementOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLComplementOf">+OWLComplementOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDatatypeComplementOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDatatypeComplementOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDatatypeComplementOf">+OWLDatatypeComplementOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDatatypeProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDatatypeProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDatatypeProperty">+OWLDatatypeProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDeprecatedClass"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDeprecatedClass" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDeprecatedClass">+OWLDeprecatedClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDeprecatedProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDeprecatedProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDeprecatedProperty">+OWLDeprecatedProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDifferentFrom"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDifferentFrom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDifferentFrom">+OWLDifferentFrom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDisjointUnionOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDisjointUnionOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDisjointUnionOf">+OWLDisjointUnionOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDisjointWith"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDisjointWith" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDisjointWith">+OWLDisjointWith</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLDistinctMembers"></a>
+                    <a name="//apple_ref/objc/Method/+OWLDistinctMembers" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLDistinctMembers">+OWLDistinctMembers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLEquivalentClass"></a>
+                    <a name="//apple_ref/objc/Method/+OWLEquivalentClass" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLEquivalentClass">+OWLEquivalentClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLEquivalentProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLEquivalentProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLEquivalentProperty">+OWLEquivalentProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLFunctionalProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLFunctionalProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLFunctionalProperty">+OWLFunctionalProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLHasKey"></a>
+                    <a name="//apple_ref/objc/Method/+OWLHasKey" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLHasKey">+OWLHasKey</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLHasValue"></a>
+                    <a name="//apple_ref/objc/Method/+OWLHasValue" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLHasValue">+OWLHasValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLImports"></a>
+                    <a name="//apple_ref/objc/Method/+OWLImports" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLImports">+OWLImports</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLIntersectionOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLIntersectionOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLIntersectionOf">+OWLIntersectionOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLInverseFunctionalProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLInverseFunctionalProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLInverseFunctionalProperty">+OWLInverseFunctionalProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLInverseOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLInverseOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLInverseOf">+OWLInverseOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLIrreflexiveProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLIrreflexiveProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLIrreflexiveProperty">+OWLIrreflexiveProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLMaxCardinality"></a>
+                    <a name="//apple_ref/objc/Method/+OWLMaxCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLMaxCardinality">+OWLMaxCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLMaxQualifiedCardinality"></a>
+                    <a name="//apple_ref/objc/Method/+OWLMaxQualifiedCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLMaxQualifiedCardinality">+OWLMaxQualifiedCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLMembers"></a>
+                    <a name="//apple_ref/objc/Method/+OWLMembers" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLMembers">+OWLMembers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLMinCardinality"></a>
+                    <a name="//apple_ref/objc/Method/+OWLMinCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLMinCardinality">+OWLMinCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLMinQualifiedCardinality"></a>
+                    <a name="//apple_ref/objc/Method/+OWLMinQualifiedCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLMinQualifiedCardinality">+OWLMinQualifiedCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLNamedIndividual"></a>
+                    <a name="//apple_ref/objc/Method/+OWLNamedIndividual" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLNamedIndividual">+OWLNamedIndividual</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLNegativePropertyAssertion"></a>
+                    <a name="//apple_ref/objc/Method/+OWLNegativePropertyAssertion" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLNegativePropertyAssertion">+OWLNegativePropertyAssertion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLNothing"></a>
+                    <a name="//apple_ref/objc/Method/+OWLNothing" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLNothing">+OWLNothing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLObjectProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLObjectProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLObjectProperty">+OWLObjectProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOnClass"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOnClass" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOnClass">+OWLOnClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOnDataRange"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOnDataRange" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOnDataRange">+OWLOnDataRange</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOnDatatype"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOnDatatype" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOnDatatype">+OWLOnDatatype</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOneOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOneOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOneOf">+OWLOneOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOnProperties"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOnProperties" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOnProperties">+OWLOnProperties</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOnProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOnProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOnProperty">+OWLOnProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOntology"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOntology" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOntology">+OWLOntology</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLOntologyProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLOntologyProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLOntologyProperty">+OWLOntologyProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLPropertyChainAxiom"></a>
+                    <a name="//apple_ref/objc/Method/+OWLPropertyChainAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLPropertyChainAxiom">+OWLPropertyChainAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLPropertyDisjointWith"></a>
+                    <a name="//apple_ref/objc/Method/+OWLPropertyDisjointWith" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLPropertyDisjointWith">+OWLPropertyDisjointWith</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLQualifiedCardinality"></a>
+                    <a name="//apple_ref/objc/Method/+OWLQualifiedCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLQualifiedCardinality">+OWLQualifiedCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLReflexiveProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLReflexiveProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLReflexiveProperty">+OWLReflexiveProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLRestriction"></a>
+                    <a name="//apple_ref/objc/Method/+OWLRestriction" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLRestriction">+OWLRestriction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLSameAs"></a>
+                    <a name="//apple_ref/objc/Method/+OWLSameAs" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLSameAs">+OWLSameAs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLSomeValuesFrom"></a>
+                    <a name="//apple_ref/objc/Method/+OWLSomeValuesFrom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLSomeValuesFrom">+OWLSomeValuesFrom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLSourceIndividual"></a>
+                    <a name="//apple_ref/objc/Method/+OWLSourceIndividual" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLSourceIndividual">+OWLSourceIndividual</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLSymmetricProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLSymmetricProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLSymmetricProperty">+OWLSymmetricProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLTargetIndividual"></a>
+                    <a name="//apple_ref/objc/Method/+OWLTargetIndividual" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLTargetIndividual">+OWLTargetIndividual</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLTargetValue"></a>
+                    <a name="//apple_ref/objc/Method/+OWLTargetValue" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLTargetValue">+OWLTargetValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLThing"></a>
+                    <a name="//apple_ref/objc/Method/+OWLThing" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLThing">+OWLThing</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLTransitiveProperty"></a>
+                    <a name="//apple_ref/objc/Method/+OWLTransitiveProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLTransitiveProperty">+OWLTransitiveProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLUnionOf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLUnionOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLUnionOf">+OWLUnionOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLVersionIRI"></a>
+                    <a name="//apple_ref/objc/Method/+OWLVersionIRI" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLVersionIRI">+OWLVersionIRI</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLWithRestrictions"></a>
+                    <a name="//apple_ref/objc/Method/+OWLWithRestrictions" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLWithRestrictions">+OWLWithRestrictions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLRDFVocabulary(cm)OWLHasSelf"></a>
+                    <a name="//apple_ref/objc/Method/+OWLHasSelf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLRDFVocabulary(cm)OWLHasSelf">+OWLHasSelf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLRDFVocabulary</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2016-11-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

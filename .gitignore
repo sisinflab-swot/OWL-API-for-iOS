@@ -87,3 +87,4 @@ librdf/build/downloads
 librdf/build/build*/
 librdf/build/product*/
 librdf/build/Universal*/
+docs/docsets

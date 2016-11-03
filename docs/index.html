@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OWLAPI  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="OWLAPI  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">OWLAPI Docs</a> (45% documented)</p>
+        <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">OWLAPI Reference</a>
+        <img id="carat" src="img/carat.png" />
+        OWLAPI  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/OWLManager.html">OWLManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLNamespace.html">OWLNamespace</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLOntologyID.html">OWLOntologyID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLRDFTerm.html">OWLRDFTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLRDFVocabulary.html">OWLRDFVocabulary</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLAPIVersionNumber">OWLAPIVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLAPIVersionString">OWLAPIVersionString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLNamespaceOWL">OWLNamespaceOWL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLNamespaceRDFSchema">OWLNamespaceRDFSchema</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLNamespaceRDFSyntax">OWLNamespaceRDFSyntax</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/OWLAxiomType.html">OWLAxiomType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OWLClassExpressionType.html">OWLClassExpressionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OWLEntityType.html">OWLEntityType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLAnonymousClassExpression">OWLAnonymousClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLAxiom.html">OWLAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLBooleanClassExpression">OWLBooleanClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLClass.html">OWLClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLClassAxiom">OWLClassAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLClassExpression.html">OWLClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLEntity.html">OWLEntity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLIndividual.html">OWLIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLLogicalAxiom">OWLLogicalAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLNAryAxiom">OWLNAryAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLNAryBooleanClassExpression.html">OWLNAryBooleanClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLNamedObject.html">OWLNamedObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObject.html">OWLObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectAllValuesFrom">OWLObjectAllValuesFrom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectComplementOf.html">OWLObjectComplementOf</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectIntersectionOf">OWLObjectIntersectionOf</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyAssertionAxiom.html">OWLObjectPropertyAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyCharacteristicAxiom.html">OWLObjectPropertyCharacteristicAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyDomainAxiom.html">OWLObjectPropertyDomainAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyRangeAxiom.html">OWLObjectPropertyRangeAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectSomeValuesFrom">OWLObjectSomeValuesFrom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLOntology.html">OWLOntology</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLOntologyManager.html">OWLOntologyManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyAssertionAxiom.html">OWLPropertyAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLPropertyAssertionObject">OWLPropertyAssertionObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLPropertyAxiom">OWLPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyDomainAxiom.html">OWLPropertyDomainAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyExpression.html">OWLPropertyExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLPropertyRange">OWLPropertyRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyRangeAxiom.html">OWLPropertyRangeAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLQuantifiedRestriction.html">OWLQuantifiedRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLRestriction.html">OWLRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLTransitiveObjectPropertyAxiom">OWLTransitiveObjectPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLUnaryPropertyAxiom.html">OWLUnaryPropertyAxiom</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@OWLNodeID_new">OWLNodeID_new</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@OWLNodeID_toString">OWLNodeID_toString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#owl-api-for-ios' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='owl-api-for-ios'>OWL API for iOS</h1>
+
+<p>This project aims to provide a native iOS API to work with OWL ontologies. While it is still a work in progress, the API can currently parse, deserialize and query RDF/XML ontologies containing ALEN DL constructs (with the addition of role hierarchies).</p>
+
+<p>The model layer of the API is largely based on <a href="http://owlcs.github.io/owlapi">OWL API</a> in order to simplify integration with existing software and provide familiar interfaces. The parser component is built on top of the <a href="http://librdf.org">Redland RDF Libraries</a>, and it is specifically optimized to provide satisfactory performance on iOS devices in terms of both memory usage and turnaround time of parsing and querying operations.</p>
+<a href='#using-the-framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='using-the-framework'>Using the framework</h2>
+
+<p>The framework can be built on any computer running <strong>macOS</strong> with <strong>Xcode</strong> installed. It supports <strong>iOS 8.0</strong> and later.</p>
+<a href='#building-the-framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='building-the-framework'>Building the framework</h3>
+
+<ul>
+<li>Install <em>pkg-config</em>, which is required in order to build raptor. If you use <em>HomeBrew</em>: <code>brew install pkg-config</code></li>
+<li>Clone this project: <code>git clone https://github.com/sisinflab-swot/OWL-API-for-iOS.git</code></li>
+<li>Open <em>OWLAPI.xcodeproj</em>, select the <em>OWLAPI-Universal-iOS</em> target and run it.</li>
+</ul>
+
+<p>The first compilation may take several minutes, since the required dependencies will be downloaded and compiled beforehand. Once compilation completes, Finder will be automatically opened to the built framework path.</p>
+<a href='#adding-the-framework-to-your-ios-app' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='adding-the-framework-to-your-ios-app'>Adding the framework to your iOS app</h3>
+
+<ul>
+<li>Copy the framework anywhere into the directory of your project.</li>
+<li>Open your Xcode project and navigate to its build settings.</li>
+<li>In the <em><q>General</q></em> tab, add the compiled framework to the <em><q>Embedded binaries</q></em> section.</li>
+</ul>
+<a href='#usage-examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='usage-examples'>Usage examples</h3>
+
+<p><strong>Objective-C:</strong></p>
+<pre class="highlight plaintext"><code>@import OWLAPI;
+
+...
+
+// Load the ontology
+NSError *error;
+NSURL *ontologyURL = [[NSBundle mainBundle] URLForResource:@"ontology" withExtension:@"owl"];
+
+id&lt;OWLOntologyManager&gt; ontologyManager = [OWLManager createOWLOntologyManager];
+id&lt;OWLOntology&gt; ontology = [ontologyManager loadOntologyFromDocumentAtURL:ontologyURL error:&amp;error];
+
+if (!ontology) {
+    // Handle the error
+    NSLog(@"%@", error);
+    return;
+}
+
+// Query the ontology
+for (id&lt;OWLClass&gt; owlClass in [ontology classesInSignature]) {
+    NSLog(@"%@", owlClass);
+}
+</code></pre>
+
+<p><strong>Swift:</strong></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">OWLAPI</span>
+
+<span class="o">...</span>
+
+<span class="c1">// Load the ontology</span>
+<span class="k">let</span> <span class="nv">ontologyURL</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="nf">url</span><span class="p">(</span><span class="nv">forResource</span><span class="p">:</span> <span class="s">"ontology"</span><span class="p">,</span> <span class="nv">withExtension</span><span class="p">:</span> <span class="s">"owl"</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="nv">ontologyManager</span> <span class="o">=</span> <span class="kt">OWLManager</span><span class="o">.</span><span class="nf">createOWLOntologyManager</span><span class="p">()</span>
+
+<span class="k">var</span> <span class="nv">ontology</span><span class="p">:</span> <span class="kt">OWLOntology</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">ontology</span> <span class="o">=</span> <span class="k">try</span> <span class="n">ontologyManager</span><span class="o">.</span><span class="nf">loadOntologyFromDocument</span><span class="p">(</span><span class="nv">at</span><span class="p">:</span> <span class="n">ontologyURL</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="k">let</span> <span class="nv">error</span> <span class="p">{</span>
+    <span class="c1">// Handle the error</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+
+<span class="c1">// Query the ontology</span>
+<span class="k">for</span> <span class="n">owlClass</span> <span class="k">in</span> <span class="n">ontology</span><span class="o">.</span><span class="nf">classesInSignature</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">owlClass</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p><em>OWL API for iOS</em> is distributed under the <a href="https://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a>.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2016-11-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

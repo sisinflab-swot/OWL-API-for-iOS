@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">OWLAPI Docs</a> (45% documented)</p>
+        <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">OWLAPI Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/OWLManager.html">OWLManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLNamespace.html">OWLNamespace</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLOntologyID.html">OWLOntologyID</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLRDFTerm.html">OWLRDFTerm</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OWLRDFVocabulary.html">OWLRDFVocabulary</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLAPIVersionNumber">OWLAPIVersionNumber</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLAPIVersionString">OWLAPIVersionString</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLNamespaceOWL">OWLNamespaceOWL</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLNamespaceRDFSchema">OWLNamespaceRDFSchema</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OWLNamespaceRDFSyntax">OWLNamespaceRDFSyntax</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/OWLAxiomType.html">OWLAxiomType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OWLClassExpressionType.html">OWLClassExpressionType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OWLEntityType.html">OWLEntityType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLAnonymousClassExpression">OWLAnonymousClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLAxiom.html">OWLAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLBooleanClassExpression">OWLBooleanClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLClass.html">OWLClass</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLClassAxiom">OWLClassAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLClassExpression.html">OWLClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLEntity.html">OWLEntity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLIndividual.html">OWLIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLLogicalAxiom">OWLLogicalAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLNAryAxiom">OWLNAryAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLNAryBooleanClassExpression.html">OWLNAryBooleanClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLNamedObject.html">OWLNamedObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObject.html">OWLObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectAllValuesFrom">OWLObjectAllValuesFrom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectComplementOf.html">OWLObjectComplementOf</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectIntersectionOf">OWLObjectIntersectionOf</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyAssertionAxiom.html">OWLObjectPropertyAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyCharacteristicAxiom.html">OWLObjectPropertyCharacteristicAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyDomainAxiom.html">OWLObjectPropertyDomainAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLObjectPropertyRangeAxiom.html">OWLObjectPropertyRangeAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLObjectSomeValuesFrom">OWLObjectSomeValuesFrom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLOntology.html">OWLOntology</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLOntologyManager.html">OWLOntologyManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyAssertionAxiom.html">OWLPropertyAssertionAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLPropertyAssertionObject">OWLPropertyAssertionObject</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLPropertyAxiom">OWLPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyDomainAxiom.html">OWLPropertyDomainAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyExpression.html">OWLPropertyExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLPropertyRange">OWLPropertyRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLPropertyRangeAxiom.html">OWLPropertyRangeAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLQuantifiedRestriction.html">OWLQuantifiedRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLRestriction.html">OWLRestriction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/c:objc(pl)OWLTransitiveObjectPropertyAxiom">OWLTransitiveObjectPropertyAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLUnaryPropertyAxiom.html">OWLUnaryPropertyAxiom</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@OWLNodeID_new">OWLNodeID_new</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@OWLNodeID_toString">OWLNodeID_toString</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLAnonymousClassExpression"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLAnonymousClassExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLAnonymousClassExpression">OWLAnonymousClassExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The super interface for all class expressions which are not named class expressions
+(i.e. all class expressions which are not OWLClass).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLAnonymousClassExpression</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLAnonymousClassExpression</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLAnonymousIndividual"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLAnonymousIndividual" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLAnonymousIndividual">OWLAnonymousIndividual</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents Anonymous Individuals in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLAnonymousIndividual.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLAnonymousIndividual</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLAnonymousIndividual</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLAxiom">OWLAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents Axioms in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLBooleanClassExpression"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLBooleanClassExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLBooleanClassExpression">OWLBooleanClassExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLCardinalityRestriction"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLCardinalityRestriction" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLCardinalityRestriction">OWLCardinalityRestriction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLCardinalityRestriction.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLClass"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLClass" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLClass">OWLClass</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a Class in the OWL 2 specification.</p>
+
+                        <a href="Protocols/OWLClass.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLClass</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="p">,</span> <span class="n"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLClass</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLClassAssertionAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLClassAssertionAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLClassAssertionAxiom">OWLClassAssertionAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents ClassAssertion axioms in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLClassAssertionAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLClassAssertionAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLClassAssertionAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLClassAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLClassAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLClassAxiom">OWLClassAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLClassExpression"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLClassExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLClassExpression">OWLClassExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents Class Expressions in the OWL 2 specification.
+This protocol covers named and anonymous classes.</p>
+
+                        <a href="Protocols/OWLClassExpression.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLClassExpression</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLPropertyRange">OWLPropertyRange</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLClassExpression</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLPropertyRange">OWLPropertyRange</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDeclarationAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLDeclarationAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDeclarationAxiom">OWLDeclarationAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLDeclarationAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDisjointClassesAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLDisjointClassesAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a DisjointClasses axiom in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLDisjointClassesAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLDisjointClassesAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLEntity"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLEntity" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLEntity">OWLEntity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents Entities in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLEntity.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLEntity</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLEntity</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLEquivalentClassesAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLEquivalentClassesAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an EquivalentClasses axiom in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLEquivalentClassesAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLEquivalentClassesAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLNAryClassAxiom.html">OWLNAryClassAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLIndividual"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLIndividual" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLIndividual">OWLIndividual</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a named or anonymous individual.</p>
+
+                        <a href="Protocols/OWLIndividual.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLIndividual</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLPropertyAssertionObject">OWLPropertyAssertionObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLIndividual</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLPropertyAssertionObject">OWLPropertyAssertionObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLIndividualAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLIndividualAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLLogicalAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLLogicalAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLLogicalAxiom">OWLLogicalAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLLogicalEntity"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLLogicalEntity" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLNAryAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLNAryAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLNAryAxiom">OWLNAryAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLNAryBooleanClassExpression"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLNAryBooleanClassExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLNAryBooleanClassExpression">OWLNAryBooleanClassExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLNAryBooleanClassExpression.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLNAryClassAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLNAryClassAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLNAryClassAxiom">OWLNAryClassAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLNAryClassAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLNamedIndividual"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLNamedIndividual" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a named individual.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLNamedIndividual</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLNamedIndividual</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLNamedObject"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLNamedObject" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLNamedObject">OWLNamedObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a named object for example, class, property, ontology etc.
+ - i.e. anything that has an IRI as its name.</p>
+
+                        <a href="Protocols/OWLNamedObject.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLNamedObject</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLNamedObject</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObject"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObject" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObject">OWLObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a generic OWL object.</p>
+
+                        <a href="Protocols/OWLObject.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObject</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="p">,</span> <span class="n">NSCopying</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObject</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span><span class="p">,</span> <span class="kt">NSCopying</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectAllValuesFrom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectAllValuesFrom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectAllValuesFrom">OWLObjectAllValuesFrom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectAllValuesFrom class expression in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectAllValuesFrom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectAllValuesFrom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectCardinalityRestriction"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectCardinalityRestriction" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectCardinalityRestriction">OWLObjectCardinalityRestriction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLObjectCardinalityRestriction.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectComplementOf"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectComplementOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectComplementOf">OWLObjectComplementOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectComplementOf class expression in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLObjectComplementOf.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectComplementOf</span> <span class="o">&lt;</span><span class="n"><a href="Protocols.html#/c:objc(pl)OWLBooleanClassExpression">OWLBooleanClassExpression</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectComplementOf</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLBooleanClassExpression">OWLBooleanClassExpression</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectExactCardinality"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectExactCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectExactCardinality restriction in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectExactCardinality</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectExactCardinality</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectIntersectionOf"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectIntersectionOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectIntersectionOf">OWLObjectIntersectionOf</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectIntersectionOf class expression in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectIntersectionOf</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLNAryBooleanClassExpression.html">OWLNAryBooleanClassExpression</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectIntersectionOf</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLNAryBooleanClassExpression.html">OWLNAryBooleanClassExpression</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectMaxCardinality"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectMaxCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectMaxCardinality restriction in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectMaxCardinality</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectMaxCardinality</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectMinCardinality"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectMinCardinality" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectMinCardinality restriction in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectMinCardinality</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectMinCardinality</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObjectCardinalityRestriction.html">OWLObjectCardinalityRestriction</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectProperty"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an Object Property in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectProperty</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectProperty</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectPropertyAssertionAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectPropertyAssertionAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectPropertyAssertionAxiom">OWLObjectPropertyAssertionAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectPropertyAssertion axiom in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLObjectPropertyAssertionAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectPropertyAssertionAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLPropertyAssertionAxiom.html">OWLPropertyAssertionAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectPropertyAssertionAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLPropertyAssertionAxiom.html">OWLPropertyAssertionAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectPropertyAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectPropertyAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectPropertyCharacteristicAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectPropertyCharacteristicAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectPropertyCharacteristicAxiom">OWLObjectPropertyCharacteristicAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLObjectPropertyCharacteristicAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectPropertyDomainAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectPropertyDomainAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectPropertyDomainAxiom">OWLObjectPropertyDomainAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents ObjectPropertyDomain axioms in the OWL 2 specification.</p>
+
+                        <a href="Protocols/OWLObjectPropertyDomainAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectPropertyDomainAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLPropertyDomainAxiom.html">OWLPropertyDomainAxiom</a></span><span class="p">,</span>
+                                        <span class="n"><a href="Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectPropertyDomainAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLPropertyDomainAxiom.html">OWLPropertyDomainAxiom</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectPropertyExpression"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectPropertyExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectPropertyExpression">OWLObjectPropertyExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLObjectPropertyExpression.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectPropertyRangeAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectPropertyRangeAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectPropertyRangeAxiom">OWLObjectPropertyRangeAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents ObjectPropertyRange axioms in the OWL 2 specification.</p>
+
+                        <a href="Protocols/OWLObjectPropertyRangeAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span>
+    <span class="nc">OWLObjectPropertyRangeAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLPropertyRangeAxiom.html">OWLPropertyRangeAxiom</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectPropertyRangeAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLPropertyRangeAxiom.html">OWLPropertyRangeAxiom</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLObjectPropertyAxiom">OWLObjectPropertyAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLObjectSomeValuesFrom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLObjectSomeValuesFrom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLObjectSomeValuesFrom">OWLObjectSomeValuesFrom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an ObjectSomeValuesFrom class expression in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLObjectSomeValuesFrom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLObjectSomeValuesFrom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLQuantifiedObjectRestriction.html">OWLQuantifiedObjectRestriction</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLOntology"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLOntology" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology">OWLOntology</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an OWL 2 Ontology in the OWL 2 specification.</p>
+
+                        <a href="Protocols/OWLOntology.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLOntology</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLOntology</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLOntologyManager"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLOntologyManager" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLOntologyManager">OWLOntologyManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An OWLOntologyManager manages a set of ontologies.
+ It is the main point for creating, loading and accessing ontologies.</p>
+
+<p>An OWLOntologyManager also manages the mapping betweem an ontology
+ and its ontology document.</p>
+
+                        <a href="Protocols/OWLOntologyManager.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLOntologyManager</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLOntologyManager</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLProperty"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLProperty" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLProperty">OWLProperty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A marker interface for properties that aren&rsquo;t expression i.e. named properties.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLProperty</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLPropertyExpression.html">OWLPropertyExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="p">,</span> <span class="n"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLProperty</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLPropertyExpression.html">OWLPropertyExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyAssertionAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyAssertionAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyAssertionAxiom">OWLPropertyAssertionAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a Property Assertion in the OWL 2 specification.</p>
+
+                        <a href="Protocols/OWLPropertyAssertionAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLPropertyAssertionAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLPropertyAssertionAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLIndividualAxiom">OWLIndividualAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyAssertionObject"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyAssertionObject" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyAssertionObject">OWLPropertyAssertionObject</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A marker interface for the types of property assertion objects
+(individuals and literals) that are the objects of property assertions.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLPropertyAssertionObject</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLPropertyAssertionObject</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyAxiom">OWLPropertyAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyDomainAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyDomainAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyDomainAxiom">OWLPropertyDomainAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLPropertyDomainAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyExpression"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyExpression" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyExpression">OWLPropertyExpression</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a property or possibly the inverse of a property.</p>
+
+                        <a href="Protocols/OWLPropertyExpression.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLPropertyExpression</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLPropertyExpression</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyRange"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyRange" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyRange">OWLPropertyRange</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A marker interface, for objects that can be the ranges of properties.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLPropertyRange</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLPropertyRange</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObject.html">OWLObject</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLPropertyRangeAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLPropertyRangeAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLPropertyRangeAxiom">OWLPropertyRangeAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLPropertyRangeAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLQuantifiedObjectRestriction"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLQuantifiedObjectRestriction" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLQuantifiedObjectRestriction">OWLQuantifiedObjectRestriction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLQuantifiedObjectRestriction.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLQuantifiedRestriction"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLQuantifiedRestriction" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLQuantifiedRestriction">OWLQuantifiedRestriction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLQuantifiedRestriction.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLRestriction"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLRestriction" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLRestriction">OWLRestriction</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a restriction (Object Property Restriction or Data Property Restriction)
+in the OWL 2 specification.</p>
+
+                        <a href="Protocols/OWLRestriction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLRestriction</span> <span class="o">&lt;</span><span class="n"><a href="Protocols.html#/c:objc(pl)OWLAnonymousClassExpression">OWLAnonymousClassExpression</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLRestriction</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLAnonymousClassExpression">OWLAnonymousClassExpression</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLSubClassOfAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLSubClassOfAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLSubClassOfAxiom">OWLSubClassOfAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a SubClassOf axiom in the OWL 2 Specification.</p>
+
+                        <a href="Protocols/OWLSubClassOfAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLSubClassOfAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols.html#/c:objc(pl)OWLClassAxiom">OWLClassAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLSubClassOfAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLClassAxiom">OWLClassAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLTransitiveObjectPropertyAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLTransitiveObjectPropertyAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLTransitiveObjectPropertyAxiom">OWLTransitiveObjectPropertyAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a TransitiveObjectProperty axiom in the OWL 2 Specification.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span>
+    <span class="nc">OWLTransitiveObjectPropertyAxiom</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectPropertyCharacteristicAxiom.html">OWLObjectPropertyCharacteristicAxiom</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLTransitiveObjectPropertyAxiom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObjectPropertyCharacteristicAxiom.html">OWLObjectPropertyCharacteristicAxiom</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLUnaryPropertyAxiom"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLUnaryPropertyAxiom" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLUnaryPropertyAxiom">OWLUnaryPropertyAxiom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/OWLUnaryPropertyAxiom.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2016-11-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
