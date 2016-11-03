@@ -8,6 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// Represents Axioms in the OWL 2 Specification.
 @protocol OWLAxiom <OWLObject>
 
 /// The axiom type for this axiom.

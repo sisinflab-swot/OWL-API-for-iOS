@@ -9,9 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern OWLNamespace *OWLNamespaceOWL;               /// OWL namespace.
-extern OWLNamespace *OWLNamespaceRDFSyntax;         /// RDF syntax namespace.
-extern OWLNamespace *OWLNamespaceRDFSchema;         /// RDF Schema namespace.
+/// OWL namespace.
+extern OWLNamespace *OWLNamespaceOWL;
+
+/// RDF syntax namespace.
+extern OWLNamespace *OWLNamespaceRDFSyntax;
+
+/// RDF Schema namespace.
+extern OWLNamespace *OWLNamespaceRDFSchema;
 
 
 /// Represents OWL/RDF namespaces.

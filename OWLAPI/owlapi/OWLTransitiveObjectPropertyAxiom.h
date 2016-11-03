@@ -5,4 +5,5 @@
 
 #import "OWLObjectPropertyCharacteristicAxiom.h"
 
+/// Represents a TransitiveObjectProperty axiom in the OWL 2 Specification.
 @protocol OWLTransitiveObjectPropertyAxiom <OWLObjectPropertyCharacteristicAxiom> @end
