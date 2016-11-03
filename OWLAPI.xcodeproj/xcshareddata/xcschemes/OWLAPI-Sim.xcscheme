@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CC5220781CD61A4700490D42"
+               BuildableName = "OWLAPITests.xctest"
+               BlueprintName = "OWLAPITests"
+               ReferencedContainer = "container:OWLAPI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CC3209251DC7AF96002793AC"
+            BuildableName = "OWLAPI.framework"
+            BlueprintName = "OWLAPI-Sim"
+            ReferencedContainer = "container:OWLAPI.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
