@@ -1,1120 +1,1120 @@
 {
   "warnings": [
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 11,
       "symbol": "OWLAxiomType.OWLAxiomTypeDeclaration",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 12,
       "symbol": "OWLAxiomType.OWLAxiomTypeDataTypeDefinition",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 14,
       "symbol": "OWLAxiomType.OWLAxiomTypeEquivalentClasses",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 15,
       "symbol": "OWLAxiomType.OWLAxiomTypeSubClassOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 16,
       "symbol": "OWLAxiomType.OWLAxiomTypeDisjointClasses",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 17,
       "symbol": "OWLAxiomType.OWLAxiomTypeDisjointUnion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 19,
       "symbol": "OWLAxiomType.OWLAxiomTypeClassAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 20,
       "symbol": "OWLAxiomType.OWLAxiomTypeSameIndividual",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 21,
       "symbol": "OWLAxiomType.OWLAxiomTypeDifferentIndividuals",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 22,
       "symbol": "OWLAxiomType.OWLAxiomTypeObjectPropertyAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 23,
       "symbol": "OWLAxiomType.OWLAxiomTypeNegativeObjectPropertyAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 24,
       "symbol": "OWLAxiomType.OWLAxiomTypeDataPropertyAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 25,
       "symbol": "OWLAxiomType.OWLAxiomTypeNegativeDataPropertyAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 27,
       "symbol": "OWLAxiomType.OWLAxiomTypeEquivalentObjectProperties",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 28,
       "symbol": "OWLAxiomType.OWLAxiomTypeSubObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 29,
       "symbol": "OWLAxiomType.OWLAxiomTypeInverseObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 30,
       "symbol": "OWLAxiomType.OWLAxiomTypeFunctionalObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 31,
       "symbol": "OWLAxiomType.OWLAxiomTypeInverseFunctionalObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 32,
       "symbol": "OWLAxiomType.OWLAxiomTypeSymmetricObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 33,
       "symbol": "OWLAxiomType.OWLAxiomTypeAsymmetricObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 34,
       "symbol": "OWLAxiomType.OWLAxiomTypeTransitiveObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 35,
       "symbol": "OWLAxiomType.OWLAxiomTypeReflexiveObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 36,
       "symbol": "OWLAxiomType.OWLAxiomTypeIrreflexiveObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 37,
       "symbol": "OWLAxiomType.OWLAxiomTypeObjectPropertyDomain",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 38,
       "symbol": "OWLAxiomType.OWLAxiomTypeObjectPropertyRange",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 39,
       "symbol": "OWLAxiomType.OWLAxiomTypeDisjointObjectProperties",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 40,
       "symbol": "OWLAxiomType.OWLAxiomTypeSubPropertyChain",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 42,
       "symbol": "OWLAxiomType.OWLAxiomTypeEquivalentDataProperties",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 43,
       "symbol": "OWLAxiomType.OWLAxiomTypeSubDataProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 44,
       "symbol": "OWLAxiomType.OWLAxiomTypeFunctionalDataProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 45,
       "symbol": "OWLAxiomType.OWLAxiomTypeDataPropertyDomain",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 46,
       "symbol": "OWLAxiomType.OWLAxiomTypeDataPropertyRange",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 47,
       "symbol": "OWLAxiomType.OWLAxiomTypeDisjointDataProperties",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 49,
       "symbol": "OWLAxiomType.OWLAxiomTypeHasKey",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 51,
       "symbol": "OWLAxiomType.OWLAxiomTypeAnnotationAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 52,
       "symbol": "OWLAxiomType.OWLAxiomTypeSubAnnotationPropertyOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 53,
       "symbol": "OWLAxiomType.OWLAxiomTypeAnnotationPropertyRange",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLAxiomType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAxiomType.h",
       "line": 54,
       "symbol": "OWLAxiomType.OWLAxiomTypeAnnotationPropertyDomain",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLBooleanClassExpression.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLBooleanClassExpression.h",
       "line": 8,
       "symbol": "OWLBooleanClassExpression",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLCardinalityRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLCardinalityRestriction.h",
       "line": 10,
       "symbol": "OWLCardinalityRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassAxiom.h",
       "line": 8,
       "symbol": "OWLClassAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 10,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeClass",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 11,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectSomeValuesFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 12,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectAllValuesFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 13,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectMinCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 14,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectMaxCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 15,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectExactCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 16,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectHasValue",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 17,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectHasSelf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 18,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeDataSomeValuesFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 19,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeDataAllValuesFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 20,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeDataMaxCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 21,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeDataMinCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 22,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeDataExactCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 23,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeDataHasValue",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 24,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectIntersectionOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 25,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectUnionOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 26,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectComplementOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLClassExpressionType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLClassExpressionType.h",
       "line": 27,
       "symbol": "OWLClassExpressionType.OWLClassExpTypeObjectOneOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLDeclarationAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLDeclarationAxiom.h",
       "line": 12,
       "symbol": "OWLDeclarationAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLEntityType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLEntityType.h",
       "line": 10,
       "symbol": "OWLEntityType.OWLEntityTypeClass",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLEntityType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLEntityType.h",
       "line": 11,
       "symbol": "OWLEntityType.OWLEntityTypeObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLEntityType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLEntityType.h",
       "line": 12,
       "symbol": "OWLEntityType.OWLEntityTypeDataProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLEntityType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLEntityType.h",
       "line": 13,
       "symbol": "OWLEntityType.OWLEntityTypeAnnotationProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLEntityType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLEntityType.h",
       "line": 14,
       "symbol": "OWLEntityType.OWLEntityTypeNamedIndividual",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLEntityType.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLEntityType.h",
       "line": 15,
       "symbol": "OWLEntityType.OWLEntityTypeDatatype",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLIndividualAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLIndividualAxiom.h",
       "line": 8,
       "symbol": "OWLIndividualAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLLogicalAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLLogicalAxiom.h",
       "line": 8,
       "symbol": "OWLLogicalAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLLogicalEntity.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLLogicalEntity.h",
       "line": 8,
       "symbol": "OWLLogicalEntity",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLNAryAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLNAryAxiom.h",
       "line": 8,
       "symbol": "OWLNAryAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLNAryBooleanClassExpression.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLNAryBooleanClassExpression.h",
       "line": 12,
       "symbol": "OWLNAryBooleanClassExpression",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLNAryClassAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLNAryClassAxiom.h",
       "line": 13,
       "symbol": "OWLNAryClassAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLObjectCardinalityRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLObjectCardinalityRestriction.h",
       "line": 11,
       "symbol": "OWLObjectCardinalityRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLObjectComplementOf.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLObjectComplementOf.h",
       "line": 13,
       "symbol": "OWLObjectComplementOf.operand",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLObjectPropertyAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLObjectPropertyAxiom.h",
       "line": 8,
       "symbol": "OWLObjectPropertyAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLObjectPropertyCharacteristicAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLObjectPropertyCharacteristicAxiom.h",
       "line": 12,
       "symbol": "OWLObjectPropertyCharacteristicAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLObjectPropertyExpression.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLObjectPropertyExpression.h",
       "line": 12,
       "symbol": "OWLObjectPropertyExpression",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLPropertyAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLPropertyAxiom.h",
       "line": 8,
       "symbol": "OWLPropertyAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLPropertyDomainAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLPropertyDomainAxiom.h",
       "line": 12,
       "symbol": "OWLPropertyDomainAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLPropertyRangeAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLPropertyRangeAxiom.h",
       "line": 12,
       "symbol": "OWLPropertyRangeAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLQuantifiedObjectRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLQuantifiedObjectRestriction.h",
       "line": 11,
       "symbol": "OWLQuantifiedObjectRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLQuantifiedRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLQuantifiedRestriction.h",
       "line": 12,
       "symbol": "OWLQuantifiedRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 40,
       "symbol": "OWLRDFVocabulary.+RDFFirst",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 41,
       "symbol": "OWLRDFVocabulary.+RDFNil",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 42,
       "symbol": "OWLRDFVocabulary.+RDFRest",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 43,
       "symbol": "OWLRDFVocabulary.+RDFType",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 44,
       "symbol": "OWLRDFVocabulary.+RDFSComment",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 45,
       "symbol": "OWLRDFVocabulary.+RDFSDatatype",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 46,
       "symbol": "OWLRDFVocabulary.+RDFSDomain",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 47,
       "symbol": "OWLRDFVocabulary.+RDFSRange",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 48,
       "symbol": "OWLRDFVocabulary.+RDFSSubClassOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 49,
       "symbol": "OWLRDFVocabulary.+RDFSSubPropertyOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 51,
       "symbol": "OWLRDFVocabulary.+OWLAllDifferent",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 52,
       "symbol": "OWLRDFVocabulary.+OWLAllDisjointClasses",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 53,
       "symbol": "OWLRDFVocabulary.+OWLAllDisjointProperties",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 54,
       "symbol": "OWLRDFVocabulary.+OWLAllValuesFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 55,
       "symbol": "OWLRDFVocabulary.+OWLAnnotatedProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 56,
       "symbol": "OWLRDFVocabulary.+OWLAnnotatedSource",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 57,
       "symbol": "OWLRDFVocabulary.+OWLAnnotatedTarget",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 58,
       "symbol": "OWLRDFVocabulary.+OWLAnnotation",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 59,
       "symbol": "OWLRDFVocabulary.+OWLAnnotationProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 60,
       "symbol": "OWLRDFVocabulary.+OWLAssertionProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 61,
       "symbol": "OWLRDFVocabulary.+OWLAsymmetricProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 62,
       "symbol": "OWLRDFVocabulary.+OWLAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 63,
       "symbol": "OWLRDFVocabulary.+OWLCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 64,
       "symbol": "OWLRDFVocabulary.+OWLClass",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 65,
       "symbol": "OWLRDFVocabulary.+OWLComplementOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 66,
       "symbol": "OWLRDFVocabulary.+OWLDatatypeComplementOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 67,
       "symbol": "OWLRDFVocabulary.+OWLDatatypeProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 68,
       "symbol": "OWLRDFVocabulary.+OWLDeprecatedClass",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 69,
       "symbol": "OWLRDFVocabulary.+OWLDeprecatedProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 70,
       "symbol": "OWLRDFVocabulary.+OWLDifferentFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 71,
       "symbol": "OWLRDFVocabulary.+OWLDisjointUnionOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 72,
       "symbol": "OWLRDFVocabulary.+OWLDisjointWith",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 73,
       "symbol": "OWLRDFVocabulary.+OWLDistinctMembers",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 74,
       "symbol": "OWLRDFVocabulary.+OWLEquivalentClass",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 75,
       "symbol": "OWLRDFVocabulary.+OWLEquivalentProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 76,
       "symbol": "OWLRDFVocabulary.+OWLFunctionalProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 77,
       "symbol": "OWLRDFVocabulary.+OWLHasKey",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 78,
       "symbol": "OWLRDFVocabulary.+OWLHasValue",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 79,
       "symbol": "OWLRDFVocabulary.+OWLImports",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 80,
       "symbol": "OWLRDFVocabulary.+OWLIntersectionOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 81,
       "symbol": "OWLRDFVocabulary.+OWLInverseFunctionalProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 82,
       "symbol": "OWLRDFVocabulary.+OWLInverseOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 83,
       "symbol": "OWLRDFVocabulary.+OWLIrreflexiveProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 84,
       "symbol": "OWLRDFVocabulary.+OWLMaxCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 85,
       "symbol": "OWLRDFVocabulary.+OWLMaxQualifiedCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 86,
       "symbol": "OWLRDFVocabulary.+OWLMembers",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 87,
       "symbol": "OWLRDFVocabulary.+OWLMinCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 88,
       "symbol": "OWLRDFVocabulary.+OWLMinQualifiedCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 89,
       "symbol": "OWLRDFVocabulary.+OWLNamedIndividual",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 90,
       "symbol": "OWLRDFVocabulary.+OWLNegativePropertyAssertion",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 91,
       "symbol": "OWLRDFVocabulary.+OWLNothing",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 92,
       "symbol": "OWLRDFVocabulary.+OWLObjectProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 93,
       "symbol": "OWLRDFVocabulary.+OWLOnClass",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 94,
       "symbol": "OWLRDFVocabulary.+OWLOnDataRange",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 95,
       "symbol": "OWLRDFVocabulary.+OWLOnDatatype",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 96,
       "symbol": "OWLRDFVocabulary.+OWLOneOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 97,
       "symbol": "OWLRDFVocabulary.+OWLOnProperties",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 98,
       "symbol": "OWLRDFVocabulary.+OWLOnProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 99,
       "symbol": "OWLRDFVocabulary.+OWLOntology",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 100,
       "symbol": "OWLRDFVocabulary.+OWLOntologyProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 101,
       "symbol": "OWLRDFVocabulary.+OWLPropertyChainAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 102,
       "symbol": "OWLRDFVocabulary.+OWLPropertyDisjointWith",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 103,
       "symbol": "OWLRDFVocabulary.+OWLQualifiedCardinality",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 104,
       "symbol": "OWLRDFVocabulary.+OWLReflexiveProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 105,
       "symbol": "OWLRDFVocabulary.+OWLRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 106,
       "symbol": "OWLRDFVocabulary.+OWLSameAs",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 107,
       "symbol": "OWLRDFVocabulary.+OWLSomeValuesFrom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 108,
       "symbol": "OWLRDFVocabulary.+OWLSourceIndividual",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 109,
       "symbol": "OWLRDFVocabulary.+OWLSymmetricProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 110,
       "symbol": "OWLRDFVocabulary.+OWLTargetIndividual",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 111,
       "symbol": "OWLRDFVocabulary.+OWLTargetValue",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 112,
       "symbol": "OWLRDFVocabulary.+OWLThing",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 113,
       "symbol": "OWLRDFVocabulary.+OWLTransitiveProperty",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 114,
       "symbol": "OWLRDFVocabulary.+OWLUnionOf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 115,
       "symbol": "OWLRDFVocabulary.+OWLVersionIRI",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 116,
       "symbol": "OWLRDFVocabulary.+OWLWithRestrictions",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLRDFVocabulary.h",
       "line": 117,
       "symbol": "OWLRDFVocabulary.+OWLHasSelf",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLAPI/OWLUnaryPropertyAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/iOS/OWLAPI/OWLAPI/OWLUnaryPropertyAxiom.h",
       "line": 12,
       "symbol": "OWLUnaryPropertyAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",

@@ -44,9 +44,6 @@ SOURCE_URL="$(getPlistSetting SourceURL)"
 UMBRELLA="${PROJECT_NAME}/${PROJECT_NAME}.h"
 VERSION="$(getPlistSetting CFBundleShortVersionString)"
 
-# Delete old docs
-rm -rf "./${OUTPUT_DIR}"
-
 # Compile docs
 jazzy \
     --objc \
@@ -54,10 +51,11 @@ jazzy \
     --author "${AUTHOR}" \
     --author_url "${AUTHOR_URL}" \
     --github_url "${SOURCE_URL}" \
+    --github-file-prefix "${SOURCE_URL}/tree/${VERSION}" \
+    --module "${PROJECT_NAME}" \
     --module-version "${VERSION}" \
     --umbrella-header "${UMBRELLA}" \
-    --framework-root "${PROJECT_NAME}" \
-    --module "${PROJECT_NAME}" \
+    --framework-root . \
     --output "${OUTPUT_DIR}"
 
 exit 0
