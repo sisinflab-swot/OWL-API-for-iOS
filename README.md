@@ -24,6 +24,8 @@ The first compilation may take several minutes, since the required dependencies 
 
 ### Usage examples
 
+Here are some examples to get you started with *OWL API for iOS*. To learn more about what you can do with it, check out the [online documentation](https://sisinflab-swot.github.io/OWL-API-for-iOS/).
+
 **Objective-C:**
 
 ```objective-c
