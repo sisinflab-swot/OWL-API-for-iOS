@@ -9,13 +9,14 @@
 
 - (void)smr_enumerateAndRemoveKeysAndObjectsUsingBlock:(void (^)(id _Nonnull, id _Nonnull))block
 {
+    NSUInteger const batchSize = 1000;
+    NSMutableArray *keysToRemove = [[NSMutableArray alloc] initWithCapacity:batchSize];
+    
     while (self.count) {
         @autoreleasepool {
-            NSMutableArray *keysToRemove = [[NSMutableArray alloc] init];
-            NSUInteger const batchSize = 1000;
             __block NSUInteger currentCount = 0;
             
-            [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [self enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
                 block(key, obj);
                 
                 [keysToRemove addObject:key];
@@ -25,6 +26,7 @@
             }];
             
             [self removeObjectsForKeys:keysToRemove];
+            [keysToRemove removeAllObjects];
         }
     }
 }
