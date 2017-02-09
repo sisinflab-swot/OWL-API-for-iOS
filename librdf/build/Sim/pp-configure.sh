@@ -65,8 +65,7 @@ fi
 
 # determine SDK-root and -version
 if [[ 'x' = ${SDKVER}x ]]; then
-	LATEST=$(ls -1r "$DEVROOT/SDKs/" | head -1)
-	export SDKROOT="${DEVROOT}/SDKs/$LATEST"
+	export SDKROOT="${DEVROOT}/SDKs/iPhoneSimulator.sdk"
 	SDKVER='x.x'
 else
 	export SDKROOT="${DEVROOT}/SDKs/${PLATFORM_NAME}${SDKVER}.sdk"
