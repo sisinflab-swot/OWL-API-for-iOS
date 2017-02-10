@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OWLObjectPropertyExpression <OWLPropertyExpression>
 
 /// This property as a named object property if it is such, or nil.
-- (id<OWLObjectProperty>)asOWLObjectProperty;
+- (nullable id<OWLObjectProperty>)asOWLObjectProperty;
 
 @end
 
