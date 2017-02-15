@@ -66,6 +66,8 @@
         [disjointClasses unionSet:axiom.classExpressions];
     }
     
+    [disjointClasses removeObject:self];
+    
     return disjointClasses;
 }
 
@@ -76,6 +78,8 @@
     for (id<OWLEquivalentClassesAxiom> axiom in [ontology equivalentClassesAxiomsForClass:self]) {
         [equivalentClasses unionSet:axiom.classExpressions];
     }
+    
+    [equivalentClasses removeObject:self];
     
     return equivalentClasses;
 }
