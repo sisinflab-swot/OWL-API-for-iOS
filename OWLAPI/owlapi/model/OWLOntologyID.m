@@ -4,6 +4,7 @@
 //
 
 #import "OWLOntologyID.h"
+#import "OWLIRI.h"
 
 @implementation OWLOntologyID
 
@@ -14,7 +15,7 @@
 
 #pragma mark Public methods
 
-- (instancetype)initWithOntologyIRI:(NSURL *)ontologyIRI versionIRI:(NSURL *)versionIRI
+- (instancetype)initWithOntologyIRI:(OWLIRI *)ontologyIRI versionIRI:(OWLIRI *)versionIRI
 {
     if ((self = [super init])) {
         _ontologyIRI = [ontologyIRI copy];
@@ -23,7 +24,7 @@
     return self;
 }
 
-- (instancetype)initWithOntologyIRI:(NSURL *)ontologyIRI
+- (instancetype)initWithOntologyIRI:(OWLIRI *)ontologyIRI
 {
     return [self initWithOntologyIRI:ontologyIRI versionIRI:nil];
 }
@@ -39,7 +40,7 @@
     BOOL equal = NO;
     
     if ([object isKindOfClass:[self class]]) {
-        NSURL *objIRI = [object ontologyIRI];
+        OWLIRI *objIRI = [object ontologyIRI];
         BOOL sameOntoIRI = (objIRI == _ontologyIRI || [objIRI isEqual:_ontologyIRI]);
         
         objIRI = [object versionIRI];

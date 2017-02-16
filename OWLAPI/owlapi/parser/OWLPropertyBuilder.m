@@ -5,6 +5,7 @@
 
 #import "OWLPropertyBuilder.h"
 #import "OWLError.h"
+#import "OWLIRI.h"
 #import "OWLObjectPropertyImpl.h"
 
 @interface OWLPropertyBuilder ()
@@ -32,10 +33,8 @@
         {
             NSString *ID = _namedPropertyID;
             if (ID) {
-                NSURL *IRI = [[NSURL alloc] initWithString:ID];
-                if (IRI) {
-                    builtProperty = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
-                }
+                OWLIRI *IRI = [[OWLIRI alloc] initWithString:ID];
+                builtProperty = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
             }
             break;
         }

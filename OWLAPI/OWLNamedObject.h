@@ -5,6 +5,8 @@
 
 #import "OWLObject.h"
 
+@class OWLIRI;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -14,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OWLNamedObject <OWLObject>
 
 /// The IRI of this object.
-@property (nonatomic, copy, readonly) NSURL *IRI;
+@property (nonatomic, copy, readonly) OWLIRI *IRI;
 
 @end
 

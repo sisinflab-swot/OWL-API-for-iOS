@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class OWLIRI;
 @class OWLNamespace;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -13,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OWLRDFTerm : NSObject
 
 /// The IRI of this term.
-@property (nonatomic, copy, readonly) NSURL *IRI;
+@property (nonatomic, copy, readonly) OWLIRI *IRI;
 
 /// The namespace of this term.
 @property (nonatomic, copy, readonly) OWLNamespace *nameSpace;

@@ -6,6 +6,7 @@
 #import "OWLClassImpl.h"
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEquivalentClassesAxiom.h"
+#import "OWLIRI.h"
 #import "OWLOntology.h"
 #import "OWLRDFVocabulary.h"
 #import "OWLSubClassOfAxiom.h"
@@ -21,7 +22,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Class(<%@>)", [_IRI absoluteString]];
+    return [NSString stringWithFormat:@"Class(<%@>)", _IRI];
 }
 
 #pragma mark OWLObject
@@ -106,7 +107,7 @@ static NSMapTable *instanceCache = nil;
     }
 }
 
-- (instancetype)initWithIRI:(NSURL *)IRI
+- (instancetype)initWithIRI:(OWLIRI *)IRI
 {
     NSParameterAssert(IRI);
     

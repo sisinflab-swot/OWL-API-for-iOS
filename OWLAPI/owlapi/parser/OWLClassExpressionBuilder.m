@@ -6,6 +6,7 @@
 #import "OWLClassExpressionBuilder.h"
 #import "OWLClassImpl.h"
 #import "OWLError.h"
+#import "OWLIRI.h"
 #import "OWLObjectAllValuesFromImpl.h"
 #import "OWLObjectComplementOfImpl.h"
 #import "OWLObjectExactCardinalityImpl.h"
@@ -86,10 +87,8 @@
     
     if (classID) {
         // Named class
-        NSURL *IRI = [[NSURL alloc] initWithString:classID];
-        if (IRI) {
-            classExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
-        }
+        OWLIRI *IRI = [[OWLIRI alloc] initWithString:classID];
+        classExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
     } else {
         OWLCEBBooleanType type = _booleanType;
         

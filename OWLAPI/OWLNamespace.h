@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class OWLIRI;
 @class OWLNamespace;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -32,13 +33,13 @@ extern OWLNamespace *OWLNamespaceRDFSchema;
 - (instancetype)initWithPrefix:(NSString *)prefix shortName:(NSString *)shortName;
 
 /**
- *  Returns a new NSURL by appending the given fragment to the prefix of this namespace.
+ *  Returns a new OWLIRI by appending the given fragment to the prefix of this namespace.
  *
  *  @param fragment Fragment to append to the prefix.
  *
- *  @return The created NSURL instance.
+ *  @return The created OWLIRI instance.
  */
-- (NSURL *)URLWithFragment:(NSString *)fragment;
+- (OWLIRI *)IRIWithFragment:(NSString *)fragment;
 
 /**
  *  Returns a new NSString by appending the given fragment to the prefix of this namespace.

@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class OWLIRI;
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -17,17 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OWLOntologyID : NSObject <NSCopying>
 
 /// The ontology IRI, or nil if there is no ontology IRI.
-@property (nonatomic, copy, readonly, nullable) NSURL *ontologyIRI;
+@property (nonatomic, copy, readonly, nullable) OWLIRI *ontologyIRI;
 
 /// The version IRI of this ontology, or nil if there is no version IRI.
-@property (nonatomic, copy, readonly, nullable) NSURL *versionIRI;
+@property (nonatomic, copy, readonly, nullable) OWLIRI *versionIRI;
 
 /**
  * Constructs an ontology identifier specifying the ontology IRI.
  *
  * @param ontologyIRI The IRI of the ontology document.
  */
-- (instancetype)initWithOntologyIRI:(nullable NSURL *)ontologyIRI;
+- (instancetype)initWithOntologyIRI:(nullable OWLIRI *)ontologyIRI;
 
 /**
  * Constructs an ontology identifier specifying the ontology IRI.
@@ -35,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param ontologyIRI The IRI of the ontology document.
  * @param versionIRI The version IRI of the ontology document.
  */
-- (instancetype)initWithOntologyIRI:(nullable NSURL *)ontologyIRI versionIRI:(nullable NSURL *)versionIRI;
+- (instancetype)initWithOntologyIRI:(nullable OWLIRI *)ontologyIRI versionIRI:(nullable OWLIRI *)versionIRI;
 
 @end
 

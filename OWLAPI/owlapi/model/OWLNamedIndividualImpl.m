@@ -4,6 +4,7 @@
 //
 
 #import "OWLNamedIndividualImpl.h"
+#import "OWLIRI.h"
 #import "NSMapTable+SMRObjectCache.h"
 
 @implementation OWLNamedIndividualImpl
@@ -16,7 +17,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"Individual(<%@>)", [_IRI absoluteString]];
+    return [NSString stringWithFormat:@"Individual(<%@>)", _IRI];
 }
 
 #pragma mark OWLObject
@@ -56,7 +57,7 @@ static NSMapTable *instanceCache = nil;
     }
 }
 
-- (instancetype)initWithIRI:(NSURL *)IRI
+- (instancetype)initWithIRI:(OWLIRI *)IRI
 {
     NSParameterAssert(IRI);
     

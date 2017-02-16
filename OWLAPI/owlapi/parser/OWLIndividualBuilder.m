@@ -6,6 +6,7 @@
 #import "OWLIndividualBuilder.h"
 #import "OWLAnonymousIndividualImpl.h"
 #import "OWLError.h"
+#import "OWLIRI.h"
 #import "OWLNamedIndividualImpl.h"
 #import "OWLNodeID.h"
 
@@ -33,10 +34,8 @@
         switch (_type)
         {
             case OWLIBTypeNamed: {
-                NSURL *IRI = [[NSURL alloc] initWithString:ID];
-                if (IRI) {
-                    builtIndividual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
-                }
+                OWLIRI *IRI = [[OWLIRI alloc] initWithString:ID];
+                builtIndividual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
                 break;
             }
                 

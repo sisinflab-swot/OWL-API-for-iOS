@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLObjectPropertyImpl : OWLObjectPropertyExpressionImpl <OWLObjectProperty>
 
-- (instancetype)initWithIRI:(NSURL *)IRI;
+- (instancetype)initWithIRI:(OWLIRI *)IRI;
 
 @end
 

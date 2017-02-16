@@ -29,6 +29,7 @@ FOUNDATION_EXPORT const unsigned char OWLAPIVersionString[];
 #import <OWLAPI/OWLEquivalentClassesAxiom.h>
 #import <OWLAPI/OWLIndividual.h>
 #import <OWLAPI/OWLIndividualAxiom.h>
+#import <OWLAPI/OWLIRI.h>
 #import <OWLAPI/OWLLogicalAxiom.h>
 #import <OWLAPI/OWLLogicalEntity.h>
 #import <OWLAPI/OWLManager.h>

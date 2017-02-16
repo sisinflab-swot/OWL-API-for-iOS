@@ -20,10 +20,10 @@ return name##Term; \
 // IRI
 @synthesize IRI = _IRI;
 
-- (NSURL *)IRI
+- (OWLIRI *)IRI
 {
     if (!_IRI) {
-        _IRI = [self.nameSpace URLWithFragment:self.shortName];
+        _IRI = [self.nameSpace IRIWithFragment:self.shortName];
     }
     return _IRI;
 }

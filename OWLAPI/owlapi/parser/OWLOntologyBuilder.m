@@ -12,6 +12,7 @@
 #import "OWLEntity.h"
 #import "OWLError.h"
 #import "OWLIndividualBuilder.h"
+#import "OWLIRI.h"
 #import "OWLListItem.h"
 #import "OWLNamedIndividual.h"
 #import "OWLOntologyID.h"
@@ -114,18 +115,18 @@
 
 - (OWLOntologyID *)buildOntologyID
 {
-    NSURL *ontologyIRI = nil;
+    OWLIRI *ontologyIRI = nil;
     NSString *IRIString = _ontologyIRI;
     
     if (IRIString) {
-        ontologyIRI = [[NSURL alloc] initWithString:IRIString];
+        ontologyIRI = [[OWLIRI alloc] initWithString:IRIString];
     }
     
-    NSURL *versionIRI = nil;
+    OWLIRI *versionIRI = nil;
     IRIString = _versionIRI;
     
     if (IRIString) {
-        versionIRI = [[NSURL alloc] initWithString:IRIString];
+        versionIRI = [[OWLIRI alloc] initWithString:IRIString];
     }
     
     return [[OWLOntologyID alloc] initWithOntologyIRI:ontologyIRI versionIRI:versionIRI];

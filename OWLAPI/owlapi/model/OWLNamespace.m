@@ -4,6 +4,7 @@
 //
 
 #import "OWLNamespace.h"
+#import "OWLIRI.h"
 
 #pragma mark Constants
 
@@ -89,11 +90,11 @@ OWLNamespace *OWLNamespaceRDFSchema = nil;
     return [self.prefix stringByAppendingString:fragment];
 }
 
-- (NSURL *)URLWithFragment:(NSString *)fragment
+- (OWLIRI *)IRIWithFragment:(NSString *)fragment
 {
-    NSURL *url = [[NSURL alloc] initWithString:[self stringWithFragment:fragment]];
-    NSAssert(url, @"Could not create URL.");
-    return url;
+    OWLIRI *IRI = [[OWLIRI alloc] initWithString:[self stringWithFragment:fragment]];
+    NSAssert(IRI, @"Could not create URL.");
+    return IRI;
 }
 
 @end
