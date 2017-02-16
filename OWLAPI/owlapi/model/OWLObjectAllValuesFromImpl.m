@@ -17,6 +17,6 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeDataAllValuesFrom; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectAllValuesFrom; }
 
 @end
