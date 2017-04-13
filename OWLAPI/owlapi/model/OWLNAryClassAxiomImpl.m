@@ -27,7 +27,16 @@
     return equal;
 }
 
-- (NSUInteger)computeHash { return _classExpressions.hash; }
+- (NSUInteger)computeHash
+{
+    NSUInteger hash = 0;
+    
+    for (id<OWLClassExpression> ce in _classExpressions) {
+        hash = hash ^ [ce hash];
+    }
+    
+    return hash;
+}
 
 #pragma mark OWLObject
 
