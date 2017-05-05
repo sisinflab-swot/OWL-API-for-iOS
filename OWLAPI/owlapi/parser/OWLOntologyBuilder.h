@@ -43,12 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID;
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
 
-#pragma mark Built entities
-
-- (nullable id<OWLClassExpression>)classExpressionForID:(NSString *)ID;
-- (nullable id<OWLIndividual>)individualForID:(NSString *)ID;
-- (nullable id<OWLPropertyExpression>)propertyForID:(NSString *)ID;
-
 #pragma mark Axiom builders
 
 - (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID;

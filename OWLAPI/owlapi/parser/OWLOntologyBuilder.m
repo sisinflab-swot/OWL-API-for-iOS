@@ -38,11 +38,6 @@
     NSMutableDictionary<NSString *, OWLIndividualBuilder *> *_individualBuilders;
     NSMutableDictionary<NSString *, OWLPropertyBuilder *> *_propertyBuilders;
     
-    // Built entities
-    NSMutableDictionary<NSString *, id<OWLClassExpression>> *_builtClassExpressions;
-    NSMutableDictionary<NSString *, id<OWLIndividual>> *_builtIndividuals;
-    NSMutableDictionary<NSString *, id<OWLPropertyExpression>> *_builtProperties;
-    
     // Axiom builders
     NSMutableDictionary<NSString *, OWLAxiomBuilder *> *_declarationAxiomBuilders;
     NSMutableDictionary<NSString *,NSMutableArray<OWLAxiomBuilder *> *> *_singleStatementAxiomBuilders;
@@ -63,10 +58,6 @@
         _classExpressionBuilders = [[NSMutableDictionary alloc] init];
         _individualBuilders = [[NSMutableDictionary alloc] init];
         _propertyBuilders = [[NSMutableDictionary alloc] init];
-        
-        _builtClassExpressions = [[NSMutableDictionary alloc] init];
-        _builtIndividuals = [[NSMutableDictionary alloc] init];
-        _builtProperties = [[NSMutableDictionary alloc] init];
         
         _declarationAxiomBuilders = [[NSMutableDictionary alloc] init];
         _singleStatementAxiomBuilders = [[NSMutableDictionary alloc] init];
@@ -228,59 +219,6 @@
 - (OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID
 {
     return _propertyBuilders[ID];
-}
-
-#pragma mark Built entities
-
-- (id<OWLClassExpression>)classExpressionForID:(NSString *)ID
-{
-    NSMutableDictionary *builtClassExpressions = _builtClassExpressions;
-    id<OWLClassExpression> ce = builtClassExpressions[ID];
-    
-    if (!ce) {
-        NSMutableDictionary *classExpressionBuilders = _classExpressionBuilders;
-        ce = [(OWLClassExpressionBuilder *)classExpressionBuilders[ID] build];
-        if (ce) {
-            builtClassExpressions[ID] = ce;
-            [classExpressionBuilders removeObjectForKey:ID];
-        }
-    }
-    
-    return ce;
-}
-
-- (id<OWLIndividual>)individualForID:(NSString *)ID
-{
-    NSMutableDictionary *builtIndividuals = _builtIndividuals;
-    id<OWLIndividual> ind = builtIndividuals[ID];
-    
-    if (!ind) {
-        NSMutableDictionary *individualBuilders = _individualBuilders;
-        ind = [(OWLIndividualBuilder *)individualBuilders[ID] build];
-        if (ind) {
-            builtIndividuals[ID] = ind;
-            [individualBuilders removeObjectForKey:ID];
-        }
-    }
-    
-    return ind;
-}
-
-- (id<OWLPropertyExpression>)propertyForID:(NSString *)ID
-{
-    NSMutableDictionary *builtProperties = _builtProperties;
-    id<OWLPropertyExpression> pro = builtProperties[ID];
-    
-    if (!pro) {
-        NSMutableDictionary *propertyBuilders = _propertyBuilders;
-        pro = [(OWLPropertyBuilder *)propertyBuilders[ID] build];
-        if (pro) {
-            builtProperties[ID] = pro;
-            [propertyBuilders removeObjectForKey:ID];
-        }
-    }
-    
-    return pro;
 }
 
 #pragma mark Axiom builders

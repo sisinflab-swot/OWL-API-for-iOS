@@ -36,7 +36,8 @@
 {
     NSParameterAssert(ontologyBuilder);
     
-    if ((self = [super init])) {
+    if ((self = [super init]))
+    {
         _ontologyBuilder = ontologyBuilder;
         _type = OWLCEBTypeUnknown;
         _restrictionType = OWLCEBRestrictionTypeUnknown;
@@ -101,7 +102,7 @@
                     NSString *operandID = _operandID;
                     
                     if (operandID) {
-                        id<OWLClassExpression> operand = [ontologyBuilder classExpressionForID:operandID];
+                        id<OWLClassExpression> operand = [[ontologyBuilder classExpressionBuilderForID:operandID] build];
                         classExpression = [[OWLObjectComplementOfImpl alloc] initWithOperand:operand];
                     }
                     
@@ -113,7 +114,7 @@
                     
                     if (listID) {
                         for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
-                            id<OWLClassExpression> ce = [ontologyBuilder classExpressionForID:ID];
+                            id<OWLClassExpression> ce = [[ontologyBuilder classExpressionBuilderForID:ID] build];
                             if (ce) {
                                 [operands addObject:ce];
                             }
@@ -143,12 +144,12 @@
     
     id<OWLRestriction> restr = nil;
     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
-    id<OWLPropertyExpression> property = [ontologyBuilder propertyForID:propertyID];
+    id<OWLPropertyExpression> property = [[ontologyBuilder propertyBuilderForID:propertyID] build];
     
     NSString *fillerID = _fillerID;
     id<OWLClassExpression> filler = nil;
     if (fillerID) {
-        filler = [ontologyBuilder classExpressionForID:fillerID];
+        filler = [[ontologyBuilder classExpressionBuilderForID:fillerID] build];
     }
     
     // TODO: currently only supports object properties

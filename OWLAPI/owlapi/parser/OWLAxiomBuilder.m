@@ -67,13 +67,13 @@
             switch (_declType)
             {
                 case OWLABDeclTypeClass: {
-                    id<OWLClassExpression> ce = [ontoBuilder classExpressionForID:entityID];
+                    id<OWLClassExpression> ce = [[ontoBuilder classExpressionBuilderForID:entityID] build];
                     entity = [ce asOwlClass];
                     break;
                 }
                     
                 case OWLABDeclTypeObjectProperty: {
-                    id<OWLPropertyExpression> pe = [ontoBuilder propertyForID:entityID];
+                    id<OWLPropertyExpression> pe = [[ontoBuilder propertyBuilderForID:entityID] build];
                     if ([pe isObjectPropertyExpression]) {
                         entity = [(id<OWLObjectPropertyExpression>)pe asOWLObjectProperty];
                     }
@@ -81,7 +81,7 @@
                 }
                     
                 case OWLABDeclTypeNamedIndividual: {
-                    id<OWLIndividual> ind = [ontoBuilder individualForID:entityID];
+                    id<OWLIndividual> ind = [[ontoBuilder individualBuilderForID:entityID] build];
                     if (ind.named) {
                         entity = (id<OWLNamedIndividual>)ind;
                     }
@@ -106,8 +106,8 @@
             NSString *classID = _RHSID;
             
             if (individualID && classID) {
-                id<OWLIndividual> individual = [ontoBuilder individualForID:individualID];
-                id<OWLClassExpression> class = [ontoBuilder classExpressionForID:classID];
+                id<OWLIndividual> individual = [[ontoBuilder individualBuilderForID:individualID] build];
+                id<OWLClassExpression> class = [[ontoBuilder classExpressionBuilderForID:classID] build];
                 
                 if (individual && class) {
                     builtAxiom = [[OWLClassAssertionAxiomImpl alloc] initWithIndividual:individual classExpression:class];
@@ -124,13 +124,13 @@
             NSString *objectID = _RHSID;
             
             if (subjectID && propertyID && objectID) {
-                id<OWLIndividual> subject = [ontoBuilder individualForID:subjectID];
-                id<OWLPropertyExpression> property = [ontoBuilder propertyForID:propertyID];
+                id<OWLIndividual> subject = [[ontoBuilder individualBuilderForID:subjectID] build];
+                id<OWLPropertyExpression> property = [[ontoBuilder propertyBuilderForID:propertyID] build];
                 
                 // TODO: only supports object property assertion axioms
                 if (subject && property.isObjectPropertyExpression) {
                     id<OWLObjectPropertyExpression> objProp = (id<OWLObjectPropertyExpression>)property;
-                    id<OWLIndividual> object = [ontoBuilder individualForID:objectID];
+                    id<OWLIndividual> object = [[ontoBuilder individualBuilderForID:objectID] build];
                     
                     if (object) {
                         builtAxiom = [[OWLObjectPropertyAssertionAxiomImpl alloc] initWithSubject:subject property:objProp object:object];
@@ -180,7 +180,7 @@
             NSString *propertyID = _LHSID;
             
             if (propertyID) {
-                id<OWLPropertyExpression> property = [ontoBuilder propertyForID:propertyID];
+                id<OWLPropertyExpression> property = [[ontoBuilder propertyBuilderForID:propertyID] build];
                 if (property && property.isObjectPropertyExpression) {
                     id<OWLObjectPropertyExpression> objProp = (id<OWLObjectPropertyExpression>)property;
                     builtAxiom = [[OWLTransitiveObjectPropertyAxiomImpl alloc] initWithProperty:objProp];
@@ -212,8 +212,8 @@
     if (RHSClassID && LHSClassID) {
         OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
         
-        id<OWLClassExpression> RHSClassExpression = [ontoBuilder classExpressionForID:RHSClassID];
-        id<OWLClassExpression> LHSClassExpression = [ontoBuilder classExpressionForID:LHSClassID];
+        id<OWLClassExpression> RHSClassExpression = [[ontoBuilder classExpressionBuilderForID:RHSClassID] build];
+        id<OWLClassExpression> LHSClassExpression = [[ontoBuilder classExpressionBuilderForID:LHSClassID] build];
         
         if (RHSClassExpression && LHSClassExpression) {
             builtAxiom = block(LHSClassExpression, RHSClassExpression);
@@ -233,13 +233,13 @@
     if (propertyID && domainRangeID) {
         OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
         
-        id<OWLPropertyExpression> propertyExpr = [ontoBuilder propertyForID:propertyID];
+        id<OWLPropertyExpression> propertyExpr = [[ontoBuilder propertyBuilderForID:propertyID] build];
         
         // TODO: only supports object property expressions
         if (propertyExpr.isObjectPropertyExpression) {
             id<OWLObjectPropertyExpression> objPropExpr = (id<OWLObjectPropertyExpression>)propertyExpr;
             
-            id<OWLClassExpression> domainRangeCE = [ontoBuilder classExpressionForID:domainRangeID];
+            id<OWLClassExpression> domainRangeCE = [[ontoBuilder classExpressionBuilderForID:domainRangeID] build];
             if (domainRangeCE) {
                 builtAxiom = block(objPropExpr, domainRangeCE);
             }
