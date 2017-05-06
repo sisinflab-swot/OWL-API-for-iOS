@@ -21,13 +21,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyBuilder : NSObject <OWLAbstractBuilder>
 
+
 #pragma mark Ontology header
 
-/// Sets the ontology IRI of the built ontology.
-- (BOOL)setOntologyIRI:(NSString *)IRI error:(NSError *_Nullable __autoreleasing *)error;
+/// The ontology IRI of the built ontology.
+DECLARE_BUILDER_STRING_PROPERTY(ontologyIRI, OntologyIRI)
 
-/// Sets the version IRI of the built ontology.
-- (BOOL)setVersionIRI:(NSString *)IRI error:(NSError *_Nullable __autoreleasing *)error;
+/// The version IRI of the built ontology.
+DECLARE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI)
+
 
 #pragma mark Entity builders
 
@@ -43,16 +45,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID;
 - (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
 
+
 #pragma mark Axiom builders
 
 - (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID;
 - (OWLAxiomBuilder *)addSingleStatementAxiomBuilder;
+
 
 #pragma mark Lists
 
 - (OWLListItem *)ensureListItemForID:(NSString *)ID;
 - (nullable OWLListItem *)listItemForID:(NSString *)ID;
 - (NSArray *)firstItemsForListID:(NSString *)ID;
+
 
 #pragma mark OWLAbstractBuilder
 

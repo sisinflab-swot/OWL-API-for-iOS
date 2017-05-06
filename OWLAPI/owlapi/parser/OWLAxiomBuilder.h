@@ -14,50 +14,40 @@ NS_ASSUME_NONNULL_BEGIN
 /// Axiom builder class.
 @interface OWLAxiomBuilder : NSObject <OWLAbstractBuilder>
 
+
 #pragma mark Lifecycle
 
 - (instancetype)initWithOntologyBuilder:(OWLOntologyBuilder *)builder;
+
 
 #pragma mark OWLAbstractBuilder
 
 - (nullable id<OWLAxiom>)build;
 
+
 #pragma mark General
 
 /// The type of the built axiom.
-@property (nonatomic, readonly) OWLABType type;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLABType, type, Type)
 
-/// Sets the type of the built axiom.
-- (BOOL)setType:(OWLABType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Declarations
 
 /// The type of the declaration axiom to build.
-@property (nonatomic, readonly) OWLABDeclType declType;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLABDeclType, declType, DeclType)
 
-/// Sets the type of the declaration axiom to build.
-- (BOOL)setDeclType:(OWLABDeclType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Single statement axioms
 
 /// The ID of the left-hand-side of the axiom.
-@property (nonatomic, copy, readonly, nullable) NSString *LHSID;
-
-/// Sets the ID of the left-hand-side of the axiom.
-- (BOOL)setLHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_STRING_PROPERTY(LHSID, LHSID)
 
 /// The ID of the middle of the axiom.
-@property (nonatomic, copy, readonly, nullable) NSString *MID;
-
-/// Sets the ID of the middle of the axiom.
-- (BOOL)setMID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_STRING_PROPERTY(MID, MID)
 
 /// The ID of the right-hand-side of the axiom.
-@property (nonatomic, copy, readonly, nullable) NSString *RHSID;
-
-/// Sets the ID of the right-hand-side of the axiom.
-- (BOOL)setRHSID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
-
-NS_ASSUME_NONNULL_END
+DECLARE_BUILDER_STRING_PROPERTY(RHSID, RHSID)
 
 @end
+
+NS_ASSUME_NONNULL_END

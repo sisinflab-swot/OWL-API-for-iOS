@@ -52,62 +52,11 @@
 
 #pragma mark General
 
-// type
-@synthesize type = _type;
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLPBType, type, Type, @"Multiple types for property.")
 
-- (BOOL)setType:(OWLPBType)type error:(NSError *__autoreleasing *)error
-{
-    if (_type == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_type == OWLPBTypeUnknown) {
-        _type = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple types for property."
-                                  userInfo:@{@"types": @[@(_type), @(type)]}];
-    }
-    
-    return success;
-}
 
 #pragma mark Named property
 
-// namedPropertyID
-@synthesize namedPropertyID = _namedPropertyID;
-
-- (BOOL)setNamedPropertyID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_namedPropertyID == ID || [_namedPropertyID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_namedPropertyID) {
-        _namedPropertyID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple IRIs for named property."
-                                  userInfo:@{@"IRIs": @[_namedPropertyID, ID]}];
-    }
-    
-    return success;
-}
-
-#pragma mark Lifecycle
-
-- (instancetype)init
-{
-    if ((self = [super init])) {
-        _type = OWLPBTypeUnknown;
-    }
-    return self;
-}
+SYNTHESIZE_BUILDER_STRING_PROPERTY(namedPropertyID, NamedPropertyID, @"Multiple IRIs for named property.")
 
 @end

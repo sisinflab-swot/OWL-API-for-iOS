@@ -58,50 +58,7 @@
 
 #pragma mark General
 
-// type
-@synthesize type = _type;
-
-- (BOOL)setType:(OWLIBType)type error:(NSError *__autoreleasing *)error
-{
-    if (_type == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_type == OWLIBTypeUnknown) {
-        _type = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple types for individual."
-                                  userInfo:@{@"types": @[@(_type), @(type)]}];
-    }
-    
-    return success;
-}
-
-// ID
-@synthesize ID = _ID;
-
-- (BOOL)setID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_ID == ID || [_ID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_ID) {
-        _ID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple IRIs for individual."
-                                  userInfo:@{@"individualIDs": @[_ID, ID]}];
-    }
-    
-    return success;
-}
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLIBType, type, Type, @"Multiple types for individual.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(ID, ID, @"Multiple IRIs for individual.")
 
 @end

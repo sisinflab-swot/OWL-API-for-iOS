@@ -223,221 +223,35 @@
 
 #pragma mark General
 
-// type
-@synthesize type = _type;
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBType, type, Type, @"Multiple types for class expression.")
 
-- (BOOL)setType:(OWLCEBType)type error:(NSError *__autoreleasing *)error
-{
-    if (_type == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_type == OWLCEBTypeUnknown) {
-        _type = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple types for class expression."
-                                  userInfo:@{@"types": @[@(_type), @(type)]}];
-    }
-    
-    return success;
-}
 
 #pragma mark Class
 
-// classID
-@synthesize classID = _classID;
+SYNTHESIZE_BUILDER_STRING_PROPERTY(classID, ClassID, @"Multiple IRIs for class.")
 
-- (BOOL)setClassID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_classID == ID || [_classID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_classID) {
-        _classID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple IRIs for class."
-                                  userInfo:@{@"IRIs": @[_classID, ID]}];
-    }
-    
-    return success;
-}
 
 #pragma mark Boolean
 
-// booleanType
-@synthesize booleanType = _booleanType;
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBBooleanType, booleanType, BooleanType, @"Multiple boolean types for class expression.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(operandID, OperandID, @"Multiple operand IDs for complement boolean class expression.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(listID, ListID, @"Multiple list IDs for boolean class expression.")
 
-- (BOOL)setBooleanType:(OWLCEBBooleanType)type error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_booleanType == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_booleanType == OWLCEBBooleanTypeUnknown) {
-        _booleanType = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple boolean types for class expression."
-                                  userInfo:@{@"types": @[@(_booleanType), @(type)]}];
-    }
-    
-    return success;
-}
-
-// operandID
-@synthesize operandID = _operandID;
-
-- (BOOL)setOperandID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_operandID == ID || [_operandID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_operandID) {
-        _operandID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple operand IDs for complement boolean class expression."
-                                  userInfo:@{@"IDs": @[_operandID, ID]}];
-    }
-    
-    return success;
-}
-
-// listID
-@synthesize listID = _listID;
-
-- (BOOL)setListID:(NSString *)ID error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_listID == ID || [_listID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_listID) {
-        _listID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple list IDs for boolean class expression."
-                                  userInfo:@{@"IDs": @[_listID, ID]}];
-    }
-    
-    return success;
-}
 
 #pragma mark Restriction
 
-// restrictionType
-@synthesize restrictionType = _restrictionType;
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBRestrictionType, restrictionType, RestrictionType, @"Multiple types for restriction.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(propertyID, PropertyID, @"Multiple 'onProperty' statements for restriction.")
 
-- (BOOL)setRestrictionType:(OWLCEBRestrictionType)type error:(NSError *__autoreleasing *)error
-{
-    if (_restrictionType == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_restrictionType == OWLCEBRestrictionTypeUnknown) {
-        _restrictionType = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple types for restriction."
-                                  userInfo:@{@"types": @[@(_restrictionType), @(type)]}];
-    }
-    
-    return success;
-}
-
-// propertyID
-@synthesize propertyID = _propertyID;
-
-- (BOOL)setPropertyID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_propertyID == ID || [_propertyID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_propertyID) {
-        _propertyID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple 'onProperty' statements for restriction."
-                                  userInfo:@{@"propertyIDs": @[_propertyID, ID]}];
-    }
-    
-    return success;
-}
 
 #pragma mark SomeValuesFrom/AllValuesFrom
 
-// fillerID
-@synthesize fillerID = _fillerID;
+SYNTHESIZE_BUILDER_STRING_PROPERTY(fillerID, FillerID, @"Multiple fillers for restriction.")
 
-- (BOOL)setFillerID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_fillerID == ID || [_fillerID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_fillerID) {
-        _fillerID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple fillers for restriction."
-                                  userInfo:@{@"fillerIDs": @[_fillerID, ID]}];
-    }
-    
-    return success;
-}
 
 #pragma mark Cardinality
 
-// cardinality
-@synthesize cardinality = _cardinality;
+SYNTHESIZE_BUILDER_STRING_PROPERTY(cardinality, Cardinality, @"Multiple cardinalities for restriction.")
 
-- (BOOL)setCardinality:(NSString *)cardinality error:(NSError *__autoreleasing *)error
-{
-    if (_cardinality == cardinality || [_cardinality isEqualToString:cardinality]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_cardinality) {
-        _cardinality = [cardinality copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple cardinalities for restriction."
-                                  userInfo:@{@"cardinalities": @[_cardinality, cardinality]}];
-    }
-    
-    return success;
-}
 
 @end

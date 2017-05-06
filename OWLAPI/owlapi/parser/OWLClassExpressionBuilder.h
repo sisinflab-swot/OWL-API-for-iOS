@@ -25,68 +25,46 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark General
 
 /// The type of the built class expression.
-@property (nonatomic, readonly) OWLCEBType type;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBType, type, Type)
 
-/// Sets the type of the built class expression.
-- (BOOL)setType:(OWLCEBType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Class
 
 /// The string representation of the class IRI.
-@property (nonatomic, copy, readonly, nullable) NSString *classID;
+DECLARE_BUILDER_STRING_PROPERTY(classID, ClassID)
 
-/// Sets the string representation of the class IRI.
-- (BOOL)setClassID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Boolean
 
 /// The boolean type of this expression.
-@property (nonatomic, readonly) OWLCEBBooleanType booleanType;
-
-/// Sets the boolean type of this expression.
-- (BOOL)setBooleanType:(OWLCEBBooleanType)type error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBBooleanType, booleanType, BooleanType)
 
 /// The operand of this boolean expression (complement).
-@property (nonatomic, copy, readonly, nullable) NSString *operandID;
-
-/// Sets the operand of this boolean expression (complement).
-- (BOOL)setOperandID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_STRING_PROPERTY(operandID, OperandID)
 
 /// The list identifier of this boolean expression (intersection).
-@property (nonatomic, copy, readonly, nullable) NSString *listID;
+DECLARE_BUILDER_STRING_PROPERTY(listID, ListID)
 
-// Sets the list identifier of this boolean expression (union or intersection).
-- (BOOL)setListID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Restriction
 
 /// The type of the built restriction.
-@property (nonatomic, readonly) OWLCEBRestrictionType restrictionType;
-
-/// Sets the type of the built restriction.
-- (BOOL)setRestrictionType:(OWLCEBRestrictionType)type error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBRestrictionType, restrictionType, RestrictionType)
 
 /// Identifier of the property this restriction is about.
-@property (nonatomic, copy, readonly, nullable) NSString *propertyID;
+DECLARE_BUILDER_STRING_PROPERTY(propertyID, PropertyID)
 
-/// Sets the the property the restriction is about.
-- (BOOL)setPropertyID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark AllValuesFrom/SomeValuesFrom
 
 /// The filler of this restriction.
-@property (nonatomic, copy, readonly, nullable) NSString *fillerID;
+DECLARE_BUILDER_STRING_PROPERTY(fillerID, FillerID)
 
-/// Sets the the filler of the restriction.
-- (BOOL)setFillerID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Cardinality
 
 /// The cardinality of the restriction.
-@property (nonatomic, copy, readonly, nullable) NSString *cardinality;
-
-/// Sets the cardinality of the restriction.
-- (BOOL)setCardinality:(NSString *)cardinality error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_STRING_PROPERTY(cardinality, Cardinality)
 
 @end
 

@@ -251,123 +251,18 @@
 
 #pragma mark General
 
-// type
-@synthesize type = _type;
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLABType, type, Type, @"Multiple axiom types for same axiom.")
 
-- (BOOL)setType:(OWLABType)type error:(NSError *__autoreleasing *)error
-{
-    if (_type == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_type == OWLABTypeUnknown) {
-        _type = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple axiom types for same axiom."
-                                  userInfo:@{@"types": @[@(_type), @(type)]}];
-    }
-    
-    return success;
-}
 
-#pragma mark Declaration axioms
+#pragma mark Declaration
 
-// declType
-@synthesize declType = _declType;
+SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLABDeclType, declType, DeclType, @"Multiple declaration axiom types for same axiom.")
 
-- (BOOL)setDeclType:(OWLABDeclType)type error:(NSError *__autoreleasing *)error
-{
-    if (_declType == type) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (_declType == OWLABDeclTypeUnknown) {
-        _declType = type;
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple declaration axiom types for same axiom."
-                                  userInfo:@{@"types": @[@(_declType), @(type)]}];
-    }
-    
-    return success;
-}
 
 #pragma mark Single statement axioms
 
-// LHSID
-@synthesize LHSID = _LHSID;
-
-- (BOOL)setLHSID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_LHSID == ID || [_LHSID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_LHSID) {
-        _LHSID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple left-hand-side IDs for same axiom."
-                                  userInfo:@{@"IDs": @[_LHSID, ID]}];
-    }
-    
-    return success;
-}
-
-// MID
-@synthesize MID = _MID;
-
-- (BOOL)setMID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_MID == ID || [_MID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_MID) {
-        _MID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple middle IDs for same axiom."
-                                  userInfo:@{@"IDs": @[_MID, ID]}];
-    }
-    
-    return success;
-}
-
-// RHSID
-@synthesize RHSID = _RHSID;
-
-- (BOOL)setRHSID:(NSString *)ID error:(NSError *__autoreleasing *)error
-{
-    if (_RHSID == ID || [_RHSID isEqualToString:ID]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_RHSID) {
-        _RHSID = [ID copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple right-hand-side IDs for same axiom."
-                                  userInfo:@{@"IDs": @[_RHSID, ID]}];
-    }
-    
-    return success;
-}
+SYNTHESIZE_BUILDER_STRING_PROPERTY(LHSID, LHSID, @"Multiple left-hand-side IDs for same axiom.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(MID, MID, @"Multiple middle IDs for same axiom.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(RHSID, RHSID, @"Multiple right-hand-side IDs for same axiom.")
 
 @end

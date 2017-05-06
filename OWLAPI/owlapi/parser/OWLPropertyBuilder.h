@@ -20,26 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark General
 
 /// The type of the built property.
-@property (nonatomic, readonly) OWLPBType type;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLPBType, type, Type)
 
-/**
- * Sets the type of the built property.
- *
- * @return NO if the type was already set, YES otherwise.
- */
-- (BOOL)setType:(OWLPBType)type error:(NSError *_Nullable __autoreleasing *)error;
 
 #pragma mark Named properties
 
 /// The string representation of the property IRI.
-@property (nonatomic, copy, readonly, nullable) NSString *namedPropertyID;
-
-/**
- * Sets the string representation of the property IRI.
- *
- * @return NO if the ID was already set, YES otherwise.
- */
-- (BOOL)setNamedPropertyID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_STRING_PROPERTY(namedPropertyID, NamedPropertyID)
 
 @end
 

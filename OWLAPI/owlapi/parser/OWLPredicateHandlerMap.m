@@ -173,17 +173,9 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
         // Add class assertion axiom
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
-        if (![ab setType:OWLABTypeClassAssertion error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setLHSID:subjectID error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setRHSID:objectID error:&localError]) {
-            goto err;
-        }
+        [ab setType:OWLABTypeClassAssertion error:NULL];
+        [ab setLHSID:subjectID error:NULL];
+        [ab setRHSID:objectID error:NULL];
     }
     
 err:
@@ -291,21 +283,10 @@ OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RDFStatement *statement, O
         // Add axiom builder
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
-        if (![ab setType:OWLABTypePropertyAssertion error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setLHSID:subjectID error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setMID:predicateID error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setRHSID:objectID error:&localError]) {
-            goto err;
-        }
+        [ab setType:OWLABTypePropertyAssertion error:NULL];
+        [ab setLHSID:subjectID error:NULL];
+        [ab setMID:predicateID error:NULL];
+        [ab setRHSID:objectID error:NULL];
     }
     
 err:
@@ -561,7 +542,6 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
         // Axiom
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
-        // No need to check for errors, since it will be a new object.
         [ab setType:axiomType error:NULL];
         [ab setRHSID:RHSClassID error:NULL];
         [ab setLHSID:LHSClassID error:NULL];
@@ -796,20 +776,12 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
             }
         }
         
-        // Add axiom
+        // Add axiom builder
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
-        if (![ab setType:(domain ? OWLABTypeDomain : OWLABTypeRange) error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setLHSID:subjectID error:&localError]) {
-            goto err;
-        }
-        
-        if (![ab setRHSID:objectID error:&localError]) {
-            goto err;
-        }
+        [ab setType:(domain ? OWLABTypeDomain : OWLABTypeRange) error:NULL];
+        [ab setLHSID:subjectID error:NULL];
+        [ab setRHSID:objectID error:NULL];
     }
     
 err:

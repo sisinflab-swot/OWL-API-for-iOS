@@ -26,9 +26,6 @@
 {
     id<OWLOntology> _builtOntology;
     
-    NSString *_ontologyIRI;
-    NSString *_versionIRI;
-    
     // The keys of these dictionaries are either blank node IDs or IRIs,
     // matching the subject node of the statement that triggered the
     // creation of the builder/item.
@@ -122,45 +119,8 @@
 
 #pragma mark Ontology header
 
-- (BOOL)setOntologyIRI:(NSString *)IRI error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_ontologyIRI == IRI || [_ontologyIRI isEqualToString:IRI]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_ontologyIRI) {
-        _ontologyIRI = [IRI copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple ontology IRIs for ontology."
-                                  userInfo:@{@"IRIs": @[_ontologyIRI, IRI]}];
-    }
-    
-    return success;
-}
-
-- (BOOL)setVersionIRI:(NSString *)IRI error:(NSError *__autoreleasing  _Nullable *)error
-{
-    if (_versionIRI == IRI || [_versionIRI isEqualToString:IRI]) {
-        return YES;
-    }
-    
-    BOOL success = NO;
-    
-    if (!_versionIRI) {
-        _versionIRI = [IRI copy];
-        success = YES;
-    } else if (error) {
-        *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
-                      localizedDescription:@"Multiple version IRIs for ontology."
-                                  userInfo:@{@"IRIs": @[_versionIRI, IRI]}];
-    }
-    
-    return success;
-}
+SYNTHESIZE_BUILDER_STRING_PROPERTY(ontologyIRI, OntologyIRI, @"Multiple ontology IRIs for ontology.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI, @"Multiple version IRIs for ontology.")
 
 #pragma mark Entity builders
 

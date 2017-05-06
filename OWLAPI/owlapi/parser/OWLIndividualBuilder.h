@@ -20,16 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark General
 
 /// The type of the individual to build.
-@property (nonatomic, readonly) OWLIBType type;
-
-/// Sets the type of the individual to build.
-- (BOOL)setType:(OWLIBType)type error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_VALUE_PROPERTY(OWLIBType, type, Type)
 
 /// The ID of the individual to build.
-@property (nonatomic, strong, readonly, nullable) NSString *ID;
-
-/// Sets the ID of the individual to build.
-- (BOOL)setID:(NSString *)ID error:(NSError *_Nullable __autoreleasing *)error;
+DECLARE_BUILDER_STRING_PROPERTY(ID, ID)
 
 @end
 
