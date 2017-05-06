@@ -40,7 +40,7 @@
     
     // Axiom builders
     NSMutableDictionary<NSString *, OWLAxiomBuilder *> *_declarationAxiomBuilders;
-    NSMutableDictionary<NSString *,NSMutableArray<OWLAxiomBuilder *> *> *_singleStatementAxiomBuilders;
+    NSMutableArray<OWLAxiomBuilder *> *_singleStatementAxiomBuilders;
     
     // Other
     NSMutableDictionary<NSString *, OWLListItem *> *_listItems;
@@ -60,7 +60,7 @@
         _propertyBuilders = [[NSMutableDictionary alloc] init];
         
         _declarationAxiomBuilders = [[NSMutableDictionary alloc] init];
-        _singleStatementAxiomBuilders = [[NSMutableDictionary alloc] init];
+        _singleStatementAxiomBuilders = [[NSMutableArray alloc] init];
         
         _listItems = [[NSMutableDictionary alloc] init];
     }
@@ -87,15 +87,12 @@
     }];
     
     // Single statement axioms
-    [_singleStatementAxiomBuilders smr_enumerateAndRemoveKeysAndObjectsUsingBlock:^(__unused id _Nonnull key, NSMutableArray<OWLAxiomBuilder *> * _Nonnull axiomBuilders)
-    {
-        for (OWLAxiomBuilder *builder in axiomBuilders) {
-            
-            id<OWLAxiom> axiom = [builder build];
-            if (axiom) {
-                [internals addAxiom:axiom];
-            }
+    [_singleStatementAxiomBuilders enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(OWLAxiomBuilder * _Nonnull builder, NSUInteger idx, __unused BOOL * _Nonnull stop) {
+        id<OWLAxiom> axiom = [builder build];
+        if (axiom) {
+            [internals addAxiom:axiom];
         }
+        [self->_singleStatementAxiomBuilders removeObjectAtIndex:idx];
     }];
     
     id<OWLOntology> onto = [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
@@ -236,24 +233,10 @@
     return ab;
 }
 
-- (OWLAxiomBuilder *)declarationAxiomBuilderForID:(NSString *)ID
+- (OWLAxiomBuilder *)addSingleStatementAxiomBuilder
 {
-    return _declarationAxiomBuilders[ID];
-}
-
-- (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID
-{
-    NSMutableDictionary *singleStatementAxiomBuilders = _singleStatementAxiomBuilders;
-    NSMutableArray *axiomBuilders = singleStatementAxiomBuilders[ID];
-    
-    if (!axiomBuilders) {
-        axiomBuilders = [[NSMutableArray alloc] init];
-        singleStatementAxiomBuilders[ID] = axiomBuilders;
-    }
-    
     OWLAxiomBuilder *ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:self];
-    [axiomBuilders addObject:ab];
-    
+    [_singleStatementAxiomBuilders addObject:ab];
     return ab;
 }
 

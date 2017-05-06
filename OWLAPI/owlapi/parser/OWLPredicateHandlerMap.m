@@ -171,7 +171,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
         }
         
         // Add class assertion axiom
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
         if (![ab setType:OWLABTypeClassAssertion error:&localError]) {
             goto err;
@@ -289,7 +289,7 @@ OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RDFStatement *statement, O
         }
         
         // Add axiom builder
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
         if (![ab setType:OWLABTypePropertyAssertion error:&localError]) {
             goto err;
@@ -559,7 +559,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
         }
         
         // Axiom
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:LHSClassID];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
         // No need to check for errors, since it will be a new object.
         [ab setType:axiomType error:NULL];
@@ -797,7 +797,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
         }
         
         // Add axiom
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
         if (![ab setType:(domain ? OWLABTypeDomain : OWLABTypeRange) error:&localError]) {
             goto err;

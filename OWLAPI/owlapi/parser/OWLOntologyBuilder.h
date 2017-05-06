@@ -46,9 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Axiom builders
 
 - (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID;
-- (nullable OWLAxiomBuilder *)declarationAxiomBuilderForID:(NSString *)ID;
-
-- (OWLAxiomBuilder *)addSingleStatementAxiomBuilderForID:(NSString *)ID;
+- (OWLAxiomBuilder *)addSingleStatementAxiomBuilder;
 
 #pragma mark Lists
 

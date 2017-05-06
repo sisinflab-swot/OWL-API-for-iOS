@@ -23,7 +23,7 @@ return name##Term; \
 - (OWLIRI *)IRI
 {
     if (!_IRI) {
-        _IRI = [self.nameSpace IRIWithFragment:self.shortName];
+        _IRI = [_nameSpace IRIWithFragment:_shortName];
     }
     return _IRI;
 }
@@ -45,7 +45,7 @@ return name##Term; \
     return self;
 }
 
-- (NSString *)stringValue { return [self.nameSpace.prefix stringByAppendingString:self.shortName]; }
+- (NSString *)stringValue { return [_nameSpace.prefix stringByAppendingString:_shortName]; }
 
 @end
 

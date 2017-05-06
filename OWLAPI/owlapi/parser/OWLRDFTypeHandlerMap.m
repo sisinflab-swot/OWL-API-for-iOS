@@ -346,7 +346,7 @@ OWLStatementHandler oTransitivePropertyHandler = ^BOOL(RDFStatement *statement, 
         }
         
         // Add axiom
-        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilderForID:subjectID];
+        OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
         if (![ab setType:OWLABTypeTransitiveProperty error:&localError]) {
             goto err;
