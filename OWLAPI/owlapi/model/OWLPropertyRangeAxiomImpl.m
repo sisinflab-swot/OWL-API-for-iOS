@@ -20,8 +20,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objRange = [(id<OWLPropertyRangeAxiom>)object range];
-        
+        id objRange = ((OWLPropertyRangeAxiomImpl *)object)->_range;
         equal = (objRange == _range || [objRange isEqual:_range]);
     }
     

@@ -20,8 +20,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objDomain = [(id<OWLPropertyDomainAxiom>)object domain];
-        
+        id objDomain = ((OWLPropertyDomainAxiomImpl *)object)->_domain;
         equal = (objDomain == _domain || [objDomain isEqual:_domain]);
     }
     

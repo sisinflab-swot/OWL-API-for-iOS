@@ -19,8 +19,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objFiller = [object filler];
-        
+        id objFiller = ((OWLQuantifiedRestrictionImpl *)object)->_filler;
         equal = (objFiller == _filler || [objFiller isEqual:_filler]);
     }
     

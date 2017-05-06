@@ -19,8 +19,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        NSSet *objCE = [object classExpressions];
-        
+        NSSet *objCE = ((OWLNAryClassAxiomImpl *)object)->_classExpressions;
         equal = (objCE == _classExpressions || [objCE isEqualToSet:_classExpressions]);
     }
     
@@ -32,7 +31,7 @@
     NSUInteger hash = 0;
     
     for (id<OWLClassExpression> ce in _classExpressions) {
-        hash = hash ^ [ce hash];
+        hash ^= [ce hash];
     }
     
     return hash;

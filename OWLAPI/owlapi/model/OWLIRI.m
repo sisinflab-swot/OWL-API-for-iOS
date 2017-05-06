@@ -14,10 +14,7 @@
 
 - (NSUInteger)hash { return (NSUInteger)self; }
 
-- (NSString *)description
-{
-    return _string;
-}
+- (NSString *)description { return _string; }
 
 #pragma mark NSCopying
 

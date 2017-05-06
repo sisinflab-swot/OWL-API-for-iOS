@@ -40,10 +40,12 @@
     BOOL equal = NO;
     
     if ([object isKindOfClass:[self class]]) {
-        OWLIRI *objIRI = [object ontologyIRI];
+        OWLOntologyID *ontologyId = object;
+        
+        OWLIRI *objIRI = ontologyId->_ontologyIRI;
         BOOL sameOntoIRI = (objIRI == _ontologyIRI || [objIRI isEqual:_ontologyIRI]);
         
-        objIRI = [object versionIRI];
+        objIRI = ontologyId->_versionIRI;
         BOOL sameVerIRI = (objIRI == _versionIRI || [objIRI isEqual:_versionIRI]);
         
         equal = (sameOntoIRI && sameVerIRI);

@@ -7,9 +7,11 @@
 #import "OWLEntity.h"
 #import "SMRClassUtils.h"
 
+static NSUInteger kHashNotCached = NSUIntegerMax;
+
+
 @interface OWLObjectImpl ()
 {
-    BOOL _hasCachedHash;
     NSUInteger _cachedHash;
 }
 @end
@@ -23,9 +25,8 @@
 
 - (NSUInteger)hash
 {
-    if (!_hasCachedHash) {
+    if (_cachedHash == kHashNotCached) {
         _cachedHash = [self computeHash];
-        _hasCachedHash = YES;
     }
     return _cachedHash;
 }
@@ -48,6 +49,16 @@
 #pragma mark Other abstract methods
 
 - (NSUInteger)computeHash ABSTRACT_METHOD;
+
+#pragma mark Lifecycle
+
+- (id)init
+{
+    if ((self = [super init])) {
+        _cachedHash = kHashNotCached;
+    }
+    return self;
+}
 
 #pragma mark Private methods
 

@@ -18,8 +18,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        NSSet *objOperands = [object operands];
-        
+        NSSet *objOperands = ((OWLNAryBooleanClassExpressionImpl *)object)->_operands;
         equal = (objOperands == _operands || [objOperands isEqualToSet:_operands]);
     }
     
@@ -31,7 +30,7 @@
     NSUInteger hash = 0;
     
     for (id<OWLClassExpression> ce in _operands) {
-        hash = hash ^ [ce hash];
+        hash ^= [ce hash];
     }
     
     return hash;

@@ -21,13 +21,15 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objVar = [object subject];
+        OWLIndividualRelationshipAxiomImpl *axiom = object;
+        
+        id objVar = axiom->_subject;
         BOOL sameSubject = (objVar == _subject || [objVar isEqual:_subject]);
         
-        objVar = [object property];
+        objVar = axiom->_property;
         BOOL sameProperty = (objVar == _property || [objVar isEqual:_property]);
         
-        objVar = [(id<OWLPropertyAssertionAxiom>)object object];
+        objVar = axiom->_object;
         BOOL sameObject = (objVar == _object || [objVar isEqual:_object]);
         
         equal = sameSubject && sameProperty && sameObject;

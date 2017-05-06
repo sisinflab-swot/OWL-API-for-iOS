@@ -32,15 +32,14 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objID = [object ontologyID];
-        
+        id objID = ((OWLOntologyImpl *)object)->_ontologyID;
         equal = (objID == _ontologyID || [objID isEqual:_ontologyID]);
     }
     
     return equal;
 }
 
-- (NSUInteger)computeHash { return _ontologyID.hash; }
+- (NSUInteger)computeHash { return [_ontologyID hash]; }
 
 #pragma mark OWLObject
 

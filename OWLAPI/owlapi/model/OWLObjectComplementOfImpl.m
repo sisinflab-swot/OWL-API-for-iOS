@@ -18,8 +18,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objOperand = [(id<OWLObjectComplementOf>)object operand];
-        
+        id objOperand = ((OWLObjectComplementOfImpl *)object)->_operand;
         equal = (objOperand == _operand || [objOperand isEqual:_operand]);
     }
     

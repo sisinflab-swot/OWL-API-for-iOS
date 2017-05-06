@@ -19,8 +19,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objProperty = [object property];
-        
+        id objProperty = ((OWLUnaryPropertyAxiomImpl *)object)->_property;
         equal = (objProperty == _property || [object isEqual:_property]);
     }
     

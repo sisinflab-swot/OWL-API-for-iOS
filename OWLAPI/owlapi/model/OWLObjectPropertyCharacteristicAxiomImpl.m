@@ -18,7 +18,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objProperty = [(id<OWLObjectPropertyCharacteristicAxiom>)object property];
+        id objProperty = ((OWLObjectPropertyCharacteristicAxiomImpl *)object)->_property;
         equal = (objProperty == _property || [object isEqual:_property]);
     }
     

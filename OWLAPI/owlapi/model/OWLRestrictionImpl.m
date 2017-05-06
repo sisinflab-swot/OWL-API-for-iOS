@@ -19,8 +19,7 @@
     BOOL equal = NO;
     
     if ([super isEqual:object]) {
-        id objProperty = [object property];
-        
+        id objProperty = ((OWLRestrictionImpl *)object)->_property;
         equal = (objProperty == _property || [objProperty isEqual:_property]);
     }
     

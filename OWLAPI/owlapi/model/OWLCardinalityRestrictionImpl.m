@@ -19,13 +19,13 @@
     BOOL equals = NO;
     
     if ([super isEqual:object]) {
-        equals = ([object cardinality] == _cardinality);
+        equals = ((OWLCardinalityRestrictionImpl *)object)->_cardinality == _cardinality;
     }
     
     return equals;
 }
 
-- (NSUInteger)computeHash { return [super computeHash] ^ _cardinality; };
+- (NSUInteger)computeHash { return [super computeHash] ^ _cardinality; }
 
 #pragma mark OWLCardinalityRestriction
 

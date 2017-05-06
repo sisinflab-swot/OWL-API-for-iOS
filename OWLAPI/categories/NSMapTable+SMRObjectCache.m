@@ -32,14 +32,10 @@
 - (BOOL)isEqual:(id)object
 {
     SMRObjectCacheKey *key = object;
-    return [_l1Key isEqual:key->_l1Key] && [_l2Key isEqual:key->_l2Key];
+    return (_l1Key == key->_l1Key || [_l1Key isEqual:key->_l1Key]) && (_l2Key == key->_l2Key || [_l2Key isEqual:key->_l2Key]);
 }
 
-- (NSUInteger)hash
-{
-    NSUInteger prime = 92821;
-    return prime * (prime + [_l1Key hash]) + [_l2Key hash];
-}
+- (NSUInteger)hash { return [_l1Key hash] * 92821 ^ [_l2Key hash]; }
 
 @end
 
