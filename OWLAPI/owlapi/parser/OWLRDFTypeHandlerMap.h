@@ -3,6 +3,13 @@
 //  Copyright © 2016 SisInf Lab. All rights reserved.
 //
 
-#import "OWLStatementHandlerMap.h"
+#import "OWLStatementHandler.h"
+#import "OWLMap.h"
 
-@interface OWLRDFTypeHandlerMap : NSObject <OWLStatementHandlerMap> @end
+NS_ASSUME_NONNULL_BEGIN
+
+extern OWLMap *rdfTypeHandlerMap;
+
+extern OWLMap * init_type_handlers(void);
+
+NS_ASSUME_NONNULL_END

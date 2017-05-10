@@ -6,6 +6,9 @@
 #import "RDFNode.h"
 
 @implementation RDFNode
+{
+    raptor_term *_term;
+}
 
 @synthesize type = _type;
 @synthesize URIStringValue = _URIStringValue;
@@ -21,31 +24,22 @@
 - (instancetype)initWithRaptorTerm:(raptor_term *)term
 {
     if ((self = [super init])) {
+        _term = term;
+        
         switch (term->type)
         {
             case RAPTOR_TERM_TYPE_URI: {
                 _type = RDFNodeTypeResource;
-                raptor_uri *uri = term->value.uri;
-                
-                if (uri) {
-                    size_t length;
-                    unsigned char *string_value = raptor_uri_as_counted_string(uri, &length);
-                    _URIStringValue = [[NSString alloc] initWithBytes:string_value length:length encoding:NSUTF8StringEncoding];
-                }
                 break;
             }
                 
             case RAPTOR_TERM_TYPE_BLANK: {
                 _type = RDFNodeTypeBlank;
-                raptor_term_blank_value value = term->value.blank;
-                _blankID = [[NSString alloc] initWithBytes:value.string length:value.string_len encoding:NSUTF8StringEncoding];
                 break;
             }
                 
             case RAPTOR_TERM_TYPE_LITERAL: {
                 _type = RDFNodeTypeLiteral;
-                raptor_term_literal_value value = term->value.literal;
-                _literalValue = [[NSString alloc] initWithBytes:value.string length:value.string_len encoding:NSUTF8StringEncoding];
                 break;
             }
                 
@@ -54,6 +48,61 @@
         }
     }
     return self;
+}
+
+- (NSString *)URIStringValue
+{
+    NSString *stringValue = nil;
+    
+    if (_type == RDFNodeTypeResource) {
+        if (_URIStringValue) {
+            stringValue = _URIStringValue;
+        } else {
+            size_t len;
+            unsigned char *str = raptor_uri_as_counted_string(_term->value.uri, &len);
+            stringValue = [[NSString alloc] initWithBytes:(const void *_Nonnull)str length:len encoding:NSUTF8StringEncoding];
+            
+            _URIStringValue = stringValue;
+        }
+    }
+    
+    return stringValue;
+}
+
+- (NSString *)blankID
+{
+    NSString *blankID = nil;
+    
+    if (_type == RDFNodeTypeBlank) {
+        if (_blankID) {
+            blankID = _blankID;
+        } else {
+            raptor_term_blank_value blank = _term->value.blank;
+            blankID = [[NSString alloc] initWithBytes:blank.string length:blank.string_len encoding:NSUTF8StringEncoding];
+            
+            _blankID = blankID;
+        }
+    }
+    
+    return blankID;
+}
+
+- (NSString *)literalValue
+{
+    NSString *literalValue = nil;
+    
+    if (_type == RDFNodeTypeLiteral) {
+        if (_literalValue) {
+            literalValue = _literalValue;
+        } else {
+            raptor_term_literal_value value = _term->value.literal;
+            literalValue = [[NSString alloc] initWithBytes:value.string length:value.string_len encoding:NSUTF8StringEncoding];
+            
+            _literalValue = literalValue;
+        }
+    }
+    
+    return literalValue;
 }
 
 - (NSString *)description
@@ -79,6 +128,11 @@
     }
     
     return description;
+}
+
+- (unsigned char *)cURI
+{
+    return raptor_uri_as_string(_term->value.uri);
 }
 
 @end

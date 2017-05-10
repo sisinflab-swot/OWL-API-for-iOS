@@ -15,71 +15,9 @@
 #import "RDFStatement.h"
 #import "SMRClassUtils.h"
 
-@interface OWLRDFTypeHandlerMap ()
-{
-    NSDictionary *_handlers;
-}
-@end
-
-
-@implementation OWLRDFTypeHandlerMap
-
-NS_INLINE NSDictionary * initHandlers()
-{
-    NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
-    
-    map[[OWLRDFVocabulary OWLClass].stringValue] = [oClassHandler copy];
-    map[[OWLRDFVocabulary OWLNamedIndividual].stringValue] = [oNamedIndividualHandler copy];
-    map[[OWLRDFVocabulary OWLObjectProperty].stringValue] = [oObjectPropertyHandler copy];
-    map[[OWLRDFVocabulary OWLOntology].stringValue] = [oOntologyIRIHandler copy];
-    map[[OWLRDFVocabulary OWLRestriction].stringValue] = [oRestrictionHandler copy];
-    map[[OWLRDFVocabulary OWLTransitiveProperty].stringValue] = [oTransitivePropertyHandler copy];
-    
-    OWLStatementHandler notImplemented = [oNotImplementedHandler copy];
-    
-#define handlerNotImplemented(name) \
-map[[OWLRDFVocabulary name].stringValue] = notImplemented
-    
-    // Not implemented handlers
-    handlerNotImplemented(OWLAllDifferent);
-    handlerNotImplemented(OWLAllDisjointClasses);
-    handlerNotImplemented(OWLAllDisjointProperties);
-    handlerNotImplemented(OWLAnnotation);
-    handlerNotImplemented(OWLAnnotationProperty);
-    handlerNotImplemented(OWLAsymmetricProperty);
-    handlerNotImplemented(OWLAxiom);
-    handlerNotImplemented(OWLDatatypeProperty);
-    handlerNotImplemented(OWLDeprecatedClass);
-    handlerNotImplemented(OWLDeprecatedProperty);
-    handlerNotImplemented(OWLFunctionalProperty);
-    handlerNotImplemented(OWLInverseFunctionalProperty);
-    handlerNotImplemented(OWLIrreflexiveProperty);
-    handlerNotImplemented(OWLNegativePropertyAssertion);
-    handlerNotImplemented(OWLOntologyProperty);
-    handlerNotImplemented(OWLReflexiveProperty);
-    handlerNotImplemented(OWLSymmetricProperty);
-    
-    return map;
-}
-
-- (instancetype)init
-{
-    if ((self = [super init])) {
-        _handlers = initHandlers();
-    }
-    return self;
-}
-
-#pragma mark OWLStatementHandlerMap
-
-- (OWLStatementHandler)handlerForSignature:(NSString *)signature
-{
-    return _handlers[signature];
-}
-
 #pragma mark Not implemented handler
 
-OWLStatementHandler oNotImplementedHandler = ^BOOL(RDFStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oNotImplementedHandler(RDFStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -87,11 +25,11 @@ OWLStatementHandler oNotImplementedHandler = ^BOOL(RDFStatement *statement, __un
                                   userInfo:@{@"statement": statement}];
     }
     return NO;
-};
+}
 
 #pragma mark Class declaration handler
 
-OWLStatementHandler oClassHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oClassHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
@@ -148,11 +86,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark Named individual declaration handler
 
-OWLStatementHandler oNamedIndividualHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oNamedIndividualHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
@@ -199,11 +137,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark Object property declaration handler
 
-OWLStatementHandler oObjectPropertyHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oObjectPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
@@ -250,11 +188,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark Ontology IRI declaration handler
 
-OWLStatementHandler oOntologyIRIHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oOntologyIRIHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
@@ -279,11 +217,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark Restriction declaration handler
 
-OWLStatementHandler oRestrictionHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oRestrictionHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
@@ -311,11 +249,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark Transitive property handler
 
-OWLStatementHandler oTransitivePropertyHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL oTransitivePropertyHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     RDFNode *subject = statement.subject;
@@ -363,6 +301,47 @@ err:
     }
     
     return !localError;
-};
+}
 
-@end
+#pragma mark - Type handler map
+
+OWLMap *rdfTypeHandlerMap;
+
+OWLMap * init_type_handlers(void)
+{
+    OWLMap *map = owl_map_init();
+    
+#define setHandler(term, handler) \
+owl_map_set(map, (unsigned char *)[OWLRDFVocabulary term].stringValue.UTF8String, &handler)
+    
+    setHandler(OWLClass, oClassHandler);
+    setHandler(OWLNamedIndividual, oNamedIndividualHandler);
+    setHandler(OWLObjectProperty, oObjectPropertyHandler);
+    setHandler(OWLOntology, oOntologyIRIHandler);
+    setHandler(OWLRestriction, oRestrictionHandler);
+    setHandler(OWLTransitiveProperty, oTransitivePropertyHandler);
+    
+#define handlerNotImplemented(name) \
+setHandler(name, oNotImplementedHandler)
+    
+    // Not implemented handlers
+    handlerNotImplemented(OWLAllDifferent);
+    handlerNotImplemented(OWLAllDisjointClasses);
+    handlerNotImplemented(OWLAllDisjointProperties);
+    handlerNotImplemented(OWLAnnotation);
+    handlerNotImplemented(OWLAnnotationProperty);
+    handlerNotImplemented(OWLAsymmetricProperty);
+    handlerNotImplemented(OWLAxiom);
+    handlerNotImplemented(OWLDatatypeProperty);
+    handlerNotImplemented(OWLDeprecatedClass);
+    handlerNotImplemented(OWLDeprecatedProperty);
+    handlerNotImplemented(OWLFunctionalProperty);
+    handlerNotImplemented(OWLInverseFunctionalProperty);
+    handlerNotImplemented(OWLIrreflexiveProperty);
+    handlerNotImplemented(OWLNegativePropertyAssertion);
+    handlerNotImplemented(OWLOntologyProperty);
+    handlerNotImplemented(OWLReflexiveProperty);
+    handlerNotImplemented(OWLSymmetricProperty);
+    
+    return map;
+}

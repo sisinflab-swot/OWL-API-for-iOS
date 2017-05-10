@@ -16,107 +16,9 @@
 #import "RDFNode.h"
 #import "RDFStatement.h"
 
-@interface OWLPredicateHandlerMap ()
-{
-    NSDictionary *_handlers;
-}
-@end
-
-
-@implementation OWLPredicateHandlerMap
-
-NS_INLINE NSDictionary * initHandlers()
-{
-    NSMutableDictionary<NSString *, OWLStatementHandler> *map = [[NSMutableDictionary alloc] init];
-    
-    map[[OWLRDFVocabulary RDFFirst].stringValue] = [pRDFFirstHandler copy];
-    map[[OWLRDFVocabulary RDFRest].stringValue] = [pRDFRestHandler copy];
-    map[[OWLRDFVocabulary RDFType].stringValue] = [pRDFTypeHandler copy];
-    map[[OWLRDFVocabulary RDFSDomain].stringValue] = [pDomainHandler copy];
-    map[[OWLRDFVocabulary RDFSRange].stringValue] = [pRangeHandler copy];
-    map[[OWLRDFVocabulary RDFSSubClassOf].stringValue] = [pSubClassOfHandler copy];
-    map[[OWLRDFVocabulary OWLAllValuesFrom].stringValue] = [pAllValuesFromHandler copy];
-    map[[OWLRDFVocabulary OWLCardinality].stringValue] = [pCardinalityHandler copy];
-    map[[OWLRDFVocabulary OWLComplementOf].stringValue] = [pComplementOfHandler copy];
-    map[[OWLRDFVocabulary OWLDisjointWith].stringValue] = [pDisjointWithHandler copy];
-    map[[OWLRDFVocabulary OWLEquivalentClass].stringValue] = [pEquivalentClassHandler copy];
-    map[[OWLRDFVocabulary OWLIntersectionOf].stringValue] = [pIntersectionOfHandler copy];
-    map[[OWLRDFVocabulary OWLMaxCardinality].stringValue] = [pMaxCardinalityHandler copy];
-    map[[OWLRDFVocabulary OWLMinCardinality].stringValue] = [pMinCardinalityHandler copy];
-    map[[OWLRDFVocabulary OWLOnProperty].stringValue] = [pOnPropertyHandler copy];
-    map[[OWLRDFVocabulary OWLSomeValuesFrom].stringValue] = [pSomeValuesFromHandler copy];
-    map[[OWLRDFVocabulary OWLVersionIRI].stringValue] = [pVersionIRIHandler copy];
-    
-    OWLStatementHandler notImplemented = [pUnsupportedPredicateHandler copy];
-    
-#define handlerNotImplemented(name) \
-map[[OWLRDFVocabulary name].stringValue] = notImplemented
-    
-    // Not implemented handlers
-    handlerNotImplemented(RDFSComment);
-    handlerNotImplemented(RDFSSubPropertyOf);
-    handlerNotImplemented(OWLAnnotatedProperty);
-    handlerNotImplemented(OWLAnnotatedSource);
-    handlerNotImplemented(OWLAnnotatedTarget);
-    handlerNotImplemented(OWLAssertionProperty);
-    handlerNotImplemented(OWLDatatypeComplementOf);
-    handlerNotImplemented(OWLDifferentFrom);
-    handlerNotImplemented(OWLDisjointUnionOf);
-    handlerNotImplemented(OWLDistinctMembers);
-    handlerNotImplemented(OWLEquivalentProperty);
-    handlerNotImplemented(OWLHasKey);
-    handlerNotImplemented(OWLHasValue);
-    handlerNotImplemented(OWLHasSelf);
-    handlerNotImplemented(OWLImports);
-    handlerNotImplemented(OWLInverseOf);
-    handlerNotImplemented(OWLMaxQualifiedCardinality);
-    handlerNotImplemented(OWLMembers);
-    handlerNotImplemented(OWLMinQualifiedCardinality);
-    handlerNotImplemented(OWLOnDatatype);
-    handlerNotImplemented(OWLOnClass);
-    handlerNotImplemented(OWLOnDataRange);
-    handlerNotImplemented(OWLOneOf);
-    handlerNotImplemented(OWLOnProperties);
-    handlerNotImplemented(OWLOneOf);
-    handlerNotImplemented(OWLPropertyChainAxiom);
-    handlerNotImplemented(OWLPropertyDisjointWith);
-    handlerNotImplemented(OWLQualifiedCardinality);
-    handlerNotImplemented(OWLSameAs);
-    handlerNotImplemented(OWLSourceIndividual);
-    handlerNotImplemented(OWLTargetIndividual);
-    handlerNotImplemented(OWLTargetValue);
-    handlerNotImplemented(OWLUnionOf);
-    handlerNotImplemented(OWLWithRestrictions);
-    
-    return map;
-}
-
-- (instancetype)init
-{
-    if ((self = [super init])) {
-        _handlers = initHandlers();
-    }
-    return self;
-}
-
-#pragma mark OWLStatementHandlerMap
-
-- (OWLStatementHandler)handlerForSignature:(NSString *)signature
-{
-    OWLStatementHandler handler = _handlers[signature];
-    
-    if (!handler) {
-        // If there's no handler for this predicate, it's a property assertion
-        // or an annotation, though annotations are currently unsupported.
-        handler = pPropertyAssertionHandler;
-    }
-    
-    return handler;
-}
-
 #pragma mark Unsupported predicate handler
 
-OWLStatementHandler pUnsupportedPredicateHandler = ^BOOL(RDFStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pUnsupportedPredicateHandler(RDFStatement *statement, __unused OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     if (error) {
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax
@@ -124,7 +26,7 @@ OWLStatementHandler pUnsupportedPredicateHandler = ^BOOL(RDFStatement *statement
                                   userInfo:@{@"statement": statement}];
     }
     return NO;
-};
+}
 
 #pragma mark rdf:type predicate handler
 
@@ -186,21 +88,14 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pRDFTypeHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pRDFTypeHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
-    static id<OWLStatementHandlerMap> objectHandlerMap;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        objectHandlerMap = [[OWLRDFTypeHandlerMap alloc] init];
-    });
-    
     NSError *__autoreleasing localError = nil;
     RDFNode *object = statement.object;
     
     if (object.isResource) {
         
-        NSString *objectID = object.URIStringValue;
-        OWLStatementHandler handler = [objectHandlerMap handlerForSignature:objectID];
+        OWLStatementHandler handler = owl_map_get(rdfTypeHandlerMap, (unsigned char * _Nonnull)object.cURI);
         
         if (handler) {
             // Declaration of named entity
@@ -227,11 +122,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark Property assertion handler
 
-OWLStatementHandler pPropertyAssertionHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pPropertyAssertionHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -295,7 +190,7 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark rdf:first and rdf:rest predicate handlers
 
@@ -342,15 +237,15 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pRDFFirstHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pRDFFirstHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleListStatement(statement, builder, YES, error);
-};
+}
 
-OWLStatementHandler pRDFRestHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pRDFRestHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleListStatement(statement, builder, NO, error);
-};
+}
 
 #pragma mark owl:allValuesFrom and owl:someValuesFrom predicate handlers
 
@@ -414,15 +309,15 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pAllValuesFromHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pAllValuesFromHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleQuantificationStatement(statement, builder, YES, error);
-};
+}
 
-OWLStatementHandler pSomeValuesFromHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pSomeValuesFromHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleQuantificationStatement(statement, builder, NO, error);
-};
+}
 
 #pragma mark owl:cardinality, owl:minCardinality and owl:maxCardinality predicate handlers
 
@@ -472,20 +367,20 @@ err:
     
 }
 
-OWLStatementHandler pCardinalityHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pCardinalityHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeCardinality, error);
-};
+}
 
-OWLStatementHandler pMinCardinalityHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pMinCardinalityHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMinCardinality, error);
-};
+}
 
-OWLStatementHandler pMaxCardinalityHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pMaxCardinalityHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleCardinalityStatement(statement, builder, OWLCEBRestrictionTypeMaxCardinality, error);
-};
+}
 
 #pragma mark owl:disjointWith, owl:equivalentClass and rdfs:subClassOf predicate handlers
 
@@ -555,24 +450,24 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pDisjointWithHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pDisjointWithHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeDisjointClasses, error);
-};
+}
 
-OWLStatementHandler pEquivalentClassHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pEquivalentClassHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeEquivalentClasses, error);
-};
+}
 
-OWLStatementHandler pSubClassOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pSubClassOfHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleBinaryCEAxiomStatement(statement, builder, OWLABTypeSubClassOf, error);
-};
+}
 
 #pragma mark owl:complementOf predicate handler
 
-OWLStatementHandler pComplementOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pComplementOfHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -629,11 +524,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark owl:intersectionOf predicate handler
 
-OWLStatementHandler pIntersectionOfHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pIntersectionOfHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -669,11 +564,11 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark owl:onProperty predicate handler
 
-OWLStatementHandler pOnPropertyHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pOnPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -727,7 +622,7 @@ err:
     }
     
     return !localError;
-};
+}
 
 #pragma mark rdfs:domain and rdfs:range predicate handlers
 
@@ -792,19 +687,19 @@ err:
     return !localError;
 }
 
-OWLStatementHandler pDomainHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pDomainHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleDomainRangeStatement(statement, builder, YES, error);
-};
+}
 
-OWLStatementHandler pRangeHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pRangeHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     return handleDomainRangeStatement(statement, builder, NO, error);
-};
+}
 
 #pragma mark Ontology version IRI handler
 
-OWLStatementHandler pVersionIRIHandler = ^BOOL(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
+static BOOL pVersionIRIHandler(RDFStatement *statement, OWLOntologyBuilder *builder, NSError *__autoreleasing *error)
 {
     NSError *__autoreleasing localError = nil;
     
@@ -837,6 +732,88 @@ err:
     }
     
     return !localError;
-};
+}
 
-@end
+#pragma mark - Predicate handler map
+
+OWLMap *predicateHandlerMap;
+
+OWLMap * init_predicate_handlers(void)
+{
+    OWLMap *map = owl_map_init();
+    
+#define setHandler(term, handler) \
+owl_map_set(map, (unsigned char *)[OWLRDFVocabulary term].stringValue.UTF8String, &handler)
+    
+    setHandler(RDFFirst, pRDFFirstHandler);
+    setHandler(RDFRest, pRDFRestHandler);
+    setHandler(RDFType, pRDFTypeHandler);
+    setHandler(RDFSDomain, pDomainHandler);
+    setHandler(RDFSRange, pRangeHandler);
+    setHandler(RDFSSubClassOf, pSubClassOfHandler);
+    setHandler(OWLAllValuesFrom, pAllValuesFromHandler);
+    setHandler(OWLCardinality, pCardinalityHandler);
+    setHandler(OWLComplementOf, pComplementOfHandler);
+    setHandler(OWLDisjointWith, pDisjointWithHandler);
+    setHandler(OWLEquivalentClass, pEquivalentClassHandler);
+    setHandler(OWLIntersectionOf, pIntersectionOfHandler);
+    setHandler(OWLMaxCardinality, pMaxCardinalityHandler);
+    setHandler(OWLMinCardinality, pMinCardinalityHandler);
+    setHandler(OWLOnProperty, pOnPropertyHandler);
+    setHandler(OWLSomeValuesFrom, pSomeValuesFromHandler);
+    setHandler(OWLVersionIRI, pVersionIRIHandler);
+    
+#define handlerNotImplemented(name) \
+setHandler(name, pUnsupportedPredicateHandler)
+    
+    // Not implemented handlers
+    handlerNotImplemented(RDFSComment);
+    handlerNotImplemented(RDFSSubPropertyOf);
+    handlerNotImplemented(OWLAnnotatedProperty);
+    handlerNotImplemented(OWLAnnotatedSource);
+    handlerNotImplemented(OWLAnnotatedTarget);
+    handlerNotImplemented(OWLAssertionProperty);
+    handlerNotImplemented(OWLDatatypeComplementOf);
+    handlerNotImplemented(OWLDifferentFrom);
+    handlerNotImplemented(OWLDisjointUnionOf);
+    handlerNotImplemented(OWLDistinctMembers);
+    handlerNotImplemented(OWLEquivalentProperty);
+    handlerNotImplemented(OWLHasKey);
+    handlerNotImplemented(OWLHasValue);
+    handlerNotImplemented(OWLHasSelf);
+    handlerNotImplemented(OWLImports);
+    handlerNotImplemented(OWLInverseOf);
+    handlerNotImplemented(OWLMaxQualifiedCardinality);
+    handlerNotImplemented(OWLMembers);
+    handlerNotImplemented(OWLMinQualifiedCardinality);
+    handlerNotImplemented(OWLOnDatatype);
+    handlerNotImplemented(OWLOnClass);
+    handlerNotImplemented(OWLOnDataRange);
+    handlerNotImplemented(OWLOneOf);
+    handlerNotImplemented(OWLOnProperties);
+    handlerNotImplemented(OWLOneOf);
+    handlerNotImplemented(OWLPropertyChainAxiom);
+    handlerNotImplemented(OWLPropertyDisjointWith);
+    handlerNotImplemented(OWLQualifiedCardinality);
+    handlerNotImplemented(OWLSameAs);
+    handlerNotImplemented(OWLSourceIndividual);
+    handlerNotImplemented(OWLTargetIndividual);
+    handlerNotImplemented(OWLTargetValue);
+    handlerNotImplemented(OWLUnionOf);
+    handlerNotImplemented(OWLWithRestrictions);
+    
+    return map;
+}
+
+OWLStatementHandler handler_for_predicate(OWLMap *map, unsigned char *predicate)
+{
+    OWLStatementHandler handler = owl_map_get(map, predicate);
+    
+    if (!handler) {
+        // If there's no handler for this predicate, it's a property assertion
+        // or an annotation, though annotations are currently unsupported.
+        handler = &pPropertyAssertionHandler;
+    }
+    
+    return handler;
+}

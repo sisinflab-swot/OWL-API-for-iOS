@@ -30,7 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// Specifies whether this node is a literal node.
 @property (nonatomic, readonly) BOOL isLiteral;
 
-/// The URI value of this node if it is a resource node, nil otherwise.
+/**
+ The URI of this node if it is a resource node, nil otherwise.
+ 
+ @note This is a shared pointer which is only valid while raptor is parsing.
+ */
+@property (nonatomic, readonly, nullable) unsigned char *cURI;
+
+/// The URI string value of this node if it is a resource node, nil otherwise.
 @property (nonatomic, copy, readonly, nullable) NSString *URIStringValue;
 
 /// The blank ID of this node if it is a blank node, nil otherwise.

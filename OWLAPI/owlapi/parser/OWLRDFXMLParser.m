@@ -9,6 +9,7 @@
 #import "OWLOntologyBuilder.h"
 #import "OWLPredicateHandlerMap.h"
 #import "OWLRDFVocabulary.h"
+#import "OWLRDFTypeHandlerMap.h"
 #import "RDFNode.h"
 #import "RDFStatement.h"
 #import "raptor.h"
@@ -19,7 +20,6 @@
 {
     OWLOntologyBuilder *_ontologyBuilder;
     NSMutableArray *_errors;
-    id<OWLStatementHandlerMap> _predicateHandlerMap;
 }
 @end
 
@@ -29,12 +29,12 @@
 
 #pragma mark Lifecycle
 
-- (instancetype)init
++ (void)initialize
 {
-    if ((self = [super init])) {
-        _predicateHandlerMap = [[OWLPredicateHandlerMap alloc] init];
+    if (self == [OWLRDFXMLParser class]) {
+        predicateHandlerMap = init_predicate_handlers();
+        rdfTypeHandlerMap = init_type_handlers();
     }
-    return self;
 }
 
 #pragma mark Public methods
@@ -97,9 +97,8 @@ static void statementHandler(void *parser_arg, raptor_statement *triple) {
             }
             
             {
-                NSString *signature = predicate.URIStringValue;
-                OWLStatementHandler handler = [parser->_predicateHandlerMap handlerForSignature:signature];
-                if (handler && !handler(statement, parser->_ontologyBuilder, &error)) {
+                OWLStatementHandler handler = handler_for_predicate(predicateHandlerMap, (unsigned char * _Nonnull)predicate.cURI);
+                if (handler != NULL && !handler(statement, parser->_ontologyBuilder, &error)) {
                     goto err;
                 }
             }
@@ -142,6 +141,8 @@ static void statementHandler(void *parser_arg, raptor_statement *triple) {
                                       userInfo:@{@"URL": URL}];
         goto err;
     }
+    
+    raptor_parser_set_option(rdf_parser, RAPTOR_OPTION_STRICT, NULL, 1);
     
     uri_string = raptor_uri_filename_to_uri_string([[URL path] UTF8String]);
     
