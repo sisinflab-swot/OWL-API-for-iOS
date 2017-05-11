@@ -14,6 +14,7 @@
 @class OWLAxiomBuilder;
 @class OWLClassExpressionBuilder;
 @class OWLIndividualBuilder;
+@class OWLIRI;
 @class OWLListItem;
 @class OWLPropertyBuilder;
 
@@ -36,27 +37,27 @@ DECLARE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI)
 // OWL DL entities should have a unique ID (blank node or IRI), therefore these
 // setters return NO if a named entity with the specified ID already exists.
 
-- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID;
-- (nullable OWLClassExpressionBuilder *)classExpressionBuilderForID:(NSString *)ID;
+- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(unsigned char *)ID;
+- (nullable OWLClassExpressionBuilder *)classExpressionBuilderForID:(unsigned char *)ID;
 
-- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID;
-- (nullable OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID;
+- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(unsigned char *)ID;
+- (nullable OWLIndividualBuilder *)individualBuilderForID:(unsigned char *)ID;
 
-- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID;
-- (nullable OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID;
+- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(unsigned char *)ID;
+- (nullable OWLPropertyBuilder *)propertyBuilderForID:(unsigned char *)ID;
 
 
 #pragma mark Axiom builders
 
-- (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID;
+- (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(unsigned char *)ID;
 - (OWLAxiomBuilder *)addSingleStatementAxiomBuilder;
 
 
 #pragma mark Lists
 
-- (OWLListItem *)ensureListItemForID:(NSString *)ID;
-- (nullable OWLListItem *)listItemForID:(NSString *)ID;
-- (NSArray *)firstItemsForListID:(NSString *)ID;
+- (OWLListItem *)ensureListItemForID:(unsigned char *)ID;
+- (nullable OWLListItem *)listItemForID:(unsigned char *)ID;
+- (void)iterateFirstItemsForListID:(unsigned char *)ID withHandler:(void (^)(unsigned char *firstID))handler;
 
 
 #pragma mark OWLAbstractBuilder

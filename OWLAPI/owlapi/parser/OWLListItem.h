@@ -8,7 +8,7 @@
 /// Represents an item in RDF lists.
 @interface OWLListItem : NSObject
 
-@property (nonatomic, copy) NSString *first;
-@property (nonatomic, copy) NSString *rest;
+@property (nonatomic) unsigned char *first;
+@property (nonatomic) unsigned char *rest;
 
 @end

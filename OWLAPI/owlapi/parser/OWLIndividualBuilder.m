@@ -28,37 +28,37 @@
     }
     
     id<OWLIndividual> builtIndividual = nil;
-    NSString *ID = _ID;
     
-    if (ID) {
-        switch (_type)
-        {
-            case OWLIBTypeNamed: {
-                OWLIRI *IRI = [[OWLIRI alloc] initWithString:ID];
+    switch (_type)
+    {
+        case OWLIBTypeNamed: {
+            if (_IRI) {
+                OWLIRI *IRI = [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_IRI];
                 builtIndividual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
-                break;
             }
-                
-            case OWLIBTypeAnonymous: {
-                builtIndividual = [[OWLAnonymousIndividualImpl alloc] initWithNodeID:OWLNodeID_new()];
-                break;
-            }
-                
-            default:
-                break;
+            break;
         }
+            
+        case OWLIBTypeAnonymous: {
+            builtIndividual = [[OWLAnonymousIndividualImpl alloc] initWithNodeID:OWLNodeID_new()];
+            break;
+        }
+            
+        default:
+            break;
     }
     
     if (builtIndividual) {
         _builtIndividual = builtIndividual;
-        _ID = nil;
+        _IRI = nil;
     }
+    
     return builtIndividual;
 }
 
 #pragma mark General
 
 SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLIBType, type, Type, @"Multiple types for individual.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(ID, ID, @"Multiple IRIs for individual.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(IRI, IRI, @"Multiple IRIs for individual.")
 
 @end

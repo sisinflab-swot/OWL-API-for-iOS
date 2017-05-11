@@ -13,9 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Property builder class.
 @interface OWLPropertyBuilder : NSObject <OWLAbstractBuilder>
 
+
 #pragma mark OWLAbstractBuilder
 
 - (nullable id<OWLPropertyExpression>)build;
+
 
 #pragma mark General
 
@@ -25,8 +27,8 @@ DECLARE_BUILDER_VALUE_PROPERTY(OWLPBType, type, Type)
 
 #pragma mark Named properties
 
-/// The string representation of the property IRI.
-DECLARE_BUILDER_STRING_PROPERTY(namedPropertyID, NamedPropertyID)
+/// The IRI of the property.
+DECLARE_BUILDER_STRING_PROPERTY(IRI, IRI)
 
 @end
 

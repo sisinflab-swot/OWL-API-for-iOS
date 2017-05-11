@@ -31,9 +31,8 @@
     {
         case OWLPBTypeObjectProperty:
         {
-            NSString *ID = _namedPropertyID;
-            if (ID) {
-                OWLIRI *IRI = [[OWLIRI alloc] initWithString:ID];
+            if (_IRI) {
+                OWLIRI *IRI = [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_IRI];
                 builtProperty = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
             }
             break;
@@ -45,7 +44,7 @@
     
     if (builtProperty) {
         _builtProperty = builtProperty;
-        _namedPropertyID = nil;
+        _IRI = nil;
     }
     return builtProperty;
 }
@@ -57,6 +56,6 @@ SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLPBType, type, Type, @"Multiple types for pr
 
 #pragma mark Named property
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(namedPropertyID, NamedPropertyID, @"Multiple IRIs for named property.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(IRI, IRI, @"Multiple IRIs for named property.")
 
 @end

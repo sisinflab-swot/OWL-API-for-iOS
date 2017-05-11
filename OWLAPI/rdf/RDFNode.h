@@ -13,8 +13,6 @@ typedef NS_ENUM(NSInteger, RDFNodeType) {
     RDFNodeTypeBlank
 };
 
-NS_ASSUME_NONNULL_BEGIN
-
 /// Represents nodes of the RDF graph.
 @interface RDFNode : NSObject
 
@@ -31,23 +29,21 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isLiteral;
 
 /**
- The URI of this node if it is a resource node, nil otherwise.
+ The URI, blank ID or literal value of this node.
  
  @note This is a shared pointer which is only valid while raptor is parsing.
  */
-@property (nonatomic, readonly, nullable) unsigned char *cURI;
+@property (nonatomic, readonly) unsigned char *cValue;
 
-/// The URI string value of this node if it is a resource node, nil otherwise.
-@property (nonatomic, copy, readonly, nullable) NSString *URIStringValue;
+/// The IRI of this node if it is a resource node, nil otherwise.
+@property (nonatomic, copy, readonly) NSString *IRIValue;
 
 /// The blank ID of this node if it is a blank node, nil otherwise.
-@property (nonatomic, copy, readonly, nullable) NSString *blankID;
+@property (nonatomic, copy, readonly) NSString *blankIDValue;
 
 /// The literal value of this node if it is a literal node, nil otherwise.
-@property (nonatomic, copy, readonly, nullable) NSString *literalValue;
+@property (nonatomic, copy, readonly) NSString *literalValue;
 
 - (instancetype)initWithRaptorTerm:(raptor_term *)term;
 
 @end
-
-NS_ASSUME_NONNULL_END

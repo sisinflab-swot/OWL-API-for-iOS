@@ -9,6 +9,7 @@
 #import "OWLError.h"
 #import "OWLIndividualBuilder.h"
 #import "OWLListItem.h"
+#import "OWLMap.h"
 #import "OWLOntologyBuilder.h"
 #import "OWLPropertyBuilder.h"
 #import "OWLRDFTypeHandlerMap.h"
@@ -45,7 +46,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
     {
         // Add individual
         BOOL namedIndividual = subject.isResource;
-        NSString *subjectID = namedIndividual ? subject.URIStringValue : subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         
         OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID];
         
@@ -53,12 +54,13 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
             goto err;
         }
         
-        if (![ib setID:subjectID error:&localError]) {
+        if (namedIndividual && ![ib setIRI:subject.IRIValue error:&localError]) {
             goto err;
         }
         
         // Add class expression
-        NSString *objectID = (named ? statement.object.URIStringValue : statement.object.blankID);
+        RDFNode *object = statement.object;
+        unsigned char *objectID = object.cValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID];
         
@@ -67,7 +69,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
                 goto err;
             }
             
-            if (![ceb setClassID:objectID error:&localError]) {
+            if (![ceb setIRI:object.IRIValue error:&localError]) {
                 goto err;
             }
         }
@@ -76,6 +78,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
         OWLAxiomBuilder *ab = [builder addSingleStatementAxiomBuilder];
         
         [ab setType:OWLABTypeClassAssertion error:NULL];
+        
         [ab setLHSID:subjectID error:NULL];
         [ab setRHSID:objectID error:NULL];
     }
@@ -95,7 +98,7 @@ static BOOL pRDFTypeHandler(RDFStatement *statement, OWLOntologyBuilder *builder
     
     if (object.isResource) {
         
-        OWLStatementHandler handler = owl_map_get(rdfTypeHandlerMap, (unsigned char * _Nonnull)object.cURI);
+        OWLStatementHandler handler = owl_map_get(rdfTypeHandlerMap, object.cValue);
         
         if (handler) {
             // Declaration of named entity
@@ -145,9 +148,9 @@ static BOOL pPropertyAssertionHandler(RDFStatement *statement, OWLOntologyBuilde
         BOOL subjectIsResource = subject.isResource;
         BOOL objectIsResource = object.isResource;
         
-        NSString *subjectID = subjectIsResource ? subject.URIStringValue : subject.blankID;
-        NSString *predicateID = predicate.URIStringValue;
-        NSString *objectID = objectIsResource ? object.URIStringValue : object.blankID;
+        unsigned char *subjectID = subject.cValue;
+        unsigned char *predicateID = predicate.cValue;
+        unsigned char *objectID = object.cValue;
         
         // Add subject individual builder
         OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID];
@@ -156,10 +159,10 @@ static BOOL pPropertyAssertionHandler(RDFStatement *statement, OWLOntologyBuilde
             if (![ib setType:OWLIBTypeNamed error:&localError]) {
                 goto err;
             }
-        }
-        
-        if (![ib setID:subjectID error:&localError]) {
-            goto err;
+            
+            if (![ib setIRI:subject.IRIValue error:&localError]) {
+                goto err;
+            }
         }
         
         // Add object individual builder
@@ -169,10 +172,10 @@ static BOOL pPropertyAssertionHandler(RDFStatement *statement, OWLOntologyBuilde
             if (![ib setType:OWLIBTypeNamed error:&localError]) {
                 goto err;
             }
-        }
-        
-        if (![ib setID:objectID error:&localError]) {
-            goto err;
+            
+            if (![ib setIRI:object.IRIValue error:&localError]) {
+                goto err;
+            }
         }
         
         // Add axiom builder
@@ -217,8 +220,8 @@ NS_INLINE BOOL handleListStatement(RDFStatement *statement, OWLOntologyBuilder *
     
     {
         // Add list item
-        NSString *subjectID = subject.blankID;
-        NSString *objectID = object.isResource ? object.URIStringValue : object.blankID;
+        unsigned char *subjectID = subject.cValue;
+        unsigned char *objectID = object.cValue;
         
         OWLListItem *item = [builder ensureListItemForID:subjectID];
         
@@ -273,7 +276,7 @@ NS_INLINE BOOL handleQuantificationStatement(RDFStatement *statement, OWLOntolog
     {
         // Add filler class expression
         BOOL objectIsResource = object.isResource;
-        NSString *fillerID = objectIsResource ? object.URIStringValue : object.blankID;
+        unsigned char *fillerID = object.cValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:fillerID];
         
@@ -282,13 +285,13 @@ NS_INLINE BOOL handleQuantificationStatement(RDFStatement *statement, OWLOntolog
                 goto err;
             }
             
-            if (![ceb setClassID:fillerID error:&localError]) {
+            if (![ceb setIRI:object.IRIValue error:&localError]) {
                 goto err;
             }
         }
         
         // Add restriction
-        NSString *subjectID = subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         OWLCEBRestrictionType restrictionType = (universal ? OWLCEBRestrictionTypeAllValuesFrom : OWLCEBRestrictionTypeSomeValuesFrom);
@@ -344,7 +347,7 @@ NS_INLINE BOOL handleCardinalityStatement(RDFStatement *statement, OWLOntologyBu
     
     {
         // Add restriction
-        NSString *subjectID = subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         NSString *objectValue = object.literalValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
@@ -399,12 +402,9 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
     }
     
     {
-        if (object.isBlank && !object.blankID) {
-            
-        }
         // LHS class expression
         BOOL isResource = subject.isResource;
-        NSString *LHSClassID = isResource ? subject.URIStringValue : subject.blankID;
+        unsigned char *LHSClassID = subject.cValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:LHSClassID];
         
@@ -413,14 +413,14 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
                 goto err;
             }
             
-            if (![ceb setClassID:LHSClassID error:&localError]) {
+            if (![ceb setIRI:subject.IRIValue error:&localError]) {
                 goto err;
             }
         }
         
         // RHS class expression
         isResource = object.isResource;
-        NSString *RHSClassID = isResource ? object.URIStringValue : object.blankID;
+        unsigned char *RHSClassID = object.cValue;
         
         ceb = [builder ensureClassExpressionBuilderForID:RHSClassID];
         
@@ -429,7 +429,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
                 goto err;
             }
             
-            if (![ceb setClassID:RHSClassID error:&localError]) {
+            if (![ceb setIRI:object.IRIValue error:&localError]) {
                 goto err;
             }
         }
@@ -491,7 +491,7 @@ static BOOL pComplementOfHandler(RDFStatement *statement, OWLOntologyBuilder *bu
     {
         // Add operand class expression
         BOOL objectIsResource = object.isResource;
-        NSString *operandID = objectIsResource ? object.URIStringValue : object.blankID;
+        unsigned char *operandID = object.cValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:operandID];
         
@@ -500,13 +500,13 @@ static BOOL pComplementOfHandler(RDFStatement *statement, OWLOntologyBuilder *bu
                 goto err;
             }
             
-            if (![ceb setClassID:operandID error:&localError]) {
+            if (![ceb setIRI:object.IRIValue error:&localError]) {
                 goto err;
             }
         }
         
         // Add class expression
-        NSString *subjectID = subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setBooleanType:OWLCEBBooleanTypeComplement error:&localError]) {
@@ -544,8 +544,8 @@ static BOOL pIntersectionOfHandler(RDFStatement *statement, OWLOntologyBuilder *
     
     {
         // Add class expression
-        NSString *subjectID = subject.blankID;
-        NSString *objectID = object.blankID;
+        unsigned char *subjectID = subject.cValue;
+        unsigned char *objectID = object.cValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
@@ -596,19 +596,19 @@ static BOOL pOnPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *buil
         // owl:onProperty with named object/datatype property
         // Note: currently only supports object properties, so
         // we assume the property is such.
-        NSString *objectID = object.URIStringValue;
+        unsigned char *objectID = object.cValue;
         OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:objectID];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
         }
         
-        if (![pb setNamedPropertyID:objectID error:NULL]) {
+        if (![pb setIRI:object.IRIValue error:NULL]) {
             goto err;
         }
         
         // Add class expression builder
-        NSString *subjectID = subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setPropertyID:objectID error:&localError]) {
@@ -644,20 +644,20 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
         // Add object property builder
         // We assume it's an object property since it's
         // the only supported property expression type.
-        NSString *subjectID = subject.isResource ? subject.URIStringValue : subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
         }
         
-        if (![pb setNamedPropertyID:subjectID error:&localError]) {
+        if (![pb setIRI:subject.IRIValue error:&localError]) {
             goto err;
         }
         
         // Add class expression builder
         BOOL objectIsResource = object.isResource;
-        NSString *objectID = objectIsResource ? object.URIStringValue : object.blankID;
+        unsigned char *objectID = object.cValue;
         
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:objectID];
         
@@ -666,7 +666,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
                 goto err;
             }
             
-            if (![ceb setClassID:objectID error:&localError]) {
+            if (![ceb setIRI:object.IRIValue error:&localError]) {
                 goto err;
             }
         }
@@ -714,14 +714,11 @@ static BOOL pVersionIRIHandler(RDFStatement *statement, OWLOntologyBuilder *buil
     }
     
     {
-        NSString *subjectIRI = subject.URIStringValue;
-        NSString *objectIRI = object.URIStringValue;
-        
-        if (![builder setOntologyIRI:subjectIRI error:&localError]) {
+        if (![builder setOntologyIRI:subject.IRIValue error:&localError]) {
             goto err;
         }
         
-        if (![builder setVersionIRI:objectIRI error:&localError]) {
+        if (![builder setVersionIRI:object.IRIValue error:&localError]) {
             goto err;
         }
     }

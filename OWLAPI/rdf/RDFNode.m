@@ -4,6 +4,7 @@
 //
 
 #import "RDFNode.h"
+#import "OWLIRI.h"
 
 @implementation RDFNode
 {
@@ -11,9 +12,7 @@
 }
 
 @synthesize type = _type;
-@synthesize URIStringValue = _URIStringValue;
-@synthesize blankID = _blankID;
-@synthesize literalValue = _literalValue;
+@synthesize cValue = _cValue;
 
 - (BOOL)isResource { return _type == RDFNodeTypeResource; }
 
@@ -30,16 +29,19 @@
         {
             case RAPTOR_TERM_TYPE_URI: {
                 _type = RDFNodeTypeResource;
+                _cValue = raptor_uri_as_string(term->value.uri);
                 break;
             }
                 
             case RAPTOR_TERM_TYPE_BLANK: {
                 _type = RDFNodeTypeBlank;
+                _cValue = term->value.blank.string;
                 break;
             }
                 
             case RAPTOR_TERM_TYPE_LITERAL: {
                 _type = RDFNodeTypeLiteral;
+                _cValue = term->value.literal.string;
                 break;
             }
                 
@@ -50,41 +52,29 @@
     return self;
 }
 
-- (NSString *)URIStringValue
+- (NSString *)IRIValue
 {
-    NSString *stringValue = nil;
+    NSString *IRIValue = nil;
     
     if (_type == RDFNodeTypeResource) {
-        if (_URIStringValue) {
-            stringValue = _URIStringValue;
-        } else {
-            size_t len;
-            unsigned char *str = raptor_uri_as_counted_string(_term->value.uri, &len);
-            stringValue = [[NSString alloc] initWithBytes:(const void *_Nonnull)str length:len encoding:NSUTF8StringEncoding];
-            
-            _URIStringValue = stringValue;
-        }
+        size_t len;
+        unsigned char *str = raptor_uri_as_counted_string(_term->value.uri, &len);
+        IRIValue = [[NSString alloc] initWithBytes:(const void *_Nonnull)str length:len encoding:NSUTF8StringEncoding];
     }
     
-    return stringValue;
+    return IRIValue;
 }
 
-- (NSString *)blankID
+- (NSString *)blankIDValue
 {
-    NSString *blankID = nil;
+    NSString *blankIDValue = nil;
     
     if (_type == RDFNodeTypeBlank) {
-        if (_blankID) {
-            blankID = _blankID;
-        } else {
-            raptor_term_blank_value blank = _term->value.blank;
-            blankID = [[NSString alloc] initWithBytes:blank.string length:blank.string_len encoding:NSUTF8StringEncoding];
-            
-            _blankID = blankID;
-        }
+        raptor_term_blank_value blank = _term->value.blank;
+        blankIDValue = [[NSString alloc] initWithBytes:blank.string length:blank.string_len encoding:NSUTF8StringEncoding];
     }
     
-    return blankID;
+    return blankIDValue;
 }
 
 - (NSString *)literalValue
@@ -92,14 +82,8 @@
     NSString *literalValue = nil;
     
     if (_type == RDFNodeTypeLiteral) {
-        if (_literalValue) {
-            literalValue = _literalValue;
-        } else {
-            raptor_term_literal_value value = _term->value.literal;
-            literalValue = [[NSString alloc] initWithBytes:value.string length:value.string_len encoding:NSUTF8StringEncoding];
-            
-            _literalValue = literalValue;
-        }
+        raptor_term_literal_value value = _term->value.literal;
+        literalValue = [[NSString alloc] initWithBytes:value.string length:value.string_len encoding:NSUTF8StringEncoding];
     }
     
     return literalValue;
@@ -107,32 +91,20 @@
 
 - (NSString *)description
 {
-    NSString *description = nil;
-    
     switch (_type)
     {
         case RDFNodeTypeResource:
-            description = self.URIStringValue;
-            break;
+            return self.IRIValue;
             
         case RDFNodeTypeBlank:
-            description = self.blankID;
-            break;
+            return self.blankIDValue;
             
         case RDFNodeTypeLiteral:
-            description = self.literalValue;
-            break;
+            return self.literalValue;
             
         default:
-            break;
+            return nil;
     }
-    
-    return description;
-}
-
-- (unsigned char *)cURI
-{
-    return raptor_uri_as_string(_term->value.uri);
 }
 
 @end

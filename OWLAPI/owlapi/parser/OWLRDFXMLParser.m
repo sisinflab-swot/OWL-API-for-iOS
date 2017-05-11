@@ -97,7 +97,7 @@ static void statementHandler(void *parser_arg, raptor_statement *triple) {
             }
             
             {
-                OWLStatementHandler handler = handler_for_predicate(predicateHandlerMap, (unsigned char * _Nonnull)predicate.cURI);
+                OWLStatementHandler handler = handler_for_predicate(predicateHandlerMap, predicate.cValue);
                 if (handler != NULL && !handler(statement, parser->_ontologyBuilder, &error)) {
                     goto err;
                 }

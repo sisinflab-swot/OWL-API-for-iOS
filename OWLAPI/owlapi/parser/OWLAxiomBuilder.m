@@ -47,6 +47,23 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self free];
+}
+
+- (void)free
+{
+    free(_LHSID);
+    _LHSID = NULL;
+    
+    free(_MID);
+    _MID = NULL;
+    
+    free(_RHSID);
+    _RHSID = NULL;
+}
+
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLAxiom>)build
@@ -61,7 +78,7 @@
     {
         case OWLABTypeDeclaration: {
             OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
-            NSString *entityID = _LHSID;
+            unsigned char *entityID = _LHSID;
             id<OWLEntity> entity = nil;
             
             switch (_declType)
@@ -102,8 +119,8 @@
         case OWLABTypeClassAssertion: {
             OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
             
-            NSString *individualID = _LHSID;
-            NSString *classID = _RHSID;
+            unsigned char *individualID = _LHSID;
+            unsigned char *classID = _RHSID;
             
             if (individualID && classID) {
                 id<OWLIndividual> individual = [[ontoBuilder individualBuilderForID:individualID] build];
@@ -119,9 +136,9 @@
         case OWLABTypePropertyAssertion: {
             OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
             
-            NSString *subjectID = _LHSID;
-            NSString *propertyID = _MID;
-            NSString *objectID = _RHSID;
+            unsigned char *subjectID = _LHSID;
+            unsigned char *propertyID = _MID;
+            unsigned char *objectID = _RHSID;
             
             if (subjectID && propertyID && objectID) {
                 id<OWLIndividual> subject = [[ontoBuilder individualBuilderForID:subjectID] build];
@@ -177,7 +194,7 @@
             
         case OWLABTypeTransitiveProperty: {
             OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
-            NSString *propertyID = _LHSID;
+            unsigned char *propertyID = _LHSID;
             
             if (propertyID) {
                 id<OWLPropertyExpression> property = [[ontoBuilder propertyBuilderForID:propertyID] build];
@@ -195,9 +212,7 @@
     
     if (builtAxiom) {
         _builtAxiom = builtAxiom;
-        _LHSID = nil;
-        _MID = nil;
-        _RHSID = nil;
+        [self free];
     }
     return builtAxiom;
 }
@@ -206,8 +221,8 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    NSString *RHSClassID = _RHSID;
-    NSString *LHSClassID = _LHSID;
+    unsigned char *RHSClassID = _RHSID;
+    unsigned char *LHSClassID = _LHSID;
     
     if (RHSClassID && LHSClassID) {
         OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
@@ -227,8 +242,8 @@
 {
     id<OWLAxiom> builtAxiom = nil;
     
-    NSString *propertyID = _LHSID;
-    NSString *domainRangeID = _RHSID;
+    unsigned char *propertyID = _LHSID;
+    unsigned char *domainRangeID = _RHSID;
     
     if (propertyID && domainRangeID) {
         OWLOntologyBuilder *ontoBuilder = _ontologyBuilder;
@@ -261,8 +276,9 @@ SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLABDeclType, declType, DeclType, @"Multiple 
 
 #pragma mark Single statement axioms
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(LHSID, LHSID, @"Multiple left-hand-side IDs for same axiom.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(MID, MID, @"Multiple middle IDs for same axiom.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(RHSID, RHSID, @"Multiple right-hand-side IDs for same axiom.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(LHSID, LHSID, @"Multiple LHS IDs for same axiom.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(MID, MID, @"Multiple middle IDs for same axiom.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(RHSID, RHSID, @"Multiple RHS IDs for same axiom.")
+
 
 @end

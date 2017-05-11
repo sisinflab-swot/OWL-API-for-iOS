@@ -45,6 +45,29 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self free];
+}
+
+- (void)free
+{
+    _IRI = nil;
+    _cardinality = nil;
+    
+    free(_operandID);
+    _operandID = NULL;
+    
+    free(_listID);
+    _listID = NULL;
+    
+    free(_fillerID);
+    _fillerID = NULL;
+    
+    free(_propertyID);
+    _propertyID = NULL;
+}
+
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLClassExpression>)build
@@ -71,24 +94,19 @@
     
     if (builtClassExpression) {
         _builtClassExpression = builtClassExpression;
-        _classID = nil;
-        _listID = nil;
-        _operandID = nil;
-        _propertyID = nil;
-        _fillerID = nil;
-        _cardinality = nil;
+        [self free];
     }
+    
     return builtClassExpression;
 }
 
 - (id<OWLClassExpression>)buildClassExpression
 {
     id<OWLClassExpression> classExpression = nil;
-    NSString *classID = _classID;
     
-    if (classID) {
+    if (_IRI) {
         // Named class
-        OWLIRI *IRI = [[OWLIRI alloc] initWithString:classID];
+        OWLIRI *IRI = [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_IRI];
         classExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
     } else {
         OWLCEBBooleanType type = _booleanType;
@@ -99,7 +117,7 @@
             {
                 case OWLCEBBooleanTypeComplement: {
                     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
-                    NSString *operandID = _operandID;
+                    unsigned char *operandID = _operandID;
                     
                     if (operandID) {
                         id<OWLClassExpression> operand = [[ontologyBuilder classExpressionBuilderForID:operandID] build];
@@ -110,15 +128,16 @@
                 case OWLCEBBooleanTypeIntersection: {
                     NSMutableSet *operands = [[NSMutableSet alloc] init];
                     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
-                    NSString *listID = _listID;
+                    unsigned char *listID = _listID;
                     
                     if (listID) {
-                        for (NSString *ID in [ontologyBuilder firstItemsForListID:listID]) {
-                            id<OWLClassExpression> ce = [[ontologyBuilder classExpressionBuilderForID:ID] build];
+                        [ontologyBuilder iterateFirstItemsForListID:listID withHandler:^(unsigned char * _Nonnull firstID) {
+                            id<OWLClassExpression> ce = [[ontologyBuilder classExpressionBuilderForID:firstID] build];
                             if (ce) {
                                 [operands addObject:ce];
                             }
-                        }
+                        }];
+                        
                         classExpression = [[OWLObjectIntersectionOfImpl alloc] initWithOperands:operands];
                     }
                     break;
@@ -136,7 +155,7 @@
 - (id<OWLRestriction>)buildRestriction
 {
     OWLCEBRestrictionType type = _restrictionType;
-    NSString *propertyID = _propertyID;
+    unsigned char *propertyID = _propertyID;
     
     if (type == OWLCEBRestrictionTypeUnknown || !propertyID) {
         return nil;
@@ -146,7 +165,7 @@
     OWLOntologyBuilder *ontologyBuilder = _ontologyBuilder;
     id<OWLPropertyExpression> property = [[ontologyBuilder propertyBuilderForID:propertyID] build];
     
-    NSString *fillerID = _fillerID;
+    unsigned char *fillerID = _fillerID;
     id<OWLClassExpression> filler = nil;
     if (fillerID) {
         filler = [[ontologyBuilder classExpressionBuilderForID:fillerID] build];
@@ -228,25 +247,25 @@ SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBType, type, Type, @"Multiple types for c
 
 #pragma mark Class
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(classID, ClassID, @"Multiple IRIs for class.")
+SYNTHESIZE_BUILDER_STRING_PROPERTY(IRI, IRI, @"Multiple IRIs for class.")
 
 
 #pragma mark Boolean
 
 SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBBooleanType, booleanType, BooleanType, @"Multiple boolean types for class expression.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(operandID, OperandID, @"Multiple operand IDs for complement boolean class expression.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(listID, ListID, @"Multiple list IDs for boolean class expression.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(operandID, OperandID, @"Multiple operand IDs for complement boolean class expression.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(listID, ListID, @"Multiple list IDs for boolean class expression.")
 
 
 #pragma mark Restriction
 
 SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBRestrictionType, restrictionType, RestrictionType, @"Multiple types for restriction.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(propertyID, PropertyID, @"Multiple 'onProperty' statements for restriction.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(propertyID, PropertyID, @"Multiple 'onProperty' statements for restriction.")
 
 
 #pragma mark SomeValuesFrom/AllValuesFrom
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(fillerID, FillerID, @"Multiple fillers for restriction.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(fillerID, FillerID, @"Multiple fillers for restriction.")
 
 
 #pragma mark Cardinality

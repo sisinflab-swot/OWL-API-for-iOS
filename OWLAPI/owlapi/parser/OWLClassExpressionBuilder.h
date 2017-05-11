@@ -14,13 +14,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// Class expression builder class.
 @interface OWLClassExpressionBuilder : NSObject <OWLAbstractBuilder>
 
+
 #pragma mark Lifecycle
 
 - (instancetype)initWithOntologyBuilder:(OWLOntologyBuilder *)ontologyBuilder;
 
+
 #pragma mark OWLAbstractBuilder
 
 - (nullable id<OWLClassExpression>)build;
+
 
 #pragma mark General
 
@@ -30,8 +33,8 @@ DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBType, type, Type)
 
 #pragma mark Class
 
-/// The string representation of the class IRI.
-DECLARE_BUILDER_STRING_PROPERTY(classID, ClassID)
+/// The IRI of the class.
+DECLARE_BUILDER_STRING_PROPERTY(IRI, IRI)
 
 
 #pragma mark Boolean
@@ -40,10 +43,10 @@ DECLARE_BUILDER_STRING_PROPERTY(classID, ClassID)
 DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBBooleanType, booleanType, BooleanType)
 
 /// The operand of this boolean expression (complement).
-DECLARE_BUILDER_STRING_PROPERTY(operandID, OperandID)
+DECLARE_BUILDER_CSTRING_PROPERTY(operandID, OperandID)
 
 /// The list identifier of this boolean expression (intersection).
-DECLARE_BUILDER_STRING_PROPERTY(listID, ListID)
+DECLARE_BUILDER_CSTRING_PROPERTY(listID, ListID)
 
 
 #pragma mark Restriction
@@ -52,13 +55,13 @@ DECLARE_BUILDER_STRING_PROPERTY(listID, ListID)
 DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBRestrictionType, restrictionType, RestrictionType)
 
 /// Identifier of the property this restriction is about.
-DECLARE_BUILDER_STRING_PROPERTY(propertyID, PropertyID)
+DECLARE_BUILDER_CSTRING_PROPERTY(propertyID, PropertyID)
 
 
 #pragma mark AllValuesFrom/SomeValuesFrom
 
 /// The filler of this restriction.
-DECLARE_BUILDER_STRING_PROPERTY(fillerID, FillerID)
+DECLARE_BUILDER_CSTRING_PROPERTY(fillerID, FillerID)
 
 
 #pragma mark Cardinality

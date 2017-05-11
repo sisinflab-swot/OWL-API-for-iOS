@@ -13,17 +13,19 @@ NS_ASSUME_NONNULL_BEGIN
 /// Individual builder class.
 @interface OWLIndividualBuilder : NSObject <OWLAbstractBuilder>
 
+
 #pragma mark OWLAbstractBuilder
 
 - (nullable id<OWLIndividual>)build;
+
 
 #pragma mark General
 
 /// The type of the individual to build.
 DECLARE_BUILDER_VALUE_PROPERTY(OWLIBType, type, Type)
 
-/// The ID of the individual to build.
-DECLARE_BUILDER_STRING_PROPERTY(ID, ID)
+/// The IRI of the individual to build.
+DECLARE_BUILDER_STRING_PROPERTY(IRI, IRI)
 
 @end
 

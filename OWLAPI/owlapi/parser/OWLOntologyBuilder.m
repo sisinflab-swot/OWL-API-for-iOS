@@ -14,33 +14,29 @@
 #import "OWLIndividualBuilder.h"
 #import "OWLIRI.h"
 #import "OWLListItem.h"
+#import "OWLMap.h"
 #import "OWLNamedIndividual.h"
 #import "OWLOntologyID.h"
 #import "OWLOntologyImpl.h"
 #import "OWLOntologyInternals.h"
 #import "OWLPropertyBuilder.h"
 #import "OWLSubClassOfAxiom.h"
-#import "NSMutableDictionary+SMRMutableDictionaryUtils.h"
 
 @interface OWLOntologyBuilder ()
 {
     id<OWLOntology> _builtOntology;
     
-    // The keys of these dictionaries are either blank node IDs or IRIs,
-    // matching the subject node of the statement that triggered the
-    // creation of the builder/item.
-    
     // Entity builders
-    NSMutableDictionary<NSString *, OWLClassExpressionBuilder *> *_classExpressionBuilders;
-    NSMutableDictionary<NSString *, OWLIndividualBuilder *> *_individualBuilders;
-    NSMutableDictionary<NSString *, OWLPropertyBuilder *> *_propertyBuilders;
+    OWLMap *_classExpressionBuilders;
+    OWLMap *_individualBuilders;
+    OWLMap *_propertyBuilders;
     
     // Axiom builders
-    NSMutableDictionary<NSString *, OWLAxiomBuilder *> *_declarationAxiomBuilders;
+    OWLMap *_declarationAxiomBuilders;
     NSMutableArray<OWLAxiomBuilder *> *_singleStatementAxiomBuilders;
     
     // Other
-    NSMutableDictionary<NSString *, OWLListItem *> *_listItems;
+    OWLMap *_listItems;
 }
 @end
 
@@ -52,16 +48,34 @@
 - (instancetype)init
 {
     if ((self = [super init])) {
-        _classExpressionBuilders = [[NSMutableDictionary alloc] init];
-        _individualBuilders = [[NSMutableDictionary alloc] init];
-        _propertyBuilders = [[NSMutableDictionary alloc] init];
+        _classExpressionBuilders = owl_map_init();
+        _individualBuilders = owl_map_init();
+        _propertyBuilders = owl_map_init();
         
-        _declarationAxiomBuilders = [[NSMutableDictionary alloc] init];
+        _declarationAxiomBuilders = owl_map_init();
         _singleStatementAxiomBuilders = [[NSMutableArray alloc] init];
         
-        _listItems = [[NSMutableDictionary alloc] init];
+        _listItems = owl_map_init();
     }
     return self;
+}
+
+- (void)dealloc
+{
+    owl_map_dealloc_obj(_classExpressionBuilders);
+    _classExpressionBuilders = NULL;
+    
+    owl_map_dealloc_obj(_individualBuilders);
+    _classExpressionBuilders = NULL;
+    
+    owl_map_dealloc_obj(_propertyBuilders);
+    _propertyBuilders = NULL;
+    
+    owl_map_dealloc_obj(_listItems);
+    _listItems = NULL;
+    
+    owl_map_dealloc_obj(_declarationAxiomBuilders);
+    _declarationAxiomBuilders = NULL;
 }
 
 #pragma mark OWLAbstractBuilder
@@ -75,13 +89,13 @@
     OWLOntologyInternals *internals = [[OWLOntologyInternals alloc] init];
     
     // Declaration axioms
-    [_declarationAxiomBuilders smr_enumerateAndRemoveKeysAndObjectsUsingBlock:^(__unused id _Nonnull key, OWLAxiomBuilder * _Nonnull builder)
-    {
+    owl_map_iterate_and_dealloc_obj(_declarationAxiomBuilders, ^(OWLAxiomBuilder *builder) {
         id<OWLAxiom> axiom = [builder build];
         if (axiom && axiom.axiomType == OWLAxiomTypeDeclaration) {
             [internals addAxiom:axiom];
         }
-    }];
+    });
+    _declarationAxiomBuilders = NULL;
     
     // Single statement axioms
     [_singleStatementAxiomBuilders enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(OWLAxiomBuilder * _Nonnull builder, NSUInteger idx, __unused BOOL * _Nonnull stop) {
@@ -100,19 +114,8 @@
 
 - (OWLOntologyID *)buildOntologyID
 {
-    OWLIRI *ontologyIRI = nil;
-    NSString *IRIString = _ontologyIRI;
-    
-    if (IRIString) {
-        ontologyIRI = [[OWLIRI alloc] initWithString:IRIString];
-    }
-    
-    OWLIRI *versionIRI = nil;
-    IRIString = _versionIRI;
-    
-    if (IRIString) {
-        versionIRI = [[OWLIRI alloc] initWithString:IRIString];
-    }
+    OWLIRI *ontologyIRI = _ontologyIRI ? [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_ontologyIRI] : nil;
+    OWLIRI *versionIRI = _versionIRI ? [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_versionIRI] : nil;
     
     return [[OWLOntologyID alloc] initWithOntologyIRI:ontologyIRI versionIRI:versionIRI];
 }
@@ -124,70 +127,66 @@ SYNTHESIZE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI, @"Multiple version IR
 
 #pragma mark Entity builders
 
-- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(NSString *)ID
+- (OWLClassExpressionBuilder *)ensureClassExpressionBuilderForID:(unsigned char *)ID
 {
-    NSMutableDictionary *classExpressionBuilders = _classExpressionBuilders;
-    OWLClassExpressionBuilder *ceb = classExpressionBuilders[ID];
+    OWLClassExpressionBuilder *ceb = owl_map_get_obj(_classExpressionBuilders, ID);
     
     if (!ceb) {
         ceb = [[OWLClassExpressionBuilder alloc] initWithOntologyBuilder:self];
-        classExpressionBuilders[ID] = ceb;
+        owl_map_set_obj(_classExpressionBuilders, ID, ceb);
     }
     
     return ceb;
 }
 
-- (OWLClassExpressionBuilder *)classExpressionBuilderForID:(NSString *)ID
+- (OWLClassExpressionBuilder *)classExpressionBuilderForID:(unsigned char *)ID
 {
-    return _classExpressionBuilders[ID];
+    return owl_map_get_obj(_classExpressionBuilders, ID);
 }
 
-- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(NSString *)ID
+- (OWLIndividualBuilder *)ensureIndividualBuilderForID:(unsigned char *)ID
 {
-    NSMutableDictionary *individualBuilders = _individualBuilders;
-    OWLIndividualBuilder *ib = individualBuilders[ID];
+    OWLIndividualBuilder *ib = owl_map_get_obj(_individualBuilders, ID);
     
     if (!ib) {
         ib = [[OWLIndividualBuilder alloc] init];
-        individualBuilders[ID] = ib;
+        owl_map_set_obj(_individualBuilders, ID, ib);
     }
     
     return ib;
 }
 
-- (OWLIndividualBuilder *)individualBuilderForID:(NSString *)ID
+- (OWLIndividualBuilder *)individualBuilderForID:(unsigned char *)ID
 {
-    return _individualBuilders[ID];
+    return owl_map_get_obj(_individualBuilders, ID);
 }
 
-- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(NSString *)ID
+- (OWLPropertyBuilder *)ensurePropertyBuilderForID:(unsigned char *)ID
 {
-    NSMutableDictionary *propertyBuilders = _propertyBuilders;
-    OWLPropertyBuilder *pb = propertyBuilders[ID];
+    OWLPropertyBuilder *pb = owl_map_get_obj(_propertyBuilders, ID);
     
     if (!pb) {
         pb = [[OWLPropertyBuilder alloc] init];
-        propertyBuilders[ID] = pb;
+        owl_map_set_obj(_propertyBuilders, ID, pb);
     }
     
     return pb;
 }
 
-- (OWLPropertyBuilder *)propertyBuilderForID:(NSString *)ID
+- (OWLPropertyBuilder *)propertyBuilderForID:(unsigned char *)ID
 {
-    return _propertyBuilders[ID];
+    return owl_map_get_obj(_propertyBuilders, ID);
 }
 
 #pragma mark Axiom builders
 
-- (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(NSString *)ID
+- (OWLAxiomBuilder *)ensureDeclarationAxiomBuilderForID:(unsigned char *)ID
 {
-    NSMutableDictionary *declarationAxiomBuilders = _declarationAxiomBuilders;
-    OWLAxiomBuilder *ab = declarationAxiomBuilders[ID];
+    OWLAxiomBuilder *ab = owl_map_get_obj(_declarationAxiomBuilders, ID);
     
     if (!ab) {
         ab = [[OWLAxiomBuilder alloc] initWithOntologyBuilder:self];
-        declarationAxiomBuilders[ID] = ab;
+        owl_map_set_obj(_declarationAxiomBuilders, ID, ab);
     }
     
     return ab;
@@ -202,42 +201,37 @@ SYNTHESIZE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI, @"Multiple version IR
 
 #pragma mark Lists
 
-- (OWLListItem *)ensureListItemForID:(NSString *)ID
+- (OWLListItem *)ensureListItemForID:(unsigned char *)ID
 {
-    NSMutableDictionary *listItems = _listItems;
-    OWLListItem *item = listItems[ID];
+    OWLListItem *item = owl_map_get_obj(_listItems, ID);
     
     if (!item) {
         item = [[OWLListItem alloc] init];
-        listItems[ID] = item;
+        owl_map_set_obj(_listItems, ID, item);
     }
     
     return item;
 }
 
-- (OWLListItem *)listItemForID:(NSString *)ID
+- (OWLListItem *)listItemForID:(unsigned char *)ID
 {
-    return _listItems[ID];
+    return owl_map_get_obj(_listItems, ID);
 }
 
-- (NSArray *)firstItemsForListID:(NSString *)ID
+- (void)iterateFirstItemsForListID:(unsigned char *)ID withHandler:(void (^)(unsigned char *firstID))handler
 {
-    NSDictionary *listItems = _listItems;
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    NSString *restID = ID;
+    unsigned char *restID = ID;
     
     do {
-        OWLListItem *item = listItems[restID];
-        NSString *firstID = item.first;
+        OWLListItem *item = owl_map_get_obj(_listItems, restID);
+        unsigned char *firstID = item.first;
         
         if (firstID) {
-            [items addObject:firstID];
+            handler(firstID);
         }
         
         restID = item.rest;
     } while (restID);
-    
-    return items;
 }
 
 @end

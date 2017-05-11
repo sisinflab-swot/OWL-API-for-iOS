@@ -42,13 +42,7 @@ static BOOL oClassHandler(RDFStatement *statement, OWLOntologyBuilder *builder, 
     }
     
     {
-        NSString *subjectID = nil;
-        
-        if (subject.isResource) {
-            subjectID = subject.URIStringValue;
-        } else {
-            subjectID = subject.blankID;
-        }
+        unsigned char *subjectID = subject.cValue;
         
         // Add class expression builder
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
@@ -59,7 +53,7 @@ static BOOL oClassHandler(RDFStatement *statement, OWLOntologyBuilder *builder, 
         
         if (subject.isResource) {
             // Named class declaration
-            if (![ceb setClassID:subjectID error:&localError]) {
+            if (![ceb setIRI:subject.IRIValue error:&localError]) {
                 goto err;
             }
             
@@ -104,19 +98,20 @@ static BOOL oNamedIndividualHandler(RDFStatement *statement, OWLOntologyBuilder 
     
     {
         // Named individual declaration
-        NSString *IRIString = subject.URIStringValue;
-        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:IRIString];
+        unsigned char *subjectID = subject.cValue;
+        
+        OWLIndividualBuilder *ib = [builder ensureIndividualBuilderForID:subjectID];
         
         if (![ib setType:OWLIBTypeNamed error:&localError]) {
             goto err;
         }
         
-        if (![ib setID:IRIString error:&localError]) {
+        if (![ib setIRI:subject.IRIValue error:&localError]) {
             goto err;
         }
         
         // Add declaration axiom builder
-        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
+        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:subjectID];
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
             goto err;
@@ -126,7 +121,7 @@ static BOOL oNamedIndividualHandler(RDFStatement *statement, OWLOntologyBuilder 
             goto err;
         }
         
-        if (![ab setLHSID:IRIString error:&localError]) {
+        if (![ab setLHSID:subjectID error:&localError]) {
             goto err;
         }
     }
@@ -155,19 +150,20 @@ static BOOL oObjectPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *
     
     {
         // Object property declaration
-        NSString *IRIString = subject.URIStringValue;
-        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:IRIString];
+        unsigned char *subjectID = subject.cValue;
+        
+        OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
         
         if (![pb setType:OWLPBTypeObjectProperty error:&localError]) {
             goto err;
         }
         
-        if (![pb setNamedPropertyID:IRIString error:&localError]) {
+        if (![pb setIRI:subject.IRIValue error:&localError]) {
             goto err;
         }
         
         // Add declaration axiom builder
-        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:IRIString];
+        OWLAxiomBuilder *ab = [builder ensureDeclarationAxiomBuilderForID:subjectID];
         
         if (![ab setType:OWLABTypeDeclaration error:&localError]) {
             goto err;
@@ -177,7 +173,7 @@ static BOOL oObjectPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *
             goto err;
         }
         
-        if (![ab setLHSID:IRIString error:&localError]) {
+        if (![ab setLHSID:subjectID error:&localError]) {
             goto err;
         }
     }
@@ -205,8 +201,7 @@ static BOOL oOntologyIRIHandler(RDFStatement *statement, OWLOntologyBuilder *bui
     }
     
     {
-        NSString *subjectIRI = subject.URIStringValue;
-        if (![builder setOntologyIRI:subjectIRI error:&localError]) {
+        if (![builder setOntologyIRI:subject.IRIValue error:&localError]) {
             goto err;
         }
     }
@@ -235,7 +230,7 @@ static BOOL oRestrictionHandler(RDFStatement *statement, OWLOntologyBuilder *bui
     
     {
         // Restriction declaration
-        NSString *subjectID = subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         OWLClassExpressionBuilder *ceb = [builder ensureClassExpressionBuilderForID:subjectID];
         
         if (![ceb setType:OWLCEBTypeRestriction error:&localError]) {
@@ -268,7 +263,7 @@ static BOOL oTransitivePropertyHandler(RDFStatement *statement, OWLOntologyBuild
     {
         // Subject is surely an object property expression
         BOOL subjectIsResource = subject.isResource;
-        NSString *subjectID = subjectIsResource ? subject.URIStringValue : subject.blankID;
+        unsigned char *subjectID = subject.cValue;
         
         OWLPropertyBuilder *pb = [builder ensurePropertyBuilderForID:subjectID];
         
@@ -278,7 +273,7 @@ static BOOL oTransitivePropertyHandler(RDFStatement *statement, OWLOntologyBuild
                 goto err;
             }
             
-            if (![pb setNamedPropertyID:subjectID error:&localError]) {
+            if (![pb setIRI:subject.IRIValue error:&localError]) {
                 goto err;
             }
         }
