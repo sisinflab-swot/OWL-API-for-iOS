@@ -28,7 +28,7 @@ DECLARE_BUILDER_VALUE_PROPERTY(OWLPBType, type, Type)
 #pragma mark Named properties
 
 /// The IRI of the property.
-DECLARE_BUILDER_STRING_PROPERTY(IRI, IRI)
+DECLARE_BUILDER_CSTRING_PROPERTY(IRI, IRI)
 
 @end
 

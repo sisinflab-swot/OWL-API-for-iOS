@@ -52,8 +52,10 @@
 
 - (void)free
 {
-    _IRI = nil;
     _cardinality = nil;
+    
+    free(_IRI);
+    _IRI = NULL;
     
     free(_operandID);
     _operandID = NULL;
@@ -106,7 +108,7 @@
     
     if (_IRI) {
         // Named class
-        OWLIRI *IRI = [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_IRI];
+        OWLIRI *IRI = [[OWLIRI alloc] initWithCString:(unsigned char *_Nonnull)_IRI];
         classExpression = [[OWLClassImpl alloc] initWithIRI:IRI];
     } else {
         OWLCEBBooleanType type = _booleanType;
@@ -247,7 +249,7 @@ SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLCEBType, type, Type, @"Multiple types for c
 
 #pragma mark Class
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(IRI, IRI, @"Multiple IRIs for class.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(IRI, IRI, @"Multiple IRIs for class.")
 
 
 #pragma mark Boolean

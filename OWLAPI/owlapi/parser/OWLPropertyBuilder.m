@@ -17,6 +17,19 @@
 
 @implementation OWLPropertyBuilder
 
+#pragma mark Lifecycle
+
+- (void)dealloc
+{
+    [self free];
+}
+
+- (void)free
+{
+    free(_IRI);
+    _IRI = NULL;
+}
+
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLPropertyExpression>)build
@@ -32,7 +45,7 @@
         case OWLPBTypeObjectProperty:
         {
             if (_IRI) {
-                OWLIRI *IRI = [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_IRI];
+                OWLIRI *IRI = [[OWLIRI alloc] initWithCString:(unsigned char *_Nonnull)_IRI];
                 builtProperty = [[OWLObjectPropertyImpl alloc] initWithIRI:IRI];
             }
             break;
@@ -44,7 +57,7 @@
     
     if (builtProperty) {
         _builtProperty = builtProperty;
-        _IRI = nil;
+        [self free];
     }
     return builtProperty;
 }
@@ -56,6 +69,6 @@ SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLPBType, type, Type, @"Multiple types for pr
 
 #pragma mark Named property
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(IRI, IRI, @"Multiple IRIs for named property.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(IRI, IRI, @"Multiple IRIs for named property.")
 
 @end

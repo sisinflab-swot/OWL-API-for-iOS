@@ -34,7 +34,7 @@ DECLARE_BUILDER_VALUE_PROPERTY(OWLCEBType, type, Type)
 #pragma mark Class
 
 /// The IRI of the class.
-DECLARE_BUILDER_STRING_PROPERTY(IRI, IRI)
+DECLARE_BUILDER_CSTRING_PROPERTY(IRI, IRI)
 
 
 #pragma mark Boolean

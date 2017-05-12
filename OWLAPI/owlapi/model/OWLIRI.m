@@ -4,9 +4,12 @@
 //
 
 #import "OWLIRI.h"
-#import "NSMapTable+SMRObjectCache.h"
+#import "OWLMap.h"
 
 @implementation OWLIRI
+{
+    unsigned char *_cString;
+}
 
 #pragma mark NSObject
 
@@ -14,7 +17,7 @@
 
 - (NSUInteger)hash { return (NSUInteger)self; }
 
-- (NSString *)description { return _string; }
+- (NSString *)description { return self.string; }
 
 #pragma mark NSCopying
 
@@ -23,34 +26,49 @@
 
 #pragma mark OWLIRI
 
-@synthesize string = _string;
+- (NSString *)string
+{
+    NSString *string = [NSString stringWithCString:(char *)_cString encoding:NSUTF8StringEncoding];
+    return string ?: @"";
+}
 
 #pragma mark Lifecycle
 
-static NSMapTable *instanceCache = nil;
+static OWLMap *instanceCache = NULL;
 
 + (void)initialize
 {
     if (self == [OWLIRI class]) {
-        instanceCache = [NSMapTable smr_objCache];
+        instanceCache = owl_map_init(NONE);
     }
 }
 
 - (instancetype)initWithString:(NSString *)string
 {
+    return [self initWithCString:(unsigned char *)[string UTF8String]];
+}
+
+- (instancetype)initWithCString:(unsigned char *)string
+{
     NSParameterAssert(string);
     
-    id cachedInstance = [instanceCache objectForKey:string];
+    id cachedInstance = owl_map_get_obj(instanceCache, string);
     
     if (cachedInstance) {
         self = cachedInstance;
     } else {
         if ((self = [super init])) {
-            _string = [string copy];
-            [instanceCache setObject:self forKey:_string];
+            _cString = owl_map_set(instanceCache, string, (__bridge void *)(self));
         }
     }
     return self;
+}
+
+- (void)dealloc
+{
+    if (_cString) {
+        owl_map_set(instanceCache, _cString, NULL);
+    }
 }
 
 @end

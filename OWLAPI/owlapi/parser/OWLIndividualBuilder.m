@@ -19,6 +19,19 @@
 
 @implementation OWLIndividualBuilder
 
+#pragma mark Lifecycle
+
+- (void)dealloc
+{
+    [self free];
+}
+
+- (void)free
+{
+    free(_IRI);
+    _IRI = NULL;
+}
+
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLIndividual>)build
@@ -33,7 +46,7 @@
     {
         case OWLIBTypeNamed: {
             if (_IRI) {
-                OWLIRI *IRI = [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_IRI];
+                OWLIRI *IRI = [[OWLIRI alloc] initWithCString:(unsigned char *_Nonnull)_IRI];
                 builtIndividual = [[OWLNamedIndividualImpl alloc] initWithIRI:IRI];
             }
             break;
@@ -50,7 +63,7 @@
     
     if (builtIndividual) {
         _builtIndividual = builtIndividual;
-        _IRI = nil;
+        [self free];
     }
     
     return builtIndividual;
@@ -59,6 +72,6 @@
 #pragma mark General
 
 SYNTHESIZE_BUILDER_VALUE_PROPERTY(OWLIBType, type, Type, @"Multiple types for individual.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(IRI, IRI, @"Multiple IRIs for individual.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(IRI, IRI, @"Multiple IRIs for individual.")
 
 @end

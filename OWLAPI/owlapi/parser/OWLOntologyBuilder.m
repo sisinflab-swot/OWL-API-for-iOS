@@ -48,33 +48,39 @@
 - (instancetype)init
 {
     if ((self = [super init])) {
-        _classExpressionBuilders = owl_map_init();
-        _individualBuilders = owl_map_init();
-        _propertyBuilders = owl_map_init();
+        _classExpressionBuilders = owl_map_init(STRONG_OBJ_VALUES);
+        _individualBuilders = owl_map_init(STRONG_OBJ_VALUES);
+        _propertyBuilders = owl_map_init(STRONG_OBJ_VALUES);
         
-        _declarationAxiomBuilders = owl_map_init();
+        _declarationAxiomBuilders = owl_map_init(STRONG_OBJ_VALUES);
         _singleStatementAxiomBuilders = [[NSMutableArray alloc] init];
         
-        _listItems = owl_map_init();
+        _listItems = owl_map_init(STRONG_OBJ_VALUES);
     }
     return self;
 }
 
 - (void)dealloc
 {
-    owl_map_dealloc_obj(_classExpressionBuilders);
+    free(_ontologyIRI);
+    _ontologyIRI = NULL;
+    
+    free(_versionIRI);
+    _versionIRI = NULL;
+    
+    owl_map_dealloc(_classExpressionBuilders);
     _classExpressionBuilders = NULL;
     
-    owl_map_dealloc_obj(_individualBuilders);
+    owl_map_dealloc(_individualBuilders);
     _classExpressionBuilders = NULL;
     
-    owl_map_dealloc_obj(_propertyBuilders);
+    owl_map_dealloc(_propertyBuilders);
     _propertyBuilders = NULL;
     
-    owl_map_dealloc_obj(_listItems);
+    owl_map_dealloc(_listItems);
     _listItems = NULL;
     
-    owl_map_dealloc_obj(_declarationAxiomBuilders);
+    owl_map_dealloc(_declarationAxiomBuilders);
     _declarationAxiomBuilders = NULL;
 }
 
@@ -114,16 +120,16 @@
 
 - (OWLOntologyID *)buildOntologyID
 {
-    OWLIRI *ontologyIRI = _ontologyIRI ? [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_ontologyIRI] : nil;
-    OWLIRI *versionIRI = _versionIRI ? [[OWLIRI alloc] initWithString:(NSString *_Nonnull)_versionIRI] : nil;
+    OWLIRI *ontologyIRI = _ontologyIRI ? [[OWLIRI alloc] initWithCString:(unsigned char *_Nonnull)_ontologyIRI] : nil;
+    OWLIRI *versionIRI = _versionIRI ? [[OWLIRI alloc] initWithCString:(unsigned char *_Nonnull)_versionIRI] : nil;
     
     return [[OWLOntologyID alloc] initWithOntologyIRI:ontologyIRI versionIRI:versionIRI];
 }
 
 #pragma mark Ontology header
 
-SYNTHESIZE_BUILDER_STRING_PROPERTY(ontologyIRI, OntologyIRI, @"Multiple ontology IRIs for ontology.")
-SYNTHESIZE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI, @"Multiple version IRIs for ontology.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(ontologyIRI, OntologyIRI, @"Multiple ontology IRIs for ontology.")
+SYNTHESIZE_BUILDER_CSTRING_PROPERTY(versionIRI, VersionIRI, @"Multiple version IRIs for ontology.")
 
 #pragma mark Entity builders
 

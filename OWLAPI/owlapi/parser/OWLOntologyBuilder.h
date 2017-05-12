@@ -26,10 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark Ontology header
 
 /// The ontology IRI of the built ontology.
-DECLARE_BUILDER_STRING_PROPERTY(ontologyIRI, OntologyIRI)
+DECLARE_BUILDER_CSTRING_PROPERTY(ontologyIRI, OntologyIRI)
 
 /// The version IRI of the built ontology.
-DECLARE_BUILDER_STRING_PROPERTY(versionIRI, VersionIRI)
+DECLARE_BUILDER_CSTRING_PROPERTY(versionIRI, VersionIRI)
 
 
 #pragma mark Entity builders

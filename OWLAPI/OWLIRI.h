@@ -16,11 +16,20 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Creates an IRI from the specified string.
  *
- * @param string The string that specifies the IRI
+ * @param string The string that specifies the IRI.
  *
  * @return The IRI that has the specified string representation.
  */
 - (instancetype)initWithString:(NSString *)string;
+
+/**
+ * Creates an IRI from the specified C string.
+ *
+ * @param string The string that specifies the IRI (null terminated).
+ *
+ * @return The IRI that has the specified string representation.
+ */
+- (instancetype)initWithCString:(unsigned char *)string;
 
 @end
 

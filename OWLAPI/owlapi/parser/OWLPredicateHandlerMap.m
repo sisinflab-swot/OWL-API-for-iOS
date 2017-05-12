@@ -54,7 +54,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
             goto err;
         }
         
-        if (namedIndividual && ![ib setIRI:subject.IRIValue error:&localError]) {
+        if (namedIndividual && ![ib setIRI:subjectID error:&localError]) {
             goto err;
         }
         
@@ -69,7 +69,7 @@ NS_INLINE BOOL handleClassAssertionStatement(RDFStatement *statement, OWLOntolog
                 goto err;
             }
             
-            if (![ceb setIRI:object.IRIValue error:&localError]) {
+            if (![ceb setIRI:objectID error:&localError]) {
                 goto err;
             }
         }
@@ -160,7 +160,7 @@ static BOOL pPropertyAssertionHandler(RDFStatement *statement, OWLOntologyBuilde
                 goto err;
             }
             
-            if (![ib setIRI:subject.IRIValue error:&localError]) {
+            if (![ib setIRI:subjectID error:&localError]) {
                 goto err;
             }
         }
@@ -173,7 +173,7 @@ static BOOL pPropertyAssertionHandler(RDFStatement *statement, OWLOntologyBuilde
                 goto err;
             }
             
-            if (![ib setIRI:object.IRIValue error:&localError]) {
+            if (![ib setIRI:objectID error:&localError]) {
                 goto err;
             }
         }
@@ -285,7 +285,7 @@ NS_INLINE BOOL handleQuantificationStatement(RDFStatement *statement, OWLOntolog
                 goto err;
             }
             
-            if (![ceb setIRI:object.IRIValue error:&localError]) {
+            if (![ceb setIRI:fillerID error:&localError]) {
                 goto err;
             }
         }
@@ -413,7 +413,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
                 goto err;
             }
             
-            if (![ceb setIRI:subject.IRIValue error:&localError]) {
+            if (![ceb setIRI:LHSClassID error:&localError]) {
                 goto err;
             }
         }
@@ -429,7 +429,7 @@ NS_INLINE BOOL handleBinaryCEAxiomStatement(RDFStatement *statement, OWLOntology
                 goto err;
             }
             
-            if (![ceb setIRI:object.IRIValue error:&localError]) {
+            if (![ceb setIRI:RHSClassID error:&localError]) {
                 goto err;
             }
         }
@@ -500,7 +500,7 @@ static BOOL pComplementOfHandler(RDFStatement *statement, OWLOntologyBuilder *bu
                 goto err;
             }
             
-            if (![ceb setIRI:object.IRIValue error:&localError]) {
+            if (![ceb setIRI:operandID error:&localError]) {
                 goto err;
             }
         }
@@ -603,7 +603,7 @@ static BOOL pOnPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *buil
             goto err;
         }
         
-        if (![pb setIRI:object.IRIValue error:NULL]) {
+        if (![pb setIRI:objectID error:NULL]) {
             goto err;
         }
         
@@ -651,7 +651,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
             goto err;
         }
         
-        if (![pb setIRI:subject.IRIValue error:&localError]) {
+        if (![pb setIRI:subjectID error:&localError]) {
             goto err;
         }
         
@@ -666,7 +666,7 @@ NS_INLINE BOOL handleDomainRangeStatement(RDFStatement *statement, OWLOntologyBu
                 goto err;
             }
             
-            if (![ceb setIRI:object.IRIValue error:&localError]) {
+            if (![ceb setIRI:objectID error:&localError]) {
                 goto err;
             }
         }
@@ -714,11 +714,11 @@ static BOOL pVersionIRIHandler(RDFStatement *statement, OWLOntologyBuilder *buil
     }
     
     {
-        if (![builder setOntologyIRI:subject.IRIValue error:&localError]) {
+        if (![builder setOntologyIRI:subject.cValue error:&localError]) {
             goto err;
         }
         
-        if (![builder setVersionIRI:object.IRIValue error:&localError]) {
+        if (![builder setVersionIRI:object.cValue error:&localError]) {
             goto err;
         }
     }
@@ -737,7 +737,7 @@ OWLMap *predicateHandlerMap;
 
 OWLMap * init_predicate_handlers(void)
 {
-    OWLMap *map = owl_map_init();
+    OWLMap *map = owl_map_init(NONE);
     
 #define setHandler(term, handler) \
 owl_map_set(map, (unsigned char *)[OWLRDFVocabulary term].stringValue.UTF8String, &handler)

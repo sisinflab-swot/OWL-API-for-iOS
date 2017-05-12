@@ -53,7 +53,7 @@ static BOOL oClassHandler(RDFStatement *statement, OWLOntologyBuilder *builder, 
         
         if (subject.isResource) {
             // Named class declaration
-            if (![ceb setIRI:subject.IRIValue error:&localError]) {
+            if (![ceb setIRI:subjectID error:&localError]) {
                 goto err;
             }
             
@@ -106,7 +106,7 @@ static BOOL oNamedIndividualHandler(RDFStatement *statement, OWLOntologyBuilder 
             goto err;
         }
         
-        if (![ib setIRI:subject.IRIValue error:&localError]) {
+        if (![ib setIRI:subjectID error:&localError]) {
             goto err;
         }
         
@@ -158,7 +158,7 @@ static BOOL oObjectPropertyHandler(RDFStatement *statement, OWLOntologyBuilder *
             goto err;
         }
         
-        if (![pb setIRI:subject.IRIValue error:&localError]) {
+        if (![pb setIRI:subjectID error:&localError]) {
             goto err;
         }
         
@@ -201,7 +201,7 @@ static BOOL oOntologyIRIHandler(RDFStatement *statement, OWLOntologyBuilder *bui
     }
     
     {
-        if (![builder setOntologyIRI:subject.IRIValue error:&localError]) {
+        if (![builder setOntologyIRI:subject.cValue error:&localError]) {
             goto err;
         }
     }
@@ -273,7 +273,7 @@ static BOOL oTransitivePropertyHandler(RDFStatement *statement, OWLOntologyBuild
                 goto err;
             }
             
-            if (![pb setIRI:subject.IRIValue error:&localError]) {
+            if (![pb setIRI:subjectID error:&localError]) {
                 goto err;
             }
         }
@@ -304,7 +304,7 @@ OWLMap *rdfTypeHandlerMap;
 
 OWLMap * init_type_handlers(void)
 {
-    OWLMap *map = owl_map_init();
+    OWLMap *map = owl_map_init(NONE);
     
 #define setHandler(term, handler) \
 owl_map_set(map, (unsigned char *)[OWLRDFVocabulary term].stringValue.UTF8String, &handler)
