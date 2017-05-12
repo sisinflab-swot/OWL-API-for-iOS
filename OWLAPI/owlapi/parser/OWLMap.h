@@ -4,13 +4,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "khash.h"
 
-__KHASH_TYPE(OWLMap, unsigned char *, void *)
-typedef khash_t(OWLMap) OWLMap;
+typedef enum OWLMapOptions {
+    NONE                = 0,
+    STRONG_OBJ_VALUES   = 1 << 0
+} OWLMapOptions;
+
+typedef struct OWLMap OWLMap;
 
 /// Creates a new map.
-extern OWLMap * owl_map_init(void);
+extern OWLMap * owl_map_init(OWLMapOptions options);
 
 #pragma mark C values API
 
@@ -27,29 +30,12 @@ extern void owl_map_dealloc(OWLMap *map);
  */
 extern void * owl_map_get(OWLMap *map, unsigned char *key);
 
-/**
- Map value setter.
- 
- @param map The map.
- @param key The key.
- @param value The value.
- */
-extern void owl_map_set(OWLMap *map, unsigned char *key, void *value);
+#if __has_feature(objc_arc)
+    #define owl_map_get_obj(map, key) (__bridge id)(owl_map_get(map, key))
+#else
+    #define owl_map_get_obj(map, key) (id)(owl_map_get(map, key))
+#endif
 
-#pragma mark Obj-C values API
-
-/// Deallocates an existing map.
-extern void owl_map_dealloc_obj(OWLMap *map);
-
-/**
- Map value getter.
- 
- @param map The map.
- @param key The key.
- 
- @return Value associated with the specified key, or NULL if it does not exist.
- */
-extern id owl_map_get_obj(OWLMap *map, unsigned char *key);
 
 /**
  Map value setter.
@@ -57,8 +43,16 @@ extern id owl_map_get_obj(OWLMap *map, unsigned char *key);
  @param map The map.
  @param key The key.
  @param value The value.
+ 
+ @return The internal copy of the key.
  */
-extern void owl_map_set_obj(OWLMap *map, unsigned char *key, id value);
+extern unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value);
+
+#if __has_feature(objc_arc)
+    #define owl_map_set_obj(map, key, value) owl_map_set(map, key, (__bridge void *)value)
+#else
+    #define owl_map_set_obj(map, key, value) owl_map_set(map, key, (void *)value)
+#endif
 
 /**
  Iterates over the map while deallocating its values, and finally deallocates the map itself.

@@ -4,12 +4,14 @@
 //
 
 #import "OWLMap.h"
+#import "khash.h"
 
-#define owl_map_hash_func(key) kh_str_hash_func((kh_cstr_t)key)
-#define owl_map_hash_equal(a, b) kh_str_hash_equal((kh_cstr_t)a, (kh_cstr_t)b)
+#pragma mark Macros
 
-__KHASH_PROTOTYPES(OWLMap, unsigned char *, void *)
-__KHASH_IMPL(OWLMap, /* none */ , unsigned char *, void *, 1, owl_map_hash_func, owl_map_hash_equal)
+#define owl_table_hash_func(key) kh_str_hash_func((kh_cstr_t)key)
+#define owl_table_hash_equal(a, b) kh_str_hash_equal((kh_cstr_t)a, (kh_cstr_t)b)
+
+KHASH_INIT(OWLTable, unsigned char *, void *, 1, owl_table_hash_func, owl_table_hash_equal)
 
 #define kh_foreach_key(h, kvar, code) { khint_t __i;        \
     for (__i = kh_begin(h); __i != kh_end(h); ++__i) {      \
@@ -18,92 +20,139 @@ __KHASH_IMPL(OWLMap, /* none */ , unsigned char *, void *, 1, owl_map_hash_func,
         code;                                               \
     } }
 
-OWLMap * owl_map_init(void)
-{
-    return kh_init(OWLMap);
-}
+#define has_option(options, option) ((options & option) == option)
 
-#pragma mark - C values API
+
+#pragma mark Struct definition
+
+struct OWLMap {
+    OWLMapOptions _options;
+    khash_t(OWLTable) *_table;
+};
+
+
+#pragma mark Public functions
+
+OWLMap * owl_map_init(OWLMapOptions options)
+{
+    OWLMap *map = malloc(sizeof(OWLMap));
+    map->_options = options;
+    map->_table = kh_init(OWLTable);
+    return map;
+}
 
 void owl_map_dealloc(OWLMap *map)
 {
-    if (!map)
-        return;
+    if (!map) return;
     
-    unsigned char * key;
-    kh_foreach_key(map, key, free(key));
-    kh_destroy(OWLMap, map);
+    khash_t(OWLTable) *table = map->_table;
+    
+    if (table) {
+        if (has_option(map->_options, STRONG_OBJ_VALUES)) {
+            // Strong Objective-C values, release.
+            unsigned char * key;
+            void *value;
+            
+            kh_foreach(table, key, value, {
+                free(key);
+                [(id)value release];
+            });
+        } else {
+            // Weak Objective-C or C values.
+            unsigned char *key;
+            kh_foreach_key(table, key, free(key));
+        }
+        kh_destroy(OWLTable, table);
+    }
+    
+    free(map);
 }
 
 void * owl_map_get(OWLMap *map, unsigned char *key)
 {
-    khiter_t k = kh_get(OWLMap, map, key);
-    return k == kh_end(map) ? NULL : kh_val(map, k);
+    khash_t(OWLTable) *table = map->_table;
+    khiter_t k = kh_get(OWLTable, table, key);
+    return k == kh_end(table) ? NULL : kh_val(table, k);
 }
 
-void owl_map_set(OWLMap *map, unsigned char *key, void *value)
+unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value)
 {
-    khint_t max_size = map->upper_bound;
-    if (kh_size(map) >= max_size - 1) {
-        kh_resize(OWLMap, map, max_size * 2);
-    }
+    unsigned char *local_key;
     
-    int absent;
-    khiter_t k = kh_put(OWLMap, map, key, &absent);
-    if (absent) {
-        kh_key(map, k) = (unsigned char *)strdup((char *)key);
-    }
-    kh_value(map, k) = value;
-}
-
-#pragma mark - Obj-C values API
-
-void owl_map_dealloc_obj(OWLMap *map)
-{
-    if (!map)
-        return;
+    khash_t(OWLTable) *table = map->_table;
+    BOOL objValues = has_option(map->_options, STRONG_OBJ_VALUES);
     
-    unsigned char * key;
-    void *value;
-    
-    kh_foreach(map, key, value, {
-        free(key);
-        [(id)value release];
-    });
-    kh_destroy(OWLMap, map);
-}
-
-id owl_map_get_obj(OWLMap *map, unsigned char *key)
-{
-    khiter_t k = kh_get(OWLMap, map, key);
-    return k == kh_end(map) ? nil : (id)kh_val(map, k);
-}
-
-void owl_map_set_obj(OWLMap *map, unsigned char *key, id value)
-{
-    khint_t max_size = map->upper_bound;
-    if (kh_size(map) >= max_size - 1) {
-        kh_resize(OWLMap, map, max_size * 2);
-    }
-    
-    int absent;
-    khiter_t k = kh_put(OWLMap, map, key, &absent);
-    if (absent) {
-        kh_key(map, k) = (unsigned char *)strdup((char *)key);
+    if (value) {
+        // Grow the underlying storage if necessary.
+        khint_t max_size = table->upper_bound;
+        if (kh_size(table) >= max_size - 1) {
+            kh_resize(OWLTable, table, max_size * 2);
+        }
+        
+        int absent;
+        khiter_t k = kh_put(OWLTable, table, key, &absent);
+        
+        if (absent) {
+            local_key = (unsigned char *)strdup((char *)key);
+            kh_key(table, k) = local_key;
+        } else {
+            if (objValues) {
+                [(id)kh_val(table, k) release];
+            }
+            local_key = kh_key(table, k);
+        }
+        
+        kh_value(table, k) = value;
+        
+        if (objValues) {
+            [(id)value retain];
+        }
     } else {
-        [(id)kh_val(map, k) release];
+        khiter_t k = kh_get(OWLTable, table, key);
+        
+        if (k != kh_end(table)) {
+            free(kh_key(table, k));
+            kh_del(OWLTable, table, k);
+            
+            if (objValues) {
+                [(id)kh_val(table, k) release];
+            }
+        }
+        
+        // Shrink the underlying storage if necessary.
+        khint_t max_size = table->upper_bound;
+        if (kh_size(table) < max_size / 4) {
+            kh_resize(OWLTable, table, max_size / 2);
+        }
+        
+        local_key = NULL;
     }
-    kh_value(map, k) = [value retain];
+    
+    
+    return local_key;
 }
 
 void owl_map_iterate_and_dealloc_obj(OWLMap *map, void (^handler)(id value))
 {
-    void *value;
+    if (!map) return;
     
-    kh_foreach_value(map, value, {
-        handler(value);
-        [(id)value release];
-    });
+    khash_t(OWLTable) *table = map->_table;
     
-    owl_map_dealloc(map);
+    if (table) {
+        BOOL objValues = has_option(map->_options, STRONG_OBJ_VALUES);
+        unsigned char *key;
+        void *value;
+        
+        kh_foreach(table, key, value, {
+            handler(value);
+            free(key);
+            
+            if (objValues) {
+                [(id)value release];
+            }
+        });
+        kh_destroy(OWLTable, table);
+    }
+    
+    free(map);
 }
