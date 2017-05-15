@@ -5,6 +5,7 @@
 
 #import "OWLIRI.h"
 #import "OWLMap.h"
+#import "OWLObjCUtils.h"
 
 @implementation OWLIRI
 {
@@ -26,11 +27,13 @@
 
 #pragma mark OWLIRI
 
-- (NSString *)string
-{
-    NSString *string = [NSString stringWithCString:(char *)_cString encoding:NSUTF8StringEncoding];
-    return string ?: @"";
-}
+SYNTHESIZE_LAZY(NSString, string, {
+    NSString *string = [[NSString alloc] initWithBytesNoCopy:_cString
+                                                      length:strlen((char *)_cString)
+                                                    encoding:NSUTF8StringEncoding
+                                                freeWhenDone:NO];
+    _string = string ?: @"";
+})
 
 #pragma mark Lifecycle
 
@@ -39,7 +42,7 @@ static OWLMap *instanceCache = NULL;
 + (void)initialize
 {
     if (self == [OWLIRI class]) {
-        instanceCache = owl_map_init(NONE);
+        instanceCache = owl_map_init(COPY_TO_WEAK);
     }
 }
 
@@ -58,7 +61,7 @@ static OWLMap *instanceCache = NULL;
         self = cachedInstance;
     } else {
         if ((self = [super init])) {
-            _cString = owl_map_set(instanceCache, string, (__bridge void *)(self));
+            _cString = owl_map_set_obj(instanceCache, string, self);
         }
     }
     return self;
@@ -67,7 +70,7 @@ static OWLMap *instanceCache = NULL;
 - (void)dealloc
 {
     if (_cString) {
-        owl_map_set(instanceCache, _cString, NULL);
+        owl_map_set(instanceCache, _cString, nil);
     }
 }
 

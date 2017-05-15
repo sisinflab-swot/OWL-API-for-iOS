@@ -48,14 +48,14 @@
 - (instancetype)init
 {
     if ((self = [super init])) {
-        _classExpressionBuilders = owl_map_init(STRONG_OBJ_VALUES);
-        _individualBuilders = owl_map_init(STRONG_OBJ_VALUES);
-        _propertyBuilders = owl_map_init(STRONG_OBJ_VALUES);
+        _classExpressionBuilders = owl_map_init(COPY_TO_STRONG);
+        _individualBuilders = owl_map_init(COPY_TO_STRONG);
+        _propertyBuilders = owl_map_init(COPY_TO_STRONG);
         
-        _declarationAxiomBuilders = owl_map_init(STRONG_OBJ_VALUES);
+        _declarationAxiomBuilders = owl_map_init(COPY_TO_STRONG);
         _singleStatementAxiomBuilders = [[NSMutableArray alloc] init];
         
-        _listItems = owl_map_init(STRONG_OBJ_VALUES);
+        _listItems = owl_map_init(COPY_TO_STRONG);
     }
     return self;
 }

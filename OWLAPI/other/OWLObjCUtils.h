@@ -17,20 +17,20 @@ userInfo:nil]; \
  * Use this directive in place of @synthesize to automatically create a
  * lazy getter for the specified property. Example syntax:
  *
- * SYNTHESIZE_LAZY(NSMutableString, myMutableString) {
- *     return [NSMutableString stringWithString:@"my mutable string"];
- * }
+ * SYNTHESIZE_LAZY(NSMutableString, myMutableString, {
+ *     _myMutableString = [NSMutableString stringWithString:@"my mutable string"];
+ * })
  *
  * @param type The type of the property.
  * @param name The name of the property.
+ * @param body The body of the lazy setter.
  */
-#define SYNTHESIZE_LAZY(type, name) \
-@synthesize name = _##name; \
-- (type *)name { \
-if (_##name == nil) { _##name = [self __##name##LazyInit]; } \
-return _##name; \
-} \
-- (type *)__##name##LazyInit
+#define SYNTHESIZE_LAZY(TYPE, NAME, BODY) \
+@synthesize NAME = _##NAME; \
+- (TYPE *)NAME { \
+    if (_##NAME == nil) BODY \
+    return _##NAME; \
+}
 
 /**
  * Use this directive in place of @synthesize to automatically create a
@@ -40,9 +40,9 @@ return _##name; \
  * @param type The type of the property.
  * @param name The name of the property.
  */
-#define SYNTHESIZE_LAZY_INIT(type, name) \
-@synthesize name = _##name; \
-- (type *)name { \
-if (_##name == nil) { _##name = [[type alloc] init]; } \
-return _##name; \
+#define SYNTHESIZE_LAZY_INIT(TYPE, NAME) \
+@synthesize NAME = _##NAME; \
+- (TYPE *)NAME { \
+    if (_##NAME == nil) { _##NAME = [[TYPE alloc] init]; } \
+    return _##NAME; \
 }

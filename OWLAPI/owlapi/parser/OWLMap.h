@@ -6,9 +6,14 @@
 #import <Foundation/Foundation.h>
 
 typedef enum OWLMapOptions {
-    NONE                = 0,
-    STRONG_OBJ_VALUES   = 1 << 0
+    STRONG_OBJ_VALUES   = 1 << 0,
+    COPY_KEYS           = 1 << 1
 } OWLMapOptions;
+
+#define COPY_TO_STRONG (OWLMapOptions)(COPY_KEYS | STRONG_OBJ_VALUES)
+#define COPY_TO_WEAK COPY_KEYS
+#define WEAK_TO_STRONG STRONG_OBJ_VALUES
+#define WEAK_TO_WEAK (OWLMapOptions)0
 
 typedef struct OWLMap OWLMap;
 
@@ -31,9 +36,9 @@ extern void owl_map_dealloc(OWLMap *map);
 extern void * owl_map_get(OWLMap *map, unsigned char *key);
 
 #if __has_feature(objc_arc)
-    #define owl_map_get_obj(map, key) (__bridge id)(owl_map_get(map, key))
+#define owl_map_get_obj(map, key) (__bridge id)(owl_map_get(map, key))
 #else
-    #define owl_map_get_obj(map, key) (id)(owl_map_get(map, key))
+#define owl_map_get_obj(map, key) (id)(owl_map_get(map, key))
 #endif
 
 
@@ -46,13 +51,21 @@ extern void * owl_map_get(OWLMap *map, unsigned char *key);
  
  @return The internal copy of the key.
  */
-extern unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value);
+extern unsigned char *owl_map_set(OWLMap *map, unsigned char *key, void *value);
 
 #if __has_feature(objc_arc)
-    #define owl_map_set_obj(map, key, value) owl_map_set(map, key, (__bridge void *)value)
+#define owl_map_set_obj(map, key, value) owl_map_set(map, key, (__bridge void *)value)
 #else
-    #define owl_map_set_obj(map, key, value) owl_map_set(map, key, (void *)value)
+#define owl_map_set_obj(map, key, value) owl_map_set(map, key, (void *)value)
 #endif
+
+/**
+ Iterates over the values contained in the map.
+ 
+ @param map The map.
+ @param handler Handler for the map values.
+ */
+extern void owl_map_iterate_obj(OWLMap *map, void (^handler)(id value));
 
 /**
  Iterates over the map while deallocating its values, and finally deallocates the map itself.

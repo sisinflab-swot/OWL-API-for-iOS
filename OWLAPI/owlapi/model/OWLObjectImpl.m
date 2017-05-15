@@ -5,7 +5,7 @@
 
 #import "OWLObjectImpl.h"
 #import "OWLEntity.h"
-#import "SMRClassUtils.h"
+#import "OWLObjCUtils.h"
 
 static NSUInteger kHashNotCached = NSUIntegerMax;
 

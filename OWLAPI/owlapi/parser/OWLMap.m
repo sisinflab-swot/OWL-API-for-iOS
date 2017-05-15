@@ -14,13 +14,14 @@
 KHASH_INIT(OWLTable, unsigned char *, void *, 1, owl_table_hash_func, owl_table_hash_equal)
 
 #define kh_foreach_key(h, kvar, code) { khint_t __i;        \
-    for (__i = kh_begin(h); __i != kh_end(h); ++__i) {      \
-        if (!kh_exist(h,__i)) continue;                     \
-        (kvar) = kh_key(h,__i);                             \
-        code;                                               \
-    } }
+for (__i = kh_begin(h); __i != kh_end(h); ++__i) {      \
+if (!kh_exist(h,__i)) continue;                     \
+(kvar) = kh_key(h,__i);                             \
+code;                                               \
+} }
 
 #define has_option(options, option) ((options & option) == option)
+#define owl_table_copy_key(key) ((unsigned char *)strdup((char *)key))
 
 
 #pragma mark Struct definition
@@ -46,19 +47,24 @@ void owl_map_dealloc(OWLMap *map)
     if (!map) return;
     
     khash_t(OWLTable) *table = map->_table;
+    OWLMapOptions options = map->_options;
     
     if (table) {
-        if (has_option(map->_options, STRONG_OBJ_VALUES)) {
+        BOOL copyKeys = has_option(options, COPY_KEYS);
+        
+        if (has_option(options, STRONG_OBJ_VALUES)) {
             // Strong Objective-C values, release.
-            unsigned char * key;
+            unsigned char *key;
             void *value;
             
             kh_foreach(table, key, value, {
-                free(key);
+                if (copyKeys) {
+                    free(key);
+                }
                 [(id)value release];
             });
-        } else {
-            // Weak Objective-C or C values.
+        } else if (copyKeys) {
+            // Weak Objective-C or C values with copied keys.
             unsigned char *key;
             kh_foreach_key(table, key, free(key));
         }
@@ -80,7 +86,9 @@ unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value)
     unsigned char *local_key;
     
     khash_t(OWLTable) *table = map->_table;
-    BOOL objValues = has_option(map->_options, STRONG_OBJ_VALUES);
+    OWLMapOptions options = map->_options;
+    
+    BOOL objValues = has_option(options, STRONG_OBJ_VALUES);
     
     if (value) {
         // Grow the underlying storage if necessary.
@@ -93,7 +101,11 @@ unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value)
         khiter_t k = kh_put(OWLTable, table, key, &absent);
         
         if (absent) {
-            local_key = (unsigned char *)strdup((char *)key);
+            if (has_option(options, COPY_KEYS)) {
+                local_key = owl_table_copy_key(key);
+            } else {
+                local_key = key;
+            }
             kh_key(table, k) = local_key;
         } else {
             if (objValues) {
@@ -111,7 +123,10 @@ unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value)
         khiter_t k = kh_get(OWLTable, table, key);
         
         if (k != kh_end(table)) {
-            free(kh_key(table, k));
+            
+            if (has_option(options, COPY_KEYS)) {
+                free(kh_key(table, k));
+            }
             kh_del(OWLTable, table, k);
             
             if (objValues) {
@@ -132,20 +147,37 @@ unsigned char * owl_map_set(OWLMap *map, unsigned char *key, void *value)
     return local_key;
 }
 
+void owl_map_iterate_obj(OWLMap *map, void (^handler)(id value))
+{
+    if (!map) return;
+    
+    void *value;
+    
+    kh_foreach_value(map->_table, value, {
+        handler(value);
+    });
+}
+
 void owl_map_iterate_and_dealloc_obj(OWLMap *map, void (^handler)(id value))
 {
     if (!map) return;
     
     khash_t(OWLTable) *table = map->_table;
+    OWLMapOptions options = map->_options;
     
     if (table) {
-        BOOL objValues = has_option(map->_options, STRONG_OBJ_VALUES);
+        BOOL objValues = has_option(options, STRONG_OBJ_VALUES);
+        BOOL copyKeys = has_option(options, COPY_KEYS);
+        
         unsigned char *key;
         void *value;
         
         kh_foreach(table, key, value, {
             handler(value);
-            free(key);
+            
+            if (copyKeys) {
+                free(key);
+            }
             
             if (objValues) {
                 [(id)value release];

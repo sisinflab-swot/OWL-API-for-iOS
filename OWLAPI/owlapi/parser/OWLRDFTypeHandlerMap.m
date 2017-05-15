@@ -13,7 +13,6 @@
 #import "OWLRDFVocabulary.h"
 #import "RDFNode.h"
 #import "RDFStatement.h"
-#import "SMRClassUtils.h"
 
 #pragma mark Not implemented handler
 
@@ -304,7 +303,7 @@ OWLMap *rdfTypeHandlerMap;
 
 OWLMap * init_type_handlers(void)
 {
-    OWLMap *map = owl_map_init(NONE);
+    OWLMap *map = owl_map_init(COPY_TO_WEAK);
     
 #define setHandler(term, handler) \
 owl_map_set(map, (unsigned char *)[OWLRDFVocabulary term].stringValue.UTF8String, &handler)
