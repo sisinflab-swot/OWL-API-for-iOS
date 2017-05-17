@@ -79,6 +79,32 @@ for owlClass in ontology.classesInSignature() {
 }
 ```
 
+## References
+
+If you want to refer to OWL API for iOS in a publication, please cite the following paper: [[Ruta *et al.*, OWL API for iOS]](http://sisinflab.poliba.it/publications/2016/RSDB16/)
+
+```
+@InProceedings{RSDB16,
+  author       = {Michele Ruta and Floriano Scioscia and Eugenio {Di Sciascio} and Ivano Bilenchi},
+  title        = "OWL API for iOS: early implementation and results",
+  booktitle    = "13th OWL: Experiences and Directions Workshop and
+5th OWL reasoner evaluation workshop (OWLED - ORE
+2016)",
+  series       = "Lecture Notes in Computer Science",
+  volume       = "10161",
+  pages        = "141--152",
+  month        = "nov",
+  year         = "2016",
+  editor       = "Mauro Dragoni, Mar\'{\i}a Poveda-Villal\'on, Ernesto
+Jimenez-Ruiz",
+  publisher    = "Springer",
+  organization = "W3C",
+  note         = "DOI: 10.1007/978-3-319-54627-8",
+  url          = "http://sisinflab.poliba.it/sisinflab/publications/
+2016/RSDB16"
+}
+```
+
 ## License
 
 *OWL API for iOS* is distributed under the [Eclipse Public License, Version 1.0](https://www.eclipse.org/legal/epl-v10.html).
