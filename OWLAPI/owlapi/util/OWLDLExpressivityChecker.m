@@ -215,7 +215,7 @@
         case OWLAxiomTypeDisjointDataProperties:
         case OWLAxiomTypeDisjointObjectProperties:
         case OWLAxiomTypeFunctionalObjectProperty:
-        case OWLAxiomTypeSubObjectProperty:
+        case OWLAxiomTypeSubObjectPropertyOf:
         case OWLAxiomTypeDisjointUnion:
         case OWLAxiomTypeSymmetricObjectProperty:
         case OWLAxiomTypeDataPropertyRange:
@@ -223,11 +223,11 @@
         case OWLAxiomTypeEquivalentDataProperties:
         case OWLAxiomTypeDataPropertyAssertion:
         case OWLAxiomTypeIrreflexiveObjectProperty:
-        case OWLAxiomTypeSubDataProperty:
+        case OWLAxiomTypeSubDataPropertyOf:
         case OWLAxiomTypeInverseFunctionalObjectProperty:
         case OWLAxiomTypeSameIndividual:
-        case OWLAxiomTypeSubPropertyChain:
-        case OWLAxiomTypeInverseObjectProperty:
+        case OWLAxiomTypeSubPropertyChainOf:
+        case OWLAxiomTypeInverseObjectProperties:
         {
             // TODO
             break;
