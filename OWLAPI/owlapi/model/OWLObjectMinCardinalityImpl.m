@@ -16,6 +16,6 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectMinCardinality; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeObjectMinCardinality; }
 
 @end

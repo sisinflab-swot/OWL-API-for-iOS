@@ -45,7 +45,7 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeClass; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeClass; }
 
 - (BOOL)anonymous { return NO; }
 

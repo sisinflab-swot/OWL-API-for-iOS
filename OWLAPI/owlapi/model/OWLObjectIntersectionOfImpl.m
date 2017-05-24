@@ -16,7 +16,7 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectIntersectionOf; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeObjectIntersectionOf; }
 
 - (NSSet<id<OWLClassExpression>> *)asConjunctSet
 {

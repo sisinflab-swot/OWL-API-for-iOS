@@ -16,6 +16,6 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectMaxCardinality; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeObjectMaxCardinality; }
 
 @end

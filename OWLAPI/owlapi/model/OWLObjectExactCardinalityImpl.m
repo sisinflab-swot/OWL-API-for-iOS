@@ -16,6 +16,6 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectExactCardinality; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeObjectExactCardinality; }
 
 @end

@@ -41,7 +41,7 @@
 
 #pragma mark OWLClassExpression
 
-- (OWLClassExpressionType)classExpressionType { return OWLClassExpTypeObjectComplementOf; }
+- (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeObjectComplementOf; }
 
 #pragma mark OWLObjectComplementOf
 
