@@ -57,9 +57,9 @@
 		CC1572381ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */; };
 		CC1572391ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */; };
 		CC15723A1ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */; };
-		CC15723C1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; };
-		CC15723D1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; };
-		CC15723E1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; };
+		CC15723C1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC15723D1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC15723E1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC2505A01EC3124600BC99A7 /* OWLMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CC25059E1EC3124600BC99A7 /* OWLMap.h */; };
 		CC2505A11EC3124600BC99A7 /* OWLMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CC25059E1EC3124600BC99A7 /* OWLMap.h */; };
 		CC2505A21EC3124600BC99A7 /* OWLMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CC25059E1EC3124600BC99A7 /* OWLMap.h */; };
