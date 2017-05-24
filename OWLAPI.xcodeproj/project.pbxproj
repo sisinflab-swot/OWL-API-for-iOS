@@ -51,6 +51,15 @@
 		CC1417BC1CECC33200165477 /* OWLPropertyBuilderType.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1417BB1CECC33200165477 /* OWLPropertyBuilderType.h */; };
 		CC1417C01CED244F00165477 /* NSString+SMRStringUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1417BE1CED244F00165477 /* NSString+SMRStringUtils.h */; };
 		CC1417C11CED244F00165477 /* NSString+SMRStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1417BF1CED244F00165477 /* NSString+SMRStringUtils.m */; };
+		CC1572301ED47D2A006D8DFC /* OWLDLExpressivityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15722E1ED47D2A006D8DFC /* OWLDLExpressivityChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC1572311ED47D2A006D8DFC /* OWLDLExpressivityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15722E1ED47D2A006D8DFC /* OWLDLExpressivityChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC1572321ED47D2A006D8DFC /* OWLDLExpressivityChecker.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15722E1ED47D2A006D8DFC /* OWLDLExpressivityChecker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC1572381ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */; };
+		CC1572391ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */; };
+		CC15723A1ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */; };
+		CC15723C1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; };
+		CC15723D1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; };
+		CC15723E1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */; };
 		CC2505A01EC3124600BC99A7 /* OWLMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CC25059E1EC3124600BC99A7 /* OWLMap.h */; };
 		CC2505A11EC3124600BC99A7 /* OWLMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CC25059E1EC3124600BC99A7 /* OWLMap.h */; };
 		CC2505A21EC3124600BC99A7 /* OWLMap.h in Headers */ = {isa = PBXBuildFile; fileRef = CC25059E1EC3124600BC99A7 /* OWLMap.h */; };
@@ -690,6 +699,9 @@
 		CC1417BB1CECC33200165477 /* OWLPropertyBuilderType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLPropertyBuilderType.h; sourceTree = "<group>"; };
 		CC1417BE1CED244F00165477 /* NSString+SMRStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SMRStringUtils.h"; sourceTree = "<group>"; };
 		CC1417BF1CED244F00165477 /* NSString+SMRStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SMRStringUtils.m"; sourceTree = "<group>"; };
+		CC15722E1ED47D2A006D8DFC /* OWLDLExpressivityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLDLExpressivityChecker.h; sourceTree = "<group>"; };
+		CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLDLExpressivityChecker.m; sourceTree = "<group>"; };
+		CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLDLConstruct.h; sourceTree = "<group>"; };
 		CC25059E1EC3124600BC99A7 /* OWLMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLMap.h; sourceTree = "<group>"; };
 		CC25059F1EC3124600BC99A7 /* OWLMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLMap.m; sourceTree = "<group>"; };
 		CC2747D71CD5F9FA009E6792 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -954,6 +966,14 @@
 			path = categories;
 			sourceTree = "<group>";
 		};
+		CC1572361ED47D70006D8DFC /* util */ = {
+			isa = PBXGroup;
+			children = (
+				CC1572371ED47D70006D8DFC /* OWLDLExpressivityChecker.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		CC2747C11CD5F8E0009E6792 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1225,8 @@
 				CCC832961DCCCBED00799D62 /* OWLClassExpressionType.h */,
 				CCC832971DCCCBED00799D62 /* OWLDeclarationAxiom.h */,
 				CCC832981DCCCBED00799D62 /* OWLDisjointClassesAxiom.h */,
+				CC15723B1ED47F8E006D8DFC /* OWLDLConstruct.h */,
+				CC15722E1ED47D2A006D8DFC /* OWLDLExpressivityChecker.h */,
 				CCC832991DCCCBED00799D62 /* OWLEntity.h */,
 				CCC8329A1DCCCBED00799D62 /* OWLEntityType.h */,
 				CCC8329B1DCCCBED00799D62 /* OWLEquivalentClassesAxiom.h */,
@@ -1280,6 +1302,7 @@
 			children = (
 				CC6BA8A41CE8EA31002ECC26 /* model */,
 				CC6BA8EF1CE8EA31002ECC26 /* parser */,
+				CC1572361ED47D70006D8DFC /* util */,
 			);
 			path = owlapi;
 			sourceTree = "<group>";
@@ -1349,6 +1372,7 @@
 				CCC833681DCCCC5300799D62 /* OWLObjectIntersectionOf.h in Headers */,
 				CCC8335E1DCCCC5300799D62 /* OWLNamespace.h in Headers */,
 				CCC8336A1DCCCC5300799D62 /* OWLObjectMinCardinality.h in Headers */,
+				CC1572311ED47D2A006D8DFC /* OWLDLExpressivityChecker.h in Headers */,
 				CCC833821DCCCC5300799D62 /* OWLSubClassOfAxiom.h in Headers */,
 				CCC8336E1DCCCC5300799D62 /* OWLObjectPropertyCharacteristicAxiom.h in Headers */,
 				CCC833611DCCCC5300799D62 /* OWLNAryClassAxiom.h in Headers */,
@@ -1384,6 +1408,7 @@
 				CC3209C21DC7AF96002793AC /* OWLObjectImpl.h in Headers */,
 				CC3209C31DC7AF96002793AC /* raptor.h in Headers */,
 				CCC8335A1DCCCC5300799D62 /* OWLLogicalEntity.h in Headers */,
+				CC15723D1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */,
 				CC3209CA1DC7AF96002793AC /* OWLNamedIndividualImpl.h in Headers */,
 				CCC833671DCCCC5300799D62 /* OWLObjectExactCardinality.h in Headers */,
 				CCC8337F1DCCCC5300799D62 /* OWLQuantifiedRestriction.h in Headers */,
@@ -1485,6 +1510,7 @@
 				CCC834241DCCCC5700799D62 /* OWLObjectIntersectionOf.h in Headers */,
 				CCC8341A1DCCCC5700799D62 /* OWLNamespace.h in Headers */,
 				CCC834261DCCCC5700799D62 /* OWLObjectMinCardinality.h in Headers */,
+				CC1572301ED47D2A006D8DFC /* OWLDLExpressivityChecker.h in Headers */,
 				CCC8343E1DCCCC5700799D62 /* OWLSubClassOfAxiom.h in Headers */,
 				CCC8342A1DCCCC5700799D62 /* OWLObjectPropertyCharacteristicAxiom.h in Headers */,
 				CCC8341D1DCCCC5700799D62 /* OWLNAryClassAxiom.h in Headers */,
@@ -1520,6 +1546,7 @@
 				CC6BA9161CE8EA31002ECC26 /* OWLObjectImpl.h in Headers */,
 				CCCE04AA1CF3016E00037488 /* raptor.h in Headers */,
 				CCC834161DCCCC5700799D62 /* OWLLogicalEntity.h in Headers */,
+				CC15723C1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */,
 				CC6BA9091CE8EA31002ECC26 /* OWLNamedIndividualImpl.h in Headers */,
 				CCC834231DCCCC5700799D62 /* OWLObjectExactCardinality.h in Headers */,
 				CCC8343B1DCCCC5700799D62 /* OWLQuantifiedRestriction.h in Headers */,
@@ -1621,6 +1648,7 @@
 				CCC833E51DCCCC5500799D62 /* OWLObjectIntersectionOf.h in Headers */,
 				CCC833DB1DCCCC5500799D62 /* OWLNamespace.h in Headers */,
 				CCC833E71DCCCC5500799D62 /* OWLObjectMinCardinality.h in Headers */,
+				CC1572321ED47D2A006D8DFC /* OWLDLExpressivityChecker.h in Headers */,
 				CCC833FF1DCCCC5500799D62 /* OWLSubClassOfAxiom.h in Headers */,
 				CCC833EB1DCCCC5500799D62 /* OWLObjectPropertyCharacteristicAxiom.h in Headers */,
 				CCC833DE1DCCCC5500799D62 /* OWLNAryClassAxiom.h in Headers */,
@@ -1656,6 +1684,7 @@
 				CCC833DA1DCCCC5500799D62 /* OWLNamedObject.h in Headers */,
 				CCD6F22E1CFAFCF300A44E78 /* OWLIndividualRelationshipAxiomImpl.h in Headers */,
 				CCD6F2301CFAFCF300A44E78 /* OWLLogicalAxiomImpl.h in Headers */,
+				CC15723E1ED47F8E006D8DFC /* OWLDLConstruct.h in Headers */,
 				CCC833D71DCCCC5500799D62 /* OWLLogicalEntity.h in Headers */,
 				CCD6F2281CFAFCF300A44E78 /* OWLEquivalentClassesAxiomImpl.h in Headers */,
 				CCC833E41DCCCC5500799D62 /* OWLObjectExactCardinality.h in Headers */,
@@ -1982,6 +2011,7 @@
 				CC32094E1DC7AF96002793AC /* OWLPropertyBuilder.m in Sources */,
 				CC32094F1DC7AF96002793AC /* OWLEquivalentClassesAxiomImpl.m in Sources */,
 				CC3209501DC7AF96002793AC /* OWLClassAssertionAxiomImpl.m in Sources */,
+				CC1572391ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */,
 				CC3209511DC7AF96002793AC /* RDFNode.m in Sources */,
 				CC3209521DC7AF96002793AC /* OWLPredicateHandlerMap.m in Sources */,
 				CC3209531DC7AF96002793AC /* OWLRDFVocabulary.m in Sources */,
@@ -2066,6 +2096,7 @@
 				CC5E322E1CEB28160024D175 /* OWLPropertyBuilder.m in Sources */,
 				CC6BA9011CE8EA31002ECC26 /* OWLEquivalentClassesAxiomImpl.m in Sources */,
 				CC6BA8F91CE8EA31002ECC26 /* OWLClassAssertionAxiomImpl.m in Sources */,
+				CC1572381ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */,
 				CCCE048C1CF2FBE500037488 /* RDFNode.m in Sources */,
 				CCD596841CF0553100EC2F33 /* OWLPredicateHandlerMap.m in Sources */,
 				CC6BA9371CE8EA31002ECC26 /* OWLRDFVocabulary.m in Sources */,
@@ -2134,6 +2165,7 @@
 				CCD6F2861CFAFCFE00A44E78 /* OWLRDFTypeHandlerMap.m in Sources */,
 				CCD6F2631CFAFCF300A44E78 /* OWLQuantifiedObjectRestrictionImpl.m in Sources */,
 				CCD6F22B1CFAFCF300A44E78 /* OWLError.m in Sources */,
+				CC15723A1ED47D70006D8DFC /* OWLDLExpressivityChecker.m in Sources */,
 				CCD6F26C1CFAFCF300A44E78 /* OWLTransitiveObjectPropertyAxiomImpl.m in Sources */,
 				CCD6F2441CFAFCF300A44E78 /* OWLObjectIntersectionOfImpl.m in Sources */,
 				CCD6F21D1CFAFCF300A44E78 /* OWLAnonymousIndividualImpl.m in Sources */,
