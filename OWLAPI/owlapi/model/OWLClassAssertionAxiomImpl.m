@@ -23,9 +23,9 @@
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature
+- (NSSet<id<OWLEntity>> *)signature
 {
-    NSMutableSet *signature = [_individual signature];
+    NSMutableSet *signature = (NSMutableSet *)[_individual signature];
     [signature unionSet:[_classExpression signature]];
     return signature;
 }

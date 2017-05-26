@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature;
+- (NSSet<id<OWLEntity>> *)signature;
 
 #pragma mark OWLObjectPropertyCharacteristicAxiom
 

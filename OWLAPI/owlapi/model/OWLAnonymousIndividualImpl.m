@@ -24,7 +24,7 @@
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature { return [NSMutableSet set]; }
+- (NSSet<id<OWLEntity>> *)signature { return [NSMutableSet set]; }
 
 #pragma mark OWLIndividual
 

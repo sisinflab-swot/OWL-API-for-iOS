@@ -29,7 +29,7 @@
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature { return [_property signature]; }
+- (NSSet<id<OWLEntity>> *)signature { return [_property signature]; }
 
 #pragma mark OWLObjectPropertyCharacteristicAxiom
 

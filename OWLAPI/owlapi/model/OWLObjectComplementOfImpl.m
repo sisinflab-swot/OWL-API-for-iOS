@@ -34,7 +34,7 @@
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature
+- (NSSet<id<OWLEntity>> *)signature
 {
     return [NSMutableSet setWithObject:_operand];
 }

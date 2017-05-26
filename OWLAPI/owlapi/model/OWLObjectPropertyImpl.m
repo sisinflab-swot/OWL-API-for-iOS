@@ -22,7 +22,7 @@
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature { return [NSMutableSet setWithObject:self]; };
+- (NSSet<id<OWLEntity>> *)signature { return [NSMutableSet setWithObject:self]; };
 
 #pragma mark OWLNamedObject
 

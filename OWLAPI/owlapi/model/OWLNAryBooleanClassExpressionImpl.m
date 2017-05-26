@@ -38,13 +38,13 @@
 
 #pragma mark OWLObject
 
-- (NSMutableSet<id<OWLEntity>> *)signature
+- (NSSet<id<OWLEntity>> *)signature
 {
     NSMutableSet *signature = nil;
     
     for (id<OWLClassExpression> op in _operands) {
         if (!signature) {
-            signature = [op signature];
+            signature = (NSMutableSet *)[op signature];
         } else {
             [signature unionSet:[op signature]];
         }
