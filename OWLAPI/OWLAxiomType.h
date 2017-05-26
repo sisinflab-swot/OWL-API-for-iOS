@@ -134,5 +134,10 @@ typedef NS_ENUM(NSInteger, OWLAxiomType) {
     OWLAxiomTypeAnnotationPropertyRange,
     
     /// Represents OWLAnnotationPropertyDomainAxiom.
-    OWLAxiomTypeAnnotationPropertyDomain
+    OWLAxiomTypeAnnotationPropertyDomain,
+    
+#pragma mark - End
+    
+    /// The number of available axiom types.
+    OWLAxiomTypeCount
 };
