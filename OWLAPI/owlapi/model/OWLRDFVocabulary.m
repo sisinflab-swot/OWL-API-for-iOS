@@ -52,15 +52,27 @@ return name##Term; \
 
 @implementation OWLRDFVocabulary
 
+LAZY_STATIC_TERM(RDFDescription, OWLNamespaceRDFSyntax, @"Description");
 LAZY_STATIC_TERM(RDFFirst, OWLNamespaceRDFSyntax, @"first");
+LAZY_STATIC_TERM(RDFLangString, OWLNamespaceRDFSyntax, @"langString");
+LAZY_STATIC_TERM(RDFList, OWLNamespaceRDFSyntax, @"List");
 LAZY_STATIC_TERM(RDFNil, OWLNamespaceRDFSyntax, @"nil");
+LAZY_STATIC_TERM(RDFPlainLiteral, OWLNamespaceRDFSyntax, @"PlainLiteral");
+LAZY_STATIC_TERM(RDFProperty, OWLNamespaceRDFSyntax, @"Property");
 LAZY_STATIC_TERM(RDFRest, OWLNamespaceRDFSyntax, @"rest");
 LAZY_STATIC_TERM(RDFType, OWLNamespaceRDFSyntax, @"type");
+LAZY_STATIC_TERM(RDFXMLLiteral, OWLNamespaceRDFSyntax, @"XMLLiteral");
 
+LAZY_STATIC_TERM(RDFSClass, OWLNamespaceRDFSchema, @"Class");
 LAZY_STATIC_TERM(RDFSComment, OWLNamespaceRDFSchema, @"comment");
-LAZY_STATIC_TERM(RDFSDatatype, OWLNamespaceRDFSchema, @"datatype");
+LAZY_STATIC_TERM(RDFSDatatype, OWLNamespaceRDFSchema, @"Datatype");
 LAZY_STATIC_TERM(RDFSDomain, OWLNamespaceRDFSchema, @"domain");
+LAZY_STATIC_TERM(RDFSIsDefinedBy, OWLNamespaceRDFSchema, @"isDefinedBy");
+LAZY_STATIC_TERM(RDFSLabel, OWLNamespaceRDFSchema, @"label");
+LAZY_STATIC_TERM(RDFSLiteral, OWLNamespaceRDFSchema, @"Literal");
 LAZY_STATIC_TERM(RDFSRange, OWLNamespaceRDFSchema, @"range");
+LAZY_STATIC_TERM(RDFSResource, OWLNamespaceRDFSchema, @"Resource");
+LAZY_STATIC_TERM(RDFSSeeAlso, OWLNamespaceRDFSchema, @"seeAlso");
 LAZY_STATIC_TERM(RDFSSubClassOf, OWLNamespaceRDFSchema, @"subClassOf");
 LAZY_STATIC_TERM(RDFSSubPropertyOf, OWLNamespaceRDFSchema, @"subPropertyOf");
 
@@ -76,11 +88,17 @@ LAZY_STATIC_TERM(OWLAnnotationProperty, OWLNamespaceOWL, @"AnnotationProperty");
 LAZY_STATIC_TERM(OWLAssertionProperty, OWLNamespaceOWL, @"assertionProperty");
 LAZY_STATIC_TERM(OWLAsymmetricProperty, OWLNamespaceOWL, @"AsymmetricProperty");
 LAZY_STATIC_TERM(OWLAxiom, OWLNamespaceOWL, @"Axiom");
+LAZY_STATIC_TERM(OWLBackwardCompatibleWith, OWLNamespaceOWL, @"backwardCompatibleWith");
+LAZY_STATIC_TERM(OWLBottomDataProperty, OWLNamespaceOWL, @"bottomDataProperty");
+LAZY_STATIC_TERM(OWLBottomObjectProperty, OWLNamespaceOWL, @"bottomObjectProperty");
 LAZY_STATIC_TERM(OWLCardinality, OWLNamespaceOWL, @"cardinality");
 LAZY_STATIC_TERM(OWLClass, OWLNamespaceOWL, @"Class");
 LAZY_STATIC_TERM(OWLComplementOf, OWLNamespaceOWL, @"complementOf");
+LAZY_STATIC_TERM(OWLDataRange, OWLNamespaceOWL, @"DataRange");
+LAZY_STATIC_TERM(OWLDatatype, OWLNamespaceOWL, @"Datatype");
 LAZY_STATIC_TERM(OWLDatatypeComplementOf, OWLNamespaceOWL, @"datatypeComplementOf");
 LAZY_STATIC_TERM(OWLDatatypeProperty, OWLNamespaceOWL, @"DatatypeProperty");
+LAZY_STATIC_TERM(OWLDeprecated, OWLNamespaceOWL, @"deprecated");
 LAZY_STATIC_TERM(OWLDeprecatedClass, OWLNamespaceOWL, @"DeprecatedClass");
 LAZY_STATIC_TERM(OWLDeprecatedProperty, OWLNamespaceOWL, @"DeprecatedProperty");
 LAZY_STATIC_TERM(OWLDifferentFrom, OWLNamespaceOWL, @"differentFrom");
@@ -94,8 +112,11 @@ LAZY_STATIC_TERM(OWLHasKey, OWLNamespaceOWL, @"hasKey");
 LAZY_STATIC_TERM(OWLHasSelf, OWLNamespaceOWL, @"hasSelf");
 LAZY_STATIC_TERM(OWLHasValue, OWLNamespaceOWL, @"hasValue");
 LAZY_STATIC_TERM(OWLImports, OWLNamespaceOWL, @"imports");
+LAZY_STATIC_TERM(OWLIncompatibleWith, OWLNamespaceOWL, @"incompatibleWith");
+LAZY_STATIC_TERM(OWLIndividual, OWLNamespaceOWL, @"Individual");
 LAZY_STATIC_TERM(OWLIntersectionOf, OWLNamespaceOWL, @"intersectionOf");
 LAZY_STATIC_TERM(OWLInverseFunctionalProperty, OWLNamespaceOWL, @"InverseFunctionalProperty");
+LAZY_STATIC_TERM(OWLInverseObjectPropertyExpression, OWLNamespaceOWL, @"inverseObjectPropertyExpression");
 LAZY_STATIC_TERM(OWLInverseOf, OWLNamespaceOWL, @"inverseOf");
 LAZY_STATIC_TERM(OWLIrreflexiveProperty, OWLNamespaceOWL, @"IrreflexiveProperty");
 LAZY_STATIC_TERM(OWLMaxCardinality, OWLNamespaceOWL, @"maxCardinality");
@@ -115,6 +136,7 @@ LAZY_STATIC_TERM(OWLOnProperties, OWLNamespaceOWL, @"onProperties");
 LAZY_STATIC_TERM(OWLOnProperty, OWLNamespaceOWL, @"onProperty");
 LAZY_STATIC_TERM(OWLOntology, OWLNamespaceOWL, @"Ontology");
 LAZY_STATIC_TERM(OWLOntologyProperty, OWLNamespaceOWL, @"OntologyProperty");
+LAZY_STATIC_TERM(OWLPriorVersion, OWLNamespaceOWL, @"priorVersion");
 LAZY_STATIC_TERM(OWLPropertyChainAxiom, OWLNamespaceOWL, @"propertyChainAxiom");
 LAZY_STATIC_TERM(OWLPropertyDisjointWith, OWLNamespaceOWL, @"propertyDisjointWith");
 LAZY_STATIC_TERM(OWLQualifiedCardinality, OWLNamespaceOWL, @"qualifiedCardinality");
@@ -127,9 +149,12 @@ LAZY_STATIC_TERM(OWLSymmetricProperty, OWLNamespaceOWL, @"SymmetricProperty");
 LAZY_STATIC_TERM(OWLTargetIndividual, OWLNamespaceOWL, @"targetIndividual");
 LAZY_STATIC_TERM(OWLTargetValue, OWLNamespaceOWL, @"targetValue");
 LAZY_STATIC_TERM(OWLThing, OWLNamespaceOWL, @"Thing");
+LAZY_STATIC_TERM(OWLTopDataProperty, OWLNamespaceOWL, @"topDataProperty");
+LAZY_STATIC_TERM(OWLTopObjectProperty, OWLNamespaceOWL, @"topObjectProperty");
 LAZY_STATIC_TERM(OWLTransitiveProperty, OWLNamespaceOWL, @"TransitiveProperty");
 LAZY_STATIC_TERM(OWLUnionOf, OWLNamespaceOWL, @"unionOf");
 LAZY_STATIC_TERM(OWLVersionIRI, OWLNamespaceOWL, @"versionIRI");
+LAZY_STATIC_TERM(OWLVersionInfo, OWLNamespaceOWL, @"versionInfo");
 LAZY_STATIC_TERM(OWLWithRestrictions, OWLNamespaceOWL, @"withRestrictions");
 
 @end
