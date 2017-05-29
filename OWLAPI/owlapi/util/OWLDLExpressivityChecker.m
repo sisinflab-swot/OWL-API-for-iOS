@@ -9,6 +9,7 @@
 #import "OWLClassExpression.h"
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEquivalentClassesAxiom.h"
+#import "OWLObjCUtils.h"
 #import "OWLObjectAllValuesFrom.h"
 #import "OWLObjectCardinalityRestriction.h"
 #import "OWLObjectComplementOf.h"
@@ -22,8 +23,7 @@
 
 @implementation OWLDLExpressivityChecker
 
-#define has_option(OPTION, OPTIONS) ((OPTIONS & OPTION) == OPTION)
-#define has_construct(CONSTRUCT) has_option(OWLDLConstruct##CONSTRUCT, _constructs)
+#define has_construct(CONSTRUCT) has_option(_constructs, OWLDLConstruct##CONSTRUCT)
 #define add_construct(CONSTRUCT) (_constructs |= OWLDLConstruct##CONSTRUCT)
 #define remove_construct(CONSTRUCT) (_constructs = _constructs & ~OWLDLConstruct##CONSTRUCT)
 
@@ -58,7 +58,7 @@
     for (unsigned i = 0; i < sizeof(order) / sizeof(*order); ++i) {
         OWLDLConstruct construct = order[i];
         
-        if (has_option(construct, _constructs)) {
+        if (has_option(_constructs, construct)) {
             [name appendString:[self nameForConstruct:construct]];
         }
     }

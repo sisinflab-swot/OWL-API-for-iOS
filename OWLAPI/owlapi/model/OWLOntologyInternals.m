@@ -12,6 +12,7 @@
 #import "OWLEntity.h"
 #import "OWLEquivalentClassesAxiom.h"
 #import "OWLIndividual.h"
+#import "OWLObjCUtils.h"
 #import "OWLObjectPropertyAssertionAxiom.h"
 #import "OWLObjectPropertyDomainAxiom.h"
 #import "OWLObjectPropertyRangeAxiom.h"
@@ -20,8 +21,7 @@
 
 @interface OWLOntologyInternals ()
 {
-    NSArray<NSMutableSet<id<OWLAxiom>> *> *_axiomsByType;
-    
+    NSMutableDictionary<NSNumber *,NSMutableSet<id<OWLAxiom>> *> *_axiomsByType;
     NSMutableDictionary<id<OWLAnonymousIndividual>,NSMutableSet<id<OWLAxiom>> *> *_anonymousIndividualRefs;
     NSMutableDictionary<id<OWLClass>,NSMutableSet<id<OWLAxiom>> *> *_classRefs;
     NSMutableDictionary<id<OWLNamedIndividual>,NSMutableSet<id<OWLAxiom>> *> *_namedIndividualRefs;
@@ -38,14 +38,7 @@
 - (instancetype)init
 {
     if ((self = [super init])) {
-        NSMutableArray *axiomsByType = [[NSMutableArray alloc] init];
-        
-        for (NSInteger i = 0; i < OWLAxiomTypeCount; i++) {
-            [axiomsByType addObject:[NSMutableSet set]];
-        }
-        
-        _axiomsByType = axiomsByType;
-        
+        _axiomsByType = [[NSMutableDictionary alloc] init];
         _anonymousIndividualRefs = [[NSMutableDictionary alloc] init];
         _classRefs = [[NSMutableDictionary alloc] init];
         _namedIndividualRefs = [[NSMutableDictionary alloc] init];
@@ -75,7 +68,7 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 - (void)addAxiom:(id<OWLAxiom>)axiom
 {
     OWLAxiomType type = axiom.axiomType;
-    [_axiomsByType[type] addObject:axiom];
+    addObjectToSetInDictionary(_axiomsByType, @(type), axiom);
     
     switch (type)
     {
@@ -205,6 +198,53 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
     }
 }
 
+#pragma mark Public enumeration methods
+
+- (void)enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void(^)(id<OWLAxiom> axiom))handler
+{
+    for (id<OWLAxiom> axiom in _anonymousIndividualRefs[individual]) {
+        if (has_option(types, axiom.axiomType)) {
+            handler(axiom);
+        }
+    }
+}
+
+- (void)enumerateAxiomsReferencingClass:(id<OWLClass>)cls ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    for (id<OWLAxiom> axiom in _classRefs[cls]) {
+        if (has_option(types, axiom.axiomType)) {
+            handler(axiom);
+        }
+    }
+}
+
+- (void)enumerateAxiomsReferencingIndividual:(id<OWLIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    if (individual.anonymous) {
+        [self enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual ofTypes:types withHandler:handler];
+    } else {
+        [self enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual ofTypes:types withHandler:handler];
+    }
+}
+
+- (void)enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    for (id<OWLAxiom> axiom in _namedIndividualRefs[individual]) {
+        if (has_option(types, axiom.axiomType)) {
+            handler(axiom);
+        }
+    }
+}
+
+- (void)enumerateAxiomsReferencingObjectProperty:(id<OWLObjectProperty>)property ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    for (id<OWLAxiom> axiom in _objectPropertyRefs[property]) {
+        if (has_option(types, axiom.axiomType)) {
+            handler(axiom);
+        }
+    }
+}
+
 #pragma mark Public getter methods
 
 - (NSSet<id<OWLAnonymousIndividual>> *)allAnonymousIndividuals
@@ -216,9 +256,9 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 {
     NSMutableSet *allAxioms = [[NSMutableSet alloc] init];
     
-    for (NSSet<id<OWLAxiom>> *axioms in _axiomsByType) {
+    [_axiomsByType enumerateKeysAndObjectsUsingBlock:^(__unused id _Nonnull key, NSMutableSet<id<OWLAxiom>> * _Nonnull axioms, __unused BOOL * _Nonnull stop) {
         [allAxioms unionSet:axioms];
-    }
+    }];
     
     return allAxioms;
 }
@@ -240,19 +280,18 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 
 - (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type
 {
-    return nonNilSet(_axiomsByType[type]);
+    return nonNilSet(_axiomsByType[@(type)]);
 }
 
 - (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
 {
     NSMutableSet *axioms = [[NSMutableSet alloc] init];
-    NSDictionary *refs = individual.anonymous ? (id)_anonymousIndividualRefs : (id)_namedIndividualRefs;
     
-    for (id<OWLClassAssertionAxiom> axiom in refs[individual]) {
-        if (axiom.axiomType == OWLAxiomTypeClassAssertion) {
+    [self enumerateAxiomsReferencingIndividual:individual ofTypes:OWLAxiomTypeClassAssertion withHandler:^(id<OWLClassAssertionAxiom> axiom) {
+        if (axiom.individual == individual) {
             [axioms addObject:axiom];
         }
-    }
+    }];
     
     return axioms;
 }
@@ -261,11 +300,11 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 {
     NSMutableSet *axioms = [[NSMutableSet alloc] init];
     
-    for (id<OWLDisjointClassesAxiom> axiom in _classRefs[cls]) {
-        if (axiom.axiomType == OWLAxiomTypeDisjointClasses && [(NSSet *)axiom.classExpressions containsObject:cls]) {
+    [self enumerateAxiomsReferencingClass:cls ofTypes:OWLAxiomTypeDisjointClasses withHandler:^(id<OWLDisjointClassesAxiom> axiom) {
+        if ([(NSSet *)axiom.classExpressions containsObject:cls]) {
             [axioms addObject:axiom];
         }
-    }
+    }];
     
     return axioms;
 }
@@ -274,11 +313,11 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 {
     NSMutableSet *axioms = [[NSMutableSet alloc] init];
     
-    for (id<OWLEquivalentClassesAxiom> axiom in _classRefs[cls]) {
-        if (axiom.axiomType == OWLAxiomTypeEquivalentClasses && [(NSSet *)axiom.classExpressions containsObject:cls]) {
+    [self enumerateAxiomsReferencingClass:cls ofTypes:OWLAxiomTypeEquivalentClasses withHandler:^(id<OWLEquivalentClassesAxiom> axiom) {
+        if ([(NSSet *)axiom.classExpressions containsObject:cls]) {
             [axioms addObject:axiom];
         }
-    }
+    }];
     
     return axioms;
 }
@@ -286,13 +325,12 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 - (NSSet<id<OWLObjectPropertyAssertionAxiom>> *)objectPropertyAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
 {
     NSMutableSet *axioms = [[NSMutableSet alloc] init];
-    NSDictionary *refs = individual.anonymous ? (NSDictionary *)_anonymousIndividualRefs : (NSDictionary *)_namedIndividualRefs;
     
-    for (id<OWLObjectPropertyAssertionAxiom> axiom in refs[individual]) {
-        if (axiom.axiomType == OWLAxiomTypeObjectPropertyAssertion) {
+    [self enumerateAxiomsReferencingIndividual:individual ofTypes:OWLAxiomTypeObjectPropertyAssertion withHandler:^(id<OWLObjectPropertyAssertionAxiom> axiom) {
+        if (axiom.subject == individual) {
             [axioms addObject:axiom];
         }
-    }
+    }];
     
     return axioms;
 }
@@ -301,11 +339,24 @@ NS_INLINE NSSet * nonNilSet(NSSet *set) {
 {
     NSMutableSet *axioms = [[NSMutableSet alloc] init];
     
-    for (id<OWLSubClassOfAxiom> axiom in _classRefs[cls]) {
-        if (axiom.axiomType == OWLAxiomTypeSubClassOf && (id<OWLClass>)axiom.subClass == cls) {
+    [self enumerateAxiomsReferencingClass:cls ofTypes:OWLAxiomTypeSubClassOf withHandler:^(id<OWLSubClassOfAxiom> axiom) {
+        if ((id<OWLClass>)axiom.subClass == cls) {
             [axioms addObject:axiom];
         }
-    }
+    }];
+    
+    return axioms;
+}
+
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSuperClass:(id<OWLClass>)cls
+{
+    NSMutableSet *axioms = [[NSMutableSet alloc] init];
+    
+    [self enumerateAxiomsReferencingClass:cls ofTypes:OWLAxiomTypeSubClassOf withHandler:^(id<OWLSubClassOfAxiom> axiom) {
+        if ((id<OWLClass>)axiom.superClass == cls) {
+            [axioms addObject:axiom];
+        }
+    }];
     
     return axioms;
 }

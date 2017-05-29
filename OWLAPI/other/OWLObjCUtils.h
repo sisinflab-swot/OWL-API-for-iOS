@@ -46,3 +46,13 @@ userInfo:nil]; \
     if (_##NAME == nil) { _##NAME = [[TYPE alloc] init]; } \
     return _##NAME; \
 }
+
+/**
+ * Use this directive to check whether a bitmask has a specific bit set.
+ *
+ * @param OPTIONS The bitmask.
+ * @param OPTION The bit to check.
+ *
+ * @return True if the bit is set, false otherwise.
+ */
+#define has_option(OPTIONS, OPTION) ((OPTIONS & OPTION) == OPTION)

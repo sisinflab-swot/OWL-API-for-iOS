@@ -4,6 +4,7 @@
 //
 
 #import "OWLMap.h"
+#import "OWLObjCUtils.h"
 #import "khash.h"
 
 #pragma mark Macros
@@ -20,7 +21,6 @@ if (!kh_exist(h,__i)) continue;                     \
 code;                                               \
 } }
 
-#define has_option(options, option) ((options & option) == option)
 #define owl_table_copy_key(key) ((unsigned char *)strdup((char *)key))
 
 

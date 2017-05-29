@@ -8,6 +8,7 @@
 
 @class OWLOntologyID;
 
+@protocol OWLAnonymousIndividual;
 @protocol OWLAxiom;
 @protocol OWLClassAssertionAxiom;
 @protocol OWLDisjointClassesAxiom;
@@ -76,6 +77,76 @@ NS_ASSUME_NONNULL_BEGIN
  * @return The set of subclass axioms where the LHS is the specified class.
  */
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls;
+
+/**
+ * Gets all of the subclass axioms where the right hand side (the superclass)
+ * is equal to the specified class.
+ *
+ * @param cls The class.
+ *
+ * @return The set of subclass axioms where the RHS is the specified class.
+ */
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSuperClass:(id<OWLClass>)cls;
+
+/**
+ * Enumerates over all the axioms of the desired types that directly or indirectly
+ * reference the specified anonymous individual.
+ *
+ * @param individual The individual.
+ * @param types The desired axiom types.
+ * @param handler The enumeration handler.
+ */
+- (void)enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual
+                                              ofTypes:(OWLAxiomType)types
+                                          withHandler:(void(^)(id<OWLAxiom> axiom))handler;
+
+/**
+ * Enumerates over all the axioms of the desired types that directly or indirectly
+ * reference the specified class.
+ *
+ * @param cls The class.
+ * @param types The desired axiom types.
+ * @param handler The enumeration handler.
+ */
+- (void)enumerateAxiomsReferencingClass:(id<OWLClass>)cls
+                                ofTypes:(OWLAxiomType)types
+                            withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
+/**
+ * Enumerates over all the axioms of the desired types that directly or indirectly
+ * reference the specified individual.
+ *
+ * @param individual The individual.
+ * @param types The desired axiom types.
+ * @param handler The enumeration handler.
+ */
+- (void)enumerateAxiomsReferencingIndividual:(id<OWLIndividual>)individual
+                                     ofTypes:(OWLAxiomType)types
+                                 withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
+/**
+ * Enumerates over all the axioms of the desired types that directly or indirectly
+ * reference the specified named individual.
+ *
+ * @param individual The individual.
+ * @param types The desired axiom types.
+ * @param handler The enumeration handler.
+ */
+- (void)enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual
+                                          ofTypes:(OWLAxiomType)types
+                                      withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
+/**
+ * Enumerates over all the axioms of the desired types that directly or indirectly
+ * reference the specified object property.
+ *
+ * @param property The object property.
+ * @param types The desired axiom types.
+ * @param handler The enumeration handler.
+ */
+- (void)enumerateAxiomsReferencingObjectProperty:(id<OWLObjectProperty>)property
+                                         ofTypes:(OWLAxiomType)types
+                                     withHandler:(void (^)(id<OWLAxiom> axiom))handler;
 
 @end
 

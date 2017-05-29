@@ -6,138 +6,138 @@
 #import <Foundation/Foundation.h>
 
 /// Represents the type of axioms which can belong to ontologies.
-typedef NS_ENUM(NSInteger, OWLAxiomType) {
+typedef NS_OPTIONS(uint64_t, OWLAxiomType) {
     
 #pragma mark - Declaration/definition
     
     /// Represents OWLDeclarationAxiom.
-    OWLAxiomTypeDeclaration,
+    OWLAxiomTypeDeclaration                             = (uint64_t)1 << 0,
     
     /// Represents OWLDatatypeDefinitionAxiom.
-    OWLAxiomTypeDatatypeDefinition,
+    OWLAxiomTypeDatatypeDefinition                      = (uint64_t)1 << 1,
     
 #pragma mark - Class axioms
     
     /// Represents OWLEquivalentClassesAxiom.
-    OWLAxiomTypeEquivalentClasses,
+    OWLAxiomTypeEquivalentClasses                       = (uint64_t)1 << 2,
     
     /// Represents OWLSubClassOfAxiom.
-    OWLAxiomTypeSubClassOf,
+    OWLAxiomTypeSubClassOf                              = (uint64_t)1 << 3,
     
     /// Represents OWLDisjointClassesAxiom.
-    OWLAxiomTypeDisjointClasses,
+    OWLAxiomTypeDisjointClasses                         = (uint64_t)1 << 4,
     
     /// Represents OWLDisjointUnionAxiom.
-    OWLAxiomTypeDisjointUnion,
+    OWLAxiomTypeDisjointUnion                           = (uint64_t)1 << 5,
 
 #pragma mark - Individual axioms
     
     /// Represents OWLClassAssertionAxiom.
-    OWLAxiomTypeClassAssertion,
+    OWLAxiomTypeClassAssertion                          = (uint64_t)1 << 6,
     
     /// Represents OWLSameIndividualAxiom.
-    OWLAxiomTypeSameIndividual,
+    OWLAxiomTypeSameIndividual                          = (uint64_t)1 << 7,
     
     /// Represents OWLDifferentIndividualsAxiom.
-    OWLAxiomTypeDifferentIndividuals,
+    OWLAxiomTypeDifferentIndividuals                    = (uint64_t)1 << 8,
     
     /// Represents OWLObjectPropertyAssertionAxiom.
-    OWLAxiomTypeObjectPropertyAssertion,
+    OWLAxiomTypeObjectPropertyAssertion                 = (uint64_t)1 << 9,
     
     /// Represents OWLNegativeObjectPropertyAssertionAxiom.
-    OWLAxiomTypeNegativeObjectPropertyAssertion,
+    OWLAxiomTypeNegativeObjectPropertyAssertion         = (uint64_t)1 << 10,
     
     /// Represents OWLDataPropertyAssertionAxiom.
-    OWLAxiomTypeDataPropertyAssertion,
+    OWLAxiomTypeDataPropertyAssertion                   = (uint64_t)1 << 11,
     
     /// Represents OWLNegativeDataPropertyAssertionAxiom.
-    OWLAxiomTypeNegativeDataPropertyAssertion,
+    OWLAxiomTypeNegativeDataPropertyAssertion           = (uint64_t)1 << 12,
 
 #pragma mark - Object property axioms
     
     /// Represents OWLEquivalentObjectPropertiesAxiom.
-    OWLAxiomTypeEquivalentObjectProperties,
+    OWLAxiomTypeEquivalentObjectProperties              = (uint64_t)1 << 13,
     
     /// Represents OWLSubObjectPropertyOfAxiom.
-    OWLAxiomTypeSubObjectPropertyOf,
+    OWLAxiomTypeSubObjectPropertyOf                     = (uint64_t)1 << 14,
     
     /// Represents OWLInverseObjectPropertiesAxiom.
-    OWLAxiomTypeInverseObjectProperties,
+    OWLAxiomTypeInverseObjectProperties                 = (uint64_t)1 << 15,
     
     /// Represents OWLFunctionalObjectPropertyAxiom.
-    OWLAxiomTypeFunctionalObjectProperty,
+    OWLAxiomTypeFunctionalObjectProperty                = (uint64_t)1 << 16,
     
     /// Represents OWLInverseFunctionalObjectPropertyAxiom.
-    OWLAxiomTypeInverseFunctionalObjectProperty,
+    OWLAxiomTypeInverseFunctionalObjectProperty         = (uint64_t)1 << 17,
     
     /// Represents OWLSymmetricObjectPropertyAxiom.
-    OWLAxiomTypeSymmetricObjectProperty,
+    OWLAxiomTypeSymmetricObjectProperty                 = (uint64_t)1 << 18,
     
     /// Represents OWLAsymmetricObjectPropertyAxiom.
-    OWLAxiomTypeAsymmetricObjectProperty,
+    OWLAxiomTypeAsymmetricObjectProperty                = (uint64_t)1 << 19,
     
     /// Represents OWLTransitiveObjectPropertyAxiom.
-    OWLAxiomTypeTransitiveObjectProperty,
+    OWLAxiomTypeTransitiveObjectProperty                = (uint64_t)1 << 20,
     
     /// Represents OWLReflexiveObjectPropertyAxiom.
-    OWLAxiomTypeReflexiveObjectProperty,
+    OWLAxiomTypeReflexiveObjectProperty                 = (uint64_t)1 << 21,
     
     /// Represents OWLIrreflexiveObjectPropertyAxiom.
-    OWLAxiomTypeIrreflexiveObjectProperty,
+    OWLAxiomTypeIrreflexiveObjectProperty               = (uint64_t)1 << 22,
     
     /// Represents OWLObjectPropertyDomainAxiom.
-    OWLAxiomTypeObjectPropertyDomain,
+    OWLAxiomTypeObjectPropertyDomain                    = (uint64_t)1 << 23,
     
     /// Represents OWLObjectPropertyRangeAxiom.
-    OWLAxiomTypeObjectPropertyRange,
+    OWLAxiomTypeObjectPropertyRange                     = (uint64_t)1 << 24,
     
     /// Represents OWLDisjointObjectPropertiesAxiom.
-    OWLAxiomTypeDisjointObjectProperties,
+    OWLAxiomTypeDisjointObjectProperties                = (uint64_t)1 << 25,
     
     /// Represents OWLSubPropertyChainOfAxiom.
-    OWLAxiomTypeSubPropertyChainOf,
+    OWLAxiomTypeSubPropertyChainOf                      = (uint64_t)1 << 26,
 
 #pragma mark - Data property axioms
     
     /// Represents OWLEquivalentDataPropertiesAxiom.
-    OWLAxiomTypeEquivalentDataProperties,
+    OWLAxiomTypeEquivalentDataProperties                = (uint64_t)1 << 27,
     
     /// Represents OWLSubDataPropertyOfAxiom.
-    OWLAxiomTypeSubDataPropertyOf,
+    OWLAxiomTypeSubDataPropertyOf                       = (uint64_t)1 << 28,
     
     /// Represents OWLFunctionalDataPropertyAxiom.
-    OWLAxiomTypeFunctionalDataProperty,
+    OWLAxiomTypeFunctionalDataProperty                  = (uint64_t)1 << 29,
     
     /// Represents OWLDataPropertyDomainAxiom.
-    OWLAxiomTypeDataPropertyDomain,
+    OWLAxiomTypeDataPropertyDomain                      = (uint64_t)1 << 30,
     
     /// Represents OWLDataPropertyRangeAxiom.
-    OWLAxiomTypeDataPropertyRange,
+    OWLAxiomTypeDataPropertyRange                       = (uint64_t)1 << 31,
     
     /// Represents OWLDisjointDataPropertiesAxiom.
-    OWLAxiomTypeDisjointDataProperties,
+    OWLAxiomTypeDisjointDataProperties                  = (uint64_t)1 << 32,
     
 #pragma mark - Keys
     
     /// Represents OWLHasKeyAxiom.
-    OWLAxiomTypeHasKey,
+    OWLAxiomTypeHasKey                                  = (uint64_t)1 << 33,
     
 #pragma mark - Annotation axioms
     
     /// Represents OWLAnnotationAssertionAxiom.
-    OWLAxiomTypeAnnotationAssertion,
+    OWLAxiomTypeAnnotationAssertion                     = (uint64_t)1 << 34,
     
     /// Represents OWLSubAnnotationPropertyOfAxiom.
-    OWLAxiomTypeSubAnnotationPropertyOf,
+    OWLAxiomTypeSubAnnotationPropertyOf                 = (uint64_t)1 << 35,
     
     /// Represents OWLAnnotationPropertyRangeAxiom.
-    OWLAxiomTypeAnnotationPropertyRange,
+    OWLAxiomTypeAnnotationPropertyRange                 = (uint64_t)1 << 36,
     
     /// Represents OWLAnnotationPropertyDomainAxiom.
-    OWLAxiomTypeAnnotationPropertyDomain,
+    OWLAxiomTypeAnnotationPropertyDomain                = (uint64_t)1 << 37,
     
-#pragma mark - End
+#pragma mark - All
     
-    /// The number of available axiom types.
-    OWLAxiomTypeCount
+    /// Represents all axiom types.
+    OWLAxiomTypeAll                                     = (uint64_t)-1
 };

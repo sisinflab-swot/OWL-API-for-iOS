@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 #import "OWLAxiomType.h"
 
+@protocol OWLAnonymousIndividual;
 @protocol OWLAxiom;
 @protocol OWLClass;
 @protocol OWLClassAssertionAxiom;
@@ -26,6 +27,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addAxiom:(id<OWLAxiom>)axiom;
 
+#pragma mark Enumeration methods
+
+- (void)enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual
+                                              ofTypes:(OWLAxiomType)types
+                                          withHandler:(void(^)(id<OWLAxiom> axiom))handler;
+
+- (void)enumerateAxiomsReferencingClass:(id<OWLClass>)cls
+                                ofTypes:(OWLAxiomType)types
+                            withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
+- (void)enumerateAxiomsReferencingIndividual:(id<OWLIndividual>)individual
+                                     ofTypes:(OWLAxiomType)types
+                                 withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
+- (void)enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual
+                                          ofTypes:(OWLAxiomType)types
+                                      withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
+- (void)enumerateAxiomsReferencingObjectProperty:(id<OWLObjectProperty>)property
+                                         ofTypes:(OWLAxiomType)types
+                                     withHandler:(void (^)(id<OWLAxiom> axiom))handler;
+
 #pragma mark Getter methods
 
 - (NSSet<id<OWLAxiom>> *)allAxioms;
@@ -39,6 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;
 - (NSSet<id<OWLObjectPropertyAssertionAxiom>> *)objectPropertyAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
 - (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls;
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSuperClass:(id<OWLClass>)cls;
 
 @end
 

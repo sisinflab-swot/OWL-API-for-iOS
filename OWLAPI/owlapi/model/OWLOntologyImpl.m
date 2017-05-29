@@ -89,6 +89,36 @@
     return [_internals subClassAxiomsForSubClass:cls];
 }
 
+- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSuperClass:(id<OWLClass>)cls
+{
+    return [_internals subClassAxiomsForSuperClass:cls];
+}
+
+- (void)enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void(^)(id<OWLAxiom> axiom))handler
+{
+    [_internals enumerateAxiomsReferencingAnonymousIndividual:individual ofTypes:types withHandler:handler];
+}
+
+- (void)enumerateAxiomsReferencingClass:(id<OWLClass>)cls ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    [_internals enumerateAxiomsReferencingClass:cls ofTypes:types withHandler:handler];
+}
+
+- (void)enumerateAxiomsReferencingIndividual:(id<OWLIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    [_internals enumerateAxiomsReferencingIndividual:individual ofTypes:types withHandler:handler];
+}
+
+- (void)enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    [_internals enumerateAxiomsReferencingNamedIndividual:individual ofTypes:types withHandler:handler];
+}
+
+- (void)enumerateAxiomsReferencingObjectProperty:(id<OWLObjectProperty>)property ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
+{
+    [_internals enumerateAxiomsReferencingObjectProperty:property ofTypes:types withHandler:handler];
+}
+
 #pragma mark Other public methods
 
 - (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals
