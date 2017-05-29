@@ -14,6 +14,7 @@
 @protocol OWLDisjointClassesAxiom;
 @protocol OWLEquivalentClassesAxiom;
 @protocol OWLIndividual;
+@protocol OWLOntologyManager;
 @protocol OWLSubClassOfAxiom;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// The identity of this ontology.
 @property (nonatomic, copy, readonly) OWLOntologyID *ontologyID;
+
+/// The manager that manages this ontology.
+@property (nonatomic, strong, readonly) id<OWLOntologyManager> manager;
 
 /**
  * Retrieves all of the axioms in this ontology.

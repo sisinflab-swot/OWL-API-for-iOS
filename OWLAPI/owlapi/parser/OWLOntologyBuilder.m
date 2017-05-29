@@ -25,6 +25,7 @@
 @interface OWLOntologyBuilder ()
 {
     id<OWLOntology> _builtOntology;
+    id<OWLOntologyManager> _manager;
     
     // Entity builders
     OWLMap *_classExpressionBuilders;
@@ -45,9 +46,13 @@
 
 #pragma mark Lifecycle
 
-- (instancetype)init
+- (instancetype)initWithManager:(id<OWLOntologyManager>)manager
 {
+    NSParameterAssert(manager);
+    
     if ((self = [super init])) {
+        _manager = manager;
+        
         _classExpressionBuilders = owl_map_init(COPY_TO_STRONG);
         _individualBuilders = owl_map_init(COPY_TO_STRONG);
         _propertyBuilders = owl_map_init(COPY_TO_STRONG);
@@ -112,7 +117,8 @@
         [self->_singleStatementAxiomBuilders removeObjectAtIndex:idx];
     }];
     
-    id<OWLOntology> onto = [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
+    OWLOntologyImpl *onto = [[OWLOntologyImpl alloc] initWithID:[self buildOntologyID] internals:internals];
+    onto.manager = _manager;
     
     _builtOntology = onto;
     return onto;

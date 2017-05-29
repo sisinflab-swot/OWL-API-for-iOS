@@ -9,6 +9,7 @@
 @protocol OWLClassExpression;
 @protocol OWLIndividual;
 @protocol OWLOntology;
+@protocol OWLOntologyManager;
 @protocol OWLPropertyExpression;
 
 @class OWLAxiomBuilder;
@@ -63,6 +64,11 @@ DECLARE_BUILDER_CSTRING_PROPERTY(versionIRI, VersionIRI)
 #pragma mark OWLAbstractBuilder
 
 - (id<OWLOntology>)build;
+
+
+#pragma mark Lifecycle
+
+- (instancetype)initWithManager:(id<OWLOntologyManager>)manager;
 
 @end
 

@@ -19,6 +19,7 @@
 #pragma mark Properties
 
 @synthesize internals = _internals;
+@synthesize manager = _manager;
 @synthesize ontologyID = _ontologyID;
 
 #pragma mark NSObject
@@ -119,7 +120,7 @@
     [_internals enumerateAxiomsReferencingObjectProperty:property ofTypes:types withHandler:handler];
 }
 
-#pragma mark Other public methods
+#pragma mark Lifecycle
 
 - (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals
 {

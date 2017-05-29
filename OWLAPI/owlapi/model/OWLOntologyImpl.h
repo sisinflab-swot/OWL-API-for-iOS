@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OWLOntologyImpl : OWLObjectImpl <OWLOntology>
 
+@property (nonatomic, strong, readwrite) id<OWLOntologyManager> manager;
+
 - (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals;
 
 @end

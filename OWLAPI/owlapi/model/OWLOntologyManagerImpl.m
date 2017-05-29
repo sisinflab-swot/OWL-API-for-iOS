@@ -34,9 +34,9 @@
     NSParameterAssert(URL);
 
     NSError *localError = nil;
-    OWLRDFXMLParser *parser = [[OWLRDFXMLParser alloc] init];
+    OWLRDFXMLParser *parser = [[OWLRDFXMLParser alloc] initWithManager:self];
     
-    id <OWLOntology> ontology = [parser parseOntologyFromDocumentAtURL:URL error:&localError];
+    id<OWLOntology> ontology = [parser parseOntologyFromDocumentAtURL:URL error:&localError];
 
     if (error) {
         *error = localError;

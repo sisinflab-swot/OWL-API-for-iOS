@@ -18,6 +18,7 @@
 
 @interface OWLRDFXMLParser ()
 {
+    id<OWLOntologyManager> _manager;
     OWLOntologyBuilder *_ontologyBuilder;
     NSMutableArray *_errors;
 }
@@ -37,9 +38,19 @@
     }
 }
 
+- (instancetype)initWithManager:(id<OWLOntologyManager>)manager
+{
+    NSParameterAssert(manager);
+    
+    if ((self = [super init])) {
+        _manager = manager;
+    }
+    return self;
+}
+
 #pragma mark Public methods
 
-- (id<OWLOntology>)parseOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
+- (id<OWLOntology>)parseOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *__autoreleasing  _Nullable * _Nullable)error
 {
     NSParameterAssert(URL);
     
@@ -62,7 +73,7 @@
 - (void)initializeDataStructures
 {
     _errors = [[NSMutableArray alloc] init];
-    _ontologyBuilder = [[OWLOntologyBuilder alloc] init];
+    _ontologyBuilder = [[OWLOntologyBuilder alloc] initWithManager:_manager];
 }
 
 static void statementHandler(void *parser_arg, raptor_statement *triple) {

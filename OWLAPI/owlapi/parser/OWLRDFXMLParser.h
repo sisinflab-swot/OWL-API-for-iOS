@@ -6,11 +6,14 @@
 #import <Foundation/Foundation.h>
 
 @protocol OWLOntology;
+@protocol OWLOntologyManager;
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// Parses OWL RDF/XML documents into structured ontologies.
 @interface OWLRDFXMLParser : NSObject
+
+#pragma mark Parsing
 
 /**
  * Parses the document at the specified URL.
@@ -21,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @return OWLOntology representation of the parsed document, or nil on error.
  */
 - (nullable id<OWLOntology>)parseOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error;
+
+#pragma mark Lifecycle
+
+- (instancetype)initWithManager:(id<OWLOntologyManager>)manager;
 
 @end
 
