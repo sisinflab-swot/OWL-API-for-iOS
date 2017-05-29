@@ -22,6 +22,7 @@ FOUNDATION_EXPORT const unsigned char OWLAPIVersionString[];
 #import <OWLAPI/OWLClassAxiom.h>
 #import <OWLAPI/OWLClassExpression.h>
 #import <OWLAPI/OWLClassExpressionType.h>
+#import <OWLAPI/OWLDataFactory.h>
 #import <OWLAPI/OWLDeclarationAxiom.h>
 #import <OWLAPI/OWLDisjointClassesAxiom.h>
 #import <OWLAPI/OWLDLConstruct.h>

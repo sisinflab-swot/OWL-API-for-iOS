@@ -5,4 +5,12 @@
 
 #import "OWLOntologyManager.h"
 
-@interface OWLOntologyManagerImpl : NSObject <OWLOntologyManager> @end
+NS_ASSUME_NONNULL_BEGIN
+
+@interface OWLOntologyManagerImpl : NSObject <OWLOntologyManager>
+
+- (instancetype)initWithDataFactory:(id<OWLDataFactory>)dataFactory;
+
+@end
+
+NS_ASSUME_NONNULL_END

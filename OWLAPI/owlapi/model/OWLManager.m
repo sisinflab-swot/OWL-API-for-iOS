@@ -4,13 +4,15 @@
 //
 
 #import "OWLManager.h"
+#import "OWLDataFactoryImpl.h"
 #import "OWLOntologyManagerImpl.h"
 
 @implementation OWLManager
 
 + (id<OWLOntologyManager>)createOWLOntologyManager
 {
-    return [[OWLOntologyManagerImpl alloc] init];
+    id<OWLDataFactory> dataFactory = [[OWLDataFactoryImpl alloc] init];
+    return [[OWLOntologyManagerImpl alloc] initWithDataFactory:dataFactory];
 }
 
 @end

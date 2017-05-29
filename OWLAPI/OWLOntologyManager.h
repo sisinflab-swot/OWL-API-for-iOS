@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol OWLDataFactory;
 @protocol OWLOntology;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
  * and its ontology document.
  */
 @protocol OWLOntologyManager <NSObject>
+
+/**
+ * A data factory which can be used to create OWL API objects such as
+ * classes, properties, individuals, axioms etc.
+ */
+@property (nonatomic, strong, readonly) id<OWLDataFactory> dataFactory;
 
 /**
  * Loads an ontology from an ontology document contained in a local file.

@@ -12,6 +12,21 @@
 
 @implementation OWLOntologyManagerImpl
 
+#pragma mark Properties
+
+@synthesize dataFactory = _dataFactory;
+
+#pragma mark Lifecycle
+
+- (instancetype)initWithDataFactory:(id<OWLDataFactory>)dataFactory
+{
+    if ((self = [super init])) {
+        _dataFactory = dataFactory;
+    }
+    
+    return self;
+}
+
 #pragma mark Public methods
 
 - (id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
