@@ -85,6 +85,17 @@
     return equivalentClasses;
 }
 
+- (NSSet<id<OWLClassExpression>> *)subClassesInOntology:(id<OWLOntology>)ontology
+{
+    NSMutableSet *subClasses = [[NSMutableSet alloc] init];
+    
+    for (id<OWLSubClassOfAxiom> axiom in [ontology subClassAxiomsForSuperClass:self]) {
+        [subClasses addObject:axiom.subClass];
+    }
+    
+    return subClasses;
+}
+
 - (NSSet<id<OWLClassExpression>> *)superClassesInOntology:(id<OWLOntology>)ontology
 {
     NSMutableSet *superClasses = [[NSMutableSet alloc] init];
