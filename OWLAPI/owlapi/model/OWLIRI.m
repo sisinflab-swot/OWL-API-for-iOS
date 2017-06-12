@@ -35,6 +35,42 @@ SYNTHESIZE_LAZY(NSString, string, {
     _string = string ?: @"";
 })
 
+- (NSString *)namespace
+{
+    NSUInteger remainderIndex = [self indexOfRemainder];
+    return remainderIndex == NSNotFound ? self.string : [self.string substringToIndex:remainderIndex];
+}
+
+- (NSString *)remainder
+{
+    NSUInteger index = [self indexOfRemainder];
+    return index == NSNotFound ? nil : [self.string substringFromIndex:index];
+}
+
+- (NSString *)scheme
+{
+    NSString *string = self.string;
+    NSUInteger index = [string rangeOfString:@":"].location;
+    return index == NSNotFound ? nil : [string substringToIndex:index];
+}
+
+- (NSUInteger)indexOfRemainder
+{
+    NSUInteger index = NSNotFound;
+    NSString *string = self.string;
+    
+    for (NSString *separator in [NSArray arrayWithObjects:@"#", @"/", nil]) {
+        index = [string rangeOfString:separator options:NSBackwardsSearch].location;
+        
+        if (index != NSNotFound && index < string.length - 1) {
+            index++;
+            break;
+        }
+    }
+    
+    return index;
+}
+
 #pragma mark Lifecycle
 
 static OWLMap *instanceCache = NULL;

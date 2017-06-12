@@ -13,6 +13,15 @@ NS_ASSUME_NONNULL_BEGIN
 /// The string representation of this IRI.
 @property (nonatomic, copy, readonly) NSString *string;
 
+/// @return The namespace of this IRI.
+- (NSString *)namespace;
+
+/// @return The remainder of this IRI.
+- (nullable NSString *)remainder;
+
+/// @return The scheme of this IRI.
+- (nullable NSString *)scheme;
+
 /**
  * Creates an IRI from the specified string.
  *
