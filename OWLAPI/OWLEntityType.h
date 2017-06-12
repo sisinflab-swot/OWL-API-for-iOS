@@ -7,10 +7,22 @@
 
 /// Represents the different types of OWL 2 Entities.
 typedef NS_ENUM(NSInteger, OWLEntityType) {
+    
+    /// Represents OWLClass.
     OWLEntityTypeClass,
+    
+    /// Represents OWLObjectProperty.
     OWLEntityTypeObjectProperty,
+    
+    /// Represents OWLDataProperty.
     OWLEntityTypeDataProperty,
+    
+    /// Represents OWLAnnotationProperty.
     OWLEntityTypeAnnotationProperty,
+    
+    /// Represents OWLNamedIndividual.
     OWLEntityTypeNamedIndividual,
+    
+    /// Represents OWLDatatype.
     OWLEntityTypeDatatype
 };
