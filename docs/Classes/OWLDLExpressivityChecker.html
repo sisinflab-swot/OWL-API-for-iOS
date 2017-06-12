@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>OWLEntity Protocol Reference</title>
+    <title>OWLDLExpressivityChecker Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/objc/Protocol/OWLEntity" class="dashAnchor"></a>
-    <a title="OWLEntity Protocol Reference"></a>
+    <a name="//apple_ref/objc/Class/OWLDLExpressivityChecker" class="dashAnchor"></a>
+    <a title="OWLDLExpressivityChecker Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">OWLAPI Docs</a> (94% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">OWLAPI Reference</a>
         <img id="carat" src="../img/carat.png" />
-        OWLEntity Protocol Reference
+        OWLDLExpressivityChecker Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -285,14 +285,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>OWLEntity</h1>
+            <h1>OWLDLExpressivityChecker</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLEntity</span> <span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLNamedObject.html">OWLNamedObject</a></span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLDLExpressivityChecker</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents Entities in the OWL 2 Specification.</p>
+            <p>A utility class to compute and represent DL expressivity.</p>
 
           </section>
           <section class="section task-group-section">
@@ -301,9 +301,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLEntity(py)entityType"></a>
-                    <a name="//apple_ref/objc/Property/entityType" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLEntity(py)entityType">entityType</a>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(py)constructs"></a>
+                    <a name="//apple_ref/objc/Property/constructs" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(py)constructs">constructs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,24 +311,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The entity type for this entity.</p>
+                        <p>The constructs stored in the checker.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/OWLEntityType.html">OWLEntityType</a></span> <span class="n">entityType</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/OWLDLConstruct.html">OWLDLConstruct</a></span> <span class="n">constructs</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">entityType</span><span class="p">:</span> <span class="kt"><a href="../Enums/OWLEntityType.html">OWLEntityType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">constructs</span><span class="p">:</span> <span class="kt"><a href="../Enums/OWLDLConstruct.html">OWLDLConstruct</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLEntity.h#L15">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L18">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -336,9 +336,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLEntity(py)isOWLClass"></a>
-                    <a name="//apple_ref/objc/Property/isOWLClass" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLEntity(py)isOWLClass">isOWLClass</a>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(im)descriptionLogicName"></a>
+                    <a name="//apple_ref/objc/Method/-descriptionLogicName" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(im)descriptionLogicName">-descriptionLogicName</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -346,24 +346,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines if this entity is an OWLClass.</p>
+                        <p>Returns the pruned description logic name derived from the stored constructs.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">isOWLClass</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">descriptionLogicName</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isOWLClass</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">descriptionLogicName</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLEntity.h#L18">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L21">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -371,9 +371,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLEntity(py)isOWLNamedIndividual"></a>
-                    <a name="//apple_ref/objc/Property/isOWLNamedIndividual" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLEntity(py)isOWLNamedIndividual">isOWLNamedIndividual</a>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(im)nameForConstruct:"></a>
+                    <a name="//apple_ref/objc/Method/-nameForConstruct:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(im)nameForConstruct:">-nameForConstruct:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -381,24 +381,44 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines if this entity is an OWLNamedIndividual;</p>
+                        <p>Returns the name for a single construct.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">isOWLNamedIndividual</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">nameForConstruct</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLDLConstruct.html">OWLDLConstruct</a></span><span class="p">)</span><span class="nv">construct</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isOWLNamedIndividual</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">name</span><span class="p">(</span><span class="k">for</span> <span class="nv">construct</span><span class="p">:</span> <span class="kt"><a href="../Enums/OWLDLConstruct.html">OWLDLConstruct</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>construct</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The construct.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLEntity.h#L21">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L28">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -406,9 +426,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLEntity(py)isOWLObjectProperty"></a>
-                    <a name="//apple_ref/objc/Property/isOWLObjectProperty" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLEntity(py)isOWLObjectProperty">isOWLObjectProperty</a>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(im)pruneConstructs"></a>
+                    <a name="//apple_ref/objc/Method/-pruneConstructs" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(im)pruneConstructs">-pruneConstructs</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -416,24 +436,203 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Determines if this entity is an OWLObjectProperty.</p>
+                        <p>Prunes the stored constructs.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">isOWLObjectProperty</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">pruneConstructs</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">isOWLObjectProperty</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">pruneConstructs</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLEntity.h#L24">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L31">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(im)addConstructsForAxiom:recursive:"></a>
+                    <a name="//apple_ref/objc/Method/-addConstructsForAxiom:recursive:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(im)addConstructsForAxiom:recursive:">-addConstructsForAxiom:recursive:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the stored constructs based on a given axiom.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addConstructsForAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">axiom</span>
+                    <span class="nf">recursive</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">recursive</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>axiom</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The axiom.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recursive</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The axiom should be visited recursively.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L39">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(im)addConstructsForClassExpression:recursive:"></a>
+                    <a name="//apple_ref/objc/Method/-addConstructsForClassExpression:recursive:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(im)addConstructsForClassExpression:recursive:">-addConstructsForClassExpression:recursive:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the stored constructs based on a given class expression.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addConstructsForClassExpression</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">ce</span>
+                              <span class="nf">recursive</span><span class="p">:(</span><span class="n">BOOL</span><span class="p">)</span><span class="nv">recursive</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ce</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The class expression.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recursive</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The class expression should be visited recursively.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L47">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OWLDLExpressivityChecker(im)addConstructsForPropertyExpression:"></a>
+                    <a name="//apple_ref/objc/Method/-addConstructsForPropertyExpression:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLDLExpressivityChecker(im)addConstructsForPropertyExpression:">-addConstructsForPropertyExpression:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the stored constructs based on a given property expression.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addConstructsForPropertyExpression</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLPropertyExpression.html">OWLPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">pe</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>pe</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The property expression.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDLExpressivityChecker.h#L54">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

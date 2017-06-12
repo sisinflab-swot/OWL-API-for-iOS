@@ -14,7 +14,7 @@
     <a title="OWLClass Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OWLAPI Docs</a> (46% documented)</p>
+        <p><a href="../index.html">OWLAPI Docs</a> (94% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -31,6 +31,9 @@
           <li class="nav-group-name">
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/OWLDLExpressivityChecker.html">OWLDLExpressivityChecker</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Classes/OWLIRI.html">OWLIRI</a>
               </li>
@@ -81,6 +84,9 @@
                 <a href="../Enums/OWLClassExpressionType.html">OWLClassExpressionType</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/OWLDLConstruct.html">OWLDLConstruct</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/OWLEntityType.html">OWLEntityType</a>
               </li>
             </ul>
@@ -114,6 +120,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLDataFactory.html">OWLDataFactory</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a>
@@ -404,6 +413,62 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(pl)OWLClass(im)subClassesInOntology:"></a>
+                    <a name="//apple_ref/objc/Method/-subClassesInOntology:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLClass(im)subClassesInOntology:">-subClassesInOntology:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the class expressions corresponding to sub classes of this class.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">subClassesInOntology</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLOntology.html">OWLOntology</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">ontology</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ontology</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The ontology to be examined.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Sub classes of this class.</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLClass.h#L42">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(pl)OWLClass(im)superClassesInOntology:"></a>
                     <a name="//apple_ref/objc/Method/-superClassesInOntology:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(pl)OWLClass(im)superClassesInOntology:">-superClassesInOntology:</a>
@@ -452,7 +517,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLClass.h#L42">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLClass.h#L51">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -462,7 +527,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-02-17)</p>
+          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

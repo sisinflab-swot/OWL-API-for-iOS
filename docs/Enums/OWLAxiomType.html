@@ -14,7 +14,7 @@
     <a title="OWLAxiomType Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OWLAPI Docs</a> (46% documented)</p>
+        <p><a href="../index.html">OWLAPI Docs</a> (94% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -31,6 +31,9 @@
           <li class="nav-group-name">
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/OWLDLExpressivityChecker.html">OWLDLExpressivityChecker</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Classes/OWLIRI.html">OWLIRI</a>
               </li>
@@ -81,6 +84,9 @@
                 <a href="../Enums/OWLClassExpressionType.html">OWLClassExpressionType</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/OWLDLConstruct.html">OWLDLConstruct</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/OWLEntityType.html">OWLEntityType</a>
               </li>
             </ul>
@@ -114,6 +120,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLDataFactory.html">OWLDataFactory</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a>
@@ -279,7 +288,7 @@
             <h1>OWLAxiomType</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                  <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="kt">uint64_t</span> <span class="p">{}</span></code></pre>
 
                 </div>
               </div>
@@ -288,6 +297,13 @@
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Declaration/definition"></a>
+                <a name="//apple_ref/objc/Section/Declaration/definition" class="dashAnchor"></a>
+                <a href="#/Declaration/definition">
+                  <h3 class="section-name">Declaration/definition</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -302,19 +318,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDeclarationAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDeclaration</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">declaration</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L14">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -322,9 +343,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeDataTypeDefinition"></a>
-                    <a name="//apple_ref/objc/Case/OWLAxiomTypeDataTypeDefinition" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeDataTypeDefinition">OWLAxiomTypeDataTypeDefinition</a>
+                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeDatatypeDefinition"></a>
+                    <a name="//apple_ref/objc/Case/OWLAxiomTypeDatatypeDefinition" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeDatatypeDefinition">OWLAxiomTypeDatatypeDefinition</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -332,23 +353,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDatatypeDefinitionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDatatypeDefinition</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">datatypeDefinition</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L17">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Class%20axioms"></a>
+                <a name="//apple_ref/objc/Section/Class axioms" class="dashAnchor"></a>
+                <a href="#/Class%20axioms">
+                  <h3 class="section-name">Class axioms</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -362,19 +399,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLEquivalentClassesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeEquivalentClasses</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">equivalentClasses</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L22">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -392,19 +434,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSubClassOfAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSubClassOf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">subClassOf</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L25">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -422,19 +469,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDisjointClassesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDisjointClasses</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">disjointClasses</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L28">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -452,23 +504,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDisjointUnionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDisjointUnion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">disjointUnion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L31">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Individual%20axioms"></a>
+                <a name="//apple_ref/objc/Section/Individual axioms" class="dashAnchor"></a>
+                <a href="#/Individual%20axioms">
+                  <h3 class="section-name">Individual axioms</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -482,19 +550,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLClassAssertionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeClassAssertion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">classAssertion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L36">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -512,19 +585,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSameIndividualAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSameIndividual</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">sameIndividual</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L39">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -542,19 +620,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDifferentIndividualsAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDifferentIndividuals</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">differentIndividuals</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L42">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -572,19 +655,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLObjectPropertyAssertionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeObjectPropertyAssertion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">objectPropertyAssertion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -602,19 +690,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLNegativeObjectPropertyAssertionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeNegativeObjectPropertyAssertion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">negativeObjectPropertyAssertion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L48">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -632,19 +725,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDataPropertyAssertionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDataPropertyAssertion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">11</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">dataPropertyAssertion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L51">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -662,23 +760,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLNegativeDataPropertyAssertionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeNegativeDataPropertyAssertion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">negativeDataPropertyAssertion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L54">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Object%20property%20axioms"></a>
+                <a name="//apple_ref/objc/Section/Object property axioms" class="dashAnchor"></a>
+                <a href="#/Object%20property%20axioms">
+                  <h3 class="section-name">Object property axioms</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -692,19 +806,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLEquivalentObjectPropertiesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeEquivalentObjectProperties</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">13</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">equivalentObjectProperties</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L59">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -712,9 +831,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeSubObjectProperty"></a>
-                    <a name="//apple_ref/objc/Case/OWLAxiomTypeSubObjectProperty" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeSubObjectProperty">OWLAxiomTypeSubObjectProperty</a>
+                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeSubObjectPropertyOf"></a>
+                    <a name="//apple_ref/objc/Case/OWLAxiomTypeSubObjectPropertyOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeSubObjectPropertyOf">OWLAxiomTypeSubObjectPropertyOf</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -722,19 +841,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSubObjectPropertyOfAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSubObjectPropertyOf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">subObjectPropertyOf</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L62">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -742,9 +866,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeInverseObjectProperty"></a>
-                    <a name="//apple_ref/objc/Case/OWLAxiomTypeInverseObjectProperty" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeInverseObjectProperty">OWLAxiomTypeInverseObjectProperty</a>
+                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeInverseObjectProperties"></a>
+                    <a name="//apple_ref/objc/Case/OWLAxiomTypeInverseObjectProperties" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeInverseObjectProperties">OWLAxiomTypeInverseObjectProperties</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -752,19 +876,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLInverseObjectPropertiesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeInverseObjectProperties</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">inverseObjectProperties</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L65">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -782,19 +911,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLFunctionalObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeFunctionalObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">functionalObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L68">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -812,19 +946,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLInverseFunctionalObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeInverseFunctionalObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">17</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">inverseFunctionalObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L71">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -842,19 +981,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSymmetricObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSymmetricObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">18</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">symmetricObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -872,19 +1016,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLAsymmetricObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeAsymmetricObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">19</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">asymmetricObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L77">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -902,19 +1051,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLTransitiveObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeTransitiveObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">transitiveObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L80">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -932,19 +1086,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLReflexiveObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeReflexiveObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">reflexiveObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L83">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -962,19 +1121,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLIrreflexiveObjectPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeIrreflexiveObjectProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">22</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">irreflexiveObjectProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L86">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -992,19 +1156,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLObjectPropertyDomainAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeObjectPropertyDomain</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">objectPropertyDomain</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L89">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1022,19 +1191,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLObjectPropertyRangeAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeObjectPropertyRange</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">objectPropertyRange</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L92">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1052,19 +1226,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDisjointObjectPropertiesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDisjointObjectProperties</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">disjointObjectProperties</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L95">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1072,9 +1251,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeSubPropertyChain"></a>
-                    <a name="//apple_ref/objc/Case/OWLAxiomTypeSubPropertyChain" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeSubPropertyChain">OWLAxiomTypeSubPropertyChain</a>
+                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeSubPropertyChainOf"></a>
+                    <a name="//apple_ref/objc/Case/OWLAxiomTypeSubPropertyChainOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeSubPropertyChainOf">OWLAxiomTypeSubPropertyChainOf</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1082,23 +1261,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSubPropertyChainOfAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSubPropertyChainOf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">26</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">subPropertyChainOf</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L98">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Data%20property%20axioms"></a>
+                <a name="//apple_ref/objc/Section/Data property axioms" class="dashAnchor"></a>
+                <a href="#/Data%20property%20axioms">
+                  <h3 class="section-name">Data property axioms</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1112,19 +1307,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLEquivalentDataPropertiesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeEquivalentDataProperties</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">27</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">equivalentDataProperties</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L103">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1132,9 +1332,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeSubDataProperty"></a>
-                    <a name="//apple_ref/objc/Case/OWLAxiomTypeSubDataProperty" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeSubDataProperty">OWLAxiomTypeSubDataProperty</a>
+                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeSubDataPropertyOf"></a>
+                    <a name="//apple_ref/objc/Case/OWLAxiomTypeSubDataPropertyOf" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeSubDataPropertyOf">OWLAxiomTypeSubDataPropertyOf</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1142,19 +1342,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSubDataPropertyOfAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSubDataPropertyOf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">28</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">subDataPropertyOf</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L106">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1172,19 +1377,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLFunctionalDataPropertyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeFunctionalDataProperty</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">29</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">functionalDataProperty</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L109">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1202,19 +1412,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDataPropertyDomainAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDataPropertyDomain</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">dataPropertyDomain</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L112">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1232,19 +1447,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDataPropertyRangeAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDataPropertyRange</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">dataPropertyRange</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L115">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1262,23 +1482,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLDisjointDataPropertiesAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeDisjointDataProperties</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">disjointDataProperties</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Keys"></a>
+                <a name="//apple_ref/objc/Section/Keys" class="dashAnchor"></a>
+                <a href="#/Keys">
+                  <h3 class="section-name">Keys</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1292,23 +1528,39 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLHasKeyAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeHasKey</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">33</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">hasKey</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L123">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Annotation%20axioms"></a>
+                <a name="//apple_ref/objc/Section/Annotation axioms" class="dashAnchor"></a>
+                <a href="#/Annotation%20axioms">
+                  <h3 class="section-name">Annotation axioms</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1322,19 +1574,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLAnnotationAssertionAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeAnnotationAssertion</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">34</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">annotationAssertion</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L128">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1352,19 +1609,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLSubAnnotationPropertyOfAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeSubAnnotationPropertyOf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">35</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">subAnnotationPropertyOf</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L131">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1382,19 +1644,24 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLAnnotationPropertyRangeAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeAnnotationPropertyRange</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">36</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">annotationPropertyRange</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L134">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1412,19 +1679,70 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Represents OWLAnnotationPropertyDomainAxiom.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">OWLAxiomType</span> <span class="o">:</span> <span class="n">NSInteger</span> <span class="p">{}</span></code></pre>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeAnnotationPropertyDomain</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">37</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">annotationPropertyDomain</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L137">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/All"></a>
+                <a name="//apple_ref/objc/Section/All" class="dashAnchor"></a>
+                <a href="#/All">
+                  <h3 class="section-name">All</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OWLAxiomType@OWLAxiomTypeAll"></a>
+                    <a name="//apple_ref/objc/Case/OWLAxiomTypeAll" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OWLAxiomType@OWLAxiomTypeAll">OWLAxiomTypeAll</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents all axiom types.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="n">OWLAxiomTypeAll</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint64_t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">all</span><span class="p">:</span> <span class="kt">OWLAxiomType</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLAxiomType.h#L142">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1434,7 +1752,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-02-17)</p>
+          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

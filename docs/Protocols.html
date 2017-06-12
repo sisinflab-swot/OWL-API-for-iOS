@@ -13,7 +13,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">OWLAPI Docs</a> (46% documented)</p>
+        <p><a href="index.html">OWLAPI Docs</a> (94% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -30,6 +30,9 @@
           <li class="nav-group-name">
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/OWLDLExpressivityChecker.html">OWLDLExpressivityChecker</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Classes/OWLIRI.html">OWLIRI</a>
               </li>
@@ -80,6 +83,9 @@
                 <a href="Enums/OWLClassExpressionType.html">OWLClassExpressionType</a>
               </li>
               <li class="nav-group-task">
+                <a href="Enums/OWLDLConstruct.html">OWLDLConstruct</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums/OWLEntityType.html">OWLEntityType</a>
               </li>
             </ul>
@@ -113,6 +119,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/OWLClassExpression.html">OWLClassExpression</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLDataFactory.html">OWLDataFactory</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a>
@@ -486,7 +495,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLClass.h#L15-L44">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLClass.h#L15-L53">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -594,6 +603,46 @@ This protocol covers named and anonymous classes.</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLClassExpression.h#L18-L50">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDataFactory"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLDataFactory" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory">OWLDataFactory</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An interface for creating entities, class expressions and axioms.</p>
+
+                        <a href="Protocols/OWLDataFactory.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLDataFactory</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">OWLDataFactory</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L39-L320">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1638,7 +1687,7 @@ This protocol covers named and anonymous classes.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L21-L80">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L23-L155">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1682,7 +1731,7 @@ This protocol covers named and anonymous classes.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntologyManager.h#L19-L32">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntologyManager.h#L20-L39">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2172,7 +2221,7 @@ in the OWL 2 specification.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-02-17)</p>
+          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
