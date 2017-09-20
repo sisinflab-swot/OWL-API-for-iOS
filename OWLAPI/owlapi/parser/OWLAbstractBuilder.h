@@ -68,9 +68,11 @@ __SYNTHESIZE_BUILDER_OBJ_PROPERTY(NSString, NAME, ACCESSOR_NAME, isEqualToString
         return YES; \
     } \
     if (error) { \
+        NSString *curValue = [NSString stringWithUTF8String:(char *)_##NAME] ?: @"nil"; \
+        NSString *newValue = [NSString stringWithUTF8String:(char *)NAME] ?: @"nil"; \
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax \
                       localizedDescription:ERROR_DESC \
-                      userInfo:@{@"Values": @[[NSString stringWithUTF8String:(char *)_##NAME], [NSString stringWithUTF8String:(char *)NAME]]}]; \
+                      userInfo:@{@"Values": @[curValue, newValue]}]; \
     } \
     return NO; \
 }
@@ -152,7 +154,7 @@ __SYNTHESIZE_BUILDER_OBJ_PROPERTY(NSString, NAME, ACCESSOR_NAME, isEqualToString
     if (error) { \
         *error = [NSError OWLErrorWithCode:OWLErrorCodeSyntax \
                       localizedDescription:ERROR_DESC \
-                      userInfo:@{@"Values": @[_##NAME, NAME]}]; \
+                      userInfo:@{@"Values": @[_##NAME ?: @"nil", NAME ?: @"nil"]}]; \
     } \
     return NO; \
 }
