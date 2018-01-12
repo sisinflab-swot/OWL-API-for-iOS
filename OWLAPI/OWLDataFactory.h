@@ -252,7 +252,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Gets an instance of OWLDisjointClassesAxiom.
  *
- * @param classExpression The disjoint classes.
+ * @param classExpressions The disjoint classes.
  *
  * @return An instance of OWLDisjointClassesAxiom.
  */
@@ -261,7 +261,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Gets an instance of OWLEquivalentClassesAxiom.
  *
- * @param classExpression The equivalent classes.
+ * @param classExpressions The equivalent classes.
  *
  * @return An instance of OWLEquivalentClassesAxiom.
  */
