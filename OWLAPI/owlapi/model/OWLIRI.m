@@ -71,6 +71,11 @@ SYNTHESIZE_LAZY(NSString, string, {
     return index;
 }
 
+- (NSComparisonResult)compare:(OWLIRI *)iri
+{
+    return [self.string compare:iri.string];
+}
+
 #pragma mark Lifecycle
 
 static OWLMap *instanceCache = NULL;

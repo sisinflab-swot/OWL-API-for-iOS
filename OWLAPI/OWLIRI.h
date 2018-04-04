@@ -40,6 +40,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithCString:(unsigned char *)string;
 
+/**
+ * Compares two IRIs alphabetically.
+ *
+ * @param iri The IRI with which to compare the receiver.
+ *
+ * @return Value that indicates the lexical ordering.
+ */
+- (NSComparisonResult)compare:(OWLIRI *)iri;
+
 @end
 
 NS_ASSUME_NONNULL_END
