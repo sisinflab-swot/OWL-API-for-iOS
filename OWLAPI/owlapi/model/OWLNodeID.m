@@ -1,28 +1,25 @@
 //
 //  Created by Ivano Bilenchi on 25/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLNodeID.h"
+#import "OWLCowlUtils.h"
+#import "cowl_node_id.h"
 
-OWLNodeID OWLNodeID_new(void)
-{
-    static OWLNodeID idCounter = 0;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        uint32_t const range = 1782;
-        idCounter = arc4random_uniform(range) + range;
-    });
+OWLNodeID OWLNodeID_new(void) {
+    CowlNodeID nodeId = cowl_node_id_get_unique();
     
-    if (idCounter == 0) {
+    if (nodeId == COWL_NODE_ID_NULL) {
+        NSString *reason = @"Exceeded the maximum number of anonymous node identifiers.";
         @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:@"Exceeded the maximum number of anonymous node identifiers."
+                                       reason:reason
                                      userInfo:nil];
     }
-    return idCounter++;
+
+    return nodeId;
 }
 
-NSString * OWLNodeID_toString(OWLNodeID ID)
-{
-    return [NSString stringWithFormat:@"%llu", ID];
+NSString * OWLNodeID_toString(OWLNodeID nodeId) {
+    return stringFromCowl(cowl_node_id_to_string((CowlNodeID)nodeId), YES);
 }

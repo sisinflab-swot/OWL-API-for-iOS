@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 25/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLIndividual.h"
@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OWLAnonymousIndividual <OWLIndividual>
 
 /// The ID of this individual.
-@property (nonatomic, readonly) OWLNodeID ID;
+@property (nonatomic, readonly) OWLNodeID nodeID;
 
 @end
 

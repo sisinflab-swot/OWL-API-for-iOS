@@ -1,13 +1,13 @@
 //
 //  Created by Ivano Bilenchi on 04/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObjectImpl.h"
 #import "OWLOntology.h"
+#import "cowl_compat.h"
 
-@class OWLOntologyID;
-@class OWLOntologyInternals;
+cowl_struct_decl(CowlOntology);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readwrite) id<OWLOntologyManager> manager;
 
-- (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals;
+- (instancetype)initWithCowlOntology:(CowlOntology *)ontology
+                             manager:(id<OWLOntologyManager>)manager
+                              retain:(BOOL)retain;
 
 @end
 

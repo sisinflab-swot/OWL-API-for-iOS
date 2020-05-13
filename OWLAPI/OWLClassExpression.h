@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 03/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObject.h"
@@ -28,7 +28,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Determines if this expression is the built in class owl:Nothing.
 @property (nonatomic, readonly) BOOL isOWLNothing;
-
 
 /**
  * Interprets this expression as a conjunction and returns the conjuncts.

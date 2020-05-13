@@ -1,33 +1,33 @@
 //
 //  Created by Ivano Bilenchi on 15/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLClassAssertionAxiomImpl.h"
-#import "OWLClassExpression.h"
-#import "OWLIndividual.h"
-#import "NSMapTable+SMRObjectCache.h"
+#import "OWLCowlUtils.h"
+#import "cowl_cls_assert_axiom.h"
 
 @implementation OWLClassAssertionAxiomImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_cls_assert_axiom_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return cowl_cls_assert_axiom_hash(_cowlObject); }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"ClassAssertion(%@ %@)", _classExpression, _individual];
+- (NSString *)description {
+    return stringFromCowl(cowl_cls_assert_axiom_to_string(_cowlObject), YES);
 }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
-{
-    NSMutableSet *signature = (NSMutableSet *)[_individual signature];
-    [signature unionSet:[_classExpression signature]];
-    return signature;
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    CowlEntityIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
+    cowl_cls_assert_axiom_iterate_signature(_cowlObject, &iter);
 }
 
 #pragma mark OWLAxiom
@@ -36,37 +36,33 @@
 
 #pragma mark OWLClassAssertionAxiom
 
-@synthesize individual = _individual;
-@synthesize classExpression = _classExpression;
+- (id<OWLIndividual>)individual {
+    return individualFromCowl(cowl_cls_assert_axiom_get_ind(_cowlObject), YES);
+}
+
+- (id<OWLClassExpression>)classExpression {
+    return classExpressionFromCowl(cowl_cls_assert_axiom_get_cls_exp(_cowlObject), YES);
+}
 
 #pragma mark Other public methods
 
-static NSMapTable *instanceCache = nil;
-
-+ (void)initialize
-{
-    if (self == [OWLClassAssertionAxiomImpl class]) {
-        instanceCache = [NSMapTable smr_objCache];
+- (instancetype)initWithCowlAxiom:(CowlClsAssertAxiom *)axiom retain:(BOOL)retain {
+    NSParameterAssert(axiom);
+    if ((self = [super init])) {
+        _cowlObject = retain ? cowl_cls_assert_axiom_retain(axiom) : axiom;
     }
+    return self;
 }
 
 - (instancetype)initWithIndividual:(id<OWLIndividual>)individual classExpression:(id<OWLClassExpression>)classExpression
 {
     NSParameterAssert(individual && classExpression);
-    
-    id cachedInstance = [instanceCache smr_objCacheGetForKey1:individual key2:classExpression];
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else if ((self = [super init])) {
-        _individual = [(id)individual copy];
-        _classExpression = [(id)classExpression copy];
-        
-        [instanceCache smr_objCacheSet:self forKey1:_individual key2:_classExpression];
-    }
-    return self;
+    CowlClsAssertAxiom *axiom = cowl_cls_assert_axiom_get(((OWLObjectImpl *)individual)->_cowlObject,
+                                                          ((OWLObjectImpl *)classExpression)->_cowlObject,
+                                                          NULL);
+    return [self initWithCowlAxiom:axiom retain:NO];
 }
 
-- (void)dealloc { [instanceCache smr_objCacheRemoveForKey1:_individual key2:_classExpression]; }
+- (void)dealloc { cowl_cls_assert_axiom_release(_cowlObject); }
 
 @end

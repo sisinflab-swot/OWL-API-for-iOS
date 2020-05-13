@@ -1,32 +1,40 @@
 //
 //  Created by Ivano Bilenchi on 08/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObjectPropertyImpl.h"
-#import "OWLIRI.h"
-#import "NSMapTable+SMRObjectCache.h"
+#import "OWLCowlUtils.h"
+#import "OWLIRI+Private.h"
+#import "cowl_obj_prop.h"
 
 @implementation OWLObjectPropertyImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_obj_prop_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return (NSUInteger)cowl_obj_prop_hash(_cowlObject); }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"ObjectProperty(<%@>)", _IRI];
+- (NSString *)description {
+    return stringFromCowl(cowl_obj_prop_to_string(_cowlObject), YES);
 }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [NSMutableSet setWithObject:self]; };
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    handler(self);
+}
 
 #pragma mark OWLNamedObject
 
-@synthesize IRI = _IRI;
+- (OWLIRI *)IRI {
+    return [[OWLIRI alloc] initWithCowlIRI:cowl_obj_prop_get_iri(_cowlObject) retain:NO];
+}
 
 #pragma mark OWLEntity
 
@@ -46,35 +54,22 @@
 
 - (id<OWLObjectProperty>)asOWLObjectProperty { return self; }
 
-#pragma mark Other public methods
+#pragma mark Lifecycle
 
-static NSMapTable *instanceCache = nil;
-
-+ (void)initialize
-{
-    if (self == [OWLObjectPropertyImpl class]) {
-        instanceCache = [NSMapTable smr_objCache];
+- (instancetype)initWithCowlProperty:(CowlObjProp *)cowlProp retain:(BOOL)retain {
+    NSParameterAssert(cowlProp);
+    if ((self = [super init])) {
+        _cowlObject = retain ? cowl_obj_prop_retain(cowlProp) : cowlProp;
     }
+    return self;
 }
 
 - (instancetype)initWithIRI:(OWLIRI *)IRI
 {
     NSParameterAssert(IRI);
-    
-    id cachedInstance = [instanceCache objectForKey:IRI];
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else {
-        if ((self = [super init])) {
-            _IRI = [IRI copy];
-            [instanceCache setObject:self forKey:_IRI];
-        }
-    }
-    
-    return self;
+    return [self initWithCowlProperty:cowl_obj_prop_get(IRI.cowlIRI) retain:NO];
 }
 
-- (void)dealloc { [instanceCache removeObjectForKey:_IRI]; }
+- (void)dealloc { cowl_obj_prop_release(_cowlObject); }
 
 @end

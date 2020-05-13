@@ -21,7 +21,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2016 SisInf Lab. All rights reserved.</string>
+	<string>Copyright © 2016-2020 SisInf Lab. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
 	<string></string>
 	<key>Author</key>

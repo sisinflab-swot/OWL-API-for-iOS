@@ -13,7 +13,7 @@
     <a title="OWLAPI  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">OWLAPI Docs</a> (94% documented)</p>
+        <p><a href="index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -74,7 +74,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/OWLAxiomType.html">OWLAxiomType</a>
@@ -109,7 +109,7 @@
                 <a href="Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/OWLClass.html">OWLClass</a>
+                <a href="Protocols.html#/c:objc(pl)OWLClass">OWLClass</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
@@ -261,10 +261,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Type Definitions.html">Type Definitions</a>
+            <a href="Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+                <a href="Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
             </ul>
           </li>
@@ -285,33 +285,43 @@
         <section>
           <section class="section">
             
-            <a href='#owl-api-for-ios' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='owl-api-for-ios'>OWL API for iOS</h1>
+            <h1 id='owl-api-for-ios' class='heading'>OWL API for iOS</h1>
 
-<p>This project aims to provide a native iOS API to work with OWL ontologies. While it is still a work in progress, the API can currently parse, deserialize and query RDF/XML ontologies containing ALEN DL constructs (with the addition of role hierarchies).</p>
+<p>This project aims to provide a native iOS API to work with OWL ontologies.
+While it is still a work in progress, the API can currently parse, deserialize and query
+ontologies in OWL functional syntax containing ALEN DL constructs.</p>
 
-<p>The model layer of the API is largely based on <a href="http://owlcs.github.io/owlapi">OWL API</a> in order to simplify integration with existing software and provide familiar interfaces. The parser component is built on top of the <a href="http://librdf.org">Redland RDF Libraries</a>, and it is specifically optimized to provide satisfactory performance on iOS devices in terms of both memory usage and turnaround time of parsing and querying operations.</p>
-<a href='#using-the-framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='using-the-framework'>Using the framework</h2>
+<p>The model layer of the API is largely based on the <a href="http://owlcs.github.io/owlapi">OWL API</a>
+in order to simplify integration with existing software and provide familiar interfaces.
+The parser and data model are built on top of <a href="http://swot.sisinflab.poliba.it/cowl">Cowl</a>,
+which ensures that the library has satisfactory performance on iOS devices in terms of 
+memory usage and turnaround time of parsing and querying operations.</p>
+<h2 id='using-the-framework' class='heading'>Using the framework</h2>
 
 <p>The framework can be built on any computer running <strong>macOS</strong> with <strong>Xcode</strong> installed. It supports <strong>iOS 8.0</strong> and later.</p>
-<a href='#building-the-framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='building-the-framework'>Building the framework</h3>
+<h3 id='building-the-framework' class='heading'>Building the framework</h3>
 
 <ul>
-<li>Install <em>pkg-config</em>, which is required in order to build raptor. If you use <em>HomeBrew</em>: <code>brew install pkg-config</code></li>
-<li>Clone this project: <code>git clone https://github.com/sisinflab-swot/OWL-API-for-iOS.git</code></li>
-<li>Open <em>OWLAPI.xcodeproj</em>, select the <em>OWLAPI-Universal-iOS</em> target and run it.</li>
+<li>Install <em>CMake</em>, which is required in order to build Cowl.
+If you use <em>HomeBrew</em>: <code>brew install cmake</code></li>
+<li>Clone this project: <code>git clone --recursive https://github.com/sisinflab-swot/OWL-API-for-iOS.git</code></li>
+<li>Open <em>OWLAPI.xcodeproj</em>, select the <em>OWLAPI-Universal-iOS</em> target and run it,
+or archive it for a release build.</li>
 </ul>
 
-<p>The first compilation may take several minutes, since the required dependencies will be downloaded and compiled beforehand. Once compilation completes, Finder will be automatically opened to the built framework path.</p>
-<a href='#adding-the-framework-to-your-ios-app' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='adding-the-framework-to-your-ios-app'>Adding the framework to your iOS app</h3>
+<p>Once compilation is complete, the Finder will be automatically opened to the built framework path.</p>
+<h3 id='adding-the-framework-to-your-ios-app' class='heading'>Adding the framework to your iOS app</h3>
 
 <ul>
 <li>Copy the framework anywhere into the directory of your project.</li>
 <li>Open your Xcode project and navigate to its build settings.</li>
-<li>In the <em><q>General</q></em> tab, add the compiled framework to the <em><q>Embedded binaries</q></em> section.</li>
+<li>In the <em>&ldquo;General&rdquo;</em> tab, add the compiled framework to the <em>Frameworks and Libraries</em> section.</li>
 </ul>
-<a href='#usage-examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='usage-examples'>Usage examples</h3>
+<h3 id='usage-examples' class='heading'>Usage examples</h3>
 
-<p>Here are some examples to get you started with <em>OWL API for iOS</em>. To learn more about what you can do with it, check out the <a href="https://sisinflab-swot.github.io/OWL-API-for-iOS/">online documentation</a>.</p>
+<p>Here are some examples to get you started with <em>OWL API for iOS</em>.
+To learn more about what you can do with it, check out the
+<a href="https://sisinflab-swot.github.io/OWL-API-for-iOS/">online documentation</a>.</p>
 
 <p><strong>Objective-C:</strong></p>
 <pre class="highlight plaintext"><code>@import OWLAPI;
@@ -332,9 +342,9 @@ if (!ontology) {
 }
 
 // Query the ontology
-for (id&lt;OWLClass&gt; owlClass in [ontology classesInSignature]) {
+[ontology enumerateClassesInSignatureWithHandler:^(id&lt;OWLClass&gt; owlClass) {
     NSLog(@"%@", owlClass);
-}
+}];
 </code></pre>
 
 <p><strong>Swift:</strong></p>
@@ -357,42 +367,40 @@ for (id&lt;OWLClass&gt; owlClass in [ontology classesInSignature]) {
 <span class="p">}</span>
 
 <span class="c1">// Query the ontology</span>
-<span class="k">for</span> <span class="n">owlClass</span> <span class="k">in</span> <span class="n">ontology</span><span class="o">.</span><span class="nf">classesInSignature</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">ontology</span><span class="o">.</span><span class="n">enumerateClassesInSignature</span> <span class="p">{</span> <span class="n">owlClass</span> <span class="k">in</span>
     <span class="nf">print</span><span class="p">(</span><span class="n">owlClass</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#references' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='references'>References</h2>
+<h2 id='references' class='heading'>References</h2>
 
-<p>If you want to refer to OWL API for iOS in a publication, please cite the following paper: <a href="http://sisinflab.poliba.it/publications/2016/RSDB16/">[Ruta <em>et al.</em>, OWL API for iOS]</a></p>
+<p>If you want to refer to OWL API for iOS in a publication, please cite the following paper:
+<a href="http://sisinflab.poliba.it/publications/2016/RSDB16/">[Ruta <em>et al.</em>, OWL API for iOS]</a></p>
 <pre class="highlight plaintext"><code>@InProceedings{RSDB16,
   author       = {Michele Ruta and Floriano Scioscia and Eugenio {Di Sciascio} and Ivano Bilenchi},
   title        = "OWL API for iOS: early implementation and results",
-  booktitle    = "13th OWL: Experiences and Directions Workshop and
-5th OWL reasoner evaluation workshop (OWLED - ORE
-2016)",
+  booktitle    = "13th OWL: Experiences and Directions Workshop and 5th OWL reasoner evaluation workshop (OWLED - ORE 2016)",
   series       = "Lecture Notes in Computer Science",
   volume       = "10161",
   pages        = "141--152",
   month        = "nov",
   year         = "2016",
-  editor       = "Mauro Dragoni, Mar\'{\i}a Poveda-Villal\'on, Ernesto
-Jimenez-Ruiz",
+  editor       = "Mauro Dragoni, Mar\'{\i}a Poveda-Villal\'on, Ernesto Jimenez-Ruiz",
   publisher    = "Springer",
   organization = "W3C",
   note         = "DOI: 10.1007/978-3-319-54627-8",
-  url          = "http://sisinflab.poliba.it/sisinflab/publications/
-2016/RSDB16"
+  url          = "http://sisinflab.poliba.it/publications/2016/RSDB16"
 }
 </code></pre>
-<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+<h2 id='license' class='heading'>License</h2>
 
-<p><em>OWL API for iOS</em> is distributed under the <a href="https://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a>.</p>
+<p><em>OWL API for iOS</em> is distributed under the
+<a href="https://www.eclipse.org/legal/epl-v10.html">Eclipse Public License, Version 1.0</a>.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

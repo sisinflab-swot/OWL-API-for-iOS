@@ -14,7 +14,7 @@
     <a title="OWLOntology Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OWLAPI Docs</a> (94% documented)</p>
+        <p><a href="../index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -75,7 +75,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/OWLAxiomType.html">OWLAxiomType</a>
@@ -110,7 +110,7 @@
                 <a href="../Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/OWLClass.html">OWLClass</a>
+                <a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
@@ -262,10 +262,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Type Definitions.html">Type Definitions</a>
+            <a href="../Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+                <a href="../Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
             </ul>
           </li>
@@ -288,7 +288,7 @@
             <h1>OWLOntology</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLOntology</span> <span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLOntology</span> <span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObject.html">OWLObject</a></span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
@@ -318,12 +318,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/OWLOntologyID.html">OWLOntologyID</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">ontologyID</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n"><a href="../Classes/OWLOntologyID.html">OWLOntologyID</a></span> <span class="o">*</span><span class="n">_Nonnull</span> <span class="n">ontologyID</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">ontologyID</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLOntologyID.html">OWLOntologyID</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">ontologyID</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLOntologyID.html">OWLOntologyID</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -353,7 +353,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLOntologyManager.html">OWLOntologyManager</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span> <span class="n">manager</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLOntologyManager.html">OWLOntologyManager</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span> <span class="n">manager</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -366,9 +366,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLOntology(im)allAxioms"></a>
-                    <a name="//apple_ref/objc/Method/-allAxioms" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)allAxioms">-allAxioms</a>
+                    <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsWithHandler:"></a>
+                    <a name="//apple_ref/objc/Method/-enumerateAxiomsWithHandler:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsWithHandler:">-enumerateAxiomsWithHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -376,21 +376,36 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieves all of the axioms in this ontology.</p>
+                        <p>Enumerates over all the axioms.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="n">allAxioms</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsWithHandler</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="nv">handler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
                       <div>
-                        <h4>Return Value</h4>
-                        <p>All the axioms in this ontology.</p>
-
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The enumeration handler.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L36">Show on GitHub</a>
@@ -401,9 +416,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLOntology(im)axiomsForType:"></a>
-                    <a name="//apple_ref/objc/Method/-axiomsForType:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)axiomsForType:">-axiomsForType:</a>
+                    <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsOfTypes:withHandler:"></a>
+                    <a name="//apple_ref/objc/Method/-enumerateAxiomsOfTypes:withHandler:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsOfTypes:withHandler:">-enumerateAxiomsOfTypes:<wbr>withHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -411,14 +426,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Gets the axioms which are of the specified type.</p>
+                        <p>Enumerates over the axioms having the desired types.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">axiomsForType</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">type</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsOfTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
+                   <span class="nf">withHandler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="nv">handler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -429,309 +445,32 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>type</em>
+                                <em>types</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The type of axioms to be retrieved.</p>
-
+                                  <p>The desired axiom types.</p>
                                 </div>
                               </td>
                             </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>A set containing the axioms of the specified type.</p>
-
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L45">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)OWLOntology(im)classAssertionAxiomsForIndividual:"></a>
-                    <a name="//apple_ref/objc/Method/-classAssertionAxiomsForIndividual:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)classAssertionAxiomsForIndividual:">-classAssertionAxiomsForIndividual:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets the OWLClassAssertionAxioms contained in this ontology that make the specified
- individual an instance of some class expression.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span>
-<span class="nf">classAssertionAxiomsForIndividual</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
                             <tr>
                               <td>
                                 <code>
-                                <em>individual</em>
+                                <em>handler</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The individual.</p>
-
+                                  <p>The enumeration handler.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The set of class assertion axioms that reference the specified individual.</p>
-
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L55">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)OWLOntology(im)disjointClassesAxiomsForClass:"></a>
-                    <a name="//apple_ref/objc/Method/-disjointClassesAxiomsForClass:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)disjointClassesAxiomsForClass:">-disjointClassesAxiomsForClass:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets the set of disjoint class axioms that contain the specified class as an operand.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">disjointClassesAxiomsForClass</span><span class="p">:</span>
-    <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">cls</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>cls</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The class.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The set of disjoint class axioms that contain the specified class.</p>
-
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L64">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)OWLOntology(im)equivalentClassesAxiomsForClass:"></a>
-                    <a name="//apple_ref/objc/Method/-equivalentClassesAxiomsForClass:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)equivalentClassesAxiomsForClass:">-equivalentClassesAxiomsForClass:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets the set of equivalent class axioms that contain the specified class as an operand.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span>
-<span class="nf">equivalentClassesAxiomsForClass</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">cls</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>cls</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The class.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The set of equivalent class axioms that contain the specified class.</p>
-
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L73">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)OWLOntology(im)subClassAxiomsForSubClass:"></a>
-                    <a name="//apple_ref/objc/Method/-subClassAxiomsForSubClass:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)subClassAxiomsForSubClass:">-subClassAxiomsForSubClass:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets all of the subclass axioms where the left hand side (the subclass)
- is equal to the specified class.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">subClassAxiomsForSubClass</span><span class="p">:</span>
-    <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">cls</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>cls</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The class.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The set of subclass axioms where the LHS is the specified class.</p>
-
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L83">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(pl)OWLOntology(im)subClassAxiomsForSuperClass:"></a>
-                    <a name="//apple_ref/objc/Method/-subClassAxiomsForSuperClass:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)subClassAxiomsForSuperClass:">-subClassAxiomsForSuperClass:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Gets all of the subclass axioms where the right hand side (the superclass)
- is equal to the specified class.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nf">subClassAxiomsForSuperClass</span><span class="p">:</span>
-    <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">cls</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>cls</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The class.</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The set of subclass axioms where the RHS is the specified class.</p>
-
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L93">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L44-L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -741,7 +480,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingAnonymousIndividual:ofTypes:withHandler:"></a>
                     <a name="//apple_ref/objc/Method/-enumerateAxiomsReferencingAnonymousIndividual:ofTypes:withHandler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingAnonymousIndividual:ofTypes:withHandler:">-enumerateAxiomsReferencingAnonymousIndividual:ofTypes:withHandler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingAnonymousIndividual:ofTypes:withHandler:">-enumerateAxiomsReferencingAnonymousIndividual:<wbr>ofTypes:<wbr>withHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -757,13 +496,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="nf">enumerateAxiomsReferencingAnonymousIndividual</span><span class="p">:</span>
-    <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
-                                      <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
-                                  <span class="nf">withHandler</span><span class="p">:</span>
-                                      <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span>
-                                          <span class="n">handler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingAnonymousIndividual</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
+                                              <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
+                                          <span class="nf">withHandler</span><span class="p">:</span>
+                                              <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span>
+                                                  <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span>
+                                                  <span class="n">handler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -780,7 +519,6 @@
                               <td>
                                 <div>
                                   <p>The individual.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -793,7 +531,6 @@
                               <td>
                                 <div>
                                   <p>The desired axiom types.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -806,7 +543,6 @@
                               <td>
                                 <div>
                                   <p>The enumeration handler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -814,7 +550,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L103-L105">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L55-L57">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -824,7 +560,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingClass:ofTypes:withHandler:"></a>
                     <a name="//apple_ref/objc/Method/-enumerateAxiomsReferencingClass:ofTypes:withHandler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingClass:ofTypes:withHandler:">-enumerateAxiomsReferencingClass:ofTypes:withHandler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingClass:ofTypes:withHandler:">-enumerateAxiomsReferencingClass:<wbr>ofTypes:<wbr>withHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -840,7 +576,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingClass</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">cls</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingClass</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">cls</span>
                                 <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
                             <span class="nf">withHandler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span>
                                             <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="n">handler</span><span class="p">;</span></code></pre>
@@ -860,7 +596,6 @@
                               <td>
                                 <div>
                                   <p>The class.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -873,7 +608,6 @@
                               <td>
                                 <div>
                                   <p>The desired axiom types.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -886,7 +620,6 @@
                               <td>
                                 <div>
                                   <p>The enumeration handler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -894,7 +627,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L115-L117">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L67-L69">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -904,7 +637,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingIndividual:ofTypes:withHandler:"></a>
                     <a name="//apple_ref/objc/Method/-enumerateAxiomsReferencingIndividual:ofTypes:withHandler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingIndividual:ofTypes:withHandler:">-enumerateAxiomsReferencingIndividual:ofTypes:withHandler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingIndividual:ofTypes:withHandler:">-enumerateAxiomsReferencingIndividual:<wbr>ofTypes:<wbr>withHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -920,11 +653,11 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="nf">enumerateAxiomsReferencingIndividual</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
-                             <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
-                         <span class="nf">withHandler</span><span class="p">:</span>
-                             <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="nv">handler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingIndividual</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
+                                     <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
+                                 <span class="nf">withHandler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span>
+                                                 <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="n">handler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -941,7 +674,6 @@
                               <td>
                                 <div>
                                   <p>The individual.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -954,7 +686,6 @@
                               <td>
                                 <div>
                                   <p>The desired axiom types.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -967,7 +698,6 @@
                               <td>
                                 <div>
                                   <p>The enumeration handler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -975,7 +705,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L127-L129">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L79-L81">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -985,7 +715,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingNamedIndividual:ofTypes:withHandler:"></a>
                     <a name="//apple_ref/objc/Method/-enumerateAxiomsReferencingNamedIndividual:ofTypes:withHandler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingNamedIndividual:ofTypes:withHandler:">-enumerateAxiomsReferencingNamedIndividual:ofTypes:withHandler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingNamedIndividual:ofTypes:withHandler:">-enumerateAxiomsReferencingNamedIndividual:<wbr>ofTypes:<wbr>withHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1001,7 +731,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingNamedIndividual</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingNamedIndividual</span><span class="p">:</span>
             <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
                                           <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
                                       <span class="nf">withHandler</span><span class="p">:</span>
@@ -1023,7 +753,6 @@
                               <td>
                                 <div>
                                   <p>The individual.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1036,7 +765,6 @@
                               <td>
                                 <div>
                                   <p>The desired axiom types.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1049,7 +777,6 @@
                               <td>
                                 <div>
                                   <p>The enumeration handler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1057,7 +784,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L139-L141">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L91-L93">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1067,7 +794,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingObjectProperty:ofTypes:withHandler:"></a>
                     <a name="//apple_ref/objc/Method/-enumerateAxiomsReferencingObjectProperty:ofTypes:withHandler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingObjectProperty:ofTypes:withHandler:">-enumerateAxiomsReferencingObjectProperty:ofTypes:withHandler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLOntology(im)enumerateAxiomsReferencingObjectProperty:ofTypes:withHandler:">-enumerateAxiomsReferencingObjectProperty:<wbr>ofTypes:<wbr>withHandler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1083,10 +810,11 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
-<span class="nf">enumerateAxiomsReferencingObjectProperty</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-                                 <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
-                             <span class="nf">withHandler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateAxiomsReferencingObjectProperty</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+                                         <span class="nf">ofTypes</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLAxiomType.html">OWLAxiomType</a></span><span class="p">)</span><span class="nv">types</span>
+                                     <span class="nf">withHandler</span><span class="p">:</span>
+                                         <span class="p">(</span><span class="n">nonnull</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span>
                                              <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span><span class="p">))</span><span class="n">handler</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -1104,7 +832,6 @@
                               <td>
                                 <div>
                                   <p>The object property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1117,7 +844,6 @@
                               <td>
                                 <div>
                                   <p>The desired axiom types.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1130,7 +856,6 @@
                               <td>
                                 <div>
                                   <p>The enumeration handler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1138,7 +863,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L151-L153">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntology.h#L103-L105">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1148,8 +873,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

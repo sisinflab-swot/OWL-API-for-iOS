@@ -1,79 +1,47 @@
 //
 //  Created by Ivano Bilenchi on 04/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
-#import "OWLOntologyID.h"
-#import "OWLIRI.h"
+#import "OWLOntologyID+Private.h"
+#import "OWLCowlUtils.h"
+#import "OWLIRI+Private.h"
 
 @implementation OWLOntologyID
 
-#pragma mark Properties
+#pragma mark NSObject
 
-@synthesize ontologyIRI = _ontologyIRI;
-@synthesize versionIRI = _versionIRI;
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_ontology_id_equals(_cowlID, ((OWLOntologyID *)object)->_cowlID);
+}
+
+- (NSUInteger)hash { return cowl_ontology_id_hash(_cowlID); }
+
+- (NSString *)description {
+    return stringFromCowl(cowl_ontology_id_to_string(_cowlID), YES);
+}
 
 #pragma mark Public methods
 
-- (instancetype)initWithOntologyIRI:(OWLIRI *)ontologyIRI versionIRI:(OWLIRI *)versionIRI
-{
+@synthesize cowlID = _cowlID;
+
+- (OWLIRI *)ontologyIRI {
+    return [[OWLIRI alloc] initWithCowlIRI:_cowlID.ontology_iri retain:YES];
+}
+
+- (OWLIRI *)versionIRI {
+    return [[OWLIRI alloc] initWithCowlIRI:_cowlID.version_iri retain:YES];
+}
+
+- (instancetype)initWithCowlID:(CowlOntologyID)cowlID {
     if ((self = [super init])) {
-        _ontologyIRI = [ontologyIRI copy];
-        _versionIRI = [versionIRI copy];
+        _cowlID = cowlID;
     }
     return self;
 }
 
-- (instancetype)initWithOntologyIRI:(OWLIRI *)ontologyIRI
-{
-    return [self initWithOntologyIRI:ontologyIRI versionIRI:nil];
-}
-
-#pragma mark NSObject
-
-- (BOOL)isEqual:(id)object
-{
-    if (object == self) {
-        return YES;
-    }
-    
-    BOOL equal = NO;
-    
-    if ([object isKindOfClass:[self class]]) {
-        OWLOntologyID *ontologyId = object;
-        
-        OWLIRI *objIRI = ontologyId->_ontologyIRI;
-        BOOL sameOntoIRI = (objIRI == _ontologyIRI || [objIRI isEqual:_ontologyIRI]);
-        
-        objIRI = ontologyId->_versionIRI;
-        BOOL sameVerIRI = (objIRI == _versionIRI || [objIRI isEqual:_versionIRI]);
-        
-        equal = (sameOntoIRI && sameVerIRI);
-    }
-    
-    return equal;
-}
-
-- (NSUInteger)hash { return [_ontologyIRI hash] ^ [_versionIRI hash]; }
-
-- (NSString *)description
-{
-    NSMutableArray *components = [[NSMutableArray alloc] init];
-    
-    if (_ontologyIRI) {
-        [components addObject:[NSString stringWithFormat:@"<%@>", _ontologyIRI]];
-    }
-    
-    if (_versionIRI) {
-        [components addObject:[NSString stringWithFormat:@"Version: <%@>", _versionIRI]];
-    }
-    
-    return [components componentsJoinedByString:@" "];
-}
-
-#pragma mark NSCopying
-
-// This object is immutable.
 - (id)copyWithZone:(__unused NSZone *)zone { return self; }
 
 @end

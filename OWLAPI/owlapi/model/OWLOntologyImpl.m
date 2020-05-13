@@ -1,136 +1,178 @@
 //
 //  Created by Ivano Bilenchi on 04/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLOntologyImpl.h"
-#import "OWLOntologyID.h"
-#import "OWLOntologyInternals.h"
+#import "OWLCowlUtils.h"
+#import "OWLIndividual.h"
+#import "OWLObjCUtils.h"
+#import "OWLOntologyID+Private.h"
+#import "cowl_axiom.h"
+#import "cowl_ontology.h"
 
-@interface OWLOntologyImpl ()
-
-@property (nonatomic, strong) OWLOntologyInternals *internals;
-
-@end
-
+#define forEachOWLAxiomType(types, type, code) do {                                                 \
+    for (OWLAxiomType type = OWLAxiomTypeFirst; type <= OWLAxiomTypeLast; type <<= 1U) {            \
+        if (has_option(types, type)) { code; }                                                      \
+    }                                                                                               \
+} while(0)
 
 @implementation OWLOntologyImpl
 
 #pragma mark Properties
 
-@synthesize internals = _internals;
 @synthesize manager = _manager;
-@synthesize ontologyID = _ontologyID;
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object
-{
-    if (object == self) {
-        return YES;
-    }
-    
-    BOOL equal = NO;
-    
-    if ([super isEqual:object]) {
-        id objID = ((OWLOntologyImpl *)object)->_ontologyID;
-        equal = (objID == _ontologyID || [objID isEqual:_ontologyID]);
-    }
-    
-    return equal;
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_ontology_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
 }
 
-- (NSUInteger)computeHash { return [_ontologyID hash]; }
+- (NSUInteger)hash { return cowl_ontology_hash(_cowlObject); }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
-{
-    NSMutableSet *signature = [[NSMutableSet alloc] initWithSet:self.classesInSignature];
-    [signature unionSet:self.objectPropertiesInSignature];
-    [signature unionSet:self.namedIndividualsInSignature];
-    return signature;
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    CowlEntityIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
+    cowl_ontology_iterate_signature(_cowlObject, &iter);
 }
 
-- (NSSet<id<OWLClass>> *)classesInSignature { return [_internals allClasses]; }
+static bool classesIteratorImpl(void *ctx, CowlClass *cls) {
+    void (^handler)(id<OWLClass>) = (__bridge void (^)(__strong id<OWLClass>))(ctx);
+    handler(classFromCowl(cls, YES));
+    return true;
+}
 
-- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature { return [_internals allNamedIndividuals]; }
+- (void)enumerateClassesInSignatureWithHandler:(void (^)(id<OWLClass>))handler {
+    CowlClassIterator iter = cowl_iterator_init((__bridge void *)(handler), classesIteratorImpl);
+    cowl_ontology_iterate_classes(_cowlObject, &iter);
+}
 
-- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [_internals allObjectProperties]; }
+static bool namedIndIteratorImpl(void *ctx, CowlNamedInd *ind) {
+    void (^handler)(id<OWLNamedIndividual>) = (__bridge void (^)(__strong id<OWLNamedIndividual>))(ctx);
+    handler(namedIndFromCowl(ind, YES));
+    return true;
+}
+
+- (void)enumerateNamedIndividualsInSignatureWithHandler:(void (^)(id<OWLNamedIndividual>))handler {
+    CowlNamedIndIterator iter = cowl_iterator_init((__bridge void *)(handler), namedIndIteratorImpl);
+    cowl_ontology_iterate_named_inds(_cowlObject, &iter);
+}
+
+static bool objPropIteratorImpl(void *ctx, CowlObjProp *prop) {
+    void (^handler)(id<OWLObjectProperty>) = (__bridge void (^)(__strong id<OWLObjectProperty>))(ctx);
+    handler(objPropFromCowl(prop, YES));
+    return true;
+}
+
+- (void)enumerateObjectPropertiesInSignatureWithHandler:(void (^)(id<OWLObjectProperty>))handler {
+    CowlObjPropIterator iter = cowl_iterator_init((__bridge void *)(handler), objPropIteratorImpl);
+    cowl_ontology_iterate_obj_props(_cowlObject, &iter);
+}
 
 #pragma mark OWLOntology
 
-- (NSSet<id<OWLAxiom>> *)allAxioms
-{
-    return [_internals allAxioms];
+static bool axiomIteratorImpl(void *ctx, CowlAxiom *axiom) {
+    void (^handler)(id<OWLAxiom>) = (__bridge void (^)(__strong id<OWLAxiom>))(ctx);
+    id<OWLAxiom> laxiom = axiomFromCowl(axiom, YES);
+    if (laxiom) handler(laxiom);
+    return true;
 }
 
-- (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type
-{
-    return [_internals axiomsForType:type];
+- (OWLOntologyID *)ontologyID {
+    return [[OWLOntologyID alloc] initWithCowlID:cowl_ontology_get_id(_cowlObject)];
 }
 
-- (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual
-{
-    return [_internals classAssertionAxiomsForIndividual:individual];
+- (void)enumerateAxiomsWithHandler:(void (^)(id<OWLAxiom>))handler {
+    CowlAxiomIterator iter = cowl_iterator_init((__bridge void *)(handler), axiomIteratorImpl);
+    cowl_ontology_iterate_axioms(_cowlObject, &iter);
 }
 
-- (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls
-{
-    return [_internals disjointClassesAxiomsForClass:cls];
+- (void)enumerateAxiomsOfTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom>))handler {
+    CowlAxiomIterator iter = cowl_iterator_init((__bridge void *)(handler), axiomIteratorImpl);
+
+    forEachOWLAxiomType(types, type, {
+        cowl_ontology_iterate_axioms_of_type(_cowlObject, cowlAxiomTypeFrom(type), &iter);
+    });
 }
 
-- (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls
-{
-    return [_internals equivalentClassesAxiomsForClass:cls];
+static bool axiomTypeIteratorImpl(void *ctx, CowlAxiom *axiom) {
+    void **array = ctx;
+
+    void (^handler)(id<OWLAxiom>) = (__bridge void (^)(__strong id<OWLAxiom>))(array[1]);
+    OWLAxiomType types = *((OWLAxiomType *)array[0]);
+    OWLAxiomType type = axiomTypeFromCowl(cowl_axiom_get_type(axiom));
+
+    if (has_option(types, type)) {
+        id<OWLAxiom> laxiom = axiomFromCowl(axiom, YES);
+        if (laxiom) handler(laxiom);
+    }
+
+    return true;
 }
 
-- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls
-{
-    return [_internals subClassAxiomsForSubClass:cls];
+- (void)enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual
+                                              ofTypes:(OWLAxiomType)types
+                                          withHandler:(void(^)(id<OWLAxiom> axiom))handler {
+    void *ctx[] = { &types, (__bridge void *)(handler) };
+    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    cowl_ontology_iterate_axioms_for_anon_ind(_cowlObject, cowlWrappedObject(individual), &iter);
 }
 
-- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSuperClass:(id<OWLClass>)cls
-{
-    return [_internals subClassAxiomsForSuperClass:cls];
+- (void)enumerateAxiomsReferencingClass:(id<OWLClass>)cls
+                                ofTypes:(OWLAxiomType)types
+                            withHandler:(void (^)(id<OWLAxiom> axiom))handler {
+    void *ctx[] = { &types, (__bridge void *)(handler) };
+    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    cowl_ontology_iterate_axioms_for_class(_cowlObject, cowlWrappedObject(cls), &iter);
 }
 
-- (void)enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void(^)(id<OWLAxiom> axiom))handler
-{
-    [_internals enumerateAxiomsReferencingAnonymousIndividual:individual ofTypes:types withHandler:handler];
+- (void)enumerateAxiomsReferencingIndividual:(id<OWLIndividual>)individual
+                                     ofTypes:(OWLAxiomType)types
+                                 withHandler:(void (^)(id<OWLAxiom> axiom))handler {
+    if (individual.anonymous) {
+        [self enumerateAxiomsReferencingAnonymousIndividual:(id<OWLAnonymousIndividual>)individual
+                                                    ofTypes:types
+                                                withHandler:handler];
+    } else {
+        [self enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual
+                                                ofTypes:types
+                                            withHandler:handler];
+    }
 }
 
-- (void)enumerateAxiomsReferencingClass:(id<OWLClass>)cls ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
-{
-    [_internals enumerateAxiomsReferencingClass:cls ofTypes:types withHandler:handler];
+- (void)enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual
+                                          ofTypes:(OWLAxiomType)types
+                                      withHandler:(void (^)(id<OWLAxiom> axiom))handler {
+    void *ctx[] = { &types, (__bridge void *)(handler) };
+    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    cowl_ontology_iterate_axioms_for_named_ind(_cowlObject, cowlWrappedObject(individual), &iter);
 }
 
-- (void)enumerateAxiomsReferencingIndividual:(id<OWLIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
-{
-    [_internals enumerateAxiomsReferencingIndividual:individual ofTypes:types withHandler:handler];
-}
-
-- (void)enumerateAxiomsReferencingNamedIndividual:(id<OWLNamedIndividual>)individual ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
-{
-    [_internals enumerateAxiomsReferencingNamedIndividual:individual ofTypes:types withHandler:handler];
-}
-
-- (void)enumerateAxiomsReferencingObjectProperty:(id<OWLObjectProperty>)property ofTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom> axiom))handler
-{
-    [_internals enumerateAxiomsReferencingObjectProperty:property ofTypes:types withHandler:handler];
+- (void)enumerateAxiomsReferencingObjectProperty:(id<OWLObjectProperty>)property
+                                         ofTypes:(OWLAxiomType)types
+                                     withHandler:(void (^)(id<OWLAxiom> axiom))handler {
+    void *ctx[] = { &types, (__bridge void *)(handler) };
+    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    cowl_ontology_iterate_axioms_for_obj_prop(_cowlObject, cowlWrappedObject(property), &iter);
 }
 
 #pragma mark Lifecycle
 
-- (instancetype)initWithID:(OWLOntologyID *)ID internals:(OWLOntologyInternals *)internals
-{
-    NSParameterAssert(ID && internals);
-    
+- (instancetype)initWithCowlOntology:(CowlOntology *)ontology
+                             manager:(id<OWLOntologyManager>)manager
+                              retain:(BOOL)retain {
+    NSParameterAssert(ontology);
     if ((self = [super init])) {
-        _ontologyID = [ID copy];
-        _internals = internals;
+        _cowlObject = retain ? cowl_ontology_retain(ontology) : ontology;
+        _manager = manager;
     }
     return self;
 }
+
+- (void)dealloc { cowl_ontology_release(_cowlObject); }
 
 @end

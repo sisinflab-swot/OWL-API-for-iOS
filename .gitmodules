@@ -1,0 +1,3 @@
+[submodule "lib/cowl"]
+	path = lib/cowl
+	url = https://github.com/sisinflab-swot/cowl.git

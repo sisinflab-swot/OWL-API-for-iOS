@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 25/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,6 +14,6 @@ typedef uint64_t OWLNodeID;
 extern OWLNodeID OWLNodeID_new(void);
 
 /// Returns the string representation of a given node ID.
-extern NSString * OWLNodeID_toString(OWLNodeID ID);
+extern NSString * OWLNodeID_toString(OWLNodeID nodeID);
 
 NS_ASSUME_NONNULL_END

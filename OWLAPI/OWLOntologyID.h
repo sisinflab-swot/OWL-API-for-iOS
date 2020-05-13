@@ -24,21 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// The version IRI of this ontology, or nil if there is no version IRI.
 @property (nonatomic, copy, readonly, nullable) OWLIRI *versionIRI;
 
-/**
- * Constructs an ontology identifier specifying the ontology IRI.
- *
- * @param ontologyIRI The IRI of the ontology document.
- */
-- (instancetype)initWithOntologyIRI:(nullable OWLIRI *)ontologyIRI;
-
-/**
- * Constructs an ontology identifier specifying the ontology IRI.
- *
- * @param ontologyIRI The IRI of the ontology document.
- * @param versionIRI The version IRI of the ontology document.
- */
-- (instancetype)initWithOntologyIRI:(nullable OWLIRI *)ontologyIRI versionIRI:(nullable OWLIRI *)versionIRI;
-
 @end
 
 NS_ASSUME_NONNULL_END

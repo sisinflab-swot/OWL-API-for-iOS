@@ -1,37 +1,46 @@
 //
 //  Created by Ivano Bilenchi on 04/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLClassImpl.h"
+#import "OWLCowlUtils.h"
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEquivalentClassesAxiom.h"
-#import "OWLIRI.h"
+#import "OWLIRI+Private.h"
 #import "OWLOntology.h"
-#import "OWLRDFVocabulary.h"
 #import "OWLSubClassOfAxiom.h"
-#import "NSMapTable+SMRObjectCache.h"
+
+#import "cowl_class.h"
+#import "cowl_owl_vocab.h"
 
 @implementation OWLClassImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_class_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return (NSUInteger)cowl_class_hash(_cowlObject); }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"Class(<%@>)", _IRI];
+- (NSString *)description {
+    return stringFromCowl(cowl_class_to_string(_cowlObject), YES);
 }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [NSMutableSet setWithObject:self]; }
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    handler(self);
+}
 
 #pragma mark OWLNamedObject
 
-@synthesize IRI = _IRI;
+- (OWLIRI *)IRI {
+    return [[OWLIRI alloc] initWithCowlIRI:cowl_class_get_iri(_cowlObject) retain:YES];
+}
 
 #pragma mark OWLEntity
 
@@ -49,92 +58,30 @@
 
 - (BOOL)anonymous { return NO; }
 
-- (BOOL)isOWLThing { return [_IRI isEqual:[OWLRDFVocabulary OWLThing].IRI]; }
+- (BOOL)isOWLThing { return cowl_class_equals(_cowlObject, cowl_owl_vocab_get()->cls.thing); }
 
-- (BOOL)isOWLNothing { return [_IRI isEqual:[OWLRDFVocabulary OWLNothing].IRI]; }
+- (BOOL)isOWLNothing { return cowl_class_equals(_cowlObject, cowl_owl_vocab_get()->cls.nothing); }
 
 - (NSSet<id<OWLClassExpression>> *)asConjunctSet { return [NSSet setWithObject:self]; }
 
 - (id<OWLClass>)asOwlClass { return self; }
 
-#pragma mark OWLClass
+#pragma mark Lifecycle
 
-- (NSSet<id<OWLClassExpression>> *)disjointClassesInOntology:(id<OWLOntology>)ontology
-{
-    NSMutableSet *disjointClasses = [[NSMutableSet alloc] init];
-    
-    for (id<OWLDisjointClassesAxiom> axiom in [ontology disjointClassesAxiomsForClass:self]) {
-        [disjointClasses unionSet:axiom.classExpressions];
+- (instancetype)initWithCowlClass:(CowlClass *)cowlClass retain:(BOOL)retain {
+    NSParameterAssert(cowlClass);
+    if ((self = [super init])) {
+        _cowlObject = retain ? cowl_class_retain(cowlClass) : cowlClass;
     }
-    
-    [disjointClasses removeObject:self];
-    
-    return disjointClasses;
-}
-
-- (NSSet<id<OWLClassExpression>> *)equivalentClassesInOntology:(id<OWLOntology>)ontology
-{
-    NSMutableSet *equivalentClasses = [[NSMutableSet alloc] init];
-    
-    for (id<OWLEquivalentClassesAxiom> axiom in [ontology equivalentClassesAxiomsForClass:self]) {
-        [equivalentClasses unionSet:axiom.classExpressions];
-    }
-    
-    [equivalentClasses removeObject:self];
-    
-    return equivalentClasses;
-}
-
-- (NSSet<id<OWLClassExpression>> *)subClassesInOntology:(id<OWLOntology>)ontology
-{
-    NSMutableSet *subClasses = [[NSMutableSet alloc] init];
-    
-    for (id<OWLSubClassOfAxiom> axiom in [ontology subClassAxiomsForSuperClass:self]) {
-        [subClasses addObject:axiom.subClass];
-    }
-    
-    return subClasses;
-}
-
-- (NSSet<id<OWLClassExpression>> *)superClassesInOntology:(id<OWLOntology>)ontology
-{
-    NSMutableSet *superClasses = [[NSMutableSet alloc] init];
-    
-    for (id<OWLSubClassOfAxiom> axiom in [ontology subClassAxiomsForSubClass:self]) {
-        [superClasses addObject:axiom.superClass];
-    }
-    
-    return superClasses;
-}
-
-#pragma mark Other public methods
-
-static NSMapTable *instanceCache = nil;
-
-+ (void)initialize
-{
-    if (self == [OWLClassImpl class]) {
-        instanceCache = [NSMapTable smr_objCache];
-    }
+    return self;
 }
 
 - (instancetype)initWithIRI:(OWLIRI *)IRI
 {
     NSParameterAssert(IRI);
-    
-    id cachedInstance = [instanceCache objectForKey:IRI];
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else {
-        if ((self = [super init])) {
-            _IRI = [IRI copy];
-            [instanceCache setObject:self forKey:_IRI];
-        }
-    }
-    return self;
+    return [self initWithCowlClass:cowl_class_get(IRI.cowlIRI) retain:NO];
 }
 
-- (void)dealloc { [instanceCache removeObjectForKey:_IRI]; }
+- (void)dealloc { cowl_class_release(_cowlObject); }
 
 @end

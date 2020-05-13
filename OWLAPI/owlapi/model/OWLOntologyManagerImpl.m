@@ -1,14 +1,10 @@
 //
 //  Created by Ivano Bilenchi on 04/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLOntologyManagerImpl.h"
-#import "OWLOntologyID.h"
-#import "OWLClassImpl.h"
-#import "OWLOntologyImpl.h"
-#import "OWLOntologyInternals.h"
-#import "OWLRDFXMLParser.h"
+#import "OWLParser.h"
 
 @implementation OWLOntologyManagerImpl
 
@@ -18,31 +14,24 @@
 
 #pragma mark Lifecycle
 
-- (instancetype)initWithDataFactory:(id<OWLDataFactory>)dataFactory
-{
+- (instancetype)initWithDataFactory:(id<OWLDataFactory>)dataFactory {
+    NSParameterAssert(dataFactory);
     if ((self = [super init])) {
         _dataFactory = dataFactory;
     }
-    
     return self;
 }
 
 #pragma mark Public methods
 
-- (id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL error:(NSError *_Nullable __autoreleasing *)error
-{
+- (id<OWLOntology>)loadOntologyFromDocumentAtURL:(NSURL *)URL
+                                           error:(NSError *_Nullable __autoreleasing *)error {
     NSParameterAssert(URL);
-
     NSError *localError = nil;
-    OWLRDFXMLParser *parser = [[OWLRDFXMLParser alloc] initWithManager:self];
-    
+    OWLParser *parser = [[OWLParser alloc] initWithManager:self];
     id<OWLOntology> ontology = [parser parseOntologyFromDocumentAtURL:URL error:&localError];
-
-    if (error) {
-        *error = localError;
-    }
-
-    return localError ? nil : ontology;
+    if (error) *error = localError;
+    return ontology;
 }
 
 @end

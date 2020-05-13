@@ -1,32 +1,33 @@
 //
 //  Created by Ivano Bilenchi on 05/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLSubClassOfAxiomImpl.h"
-#import "OWLClassExpression.h"
-#import "NSMapTable+SMRObjectCache.h"
+#import "OWLCowlUtils.h"
+#import "cowl_sub_cls_axiom.h"
 
 @implementation OWLSubClassOfAxiomImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_sub_cls_axiom_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return (NSUInteger)cowl_sub_cls_axiom_hash(_cowlObject); }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"SubClassOf(%@ %@)", _subClass, _superClass];
+- (NSString *)description {
+    return stringFromCowl(cowl_sub_cls_axiom_to_string(_cowlObject), YES);
 }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature
-{
-    NSMutableSet *signature = (NSMutableSet *)[_superClass signature];
-    [signature unionSet:[_subClass signature]];
-    return signature;
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    CowlEntityIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
+    cowl_sub_cls_axiom_iterate_signature(_cowlObject, &iter);
 }
 
 #pragma mark OWLAxiom
@@ -35,36 +36,33 @@
 
 #pragma mark OWLSubClassOfAxiom
 
-@synthesize superClass = _superClass;
-@synthesize subClass = _subClass;
-
-#pragma mark Other public methods
-
-static NSMapTable *instanceCache = nil;
-
-+ (void)initialize
-{
-    if (self == [OWLSubClassOfAxiomImpl class]) {
-        instanceCache = [NSMapTable smr_objCache];
-    }
+- (id<OWLClassExpression>)superClass {
+    return classExpressionFromCowl(cowl_sub_cls_axiom_get_super(_cowlObject), YES);
 }
 
-- (instancetype)initWithSuperClass:(id<OWLClassExpression>)superClass subClass:(id<OWLClassExpression>)subClass
-{
-    NSParameterAssert(superClass && subClass);
-    
-    id cachedInstance = [instanceCache smr_objCacheGetForKey1:superClass key2:subClass];
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else if ((self = [super init])) {
-        _superClass = [(id)superClass copy];
-        _subClass = [(id)subClass copy];
-        [instanceCache smr_objCacheSet:self forKey1:_superClass key2:_subClass];
+- (id<OWLClassExpression>)subClass {
+    return classExpressionFromCowl(cowl_sub_cls_axiom_get_sub(_cowlObject), YES);
+}
+
+#pragma mark Lifecycle
+
+- (instancetype)initWithCowlAxiom:(CowlSubClsAxiom *)axiom retain:(BOOL)retain {
+    NSParameterAssert(axiom);
+    if ((self = [super init])) {
+        _cowlObject = retain ? cowl_sub_cls_axiom_retain(axiom) : axiom;
     }
     return self;
 }
 
-- (void)dealloc { [instanceCache smr_objCacheRemoveForKey1:_superClass key2:_subClass]; }
+- (instancetype)initWithSuperClass:(id<OWLClassExpression>)superClass
+                          subClass:(id<OWLClassExpression>)subClass {
+    NSParameterAssert(superClass && subClass);
+    CowlSubClsAxiom *axiom;
+    axiom = cowl_sub_cls_axiom_get(((OWLObjectImpl *)subClass)->_cowlObject,
+                                   ((OWLObjectImpl *)superClass)->_cowlObject, NULL);
+    return [self initWithCowlAxiom:axiom retain:NO];
+}
+
+- (void)dealloc { cowl_sub_cls_axiom_release(_cowlObject); }
 
 @end

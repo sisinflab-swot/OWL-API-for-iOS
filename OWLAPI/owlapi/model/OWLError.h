@@ -1,9 +1,10 @@
 //
 //  Created by Ivano Bilenchi on 14/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "cowl_error.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,8 +19,12 @@ typedef NS_ENUM(NSInteger, OWLErrorCode) {
 /// NSError convenience category.
 @interface NSError (OWLError)
 
-+ (NSError *)OWLErrorWithCode:(OWLErrorCode)code localizedDescription:(nullable NSString *)description;
-+ (NSError *)OWLErrorWithCode:(OWLErrorCode)code localizedDescription:(nullable NSString *)description userInfo:(nullable NSDictionary *)userInfo;
++ (NSError *)OWLErrorWithCowlError:(CowlError)error;
++ (NSError *)OWLErrorWithCode:(OWLErrorCode)code
+         localizedDescription:(nullable NSString *)description;
++ (NSError *)OWLErrorWithCode:(OWLErrorCode)code
+         localizedDescription:(nullable NSString *)description
+                     userInfo:(nullable NSDictionary *)userInfo;
 
 @end
 

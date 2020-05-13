@@ -14,7 +14,7 @@
     <a title="OWLOntologyID Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OWLAPI Docs</a> (94% documented)</p>
+        <p><a href="../index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -75,7 +75,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/OWLAxiomType.html">OWLAxiomType</a>
@@ -110,7 +110,7 @@
                 <a href="../Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/OWLClass.html">OWLClass</a>
+                <a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
@@ -262,10 +262,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Type Definitions.html">Type Definitions</a>
+            <a href="../Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+                <a href="../Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
             </ul>
           </li>
@@ -288,7 +288,7 @@
             <h1>OWLOntologyID</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OWLOntologyID</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">OWLOntologyID</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
@@ -296,7 +296,7 @@
 to have an ontology IRI, or if they have an ontology IRI then they can optionally
 also have a version IRI. Instances of this OWLOntologyID class bundle identifying
 information of an ontology together. If an ontology doesn&rsquo;t have an ontology IRI
-then we say that it is <q>anonymous</q>.</p>
+then we say that it is &ldquo;anonymous&rdquo;.</p>
 
           </section>
           <section class="section task-group-section">
@@ -322,12 +322,12 @@ then we say that it is <q>anonymous</q>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="n">ontologyIRI</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="n">ontologyIRI</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -357,12 +357,12 @@ then we say that it is <q>anonymous</q>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="n">versionIRI</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="n">versionIRI</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">versionIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@NSCopying</span> <span class="k">var</span> <span class="nv">versionIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -377,7 +377,7 @@ then we say that it is <q>anonymous</q>.</p>
                     <code>
                     <a name="/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:"></a>
                     <a name="//apple_ref/objc/Method/-initWithOntologyIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:">-initWithOntologyIRI:</a>
+                    <a class="token" href="#/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:">-initWithOntologyIRI:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -392,12 +392,12 @@ then we say that it is <q>anonymous</q>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithOntologyIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ontologyIRI</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithOntologyIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ontologyIRI</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -414,7 +414,6 @@ then we say that it is <q>anonymous</q>.</p>
                               <td>
                                 <div>
                                   <p>The IRI of the ontology document.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -432,7 +431,7 @@ then we say that it is <q>anonymous</q>.</p>
                     <code>
                     <a name="/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:versionIRI:"></a>
                     <a name="//apple_ref/objc/Method/-initWithOntologyIRI:versionIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:versionIRI:">-initWithOntologyIRI:versionIRI:</a>
+                    <a class="token" href="#/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:versionIRI:">-initWithOntologyIRI:<wbr>versionIRI:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -447,13 +446,13 @@ then we say that it is <q>anonymous</q>.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithOntologyIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ontologyIRI</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithOntologyIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ontologyIRI</span>
                                  <span class="nf">versionIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">versionIRI</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?,</span> <span class="nv">versionIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?,</span> <span class="nv">versionIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -470,7 +469,6 @@ then we say that it is <q>anonymous</q>.</p>
                               <td>
                                 <div>
                                   <p>The IRI of the ontology document.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -483,7 +481,6 @@ then we say that it is <q>anonymous</q>.</p>
                               <td>
                                 <div>
                                   <p>The version IRI of the ontology document.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -501,8 +498,8 @@ then we say that it is <q>anonymous</q>.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

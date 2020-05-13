@@ -1,32 +1,42 @@
 //
 //  Created by Ivano Bilenchi on 15/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLNamedIndividualImpl.h"
-#import "OWLIRI.h"
-#import "NSMapTable+SMRObjectCache.h"
+#import "OWLCowlUtils.h"
+#import "OWLIRI+Private.h"
+#import "cowl_named_ind.h"
 
 @implementation OWLNamedIndividualImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_named_ind_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return (NSUInteger)cowl_named_ind_hash(_cowlObject); }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"Individual(<%@>)", _IRI];
+- (NSString *)description {
+    return stringFromCowl(cowl_named_ind_to_string(_cowlObject), YES);
 }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [NSMutableSet setWithObject:self]; }
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    handler(self);
+}
+
+- (NSSet<id<OWLEntity>> *)signature { return [NSSet setWithObject:self]; }
 
 #pragma mark OWLNamedObject
 
-@synthesize IRI = _IRI;
+- (OWLIRI *)IRI {
+    return [[OWLIRI alloc] initWithCowlIRI:cowl_named_ind_get_iri(_cowlObject) retain:YES];
+}
 
 #pragma mark OWLEntity
 
@@ -46,35 +56,21 @@
 
 - (id<OWLNamedIndividual>)asOWLNamedIndividual { return self; }
 
-#pragma mark Other public methods
+#pragma mark Lifecycle
 
-static NSMapTable *instanceCache = nil;
-
-+ (void)initialize
-{
-    if (self == [OWLNamedIndividualImpl class]) {
-        instanceCache = [NSMapTable smr_objCache];
+- (instancetype)initWithCowlNamedInd:(CowlNamedInd *)cowlInd retain:(BOOL)retain {
+    NSParameterAssert(cowlInd);
+    if ((self = [super init])) {
+        _cowlObject = retain ? cowl_named_ind_retain(cowlInd) : cowlInd;
     }
-}
-
-- (instancetype)initWithIRI:(OWLIRI *)IRI
-{
-    NSParameterAssert(IRI);
-    
-    id cachedInstance = [instanceCache objectForKey:IRI];
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else {
-        if ((self = [super init])) {
-            _IRI = [IRI copy];
-            [instanceCache setObject:self forKey:_IRI];
-        }
-    }
-    
     return self;
 }
 
-- (void)dealloc { [instanceCache removeObjectForKey:_IRI]; }
+- (instancetype)initWithIRI:(OWLIRI *)IRI {
+    NSParameterAssert(IRI);
+    return [self initWithCowlNamedInd:cowl_named_ind_get(IRI.cowlIRI) retain:NO];
+}
+
+- (void)dealloc { cowl_named_ind_release(_cowlObject); }
 
 @end

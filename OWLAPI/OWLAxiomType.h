@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 11/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -136,8 +136,14 @@ typedef NS_OPTIONS(uint64_t, OWLAxiomType) {
     /// Represents OWLAnnotationPropertyDomainAxiom.
     OWLAxiomTypeAnnotationPropertyDomain                = (uint64_t)1 << 37,
     
-#pragma mark - All
+#pragma mark - Markers
     
     /// Represents all axiom types.
-    OWLAxiomTypeAll                                     = (uint64_t)-1
+    OWLAxiomTypeAll                                     = (uint64_t)-1,
+
+    /// First axiom type.
+    OWLAxiomTypeFirst                                   = OWLAxiomTypeDeclaration,
+
+    /// Last axiom type.
+    OWLAxiomTypeLast                                    = OWLAxiomTypeAnnotationPropertyDomain
 };

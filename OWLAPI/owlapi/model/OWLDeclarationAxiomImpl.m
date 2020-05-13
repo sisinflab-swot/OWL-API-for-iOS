@@ -1,28 +1,34 @@
 //
 //  Created by Ivano Bilenchi on 12/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLDeclarationAxiomImpl.h"
+#import "OWLCowlUtils.h"
 #import "OWLEntity.h"
-#import "NSMapTable+SMRObjectCache.h"
+#import "cowl_decl_axiom.h"
 
 @implementation OWLDeclarationAxiomImpl
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_decl_axiom_equals(_cowlObject, ((OWLObjectImpl *)object)->_cowlObject);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return cowl_decl_axiom_hash(_cowlObject); }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"Declaration(%@)", _entity];
+- (NSString *)description {
+    return stringFromCowl(cowl_decl_axiom_to_string(_cowlObject), YES);
 }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLEntity>> *)signature { return [_entity signature]; }
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
+    return [self.entity enumerateSignatureWithHandler:handler];
+}
 
 #pragma mark OWLAxiom
 
@@ -34,34 +40,27 @@
 
 #pragma mark OWLDeclarationAxiom
 
-@synthesize entity = _entity;
+- (id<OWLEntity>)entity {
+    return entityFromCowl(cowl_decl_axiom_get_entity(_cowlObject), YES);
+}
 
 #pragma mark Other public methods
 
-static NSMapTable *instanceCache = nil;
-
-+ (void)initialize
-{
-    if (self == [OWLDeclarationAxiomImpl class]) {
-        instanceCache = [NSMapTable smr_objCache];
+- (instancetype)initWithCowlAxiom:(CowlDeclAxiom *)axiom retain:(BOOL)retain {
+    NSParameterAssert(axiom);
+    if ((self = [super init])) {
+        _cowlObject = retain ? cowl_decl_axiom_retain(axiom) : axiom;
     }
+    return self;
 }
 
 - (instancetype)initWithEntity:(id<OWLEntity>)entity
 {
     NSParameterAssert(entity);
-    
-    id cachedInstance = [instanceCache objectForKey:entity];
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else if ((self = [super init])) {
-        _entity = [(id)entity copy];
-        [instanceCache setObject:self forKey:_entity];
-    }
-    return self;
+    CowlDeclAxiom *axiom = cowl_decl_axiom_get(cowlEntityFrom(entity), NULL);
+    return [self initWithCowlAxiom:axiom retain:NO];
 }
 
-- (void)dealloc { [instanceCache removeObjectForKey:_entity]; }
+- (void)dealloc { cowl_decl_axiom_release(_cowlObject); }
 
 @end

@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 01/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
@@ -13,8 +13,7 @@ static id<OWLOntology> ontology = nil;
 
 @implementation OWLOntologyTests
 
-+ (void)load
-{
++ (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         loadOntology();
@@ -34,94 +33,109 @@ static void loadOntologyNoCache() {
     ontology = [[OWLManager createOWLOntologyManager] loadOntologyFromDocumentAtURL:ontoURL error:NULL];
 }
 
-- (void)testLoadOntology
-{
+- (void)testLoadOntology {
     loadOntologyNoCache();
     XCTAssertNotNil(ontology);
 }
 
-- (void)testAllAxioms
-{
-    NSSet *axioms = [ontology allAxioms];
+- (void)testAllAxioms {
+    NSMutableSet *axioms = [[NSMutableSet alloc] init];
+    [ontology enumerateAxiomsWithHandler:^(id<OWLAxiom> axiom) {
+        [axioms addObject:axiom];
+    }];
     NSLog(@"Axioms (%lu):\n------------------\n%@", (unsigned long)axioms.count, axioms);
-    XCTAssertNotNil(axioms);
 }
 
-- (void)testAxiomsForType
-{
-    NSSet *decl = [ontology axiomsForType:OWLAxiomTypeDeclaration];
-    NSLog(@"Declaration axioms (%lu):\n------------------\n%@", (unsigned long)decl.count, decl);
+- (void)testAxiomsForType {
+    NSMutableSet *axioms = [[NSMutableSet alloc] init];
+
+    [ontology enumerateAxiomsOfTypes:OWLAxiomTypeDeclaration withHandler:^(id<OWLAxiom> axiom) {
+        [axioms addObject:axiom];
+    }];
+
+    NSLog(@"Declaration axioms (%lu):\n------------------\n%@", (unsigned long)axioms.count, axioms);
     
-    decl = [ontology axiomsForType:OWLAxiomTypeClassAssertion];
-    NSLog(@"Class assertion axioms (%lu):\n----------------------\n%@", (unsigned long)decl.count, decl);
-    
-    XCTAssertNotNil(decl);
+    [axioms removeAllObjects];
+    [ontology enumerateAxiomsOfTypes:OWLAxiomTypeClassAssertion withHandler:^(id<OWLAxiom> axiom) {
+        [axioms addObject:axiom];
+    }];
+
+    NSLog(@"Class assertion axioms (%lu):\n----------------------\n%@", (unsigned long)axioms.count, axioms);
 }
 
-- (void)testClassesInSignature
-{
-    NSSet *classes = [ontology classesInSignature];
+- (void)testClassesInSignature {
+    NSMutableSet *classes = [[NSMutableSet alloc] init];
+
+    [ontology enumerateClassesInSignatureWithHandler:^(id<OWLClass> owlClass) {
+        [classes addObject:owlClass];
+    }];
+
     NSLog(@"Classes (%lu):\n--------\n%@", (unsigned long)classes.count, classes);
-    XCTAssertNotNil(classes);
 }
 
-- (void)testDisjointClassAxiomsForClass
-{
-    NSMutableArray *disjointClassAxioms = [[NSMutableArray alloc] init];
-    NSSet *classesInSignature = [ontology classesInSignature];
-    XCTAssertNotNil(classesInSignature);
-    
-    for (id<OWLClass> cls in classesInSignature) {
-        NSSet *axiomsForClass = [ontology disjointClassesAxiomsForClass:cls];
-        XCTAssertNotNil(axiomsForClass);
-        [disjointClassAxioms addObjectsFromArray:[axiomsForClass allObjects]];
-    }
-    
-    NSLog(@"DisjointClass axioms (%lu):\n--------------------\n%@", (unsigned long)disjointClassAxioms.count, disjointClassAxioms);
+- (void)testDisjointClassAxiomsForClass {
+    NSMutableArray *axioms = [[NSMutableArray alloc] init];
+
+    [ontology enumerateClassesInSignatureWithHandler:^(id<OWLClass> owlClass) {
+        [ontology enumerateAxiomsReferencingClass:owlClass
+                                          ofTypes:OWLAxiomTypeDisjointClasses
+                                      withHandler:^(id<OWLAxiom> axiom) {
+            [axioms addObject:axiom];
+        }];
+    }];
+
+    NSLog(@"DisjointClass axioms (%lu):\n--------------------\n%@", (unsigned long)axioms.count, axioms);
 }
 
-- (void)testEquivalentClassAxiomsForClass
-{
-    NSMutableArray *equivalentClassAxioms = [[NSMutableArray alloc] init];
-    NSSet *classesInSignature = [ontology classesInSignature];
-    XCTAssertNotNil(classesInSignature);
-    
-    for (id<OWLClass> cls in classesInSignature) {
-        NSSet *axiomsForClass = [ontology equivalentClassesAxiomsForClass:cls];
-        XCTAssertNotNil(axiomsForClass);
-        [equivalentClassAxioms addObjectsFromArray:[axiomsForClass allObjects]];
-    }
-    
-    NSLog(@"EquivalentClass axioms (%lu):\n----------------------\n%@", (unsigned long)equivalentClassAxioms.count, equivalentClassAxioms);
+- (void)testEquivalentClassAxiomsForClass {
+    NSMutableArray *axioms = [[NSMutableArray alloc] init];
+
+    [ontology enumerateClassesInSignatureWithHandler:^(id<OWLClass> owlClass) {
+        [ontology enumerateAxiomsReferencingClass:owlClass
+                                          ofTypes:OWLAxiomTypeEquivalentClasses
+                                      withHandler:^(id<OWLAxiom> axiom) {
+            [axioms addObject:axiom];
+        }];
+    }];
+
+    NSLog(@"EquivalentClass axioms (%lu):\n----------------------\n%@", (unsigned long)axioms.count, axioms);
 }
 
-- (void)testNamedIndividualsInSignature
-{
-    NSSet *individuals = [ontology namedIndividualsInSignature];
+- (void)testNamedIndividualsInSignature {
+    NSMutableSet *individuals = [[NSMutableSet alloc] init];
+
+    [ontology enumerateNamedIndividualsInSignatureWithHandler:^(id<OWLNamedIndividual> ind) {
+        [individuals addObject:ind];
+    }];
+
     NSLog(@"Individuals (%lu):\n-----------\n%@", (unsigned long)individuals.count, individuals);
-    XCTAssertNotNil(individuals);
 }
 
-- (void)testObjectPropertiesInSignature
-{
-    NSSet *properties = [ontology objectPropertiesInSignature];
+- (void)testObjectPropertiesInSignature {
+    NSMutableSet *properties = [[NSMutableSet alloc] init];
+
+    [ontology enumerateObjectPropertiesInSignatureWithHandler:^(id<OWLObjectProperty> prop) {
+        [properties addObject:prop];
+    }];
+
     NSLog(@"Object properties (%lu):\n-----------------\n%@", (unsigned long)properties.count, properties);
-    XCTAssertNotNil(properties);
 }
 
-- (void)testSubClassAxiomsForSubClass
-{
-    NSMutableArray *subClassAxioms = [[NSMutableArray alloc] init];
-    NSSet *classesInSignature = [ontology classesInSignature];
-    XCTAssertNotNil(classesInSignature);
-    
-    for (id<OWLClass> cls in classesInSignature) {
-        NSSet *axiomsForClass = [ontology subClassAxiomsForSubClass:cls];
-        XCTAssertNotNil(axiomsForClass);
-        [subClassAxioms addObjectsFromArray:[axiomsForClass allObjects]];
-    }
-    
-    NSLog(@"SubClassOf axioms (%lu):\n-----------------\n%@", (unsigned long)subClassAxioms.count, subClassAxioms);
+- (void)testSubClassAxiomsForSubClass {
+    NSMutableArray *axioms = [[NSMutableArray alloc] init];
+
+    [ontology enumerateClassesInSignatureWithHandler:^(id<OWLClass> owlClass) {
+        [ontology enumerateAxiomsReferencingClass:owlClass
+                                          ofTypes:OWLAxiomTypeSubClassOf
+                                      withHandler:^(id<OWLAxiom> axiom) {
+            id<OWLSubClassOfAxiom> subAxiom = (id<OWLSubClassOfAxiom>)axiom;
+            if ([subAxiom.subClass isEqual:owlClass]) {
+                [axioms addObject:axiom];
+            }
+        }];
+    }];
+
+    NSLog(@"SubClassOf axioms (%lu):\n-----------------\n%@", (unsigned long)axioms.count, axioms);
 }
 
 @end

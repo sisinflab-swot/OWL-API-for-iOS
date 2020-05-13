@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 15/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObject.h"
@@ -27,16 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @return The individual as a named individual, or nil if it is not named. 
  */
 - (nullable id<OWLNamedIndividual>)asOWLNamedIndividual;
-
-/**
- * Convenience method which gets the types of this individual that correspond
- * to the types asserted with axioms in the specified ontology.
- *
- * @param ontology The ontology that should be examined.
- *
- * @return Asserted types of this individual in the specified ontology.
- */
-- (NSSet<id<OWLClassExpression>> *)typesInOntology:(id<OWLOntology>)ontology;
 
 @end
 

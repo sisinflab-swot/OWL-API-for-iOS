@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 01/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObject.h"
@@ -29,68 +29,20 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) id<OWLOntologyManager> manager;
 
 /**
- * Retrieves all of the axioms in this ontology.
+ * Enumerates over all the axioms.
  *
- * @return All the axioms in this ontology.
+ * @param handler The enumeration handler.
  */
-- (NSSet<id<OWLAxiom>> *)allAxioms;
+- (void)enumerateAxiomsWithHandler:(void (^)(id<OWLAxiom> axiom))handler;
 
 /**
- * Gets the axioms which are of the specified type.
+ * Enumerates over the axioms having the desired types.
  *
- * @param type The type of axioms to be retrieved.
- *
- * @return A set containing the axioms of the specified type.
+ * @param types The desired axiom types.
+ * @param handler The enumeration handler.
  */
-- (NSSet<id<OWLAxiom>> *)axiomsForType:(OWLAxiomType)type;
-
-/**
- * Gets the OWLClassAssertionAxioms contained in this ontology that make the specified
- * individual an instance of some class expression.
- *
- * @param individual The individual.
- *
- * @return The set of class assertion axioms that reference the specified individual.
- */
-- (NSSet<id<OWLClassAssertionAxiom>> *)classAssertionAxiomsForIndividual:(id<OWLIndividual>)individual;
-
-/**
- * Gets the set of disjoint class axioms that contain the specified class as an operand.
- *
- * @param cls The class.
- *
- * @return The set of disjoint class axioms that contain the specified class.
- */
-- (NSSet<id<OWLDisjointClassesAxiom>> *)disjointClassesAxiomsForClass:(id<OWLClass>)cls;
-
-/**
- * Gets the set of equivalent class axioms that contain the specified class as an operand.
- *
- * @param cls The class.
- *
- * @return The set of equivalent class axioms that contain the specified class.
- */
-- (NSSet<id<OWLEquivalentClassesAxiom>> *)equivalentClassesAxiomsForClass:(id<OWLClass>)cls;
-
-/**
- * Gets all of the subclass axioms where the left hand side (the subclass)
- * is equal to the specified class.
- *
- * @param cls The class.
- *
- * @return The set of subclass axioms where the LHS is the specified class.
- */
-- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSubClass:(id<OWLClass>)cls;
-
-/**
- * Gets all of the subclass axioms where the right hand side (the superclass)
- * is equal to the specified class.
- *
- * @param cls The class.
- *
- * @return The set of subclass axioms where the RHS is the specified class.
- */
-- (NSSet<id<OWLSubClassOfAxiom>> *)subClassAxiomsForSuperClass:(id<OWLClass>)cls;
+- (void)enumerateAxiomsOfTypes:(OWLAxiomType)types
+                   withHandler:(void (^)(id<OWLAxiom> axiom))handler;
 
 /**
  * Enumerates over all the axioms of the desired types that directly or indirectly

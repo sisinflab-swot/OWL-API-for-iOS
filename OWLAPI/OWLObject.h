@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 03/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,32 +16,33 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OWLObject <NSObject, NSCopying>
 
 /**
- * Gets the signature of this object.
+ * Enumerates over the signature of this object.
  *
- * @return A set of entities that correspond to the signature of this object.
+ * @param handler The enumeration handler.
  */
-- (NSSet<id<OWLEntity>> *)signature;
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity> entity))handler;
 
 /**
- * A convenience method that obtains the classes that are in the signature of this object.
+ * Enumerates over the classes present in the signature of this object.
  *
- * @return A set containing the classes that are in the signature of this object.
+ * @param handler The enumeration handler.
  */
-- (NSSet<id<OWLClass>> *)classesInSignature;
+- (void)enumerateClassesInSignatureWithHandler:(void (^)(id<OWLClass> owlClass))handler;
 
 /**
- * A convenience method that obtains the named individuals that are in the signature of this object.
+ * Enumerates over the named individuals present in the signature of this object.
  *
- * @return A set containing the named individuals that are in the signature of this object.
- */
-- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature;
+ * @param handler The enumeration handler.
+*/
+- (void)enumerateNamedIndividualsInSignatureWithHandler:(void (^)(id<OWLNamedIndividual> ind))handler;
+
 
 /**
- * A convenience method that obtains the object properties that are in the signature of this object.
+ * Enumerates over the object properties present in the signature of this object.
  *
- * @return A set containing the object properties that are in the signature of this object.
- */
-- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature;
+ * @param handler The enumeration handler.
+*/
+- (void)enumerateObjectPropertiesInSignatureWithHandler:(void (^)(id<OWLObjectProperty> prop))handler;
 
 @end
 

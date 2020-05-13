@@ -14,7 +14,7 @@
     <a title="OWLDataFactory Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OWLAPI Docs</a> (94% documented)</p>
+        <p><a href="../index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -75,7 +75,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/OWLAxiomType.html">OWLAxiomType</a>
@@ -110,7 +110,7 @@
                 <a href="../Protocols/OWLCardinalityRestriction.html">OWLCardinalityRestriction</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/OWLClass.html">OWLClass</a>
+                <a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a>
@@ -262,10 +262,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Type Definitions.html">Type Definitions</a>
+            <a href="../Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
+                <a href="../Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
             </ul>
           </li>
@@ -288,7 +288,7 @@
             <h1>OWLDataFactory</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">@protocol</span> <span class="nc">OWLDataFactory</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLDataFactory</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
@@ -300,9 +300,11 @@
               <div class="task-name-container">
                 <a name="/OWL%20vocabulary"></a>
                 <a name="//apple_ref/objc/Section/OWL vocabulary" class="dashAnchor"></a>
-                <a href="#/OWL%20vocabulary">
-                  <h3 class="section-name">OWL vocabulary</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/OWL%20vocabulary"></a>
+                  <h3 class="section-name"><p>OWL vocabulary</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
@@ -325,14 +327,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">thing</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">thing</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>OWLClass corresponding to owl:Thing.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L48">Show on GitHub</a>
@@ -360,14 +361,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">nothing</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">nothing</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>OWLClass corresponding to owl:Nothing.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L55">Show on GitHub</a>
@@ -395,14 +395,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">topObjectProperty</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">topObjectProperty</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>OWLObjectProperty corresponding to owl:topObjectProperty.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L62">Show on GitHub</a>
@@ -430,14 +429,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">bottomObjectProperty</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">bottomObjectProperty</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>OWLObjectProperty corresponding to owl:bottomObjectProperty.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L69">Show on GitHub</a>
@@ -451,9 +449,11 @@
               <div class="task-name-container">
                 <a name="/Entities"></a>
                 <a name="//apple_ref/objc/Section/Entities" class="dashAnchor"></a>
-                <a href="#/Entities">
-                  <h3 class="section-name">Entities</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Entities"></a>
+                  <h3 class="section-name"><p>Entities</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
@@ -461,7 +461,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)entityWithType:iri:"></a>
                     <a name="//apple_ref/objc/Method/-entityWithType:iri:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)entityWithType:iri:">-entityWithType:iri:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)entityWithType:iri:">-entityWithType:<wbr>iri:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -476,7 +476,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">entityWithType</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLEntityType.html">OWLEntityType</a></span><span class="p">)</span><span class="nv">type</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">entityWithType</span><span class="p">:(</span><span class="n"><a href="../Enums/OWLEntityType.html">OWLEntityType</a></span><span class="p">)</span><span class="nv">type</span>
                                     <span class="nf">iri</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -494,7 +494,6 @@
                               <td>
                                 <div>
                                   <p>The type of the entity that will be returned.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -507,7 +506,6 @@
                               <td>
                                 <div>
                                   <p>The IRI of the entity that will be returned.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -517,7 +515,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An entity that has the same IRI as this entity and is of the specified type.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L81">Show on GitHub</a>
@@ -530,7 +527,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)classWithIRI:"></a>
                     <a name="//apple_ref/objc/Method/-classWithIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)classWithIRI:">-classWithIRI:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)classWithIRI:">-classWithIRI:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -545,7 +542,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClass.html">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">classWithIRI</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">classWithIRI</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -562,7 +559,6 @@
                               <td>
                                 <div>
                                   <p>The IRI.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -572,7 +568,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An OWLClass that has the specified IRI.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L90">Show on GitHub</a>
@@ -585,7 +580,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectPropertyWithIRI:"></a>
                     <a name="//apple_ref/objc/Method/-objectPropertyWithIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyWithIRI:">-objectPropertyWithIRI:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyWithIRI:">-objectPropertyWithIRI:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -600,7 +595,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectPropertyWithIRI</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectPropertyWithIRI</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -617,7 +612,6 @@
                               <td>
                                 <div>
                                   <p>The IRI.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -627,7 +621,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An OWLObjectProperty that has the specified IRI.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L99">Show on GitHub</a>
@@ -640,7 +633,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)namedIndividualWithIRI:"></a>
                     <a name="//apple_ref/objc/Method/-namedIndividualWithIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)namedIndividualWithIRI:">-namedIndividualWithIRI:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)namedIndividualWithIRI:">-namedIndividualWithIRI:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -655,7 +648,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">namedIndividualWithIRI</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">namedIndividualWithIRI</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">iri</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -672,7 +665,6 @@
                               <td>
                                 <div>
                                   <p>The IRI.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -682,7 +674,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An OWLNamedIndividual that has the specified IRI.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L108">Show on GitHub</a>
@@ -712,14 +703,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">anonymousIndividual</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="n">anonymousIndividual</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLAnonymousIndividual.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L117">Show on GitHub</a>
@@ -732,7 +722,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)anonymousIndividualWithNodeID:"></a>
                     <a name="//apple_ref/objc/Method/-anonymousIndividualWithNodeID:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)anonymousIndividualWithNodeID:">-anonymousIndividualWithNodeID:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)anonymousIndividualWithNodeID:">-anonymousIndividualWithNodeID:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -747,8 +737,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">anonymousIndividualWithNodeID</span><span class="p">:</span>
-    <span class="p">(</span><span class="n"><a href="../Type Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a></span><span class="p">)</span><span class="nv">nodeID</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAnonymousIndividual.html">OWLAnonymousIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">anonymousIndividualWithNodeID</span><span class="p">:</span>
+    <span class="p">(</span><span class="n"><a href="../Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a></span><span class="p">)</span><span class="nv">nodeID</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -765,7 +755,6 @@
                               <td>
                                 <div>
                                   <p>The node ID.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -775,7 +764,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLAnonymousIndividual.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L126">Show on GitHub</a>
@@ -789,9 +777,11 @@
               <div class="task-name-container">
                 <a name="/Class%20expressions"></a>
                 <a name="//apple_ref/objc/Section/Class expressions" class="dashAnchor"></a>
-                <a href="#/Class%20expressions">
-                  <h3 class="section-name">Class expressions</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Class%20expressions"></a>
+                  <h3 class="section-name"><p>Class expressions</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
@@ -799,7 +789,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectComplementOf:"></a>
                     <a name="//apple_ref/objc/Method/-objectComplementOf:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectComplementOf:">-objectComplementOf:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectComplementOf:">-objectComplementOf:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -814,7 +804,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectComplementOf.html">OWLObjectComplementOf</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectComplementOf</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectComplementOf.html">OWLObjectComplementOf</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectComplementOf</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">classExpression</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -832,7 +822,6 @@
                               <td>
                                 <div>
                                   <p>The class expression to complement.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -842,7 +831,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectComplementOf.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L137">Show on GitHub</a>
@@ -855,7 +843,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectIntersectionOf:"></a>
                     <a name="//apple_ref/objc/Method/-objectIntersectionOf:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectIntersectionOf:">-objectIntersectionOf:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectIntersectionOf:">-objectIntersectionOf:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -870,7 +858,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectIntersectionOf">OWLObjectIntersectionOf</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectIntersectionOf</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectIntersectionOf">OWLObjectIntersectionOf</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectIntersectionOf</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">classExpressions</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -888,7 +876,6 @@
                               <td>
                                 <div>
                                   <p>The class expressions to intersect.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -898,7 +885,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectIntersectionOf.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L146">Show on GitHub</a>
@@ -911,7 +897,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectAllValuesFrom:filler:"></a>
                     <a name="//apple_ref/objc/Method/-objectAllValuesFrom:filler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectAllValuesFrom:filler:">-objectAllValuesFrom:filler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectAllValuesFrom:filler:">-objectAllValuesFrom:<wbr>filler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -926,9 +912,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectAllValuesFrom">OWLObjectAllValuesFrom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectAllValuesFrom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-             <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectAllValuesFrom">OWLObjectAllValuesFrom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectAllValuesFrom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+                 <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -945,7 +931,6 @@
                               <td>
                                 <div>
                                   <p>The property that the restriction acts along.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -958,7 +943,6 @@
                               <td>
                                 <div>
                                   <p>The filler of the restriction.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -968,7 +952,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectAllValuesFrom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L156">Show on GitHub</a>
@@ -981,7 +964,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectSomeValuesFrom:filler:"></a>
                     <a name="//apple_ref/objc/Method/-objectSomeValuesFrom:filler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectSomeValuesFrom:filler:">-objectSomeValuesFrom:filler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectSomeValuesFrom:filler:">-objectSomeValuesFrom:<wbr>filler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -996,9 +979,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectSomeValuesFrom">OWLObjectSomeValuesFrom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectSomeValuesFrom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-              <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectSomeValuesFrom">OWLObjectSomeValuesFrom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectSomeValuesFrom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+                  <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1015,7 +998,6 @@
                               <td>
                                 <div>
                                   <p>The property that the restriction acts along.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1028,7 +1010,6 @@
                               <td>
                                 <div>
                                   <p>The filler of the restriction.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1038,7 +1019,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectSomeValuesFrom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L166">Show on GitHub</a>
@@ -1051,7 +1031,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectExactCardinality:cardinality:"></a>
                     <a name="//apple_ref/objc/Method/-objectExactCardinality:cardinality:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectExactCardinality:cardinality:">-objectExactCardinality:cardinality:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectExactCardinality:cardinality:">-objectExactCardinality:<wbr>cardinality:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1066,9 +1046,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectExactCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-           <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectExactCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+               <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1085,7 +1065,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1098,7 +1077,6 @@
                               <td>
                                 <div>
                                   <p>The cardinality (cannot be negative).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1108,7 +1086,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectExactCardinality.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L176">Show on GitHub</a>
@@ -1121,7 +1098,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectExactCardinality:cardinality:filler:"></a>
                     <a name="//apple_ref/objc/Method/-objectExactCardinality:cardinality:filler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectExactCardinality:cardinality:filler:">-objectExactCardinality:cardinality:filler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectExactCardinality:cardinality:filler:">-objectExactCardinality:<wbr>cardinality:<wbr>filler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1136,10 +1113,10 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectExactCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-           <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span>
-                <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectExactCardinality">OWLObjectExactCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectExactCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+               <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span>
+                    <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1156,7 +1133,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1169,7 +1145,6 @@
                               <td>
                                 <div>
                                   <p>The cardinality (cannot be negative).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1182,7 +1157,6 @@
                               <td>
                                 <div>
                                   <p>The filler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1192,7 +1166,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectExactCardinality.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L187">Show on GitHub</a>
@@ -1205,7 +1178,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectMaxCardinality:cardinality:"></a>
                     <a name="//apple_ref/objc/Method/-objectMaxCardinality:cardinality:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMaxCardinality:cardinality:">-objectMaxCardinality:cardinality:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMaxCardinality:cardinality:">-objectMaxCardinality:<wbr>cardinality:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1220,9 +1193,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectMaxCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-         <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectMaxCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+             <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1239,7 +1212,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1252,7 +1224,6 @@
                               <td>
                                 <div>
                                   <p>The cardinality (cannot be negative).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1262,7 +1233,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectMaxCardinality.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L197">Show on GitHub</a>
@@ -1275,7 +1245,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectMaxCardinality:cardinality:filler:"></a>
                     <a name="//apple_ref/objc/Method/-objectMaxCardinality:cardinality:filler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMaxCardinality:cardinality:filler:">-objectMaxCardinality:cardinality:filler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMaxCardinality:cardinality:filler:">-objectMaxCardinality:<wbr>cardinality:<wbr>filler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1290,10 +1260,10 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectMaxCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-         <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span>
-              <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMaxCardinality">OWLObjectMaxCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectMaxCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+             <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span>
+                  <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1310,7 +1280,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1323,7 +1292,6 @@
                               <td>
                                 <div>
                                   <p>The cardinality (cannot be negative).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1336,7 +1304,6 @@
                               <td>
                                 <div>
                                   <p>The filler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1346,7 +1313,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectMaxCardinality.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L208">Show on GitHub</a>
@@ -1359,7 +1325,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectMinCardinality:cardinality:"></a>
                     <a name="//apple_ref/objc/Method/-objectMinCardinality:cardinality:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMinCardinality:cardinality:">-objectMinCardinality:cardinality:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMinCardinality:cardinality:">-objectMinCardinality:<wbr>cardinality:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1374,9 +1340,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectMinCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-         <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectMinCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+             <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1393,7 +1359,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1406,7 +1371,6 @@
                               <td>
                                 <div>
                                   <p>The cardinality (cannot be negative).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1416,7 +1380,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectMinCardinality.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L218">Show on GitHub</a>
@@ -1429,7 +1392,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectMinCardinality:cardinality:filler:"></a>
                     <a name="//apple_ref/objc/Method/-objectMinCardinality:cardinality:filler:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMinCardinality:cardinality:filler:">-objectMinCardinality:cardinality:filler:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectMinCardinality:cardinality:filler:">-objectMinCardinality:<wbr>cardinality:<wbr>filler:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1444,10 +1407,10 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectMinCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-         <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span>
-              <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectMinCardinality">OWLObjectMinCardinality</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectMinCardinality</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+             <span class="nf">cardinality</span><span class="p">:(</span><span class="n">NSUInteger</span><span class="p">)</span><span class="nv">cardinality</span>
+                  <span class="nf">filler</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">filler</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1464,7 +1427,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1477,7 +1439,6 @@
                               <td>
                                 <div>
                                   <p>The cardinality (cannot be negative).</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1490,7 +1451,6 @@
                               <td>
                                 <div>
                                   <p>The filler.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1500,7 +1460,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectMinCardinality.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L229">Show on GitHub</a>
@@ -1514,9 +1473,11 @@
               <div class="task-name-container">
                 <a name="/Axioms"></a>
                 <a name="//apple_ref/objc/Section/Axioms" class="dashAnchor"></a>
-                <a href="#/Axioms">
-                  <h3 class="section-name">Axioms</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Axioms"></a>
+                  <h3 class="section-name"><p>Axioms</p>
+</h3>
+                </div>
               </div>
               <ul>
                 <li class="item">
@@ -1524,7 +1485,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)declarationAxiom:"></a>
                     <a name="//apple_ref/objc/Method/-declarationAxiom:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)declarationAxiom:">-declarationAxiom:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)declarationAxiom:">-declarationAxiom:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1539,7 +1500,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">declarationAxiom</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLDeclarationAxiom.html">OWLDeclarationAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">declarationAxiom</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">entity</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -1557,7 +1518,6 @@
                               <td>
                                 <div>
                                   <p>The declared entity.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1567,7 +1527,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The declaration axiom for the specified entity.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L240">Show on GitHub</a>
@@ -1580,7 +1539,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)subClassOfAxiom:subClass:"></a>
                     <a name="//apple_ref/objc/Method/-subClassOfAxiom:subClass:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)subClassOfAxiom:subClass:">-subClassOfAxiom:subClass:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)subClassOfAxiom:subClass:">-subClassOfAxiom:<wbr>subClass:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1595,9 +1554,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">subClassOfAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">superClass</span>
-       <span class="nf">subClass</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">subClass</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLSubClassOfAxiom.html">OWLSubClassOfAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">subClassOfAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">superClass</span>
+           <span class="nf">subClass</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">subClass</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1614,7 +1573,6 @@
                               <td>
                                 <div>
                                   <p>The superclass.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1627,7 +1585,6 @@
                               <td>
                                 <div>
                                   <p>The subclass.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1637,7 +1594,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLSubClassOfAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L250">Show on GitHub</a>
@@ -1650,7 +1606,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)disjointClassesAxiom:"></a>
                     <a name="//apple_ref/objc/Method/-disjointClassesAxiom:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)disjointClassesAxiom:">-disjointClassesAxiom:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)disjointClassesAxiom:">-disjointClassesAxiom:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1665,7 +1621,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">disjointClassesAxiom</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLDisjointClassesAxiom">OWLDisjointClassesAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">disjointClassesAxiom</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">classExpressions</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -1677,13 +1633,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>classExpression</em>
+                                <em>classExpressions</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>The disjoint classes.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1693,7 +1648,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLDisjointClassesAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L259">Show on GitHub</a>
@@ -1706,7 +1660,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)equivalentClassesAxiom:"></a>
                     <a name="//apple_ref/objc/Method/-equivalentClassesAxiom:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)equivalentClassesAxiom:">-equivalentClassesAxiom:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)equivalentClassesAxiom:">-equivalentClassesAxiom:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1721,7 +1675,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">equivalentClassesAxiom</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">equivalentClassesAxiom</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">NSSet</span><span class="o">&lt;</span><span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;&gt;</span> <span class="o">*</span><span class="p">)</span><span class="nv">classExpressions</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -1733,13 +1687,12 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>classExpression</em>
+                                <em>classExpressions</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
                                   <p>The equivalent classes.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1749,7 +1702,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLEquivalentClassesAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L268">Show on GitHub</a>
@@ -1762,7 +1714,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)classAssertionAxiom:classExpression:"></a>
                     <a name="//apple_ref/objc/Method/-classAssertionAxiom:classExpression:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)classAssertionAxiom:classExpression:">-classAssertionAxiom:classExpression:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)classAssertionAxiom:classExpression:">-classAssertionAxiom:<wbr>classExpression:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1777,9 +1729,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">classAssertionAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
-    <span class="nf">classExpression</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">classExpression</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassAssertionAxiom.html">OWLClassAssertionAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">classAssertionAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">individual</span>
+        <span class="nf">classExpression</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">classExpression</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1796,7 +1748,6 @@
                               <td>
                                 <div>
                                   <p>The individual.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1809,7 +1760,6 @@
                               <td>
                                 <div>
                                   <p>The class expression.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1819,7 +1769,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLClassAssertionAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L278">Show on GitHub</a>
@@ -1832,7 +1781,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectPropertyAssertionAxiom:property:object:"></a>
                     <a name="//apple_ref/objc/Method/-objectPropertyAssertionAxiom:property:object:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyAssertionAxiom:property:object:">-objectPropertyAssertionAxiom:property:object:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyAssertionAxiom:property:object:">-objectPropertyAssertionAxiom:<wbr>property:<wbr>object:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1847,10 +1796,11 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyAssertionAxiom.html">OWLObjectPropertyAssertionAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectPropertyAssertionAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">subject</span>
-                    <span class="nf">property</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-                      <span class="nf">object</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">object</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyAssertionAxiom.html">OWLObjectPropertyAssertionAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectPropertyAssertionAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">subject</span>
+                        <span class="nf">property</span><span class="p">:</span>
+                            <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+                          <span class="nf">object</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">object</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1867,7 +1817,6 @@
                               <td>
                                 <div>
                                   <p>The subject individual.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1880,7 +1829,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1893,7 +1841,6 @@
                               <td>
                                 <div>
                                   <p>The object individual.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1903,7 +1850,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectPropertyAssertionAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L289">Show on GitHub</a>
@@ -1916,7 +1862,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectPropertyDomainAxiom:domain:"></a>
                     <a name="//apple_ref/objc/Method/-objectPropertyDomainAxiom:domain:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyDomainAxiom:domain:">-objectPropertyDomainAxiom:domain:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyDomainAxiom:domain:">-objectPropertyDomainAxiom:<wbr>domain:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -1931,9 +1877,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyDomainAxiom.html">OWLObjectPropertyDomainAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectPropertyDomainAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-                   <span class="nf">domain</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">domain</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyDomainAxiom.html">OWLObjectPropertyDomainAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectPropertyDomainAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+                       <span class="nf">domain</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">domain</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -1950,7 +1896,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1963,7 +1908,6 @@
                               <td>
                                 <div>
                                   <p>The domain.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -1973,7 +1917,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectPropertyDomainAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L299">Show on GitHub</a>
@@ -1986,7 +1929,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)objectPropertyRangeAxiom:range:"></a>
                     <a name="//apple_ref/objc/Method/-objectPropertyRangeAxiom:range:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyRangeAxiom:range:">-objectPropertyRangeAxiom:range:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyRangeAxiom:range:">-objectPropertyRangeAxiom:<wbr>range:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2001,9 +1944,9 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyRangeAxiom.html">OWLObjectPropertyRangeAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
-<span class="nf">objectPropertyRangeAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
-                   <span class="nf">range</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">range</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyRangeAxiom.html">OWLObjectPropertyRangeAxiom</a></span><span class="o">&gt;</span><span class="p">)</span>
+    <span class="nf">objectPropertyRangeAxiom</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span>
+                       <span class="nf">range</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">range</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -2020,7 +1963,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2033,7 +1975,6 @@
                               <td>
                                 <div>
                                   <p>The range.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2043,7 +1984,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLObjectPropertyRangeAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L309">Show on GitHub</a>
@@ -2056,7 +1996,7 @@
                     <code>
                     <a name="/c:objc(pl)OWLDataFactory(im)transitiveObjectPropertyAxiom:"></a>
                     <a name="//apple_ref/objc/Method/-transitiveObjectPropertyAxiom:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)transitiveObjectPropertyAxiom:">-transitiveObjectPropertyAxiom:</a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)transitiveObjectPropertyAxiom:">-transitiveObjectPropertyAxiom:<wbr></a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -2071,7 +2011,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLTransitiveObjectPropertyAxiom">OWLTransitiveObjectPropertyAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">transitiveObjectPropertyAxiom</span><span class="p">:</span>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLTransitiveObjectPropertyAxiom">OWLTransitiveObjectPropertyAxiom</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">transitiveObjectPropertyAxiom</span><span class="p">:</span>
     <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nv">property</span><span class="p">;</span></code></pre>
 
                         </div>
@@ -2089,7 +2029,6 @@
                               <td>
                                 <div>
                                   <p>The property.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -2099,7 +2038,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>An instance of OWLTransitiveObjectPropertyAxiom.</p>
-
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLDataFactory.h#L318">Show on GitHub</a>
@@ -2112,8 +2050,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2017-06-12)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

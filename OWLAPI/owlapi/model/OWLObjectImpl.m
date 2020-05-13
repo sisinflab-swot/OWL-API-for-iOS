@@ -1,76 +1,58 @@
 //
 //  Created by Ivano Bilenchi on 05/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObjectImpl.h"
-#import "OWLEntity.h"
+#import "OWLCowlUtils.h"
 #import "OWLObjCUtils.h"
+#import "OWLEntity.h"
 
-static NSUInteger kHashNotCached = NSUIntegerMax;
+#import "cowl_iterator.h"
 
-
-@interface OWLObjectImpl ()
-{
-    NSUInteger _cachedHash;
+bool signatureIteratorImpl(void *ctx, CowlEntity entity) {
+    void (^handler)(id<OWLEntity> entity) = (__bridge void (^)(__strong id<OWLEntity>))(ctx);
+    id<OWLEntity> ent = entityFromCowl(entity, YES);
+    if (ent) handler(ent);
+    return true;
 }
-@end
-
 
 @implementation OWLObjectImpl
 
-#pragma mark NSObject
-
-- (BOOL)isEqual:(id)object { return object == self || [object isKindOfClass:[self class]]; }
-
-- (NSUInteger)hash
-{
-    if (_cachedHash == kHashNotCached) {
-        _cachedHash = [self computeHash];
-    }
-    return _cachedHash;
-}
-
 #pragma mark NSCopying
 
-// This object is immutable.
 - (id)copyWithZone:(__unused NSZone *)zone { return self; }
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLClass>> *)classesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeClass]; }
+- (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity> entity))handler ABSTRACT_METHOD;
 
-- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeNamedIndividual]; }
-
-- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature { return [self entitiesInSignatureOfType:OWLEntityTypeObjectProperty]; }
-
-- (NSSet<id<OWLEntity>> *)signature ABSTRACT_METHOD;
-
-#pragma mark Other abstract methods
-
-- (NSUInteger)computeHash ABSTRACT_METHOD;
-
-#pragma mark Lifecycle
-
-- (id)init
-{
-    if ((self = [super init])) {
-        _cachedHash = kHashNotCached;
-    }
-    return self;
-}
-
-#pragma mark Private methods
-
-- (NSSet *)entitiesInSignatureOfType:(OWLEntityType)type
-{
-    NSMutableSet *entities = [[NSMutableSet alloc] init];
-    for (id<OWLEntity> entity in self.signature) {
-        if (entity.entityType == type) {
-            [entities addObject:entity];
+- (void)enumerateClassesInSignatureWithHandler:(void (^)(id<OWLClass> owlClass))handler {
+    [self enumerateSignatureWithHandler:^(id<OWLEntity> entity) {
+        if (entity.entityType == OWLEntityTypeClass) {
+            handler((id<OWLClass>)entity);
         }
-    }
-    return entities;
+    }];
 }
+
+- (void)enumerateNamedIndividualsInSignatureWithHandler:(void (^)(id<OWLNamedIndividual> ind))handler {
+    [self enumerateSignatureWithHandler:^(id<OWLEntity> entity) {
+        if (entity.entityType == OWLEntityTypeNamedIndividual) {
+            handler((id<OWLNamedIndividual>)entity);
+        }
+    }];
+}
+
+- (void)enumerateObjectPropertiesInSignatureWithHandler:(void (^)(id<OWLObjectProperty> prop))handler {
+    [self enumerateSignatureWithHandler:^(id<OWLEntity> entity) {
+        if (entity.entityType == OWLEntityTypeObjectProperty) {
+            handler((id<OWLObjectProperty>)entity);
+        }
+    }];
+}
+
+#pragma mark - Public methods
+
+@synthesize cowlObject = _cowlObject;
 
 @end

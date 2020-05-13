@@ -1,27 +1,21 @@
 //
 //  Created by Ivano Bilenchi on 27/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLLogicalAxiomImpl.h"
-#import "OWLObjectPropertyCharacteristicAxiom.h"
+#import "OWLTransitiveObjectPropertyAxiom.h"
+#import "cowl_compat.h"
+
+cowl_struct_decl(CowlObjPropCharAxiom);
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// Abstract class that informally implements part of the OWLObjectPropertyCharacteristicAxiom protocol.
 @interface OWLObjectPropertyCharacteristicAxiomImpl : OWLLogicalAxiomImpl
+<OWLTransitiveObjectPropertyAxiom>
 
-#pragma mark OWLObject
-
-- (NSSet<id<OWLEntity>> *)signature;
-
-#pragma mark OWLObjectPropertyCharacteristicAxiom
-
-@property (nonatomic, copy, readonly) id<OWLObjectPropertyExpression> property;
-
-#pragma mark Other public methods
-
-- (instancetype)initWithProperty:(id<OWLObjectPropertyExpression>)property;
+- (instancetype)initWithCowlAxiom:(CowlObjPropCharAxiom *)axiom retain:(BOOL)retain;
+- (instancetype)initTransitiveObjectProperty:(id<OWLObjectPropertyExpression>)property;
 
 @end
 

@@ -1,118 +1,75 @@
 //
 //  Created by Ivano Bilenchi on 16/02/17.
-//  Copyright © 2017 SisInf Lab. All rights reserved.
+//  Copyright © 2017-2020 SisInf Lab. All rights reserved.
 //
 
-#import "OWLIRI.h"
-#import "OWLMap.h"
-#import "OWLObjCUtils.h"
+#import "OWLIRI+Private.h"
+#import "OWLCowlUtils.h"
+
+#import "cowl_iri.h"
 
 @implementation OWLIRI
-{
-    unsigned char *_cString;
-}
 
 #pragma mark NSObject
 
-- (BOOL)isEqual:(id)object { return object == self; }
+- (BOOL)isEqual:(id)object {
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
+    return cowl_iri_equals(_cowlIRI, ((OWLIRI *)object)->_cowlIRI);
+}
 
-- (NSUInteger)hash { return (NSUInteger)self; }
+- (NSUInteger)hash { return (NSUInteger)cowl_iri_hash(_cowlIRI); }
 
 - (NSString *)description { return self.string; }
 
-#pragma mark NSCopying
-
-// This object is immutable.
-- (id)copyWithZone:(__unused NSZone *)zone { return self; }
-
 #pragma mark OWLIRI
 
-SYNTHESIZE_LAZY(NSString, string, {
-    NSString *string = [[NSString alloc] initWithBytesNoCopy:_cString
-                                                      length:strlen((char *)_cString)
-                                                    encoding:NSUTF8StringEncoding
-                                                freeWhenDone:NO];
-    _string = string ?: @"";
-})
+@synthesize cowlIRI = _cowlIRI;
 
-- (NSString *)namespace
-{
-    NSUInteger remainderIndex = [self indexOfRemainder];
-    return remainderIndex == NSNotFound ? self.string : [self.string substringToIndex:remainderIndex];
+- (NSString *)string {
+    return stringFromCowl(cowl_iri_to_string_no_brackets(_cowlIRI), YES);
 }
 
-- (NSString *)remainder
-{
-    NSUInteger index = [self indexOfRemainder];
-    return index == NSNotFound ? nil : [self.string substringFromIndex:index];
+- (NSString *)namespace {
+    return stringFromCowl(cowl_iri_get_ns(_cowlIRI), NO);
 }
 
-- (NSString *)scheme
-{
+- (NSString *)remainder {
+    return stringFromCowl(cowl_iri_get_rem(_cowlIRI), NO);
+}
+
+- (NSString *)scheme {
     NSString *string = self.string;
     NSUInteger index = [string rangeOfString:@":"].location;
     return index == NSNotFound ? nil : [string substringToIndex:index];
 }
 
-- (NSUInteger)indexOfRemainder
-{
-    NSUInteger index = NSNotFound;
-    NSString *string = self.string;
-    
-    for (NSString *separator in [NSArray arrayWithObjects:@"#", @"/", nil]) {
-        index = [string rangeOfString:separator options:NSBackwardsSearch].location;
-        
-        if (index != NSNotFound && index < string.length - 1) {
-            index++;
-            break;
-        }
-    }
-    
-    return index;
-}
-
-- (NSComparisonResult)compare:(OWLIRI *)iri
-{
+- (NSComparisonResult)compare:(OWLIRI *)iri {
     return [self.string compare:iri.string];
 }
 
 #pragma mark Lifecycle
 
-static OWLMap *instanceCache = NULL;
-
-+ (void)initialize
-{
-    if (self == [OWLIRI class]) {
-        instanceCache = owl_map_init(COPY_TO_WEAK);
-    }
-}
-
-- (instancetype)initWithString:(NSString *)string
-{
-    return [self initWithCString:(unsigned char *)[string UTF8String]];
-}
-
-- (instancetype)initWithCString:(unsigned char *)string
-{
-    NSParameterAssert(string);
-    
-    id cachedInstance = owl_map_get_obj(instanceCache, string);
-    
-    if (cachedInstance) {
-        self = cachedInstance;
-    } else {
-        if ((self = [super init])) {
-            _cString = owl_map_set_obj(instanceCache, string, self);
-        }
+- (instancetype)initWithCowlIRI:(CowlIRI *)cowlIRI retain:(BOOL)retain {
+    NSParameterAssert(cowlIRI);
+    if ((self = [super init])) {
+        _cowlIRI = retain ? cowl_iri_retain(cowlIRI) : cowlIRI;
     }
     return self;
 }
 
-- (void)dealloc
-{
-    if (_cString) {
-        owl_map_set(instanceCache, _cString, nil);
-    }
+- (instancetype)initWithString:(NSString *)string {
+    char const *cstr = [string UTF8String];
+    return cstr ? [self initWithCString:cstr] : nil;
 }
+
+- (instancetype)initWithCString:(char const *)string {
+    NSParameterAssert(string);
+    return [self initWithCowlIRI:cowl_iri_from_cstring(string, strlen(string)) retain:NO];
+}
+
+- (void)dealloc { cowl_iri_release(_cowlIRI); }
+
+- (id)copyWithZone:(__unused NSZone *)zone { return self; }
 
 @end

@@ -1,32 +1,26 @@
 //
 //  Created by Ivano Bilenchi on 05/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLObject.h"
+#import "cowl_entity.h"
 
-/**
- * Abstract class that informally implements part of the OWLObject protocol.
- *
- * Subclassing notes:
- * ------------------
- * OWLObject assumes its subclasses to be immutable in order to perform some
- * optimizations (e.g. hash caching and retain on copy).
- * Therefore, the following rules must be followed when subclassing:
- * 
- * Immutable concrete subclasses must override 'isEqual:' and 'computeHash'.
- * Mutable concrete subclasses must override: 'isEqual:', 'hash' and 'copyWithZone:'.
- */
+extern bool signatureIteratorImpl(void *ctx, CowlEntity entity);
+
+/// Abstract class that provides sensible defaults for methods of the OWLObject protocol.
 @interface OWLObjectImpl : NSObject <NSCopying>
+{
+    @protected
+    void *_cowlObject;
+}
+
+@property (nonatomic, readonly) void* cowlObject;
 
 #pragma mark OWLObject
 
-- (NSSet<id<OWLClass>> *)classesInSignature;
-- (NSSet<id<OWLNamedIndividual>> *)namedIndividualsInSignature;
-- (NSSet<id<OWLObjectProperty>> *)objectPropertiesInSignature;
-
-#pragma mark Other abstract methods
-
-- (NSUInteger)computeHash;
+- (void)enumerateClassesInSignatureWithHandler:(void (^)(id<OWLClass> owlClass))handler;
+- (void)enumerateNamedIndividualsInSignatureWithHandler:(void (^)(id<OWLNamedIndividual> ind))handler;
+- (void)enumerateObjectPropertiesInSignatureWithHandler:(void (^)(id<OWLObjectProperty> prop))handler;
 
 @end

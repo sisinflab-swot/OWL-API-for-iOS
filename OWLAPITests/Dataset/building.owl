@@ -1,2875 +1,1360 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns="http://sisinflab.poliba.it/building.owl#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-  <owl:Ontology rdf:about="http://sisinflab.poliba.it/building.owl"/>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Entertainment">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GeneralStatus"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Sunny">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cloudy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PartlyCloudy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rain"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingDVD">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVD"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LivingRoomLight"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Radio">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cold">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Heat"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Normal"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Refreshing"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Warmth"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSafetyLevel">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SafetyLevelRegulation"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayMusic">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicFunction"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Computer">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Instrumentation"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Blindness">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#KitchenWork">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#TotallyTire">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tire"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyTire"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EyeTire"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalTire"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tire"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#OldPerson">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOld"/>
-        </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#years"/>
-            </owl:onProperty>
-            <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-            >66</owl:minCardinality>
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Person"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adult"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Baby"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Boy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Child"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Hurricane">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#FreshWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GentleModerate"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WholeGale"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SafetyLevelRegulation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Gender">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GeneralStatus"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HalfDownBlind">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BlindRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#FullDownblind"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#AgeRange">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GeneralStatus"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Deafness">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoDeaf"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#KitchenLight">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#CoffeeMachine">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoDeaf">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Deafness"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#DishUpDrink">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LivingRoomLight">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Anxious">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Calm"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ReadingMail">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Gale">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#FreshWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GentleModerate"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Hurricane"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WholeGale"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#FreshWind">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GentleModerate"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Hurricane"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WholeGale"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Refreshing">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cold"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Heat"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Normal"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Warmth"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rested">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Stamina"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Weary"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#StrongWind">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#FreshWind"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GentleModerate"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Hurricane"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WholeGale"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Security">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Refrigerator">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayTV">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#TVFunction"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayTV"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowSecurityLevel">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayTV">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#TVFunction"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#PlayTV"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#OutdoorLuminosity">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Weather"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fever">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Symptom"/>
-    </rdfs:subClassOf>
-    <rdfs:comment>avere la febbre</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Sleeping">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayTV"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayMusic"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayDVD"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#FullDownblind"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#TurnOffKitchenDevices"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayRadio"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Boiler">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Heating"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Serious">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Reggae">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Classical"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disco"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Pop"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rock"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicFunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PhysicalStatus">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Characteristic"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalDisability">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayRadio">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#RadioFunction"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayRadio"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Process"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HVAC">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Party">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fete"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fete"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GentleModerate">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#FreshWind"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Hurricane"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WholeGale"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighLuminosity">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OutdoorLuminosity"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLuminosity"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumLuminosity"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Boy">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOld"/>
-        </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Class>
-            <owl:intersectionOf rdf:parseType="Collection">
-              <owl:Restriction>
-                <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >18</owl:minCardinality>
-              </owl:Restriction>
-              <owl:Restriction>
-                <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >29</owl:maxCardinality>
-              </owl:Restriction>
-            </owl:intersectionOf>
-          </owl:Class>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Person"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adult"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Baby"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Child"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OldPerson"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Blindness"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Deafness"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Dumbness"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalDisability"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MotionDisability"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Characteristic">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Work">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Heat">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cold"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Normal"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Refreshing"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Warmth"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingPhoto">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayPhoto"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MotionDisability">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Drinking">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#DishUpDrink"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Ventilation">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HVAC"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Headache">
-    <rdfs:comment>Aver mal di testa
-</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Symptom"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fete">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adventure">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Interphone">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Alarm">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Signal"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Signal"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#KitchenLight"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LivingRoomLight"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WashingMachine">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Light">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Warmth">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cold"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Heat"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Normal"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Refreshing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#RadioFunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Symptom">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disease"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Child">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOld"/>
-        </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Class>
-            <owl:intersectionOf rdf:parseType="Collection">
-              <owl:Restriction>
-                <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >4</owl:minCardinality>
-              </owl:Restriction>
-              <owl:Restriction>
-                <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >17</owl:maxCardinality>
-              </owl:Restriction>
-            </owl:intersectionOf>
-          </owl:Class>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Person"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adult"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Baby"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Boy"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OldPerson"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#DishWasher">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#PhysicalStatus"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Snow">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cloudy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PartlyCloudy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rain"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Sunny"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Classical">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disco"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Pop"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Reggae"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rock"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayPhoto">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EyeTire">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tire"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MusicFunction"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoPlayMusic"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HaveABath">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WaterTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSafetyLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Mood">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PsychicStatus"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoLight">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#KitchenLight"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LivingRoomLight"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Dumbness">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LowSecurityLevel"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#TVFunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#FullDownblind">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BlindRegulation"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HalfDownBlind"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Oven">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Study">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Relax">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    </rdfs:subClassOf>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HalfDownBlind"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelRegulation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Normal">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Temperature"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cold"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Heat"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Refreshing"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Warmth"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fog">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Happy">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Sad"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Signal">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SensingProcess"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayRadio">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#RadioFunction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#TurnOffKitchenDevices">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#KitchenWork"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cook"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingTV">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LivingRoomLight"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayTV"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#SafetyLevelRegulation"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#DvdPlayer">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Instrumentation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PsychicStatus">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Characteristic"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Heating">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HVAC"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Process"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ListeningRadio">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayRadio"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ReadingBook">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Safety">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cook">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#KitchenWork"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#TurnOffKitchenDevices"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Radiator">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Heating"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WaterTemperatureRegulation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Appliance"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BlindRegulation">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cloudy">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PartlyCloudy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rain"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Sunny"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Dancing">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowSecurityLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelRegulation"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LowSecurityLevel"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WholeGale">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#FreshWind"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#GentleModerate"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Hurricane"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disease">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#PhysicalStatus"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rain">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cloudy"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PartlyCloudy"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Sunny"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumLuminosity">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OutdoorLuminosity"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HighLuminosity"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLuminosity"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Printer">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Instrumentation"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Mp3Player">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rock">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Classical"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disco"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Pop"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Reggae"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLightLevel">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Calm">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Appliance">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HVAC"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Device">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#DVDFunction">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Handicap">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GeneralStatus"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fresh">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Refreshing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightWind">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#FreshWind"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#GentleModerate"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Hurricane"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WholeGale"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Scared">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ListeningMusic">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Weather">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Pop">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Classical"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disco"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Reggae"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Rock"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Stamina">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#PsychicStatus"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GeneralStatus"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disco">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Classical"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Pop"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Reggae"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Rock"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Feminine">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gender"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Masculine"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#AirConditioning">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HVAC"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WindSpeed">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Weather"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Stomachache">
-    <rdfs:comment>Aver mal di stomaco</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Symptom"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LightLevelRegulation"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LowLightLevel"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoPlayDVD">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#DVDFunction"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVD"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PartlyCloudy">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cloudy"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Rain"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Sunny"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVD">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#DVDFunction"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoPlayDVD"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Earache">
-    <rdfs:comment>Aver mal d'orecchio</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Symptom"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Quiet">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Calm"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Functionality">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyTire">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tire"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Freezer">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Amorous">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Phone">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Instrumentation"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Baby">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Person"/>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOld"/>
-        </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-            <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-            >3</owl:maxCardinality>
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adult"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Boy"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Child"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OldPerson"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Person">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#AgeRange"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Classical"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Disco"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Pop"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Reggae"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Rock"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Eating">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BodyProcess"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cook"/>
-          <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#KitchenLight"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Historical">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalTire">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tire"/>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Person"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrownGoods">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Appliance"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Dryer">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WhiteGoods"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Process">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SensingProcess">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Process"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowLuminosity">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OutdoorLuminosity"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HighLuminosity"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MediumLuminosity"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Weary">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Stamina"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#GeneralStatus">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Characteristic"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Weather"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Horror">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Comedy">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adult">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOld"/>
-        </owl:onProperty>
-        <owl:allValuesFrom>
-          <owl:Class>
-            <owl:intersectionOf rdf:parseType="Collection">
-              <owl:Restriction>
-                <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >30</owl:minCardinality>
-              </owl:Restriction>
-              <owl:Restriction>
-                <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#years"/>
-                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-                >65</owl:maxCardinality>
-              </owl:Restriction>
-            </owl:intersectionOf>
-          </owl:Class>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Person"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Baby"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Boy"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Child"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OldPerson"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tv">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#BrownGoods"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Masculine">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gender"/>
-    <owl:disjointWith rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Feminine"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Sad">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-  </owl:Class>
-  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Tire">
-    <rdfs:subClassOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Weary"/>
-  </owl:Class>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWindSpeed">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WindSpeed"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Process"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOld">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#AgeRange"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Temperature"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMusicalGenre">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#MusicalGenre"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForOutdoorLuminosity">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#OutdoorLuminosity"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForDisease">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Disease"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMood">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Mood"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#suitableForUserPosition">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#VideoPreferences"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedFor"/>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWeatherCondition">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WeatherCondition"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#AgeRange"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForGender">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gender"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Handicap"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Stamina"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://sisinflab.poliba.it/unnamed.owl#isOfferedBy"/>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDHistorical">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Historical"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rested"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SafetyLevelHigh">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSafetyLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#HalfRollDownBlind">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWeatherCondition"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWindSpeed"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Cloudy"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWeatherCondition"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWindSpeed"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#StrongWind"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#HalfDownBlind"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SggestTo">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WishFunctionality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#suggestedFor">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WishFunctionality"/>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelHigh">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HighSecurityLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMood"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Scared"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMood"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SafetyLevelNormal">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalSafetyLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDHorror">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Horror"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SuggestedTo">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WishFunctionality"/>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature_plus2">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fresh"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForDisease"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fever"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature_plus4">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cold"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForDisease"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Fever"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusicPop">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rested"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Pop"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMusicalGenre"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusic"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoDeaf"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
- 
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDAdventureForDeafness">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Deafness"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Adventure"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForGender"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Masculine"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDRomantic">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForGender"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Feminine"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusicClassical">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoDeaf"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MentalTire"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Classical"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMusicalGenre"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ListeningMusic"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightningRelax">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForDisease"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Headache"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
- 
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#AllowsTo">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#IsOfferedBy">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDSciFI">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForGender"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Masculine"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ScienceFiction"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#HasWashingMachine">
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WashingMachine"/>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#suitableFor">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WishFunctionality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SuggestedFor">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WishFunctionality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelLow">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#LowSecurityLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusicMetal">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rested"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#HeavyMetal"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMusicalGenre"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ListeningMusic"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoDeaf"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotChild"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#suitableForWish">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Device"/>
-    <rdfs:range rdf:resource="http://sisinflab.poliba.it/unnamed.owl#WishFunctionality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightningBright">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#BrightLightLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#FullRollDownBlind">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForDisease"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWeatherCondition"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWindSpeed"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#FullDownBlind"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForDisease"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Headache"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Rain"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWeatherCondition"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForWindSpeed"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Gale"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayMusicDisco">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForStamina"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Rested"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Disco"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMusicalGenre"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#ListeningMusic"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoDeaf"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
+Prefix(:=<http://sisinflab.poliba.it/unnamed.owl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(daml:=<http://www.daml.org/2001/03/daml+oil#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#isIn">
-    <rdfs:domain rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Functionality"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDRomanticForDeafness">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForGender"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Feminine"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Deafness"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Amorous"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#SecurityLevelMedium">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#MediumSecurityLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDComedy">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Comedy"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#PlayDVD"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMood"/>
-            <owl:allValuesFrom rdf:resource="http://sisinflab.poliba.it/unnamed.owl#Happy"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForMood"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#PlayDVDCartoon">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Child"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoHandicap"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForVideoPreferences"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Cartoon"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#WatchingDVD"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForHandicap"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForAge"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightningNormal">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NormalLightLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature_minus2">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature_minus4">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Heat"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightningOff">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#NoLight"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#Temperature_ok">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#Normal"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#isSuggestedForTemperature"/>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#EnvironmentTemperatureRegulation"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#LightningPlayDVD">
-    <rdf:type>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="http://sisinflab.poliba.it/unnamed.owl#SoftLightLevel"/>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="http://sisinflab.poliba.it/unnamed.owl#suitableForProcess"/>
-            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://sisinflab.poliba.it/unnamed.owl#NotLightningPlayDVD">
-    <rdf:type>
-      <owl:Class>
-        <owl:complementOf rdf:resource="http://sisinflab.poliba.it/unnamed.owl#LightningPlayDVD"/>
-      </owl:Class>
-    </rdf:type>
-  </rdf:Description>
-</rdf:RDF>
 
-<!--_Created_with_OwlEd2 for OWL DL (2.1)  http://www.doom-srl.com -->
+Ontology(<http://sisinflab.poliba.it/unnamed.owl>
+
+Declaration(Class(:Adult))
+Declaration(Class(:Adventure))
+Declaration(Class(:AgeRange))
+Declaration(Class(:AirConditioning))
+Declaration(Class(:Alarm))
+Declaration(Class(:Amorous))
+Declaration(Class(:Anxious))
+Declaration(Class(:Appliance))
+Declaration(Class(:Baby))
+Declaration(Class(:BlindRegulation))
+Declaration(Class(:Blindness))
+Declaration(Class(:BodyProcess))
+Declaration(Class(:BodyTire))
+Declaration(Class(:Boiler))
+Declaration(Class(:Boy))
+Declaration(Class(:BrightLightLevel))
+Declaration(Class(:BrownGoods))
+Declaration(Class(:Calm))
+Declaration(Class(:Cartoon))
+Declaration(Class(:Characteristic))
+Declaration(Class(:Child))
+Declaration(Class(:Classical))
+Declaration(Class(:Cloudy))
+Declaration(Class(:CoffeeMachine))
+Declaration(Class(:Cold))
+Declaration(Class(:Comedy))
+Declaration(Class(:Computer))
+Declaration(Class(:Cook))
+Declaration(Class(:DVDFunction))
+Declaration(Class(:Dancing))
+Declaration(Class(:Deafness))
+Declaration(Class(:Device))
+Declaration(Class(:Disco))
+Declaration(Class(:Disease))
+Declaration(Class(:DishUpDrink))
+Declaration(Class(:DishWasher))
+Declaration(Class(:Drinking))
+Declaration(Class(:Dryer))
+Declaration(Class(:Dumbness))
+Declaration(Class(:DvdPlayer))
+Declaration(Class(:Earache))
+Declaration(Class(:Eating))
+Declaration(Class(:Entertainment))
+Declaration(Class(:EnvironmentTemperatureRegulation))
+Declaration(Class(:EyeTire))
+Declaration(Class(:Feminine))
+Declaration(Class(:Fete))
+Declaration(Class(:Fever))
+Declaration(Class(:Fog))
+Declaration(Class(:Freezer))
+Declaration(Class(:Fresh))
+Declaration(Class(:FreshWind))
+Declaration(Class(:FullDownBlind))
+Declaration(Class(:Functionality))
+Declaration(Class(:Gale))
+Declaration(Class(:Gender))
+Declaration(Class(:GeneralStatus))
+Declaration(Class(:GentleModerate))
+Declaration(Class(:HVAC))
+Declaration(Class(:HalfDownBlind))
+Declaration(Class(:Handicap))
+Declaration(Class(:Happy))
+Declaration(Class(:HaveABath))
+Declaration(Class(:Headache))
+Declaration(Class(:Heat))
+Declaration(Class(:Heating))
+Declaration(Class(:HeavyMetal))
+Declaration(Class(:HighLuminosity))
+Declaration(Class(:HighSafetyLevel))
+Declaration(Class(:HighSecurityLevel))
+Declaration(Class(:Historical))
+Declaration(Class(:Horror))
+Declaration(Class(:Hurricane))
+Declaration(Class(:Instrumentation))
+Declaration(Class(:Interphone))
+Declaration(Class(:KitchenLight))
+Declaration(Class(:KitchenWork))
+Declaration(Class(:Light))
+Declaration(Class(:LightLevelRegulation))
+Declaration(Class(:LightWind))
+Declaration(Class(:ListeningMusic))
+Declaration(Class(:ListeningRadio))
+Declaration(Class(:LivingRoomLight))
+Declaration(Class(:LowLightLevel))
+Declaration(Class(:LowLuminosity))
+Declaration(Class(:LowSecurityLevel))
+Declaration(Class(:Masculine))
+Declaration(Class(:MediumLuminosity))
+Declaration(Class(:MediumSecurityLevel))
+Declaration(Class(:MentalDisability))
+Declaration(Class(:MentalProcess))
+Declaration(Class(:MentalTire))
+Declaration(Class(:Mood))
+Declaration(Class(:MotionDisability))
+Declaration(Class(:Mp3Player))
+Declaration(Class(:MusicFunction))
+Declaration(Class(:MusicalGenre))
+Declaration(Class(:NoDeaf))
+Declaration(Class(:NoHandicap))
+Declaration(Class(:NoLight))
+Declaration(Class(:NoPlayDVD))
+Declaration(Class(:NoPlayMusic))
+Declaration(Class(:NoPlayRadio))
+Declaration(Class(:NoPlayTV))
+Declaration(Class(:Normal))
+Declaration(Class(:NormalLightLevel))
+Declaration(Class(:NormalSafetyLevel))
+Declaration(Class(:NotChild))
+Declaration(Class(:OldPerson))
+Declaration(Class(:OutdoorLuminosity))
+Declaration(Class(:Oven))
+Declaration(Class(:PartlyCloudy))
+Declaration(Class(:Party))
+Declaration(Class(:Person))
+Declaration(Class(:Phone))
+Declaration(Class(:PhysicalStatus))
+Declaration(Class(:PlayDVD))
+Declaration(Class(:PlayMusic))
+Declaration(Class(:PlayPhoto))
+Declaration(Class(:PlayRadio))
+Declaration(Class(:PlayTV))
+Declaration(Class(:Pop))
+Declaration(Class(:Printer))
+Declaration(Class(:Process))
+Declaration(Class(:PsychicStatus))
+Declaration(Class(:Quiet))
+Declaration(Class(:Radiator))
+Declaration(Class(:Radio))
+Declaration(Class(:RadioFunction))
+Declaration(Class(:Rain))
+Declaration(Class(:ReadingBook))
+Declaration(Class(:ReadingMail))
+Declaration(Class(:Refreshing))
+Declaration(Class(:Refrigerator))
+Declaration(Class(:Reggae))
+Declaration(Class(:Relax))
+Declaration(Class(:Rested))
+Declaration(Class(:Rock))
+Declaration(Class(:Sad))
+Declaration(Class(:Safety))
+Declaration(Class(:SafetyLevelRegulation))
+Declaration(Class(:Scared))
+Declaration(Class(:ScienceFiction))
+Declaration(Class(:Security))
+Declaration(Class(:SecurityLevelRegulation))
+Declaration(Class(:SensingProcess))
+Declaration(Class(:Serious))
+Declaration(Class(:Signal))
+Declaration(Class(:Sleeping))
+Declaration(Class(:Snow))
+Declaration(Class(:SoftLightLevel))
+Declaration(Class(:Stamina))
+Declaration(Class(:Stomachache))
+Declaration(Class(:StrongWind))
+Declaration(Class(:Study))
+Declaration(Class(:Sunny))
+Declaration(Class(:Symptom))
+Declaration(Class(:TVFunction))
+Declaration(Class(:Temperature))
+Declaration(Class(:Tire))
+Declaration(Class(:TotallyTire))
+Declaration(Class(:TurnOffKitchenDevices))
+Declaration(Class(:Tv))
+Declaration(Class(:Ventilation))
+Declaration(Class(:VideoPreferences))
+Declaration(Class(:Warmth))
+Declaration(Class(:WashingMachine))
+Declaration(Class(:WatchingDVD))
+Declaration(Class(:WatchingPhoto))
+Declaration(Class(:WatchingTV))
+Declaration(Class(:WaterTemperatureRegulation))
+Declaration(Class(:Weary))
+Declaration(Class(:Weather))
+Declaration(Class(:WeatherCondition))
+Declaration(Class(:WhiteGoods))
+Declaration(Class(:WholeGale))
+Declaration(Class(:WindSpeed))
+Declaration(Class(:WishFunctionality))
+Declaration(Class(:Work))
+Declaration(ObjectProperty(:AllowsTo))
+Declaration(ObjectProperty(:HasWashingMachine))
+Declaration(ObjectProperty(:IsOfferedBy))
+Declaration(ObjectProperty(:SggestTo))
+Declaration(ObjectProperty(:SuggestedFor))
+Declaration(ObjectProperty(:SuggestedTo))
+Declaration(ObjectProperty(:isOfferedBy))
+Declaration(ObjectProperty(:isOld))
+Declaration(ObjectProperty(:isSuggestedFor))
+Declaration(ObjectProperty(:isSuggestedForAge))
+Declaration(ObjectProperty(:isSuggestedForDisease))
+Declaration(ObjectProperty(:isSuggestedForGender))
+Declaration(ObjectProperty(:isSuggestedForHandicap))
+Declaration(ObjectProperty(:isSuggestedForMood))
+Declaration(ObjectProperty(:isSuggestedForMusicalGenre))
+Declaration(ObjectProperty(:isSuggestedForOutdoorLuminosity))
+Declaration(ObjectProperty(:isSuggestedForStamina))
+Declaration(ObjectProperty(:isSuggestedForTemperature))
+Declaration(ObjectProperty(:isSuggestedForVideoPreferences))
+Declaration(ObjectProperty(:isSuggestedForWeatherCondition))
+Declaration(ObjectProperty(:isSuggestedForWindSpeed))
+Declaration(ObjectProperty(:suggestedFor))
+Declaration(ObjectProperty(:suitableFor))
+Declaration(ObjectProperty(:suitableForProcess))
+Declaration(ObjectProperty(:suitableForUserPosition))
+Declaration(ObjectProperty(:suitableForWish))
+Declaration(ObjectProperty(:years))
+Declaration(NamedIndividual(:FullRollDownBlind))
+Declaration(NamedIndividual(:HalfRollDownBlind))
+Declaration(NamedIndividual(:LightningBright))
+Declaration(NamedIndividual(:LightningNormal))
+Declaration(NamedIndividual(:LightningOff))
+Declaration(NamedIndividual(:LightningPlayDVD))
+Declaration(NamedIndividual(:LightningRelax))
+Declaration(NamedIndividual(:PlayDVDAdventureForDeafness))
+Declaration(NamedIndividual(:PlayDVDCartoon))
+Declaration(NamedIndividual(:PlayDVDComedy))
+Declaration(NamedIndividual(:PlayDVDHistorical))
+Declaration(NamedIndividual(:PlayDVDHorror))
+Declaration(NamedIndividual(:PlayDVDRomantic))
+Declaration(NamedIndividual(:PlayDVDRomanticForDeafness))
+Declaration(NamedIndividual(:PlayDVDSciFI))
+Declaration(NamedIndividual(:PlayMusicClassical))
+Declaration(NamedIndividual(:PlayMusicDisco))
+Declaration(NamedIndividual(:PlayMusicMetal))
+Declaration(NamedIndividual(:PlayMusicPop))
+Declaration(NamedIndividual(:SafetyLevelHigh))
+Declaration(NamedIndividual(:SafetyLevelNormal))
+Declaration(NamedIndividual(:SecurityLevelHigh))
+Declaration(NamedIndividual(:SecurityLevelLow))
+Declaration(NamedIndividual(:SecurityLevelMedium))
+Declaration(NamedIndividual(:Temperature_minus2))
+Declaration(NamedIndividual(:Temperature_minus4))
+Declaration(NamedIndividual(:Temperature_ok))
+Declaration(NamedIndividual(:Temperature_plus2))
+Declaration(NamedIndividual(:Temperature_plus4))
+Declaration(AnnotationProperty(:isIn))
+############################
+#   Annotation Properties
+############################
+
+# Annotation Property: :isIn (:isIn)
+
+AnnotationPropertyDomain(:isIn :Functionality)
+
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :AllowsTo (:AllowsTo)
+
+ObjectPropertyDomain(:AllowsTo :Device)
+ObjectPropertyRange(:AllowsTo :Functionality)
+
+# Object Property: :HasWashingMachine (:HasWashingMachine)
+
+ObjectPropertyRange(:HasWashingMachine :WashingMachine)
+
+# Object Property: :IsOfferedBy (:IsOfferedBy)
+
+ObjectPropertyDomain(:IsOfferedBy :Functionality)
+ObjectPropertyRange(:IsOfferedBy :Device)
+
+# Object Property: :SggestTo (:SggestTo)
+
+ObjectPropertyDomain(:SggestTo :Device)
+ObjectPropertyRange(:SggestTo :WishFunctionality)
+
+# Object Property: :SuggestedFor (:SuggestedFor)
+
+ObjectPropertyDomain(:SuggestedFor :Device)
+ObjectPropertyRange(:SuggestedFor :WishFunctionality)
+
+# Object Property: :SuggestedTo (:SuggestedTo)
+
+ObjectPropertyDomain(:SuggestedTo :Device)
+ObjectPropertyRange(:SuggestedTo :WishFunctionality)
+
+# Object Property: :isOld (:isOld)
+
+ObjectPropertyDomain(:isOld :AgeRange)
+
+# Object Property: :isSuggestedForAge (:isSuggestedForAge)
+
+ObjectPropertyRange(:isSuggestedForAge :AgeRange)
+
+# Object Property: :isSuggestedForDisease (:isSuggestedForDisease)
+
+ObjectPropertyRange(:isSuggestedForDisease :Disease)
+
+# Object Property: :isSuggestedForGender (:isSuggestedForGender)
+
+ObjectPropertyRange(:isSuggestedForGender :Gender)
+
+# Object Property: :isSuggestedForHandicap (:isSuggestedForHandicap)
+
+ObjectPropertyRange(:isSuggestedForHandicap :Handicap)
+
+# Object Property: :isSuggestedForMood (:isSuggestedForMood)
+
+ObjectPropertyRange(:isSuggestedForMood :Mood)
+
+# Object Property: :isSuggestedForMusicalGenre (:isSuggestedForMusicalGenre)
+
+ObjectPropertyRange(:isSuggestedForMusicalGenre :MusicalGenre)
+
+# Object Property: :isSuggestedForOutdoorLuminosity (:isSuggestedForOutdoorLuminosity)
+
+ObjectPropertyRange(:isSuggestedForOutdoorLuminosity :OutdoorLuminosity)
+
+# Object Property: :isSuggestedForStamina (:isSuggestedForStamina)
+
+ObjectPropertyRange(:isSuggestedForStamina :Stamina)
+
+# Object Property: :isSuggestedForTemperature (:isSuggestedForTemperature)
+
+ObjectPropertyRange(:isSuggestedForTemperature :Temperature)
+
+# Object Property: :isSuggestedForVideoPreferences (:isSuggestedForVideoPreferences)
+
+ObjectPropertyRange(:isSuggestedForVideoPreferences :VideoPreferences)
+
+# Object Property: :isSuggestedForWeatherCondition (:isSuggestedForWeatherCondition)
+
+ObjectPropertyRange(:isSuggestedForWeatherCondition :WeatherCondition)
+
+# Object Property: :isSuggestedForWindSpeed (:isSuggestedForWindSpeed)
+
+ObjectPropertyRange(:isSuggestedForWindSpeed :WindSpeed)
+
+# Object Property: :suggestedFor (:suggestedFor)
+
+ObjectPropertyDomain(:suggestedFor :Device)
+ObjectPropertyRange(:suggestedFor :WishFunctionality)
+
+# Object Property: :suitableFor (:suitableFor)
+
+ObjectPropertyDomain(:suitableFor :Device)
+ObjectPropertyRange(:suitableFor :WishFunctionality)
+
+# Object Property: :suitableForProcess (:suitableForProcess)
+
+ObjectPropertyDomain(:suitableForProcess :Device)
+ObjectPropertyRange(:suitableForProcess :Process)
+
+# Object Property: :suitableForUserPosition (:suitableForUserPosition)
+
+ObjectPropertyDomain(:suitableForUserPosition :Functionality)
+
+# Object Property: :suitableForWish (:suitableForWish)
+
+ObjectPropertyDomain(:suitableForWish :Device)
+ObjectPropertyRange(:suitableForWish :WishFunctionality)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :Adult (:Adult)
+
+SubClassOf(:Adult :Person)
+SubClassOf(:Adult ObjectAllValuesFrom(:isOld ObjectIntersectionOf(ObjectMinCardinality(30 :years) ObjectMaxCardinality(65 :years))))
+DisjointClasses(:Adult :Baby)
+DisjointClasses(:Adult :Boy)
+DisjointClasses(:Adult :Child)
+DisjointClasses(:Adult :OldPerson)
+
+# Class: :Adventure (:Adventure)
+
+SubClassOf(:Adventure :VideoPreferences)
+DisjointClasses(:Adventure :Amorous)
+DisjointClasses(:Adventure :Cartoon)
+DisjointClasses(:Adventure :Comedy)
+DisjointClasses(:Adventure :Historical)
+DisjointClasses(:Adventure :Horror)
+DisjointClasses(:Adventure :ScienceFiction)
+
+# Class: :AgeRange (:AgeRange)
+
+SubClassOf(:AgeRange :GeneralStatus)
+
+# Class: :AirConditioning (:AirConditioning)
+
+SubClassOf(:AirConditioning :HVAC)
+
+# Class: :Alarm (:Alarm)
+
+EquivalentClasses(:Alarm ObjectIntersectionOf(:HighSecurityLevel :KitchenLight :LivingRoomLight :Signal))
+SubClassOf(:Alarm :Signal)
+
+# Class: :Amorous (:Amorous)
+
+SubClassOf(:Amorous :VideoPreferences)
+DisjointClasses(:Amorous :Cartoon)
+DisjointClasses(:Amorous :Comedy)
+DisjointClasses(:Amorous :Historical)
+DisjointClasses(:Amorous :Horror)
+DisjointClasses(:Amorous :ScienceFiction)
+
+# Class: :Anxious (:Anxious)
+
+SubClassOf(:Anxious :Mood)
+DisjointClasses(:Anxious :Calm)
+
+# Class: :Appliance (:Appliance)
+
+SubClassOf(:Appliance :Device)
+DisjointClasses(:Appliance :HVAC)
+
+# Class: :Baby (:Baby)
+
+SubClassOf(:Baby :Person)
+SubClassOf(:Baby ObjectAllValuesFrom(:isOld ObjectMaxCardinality(3 :years)))
+DisjointClasses(:Baby :Boy)
+DisjointClasses(:Baby :Child)
+DisjointClasses(:Baby :NotChild)
+DisjointClasses(:Baby :OldPerson)
+
+# Class: :BlindRegulation (:BlindRegulation)
+
+SubClassOf(:BlindRegulation :Functionality)
+
+# Class: :Blindness (:Blindness)
+
+SubClassOf(:Blindness :Handicap)
+DisjointClasses(:Blindness :NoHandicap)
+
+# Class: :BodyProcess (:BodyProcess)
+
+SubClassOf(:BodyProcess :Process)
+
+# Class: :BodyTire (:BodyTire)
+
+SubClassOf(:BodyTire :Tire)
+
+# Class: :Boiler (:Boiler)
+
+SubClassOf(:Boiler :Heating)
+
+# Class: :Boy (:Boy)
+
+SubClassOf(:Boy :Person)
+SubClassOf(:Boy ObjectAllValuesFrom(:isOld ObjectIntersectionOf(ObjectMinCardinality(18 :years) ObjectMaxCardinality(29 :years))))
+DisjointClasses(:Boy :Child)
+DisjointClasses(:Boy :OldPerson)
+
+# Class: :BrightLightLevel (:BrightLightLevel)
+
+SubClassOf(:BrightLightLevel :LightLevelRegulation)
+DisjointClasses(:BrightLightLevel :LowLightLevel)
+DisjointClasses(:BrightLightLevel :NoLight)
+DisjointClasses(:BrightLightLevel :NormalLightLevel)
+DisjointClasses(:BrightLightLevel :SoftLightLevel)
+
+# Class: :BrownGoods (:BrownGoods)
+
+SubClassOf(:BrownGoods :Appliance)
+DisjointClasses(:BrownGoods :WhiteGoods)
+
+# Class: :Calm (:Calm)
+
+SubClassOf(:Calm :Mood)
+
+# Class: :Cartoon (:Cartoon)
+
+SubClassOf(:Cartoon :VideoPreferences)
+DisjointClasses(:Cartoon :Comedy)
+DisjointClasses(:Cartoon :Historical)
+DisjointClasses(:Cartoon :Horror)
+DisjointClasses(:Cartoon :ScienceFiction)
+
+# Class: :Characteristic (:Characteristic)
+
+SubClassOf(:Characteristic owl:Thing)
+
+# Class: :Child (:Child)
+
+SubClassOf(:Child :Person)
+SubClassOf(:Child ObjectAllValuesFrom(:isOld ObjectIntersectionOf(ObjectMinCardinality(4 :years) ObjectMaxCardinality(17 :years))))
+DisjointClasses(:Child :NotChild)
+DisjointClasses(:Child :OldPerson)
+
+# Class: :Classical (:Classical)
+
+SubClassOf(:Classical :MusicalGenre)
+DisjointClasses(:Classical :Disco)
+DisjointClasses(:Classical :HeavyMetal)
+DisjointClasses(:Classical :Pop)
+DisjointClasses(:Classical :Reggae)
+DisjointClasses(:Classical :Rock)
+
+# Class: :Cloudy (:Cloudy)
+
+SubClassOf(:Cloudy :WeatherCondition)
+DisjointClasses(:Cloudy :PartlyCloudy)
+DisjointClasses(:Cloudy :Rain)
+DisjointClasses(:Cloudy :Snow)
+DisjointClasses(:Cloudy :Sunny)
+
+# Class: :CoffeeMachine (:CoffeeMachine)
+
+SubClassOf(:CoffeeMachine :WhiteGoods)
+
+# Class: :Cold (:Cold)
+
+SubClassOf(:Cold :Temperature)
+DisjointClasses(:Cold :Heat)
+DisjointClasses(:Cold :Normal)
+DisjointClasses(:Cold :Refreshing)
+DisjointClasses(:Cold :Warmth)
+
+# Class: :Comedy (:Comedy)
+
+SubClassOf(:Comedy :VideoPreferences)
+DisjointClasses(:Comedy :Historical)
+DisjointClasses(:Comedy :Horror)
+DisjointClasses(:Comedy :ScienceFiction)
+
+# Class: :Computer (:Computer)
+
+SubClassOf(:Computer :Instrumentation)
+
+# Class: :Cook (:Cook)
+
+SubClassOf(:Cook :KitchenWork)
+DisjointClasses(:Cook :TurnOffKitchenDevices)
+
+# Class: :DVDFunction (:DVDFunction)
+
+SubClassOf(:DVDFunction :Functionality)
+
+# Class: :Dancing (:Dancing)
+
+EquivalentClasses(:Dancing ObjectIntersectionOf(:BodyProcess :BrightLightLevel :EnvironmentTemperatureRegulation :LowSecurityLevel :NormalSafetyLevel :PlayMusic))
+SubClassOf(:Dancing :BodyProcess)
+
+# Class: :Deafness (:Deafness)
+
+SubClassOf(:Deafness :Handicap)
+DisjointClasses(:Deafness :NoDeaf)
+DisjointClasses(:Deafness :NoHandicap)
+
+# Class: :Device (:Device)
+
+SubClassOf(:Device owl:Thing)
+
+# Class: :Disco (:Disco)
+
+SubClassOf(:Disco :MusicalGenre)
+DisjointClasses(:Disco :HeavyMetal)
+DisjointClasses(:Disco :Pop)
+DisjointClasses(:Disco :Reggae)
+DisjointClasses(:Disco :Rock)
+
+# Class: :Disease (:Disease)
+
+SubClassOf(:Disease :PhysicalStatus)
+
+# Class: :DishUpDrink (:DishUpDrink)
+
+SubClassOf(:DishUpDrink :Functionality)
+
+# Class: :DishWasher (:DishWasher)
+
+SubClassOf(:DishWasher :WhiteGoods)
+
+# Class: :Drinking (:Drinking)
+
+EquivalentClasses(:Drinking ObjectIntersectionOf(:BodyProcess :DishUpDrink))
+SubClassOf(:Drinking :BodyProcess)
+
+# Class: :Dryer (:Dryer)
+
+SubClassOf(:Dryer :WhiteGoods)
+
+# Class: :Dumbness (:Dumbness)
+
+SubClassOf(:Dumbness :Handicap)
+DisjointClasses(:Dumbness :NoHandicap)
+
+# Class: :DvdPlayer (:DvdPlayer)
+
+SubClassOf(:DvdPlayer :BrownGoods)
+
+# Class: :Earache (:Earache)
+
+AnnotationAssertion(rdfs:comment :Earache "Aver mal d'orecchio")
+SubClassOf(:Earache :Symptom)
+
+# Class: :Eating (:Eating)
+
+EquivalentClasses(:Eating ObjectIntersectionOf(:BodyProcess :Cook :EnvironmentTemperatureRegulation :KitchenLight))
+SubClassOf(:Eating :BodyProcess)
+
+# Class: :Entertainment (:Entertainment)
+
+EquivalentClasses(:Entertainment ObjectIntersectionOf(:BodyProcess :BrightLightLevel :EnvironmentTemperatureRegulation :NormalSafetyLevel))
+SubClassOf(:Entertainment :BodyProcess)
+
+# Class: :EnvironmentTemperatureRegulation (:EnvironmentTemperatureRegulation)
+
+SubClassOf(:EnvironmentTemperatureRegulation :Functionality)
+
+# Class: :EyeTire (:EyeTire)
+
+SubClassOf(:EyeTire :Tire)
+
+# Class: :Feminine (:Feminine)
+
+SubClassOf(:Feminine :Gender)
+DisjointClasses(:Feminine :Masculine)
+
+# Class: :Fete (:Fete)
+
+SubClassOf(:Fete :BodyProcess)
+
+# Class: :Fever (:Fever)
+
+AnnotationAssertion(rdfs:comment :Fever "avere la febbre")
+SubClassOf(:Fever :Symptom)
+
+# Class: :Fog (:Fog)
+
+SubClassOf(:Fog :WeatherCondition)
+
+# Class: :Freezer (:Freezer)
+
+SubClassOf(:Freezer :WhiteGoods)
+
+# Class: :Fresh (:Fresh)
+
+SubClassOf(:Fresh :Refreshing)
+
+# Class: :FreshWind (:FreshWind)
+
+SubClassOf(:FreshWind :WindSpeed)
+DisjointClasses(:FreshWind :Gale)
+DisjointClasses(:FreshWind :GentleModerate)
+DisjointClasses(:FreshWind :Hurricane)
+DisjointClasses(:FreshWind :LightWind)
+DisjointClasses(:FreshWind :StrongWind)
+DisjointClasses(:FreshWind :WholeGale)
+
+# Class: :FullDownBlind (:FullDownBlind)
+
+SubClassOf(:FullDownBlind :BlindRegulation)
+DisjointClasses(:FullDownBlind :HalfDownBlind)
+
+# Class: :Functionality (:Functionality)
+
+SubClassOf(:Functionality owl:Thing)
+
+# Class: :Gale (:Gale)
+
+SubClassOf(:Gale :WindSpeed)
+DisjointClasses(:Gale :GentleModerate)
+DisjointClasses(:Gale :Hurricane)
+DisjointClasses(:Gale :LightWind)
+DisjointClasses(:Gale :StrongWind)
+DisjointClasses(:Gale :WholeGale)
+
+# Class: :Gender (:Gender)
+
+SubClassOf(:Gender :GeneralStatus)
+
+# Class: :GeneralStatus (:GeneralStatus)
+
+SubClassOf(:GeneralStatus :Characteristic)
+
+# Class: :GentleModerate (:GentleModerate)
+
+SubClassOf(:GentleModerate :WindSpeed)
+DisjointClasses(:GentleModerate :Hurricane)
+DisjointClasses(:GentleModerate :LightWind)
+DisjointClasses(:GentleModerate :StrongWind)
+DisjointClasses(:GentleModerate :WholeGale)
+
+# Class: :HVAC (:HVAC)
+
+SubClassOf(:HVAC :Device)
+
+# Class: :HalfDownBlind (:HalfDownBlind)
+
+SubClassOf(:HalfDownBlind :BlindRegulation)
+
+# Class: :Handicap (:Handicap)
+
+SubClassOf(:Handicap :GeneralStatus)
+
+# Class: :Happy (:Happy)
+
+SubClassOf(:Happy :Mood)
+DisjointClasses(:Happy :Sad)
+
+# Class: :HaveABath (:HaveABath)
+
+EquivalentClasses(:HaveABath ObjectIntersectionOf(:BodyProcess :EnvironmentTemperatureRegulation :HighSafetyLevel :NormalLightLevel :WaterTemperatureRegulation))
+SubClassOf(:HaveABath :BodyProcess)
+
+# Class: :Headache (:Headache)
+
+AnnotationAssertion(rdfs:comment :Headache "Aver mal di testa
+")
+SubClassOf(:Headache :Symptom)
+
+# Class: :Heat (:Heat)
+
+SubClassOf(:Heat :Temperature)
+DisjointClasses(:Heat :Normal)
+DisjointClasses(:Heat :Refreshing)
+DisjointClasses(:Heat :Warmth)
+
+# Class: :Heating (:Heating)
+
+SubClassOf(:Heating :HVAC)
+
+# Class: :HeavyMetal (:HeavyMetal)
+
+SubClassOf(:HeavyMetal :MusicalGenre)
+DisjointClasses(:HeavyMetal :Pop)
+DisjointClasses(:HeavyMetal :Reggae)
+DisjointClasses(:HeavyMetal :Rock)
+
+# Class: :HighLuminosity (:HighLuminosity)
+
+SubClassOf(:HighLuminosity :OutdoorLuminosity)
+DisjointClasses(:HighLuminosity :LowLuminosity)
+DisjointClasses(:HighLuminosity :MediumLuminosity)
+
+# Class: :HighSafetyLevel (:HighSafetyLevel)
+
+SubClassOf(:HighSafetyLevel :SafetyLevelRegulation)
+
+# Class: :HighSecurityLevel (:HighSecurityLevel)
+
+SubClassOf(:HighSecurityLevel :SecurityLevelRegulation)
+DisjointClasses(:HighSecurityLevel :LowSecurityLevel)
+DisjointClasses(:HighSecurityLevel :MediumSecurityLevel)
+
+# Class: :Historical (:Historical)
+
+SubClassOf(:Historical :VideoPreferences)
+DisjointClasses(:Historical :Horror)
+DisjointClasses(:Historical :ScienceFiction)
+
+# Class: :Horror (:Horror)
+
+SubClassOf(:Horror :VideoPreferences)
+DisjointClasses(:Horror :ScienceFiction)
+
+# Class: :Hurricane (:Hurricane)
+
+SubClassOf(:Hurricane :WindSpeed)
+DisjointClasses(:Hurricane :LightWind)
+DisjointClasses(:Hurricane :StrongWind)
+DisjointClasses(:Hurricane :WholeGale)
+
+# Class: :Instrumentation (:Instrumentation)
+
+SubClassOf(:Instrumentation :BrownGoods)
+
+# Class: :Interphone (:Interphone)
+
+SubClassOf(:Interphone :BrownGoods)
+
+# Class: :KitchenLight (:KitchenLight)
+
+SubClassOf(:KitchenLight :LightLevelRegulation)
+DisjointClasses(:KitchenLight :NoLight)
+
+# Class: :KitchenWork (:KitchenWork)
+
+SubClassOf(:KitchenWork :Functionality)
+
+# Class: :Light (:Light)
+
+SubClassOf(:Light :Device)
+
+# Class: :LightLevelRegulation (:LightLevelRegulation)
+
+SubClassOf(:LightLevelRegulation :Functionality)
+
+# Class: :LightWind (:LightWind)
+
+SubClassOf(:LightWind :WindSpeed)
+DisjointClasses(:LightWind :StrongWind)
+DisjointClasses(:LightWind :WholeGale)
+
+# Class: :ListeningMusic (:ListeningMusic)
+
+EquivalentClasses(:ListeningMusic ObjectIntersectionOf(:EnvironmentTemperatureRegulation :MediumSecurityLevel :MentalProcess :NormalSafetyLevel :PlayMusic))
+SubClassOf(:ListeningMusic :MentalProcess)
+
+# Class: :ListeningRadio (:ListeningRadio)
+
+EquivalentClasses(:ListeningRadio ObjectIntersectionOf(:EnvironmentTemperatureRegulation :MediumSecurityLevel :MentalProcess :NormalSafetyLevel :PlayRadio))
+SubClassOf(:ListeningRadio :MentalProcess)
+
+# Class: :LivingRoomLight (:LivingRoomLight)
+
+SubClassOf(:LivingRoomLight :LightLevelRegulation)
+DisjointClasses(:LivingRoomLight :NoLight)
+
+# Class: :LowLightLevel (:LowLightLevel)
+
+SubClassOf(:LowLightLevel :LightLevelRegulation)
+DisjointClasses(:LowLightLevel :NoLight)
+DisjointClasses(:LowLightLevel :NormalLightLevel)
+DisjointClasses(:LowLightLevel :SoftLightLevel)
+
+# Class: :LowLuminosity (:LowLuminosity)
+
+SubClassOf(:LowLuminosity :OutdoorLuminosity)
+DisjointClasses(:LowLuminosity :MediumLuminosity)
+
+# Class: :LowSecurityLevel (:LowSecurityLevel)
+
+SubClassOf(:LowSecurityLevel :SecurityLevelRegulation)
+DisjointClasses(:LowSecurityLevel :MediumSecurityLevel)
+
+# Class: :Masculine (:Masculine)
+
+SubClassOf(:Masculine :Gender)
+
+# Class: :MediumLuminosity (:MediumLuminosity)
+
+SubClassOf(:MediumLuminosity :OutdoorLuminosity)
+
+# Class: :MediumSecurityLevel (:MediumSecurityLevel)
+
+SubClassOf(:MediumSecurityLevel :SecurityLevelRegulation)
+
+# Class: :MentalDisability (:MentalDisability)
+
+SubClassOf(:MentalDisability :Handicap)
+DisjointClasses(:MentalDisability :NoHandicap)
+
+# Class: :MentalProcess (:MentalProcess)
+
+SubClassOf(:MentalProcess :Process)
+
+# Class: :MentalTire (:MentalTire)
+
+SubClassOf(:MentalTire :Tire)
+
+# Class: :Mood (:Mood)
+
+SubClassOf(:Mood :PsychicStatus)
+
+# Class: :MotionDisability (:MotionDisability)
+
+SubClassOf(:MotionDisability :Handicap)
+DisjointClasses(:MotionDisability :NoHandicap)
+
+# Class: :Mp3Player (:Mp3Player)
+
+SubClassOf(:Mp3Player :BrownGoods)
+
+# Class: :MusicFunction (:MusicFunction)
+
+SubClassOf(:MusicFunction :Functionality)
+
+# Class: :MusicalGenre (:MusicalGenre)
+
+SubClassOf(:MusicalGenre :GeneralStatus)
+
+# Class: :NoDeaf (:NoDeaf)
+
+SubClassOf(:NoDeaf :Handicap)
+
+# Class: :NoHandicap (:NoHandicap)
+
+SubClassOf(:NoHandicap :Handicap)
+
+# Class: :NoLight (:NoLight)
+
+SubClassOf(:NoLight :LightLevelRegulation)
+DisjointClasses(:NoLight :NormalLightLevel)
+DisjointClasses(:NoLight :SoftLightLevel)
+
+# Class: :NoPlayDVD (:NoPlayDVD)
+
+SubClassOf(:NoPlayDVD :DVDFunction)
+DisjointClasses(:NoPlayDVD :PlayDVD)
+
+# Class: :NoPlayMusic (:NoPlayMusic)
+
+SubClassOf(:NoPlayMusic :MusicFunction)
+DisjointClasses(:NoPlayMusic :PlayMusic)
+
+# Class: :NoPlayRadio (:NoPlayRadio)
+
+SubClassOf(:NoPlayRadio :RadioFunction)
+DisjointClasses(:NoPlayRadio :PlayRadio)
+
+# Class: :NoPlayTV (:NoPlayTV)
+
+SubClassOf(:NoPlayTV :TVFunction)
+DisjointClasses(:NoPlayTV :PlayTV)
+
+# Class: :Normal (:Normal)
+
+SubClassOf(:Normal :Temperature)
+DisjointClasses(:Normal :Refreshing)
+DisjointClasses(:Normal :Warmth)
+
+# Class: :NormalLightLevel (:NormalLightLevel)
+
+SubClassOf(:NormalLightLevel :LightLevelRegulation)
+DisjointClasses(:NormalLightLevel :SoftLightLevel)
+
+# Class: :NormalSafetyLevel (:NormalSafetyLevel)
+
+SubClassOf(:NormalSafetyLevel :SafetyLevelRegulation)
+
+# Class: :NotChild (:NotChild)
+
+SubClassOf(:NotChild :Person)
+
+# Class: :OldPerson (:OldPerson)
+
+SubClassOf(:OldPerson :Person)
+SubClassOf(:OldPerson ObjectAllValuesFrom(:isOld ObjectMinCardinality(66 :years)))
+
+# Class: :OutdoorLuminosity (:OutdoorLuminosity)
+
+SubClassOf(:OutdoorLuminosity :Weather)
+
+# Class: :Oven (:Oven)
+
+SubClassOf(:Oven :WhiteGoods)
+
+# Class: :PartlyCloudy (:PartlyCloudy)
+
+SubClassOf(:PartlyCloudy :WeatherCondition)
+DisjointClasses(:PartlyCloudy :Rain)
+DisjointClasses(:PartlyCloudy :Snow)
+DisjointClasses(:PartlyCloudy :Sunny)
+
+# Class: :Party (:Party)
+
+EquivalentClasses(:Party ObjectIntersectionOf(:BrightLightLevel :EnvironmentTemperatureRegulation :Fete :LowSecurityLevel :NormalSafetyLevel :PlayMusic))
+SubClassOf(:Party :Fete)
+
+# Class: :Person (:Person)
+
+SubClassOf(:Person :AgeRange)
+
+# Class: :Phone (:Phone)
+
+SubClassOf(:Phone :Instrumentation)
+
+# Class: :PhysicalStatus (:PhysicalStatus)
+
+SubClassOf(:PhysicalStatus :Characteristic)
+
+# Class: :PlayDVD (:PlayDVD)
+
+SubClassOf(:PlayDVD :DVDFunction)
+
+# Class: :PlayMusic (:PlayMusic)
+
+SubClassOf(:PlayMusic :MusicFunction)
+
+# Class: :PlayPhoto (:PlayPhoto)
+
+SubClassOf(:PlayPhoto :Functionality)
+
+# Class: :PlayRadio (:PlayRadio)
+
+SubClassOf(:PlayRadio :RadioFunction)
+
+# Class: :PlayTV (:PlayTV)
+
+SubClassOf(:PlayTV :TVFunction)
+
+# Class: :Pop (:Pop)
+
+SubClassOf(:Pop :MusicalGenre)
+DisjointClasses(:Pop :Reggae)
+DisjointClasses(:Pop :Rock)
+
+# Class: :Printer (:Printer)
+
+SubClassOf(:Printer :Instrumentation)
+
+# Class: :Process (:Process)
+
+SubClassOf(:Process owl:Thing)
+
+# Class: :PsychicStatus (:PsychicStatus)
+
+SubClassOf(:PsychicStatus :Characteristic)
+
+# Class: :Quiet (:Quiet)
+
+SubClassOf(:Quiet :Calm)
+
+# Class: :Radiator (:Radiator)
+
+SubClassOf(:Radiator :Heating)
+
+# Class: :Radio (:Radio)
+
+SubClassOf(:Radio :BrownGoods)
+
+# Class: :RadioFunction (:RadioFunction)
+
+SubClassOf(:RadioFunction :Functionality)
+
+# Class: :Rain (:Rain)
+
+SubClassOf(:Rain :WeatherCondition)
+DisjointClasses(:Rain :Snow)
+DisjointClasses(:Rain :Sunny)
+
+# Class: :ReadingBook (:ReadingBook)
+
+EquivalentClasses(:ReadingBook ObjectIntersectionOf(:BrightLightLevel :EnvironmentTemperatureRegulation :HighSecurityLevel :MentalProcess :NormalSafetyLevel :PlayMusic))
+SubClassOf(:ReadingBook :MentalProcess)
+
+# Class: :ReadingMail (:ReadingMail)
+
+EquivalentClasses(:ReadingMail ObjectIntersectionOf(:BrightLightLevel :EnvironmentTemperatureRegulation :MentalProcess :NormalSafetyLevel))
+SubClassOf(:ReadingMail :MentalProcess)
+
+# Class: :Refreshing (:Refreshing)
+
+SubClassOf(:Refreshing :Temperature)
+DisjointClasses(:Refreshing :Warmth)
+
+# Class: :Refrigerator (:Refrigerator)
+
+SubClassOf(:Refrigerator :WhiteGoods)
+
+# Class: :Reggae (:Reggae)
+
+SubClassOf(:Reggae :MusicalGenre)
+DisjointClasses(:Reggae :Rock)
+
+# Class: :Relax (:Relax)
+
+EquivalentClasses(:Relax ObjectIntersectionOf(:BodyProcess :EnvironmentTemperatureRegulation :HalfDownBlind :HighSafetyLevel :LowLightLevel :PlayMusic))
+SubClassOf(:Relax :BodyProcess)
+
+# Class: :Rested (:Rested)
+
+SubClassOf(:Rested :Stamina)
+DisjointClasses(:Rested :Weary)
+
+# Class: :Rock (:Rock)
+
+SubClassOf(:Rock :MusicalGenre)
+
+# Class: :Sad (:Sad)
+
+SubClassOf(:Sad :Mood)
+
+# Class: :Safety (:Safety)
+
+SubClassOf(:Safety :Device)
+
+# Class: :SafetyLevelRegulation (:SafetyLevelRegulation)
+
+SubClassOf(:SafetyLevelRegulation :Functionality)
+
+# Class: :Scared (:Scared)
+
+SubClassOf(:Scared :Mood)
+
+# Class: :ScienceFiction (:ScienceFiction)
+
+SubClassOf(:ScienceFiction :VideoPreferences)
+
+# Class: :Security (:Security)
+
+SubClassOf(:Security :Device)
+
+# Class: :SecurityLevelRegulation (:SecurityLevelRegulation)
+
+SubClassOf(:SecurityLevelRegulation :Functionality)
+
+# Class: :SensingProcess (:SensingProcess)
+
+SubClassOf(:SensingProcess :Process)
+
+# Class: :Serious (:Serious)
+
+SubClassOf(:Serious :Mood)
+
+# Class: :Signal (:Signal)
+
+SubClassOf(:Signal :SensingProcess)
+
+# Class: :Sleeping (:Sleeping)
+
+EquivalentClasses(:Sleeping ObjectIntersectionOf(:BodyProcess :EnvironmentTemperatureRegulation :FullDownBlind :HighSafetyLevel :HighSecurityLevel :NoLight :NoPlayDVD :NoPlayMusic :NoPlayRadio :NoPlayTV :TurnOffKitchenDevices))
+SubClassOf(:Sleeping :BodyProcess)
+
+# Class: :Snow (:Snow)
+
+SubClassOf(:Snow :WeatherCondition)
+DisjointClasses(:Snow :Sunny)
+
+# Class: :SoftLightLevel (:SoftLightLevel)
+
+SubClassOf(:SoftLightLevel :LightLevelRegulation)
+
+# Class: :Stamina (:Stamina)
+
+SubClassOf(:Stamina :PsychicStatus)
+
+# Class: :Stomachache (:Stomachache)
+
+AnnotationAssertion(rdfs:comment :Stomachache "Aver mal di stomaco")
+SubClassOf(:Stomachache :Symptom)
+
+# Class: :StrongWind (:StrongWind)
+
+SubClassOf(:StrongWind :WindSpeed)
+DisjointClasses(:StrongWind :WholeGale)
+
+# Class: :Study (:Study)
+
+EquivalentClasses(:Study ObjectIntersectionOf(:BrightLightLevel :EnvironmentTemperatureRegulation :MediumSecurityLevel :MentalProcess :NormalSafetyLevel))
+SubClassOf(:Study :MentalProcess)
+
+# Class: :Sunny (:Sunny)
+
+SubClassOf(:Sunny :WeatherCondition)
+
+# Class: :Symptom (:Symptom)
+
+SubClassOf(:Symptom :Disease)
+
+# Class: :TVFunction (:TVFunction)
+
+SubClassOf(:TVFunction :Functionality)
+
+# Class: :Temperature (:Temperature)
+
+SubClassOf(:Temperature :PhysicalStatus)
+
+# Class: :Tire (:Tire)
+
+SubClassOf(:Tire :Weary)
+
+# Class: :TotallyTire (:TotallyTire)
+
+EquivalentClasses(:TotallyTire ObjectIntersectionOf(:BodyTire :EyeTire :MentalTire :Tire))
+SubClassOf(:TotallyTire :Tire)
+
+# Class: :TurnOffKitchenDevices (:TurnOffKitchenDevices)
+
+SubClassOf(:TurnOffKitchenDevices :KitchenWork)
+
+# Class: :Tv (:Tv)
+
+SubClassOf(:Tv :BrownGoods)
+
+# Class: :Ventilation (:Ventilation)
+
+SubClassOf(:Ventilation :HVAC)
+
+# Class: :VideoPreferences (:VideoPreferences)
+
+SubClassOf(:VideoPreferences :GeneralStatus)
+
+# Class: :Warmth (:Warmth)
+
+SubClassOf(:Warmth :Temperature)
+
+# Class: :WashingMachine (:WashingMachine)
+
+SubClassOf(:WashingMachine :WhiteGoods)
+
+# Class: :WatchingDVD (:WatchingDVD)
+
+EquivalentClasses(:WatchingDVD ObjectIntersectionOf(:EnvironmentTemperatureRegulation :LivingRoomLight :MediumSecurityLevel :MentalProcess :NormalSafetyLevel :PlayDVD :SoftLightLevel))
+SubClassOf(:WatchingDVD :MentalProcess)
+
+# Class: :WatchingPhoto (:WatchingPhoto)
+
+EquivalentClasses(:WatchingPhoto ObjectIntersectionOf(:EnvironmentTemperatureRegulation :MediumSecurityLevel :MentalProcess :NormalSafetyLevel :PlayPhoto :SoftLightLevel))
+SubClassOf(:WatchingPhoto :MentalProcess)
+
+# Class: :WatchingTV (:WatchingTV)
+
+EquivalentClasses(:WatchingTV ObjectIntersectionOf(:EnvironmentTemperatureRegulation :LivingRoomLight :MediumSecurityLevel :MentalProcess :NormalSafetyLevel :PlayTV :SoftLightLevel))
+SubClassOf(:WatchingTV :MentalProcess)
+
+# Class: :WaterTemperatureRegulation (:WaterTemperatureRegulation)
+
+SubClassOf(:WaterTemperatureRegulation :Functionality)
+
+# Class: :Weary (:Weary)
+
+SubClassOf(:Weary :Stamina)
+
+# Class: :Weather (:Weather)
+
+SubClassOf(:Weather owl:Thing)
+
+# Class: :WeatherCondition (:WeatherCondition)
+
+SubClassOf(:WeatherCondition :Weather)
+
+# Class: :WhiteGoods (:WhiteGoods)
+
+SubClassOf(:WhiteGoods :Appliance)
+
+# Class: :WholeGale (:WholeGale)
+
+SubClassOf(:WholeGale :WindSpeed)
+
+# Class: :WindSpeed (:WindSpeed)
+
+SubClassOf(:WindSpeed :Weather)
+
+# Class: :Work (:Work)
+
+EquivalentClasses(:Work ObjectIntersectionOf(:BrightLightLevel :EnvironmentTemperatureRegulation :MediumSecurityLevel :MentalProcess :NormalSafetyLevel))
+SubClassOf(:Work :MentalProcess)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :FullRollDownBlind (:FullRollDownBlind)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForDisease owl:Thing) ObjectSomeValuesFrom(:isSuggestedForWeatherCondition owl:Thing) ObjectSomeValuesFrom(:isSuggestedForWindSpeed owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForDisease :Headache) ObjectAllValuesFrom(:isSuggestedForWeatherCondition :Rain) ObjectAllValuesFrom(:isSuggestedForWindSpeed :Gale) ObjectAllValuesFrom(:suitableForProcess :FullDownBlind)) :FullRollDownBlind)
+
+# Individual: :HalfRollDownBlind (:HalfRollDownBlind)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForWeatherCondition owl:Thing) ObjectSomeValuesFrom(:isSuggestedForWindSpeed owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForWeatherCondition :Cloudy) ObjectAllValuesFrom(:isSuggestedForWindSpeed :StrongWind) ObjectAllValuesFrom(:suitableForProcess :HalfDownBlind)) :HalfRollDownBlind)
+
+# Individual: :LightningBright (:LightningBright)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :BrightLightLevel)) :LightningBright)
+
+# Individual: :LightningNormal (:LightningNormal)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :NormalLightLevel)) :LightningNormal)
+
+# Individual: :LightningOff (:LightningOff)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :NoLight)) :LightningOff)
+
+# Individual: :LightningPlayDVD (:LightningPlayDVD)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :SoftLightLevel)) :LightningPlayDVD)
+
+# Individual: :LightningRelax (:LightningRelax)
+
+ClassAssertion(ObjectIntersectionOf(ObjectAllValuesFrom(:isSuggestedForDisease :Headache) ObjectAllValuesFrom(:suitableForProcess :SoftLightLevel)) :LightningRelax)
+
+# Individual: :PlayDVDAdventureForDeafness (:PlayDVDAdventureForDeafness)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForAge owl:Thing) ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForAge :NotChild) ObjectAllValuesFrom(:isSuggestedForGender :Masculine) ObjectAllValuesFrom(:isSuggestedForHandicap :Deafness) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Adventure) ObjectAllValuesFrom(:suitableForProcess :PlayDVD)) :PlayDVDAdventureForDeafness)
+
+# Individual: :PlayDVDCartoon (:PlayDVDCartoon)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForAge owl:Thing) ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForAge :Child) ObjectAllValuesFrom(:isSuggestedForHandicap :NoHandicap) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Cartoon) ObjectAllValuesFrom(:suitableForProcess :WatchingDVD)) :PlayDVDCartoon)
+
+# Individual: :PlayDVDComedy (:PlayDVDComedy)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:isSuggestedForMood owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForHandicap :NoHandicap) ObjectAllValuesFrom(:isSuggestedForMood :Happy) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Comedy) ObjectAllValuesFrom(:suitableForProcess :PlayDVD)) :PlayDVDComedy)
+
+# Individual: :PlayDVDHistorical (:PlayDVDHistorical)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForAge owl:Thing) ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:isSuggestedForStamina owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForAge :NotChild) ObjectAllValuesFrom(:isSuggestedForHandicap :NoHandicap) ObjectAllValuesFrom(:isSuggestedForStamina :Rested) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Historical) ObjectAllValuesFrom(:suitableForProcess :PlayDVD)) :PlayDVDHistorical)
+
+# Individual: :PlayDVDHorror (:PlayDVDHorror)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForAge owl:Thing) ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForAge :NotChild) ObjectAllValuesFrom(:isSuggestedForHandicap :NoHandicap) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Horror) ObjectAllValuesFrom(:suitableForProcess :PlayDVD)) :PlayDVDHorror)
+
+# Individual: :PlayDVDRomantic (:PlayDVDRomantic)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForGender :Feminine) ObjectAllValuesFrom(:isSuggestedForHandicap :NoHandicap) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Amorous) ObjectAllValuesFrom(:suitableForProcess :WatchingDVD)) :PlayDVDRomantic)
+
+# Individual: :PlayDVDRomanticForDeafness (:PlayDVDRomanticForDeafness)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForGender :Feminine) ObjectAllValuesFrom(:isSuggestedForHandicap :Deafness) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :Amorous) ObjectAllValuesFrom(:suitableForProcess :WatchingDVD)) :PlayDVDRomanticForDeafness)
+
+# Individual: :PlayDVDSciFI (:PlayDVDSciFI)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForAge owl:Thing) ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForAge :NotChild) ObjectAllValuesFrom(:isSuggestedForGender :Masculine) ObjectAllValuesFrom(:isSuggestedForHandicap :NoHandicap) ObjectAllValuesFrom(:isSuggestedForVideoPreferences :ScienceFiction) ObjectAllValuesFrom(:suitableForProcess :WatchingDVD)) :PlayDVDSciFI)
+
+# Individual: :PlayMusicClassical (:PlayMusicClassical)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForHandicap :NoDeaf) ObjectAllValuesFrom(:isSuggestedForMusicalGenre :Classical) ObjectAllValuesFrom(:isSuggestedForStamina :MentalTire) ObjectAllValuesFrom(:suitableForProcess :ListeningMusic)) :PlayMusicClassical)
+
+# Individual: :PlayMusicDisco (:PlayMusicDisco)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForHandicap :NoDeaf) ObjectAllValuesFrom(:isSuggestedForMusicalGenre :Disco) ObjectAllValuesFrom(:isSuggestedForStamina :Rested) ObjectAllValuesFrom(:suitableForProcess :ListeningMusic)) :PlayMusicDisco)
+
+# Individual: :PlayMusicMetal (:PlayMusicMetal)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForAge owl:Thing) ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForAge :NotChild) ObjectAllValuesFrom(:isSuggestedForHandicap :NoDeaf) ObjectAllValuesFrom(:isSuggestedForMusicalGenre :HeavyMetal) ObjectAllValuesFrom(:isSuggestedForStamina :Rested) ObjectAllValuesFrom(:suitableForProcess :ListeningMusic)) :PlayMusicMetal)
+
+# Individual: :PlayMusicPop (:PlayMusicPop)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForHandicap owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForHandicap :NoDeaf) ObjectAllValuesFrom(:isSuggestedForMusicalGenre :Pop) ObjectAllValuesFrom(:isSuggestedForStamina :Rested) ObjectAllValuesFrom(:suitableForProcess :PlayMusic)) :PlayMusicPop)
+
+# Individual: :SafetyLevelHigh (:SafetyLevelHigh)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :HighSafetyLevel)) :SafetyLevelHigh)
+
+# Individual: :SafetyLevelNormal (:SafetyLevelNormal)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :NormalSafetyLevel)) :SafetyLevelNormal)
+
+# Individual: :SecurityLevelHigh (:SecurityLevelHigh)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForMood owl:Thing) ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:isSuggestedForMood :Scared) ObjectAllValuesFrom(:suitableForProcess :HighSecurityLevel)) :SecurityLevelHigh)
+
+# Individual: :SecurityLevelLow (:SecurityLevelLow)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :LowSecurityLevel)) :SecurityLevelLow)
+
+# Individual: :SecurityLevelMedium (:SecurityLevelMedium)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:suitableForProcess owl:Thing) ObjectAllValuesFrom(:suitableForProcess :MediumSecurityLevel)) :SecurityLevelMedium)
+
+# Individual: :Temperature_minus2 (:Temperature_minus2)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForTemperature owl:Thing) ObjectAllValuesFrom(:suitableForProcess :EnvironmentTemperatureRegulation)) :Temperature_minus2)
+
+# Individual: :Temperature_minus4 (:Temperature_minus4)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForTemperature owl:Thing) ObjectAllValuesFrom(:isSuggestedForTemperature :Heat) ObjectAllValuesFrom(:suitableForProcess :EnvironmentTemperatureRegulation)) :Temperature_minus4)
+
+# Individual: :Temperature_ok (:Temperature_ok)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForTemperature owl:Thing) ObjectAllValuesFrom(:isSuggestedForTemperature :Normal) ObjectAllValuesFrom(:suitableForProcess :EnvironmentTemperatureRegulation)) :Temperature_ok)
+
+# Individual: :Temperature_plus2 (:Temperature_plus2)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForTemperature owl:Thing) ObjectAllValuesFrom(:isSuggestedForDisease :Fever) ObjectAllValuesFrom(:isSuggestedForTemperature :Fresh) ObjectAllValuesFrom(:suitableForProcess :EnvironmentTemperatureRegulation)) :Temperature_plus2)
+
+# Individual: :Temperature_plus4 (:Temperature_plus4)
+
+ClassAssertion(ObjectIntersectionOf(ObjectSomeValuesFrom(:isSuggestedForTemperature owl:Thing) ObjectAllValuesFrom(:isSuggestedForDisease :Fever) ObjectAllValuesFrom(:isSuggestedForTemperature :Cold) ObjectAllValuesFrom(:suitableForProcess :EnvironmentTemperatureRegulation)) :Temperature_plus4)
+
+
+)

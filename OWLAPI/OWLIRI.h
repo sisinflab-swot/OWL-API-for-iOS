@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 16/02/17.
-//  Copyright © 2017 SisInf Lab. All rights reserved.
+//  Copyright © 2017-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -10,8 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Represents International Resource Identifiers.
 @interface OWLIRI : NSObject <NSCopying>
 
-/// The string representation of this IRI.
-@property (nonatomic, copy, readonly) NSString *string;
+/// @return The string representation of this IRI.
+- (NSString *)string;
 
 /// @return The namespace of this IRI.
 - (NSString *)namespace;
@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @return The IRI that has the specified string representation.
  */
-- (instancetype)initWithCString:(unsigned char *)string;
+- (instancetype)initWithCString:(char const *)string;
 
 /**
  * Compares two IRIs alphabetically.
