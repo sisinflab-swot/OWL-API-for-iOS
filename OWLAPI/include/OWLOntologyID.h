@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 04/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -10,10 +10,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * An object that identifies an ontology. Since OWL 2, ontologies do not have
- * to have an ontology IRI, or if they have an ontology IRI then they can optionally
- * also have a version IRI. Instances of this OWLOntologyID class bundle identifying
- * information of an ontology together. If an ontology doesn't have an ontology IRI
+ * An object that identifies an ontology.
+ *
+ * Since OWL 2, ontologies do not have to have an ontology IRI, or if they have an ontology IRI
+ * then they can optionally also have a version IRI. Instances of this OWLOntologyID class bundle
+ * identifying information of an ontology together. If an ontology doesn't have an ontology IRI
  * then we say that it is "anonymous".
  */
 @interface OWLOntologyID : NSObject <NSCopying>
