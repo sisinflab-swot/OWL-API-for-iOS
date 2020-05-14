@@ -292,11 +292,12 @@
 
                 </div>
               </div>
-            <p>An object that identifies an ontology. Since OWL 2, ontologies do not have
-to have an ontology IRI, or if they have an ontology IRI then they can optionally
-also have a version IRI. Instances of this OWLOntologyID class bundle identifying
-information of an ontology together. If an ontology doesn&rsquo;t have an ontology IRI
-then we say that it is &ldquo;anonymous&rdquo;.</p>
+            <p>An object that identifies an ontology.</p>
+
+<p>Since OWL 2, ontologies do not have to have an ontology IRI, or if they have an ontology IRI
+ then they can optionally also have a version IRI. Instances of this OWLOntologyID class bundle
+ identifying information of an ontology together. If an ontology doesn&rsquo;t have an ontology IRI
+ then we say that it is &ldquo;anonymous&rdquo;.</p>
 
           </section>
           <section class="section task-group-section">
@@ -332,7 +333,7 @@ then we say that it is &ldquo;anonymous&rdquo;.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntologyID.h#L22">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLOntologyID.h#L23">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -367,128 +368,7 @@ then we say that it is &ldquo;anonymous&rdquo;.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntologyID.h#L25">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithOntologyIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:">-initWithOntologyIRI:<wbr></a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Constructs an ontology identifier specifying the ontology IRI.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithOntologyIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ontologyIRI</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>ontologyIRI</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The IRI of the ontology document.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntologyID.h#L32">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:versionIRI:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithOntologyIRI:versionIRI:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)OWLOntologyID(im)initWithOntologyIRI:versionIRI:">-initWithOntologyIRI:<wbr>versionIRI:<wbr></a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Constructs an ontology identifier specifying the ontology IRI.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithOntologyIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">ontologyIRI</span>
-                                 <span class="nf">versionIRI</span><span class="p">:(</span><span class="n">nullable</span> <span class="n"><a href="../Classes/OWLIRI.html">OWLIRI</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">versionIRI</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">ontologyIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?,</span> <span class="nv">versionIRI</span><span class="p">:</span> <span class="kt"><a href="../Classes/OWLIRI.html">OWLIRI</a></span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>ontologyIRI</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The IRI of the ontology document.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>versionIRI</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The version IRI of the ontology document.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/OWLOntologyID.h#L40">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLOntologyID.h#L26">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -498,7 +378,7 @@ then we say that it is &ldquo;anonymous&rdquo;.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-13)</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

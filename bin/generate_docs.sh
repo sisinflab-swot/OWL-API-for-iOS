@@ -44,7 +44,7 @@ INFO_PLIST=$(getXcodeSetting PRODUCT_SETTINGS_PATH)
 AUTHOR="$(getPlistSetting Author)"
 AUTHOR_URL="$(getPlistSetting AuthorURL)"
 SOURCE_URL="$(getPlistSetting SourceURL)"
-UMBRELLA="${PROJECT_NAME}/${PROJECT_NAME}.h"
+UMBRELLA="${PROJECT_NAME}/include/${PROJECT_NAME}.h"
 VERSION="$(getPlistSetting CFBundleShortVersionString)"
 
 # Compile docs

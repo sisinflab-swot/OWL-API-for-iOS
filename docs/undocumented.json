@@ -1,133 +1,126 @@
 {
   "warnings": [
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLBooleanClassExpression.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLBooleanClassExpression.h",
       "line": 8,
       "symbol": "OWLBooleanClassExpression",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLCardinalityRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLCardinalityRestriction.h",
       "line": 10,
       "symbol": "OWLCardinalityRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLClassAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLClassAxiom.h",
       "line": 8,
       "symbol": "OWLClassAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLDeclarationAxiom.h",
-      "line": 12,
-      "symbol": "OWLDeclarationAxiom",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLIndividualAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLIndividualAxiom.h",
       "line": 8,
       "symbol": "OWLIndividualAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLLogicalAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLLogicalAxiom.h",
       "line": 8,
       "symbol": "OWLLogicalAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLLogicalEntity.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLLogicalEntity.h",
       "line": 8,
       "symbol": "OWLLogicalEntity",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLNAryAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLNAryAxiom.h",
       "line": 8,
       "symbol": "OWLNAryAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLNAryBooleanClassExpression.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLNAryBooleanClassExpression.h",
       "line": 12,
       "symbol": "OWLNAryBooleanClassExpression",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLNAryClassAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLNAryClassAxiom.h",
       "line": 13,
       "symbol": "OWLNAryClassAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLObjectCardinalityRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLObjectCardinalityRestriction.h",
       "line": 11,
       "symbol": "OWLObjectCardinalityRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLObjectPropertyAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLObjectPropertyAxiom.h",
       "line": 8,
       "symbol": "OWLObjectPropertyAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLObjectPropertyCharacteristicAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLObjectPropertyCharacteristicAxiom.h",
       "line": 12,
       "symbol": "OWLObjectPropertyCharacteristicAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLPropertyAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLPropertyAxiom.h",
       "line": 8,
       "symbol": "OWLPropertyAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLPropertyDomainAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLPropertyDomainAxiom.h",
       "line": 12,
       "symbol": "OWLPropertyDomainAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLPropertyRangeAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLPropertyRangeAxiom.h",
       "line": 12,
       "symbol": "OWLPropertyRangeAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLQuantifiedObjectRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLQuantifiedObjectRestriction.h",
       "line": 11,
       "symbol": "OWLQuantifiedObjectRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLQuantifiedRestriction.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLQuantifiedRestriction.h",
       "line": 12,
       "symbol": "OWLQuantifiedRestriction",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/OWLUnaryPropertyAxiom.h",
+      "file": "/Users/ivano/Documents/Developer/SisInfLab/OWL/owlapi-ios/OWLAPI/include/OWLUnaryPropertyAxiom.h",
       "line": 12,
       "symbol": "OWLUnaryPropertyAxiom",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
