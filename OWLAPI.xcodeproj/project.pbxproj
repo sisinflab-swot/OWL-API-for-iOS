@@ -23,6 +23,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		CC350ACC246D60C7008138CE /* OWLIdentifiedEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CC350ACB246D60C7008138CE /* OWLIdentifiedEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC350ACD246D60C7008138CE /* OWLIdentifiedEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CC350ACB246D60C7008138CE /* OWLIdentifiedEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CC350ACE246D60C7008138CE /* OWLIdentifiedEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = CC350ACB246D60C7008138CE /* OWLIdentifiedEntity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CC52207C1CD61A4700490D42 /* OWLOntologyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */; };
 		CC52207E1CD61A4700490D42 /* OWLAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD2FC3E1CD5F7B3003F8CC8 /* OWLAPI.framework */; };
 		CC52208E1CD61BE700490D42 /* building.owl in Resources */ = {isa = PBXBuildFile; fileRef = CC52208D1CD61BE700490D42 /* building.owl */; };
@@ -478,6 +481,7 @@
 
 /* Begin PBXFileReference section */
 		CC3209ED1DC7AF96002793AC /* OWLAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OWLAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC350ACB246D60C7008138CE /* OWLIdentifiedEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLIdentifiedEntity.h; sourceTree = "<group>"; };
 		CC5220791CD61A4700490D42 /* OWLAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OWLAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyTests.m; sourceTree = "<group>"; };
 		CC52207D1CD61A4700490D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -738,6 +742,7 @@
 				CC6C30AD246C5A31003A3ADC /* OWLEntity.h */,
 				CC6C30B3246C5A31003A3ADC /* OWLEntityType.h */,
 				CC6C30A7246C5A31003A3ADC /* OWLEquivalentClassesAxiom.h */,
+				CC350ACB246D60C7008138CE /* OWLIdentifiedEntity.h */,
 				CC6C309E246C5A31003A3ADC /* OWLIndividual.h */,
 				CC6C30A4246C5A31003A3ADC /* OWLIndividualAxiom.h */,
 				CC6C30A8246C5A31003A3ADC /* OWLIRI.h */,
@@ -891,6 +896,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC6C314A246C5A31003A3ADC /* OWLLogicalAxiom.h in Headers */,
+				CC350ACD246D60C7008138CE /* OWLIdentifiedEntity.h in Headers */,
 				CC6C31E3246C5A32003A3ADC /* OWLNAryClassAxiomImpl.h in Headers */,
 				CC6C31C5246C5A32003A3ADC /* OWLNAryClassAxiom.h in Headers */,
 				CC6C3177246C5A31003A3ADC /* OWLUnaryPropertyAxiom.h in Headers */,
@@ -995,6 +1001,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC6C3149246C5A31003A3ADC /* OWLLogicalAxiom.h in Headers */,
+				CC350ACC246D60C7008138CE /* OWLIdentifiedEntity.h in Headers */,
 				CC6C31E2246C5A32003A3ADC /* OWLNAryClassAxiomImpl.h in Headers */,
 				CC6C31C4246C5A32003A3ADC /* OWLNAryClassAxiom.h in Headers */,
 				CC6C3176246C5A31003A3ADC /* OWLUnaryPropertyAxiom.h in Headers */,
@@ -1099,6 +1106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC6C314B246C5A31003A3ADC /* OWLLogicalAxiom.h in Headers */,
+				CC350ACE246D60C7008138CE /* OWLIdentifiedEntity.h in Headers */,
 				CC6C31E4246C5A32003A3ADC /* OWLNAryClassAxiomImpl.h in Headers */,
 				CC6C31C6246C5A32003A3ADC /* OWLNAryClassAxiom.h in Headers */,
 				CC6C3178246C5A31003A3ADC /* OWLUnaryPropertyAxiom.h in Headers */,

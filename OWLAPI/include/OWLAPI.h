@@ -1,6 +1,6 @@
 //
 //  Created by Ivano Bilenchi on 01/05/16.
-//  Copyright © 2016 SisInf Lab. All rights reserved.
+//  Copyright © 2016-2020 SisInf Lab. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

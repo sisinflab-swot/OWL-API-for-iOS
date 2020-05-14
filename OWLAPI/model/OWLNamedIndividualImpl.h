@@ -4,6 +4,7 @@
 //
 
 #import "OWLObjectImpl.h"
+#import "OWLIdentifiedEntity.h"
 #import "OWLNamedIndividual.h"
 #import "cowl_compat.h"
 
@@ -11,7 +12,7 @@ cowl_struct_decl(CowlNamedInd);
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWLNamedIndividualImpl : OWLObjectImpl <OWLNamedIndividual>
+@interface OWLNamedIndividualImpl : OWLObjectImpl <OWLNamedIndividual, OWLIdentifiedEntity>
 
 - (instancetype)initWithCowlNamedInd:(CowlNamedInd *)cowlInd retain:(BOOL)retain;
 - (instancetype)initWithIRI:(OWLIRI *)IRI;

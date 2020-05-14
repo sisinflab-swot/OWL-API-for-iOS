@@ -52,6 +52,14 @@
 
 - (BOOL)isOWLObjectProperty { return NO; }
 
+#pragma mark OWLIdentifiedEntity
+
+- (OWLEntityID)identifier { return (OWLEntityID)_cowlObject; }
+
++ (id<OWLIdentifiedEntity>)entityWithIdentifier:(OWLEntityID)identifier {
+    return [[self alloc] initWithCowlClass:(CowlClass *)identifier retain:NO];
+}
+
 #pragma mark OWLClassExpression
 
 - (OWLClassExpressionType)classExpressionType { return OWLClassExpressionTypeClass; }
