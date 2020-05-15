@@ -4,7 +4,8 @@
 //
 
 #import "OWLIndividual.h"
+#import "OWLIdentifiedEntity.h"
 #import "OWLLogicalEntity.h"
 
 /// Represents a named individual.
-@protocol OWLNamedIndividual <OWLIndividual, OWLLogicalEntity> @end
+@protocol OWLNamedIndividual <OWLIndividual, OWLIdentifiedEntity, OWLLogicalEntity> @end

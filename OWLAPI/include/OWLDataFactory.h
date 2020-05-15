@@ -1,9 +1,10 @@
 //
 //  Created by Ivano Bilenchi on 29/05/17.
-//  Copyright © 2017 SisInf Lab. All rights reserved.
+//  Copyright © 2017-2020 SisInf Lab. All rights reserved.
 //
 
 #import "OWLEntityType.h"
+#import "OWLEntityID.h"
 #import "OWLNodeID.h"
 
 @protocol OWLAnonymousIndividual;
@@ -124,6 +125,35 @@ NS_ASSUME_NONNULL_BEGIN
  * @return An instance of OWLAnonymousIndividual.
  */
 - (id<OWLAnonymousIndividual>)anonymousIndividualWithNodeID:(OWLNodeID)nodeID;
+
+#pragma mark Entity to/from identifiers
+
+/**
+ * Gets the class that has the specified identifier.
+ *
+ * @param entityID The identifier;
+ *
+ * @return An instance of OWLClass.
+ */
+- (id<OWLClass>)classWithEntityID:(OWLEntityID)entityID;
+
+/**
+* Gets the named individual that has the specified identifier.
+*
+* @param entityID The identifier;
+*
+* @return An instance of OWLNamedIndividual.
+*/
+- (id<OWLNamedIndividual>)namedIndividualWithEntityID:(OWLEntityID)entityID;
+
+/**
+* Gets the object property that has the specified identifier.
+*
+* @param entityID The identifier;
+*
+* @return An instance of OWLObjectProperty.
+*/
+- (id<OWLObjectProperty>)objectPropertyWithEntityID:(OWLEntityID)entityID;
 
 #pragma mark Class expressions
 

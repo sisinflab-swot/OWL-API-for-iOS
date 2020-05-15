@@ -4,9 +4,7 @@
 //
 
 #import "OWLEntity.h"
-
-/// Entity identifier.
-typedef uintptr_t OWLEntityID;
+#import "OWLEntityID.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,17 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
  *          after the entity has been deallocated is undefined behavior.
  */
 @property (nonatomic, readonly) OWLEntityID identifier;
-
-
-/**
- * Returns the entity identified by the specified identifier.
- *
- * @param identifier The identifier.
- * @return The entity.
- *
- * @warning If the identifier is invalid, the return value is undefined.
- */
-+ (id<OWLIdentifiedEntity>)entityWithIdentifier:(OWLEntityID)identifier;
 
 @end
 

@@ -50,10 +50,6 @@
 
 - (OWLEntityID)identifier { return (OWLEntityID)_cowlObject; }
 
-+ (id<OWLIdentifiedEntity>)entityWithIdentifier:(OWLEntityID)identifier {
-    return [[self alloc] initWithCowlProperty:(CowlObjProp *)identifier retain:NO];
-}
-
 #pragma mark OWLPropertyExpression
 
 - (BOOL)anonymous { return NO; }

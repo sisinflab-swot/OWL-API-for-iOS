@@ -5,14 +5,13 @@
 
 #import "OWLObjectImpl.h"
 #import "OWLClass.h"
-#import "OWLIdentifiedEntity.h"
 #import "cowl_compat.h"
 
 cowl_struct_decl(CowlClass);
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWLClassImpl : OWLObjectImpl <OWLClass, OWLIdentifiedEntity>
+@interface OWLClassImpl : OWLObjectImpl <OWLClass>
 
 - (instancetype)initWithCowlClass:(CowlClass *)cowlClass retain:(BOOL)retain;
 - (instancetype)initWithIRI:(OWLIRI *)iri;

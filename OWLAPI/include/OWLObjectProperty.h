@@ -4,7 +4,8 @@
 //
 
 #import "OWLObjectPropertyExpression.h"
+#import "OWLIdentifiedEntity.h"
 #import "OWLProperty.h"
 
 /// Represents an Object Property in the OWL 2 Specification.
-@protocol OWLObjectProperty <OWLObjectPropertyExpression, OWLProperty> @end
+@protocol OWLObjectProperty <OWLObjectPropertyExpression, OWLIdentifiedEntity, OWLProperty> @end

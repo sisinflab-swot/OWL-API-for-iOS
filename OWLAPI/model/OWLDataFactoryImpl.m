@@ -80,6 +80,18 @@
     return [[OWLAnonymousIndividualImpl alloc] initWithNodeID:nodeID];
 }
 
+- (id<OWLClass>)classWithEntityID:(OWLEntityID)entityID {
+    return [[OWLClassImpl alloc] initWithCowlClass:(CowlClass *)entityID retain:YES];
+}
+
+- (id<OWLNamedIndividual>)namedIndividualWithEntityID:(OWLEntityID)entityID {
+    return [[OWLNamedIndividualImpl alloc] initWithCowlNamedInd:(CowlNamedInd *)entityID retain:YES];
+}
+
+- (id<OWLObjectProperty>)objectPropertyWithEntityID:(OWLEntityID)entityID {
+    return [[OWLObjectPropertyImpl alloc] initWithCowlProperty:(CowlObjProp *)entityID retain:YES];
+}
+
 - (id<OWLObjectComplementOf>)objectComplementOf:(id<OWLClassExpression>)classExpression {
     return [[OWLObjectComplementOfImpl alloc] initWithOperand:classExpression];
 }

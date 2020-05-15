@@ -4,6 +4,7 @@
 //
 
 #import "OWLClassExpression.h"
+#import "OWLIdentifiedEntity.h"
 #import "OWLLogicalEntity.h"
 #import "OWLNamedObject.h"
 
@@ -12,6 +13,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Represents a Class in the OWL 2 specification.
-@protocol OWLClass <OWLClassExpression, OWLLogicalEntity, OWLNamedObject> @end
+@protocol OWLClass <OWLClassExpression, OWLIdentifiedEntity, OWLLogicalEntity, OWLNamedObject> @end
 
 NS_ASSUME_NONNULL_END

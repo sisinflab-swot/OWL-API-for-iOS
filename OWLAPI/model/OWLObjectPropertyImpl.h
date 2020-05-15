@@ -4,7 +4,6 @@
 //
 
 #import "OWLObjectPropertyExpressionImpl.h"
-#import "OWLIdentifiedEntity.h"
 #import "OWLObjectProperty.h"
 #import "cowl_compat.h"
 
@@ -12,8 +11,7 @@ cowl_struct_decl(CowlObjProp);
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OWLObjectPropertyImpl : OWLObjectPropertyExpressionImpl
-<OWLObjectProperty, OWLIdentifiedEntity>
+@interface OWLObjectPropertyImpl : OWLObjectPropertyExpressionImpl <OWLObjectProperty>
 
 - (instancetype)initWithCowlProperty:(CowlObjProp *)cowlProp retain:(BOOL)retain;
 - (instancetype)initWithIRI:(OWLIRI *)IRI;
