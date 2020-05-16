@@ -28,8 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
  * @param[out] length Length of the string.
  *
  * @return The string representation of this IRI.
+ *
+ * @note You are responsible for freeing the returned string.
  */
-- (char const *)cstringWithLength:(size_t *)length;
+- (char const *)cstringWithLength:(nullable size_t *)length;
 
 /**
  * Creates an IRI from the specified string.

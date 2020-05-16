@@ -73,11 +73,11 @@
 #pragma mark OWLObjectCardinalityRestriction
 
 - (id<OWLObjectPropertyExpression>)property {
-    return objPropExpFromCowl(_cowlObject, YES);
+    return objPropExpFromCowl(cowl_obj_card_get_prop(_cowlObject), YES);
 }
 
 - (id<OWLClassExpression>)filler {
-    return classExpressionFromCowl(_cowlObject, YES);
+    return classExpressionFromCowl(cowl_obj_card_get_filler(_cowlObject), YES);
 }
 
 #pragma mark Other public methods

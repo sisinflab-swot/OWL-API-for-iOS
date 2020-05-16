@@ -33,7 +33,7 @@
 #pragma mark OWLNamedObject
 
 - (OWLIRI *)IRI {
-    return [[OWLIRI alloc] initWithCowlIRI:cowl_obj_prop_get_iri(_cowlObject) retain:NO];
+    return [[OWLIRI alloc] initWithCowlIRI:cowl_obj_prop_get_iri(_cowlObject) retain:YES];
 }
 
 #pragma mark OWLEntity
