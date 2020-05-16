@@ -23,6 +23,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString *)scheme;
 
 /**
+ * Returns the string representation of this IRI and its length.
+ *
+ * @param[out] length Length of the string.
+ *
+ * @return The string representation of this IRI.
+ */
+- (char const *)cstringWithLength:(size_t *)length;
+
+/**
  * Creates an IRI from the specified string.
  *
  * @param string The string that specifies the IRI.

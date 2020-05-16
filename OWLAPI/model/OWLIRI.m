@@ -7,6 +7,7 @@
 #import "OWLCowlUtils.h"
 
 #import "cowl_iri.h"
+#import "cowl_string.h"
 
 @implementation OWLIRI
 
@@ -36,6 +37,12 @@
 
 - (NSString *)remainder {
     return stringFromCowl(cowl_iri_get_rem(_cowlIRI), NO);
+}
+
+- (char const *)cstringWithLength:(size_t *)length {
+    CowlString *string = cowl_iri_to_string_no_brackets(_cowlIRI);
+    if (length) *length = (size_t)cowl_string_get_length(string);
+    return cowl_string_release_copying_cstring(string);
 }
 
 - (NSString *)scheme {
