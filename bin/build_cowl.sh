@@ -4,9 +4,13 @@
 
 MACOS_ARCHS="x86_64"
 MACOS_BUILD_DIR="cmake-build-macos"
+MACOS_DEPLOYMENT_TARGET=10.11
 
-IOS_ARCHS="armv7;armv7s;arm64;arm64e;x86_64;i386"
+IOS_ARCHS="arm64;arm64e"
+SIM_ARCHS="x86_64"
 IOS_BUILD_DIR="cmake-build-ios"
+SIM_BUILD_DIR="cmake-build-sim"
+IOS_DEPLOYMENT_TARGET=9.0
 
 ACTION="${1:-build}"
 CONFIG="${CONFIGURATION:-Release}"
@@ -29,42 +33,61 @@ function cmake {
 
 # Start build
 
+echo "Printing env..."
+printenv
+
 cd "$(dirname "${0}")/../lib/cowl"
 
 COMMIT_SHA="$(git rev-parse --short HEAD)"
 CONFIG_FLAG="${OUT_DIR}/${COMMIT_SHA}_${CONFIG}"
 
 if [ "${ACTION}" = "clean" ]; then
-    rm -rf "${MACOS_BUILD_DIR}" "${IOS_BUILD_DIR}" "${OUT_DIR}"
+    rm -rf "${MACOS_BUILD_DIR}" "${IOS_BUILD_DIR}" "${SIM_BUILD_DIR}" "${OUT_DIR}"
     exit 0
 fi
 
 if [ ! -f  "${CONFIG_FLAG}" ]; then
-    rm -rf "${MACOS_BUILD_DIR}" "${IOS_BUILD_DIR}" "${OUT_DIR}"
+    rm -rf "${MACOS_BUILD_DIR}" "${IOS_BUILD_DIR}" "${SIM_BUILD_DIR}" "${OUT_DIR}"
 
     # macOS library
-    cmake -S . -B "${MACOS_BUILD_DIR}" -DCMAKE_OSX_ARCHITECTURES="${MACOS_ARCHS}"
+    cmake -B "${MACOS_BUILD_DIR}" \
+        -DCMAKE_OSX_ARCHITECTURES="${MACOS_ARCHS}" \
+        -DCMAKE_OSX_DEPLOYMENT_TARGET="${MACOS_DEPLOYMENT_TARGET}"
+
     cmake --build "${MACOS_BUILD_DIR}" --target cowl-static --config "${CONFIG}" --parallel
 
     mkdir -p "${MACOS_OUT_DIR}"
     mv "${MACOS_BUILD_DIR}/libcowl.a" "${MACOS_OUT_DIR}"
 
     # iOS library
-    cmake -S . -B "${IOS_BUILD_DIR}" \
+    cmake -B "${IOS_BUILD_DIR}" \
         -DCMAKE_SYSTEM_NAME=iOS \
+        -DCMAKE_OSX_SYSROOT=iphoneos \
+        -DCMAKE_OSX_DEPLOYMENT_TARGET="${IOS_DEPLOYMENT_TARGET}" \
         -DCMAKE_OSX_ARCHITECTURES="${IOS_ARCHS}" \
         -DCMAKE_C_FLAGS='-fembed-bitcode'
 
     cmake --build "${IOS_BUILD_DIR}" --target cowl-static --config "${CONFIG}" --parallel
 
+    # Simulator library
+    cmake -B "${SIM_BUILD_DIR}" \
+        -DCMAKE_SYSTEM_NAME=iOS \
+        -DCMAKE_OSX_SYSROOT=iphonesimulator \
+        -DCMAKE_OSX_DEPLOYMENT_TARGET="${IOS_DEPLOYMENT_TARGET}" \
+        -DCMAKE_OSX_ARCHITECTURES="${SIM_ARCHS}" \
+        -DCMAKE_C_FLAGS='-fembed-bitcode'
+
+    cmake --build "${SIM_BUILD_DIR}" --target cowl-static --config "${CONFIG}" --parallel
+
     mkdir -p "${IOS_OUT_DIR}"
-    mv "${IOS_BUILD_DIR}/libcowl.a" "${IOS_OUT_DIR}"
+    lipo -create "${IOS_BUILD_DIR}/libcowl.a" "${SIM_BUILD_DIR}/libcowl.a" \
+         -output "${IOS_OUT_DIR}/libcowl.a"
 
     # Headers
     mv "${IOS_BUILD_DIR}/include" "${HEADERS_OUT_DIR}"
 
     # Done
-    rm -rf "${MACOS_BUILD_DIR}" "${IOS_BUILD_DIR}"
+    rm -rf "${MACOS_BUILD_DIR}" "${IOS_BUILD_DIR}" "${SIM_BUILD_DIR}"
     touch "${CONFIG_FLAG}"
 fi
 
