@@ -41,33 +41,8 @@ CowlClsExpSet* cowlClsExpSetFrom(NSSet<id<OWLClassExpression>> *set) {
     return cowlSet;
 }
 
-CowlEntity cowlEntityFrom(id<OWLEntity> entity) {
-    switch (entity.entityType) {
-        case OWLEntityTypeAnnotationProperty:
-            return cowl_entity_wrap_annot_prop(((OWLObjectImpl *)entity).cowlObject);
-
-        case OWLEntityTypeClass:
-            return cowl_entity_wrap_class(((OWLObjectImpl *)entity).cowlObject);
-
-        case OWLEntityTypeDatatype:
-            return cowl_entity_wrap_datatype(((OWLObjectImpl *)entity).cowlObject);
-
-        case OWLEntityTypeDataProperty:
-            return cowl_entity_wrap_data_prop(((OWLObjectImpl *)entity).cowlObject);
-
-        case OWLEntityTypeNamedIndividual:
-            return cowl_entity_wrap_named_ind(((OWLObjectImpl *)entity).cowlObject);
-
-        case OWLEntityTypeObjectProperty:
-            return cowl_entity_wrap_obj_prop(((OWLObjectImpl *)entity).cowlObject);
-
-        default: {
-            NSString *reason = @"Invalid entity type.";
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:reason
-                                         userInfo:nil];
-        }
-    }
+CowlEntity* cowlEntityFrom(id<OWLEntity> entity) {
+    return cowlWrappedObject(entity);
 }
 
 void* cowlWrappedObject(id object) {
@@ -216,16 +191,19 @@ NSSet<id<OWLClassExpression>>* classExpressionSetFromCowl(CowlClsExpSet *set, BO
     return lset;
 }
 
-id<OWLEntity> entityFromCowl(CowlEntity entity, BOOL retain) {
-    switch (entity.type) {
+id<OWLEntity> entityFromCowl(CowlEntity *entity, BOOL retain) {
+    switch (cowl_entity_get_type(entity)) {
         case COWL_ET_CLASS:
-            return [[OWLClassImpl alloc] initWithCowlClass:entity.owl_class retain:retain];
+            return [[OWLClassImpl alloc] initWithCowlClass:(CowlClass *)entity
+                                                    retain:retain];
 
         case COWL_ET_NAMED_IND:
-            return [[OWLNamedIndividualImpl alloc] initWithCowlNamedInd:entity.named_ind retain:retain];
+            return [[OWLNamedIndividualImpl alloc] initWithCowlNamedInd:(CowlNamedInd *)entity
+                                                                 retain:retain];
 
         case COWL_ET_OBJ_PROP:
-            return [[OWLObjectPropertyImpl alloc] initWithCowlProperty:entity.obj_prop retain:retain];
+            return [[OWLObjectPropertyImpl alloc] initWithCowlProperty:(CowlObjProp *)entity
+                                                                retain:retain];
 
         default:
             return nil;
@@ -238,9 +216,11 @@ NSError* errorFromCowl(CowlError error) {
 
 id<OWLIndividual> individualFromCowl(CowlIndividual *ind, BOOL retain) {
     if (cowl_individual_is_named(ind)) {
-        return [[OWLNamedIndividualImpl alloc] initWithCowlNamedInd:(CowlNamedInd *)ind retain:retain];
+        return [[OWLNamedIndividualImpl alloc] initWithCowlNamedInd:(CowlNamedInd *)ind
+                                                             retain:retain];
     } else {
-        return [[OWLAnonymousIndividualImpl alloc] initWithCowlIndividual:(CowlAnonInd *)ind retain:retain];
+        return [[OWLAnonymousIndividualImpl alloc] initWithCowlIndividual:(CowlAnonInd *)ind
+                                                                   retain:retain];
     }
 }
 

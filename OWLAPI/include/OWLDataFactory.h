@@ -126,33 +126,42 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (id<OWLAnonymousIndividual>)anonymousIndividualWithNodeID:(OWLNodeID)nodeID;
 
-#pragma mark Entity to/from identifiers
+#pragma mark Entity from identifier
+
+/**
+ * Gets the entity that has the specified identifier.
+ *
+ * @param entityID The identifier.
+ *
+ * @return An instance of OWLEntity.
+ */
+- (id<OWLEntity>)entityWithID:(OWLEntityID)entityID;
 
 /**
  * Gets the class that has the specified identifier.
  *
- * @param entityID The identifier;
+ * @param entityID The identifier.
  *
  * @return An instance of OWLClass.
  */
 - (id<OWLClass>)classWithEntityID:(OWLEntityID)entityID;
 
 /**
-* Gets the named individual that has the specified identifier.
-*
-* @param entityID The identifier;
-*
-* @return An instance of OWLNamedIndividual.
-*/
+ * Gets the named individual that has the specified identifier.
+ *
+ * @param entityID The identifier.
+ *
+ * @return An instance of OWLNamedIndividual.
+ */
 - (id<OWLNamedIndividual>)namedIndividualWithEntityID:(OWLEntityID)entityID;
 
 /**
-* Gets the object property that has the specified identifier.
-*
-* @param entityID The identifier;
-*
-* @return An instance of OWLObjectProperty.
-*/
+ * Gets the object property that has the specified identifier.
+ *
+ * @param entityID The identifier.
+ *
+ * @return An instance of OWLObjectProperty.
+ */
 - (id<OWLObjectProperty>)objectPropertyWithEntityID:(OWLEntityID)entityID;
 
 #pragma mark Class expressions

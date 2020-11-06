@@ -80,6 +80,16 @@
     return [[OWLAnonymousIndividualImpl alloc] initWithNodeID:nodeID];
 }
 
+- (id<OWLEntity>)entityWithID:(OWLEntityID)entityID {
+    CowlEntity *entity = (CowlEntity *)entityID;
+    switch (cowl_entity_get_type(entity)) {
+        case COWL_ET_CLASS: return [self classWithEntityID:entityID];
+        case COWL_ET_NAMED_IND: return [self namedIndividualWithEntityID:entityID];
+        case COWL_ET_OBJ_PROP: return [self objectPropertyWithEntityID:entityID];
+        default: return nil;
+    }
+}
+
 - (id<OWLClass>)classWithEntityID:(OWLEntityID)entityID {
     return [[OWLClassImpl alloc] initWithCowlClass:(CowlClass *)entityID retain:YES];
 }

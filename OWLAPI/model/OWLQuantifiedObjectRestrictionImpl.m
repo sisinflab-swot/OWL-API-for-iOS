@@ -26,8 +26,8 @@
 #pragma mark OWLObject
 
 - (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
-    CowlEntityIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
-    cowl_obj_quant_iterate_signature(_cowlObject, &iter);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
+    cowl_obj_quant_iterate_primitives(_cowlObject, &iter, COWL_PF_ENTITY);
 }
 
 

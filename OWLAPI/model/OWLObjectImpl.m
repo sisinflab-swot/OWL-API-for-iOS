@@ -10,7 +10,7 @@
 
 #import "cowl_iterator.h"
 
-bool signatureIteratorImpl(void *ctx, CowlEntity entity) {
+bool signatureIteratorImpl(void *ctx, void *entity) {
     void (^handler)(id<OWLEntity> entity) = (__bridge void (^)(__strong id<OWLEntity>))(ctx);
     id<OWLEntity> ent = entityFromCowl(entity, YES);
     if (ent) handler(ent);

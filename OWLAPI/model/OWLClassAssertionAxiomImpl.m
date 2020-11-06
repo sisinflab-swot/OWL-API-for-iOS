@@ -26,8 +26,8 @@
 #pragma mark OWLObject
 
 - (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
-    CowlEntityIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
-    cowl_cls_assert_axiom_iterate_signature(_cowlObject, &iter);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
+    cowl_cls_assert_axiom_iterate_primitives(_cowlObject, &iter, COWL_PF_ENTITY);
 }
 
 #pragma mark OWLAxiom
@@ -54,7 +54,8 @@
     return self;
 }
 
-- (instancetype)initWithIndividual:(id<OWLIndividual>)individual classExpression:(id<OWLClassExpression>)classExpression
+- (instancetype)initWithIndividual:(id<OWLIndividual>)individual
+                   classExpression:(id<OWLClassExpression>)classExpression
 {
     NSParameterAssert(individual && classExpression);
     CowlClsAssertAxiom *axiom = cowl_cls_assert_axiom_get(((OWLObjectImpl *)individual)->_cowlObject,

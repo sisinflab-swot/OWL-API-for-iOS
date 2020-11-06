@@ -36,46 +36,46 @@
 #pragma mark OWLObject
 
 - (void)enumerateSignatureWithHandler:(void (^)(id<OWLEntity>))handler {
-    CowlEntityIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
-    cowl_ontology_iterate_signature(_cowlObject, &iter);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), signatureIteratorImpl);
+    cowl_ontology_iterate_primitives(_cowlObject, &iter, COWL_PF_ENTITY);
 }
 
-static bool classesIteratorImpl(void *ctx, CowlClass *cls) {
+static bool classesIteratorImpl(void *ctx, void *cls) {
     void (^handler)(id<OWLClass>) = (__bridge void (^)(__strong id<OWLClass>))(ctx);
     handler(classFromCowl(cls, YES));
     return true;
 }
 
 - (void)enumerateClassesInSignatureWithHandler:(void (^)(id<OWLClass>))handler {
-    CowlClassIterator iter = cowl_iterator_init((__bridge void *)(handler), classesIteratorImpl);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), classesIteratorImpl);
     cowl_ontology_iterate_classes(_cowlObject, &iter);
 }
 
-static bool namedIndIteratorImpl(void *ctx, CowlNamedInd *ind) {
+static bool namedIndIteratorImpl(void *ctx, void *ind) {
     void (^handler)(id<OWLNamedIndividual>) = (__bridge void (^)(__strong id<OWLNamedIndividual>))(ctx);
     handler(namedIndFromCowl(ind, YES));
     return true;
 }
 
 - (void)enumerateNamedIndividualsInSignatureWithHandler:(void (^)(id<OWLNamedIndividual>))handler {
-    CowlNamedIndIterator iter = cowl_iterator_init((__bridge void *)(handler), namedIndIteratorImpl);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), namedIndIteratorImpl);
     cowl_ontology_iterate_named_inds(_cowlObject, &iter);
 }
 
-static bool objPropIteratorImpl(void *ctx, CowlObjProp *prop) {
+static bool objPropIteratorImpl(void *ctx, void *prop) {
     void (^handler)(id<OWLObjectProperty>) = (__bridge void (^)(__strong id<OWLObjectProperty>))(ctx);
     handler(objPropFromCowl(prop, YES));
     return true;
 }
 
 - (void)enumerateObjectPropertiesInSignatureWithHandler:(void (^)(id<OWLObjectProperty>))handler {
-    CowlObjPropIterator iter = cowl_iterator_init((__bridge void *)(handler), objPropIteratorImpl);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), objPropIteratorImpl);
     cowl_ontology_iterate_obj_props(_cowlObject, &iter);
 }
 
 #pragma mark OWLOntology
 
-static bool axiomIteratorImpl(void *ctx, CowlAxiom *axiom) {
+static bool axiomIteratorImpl(void *ctx, void *axiom) {
     void (^handler)(id<OWLAxiom>) = (__bridge void (^)(__strong id<OWLAxiom>))(ctx);
     id<OWLAxiom> laxiom = axiomFromCowl(axiom, YES);
     if (laxiom) handler(laxiom);
@@ -87,19 +87,19 @@ static bool axiomIteratorImpl(void *ctx, CowlAxiom *axiom) {
 }
 
 - (void)enumerateAxiomsWithHandler:(void (^)(id<OWLAxiom>))handler {
-    CowlAxiomIterator iter = cowl_iterator_init((__bridge void *)(handler), axiomIteratorImpl);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), axiomIteratorImpl);
     cowl_ontology_iterate_axioms(_cowlObject, &iter);
 }
 
 - (void)enumerateAxiomsOfTypes:(OWLAxiomType)types withHandler:(void (^)(id<OWLAxiom>))handler {
-    CowlAxiomIterator iter = cowl_iterator_init((__bridge void *)(handler), axiomIteratorImpl);
+    CowlIterator iter = cowl_iterator_init((__bridge void *)(handler), axiomIteratorImpl);
 
     forEachOWLAxiomType(types, type, {
         cowl_ontology_iterate_axioms_of_type(_cowlObject, cowlAxiomTypeFrom(type), &iter);
     });
 }
 
-static bool axiomTypeIteratorImpl(void *ctx, CowlAxiom *axiom) {
+static bool axiomTypeIteratorImpl(void *ctx, void *axiom) {
     void **array = ctx;
 
     void (^handler)(id<OWLAxiom>) = (__bridge void (^)(__strong id<OWLAxiom>))(array[1]);
@@ -118,7 +118,7 @@ static bool axiomTypeIteratorImpl(void *ctx, CowlAxiom *axiom) {
                                               ofTypes:(OWLAxiomType)types
                                           withHandler:(void(^)(id<OWLAxiom> axiom))handler {
     void *ctx[] = { &types, (__bridge void *)(handler) };
-    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    CowlIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
     cowl_ontology_iterate_axioms_for_anon_ind(_cowlObject, cowlWrappedObject(individual), &iter);
 }
 
@@ -126,7 +126,7 @@ static bool axiomTypeIteratorImpl(void *ctx, CowlAxiom *axiom) {
                                 ofTypes:(OWLAxiomType)types
                             withHandler:(void (^)(id<OWLAxiom> axiom))handler {
     void *ctx[] = { &types, (__bridge void *)(handler) };
-    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    CowlIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
     cowl_ontology_iterate_axioms_for_class(_cowlObject, cowlWrappedObject(cls), &iter);
 }
 
@@ -148,7 +148,7 @@ static bool axiomTypeIteratorImpl(void *ctx, CowlAxiom *axiom) {
                                           ofTypes:(OWLAxiomType)types
                                       withHandler:(void (^)(id<OWLAxiom> axiom))handler {
     void *ctx[] = { &types, (__bridge void *)(handler) };
-    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    CowlIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
     cowl_ontology_iterate_axioms_for_named_ind(_cowlObject, cowlWrappedObject(individual), &iter);
 }
 
@@ -156,7 +156,7 @@ static bool axiomTypeIteratorImpl(void *ctx, CowlAxiom *axiom) {
                                          ofTypes:(OWLAxiomType)types
                                      withHandler:(void (^)(id<OWLAxiom> axiom))handler {
     void *ctx[] = { &types, (__bridge void *)(handler) };
-    CowlAxiomIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
+    CowlIterator iter = cowl_iterator_init(ctx, axiomTypeIteratorImpl);
     cowl_ontology_iterate_axioms_for_obj_prop(_cowlObject, cowlWrappedObject(property), &iter);
 }
 

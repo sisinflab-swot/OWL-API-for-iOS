@@ -6,7 +6,7 @@
 #import "OWLObject.h"
 #import "cowl_entity.h"
 
-extern bool signatureIteratorImpl(void *ctx, CowlEntity entity);
+extern bool signatureIteratorImpl(void *ctx, void *entity);
 
 /// Abstract class that provides sensible defaults for methods of the OWLObject protocol.
 @interface OWLObjectImpl : NSObject <NSCopying>
