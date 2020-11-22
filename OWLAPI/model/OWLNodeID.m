@@ -5,7 +5,8 @@
 
 #import "OWLNodeID.h"
 #import "OWLCowlUtils.h"
-#import "cowl_node_id.h"
+
+#import <cowl_node_id.h>
 
 OWLNodeID OWLNodeID_new(void) {
     CowlNodeID nodeId = cowl_node_id_get_unique();

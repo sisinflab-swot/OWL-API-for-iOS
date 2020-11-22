@@ -5,7 +5,8 @@
 
 #import "OWLLogicalAxiomImpl.h"
 #import "OWLObjectPropertyRangeAxiom.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlObjPropRangeAxiom);
 

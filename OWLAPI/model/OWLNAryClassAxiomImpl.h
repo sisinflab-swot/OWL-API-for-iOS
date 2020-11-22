@@ -6,7 +6,8 @@
 #import "OWLLogicalAxiomImpl.h"
 #import "OWLDisjointClassesAxiom.h"
 #import "OWLEquivalentClassesAxiom.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlNAryClsAxiom);
 

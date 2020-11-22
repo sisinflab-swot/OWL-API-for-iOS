@@ -8,8 +8,9 @@
 #import "OWLIndividual.h"
 #import "OWLObjCUtils.h"
 #import "OWLOntologyID+Private.h"
-#import "cowl_axiom.h"
-#import "cowl_ontology.h"
+
+#import <cowl_axiom.h>
+#import <cowl_ontology.h>
 
 #define forEachOWLAxiomType(types, type, code) do {                                                 \
     for (OWLAxiomType type = OWLAxiomTypeFirst; type <= OWLAxiomTypeLast; type <<= 1U) {            \

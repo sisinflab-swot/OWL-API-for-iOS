@@ -6,7 +6,9 @@
 #import "OWLParser.h"
 #import "OWLCowlUtils.h"
 #import "OWLOntologyImpl.h"
-#import "cowl_parser.h"
+
+#import <cowl_parser.h>
+#import <uvec.h>
 
 @implementation OWLParser
 
@@ -26,18 +28,18 @@
     NSError *localError = nil;
 
     CowlParser *parser = cowl_parser_get();
-    Vector(CowlError) errors = vector_init(CowlError);
+    UVec(CowlError) errors = uvec_init(CowlError);
     const char *path = [[URL path] UTF8String];
 
     CowlOntology *onto = cowl_parser_parse_ontology(parser, path, &errors);
 
     if (onto) {
         ontology = [[OWLOntologyImpl alloc] initWithCowlOntology:onto manager:_manager retain:NO];
-    } else if (vector_count(&errors)) {
-        localError = errorFromCowl(vector_last(&errors));
+    } else if (uvec_count(&errors)) {
+        localError = errorFromCowl(uvec_last(&errors));
     }
 
-    vector_deinit(errors);
+    uvec_deinit(errors);
     cowl_parser_release(parser);
 
     if (error) *error = localError;

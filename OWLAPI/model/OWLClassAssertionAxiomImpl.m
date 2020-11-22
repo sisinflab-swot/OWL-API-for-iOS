@@ -5,7 +5,8 @@
 
 #import "OWLClassAssertionAxiomImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_cls_assert_axiom.h"
+
+#import <cowl_cls_assert_axiom.h>
 
 @implementation OWLClassAssertionAxiomImpl
 

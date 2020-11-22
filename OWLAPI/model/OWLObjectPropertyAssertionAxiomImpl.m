@@ -5,7 +5,8 @@
 
 #import "OWLObjectPropertyAssertionAxiomImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_prop_assert_axiom.h"
+
+#import <cowl_obj_prop_assert_axiom.h>
 
 @implementation OWLObjectPropertyAssertionAxiomImpl
 

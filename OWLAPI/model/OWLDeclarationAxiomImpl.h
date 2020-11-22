@@ -5,7 +5,8 @@
 
 #import "OWLObjectImpl.h"
 #import "OWLDeclarationAxiom.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlDeclAxiom);
 

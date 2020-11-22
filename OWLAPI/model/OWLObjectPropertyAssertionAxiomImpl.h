@@ -5,7 +5,8 @@
 
 #import "OWLLogicalAxiomImpl.h"
 #import "OWLObjectPropertyAssertionAxiom.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlObjPropAssertAxiom);
 

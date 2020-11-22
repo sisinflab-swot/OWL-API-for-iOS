@@ -5,7 +5,8 @@
 
 #import "OWLObjectPropertyCharacteristicAxiomImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_prop_char_axiom.h"
+
+#import <cowl_obj_prop_char_axiom.h>
 
 @implementation OWLObjectPropertyCharacteristicAxiomImpl
 

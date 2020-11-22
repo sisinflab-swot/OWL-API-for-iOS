@@ -4,7 +4,8 @@
 //
 
 #import "OWLOntologyID.h"
-#import "cowl_ontology_id.h"
+
+#import <cowl_ontology_id.h>
 
 @interface OWLOntologyID ()
 

@@ -5,7 +5,8 @@
 
 #import "OWLObjectComplementOfImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_compl.h"
+
+#import <cowl_obj_compl.h>
 
 @implementation OWLObjectComplementOfImpl
 

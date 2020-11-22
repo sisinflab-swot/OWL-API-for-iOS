@@ -23,16 +23,17 @@
 #import "OWLQuantifiedObjectRestrictionImpl.h"
 #import "OWLSubClassOfAxiomImpl.h"
 
-#import "cowl_axiom.h"
-#import "cowl_cls_exp.h"
-#import "cowl_cls_exp_set.h"
-#import "cowl_individual.h"
-#import "cowl_obj_prop_exp.h"
-#import "cowl_string.h"
+#import <cowl_axiom.h>
+#import <cowl_cls_exp.h>
+#import <cowl_cls_exp_set.h>
+#import <cowl_entity.h>
+#import <cowl_individual.h>
+#import <cowl_obj_prop_exp.h>
+#import <cowl_string.h>
 
 CowlClsExpSet* cowlClsExpSetFrom(NSSet<id<OWLClassExpression>> *set) {
     UHash(CowlClsExpSet) *cowlSet = uhset_alloc(CowlClsExpSet);
-    uhash_resize(CowlClsExpSet, cowlSet, (uhash_uint_t)set.count);
+    uhash_resize(CowlClsExpSet, cowlSet, (uhash_uint)set.count);
 
     for (OWLObjectImpl *exp in set) {
         uhset_insert(CowlClsExpSet, cowlSet, cowl_cls_exp_retain(exp.cowlObject));

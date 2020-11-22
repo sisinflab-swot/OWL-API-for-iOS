@@ -4,7 +4,8 @@
 //
 
 #import "OWLIRI.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlIRI);
 

@@ -5,7 +5,8 @@
 
 #import "OWLQuantifiedObjectRestrictionImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_quant.h"
+
+#import <cowl_obj_quant.h>
 
 @implementation OWLQuantifiedObjectRestrictionImpl
 

@@ -22,6 +22,8 @@
 #import "OWLRDFVocabulary.h"
 #import "OWLSubClassOfAxiomImpl.h"
 
+#import <cowl_entity.h>
+
 @implementation OWLDataFactoryImpl
 
 #pragma mark OWLDataFactory

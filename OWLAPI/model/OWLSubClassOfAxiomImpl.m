@@ -5,7 +5,8 @@
 
 #import "OWLSubClassOfAxiomImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_sub_cls_axiom.h"
+
+#import <cowl_sub_cls_axiom.h>
 
 @implementation OWLSubClassOfAxiomImpl
 

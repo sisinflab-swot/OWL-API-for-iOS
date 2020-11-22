@@ -4,7 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cowl_error.h"
+#import <cowl_error.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

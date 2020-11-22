@@ -5,7 +5,8 @@
 
 #import "OWLNAryBooleanClassExpressionImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_nary_bool.h"
+
+#import <cowl_nary_bool.h>
 
 @implementation OWLNAryBooleanClassExpressionImpl
 

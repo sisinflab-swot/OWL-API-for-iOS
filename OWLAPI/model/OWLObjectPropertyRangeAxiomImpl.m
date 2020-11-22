@@ -5,7 +5,8 @@
 
 #import "OWLObjectPropertyRangeAxiomImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_prop_range_axiom.h"
+
+#import <cowl_obj_prop_range_axiom.h>
 
 @implementation OWLObjectPropertyRangeAxiomImpl
 

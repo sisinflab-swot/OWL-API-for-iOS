@@ -6,7 +6,8 @@
 #import "OWLObjectPropertyImpl.h"
 #import "OWLCowlUtils.h"
 #import "OWLIRI+Private.h"
-#import "cowl_obj_prop.h"
+
+#import <cowl_obj_prop.h>
 
 @implementation OWLObjectPropertyImpl
 

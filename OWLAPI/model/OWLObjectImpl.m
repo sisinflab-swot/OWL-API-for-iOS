@@ -8,7 +8,7 @@
 #import "OWLObjCUtils.h"
 #import "OWLEntity.h"
 
-#import "cowl_iterator.h"
+#import <cowl_iterator.h>
 
 bool signatureIteratorImpl(void *ctx, void *entity) {
     void (^handler)(id<OWLEntity> entity) = (__bridge void (^)(__strong id<OWLEntity>))(ctx);

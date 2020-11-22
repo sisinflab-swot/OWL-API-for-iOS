@@ -5,7 +5,8 @@
 
 #import "OWLObjectCardinalityRestrictionImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_card.h"
+
+#import <cowl_obj_card.h>
 
 @implementation OWLObjectCardinalityRestrictionImpl
 
@@ -97,7 +98,7 @@
     NSParameterAssert(property);
     CowlObjCard *crestr = cowl_obj_card_get(type, ((OWLObjectImpl *)property).cowlObject,
                                             ((OWLObjectImpl *)filler).cowlObject,
-                                            (cowl_uint_t)cardinality);
+                                            (cowl_uint)cardinality);
     return [self initWithCowlRestr:crestr retain:NO];
 }
 

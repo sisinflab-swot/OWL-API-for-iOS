@@ -6,7 +6,8 @@
 #import "OWLDeclarationAxiomImpl.h"
 #import "OWLCowlUtils.h"
 #import "OWLEntity.h"
-#import "cowl_decl_axiom.h"
+
+#import <cowl_decl_axiom.h>
 
 @implementation OWLDeclarationAxiomImpl
 

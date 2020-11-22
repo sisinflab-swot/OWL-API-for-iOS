@@ -5,7 +5,8 @@
 
 #import "OWLAnonymousClassExpressionImpl.h"
 #import "OWLObjectIntersectionOf.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlNAryBool);
 

@@ -4,8 +4,9 @@
 //
 
 #import "OWLAxiomType.h"
-#import "cowl_axiom_type.h"
-#import "cowl_error.h"
+
+#import <cowl_axiom_type.h>
+#import <cowl_error.h>
 
 cowl_struct_decl(CowlAnonInd);
 cowl_struct_decl(CowlAxiom);

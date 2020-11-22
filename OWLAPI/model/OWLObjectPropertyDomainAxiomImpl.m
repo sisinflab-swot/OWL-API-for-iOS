@@ -5,7 +5,8 @@
 
 #import "OWLObjectPropertyDomainAxiomImpl.h"
 #import "OWLCowlUtils.h"
-#import "cowl_obj_prop_domain_axiom.h"
+
+#import <cowl_obj_prop_domain_axiom.h>
 
 @implementation OWLObjectPropertyDomainAxiomImpl
 

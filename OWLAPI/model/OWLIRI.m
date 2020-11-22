@@ -6,8 +6,8 @@
 #import "OWLIRI+Private.h"
 #import "OWLCowlUtils.h"
 
-#import "cowl_iri.h"
-#import "cowl_string.h"
+#import <cowl_iri.h>
+#import <cowl_string.h>
 
 @implementation OWLIRI
 

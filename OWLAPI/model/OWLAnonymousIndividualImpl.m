@@ -6,7 +6,8 @@
 #import "OWLAnonymousIndividualImpl.h"
 #import "OWLCowlUtils.h"
 #import "OWLNodeID.h"
-#import "cowl_anon_ind.h"
+
+#import <cowl_anon_ind.h>
 
 @implementation OWLAnonymousIndividualImpl
 

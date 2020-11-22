@@ -5,7 +5,8 @@
 
 #import "OWLObjectPropertyExpressionImpl.h"
 #import "OWLObjectProperty.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlObjProp);
 

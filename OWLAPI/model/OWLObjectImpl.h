@@ -4,7 +4,6 @@
 //
 
 #import "OWLObject.h"
-#import "cowl_entity.h"
 
 extern bool signatureIteratorImpl(void *ctx, void *entity);
 

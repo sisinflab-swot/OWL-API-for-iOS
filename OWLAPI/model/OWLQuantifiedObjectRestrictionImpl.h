@@ -7,7 +7,8 @@
 #import "OWLObjectAllValuesFrom.h"
 #import "OWLObjectSomeValuesFrom.h"
 #import "OWLObjectPropertyExpression.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlObjQuant);
 

@@ -11,8 +11,8 @@
 #import "OWLOntology.h"
 #import "OWLSubClassOfAxiom.h"
 
-#import "cowl_class.h"
-#import "cowl_owl_vocab.h"
+#import <cowl_class.h>
+#import <cowl_owl_vocab.h>
 
 @implementation OWLClassImpl
 

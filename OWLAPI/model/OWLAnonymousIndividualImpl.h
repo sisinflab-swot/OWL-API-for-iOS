@@ -5,7 +5,8 @@
 
 #import "OWLObjectImpl.h"
 #import "OWLAnonymousIndividual.h"
-#import "cowl_compat.h"
+
+#import <cowl_compat.h>
 
 cowl_struct_decl(CowlAnonInd);
 

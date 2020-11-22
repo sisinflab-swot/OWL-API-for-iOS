@@ -6,7 +6,8 @@
 #import "OWLNAryClassAxiomImpl.h"
 #import "OWLClassExpression.h"
 #import "OWLCowlUtils.h"
-#import "cowl_nary_cls_axiom.h"
+
+#import <cowl_nary_cls_axiom.h>
 
 @implementation OWLNAryClassAxiomImpl
 

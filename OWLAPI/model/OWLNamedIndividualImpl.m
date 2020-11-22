@@ -6,7 +6,8 @@
 #import "OWLNamedIndividualImpl.h"
 #import "OWLCowlUtils.h"
 #import "OWLIRI+Private.h"
-#import "cowl_named_ind.h"
+
+#import <cowl_named_ind.h>
 
 @implementation OWLNamedIndividualImpl
 

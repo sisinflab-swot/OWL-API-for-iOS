@@ -6,7 +6,8 @@
 #import "OWLManager.h"
 #import "OWLDataFactoryImpl.h"
 #import "OWLOntologyManagerImpl.h"
-#import "cowl_init.h"
+
+#import <cowl_init.h>
 
 @implementation OWLManager
 
