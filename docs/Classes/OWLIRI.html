@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/objc/Class/OWLIRI" class="dashAnchor"></a>
@@ -16,6 +19,11 @@
       <div class="content-wrapper">
         <p><a href="../index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -135,6 +143,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLIndividual.html">OWLIndividual</a>
@@ -265,6 +276,9 @@
             <a href="../Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
             </ul>
@@ -288,12 +302,21 @@
             <h1>OWLIRI</h1>
               <div class="declaration">
                 <div class="language">
+                  <p class="aside-title">Objective-C</p>
                   <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">OWLIRI</span> <span class="p">:</span> <span class="nc">NSObject</span> <span class="o">&lt;</span><span class="n">NSCopying</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+                <div class="language">
+                  <p class="aside-title">Swift</p>
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">OWLIRI</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span></code></pre>
 
                 </div>
               </div>
             <p>Represents International Resource Identifiers.</p>
 
+              <div class="slightly-smaller">
+                <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L11-L63">Show on GitHub</a>
+              </div>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -453,6 +476,52 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:objc(cs)OWLIRI(im)cstringWithLength:"></a>
+                    <a name="//apple_ref/objc/Method/-cstringWithLength:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OWLIRI(im)cstringWithLength:">-cstringWithLength:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the string representation of this IRI and its length.</p>
+
+<p>@param[out] length Length of the string.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>You are responsible for freeing the returned string.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="nf">cstringWithLength</span><span class="p">:(</span><span class="n">nullable</span> <span class="kt">size_t</span> <span class="o">*</span><span class="p">)</span><span class="nv">length</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">cstring</span><span class="p">(</span><span class="n">withLength</span> <span class="nv">length</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int</span><span class="o">&gt;</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">UnsafePointer</span><span class="o">&lt;</span><span class="kt">Int8</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The string representation of this IRI.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L34">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:objc(cs)OWLIRI(im)initWithString:"></a>
                     <a name="//apple_ref/objc/Method/-initWithString:" class="dashAnchor"></a>
                     <a class="token" href="#/c:objc(cs)OWLIRI(im)initWithString:">-initWithString:<wbr></a>
@@ -503,7 +572,7 @@
                         <p>The IRI that has the specified string representation.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L32">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L43">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -561,7 +630,7 @@
                         <p>The IRI that has the specified string representation.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L41">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L52">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -619,7 +688,7 @@
                         <p>Value that indicates the lexical ordering.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L50">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIRI.h#L61">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -629,8 +698,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-14)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-11-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

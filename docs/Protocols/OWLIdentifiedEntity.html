@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>OWLDeclarationAxiom Protocol Reference</title>
+    <title>OWLIdentifiedEntity Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/objc/Protocol/OWLDeclarationAxiom" class="dashAnchor"></a>
-    <a title="OWLDeclarationAxiom Protocol Reference"></a>
+    <a name="//apple_ref/objc/Protocol/OWLIdentifiedEntity" class="dashAnchor"></a>
+    <a title="OWLIdentifiedEntity Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">OWLAPI Reference</a>
         <img id="carat" src="../img/carat.png" />
-        OWLDeclarationAxiom Protocol Reference
+        OWLIdentifiedEntity Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -299,23 +299,33 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>OWLDeclarationAxiom</h1>
+            <h1>OWLIdentifiedEntity</h1>
               <div class="declaration">
                 <div class="language">
                   <p class="aside-title">Objective-C</p>
-                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLDeclarationAxiom</span> <span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span><span class="o">&gt;</span></code></pre>
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLIdentifiedEntity</span> <span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span></code></pre>
 
                 </div>
                 <div class="language">
                   <p class="aside-title">Swift</p>
-                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLDeclarationAxiom</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/OWLAxiom.html">OWLAxiom</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLIdentifiedEntity</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Represents a Declaration in the OWL 2 specification.</p>
+            <p>Allows the conversion of OWLEntity to numerical identifiers and back.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    This protocol is very unsafe, so it should be used sparingly.
+
+</div><div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    All OWLEntity instances also implement this protocol,
+   so it can be used by simply casting to OWLIdentifiedEntity.
+
+</div>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDeclarationAxiom.h#L13-L18">Show on GitHub</a>
+                <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIdentifiedEntity.h#L18-L28">Show on GitHub</a>
               </div>
           </section>
           <section class="section task-group-section">
@@ -324,9 +334,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(pl)OWLDeclarationAxiom(py)entity"></a>
-                    <a name="//apple_ref/objc/Property/entity" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(pl)OWLDeclarationAxiom(py)entity">entity</a>
+                    <a name="/c:objc(pl)OWLIdentifiedEntity(py)identifier"></a>
+                    <a name="//apple_ref/objc/Property/identifier" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLIdentifiedEntity(py)identifier">identifier</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -334,19 +344,30 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The entity that this axiom declares.</p>
+                        <p>The identifier of this entity.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    The identifier is only valid until the entity is dealloated. Attempts to use it
+      after the entity has been deallocated is undefined behavior.
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span> <span class="n">_Nonnull</span> <span class="n">entity</span><span class="p">;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n"><a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a></span> <span class="n">identifier</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt"><a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDeclarationAxiom.h#L16">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIdentifiedEntity.h#L26">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

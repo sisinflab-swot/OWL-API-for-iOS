@@ -8,6 +8,9 @@
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/objc/Section/Protocols" class="dashAnchor"></a>
@@ -16,6 +19,11 @@
       <div class="content-wrapper">
         <p><a href="index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -135,6 +143,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/OWLIndividual.html">OWLIndividual</a>
@@ -264,6 +275,9 @@
           <li class="nav-group-name">
             <a href="Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
@@ -499,17 +513,18 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLClass</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="p">,</span> <span class="n"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLClass</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="p">,</span>
+                    <span class="n"><a href="Protocols/OWLNamedObject.html">OWLNamedObject</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLClass</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLClass</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLClassExpression.html">OWLClassExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLClass.h#L15">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLClass.h#L16">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -653,7 +668,7 @@ This protocol covers named and anonymous classes.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L39-L320">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L40-L359">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -796,6 +811,52 @@ This protocol covers named and anonymous classes.</p>
                       </div>
                       <div class="slightly-smaller">
                         <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLEquivalentClassesAxiom.h#L9">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLIdentifiedEntity"></a>
+                    <a name="//apple_ref/objc/Protocol/OWLIdentifiedEntity" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLIdentifiedEntity">OWLIdentifiedEntity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Allows the conversion of OWLEntity to numerical identifiers and back.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    This protocol is very unsafe, so it should be used sparingly.
+
+</div><div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    All OWLEntity instances also implement this protocol,
+   so it can be used by simply casting to OWLIdentifiedEntity.
+
+</div>
+
+                        <a href="Protocols/OWLIdentifiedEntity.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLIdentifiedEntity</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLIdentifiedEntity</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLEntity.html">OWLEntity</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLIdentifiedEntity.h#L18-L28">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1078,17 +1139,18 @@ This protocol covers named and anonymous classes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLNamedIndividual</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span>
+    <span class="nc">OWLNamedIndividual</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="p">,</span> <span class="n"><a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLNamedIndividual</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLNamedIndividual</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/OWLIndividual.html">OWLIndividual</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLLogicalEntity">OWLLogicalEntity</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLNamedIndividual.h#L10">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLNamedIndividual.h#L11">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1448,17 +1510,18 @@ This protocol covers named and anonymous classes.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLObjectProperty</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a></span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLObjectProperty</span> <span class="o">&lt;</span><span class="n"><a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="p">,</span> <span class="n"><a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a></span><span class="p">,</span>
+                             <span class="n"><a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLObjectProperty</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLObjectProperty</span> <span class="p">:</span> <span class="kt"><a href="Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/OWLObjectPropertyExpression.html">OWLObjectPropertyExpression</a></span><span class="p">,</span> <span class="kt"><a href="Protocols.html#/c:objc(pl)OWLProperty">OWLProperty</a></span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLObjectProperty.h#L10">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLObjectProperty.h#L11">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2337,8 +2400,8 @@ in the OWL 2 specification.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-14)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-11-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

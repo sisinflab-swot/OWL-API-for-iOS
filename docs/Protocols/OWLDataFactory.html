@@ -8,6 +8,9 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/objc/Protocol/OWLDataFactory" class="dashAnchor"></a>
@@ -16,6 +19,11 @@
       <div class="content-wrapper">
         <p><a href="../index.html">OWLAPI 1.0.0 Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/sisinflab-swot/OWL-API-for-iOS"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -135,6 +143,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols.html#/c:objc(pl)OWLEquivalentClassesAxiom">OWLEquivalentClassesAxiom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OWLIdentifiedEntity.html">OWLIdentifiedEntity</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/OWLIndividual.html">OWLIndividual</a>
@@ -265,6 +276,9 @@
             <a href="../Type%20Definitions.html">Type Definitions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Type%20Definitions.html#/c:OWLNodeID.h@T@OWLNodeID">OWLNodeID</a>
               </li>
             </ul>
@@ -288,12 +302,21 @@
             <h1>OWLDataFactory</h1>
               <div class="declaration">
                 <div class="language">
+                  <p class="aside-title">Objective-C</p>
                   <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">OWLDataFactory</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+                <div class="language">
+                  <p class="aside-title">Swift</p>
+                  <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">OWLDataFactory</span> <span class="p">:</span> <span class="kt">NSObjectProtocol</span></code></pre>
 
                 </div>
               </div>
             <p>An interface for creating entities, class expressions and axioms.</p>
 
+              <div class="slightly-smaller">
+                <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L40-L359">Show on GitHub</a>
+              </div>
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -336,7 +359,7 @@
                         <p>OWLClass corresponding to owl:Thing.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L48">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L49">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -370,7 +393,7 @@
                         <p>OWLClass corresponding to owl:Nothing.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L55">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L56">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -404,7 +427,7 @@
                         <p>OWLObjectProperty corresponding to owl:topObjectProperty.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L62">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L63">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -438,7 +461,7 @@
                         <p>OWLObjectProperty corresponding to owl:bottomObjectProperty.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L69">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L70">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -517,7 +540,7 @@
                         <p>An entity that has the same IRI as this entity and is of the specified type.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L81">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L82">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -570,7 +593,7 @@
                         <p>An OWLClass that has the specified IRI.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L90">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L91">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -623,7 +646,7 @@
                         <p>An OWLObjectProperty that has the specified IRI.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L99">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -676,7 +699,7 @@
                         <p>An OWLNamedIndividual that has the specified IRI.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L108">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L109">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -712,7 +735,7 @@
                         <p>An instance of OWLAnonymousIndividual.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L117">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -766,7 +789,234 @@
                         <p>An instance of OWLAnonymousIndividual.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L126">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L127">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Entity%20from%20identifier"></a>
+                <a name="//apple_ref/objc/Section/Entity from identifier" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Entity%20from%20identifier"></a>
+                  <h3 class="section-name"><p>Entity from identifier</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDataFactory(im)entityWithID:"></a>
+                    <a name="//apple_ref/objc/Method/-entityWithID:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)entityWithID:">-entityWithID:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the entity that has the specified identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols/OWLEntity.html">OWLEntity</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">entityWithID</span><span class="p">:(</span><span class="n"><a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a></span><span class="p">)</span><span class="nv">entityID</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>entityID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An instance of OWLEntity.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L138">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDataFactory(im)classWithEntityID:"></a>
+                    <a name="//apple_ref/objc/Method/-classWithEntityID:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)classWithEntityID:">-classWithEntityID:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the class that has the specified identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLClass">OWLClass</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">classWithEntityID</span><span class="p">:(</span><span class="n"><a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a></span><span class="p">)</span><span class="nv">entityID</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>entityID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An instance of OWLClass.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L147">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDataFactory(im)namedIndividualWithEntityID:"></a>
+                    <a name="//apple_ref/objc/Method/-namedIndividualWithEntityID:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)namedIndividualWithEntityID:">-namedIndividualWithEntityID:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the named individual that has the specified identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLNamedIndividual">OWLNamedIndividual</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">namedIndividualWithEntityID</span><span class="p">:</span>
+    <span class="p">(</span><span class="n"><a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a></span><span class="p">)</span><span class="nv">entityID</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>entityID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An instance of OWLNamedIndividual.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L156">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)OWLDataFactory(im)objectPropertyWithEntityID:"></a>
+                    <a name="//apple_ref/objc/Method/-objectPropertyWithEntityID:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)OWLDataFactory(im)objectPropertyWithEntityID:">-objectPropertyWithEntityID:<wbr></a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the object property that has the specified identifier.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nonnull</span> <span class="n">id</span><span class="o">&lt;</span><span class="n"><a href="../Protocols.html#/c:objc(pl)OWLObjectProperty">OWLObjectProperty</a></span><span class="o">&gt;</span><span class="p">)</span><span class="nf">objectPropertyWithEntityID</span><span class="p">:</span>
+    <span class="p">(</span><span class="n"><a href="../Type%20Definitions.html#/c:OWLEntityID.h@T@OWLEntityID">OWLEntityID</a></span><span class="p">)</span><span class="nv">entityID</span><span class="p">;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>entityID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The identifier.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An instance of OWLObjectProperty.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L165">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -833,7 +1083,7 @@
                         <p>An instance of OWLObjectComplementOf.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L137">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L176">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -887,7 +1137,7 @@
                         <p>An instance of OWLObjectIntersectionOf.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L146">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L185">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -954,7 +1204,7 @@
                         <p>An instance of OWLObjectAllValuesFrom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L156">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L195">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1021,7 +1271,7 @@
                         <p>An instance of OWLObjectSomeValuesFrom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L166">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L205">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1088,7 +1338,7 @@
                         <p>An instance of OWLObjectExactCardinality.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L176">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L215">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1168,7 +1418,7 @@
                         <p>An instance of OWLObjectExactCardinality.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L187">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L226">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1235,7 +1485,7 @@
                         <p>An instance of OWLObjectMaxCardinality.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L197">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L236">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1315,7 +1565,7 @@
                         <p>An instance of OWLObjectMaxCardinality.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L208">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L247">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1382,7 +1632,7 @@
                         <p>An instance of OWLObjectMinCardinality.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L218">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L257">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1462,7 +1712,7 @@
                         <p>An instance of OWLObjectMinCardinality.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L229">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L268">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1529,7 +1779,7 @@
                         <p>The declaration axiom for the specified entity.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L240">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L279">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1596,7 +1846,7 @@
                         <p>An instance of OWLSubClassOfAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L250">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L289">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1650,7 +1900,7 @@
                         <p>An instance of OWLDisjointClassesAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L259">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L298">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1704,7 +1954,7 @@
                         <p>An instance of OWLEquivalentClassesAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L268">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L307">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1771,7 +2021,7 @@
                         <p>An instance of OWLClassAssertionAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L278">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L317">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1852,7 +2102,7 @@
                         <p>An instance of OWLObjectPropertyAssertionAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L289">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L328">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1919,7 +2169,7 @@
                         <p>An instance of OWLObjectPropertyDomainAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L299">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L338">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1986,7 +2236,7 @@
                         <p>An instance of OWLObjectPropertyRangeAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L309">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L348">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2040,7 +2290,7 @@
                         <p>An instance of OWLTransitiveObjectPropertyAxiom.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L318">Show on GitHub</a>
+                        <a href="https://github.com/sisinflab-swot/OWL-API-for-iOS/tree/1.0.0/OWLAPI/include/OWLDataFactory.h#L357">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2050,8 +2300,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-05-14)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="http://sisinflab.poliba.it" target="_blank" rel="external">SisInf Lab</a>. All rights reserved. (Last updated: 2020-11-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
