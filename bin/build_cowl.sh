@@ -6,7 +6,7 @@ CMAKE_DIR="$(dirname "${0}")/../lib/cowl"
 CMAKE_TARGET="cowl-static"
 LIB_NAME="libcowl.a"
 
-MACOS_ARCHS="x86_64"
+MACOS_ARCHS="x86_64;arm64;arm64e"
 MACOS_BUILD_DIR="cmake-build-macos"
 MACOS_DEPLOYMENT_TARGET="10.11"
 
