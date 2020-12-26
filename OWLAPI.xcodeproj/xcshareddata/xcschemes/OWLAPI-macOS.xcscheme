@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC6251011DC611F700948C14"
-               BuildableName = "OWLAPI-Universal-iOS"
-               BlueprintName = "OWLAPI-Universal-iOS"
+               BlueprintIdentifier = "CCD6F1D11CFAFBF100A44E78"
+               BuildableName = "OWLAPI.framework"
+               BlueprintName = "OWLAPI-macOS"
                ReferencedContainer = "container:OWLAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CCCE3B091CFB026600ED64E7"
+               BuildableName = "OWLAPI-macOSTests.xctest"
+               BlueprintName = "OWLAPI-macOSTests"
+               ReferencedContainer = "container:OWLAPI.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -50,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC6251011DC611F700948C14"
-            BuildableName = "OWLAPI-Universal-iOS"
-            BlueprintName = "OWLAPI-Universal-iOS"
+            BlueprintIdentifier = "CCD6F1D11CFAFBF100A44E78"
+            BuildableName = "OWLAPI.framework"
+            BlueprintName = "OWLAPI-macOS"
             ReferencedContainer = "container:OWLAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

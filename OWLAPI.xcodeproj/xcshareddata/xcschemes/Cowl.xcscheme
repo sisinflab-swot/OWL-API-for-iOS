@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1210"
+   LastUpgradeVersion = "1220"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCD6F1D11CFAFBF100A44E78"
-               BuildableName = "OWLAPI.framework"
-               BlueprintName = "OWLAPI-Mac"
+               BlueprintIdentifier = "CC8FA13D2468122600C8590D"
+               BuildableName = "Cowl"
+               BlueprintName = "Cowl"
                ReferencedContainer = "container:OWLAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCCE3B091CFB026600ED64E7"
-               BuildableName = "OWLAPI-MacTests.xctest"
-               BlueprintName = "OWLAPI-MacTests"
-               ReferencedContainer = "container:OWLAPI.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -60,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CCD6F1D11CFAFBF100A44E78"
-            BuildableName = "OWLAPI.framework"
-            BlueprintName = "OWLAPI-Mac"
+            BlueprintIdentifier = "CC8FA13D2468122600C8590D"
+            BuildableName = "Cowl"
+            BlueprintName = "Cowl"
             ReferencedContainer = "container:OWLAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

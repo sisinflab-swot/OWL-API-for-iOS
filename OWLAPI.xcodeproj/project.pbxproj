@@ -485,7 +485,7 @@
 /* Begin PBXFileReference section */
 		CC3209ED1DC7AF96002793AC /* OWLAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OWLAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC350ACB246D60C7008138CE /* OWLIdentifiedEntity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLIdentifiedEntity.h; sourceTree = "<group>"; };
-		CC5220791CD61A4700490D42 /* OWLAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OWLAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC5220791CD61A4700490D42 /* OWLAPI-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OWLAPI-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC52207B1CD61A4700490D42 /* OWLOntologyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWLOntologyTests.m; sourceTree = "<group>"; };
 		CC52207D1CD61A4700490D42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC52208D1CD61BE700490D42 /* building.owl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = building.owl; sourceTree = "<group>"; };
@@ -622,7 +622,7 @@
 		CC6C3284246C5AD9003A3ADC /* OWLError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWLError.m; sourceTree = "<group>"; };
 		CC6C3285246C5AD9003A3ADC /* OWLError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWLError.h; sourceTree = "<group>"; };
 		CC6C328C246C5B48003A3ADC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCCE3B0A1CFB026600ED64E7 /* OWLAPI-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OWLAPI-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCE3B0A1CFB026600ED64E7 /* OWLAPI-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OWLAPI-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD2FC3E1CD5F7B3003F8CC8 /* OWLAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OWLAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCD6F1D21CFAFBF100A44E78 /* OWLAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OWLAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEB55CA246E975D00BA2C0B /* OWLEntityID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWLEntityID.h; sourceTree = "<group>"; };
@@ -885,9 +885,9 @@
 			isa = PBXGroup;
 			children = (
 				CCD2FC3E1CD5F7B3003F8CC8 /* OWLAPI.framework */,
-				CC5220791CD61A4700490D42 /* OWLAPITests.xctest */,
+				CC5220791CD61A4700490D42 /* OWLAPI-iOSTests.xctest */,
 				CCD6F1D21CFAFBF100A44E78 /* OWLAPI.framework */,
-				CCCE3B0A1CFB026600ED64E7 /* OWLAPI-MacTests.xctest */,
+				CCCE3B0A1CFB026600ED64E7 /* OWLAPI-macOSTests.xctest */,
 				CC3209ED1DC7AF96002793AC /* OWLAPI.framework */,
 			);
 			name = Products;
@@ -1248,9 +1248,9 @@
 /* End PBXLegacyTarget section */
 
 /* Begin PBXNativeTarget section */
-		CC3209251DC7AF96002793AC /* OWLAPI-Sim */ = {
+		CC3209251DC7AF96002793AC /* OWLAPI-iOS-sim */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC3209EA1DC7AF96002793AC /* Build configuration list for PBXNativeTarget "OWLAPI-Sim" */;
+			buildConfigurationList = CC3209EA1DC7AF96002793AC /* Build configuration list for PBXNativeTarget "OWLAPI-iOS-sim" */;
 			buildPhases = (
 				CC3209281DC7AF96002793AC /* Sources */,
 				CC3209651DC7AF96002793AC /* Frameworks */,
@@ -1262,14 +1262,14 @@
 			dependencies = (
 				CCB03F84246B03E000D25034 /* PBXTargetDependency */,
 			);
-			name = "OWLAPI-Sim";
+			name = "OWLAPI-iOS-sim";
 			productName = MicroReasoner;
 			productReference = CC3209ED1DC7AF96002793AC /* OWLAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CC5220781CD61A4700490D42 /* OWLAPITests */ = {
+		CC5220781CD61A4700490D42 /* OWLAPI-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CC52208B1CD61A4700490D42 /* Build configuration list for PBXNativeTarget "OWLAPITests" */;
+			buildConfigurationList = CC52208B1CD61A4700490D42 /* Build configuration list for PBXNativeTarget "OWLAPI-iOSTests" */;
 			buildPhases = (
 				CC5220751CD61A4700490D42 /* Sources */,
 				CC5220761CD61A4700490D42 /* Frameworks */,
@@ -1280,14 +1280,14 @@
 			dependencies = (
 				CC5220801CD61A4700490D42 /* PBXTargetDependency */,
 			);
-			name = OWLAPITests;
+			name = "OWLAPI-iOSTests";
 			productName = MicroReasonerTests;
-			productReference = CC5220791CD61A4700490D42 /* OWLAPITests.xctest */;
+			productReference = CC5220791CD61A4700490D42 /* OWLAPI-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CCCE3B091CFB026600ED64E7 /* OWLAPI-MacTests */ = {
+		CCCE3B091CFB026600ED64E7 /* OWLAPI-macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCCE3B121CFB026600ED64E7 /* Build configuration list for PBXNativeTarget "OWLAPI-MacTests" */;
+			buildConfigurationList = CCCE3B121CFB026600ED64E7 /* Build configuration list for PBXNativeTarget "OWLAPI-macOSTests" */;
 			buildPhases = (
 				CCCE3B061CFB026600ED64E7 /* Sources */,
 				CCCE3B071CFB026600ED64E7 /* Frameworks */,
@@ -1298,14 +1298,14 @@
 			dependencies = (
 				CCCE3B181CFB035400ED64E7 /* PBXTargetDependency */,
 			);
-			name = "OWLAPI-MacTests";
+			name = "OWLAPI-macOSTests";
 			productName = "MicroReasoner-macTests";
-			productReference = CCCE3B0A1CFB026600ED64E7 /* OWLAPI-MacTests.xctest */;
+			productReference = CCCE3B0A1CFB026600ED64E7 /* OWLAPI-macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI */ = {
+		CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCD2FC461CD5F7B3003F8CC8 /* Build configuration list for PBXNativeTarget "OWLAPI" */;
+			buildConfigurationList = CCD2FC461CD5F7B3003F8CC8 /* Build configuration list for PBXNativeTarget "OWLAPI-iOS" */;
 			buildPhases = (
 				CCD2FC391CD5F7B3003F8CC8 /* Sources */,
 				CCD2FC3A1CD5F7B3003F8CC8 /* Frameworks */,
@@ -1317,14 +1317,14 @@
 			dependencies = (
 				CCB03F82246B03CD00D25034 /* PBXTargetDependency */,
 			);
-			name = OWLAPI;
+			name = "OWLAPI-iOS";
 			productName = MicroReasoner;
 			productReference = CCD2FC3E1CD5F7B3003F8CC8 /* OWLAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CCD6F1D11CFAFBF100A44E78 /* OWLAPI-Mac */ = {
+		CCD6F1D11CFAFBF100A44E78 /* OWLAPI-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CCD6F1D71CFAFBF100A44E78 /* Build configuration list for PBXNativeTarget "OWLAPI-Mac" */;
+			buildConfigurationList = CCD6F1D71CFAFBF100A44E78 /* Build configuration list for PBXNativeTarget "OWLAPI-macOS" */;
 			buildPhases = (
 				CCD6F1CD1CFAFBF100A44E78 /* Sources */,
 				CCD6F1CE1CFAFBF100A44E78 /* Frameworks */,
@@ -1336,7 +1336,7 @@
 			dependencies = (
 				CCB03F86246B03E500D25034 /* PBXTargetDependency */,
 			);
-			name = "OWLAPI-Mac";
+			name = "OWLAPI-macOS";
 			productName = "MicroReasoner-mac";
 			productReference = CCD6F1D21CFAFBF100A44E78 /* OWLAPI.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1391,11 +1391,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI */,
-				CC3209251DC7AF96002793AC /* OWLAPI-Sim */,
-				CCD6F1D11CFAFBF100A44E78 /* OWLAPI-Mac */,
-				CC5220781CD61A4700490D42 /* OWLAPITests */,
-				CCCE3B091CFB026600ED64E7 /* OWLAPI-MacTests */,
+				CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI-iOS */,
+				CC3209251DC7AF96002793AC /* OWLAPI-iOS-sim */,
+				CCD6F1D11CFAFBF100A44E78 /* OWLAPI-macOS */,
+				CC5220781CD61A4700490D42 /* OWLAPI-iOSTests */,
+				CCCE3B091CFB026600ED64E7 /* OWLAPI-macOSTests */,
 				CC6251011DC611F700948C14 /* OWLAPI-Universal-iOS */,
 				CC8FA13D2468122600C8590D /* Cowl */,
 				CC13B9B6246B0AE2006246E7 /* Cowl-Clean */,
@@ -1604,17 +1604,17 @@
 /* Begin PBXTargetDependency section */
 		CC5220801CD61A4700490D42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI */;
+			target = CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI-iOS */;
 			targetProxy = CC52207F1CD61A4700490D42 /* PBXContainerItemProxy */;
 		};
 		CC6C3060246C42AB003A3ADC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI */;
+			target = CCD2FC3D1CD5F7B3003F8CC8 /* OWLAPI-iOS */;
 			targetProxy = CC6C305F246C42AB003A3ADC /* PBXContainerItemProxy */;
 		};
 		CC6C3062246C42B0003A3ADC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CC3209251DC7AF96002793AC /* OWLAPI-Sim */;
+			target = CC3209251DC7AF96002793AC /* OWLAPI-iOS-sim */;
 			targetProxy = CC6C3061246C42B0003A3ADC /* PBXContainerItemProxy */;
 		};
 		CCB03F82246B03CD00D25034 /* PBXTargetDependency */ = {
@@ -1634,7 +1634,7 @@
 		};
 		CCCE3B181CFB035400ED64E7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CCD6F1D11CFAFBF100A44E78 /* OWLAPI-Mac */;
+			target = CCD6F1D11CFAFBF100A44E78 /* OWLAPI-macOS */;
 			targetProxy = CCCE3B171CFB035400ED64E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2093,7 +2093,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC3209EA1DC7AF96002793AC /* Build configuration list for PBXNativeTarget "OWLAPI-Sim" */ = {
+		CC3209EA1DC7AF96002793AC /* Build configuration list for PBXNativeTarget "OWLAPI-iOS-sim" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC3209EB1DC7AF96002793AC /* Debug */,
@@ -2102,7 +2102,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CC52208B1CD61A4700490D42 /* Build configuration list for PBXNativeTarget "OWLAPITests" */ = {
+		CC52208B1CD61A4700490D42 /* Build configuration list for PBXNativeTarget "OWLAPI-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CC5220811CD61A4700490D42 /* Debug */,
@@ -2129,7 +2129,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCCE3B121CFB026600ED64E7 /* Build configuration list for PBXNativeTarget "OWLAPI-MacTests" */ = {
+		CCCE3B121CFB026600ED64E7 /* Build configuration list for PBXNativeTarget "OWLAPI-macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCCE3B131CFB026600ED64E7 /* Debug */,
@@ -2147,7 +2147,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCD2FC461CD5F7B3003F8CC8 /* Build configuration list for PBXNativeTarget "OWLAPI" */ = {
+		CCD2FC461CD5F7B3003F8CC8 /* Build configuration list for PBXNativeTarget "OWLAPI-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCD2FC471CD5F7B3003F8CC8 /* Debug */,
@@ -2156,7 +2156,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCD6F1D71CFAFBF100A44E78 /* Build configuration list for PBXNativeTarget "OWLAPI-Mac" */ = {
+		CCD6F1D71CFAFBF100A44E78 /* Build configuration list for PBXNativeTarget "OWLAPI-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCD6F1D81CFAFBF100A44E78 /* Debug */,

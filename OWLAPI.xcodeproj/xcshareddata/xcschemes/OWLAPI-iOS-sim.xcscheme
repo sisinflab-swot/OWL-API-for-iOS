@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC6251011DC611F700948C14"
-               BuildableName = "OWLAPI-Universal-iOS"
-               BlueprintName = "OWLAPI-Universal-iOS"
+               BlueprintIdentifier = "CC3209251DC7AF96002793AC"
+               BuildableName = "OWLAPI.framework"
+               BlueprintName = "OWLAPI-iOS-sim"
                ReferencedContainer = "container:OWLAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CC6251011DC611F700948C14"
-            BuildableName = "OWLAPI-Universal-iOS"
-            BlueprintName = "OWLAPI-Universal-iOS"
+            BlueprintIdentifier = "CC3209251DC7AF96002793AC"
+            BuildableName = "OWLAPI.framework"
+            BlueprintName = "OWLAPI-iOS-sim"
             ReferencedContainer = "container:OWLAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
